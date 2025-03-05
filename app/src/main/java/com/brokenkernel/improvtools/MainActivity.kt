@@ -41,8 +41,6 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-data class SuggestionPair(val category: String, val audienceIdea: String)
-
 @Preview
 @Composable
 fun PreviewSuggestionPairList() {
