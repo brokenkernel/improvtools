@@ -18,7 +18,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.brokenkernel.improvtools.ui.theme.ImprovToolsTheme
@@ -58,14 +58,16 @@ fun PreviewSuggestionPairList() {
 @Composable
 fun RowScope.TableCell(
     text: String,
-    weight: Float
+    weight: Float,
+    style: TextStyle,
 ) {
     Text(
         text = text,
         Modifier
-            .border(1.dp, Color.Black)
+            .border(1.dp, MaterialTheme.colorScheme.tertiary)
             .weight(weight)
-            .padding(8.dp)
+            .padding(8.dp),
+        style = style,
     )
 }
 
@@ -79,16 +81,32 @@ fun SuggestionsScreen(suggestionPairs: List<SuggestionPair>, modifier: Modifier)
     LazyColumn(modifier) {
         // Header
         item {
-            Row(Modifier.background(Color.Gray)) {
-                TableCell(text = "Category", weight = categoryWeight)
-                TableCell(text = "Audience Idea", weight = audienceIdeaWeight)
+            Row(Modifier.background(MaterialTheme.colorScheme.secondary).fillMaxWidth()) {
+                TableCell(
+                    text = "Category",
+                    weight = categoryWeight,
+                    style = MaterialTheme.typography.titleLarge,
+                )
+                TableCell(
+                    text = "Audience Idea",
+                    weight = audienceIdeaWeight,
+                    style = MaterialTheme.typography.titleLarge,
+                )
             }
         }
         // Table
         items(suggestionPairs) { suggestionPair ->
             Row(Modifier.fillMaxWidth()) {
-                TableCell(text = suggestionPair.category, weight = categoryWeight)
-                TableCell(text = suggestionPair.audienceIdea, weight = audienceIdeaWeight)
+                TableCell(
+                    text = suggestionPair.category,
+                    weight = categoryWeight,
+                    style = MaterialTheme.typography.bodyMedium,
+                )
+                TableCell(
+                    text = suggestionPair.audienceIdea,
+                    weight = audienceIdeaWeight,
+                    style = MaterialTheme.typography.bodyMedium,
+                )
             }
         }
     }
