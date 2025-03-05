@@ -32,7 +32,6 @@ class MainActivity : ComponentActivity() {
             ImprovToolsTheme {
                 Scaffold { innerPadding ->
                     SuggestionsScreen(
-                        SuggestionPairDatum.suggestionPairSamples,
                         modifier = Modifier.padding(innerPadding),
                     )
                 }
@@ -49,7 +48,6 @@ fun PreviewSuggestionPairList() {
     MaterialTheme {
         Surface {
             SuggestionsScreen(
-                SuggestionPairDatum.suggestionPairSamples,
                 modifier = Modifier.padding(16.dp),
             )
         }
@@ -94,7 +92,7 @@ fun RowScope.ClickableTableCell(
 
 
 @Composable
-fun SuggestionsScreen(suggestionPairs: List<SuggestionPair>, modifier: Modifier) {
+fun SuggestionsScreen(modifier: Modifier) {
     val categoryWeight = .3f
     val audienceIdeaWeight = .7f
     // assert total is 100.
@@ -117,15 +115,15 @@ fun SuggestionsScreen(suggestionPairs: List<SuggestionPair>, modifier: Modifier)
             }
         }
         // Table
-        items(suggestionPairs) { suggestionPair ->
+        items(SuggestionDatum.allCategories) { suggestionData ->
             Row(Modifier.fillMaxWidth()) {
                 TableCell(
-                    text = suggestionPair.category,
+                    text = suggestionData.title,
                     weight = categoryWeight,
                     style = MaterialTheme.typography.bodyMedium,
                 )
                 ClickableTableCell(
-                    text = suggestionPair.audienceIdea,
+                    text = suggestionData.ideas.random(),
                     weight = audienceIdeaWeight,
                     style = MaterialTheme.typography.bodyMedium,
                 )
