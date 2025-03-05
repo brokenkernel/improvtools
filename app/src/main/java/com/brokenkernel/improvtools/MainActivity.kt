@@ -3,13 +3,13 @@ package com.brokenkernel.improvtools
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -30,10 +30,14 @@ import com.brokenkernel.improvtools.ui.theme.ImprovToolsTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         setContent {
             ImprovToolsTheme {
-                Scaffold {
-                    SuggestionsScreen(SampleData.suggestionPairSamples)
+                Scaffold { innerPadding ->
+                    SuggestionsScreen(
+                        SuggestionPairDatum.suggestionPairSamples,
+                        modifier = Modifier.padding(innerPadding),
+                    )
                 }
             }
         }
@@ -84,7 +88,7 @@ fun SuggestionPairList(messages: List<SuggestionPair>) {
 fun PreviewSuggestionPairList() {
     MaterialTheme {
         Surface {
-            SuggestionPairList(SampleData.suggestionPairSamples)
+            SuggestionPairList(SuggestionPairDatum.suggestionPairSamples)
         }
     }
 }
@@ -106,16 +110,16 @@ fun RowScope.TableCell(
 
 
 @Composable
-fun SuggestionsScreen(suggestionPairs: List<SuggestionPair>) {
+fun SuggestionsScreen(suggestionPairs: List<SuggestionPair>, modifier: Modifier) {
     val categoryWeight = .3f
     val audienceIdeaWeight = .7f
     // assert total is 100.
-    LazyColumn(Modifier.fillMaxSize().padding(16.dp)) {
+    LazyColumn(modifier) {
         // Header
         item {
             Row(Modifier.background(Color.Gray)) {
-                TableCell(text = "Column 1", weight = categoryWeight)
-                TableCell(text = "Column 2", weight = audienceIdeaWeight)
+                TableCell(text = "Category", weight = categoryWeight)
+                TableCell(text = "Audience Idea", weight = audienceIdeaWeight)
             }
         }
         // Table
