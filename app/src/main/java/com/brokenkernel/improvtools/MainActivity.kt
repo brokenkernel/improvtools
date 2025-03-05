@@ -3,7 +3,6 @@ package com.brokenkernel.improvtools
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
@@ -52,7 +51,6 @@ fun SuggestionPairCard(msg: SuggestionPair) {
     }
 }
 
-//
 @Composable
 fun SuggestionPairList(messages: List<SuggestionPair>) {
     LazyColumn {
