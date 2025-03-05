@@ -1,7 +1,7 @@
 package com.brokenkernel.improvtools
 
 object SampleData {
-    val conversationSample = listOf(
+    val suggestionPairSamples = listOf(
         SuggestionPair(
             "Noun",
             "Chair"

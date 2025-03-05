@@ -4,7 +4,11 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -18,6 +22,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -26,11 +31,10 @@ import com.brokenkernel.improvtools.ui.theme.ImprovToolsTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContent {
             ImprovToolsTheme {
                 Scaffold {
-                    SuggestionPairList(SampleData.conversationSample)
+                    SuggestionsScreen(SampleData.suggestionPairSamples)
                 }
             }
         }
@@ -48,7 +52,7 @@ fun SuggestionPairCard(msg: SuggestionPair) {
     }
 }
 
-
+//
 @Composable
 fun SuggestionPairList(messages: List<SuggestionPair>) {
     LazyColumn {
@@ -82,7 +86,46 @@ fun SuggestionPairList(messages: List<SuggestionPair>) {
 fun PreviewSuggestionPairList() {
     MaterialTheme {
         Surface {
-            SuggestionPairList(SampleData.conversationSample)
+            SuggestionPairList(SampleData.suggestionPairSamples)
+        }
+    }
+}
+
+@Composable
+fun RowScope.TableCell(
+    text: String,
+    weight: Float
+) {
+    Text(
+        text = text,
+        Modifier
+            .border(1.dp, Color.Black)
+            .weight(weight)
+            .padding(8.dp)
+    )
+}
+
+
+
+@Composable
+fun SuggestionsScreen(suggestionPairs: List<SuggestionPair>) {
+    val categoryWeight = .3f
+    val audienceIdeaWeight = .7f
+    // assert total is 100.
+    LazyColumn(Modifier.fillMaxSize().padding(16.dp)) {
+        // Header
+        item {
+            Row(Modifier.background(Color.Gray)) {
+                TableCell(text = "Column 1", weight = categoryWeight)
+                TableCell(text = "Column 2", weight = audienceIdeaWeight)
+            }
+        }
+        // Table
+        items(suggestionPairs) { suggestionPair ->
+            Row(Modifier.fillMaxWidth()) {
+                TableCell(text = suggestionPair.category, weight = categoryWeight)
+                TableCell(text = suggestionPair.audienceIdea, weight = audienceIdeaWeight)
+            }
         }
     }
 }
