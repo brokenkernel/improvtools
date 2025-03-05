@@ -16,6 +16,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
@@ -71,6 +72,21 @@ fun RowScope.TableCell(
     )
 }
 
+@Composable
+fun RowScope.ClickableTableCell(
+    text: String,
+    weight: Float,
+    style: TextStyle,
+) {
+    Text(
+        text = text,
+        Modifier
+            .border(1.dp, MaterialTheme.colorScheme.tertiary)
+            .weight(weight)
+            .padding(8.dp),
+        style = style,
+    )
+}
 
 
 @Composable
@@ -81,7 +97,9 @@ fun SuggestionsScreen(suggestionPairs: List<SuggestionPair>, modifier: Modifier)
     LazyColumn(modifier) {
         // Header
         item {
-            Row(Modifier.background(MaterialTheme.colorScheme.secondary).fillMaxWidth()) {
+            Row(Modifier
+                .background(MaterialTheme.colorScheme.secondary)
+                .fillMaxWidth()) {
                 TableCell(
                     text = "Category",
                     weight = categoryWeight,
@@ -102,7 +120,7 @@ fun SuggestionsScreen(suggestionPairs: List<SuggestionPair>, modifier: Modifier)
                     weight = categoryWeight,
                     style = MaterialTheme.typography.bodyMedium,
                 )
-                TableCell(
+                ClickableTableCell(
                     text = suggestionPair.audienceIdea,
                     weight = audienceIdeaWeight,
                     style = MaterialTheme.typography.bodyMedium,
