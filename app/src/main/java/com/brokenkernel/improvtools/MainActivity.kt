@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -51,6 +52,25 @@ fun SuggestionPairCard(msg: SuggestionPair) {
 @Composable
 fun SuggestionPairList(messages: List<SuggestionPair>) {
     LazyColumn {
+        item {
+            Text(
+                text = "Category",
+                modifier = Modifier
+                    .padding(16.dp)
+                    .fillMaxWidth(),
+                style = MaterialTheme.typography.headlineLarge
+            )
+            Spacer(modifier = Modifier.height(4.dp))
+            Text(
+                text = "Suggestion",
+                modifier = Modifier
+                    .padding(16.dp)
+                    .fillMaxWidth(),
+                style = MaterialTheme.typography.headlineLarge
+            )
+
+        }
+
         items(messages) { message ->
             SuggestionPairCard(message)
         }
