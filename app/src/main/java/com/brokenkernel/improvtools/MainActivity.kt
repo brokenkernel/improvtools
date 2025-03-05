@@ -64,7 +64,7 @@ fun RowScope.TableCell(
 ) {
     Text(
         text = text,
-        Modifier
+        modifier = Modifier
             .border(1.dp, MaterialTheme.colorScheme.tertiary)
             .weight(weight)
             .padding(8.dp),
@@ -78,14 +78,18 @@ fun RowScope.ClickableTableCell(
     weight: Float,
     style: TextStyle,
 ) {
-    Text(
-        text = text,
-        Modifier
+    TextButton(
+        onClick = {},
+        modifier = Modifier
             .border(1.dp, MaterialTheme.colorScheme.tertiary)
             .weight(weight)
-            .padding(8.dp),
-        style = style,
     )
+    {
+        Text(
+            text = text,
+            style = style,
+        )
+    }
 }
 
 
