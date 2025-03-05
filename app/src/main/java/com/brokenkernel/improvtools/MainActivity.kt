@@ -28,8 +28,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             ImprovToolsTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    SuggestionPairList(SampleData.conversationSample, Modifier.padding(innerPadding))
+                Scaffold {
+                    SuggestionPairList(SampleData.conversationSample)
                 }
             }
         }
@@ -39,20 +39,20 @@ class MainActivity : ComponentActivity() {
 data class SuggestionPair(val category: String, val audienceIdea: String)
 
 @Composable
-fun SuggestionPairCard(msg: SuggestionPair, modifier: Modifier = Modifier) {
+fun SuggestionPairCard(msg: SuggestionPair) {
     Column {
-        Text(text = msg.category, fontStyle = FontStyle.Italic, modifier=modifier)
+        Text(text = msg.category, fontStyle = FontStyle.Italic)
         Spacer(modifier = Modifier.height(4.dp))
-        Text(text = msg.audienceIdea, modifier=modifier)
+        Text(text = msg.audienceIdea)
     }
 }
 
 
 @Composable
-fun SuggestionPairList(messages: List<SuggestionPair>, modifier: Modifier = Modifier) {
+fun SuggestionPairList(messages: List<SuggestionPair>) {
     LazyColumn {
         items(messages) { message ->
-            SuggestionPairCard(message, modifier)
+            SuggestionPairCard(message)
         }
     }
 }
