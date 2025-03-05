@@ -29,60 +29,40 @@ class MainActivity : ComponentActivity() {
         setContent {
             ImprovToolsTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    SuggestionPairList(SampleData.conversationSample, Modifier.padding(innerPadding))
                 }
             }
         }
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
 data class SuggestionPair(val category: String, val audienceIdea: String)
 
 @Composable
-fun SuggestionPairCard(msg: SuggestionPair) {
+fun SuggestionPairCard(msg: SuggestionPair, modifier: Modifier = Modifier) {
     Column {
-        Text(text = msg.category, fontStyle = FontStyle.Italic)
+        Text(text = msg.category, fontStyle = FontStyle.Italic, modifier=modifier)
         Spacer(modifier = Modifier.height(4.dp))
-        Text(text = msg.audienceIdea)
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    ImprovToolsTheme {
-        Greeting("Android")
+        Text(text = msg.audienceIdea, modifier=modifier)
     }
 }
 
 
-
 @Composable
-fun Conversation(messages: List<SuggestionPair>) {
+fun SuggestionPairList(messages: List<SuggestionPair>, modifier: Modifier = Modifier) {
     LazyColumn {
         items(messages) { message ->
-            SuggestionPairCard(message)
+            SuggestionPairCard(message, modifier)
         }
     }
 }
 
 @Preview
 @Composable
-fun PreviewConversation() {
+fun PreviewSuggestionPairList() {
     MaterialTheme {
         Surface {
-            Conversation(SampleData.conversationSample)
+            SuggestionPairList(SampleData.conversationSample)
         }
     }
 }
