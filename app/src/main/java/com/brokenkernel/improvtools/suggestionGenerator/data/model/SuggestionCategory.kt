@@ -1,4 +1,4 @@
-package com.brokenkernel.improvtools
+package com.brokenkernel.improvtools.suggestionGenerator.data.model
 
 data class SuggestionCategory(
     val title: String,
