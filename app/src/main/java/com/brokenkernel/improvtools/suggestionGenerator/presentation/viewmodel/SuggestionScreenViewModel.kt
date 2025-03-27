@@ -15,7 +15,6 @@ class SuggestionScreenViewModel : ViewModel() {
     val uiState: StateFlow<SuggestionScreenUIState> = _uiState.asStateFlow()
 
     init {
-        _uiState.value = SuggestionScreenUIState(currentScrambledWord = "five six seven eight nine")
         val audienceSuggestions: MutableMap<SuggestionCategory, String> = HashMap()
 
         SuggestionDatum.allCategories.forEach { item ->

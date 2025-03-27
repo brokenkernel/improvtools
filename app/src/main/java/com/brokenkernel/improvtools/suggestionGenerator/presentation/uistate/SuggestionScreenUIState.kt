@@ -4,5 +4,4 @@ import com.brokenkernel.improvtools.suggestionGenerator.data.model.SuggestionCat
 
 data class SuggestionScreenUIState(
     val audienceSuggestions: Map<SuggestionCategory, String> = HashMap(),
-    val currentScrambledWord: String = "",
 )
