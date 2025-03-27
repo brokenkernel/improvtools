@@ -31,6 +31,7 @@ import com.brokenkernel.improvtools.suggestionGenerator.data.model.SuggestionDat
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel.SuggestionsActivityViewModel
 import com.brokenkernel.improvtools.ui.theme.ImprovToolsTheme
 import kotlinx.coroutines.launch
+import androidx.compose.ui.Alignment
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -79,7 +80,8 @@ fun RowScope.TableCell(
         modifier = Modifier
             .border(1.dp, MaterialTheme.colorScheme.tertiary)
             .weight(weight)
-            .padding(8.dp),
+            .padding(8.dp)
+            .fillMaxWidth(),
         style = style,
     )
 }
@@ -95,6 +97,7 @@ fun RowScope.ClickableTableCell(
         modifier = Modifier
             .border(1.dp, MaterialTheme.colorScheme.tertiary)
             .weight(weight)
+            .fillMaxWidth()
     )
     {
         Text(
@@ -130,7 +133,7 @@ fun SuggestionsScreen(modifier: Modifier) {
         }
         // Table
         items(SuggestionDatum.allCategories) { suggestionData ->
-            Row(Modifier.fillMaxWidth()) {
+            Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
                 TableCell(
                     text = suggestionData.title,
                     weight = categoryWeight,
