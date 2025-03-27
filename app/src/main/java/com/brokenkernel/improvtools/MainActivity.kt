@@ -92,14 +92,17 @@ fun SuggestionsScreen(
     val categoryWeight = .3f
     val audienceIdeaWeight = .7f
     // assert total is 100.
-    LazyColumn(modifier,
+    LazyColumn(
+        modifier,
         verticalArrangement = Arrangement.spacedBy(4.dp)
     ) {
         // Header
         item {
-            Row(Modifier
+            Row(
+                Modifier
                     .background(MaterialTheme.colorScheme.secondary)
-                    .fillMaxWidth()) {
+                    .fillMaxWidth()
+            ) {
                 TableCell(
                     text = "Category",
                     weight = categoryWeight,
@@ -114,15 +117,20 @@ fun SuggestionsScreen(
         }
         // Table
         items(SuggestionDatum.allCategories) { suggestionData ->
-            Row(Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically) {
+            Row(
+                Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
                 TableCell(
                     text = suggestionData.title,
                     weight = categoryWeight,
                     style = MaterialTheme.typography.bodyMedium,
                 )
                 ClickableTableCell(
-                    text = gameUiState.audienceSuggestions.getOrDefault(suggestionData, "unknown"), //  TODO I shouldn't have to do this. Maybe EnumMap
+                    text = gameUiState.audienceSuggestions.getOrDefault(
+                        suggestionData,
+                        "unknown"
+                    ), //  TODO I shouldn't have to do this. Maybe EnumMap
                     weight = audienceIdeaWeight,
                     style = MaterialTheme.typography.bodyMedium,
                     onClick = {

@@ -25,6 +25,10 @@ class SuggestionScreenViewModel : ViewModel() {
 
     }
 
+    //     fun anotherIdea() {
+    //        ideas -
+    //    }
+
     fun updateSuggestionFor(suggestionCategory: SuggestionCategory) {
         _uiState.value = SuggestionScreenUIState(
             audienceSuggestions = _uiState.value.audienceSuggestions + mapOf(suggestionCategory to suggestionCategory.ideas.random())
