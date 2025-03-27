@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -74,7 +75,9 @@ fun SuggestionsScreen(modifier: Modifier) {
     val categoryWeight = .3f
     val audienceIdeaWeight = .7f
     // assert total is 100.
-    LazyColumn(modifier) {
+    LazyColumn(modifier,
+        verticalArrangement = Arrangement.spacedBy(4.dp)
+    ) {
         // Header
         item {
             Row(Modifier
