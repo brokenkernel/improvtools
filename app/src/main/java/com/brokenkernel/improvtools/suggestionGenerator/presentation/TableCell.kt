@@ -23,9 +23,9 @@ fun RowScope.TableCell(
         text = text,
         modifier = Modifier
             .border(1.dp, MaterialTheme.colorScheme.tertiary)
-            .fillMaxHeight()
             .weight(weight)
             .padding(8.dp)
+            .fillMaxHeight()
             .fillMaxWidth(),
         style = style,
     )
@@ -50,6 +50,8 @@ fun RowScope.ClickableTableCell(
         Text(
             text = text,
             style = style,
+            modifier = Modifier
+                .border(1.dp, MaterialTheme.colorScheme.tertiary)
         )
     }
 }

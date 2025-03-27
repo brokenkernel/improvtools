@@ -94,7 +94,8 @@ fun SuggestionsScreen(modifier: Modifier) {
         }
         // Table
         items(SuggestionDatum.allCategories) { suggestionData ->
-            Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+            Row(Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically) {
                 TableCell(
                     text = suggestionData.title,
                     weight = categoryWeight,
