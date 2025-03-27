@@ -19,6 +19,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
@@ -26,12 +27,10 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.lifecycle.viewmodel.viewModelFactory
 import com.brokenkernel.improvtools.suggestionGenerator.data.model.SuggestionDatum
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel.SuggestionsActivityViewModel
 import com.brokenkernel.improvtools.ui.theme.ImprovToolsTheme
 import kotlinx.coroutines.launch
-import androidx.compose.ui.Alignment
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -91,9 +90,10 @@ fun RowScope.ClickableTableCell(
     text: String,
     weight: Float,
     style: TextStyle,
+    onClick: () -> Unit
 ) {
     TextButton(
-        onClick = {},
+        onClick = onClick,
         modifier = Modifier
             .border(1.dp, MaterialTheme.colorScheme.tertiary)
             .weight(weight)
@@ -117,8 +117,8 @@ fun SuggestionsScreen(modifier: Modifier) {
         // Header
         item {
             Row(Modifier
-                .background(MaterialTheme.colorScheme.secondary)
-                .fillMaxWidth()) {
+                    .background(MaterialTheme.colorScheme.secondary)
+                    .fillMaxWidth()) {
                 TableCell(
                     text = "Category",
                     weight = categoryWeight,
@@ -143,6 +143,7 @@ fun SuggestionsScreen(modifier: Modifier) {
                     text = suggestionData.ideas.random(),
                     weight = audienceIdeaWeight,
                     style = MaterialTheme.typography.bodyMedium,
+                    onClick = {}
                 )
             }
         }
