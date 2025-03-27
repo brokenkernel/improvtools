@@ -19,7 +19,7 @@ class SuggestionScreenViewModel : ViewModel() {
         val audienceSuggestions: MutableMap<SuggestionCategory, String> = HashMap()
 
         SuggestionDatum.allCategories.forEach { item ->
-            audienceSuggestions.put(item, item.ideas.random())
+            audienceSuggestions[item] = item.ideas.random()
         }
         _uiState.value = SuggestionScreenUIState(audienceSuggestions = audienceSuggestions)
 
