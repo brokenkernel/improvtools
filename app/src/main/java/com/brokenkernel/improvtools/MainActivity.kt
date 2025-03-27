@@ -16,6 +16,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -24,21 +26,29 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.brokenkernel.improvtools.suggestionGenerator.data.model.SuggestionDatum
-import com.brokenkernel.improvtools.suggestionGenerator.presentation.ClickableTableCell
-import com.brokenkernel.improvtools.suggestionGenerator.presentation.TableCell
-import com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel.SuggestionsActivityViewModel
+import com.brokenkernel.improvtools.suggestionGenerator.presentation.uistate.SuggestionScreenUIState
+import com.brokenkernel.improvtools.suggestionGenerator.presentation.view.ClickableTableCell
+import com.brokenkernel.improvtools.suggestionGenerator.presentation.view.TableCell
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel.SuggestionScreenViewModel
 import com.brokenkernel.improvtools.ui.theme.ImprovToolsTheme
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
+    private val suggestionsViewModel: SuggestionScreenViewModel by viewModels()
+    private val _uiState = MutableStateFlow(SuggestionScreenUIState())
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        val viewModel: SuggestionsActivityViewModel by viewModels()
+
+
+
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.initAllSuggestions()
+//                suggestionsViewModel.initAllSuggestions()
             }
         }
 
@@ -47,6 +57,7 @@ class MainActivity : ComponentActivity() {
                 Scaffold { innerPadding ->
                     SuggestionsScreen(
                         modifier = Modifier.padding(innerPadding),
+                        viewModel = suggestionsViewModel,
                     )
                 }
             }
@@ -57,21 +68,27 @@ class MainActivity : ComponentActivity() {
 @Preview
 @Composable
 fun PreviewSuggestionPairList() {
+    val suggestionsViewModel = SuggestionScreenViewModel()
+//    suggestionsViewModel.initAllSuggestions()
+
     MaterialTheme {
         Surface {
             SuggestionsScreen(
                 modifier = Modifier.padding(16.dp),
+                viewModel = suggestionsViewModel
             )
         }
     }
 }
 
-
-
-
-
 @Composable
-fun SuggestionsScreen(modifier: Modifier) {
+fun SuggestionsScreen(
+    modifier: Modifier,
+    viewModel: SuggestionScreenViewModel = viewModel()
+) {
+
+    val gameUiState by viewModel.uiState.collectAsState()
+
     val categoryWeight = .3f
     val audienceIdeaWeight = .7f
     // assert total is 100.
@@ -105,10 +122,12 @@ fun SuggestionsScreen(modifier: Modifier) {
                     style = MaterialTheme.typography.bodyMedium,
                 )
                 ClickableTableCell(
-                    text = suggestionData.ideas.random(),
+                    text = gameUiState.audienceSuggestions.getOrDefault(suggestionData, "unknown"), //  TODO I shouldn't have to do this. Maybe EnumMap
                     weight = audienceIdeaWeight,
                     style = MaterialTheme.typography.bodyMedium,
-                    onClick = {}
+                    onClick = {
+                        viewModel.updateSuggestionFor(suggestionData)
+                    }
                 )
             }
         }

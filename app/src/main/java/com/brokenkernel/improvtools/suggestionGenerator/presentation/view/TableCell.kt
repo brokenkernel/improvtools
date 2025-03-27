@@ -1,4 +1,4 @@
-package com.brokenkernel.improvtools.suggestionGenerator.presentation
+package com.brokenkernel.improvtools.suggestionGenerator.presentation.view
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.RowScope

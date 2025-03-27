@@ -1,25 +1,34 @@
 package com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel
 
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.State
 import androidx.lifecycle.ViewModel
 import com.brokenkernel.improvtools.suggestionGenerator.data.model.SuggestionCategory
 import com.brokenkernel.improvtools.suggestionGenerator.data.model.SuggestionDatum
+import com.brokenkernel.improvtools.suggestionGenerator.presentation.uistate.SuggestionScreenUIState
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 
-class SuggestionsActivityViewModel : ViewModel() {
+class SuggestionScreenViewModel : ViewModel() {
 
-    val audienceSuggestions: MutableMap<SuggestionCategory, String> = HashMap()
-    val audienceSuggestionsAsState = MutableStateFlow(this.audienceSuggestions)
 
-    fun updateSuggestionFor(suggestionCategory: SuggestionCategory) {
-        audienceSuggestions.put(suggestionCategory, suggestionCategory.ideas.random())
-    }
+    private val _uiState = MutableStateFlow(SuggestionScreenUIState())
+    val uiState: StateFlow<SuggestionScreenUIState> = _uiState.asStateFlow()
 
-    fun initAllSuggestions() {
-        // TODO move this into ctor or similar?
+    init {
+        _uiState.value = SuggestionScreenUIState(currentScrambledWord = "five six seven eight nine")
+        val audienceSuggestions: MutableMap<SuggestionCategory, String> = HashMap()
+
         SuggestionDatum.allCategories.forEach { item ->
             audienceSuggestions.put(item, item.ideas.random())
         }
+        _uiState.value = SuggestionScreenUIState(audienceSuggestions = audienceSuggestions)
+
     }
+
+    fun updateSuggestionFor(suggestionCategory: SuggestionCategory) {
+        _uiState.value = SuggestionScreenUIState(
+            audienceSuggestions = _uiState.value.audienceSuggestions + mapOf(suggestionCategory to suggestionCategory.ideas.random())
+        )
+    }
+
 }
