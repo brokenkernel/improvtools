@@ -40,14 +40,12 @@ fun OuterContentForSuggestionsScreen(
     viewModel: SuggestionScreenViewModel
 ) {
     ImprovToolsTheme {
-        ImprovToolsNavigationDrawer {
-            ImprovToolsScaffold(
-                screenTitle = stringResource(R.string.suggestions_activity_title),
-                content = {
-                    SuggestionsScreen(
-                        viewModel = viewModel
-                    )
-                })
-        }
+        ImprovToolsNavigationDrawer(
+            screenTitle = stringResource(R.string.suggestions_activity_title),
+            content = {
+                SuggestionsScreen(
+                    viewModel = viewModel
+                )
+            })
     }
 }

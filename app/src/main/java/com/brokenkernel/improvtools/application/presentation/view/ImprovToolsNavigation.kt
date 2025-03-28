@@ -1,5 +1,6 @@
 package com.brokenkernel.improvtools.application.presentation.view
 
+import androidx.compose.material3.DrawerState
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.ModalNavigationDrawer
@@ -15,15 +16,16 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.res.stringResource
 import com.brokenkernel.improvtools.application.data.model.NavigableActivities
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 
 @Composable
-fun ImprovToolsNavigationDrawer(content: @Composable () -> Unit) {
+fun ImprovToolsNavigationDrawer(screenTitle: String, content: @Composable () -> Unit) {
     // TODO: move this to a UIState or some such
     var selectedItemIndex by rememberSaveable { mutableIntStateOf(0) }
-    val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
-    val scope = rememberCoroutineScope()
+    val drawerState: DrawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
+    val scope: CoroutineScope = rememberCoroutineScope()
     ModalNavigationDrawer(
         drawerState = drawerState,
         drawerContent = {
@@ -44,6 +46,11 @@ fun ImprovToolsNavigationDrawer(content: @Composable () -> Unit) {
                 }
             }
         },
-        content = content
+        content = {
+            ImprovToolsScaffold(screenTitle = screenTitle,
+                content = content,
+                menuScope = scope,
+                drawerState = drawerState)
+        }
     )
 }

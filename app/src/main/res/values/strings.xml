@@ -4,4 +4,5 @@
     <string name="suggestions_title_category">Category</string>
     <string name="suggestions_audience_idea">Audience Idea</string>
     <string name="suggestions_reset_all">Reset All</string>
+    <string name="navigation_menu">Menu</string>
 </resources>
