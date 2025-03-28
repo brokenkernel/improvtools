@@ -83,7 +83,7 @@ fun SuggestionsScreen(
         item {
             Row(
                 Modifier
-                    .background(MaterialTheme.colorScheme.background)
+                    .background(MaterialTheme.colorScheme.tertiary)
                     .fillMaxWidth()
             ) {
                 TableCell(
