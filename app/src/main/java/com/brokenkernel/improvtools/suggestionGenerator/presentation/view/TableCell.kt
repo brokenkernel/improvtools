@@ -51,7 +51,6 @@ fun RowScope.ClickableTableCell(
             text = text,
             style = style,
             modifier = Modifier
-                .border(1.dp, MaterialTheme.colorScheme.tertiary)
                 .weight(weight)
         )
     }
