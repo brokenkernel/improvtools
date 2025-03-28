@@ -11,4 +11,10 @@ internal enum class SuggestionCategory(
     EMOTION("Emotion", listOf("Happy", "Sad")),
     LOCATION("Location", listOf("Mortuary", "Kitchen")),
     JOB("Job", listOf("Doctor", "Lawyer")),
+    RELATION("Relation", listOf("husband/wife", "doctor/patient")),
+    SITUATION("Situation", listOf("Playing a practical joke", "Having a Babys")),
+    GENRE("Genere", listOf("Horror", "Action")),
+    DIRECTOR("Director", listOf("David Lynch", "No idea")),
+    PLAYWRITE("Playwrite", listOf("Shakespere", "Nowel Coward", "Diana Son")),
+    HARDCONVO("Hard Conversation", listOf("Firing Someone", "Having Cancer")),
 }
