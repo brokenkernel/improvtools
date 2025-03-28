@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Improv Tools</string>
+    <string name="suggestions_title_category">Category</string>
+    <string name="suggestion_audience_idea">Audience Idea</string>
 </resources>

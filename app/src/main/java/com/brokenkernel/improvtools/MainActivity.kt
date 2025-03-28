@@ -1,5 +1,6 @@
 package com.brokenkernel.improvtools
 
+import androidx.compose.ui.res.stringResource
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -39,9 +40,6 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-
-
-
 
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -97,16 +95,16 @@ fun SuggestionsScreen(
         item {
             Row(
                 Modifier
-                    .background(MaterialTheme.colorScheme.secondary)
+                    .background(MaterialTheme.colorScheme.background)
                     .fillMaxWidth()
             ) {
                 TableCell(
-                    text = "Category",
+                    text = stringResource(R.string.suggestions_title_category),
                     weight = categoryWeight,
                     style = MaterialTheme.typography.titleLarge,
                 )
                 TableCell(
-                    text = "Audience Idea",
+                    text = stringResource(R.string.suggestion_audience_idea),
                     weight = audienceIdeaWeight,
                     style = MaterialTheme.typography.titleLarge,
                 )
