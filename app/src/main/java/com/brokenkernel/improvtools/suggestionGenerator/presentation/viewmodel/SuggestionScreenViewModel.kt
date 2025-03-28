@@ -15,20 +15,29 @@ class SuggestionScreenViewModel : ViewModel() {
     internal val uiState: StateFlow<SuggestionScreenUIState> = _uiState.asStateFlow()
 
     init {
-        val audienceSuggestions: MutableMap<SuggestionCategory, String> = EnumMap(SuggestionCategory::class.java)
-
-        SuggestionCategory.entries.forEach { item ->
-            audienceSuggestions[item] = item.ideas.random()
-        }
-        _uiState.value = SuggestionScreenUIState(audienceSuggestions = audienceSuggestions)
+        resetAllCategories()
     }
 
-    internal fun updateSuggestionFor(suggestionCategory: SuggestionCategory) {
+    internal fun updateSuggestionFor(suggestionCategory: SuggestionCategory): Unit {
         _uiState.value = SuggestionScreenUIState(
             audienceSuggestions = _uiState.value.audienceSuggestions + mapOf(suggestionCategory to pickAnotherItemFromCategoryDatum(
                     suggestionCategory, _uiState.value.audienceSuggestions.getValue(suggestionCategory)
                 ))
         )
+    }
+
+    internal fun resetAllCategories(): Unit{
+        val audienceSuggestions: MutableMap<SuggestionCategory, String> = EnumMap(SuggestionCategory::class.java)
+
+        SuggestionCategory.entries.forEach { item ->
+            val word = pickAnotherItemFromCategoryDatum(item, _uiState.value.audienceSuggestions.getOrDefault(
+                item,
+                ""
+            ))
+            audienceSuggestions[item] = word
+        }
+        _uiState.value = SuggestionScreenUIState(audienceSuggestions = audienceSuggestions)
+
     }
 
     /**
