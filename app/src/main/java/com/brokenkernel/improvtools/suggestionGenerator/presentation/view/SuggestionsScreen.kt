@@ -47,9 +47,8 @@ fun SuggestionsScreen(
             .statusBarsPadding()
             .verticalScroll(rememberScrollState()) // TODO: normal column and not lazy?
             .safeDrawingPadding()
-            .padding(mediumPadding)
-            ,
-        verticalArrangement = Arrangement.spacedBy(4.dp)
+            .padding(mediumPadding),
+        verticalArrangement = Arrangement.spacedBy(4.dp) // TODO: move into dims resource
     ) {
         // Header
         Row(
