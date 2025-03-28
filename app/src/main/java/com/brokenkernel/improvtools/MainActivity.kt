@@ -5,12 +5,14 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
+import androidx.compose.material3.DrawerValue
+import androidx.compose.material3.Surface
+import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.rememberNavController
+import com.brokenkernel.improvtools.application.data.model.NavigableActivities
 import com.brokenkernel.improvtools.application.presentation.view.ImprovToolsNavigationDrawer
-import com.brokenkernel.improvtools.application.presentation.view.ImprovToolsScaffold
-import com.brokenkernel.improvtools.suggestionGenerator.presentation.view.SuggestionsScreen
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel.SuggestionScreenViewModel
 import com.brokenkernel.improvtools.ui.theme.ImprovToolsTheme
 
@@ -22,7 +24,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
 
         setContent {
-            OuterContentForSuggestionsScreen(suggestionsViewModel)
+            OuterContentForSuggestionsScreen()
         }
     }
 }
@@ -30,22 +32,24 @@ class MainActivity : ComponentActivity() {
 @Preview(showBackground = true)
 @Composable
 fun PreviewSuggestionPairList() {
-    val suggestionsViewModel = SuggestionScreenViewModel()
-    OuterContentForSuggestionsScreen(viewModel = suggestionsViewModel)
+    OuterContentForSuggestionsScreen()
 }
 
-
 @Composable
-fun OuterContentForSuggestionsScreen(
-    viewModel: SuggestionScreenViewModel
-) {
+fun OuterContentForSuggestionsScreen() {
+    val drawerNavController = rememberNavController()
+    val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
+
+    // TODO: use hilt DI
     ImprovToolsTheme {
-        ImprovToolsNavigationDrawer(
-            screenTitle = stringResource(R.string.suggestions_activity_title),
-            content = {
-                SuggestionsScreen(
-                    viewModel = viewModel
-                )
-            })
+        Surface {
+            ImprovToolsNavigationDrawer(
+                drawerState = drawerState,
+                drawerNavController = drawerNavController,
+                onClickity = { clickedItem: NavigableActivities ->
+                    drawerNavController.navigate(clickedItem.activeScreen.route)
+                },
+            )
+        }
     }
 }
