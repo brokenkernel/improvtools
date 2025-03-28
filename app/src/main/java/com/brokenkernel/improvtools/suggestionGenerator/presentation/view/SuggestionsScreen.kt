@@ -12,7 +12,9 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
+import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -44,10 +46,11 @@ fun SuggestionsScreen(
 
     Column(
         modifier = Modifier
-            .statusBarsPadding()
+//            .statusBarsPadding()
             .verticalScroll(rememberScrollState()) // TODO: normal column and not lazy?
-            .safeDrawingPadding()
-            .padding(mediumPadding),
+//            .safeDrawingPadding()
+//            .padding(mediumPadding),
+                ,
         verticalArrangement = Arrangement.spacedBy(4.dp), // TODO: move into dims resource
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
@@ -100,8 +103,7 @@ fun SuggestionsScreen(
                 .fillMaxWidth()
                 .fillMaxHeight()
         ) {
-            // TODO: figure out difference with ElevatedButton, FilledTonalButton, OutlinedButton
-            Button(onClick = { viewModel.resetAllCategories() }) {
+            OutlinedButton(onClick = { viewModel.resetAllCategories() }) {
                 Text(text = stringResource(R.string.suggestions_reset_all))
             }
         }

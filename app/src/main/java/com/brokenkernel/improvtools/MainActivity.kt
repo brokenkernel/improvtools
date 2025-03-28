@@ -5,8 +5,15 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.BottomAppBar
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -34,16 +41,31 @@ fun PreviewSuggestionPairList() {
     OuterContentForSuggestionsScreen(viewModel = suggestionsViewModel)
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun OuterContentForSuggestionsScreen(
     viewModel: SuggestionScreenViewModel
 ) {
     ImprovToolsTheme {
-        // TODO: what is Scaffold. do I need it?
-        Surface(modifier = Modifier.fillMaxSize()) {
-            SuggestionsScreen(
-                viewModel = viewModel
-            )
+        Scaffold(
+            topBar = {
+                TopAppBar(
+                    title = { Text("hello") } ,
+                )
+            },
+            bottomBar = {
+                BottomAppBar() {
+                    Text("Good Bye")
+                }
+            }
+        ) { innerPadding ->
+            Surface(modifier = Modifier.fillMaxSize()
+                .padding(innerPadding)
+            ) {
+                SuggestionsScreen(
+                    viewModel = viewModel
+                )
+            }
         }
     }
 }
