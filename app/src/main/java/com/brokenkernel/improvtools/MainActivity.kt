@@ -1,6 +1,5 @@
 package com.brokenkernel.improvtools
 
-import androidx.compose.ui.res.stringResource
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -21,18 +20,15 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
-import com.brokenkernel.improvtools.suggestionGenerator.presentation.view.ClickableTableCell
-import com.brokenkernel.improvtools.suggestionGenerator.presentation.view.TableCell
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.brokenkernel.improvtools.suggestionGenerator.data.model.SuggestionCategory
+import com.brokenkernel.improvtools.suggestionGenerator.presentation.view.ClickableTableCell
+import com.brokenkernel.improvtools.suggestionGenerator.presentation.view.TableCell
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel.SuggestionScreenViewModel
 import com.brokenkernel.improvtools.ui.theme.ImprovToolsTheme
-import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     private val suggestionsViewModel: SuggestionScreenViewModel by viewModels()
@@ -40,12 +36,6 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-//                suggestionsViewModel.initAllSuggestions()
-            }
-        }
 
         setContent {
             ImprovToolsTheme {
@@ -64,8 +54,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun PreviewSuggestionPairList() {
     val suggestionsViewModel = SuggestionScreenViewModel()
-//    suggestionsViewModel.initAllSuggestions()
-
     MaterialTheme {
         Surface {
             SuggestionsScreen(
