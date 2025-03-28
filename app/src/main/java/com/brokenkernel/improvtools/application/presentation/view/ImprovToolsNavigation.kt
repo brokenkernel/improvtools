@@ -34,10 +34,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 @Composable
-fun ClickableMenuItem(onClick: () -> Unit) {
-}
-
-@Composable
 internal fun ImprovToolsNavigationDrawer(
     drawerState: DrawerState,
     onClickity: (na: NavigableActivities) -> Unit,

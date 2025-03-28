@@ -5,6 +5,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.outlined.Info
+import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.brokenkernel.improvtools.R
 
@@ -29,6 +30,13 @@ internal sealed class ActiveScreen(
         title = "About",
         route = "about_screen"
     )
+
+    object Settings: ActiveScreen(
+        icon = Icons.Outlined.Settings,
+        contentDescription = "Go to settings screen",
+        title = "Settings",
+        route = "settings_screen"
+    )
 }
 
 
@@ -39,7 +47,7 @@ internal enum class NavigableActivities(internal val titleResource: Int, interna
     ),
     Settings(
         titleResource = R.string.settings_activity_title,
-        activeScreen = ActiveScreen.About, // TODO - placeholder
+        activeScreen = ActiveScreen.Settings,
     ),
     About(
         titleResource = R.string.about_activity_title,
