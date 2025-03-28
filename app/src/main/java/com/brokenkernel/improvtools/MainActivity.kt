@@ -26,6 +26,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.brokenkernel.improvtools.application.presentation.view.ImprovToolsNavigationDrawer
+import com.brokenkernel.improvtools.application.presentation.view.ImprovToolsScaffold
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.view.SuggestionsScreen
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel.SuggestionScreenViewModel
 import com.brokenkernel.improvtools.ui.theme.ImprovToolsTheme
@@ -57,34 +58,15 @@ fun PreviewSuggestionPairList() {
 fun OuterContentForSuggestionsScreen(
     viewModel: SuggestionScreenViewModel
 ) {
-
-
     ImprovToolsTheme {
         ImprovToolsNavigationDrawer({
-            Scaffold(
-                topBar = {
-                    CenterAlignedTopAppBar(
-                        colors = TopAppBarDefaults.topAppBarColors(
-                            containerColor = MaterialTheme.colorScheme.primaryContainer,
-                            titleContentColor = MaterialTheme.colorScheme.primary,
-                        ),
-                        title = { Text(stringResource(R.string.suggestions_activity_title)) } ,
-                        scrollBehavior = TopAppBarDefaults
-                            .exitUntilCollapsedScrollBehavior(
-                                rememberTopAppBarState()),
-                    )
-                },
-                bottomBar = {
-                }
-            ) { innerPadding ->
-                Surface(modifier = Modifier.fillMaxSize()
-                        .padding(innerPadding)
-                ) {
+            ImprovToolsScaffold(
+                screenTitle = stringResource(R.string.suggestions_activity_title),
+                content = {
                     SuggestionsScreen(
                         viewModel = viewModel
                     )
-                }
-            }
+                })
         })
     }
 }
