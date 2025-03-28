@@ -7,17 +7,13 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
-import androidx.compose.material3.ElevatedButton
-import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -44,14 +40,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
 
         setContent {
-            ImprovToolsTheme {
-                Scaffold { innerPadding ->
-                    SuggestionsScreen(
-                        modifier = Modifier.padding(innerPadding),
-                        viewModel = suggestionsViewModel,
-                    )
-                }
-            }
+            OuterContentForSuggestionsScreen(suggestionsViewModel)
         }
     }
 }
@@ -60,12 +49,21 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun PreviewSuggestionPairList() {
     val suggestionsViewModel = SuggestionScreenViewModel()
-    MaterialTheme {
-        Surface {
-            SuggestionsScreen(
-                modifier = Modifier.padding(16.dp),
-                viewModel = suggestionsViewModel
-            )
+    OuterContentForSuggestionsScreen(viewModel = suggestionsViewModel)
+}
+
+@Composable
+fun OuterContentForSuggestionsScreen(
+    viewModel: SuggestionScreenViewModel
+) {
+    ImprovToolsTheme {
+        Scaffold { innerPadding ->
+            Surface {
+                SuggestionsScreen(
+                    modifier = Modifier.padding(innerPadding),
+                    viewModel = viewModel
+                )
+            }
         }
     }
 }
