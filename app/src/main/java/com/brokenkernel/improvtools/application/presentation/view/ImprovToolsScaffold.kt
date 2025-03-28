@@ -29,7 +29,7 @@ fun ImprovToolsScaffold(
     content: @Composable () -> Unit,
     menuScope: CoroutineScope, // todo: move to ViewModel
     drawerState: DrawerState, // todo: move to ViewModel
-    ) {
+) {
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
@@ -37,7 +37,7 @@ fun ImprovToolsScaffold(
                     containerColor = MaterialTheme.colorScheme.primaryContainer,
                     titleContentColor = MaterialTheme.colorScheme.primary,
                 ),
-                title = { Text(screenTitle) } ,
+                title = { Text(screenTitle) },
                 scrollBehavior = TopAppBarDefaults
                     .exitUntilCollapsedScrollBehavior(
                         rememberTopAppBarState()
@@ -61,9 +61,10 @@ fun ImprovToolsScaffold(
         bottomBar = {
         }
     ) { innerPadding ->
-        Surface(modifier = Modifier
-            .fillMaxSize()
-            .padding(innerPadding),
+        Surface(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding),
             content = content
         )
     }
