@@ -29,14 +29,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.brokenkernel.improvtools.R
-import com.brokenkernel.improvtools.application.data.model.NavigableActivities
+import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 @Composable
 internal fun ImprovToolsNavigationDrawer(
     drawerState: DrawerState,
-    onClickity: (na: NavigableActivities) -> Unit,
+    onClickity: (na: NavigableScreens) -> Unit,
     drawerNavController: NavHostController,
 ) {
     // TODO: move this to a UIState or some such
@@ -64,7 +64,7 @@ internal fun ImprovToolsNavigationDrawer(
                         modifier = Modifier.padding(16.dp),
                         style = MaterialTheme.typography.titleMedium
                     )
-                    NavigableActivities.entries.forEachIndexed { index, item ->
+                    NavigableScreens.entries.forEachIndexed { index, item ->
                         NavigationDrawerItem(
                             label = {
                                 Text(

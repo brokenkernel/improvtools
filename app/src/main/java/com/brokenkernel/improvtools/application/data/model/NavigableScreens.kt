@@ -10,7 +10,7 @@ import com.brokenkernel.improvtools.R
 
 
 
-internal enum class NavigableActivities(
+internal enum class NavigableScreens(
     @StringRes internal val titleResource: Int,
     internal val contentDescription: String,
     internal val icon: ImageVector,
