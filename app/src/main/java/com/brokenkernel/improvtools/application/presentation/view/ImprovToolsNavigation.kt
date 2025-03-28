@@ -74,8 +74,8 @@ internal fun ImprovToolsNavigationDrawer(
                             },
                             icon = {
                                 Image(
-                                    item.activeScreen.icon,
-                                    contentDescription = item.activeScreen.contentDescription
+                                    item.icon,
+                                    contentDescription = item.contentDescription
                                 )
                             },
                             onClick = {

@@ -47,7 +47,7 @@ fun OuterContentForSuggestionsScreen() {
                 drawerState = drawerState,
                 drawerNavController = drawerNavController,
                 onClickity = { clickedItem: NavigableActivities ->
-                    drawerNavController.navigate(clickedItem.activeScreen.route)
+                    drawerNavController.navigate(clickedItem.route)
                 },
             )
         }
