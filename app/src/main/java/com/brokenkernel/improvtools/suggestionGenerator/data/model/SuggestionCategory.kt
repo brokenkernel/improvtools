@@ -1,5 +1,6 @@
 package com.brokenkernel.improvtools.suggestionGenerator.data.model
 
+// TODO: read ideas from resources/files/etc.
 internal enum class SuggestionCategory(
     val title: String,
     val ideas: List<String>,
