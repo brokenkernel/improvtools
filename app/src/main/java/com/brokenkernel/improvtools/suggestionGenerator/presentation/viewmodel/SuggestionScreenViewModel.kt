@@ -2,11 +2,11 @@ package com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import com.brokenkernel.improvtools.suggestionGenerator.data.model.SuggestionCategory
-import com.brokenkernel.improvtools.suggestionGenerator.data.model.SuggestionDatum
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.uistate.SuggestionScreenUIState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import java.util.EnumMap
 
 class SuggestionScreenViewModel : ViewModel() {
 
@@ -15,9 +15,9 @@ class SuggestionScreenViewModel : ViewModel() {
     internal val uiState: StateFlow<SuggestionScreenUIState> = _uiState.asStateFlow()
 
     init {
-        val audienceSuggestions: MutableMap<SuggestionCategory, String> = HashMap()
+        val audienceSuggestions: MutableMap<SuggestionCategory, String> = EnumMap(SuggestionCategory::class.java)
 
-        SuggestionDatum.allCategories.forEach { item ->
+        SuggestionCategory.entries.forEach { item ->
             audienceSuggestions[item] = item.ideas.random()
         }
         _uiState.value = SuggestionScreenUIState(audienceSuggestions = audienceSuggestions)
@@ -30,7 +30,6 @@ class SuggestionScreenViewModel : ViewModel() {
                 ))
         )
     }
-
 
     /**
      * Pick a word that differs from the existing word.

@@ -25,10 +25,10 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.brokenkernel.improvtools.suggestionGenerator.data.model.SuggestionDatum
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.view.ClickableTableCell
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.view.TableCell
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.brokenkernel.improvtools.suggestionGenerator.data.model.SuggestionCategory
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel.SuggestionScreenViewModel
 import com.brokenkernel.improvtools.ui.theme.ImprovToolsTheme
 import kotlinx.coroutines.launch
@@ -113,7 +113,7 @@ fun SuggestionsScreen(
             }
         }
         // Table
-        items(SuggestionDatum.allCategories) { suggestionData ->
+        items(SuggestionCategory.entries) { suggestionData ->
             Row(
                 Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically

@@ -1,7 +1,8 @@
 package com.brokenkernel.improvtools.suggestionGenerator.presentation.uistate
 
 import com.brokenkernel.improvtools.suggestionGenerator.data.model.SuggestionCategory
+import java.util.EnumMap
 
-data class SuggestionScreenUIState(
-    val audienceSuggestions: Map<SuggestionCategory, String> = HashMap(),
+internal data class SuggestionScreenUIState(
+    val audienceSuggestions: Map<SuggestionCategory, String> = EnumMap(SuggestionCategory::class.java),
 )

@@ -1,18 +1,9 @@
 package com.brokenkernel.improvtools.suggestionGenerator.data.model
 
-data class SuggestionCategory(
+internal enum class SuggestionCategory(
     val title: String,
     val ideas: List<String>,
-)
-
-object SuggestionDatum {
-    private val noun: SuggestionCategory = SuggestionCategory(
-        "Noun",
-        listOf("Chair", "Fork"),
-    )
-    private val verb: SuggestionCategory = SuggestionCategory(
-        "verb",
-        listOf("Deduct", "Think"),
-    )
-    val allCategories: List<SuggestionCategory> = listOf(noun, verb)
+) {
+    NOUN("Noun", listOf("Chair", "Fork")),
+    VERB("Verb", listOf("Deduct", "Think")),
 }
