@@ -25,6 +25,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.brokenkernel.improvtools.application.presentation.view.ImprovToolsNavigationDrawer
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.view.SuggestionsScreen
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel.SuggestionScreenViewModel
 import com.brokenkernel.improvtools.ui.theme.ImprovToolsTheme
@@ -57,21 +58,9 @@ fun OuterContentForSuggestionsScreen(
     viewModel: SuggestionScreenViewModel
 ) {
 
-    val drawerState = rememberDrawerState(initialValue = DrawerValue.Open) // TODO: closed
-    val scope = rememberCoroutineScope()
-
 
     ImprovToolsTheme {
-        ModalNavigationDrawer(drawerState = drawerState,
-            drawerContent = {
-                ModalDrawerSheet {
-                    NavigationDrawerItem(
-                        label = { Text(stringResource(R.string.suggestions_activity_title)) },
-                        selected = true,
-                        onClick = {}
-                    )
-                }
-            }) {
+        ImprovToolsNavigationDrawer({
             Scaffold(
                 topBar = {
                     CenterAlignedTopAppBar(
@@ -96,6 +85,6 @@ fun OuterContentForSuggestionsScreen(
                     )
                 }
             }
-        }
+        })
     }
 }
