@@ -1,5 +1,6 @@
 package com.brokenkernel.improvtools.application.presentation.view
 
+import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -21,6 +22,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
@@ -38,9 +41,16 @@ internal fun ImprovToolsNavigationDrawer(
     drawerState: DrawerState,
     onClickity: (na: NavigableScreens) -> Unit,
     drawerNavController: NavHostController,
+    @StringRes currentScreenTitleResource: Int
 ) {
     // TODO: move this to a UIState or some such
     var selectedItemIndex by rememberSaveable { mutableIntStateOf(0) }
+
+    var currentRoute by rememberSaveable { mutableStateOf("route") }
+
+    drawerNavController.addOnDestinationChangedListener { controller, destination, arguments ->
+        currentRoute = destination.route.orEmpty()
+    }
 
     val scope: CoroutineScope = rememberCoroutineScope()
 
@@ -64,6 +74,8 @@ internal fun ImprovToolsNavigationDrawer(
                         modifier = Modifier.padding(16.dp),
                         style = MaterialTheme.typography.titleMedium
                     )
+
+                    val currentRoute = drawerNavController.currentBackStackEntry?.destination?.route
                     NavigableScreens.entries.forEachIndexed { index, item ->
                         NavigationDrawerItem(
                             label = {
@@ -81,13 +93,13 @@ internal fun ImprovToolsNavigationDrawer(
                             onClick = {
                                 onClickity(item)
                                 // TODO - launch activity or something here
+//                                item.route == currentroute;
                                 selectedItemIndex = index
                                 scope.launch {
                                     drawerState.close() // TODO: close on launch
                                 }
                             },
-
-                            selected = (index == selectedItemIndex),
+                            selected = (item.route == currentRoute),
                         )
                     }
                     HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
@@ -125,7 +137,7 @@ internal fun ImprovToolsNavigationDrawer(
         },
         content = {
             ImprovToolsScaffold(
-                screenTitle = "FJLKDSJFLKSD",
+                screenTitle = stringResource(currentScreenTitleResource),
                 content = {
                     DrawerNavGraph(drawerNavController = drawerNavController)
                 },

@@ -9,6 +9,10 @@ import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.Surface
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
@@ -39,6 +43,7 @@ fun PreviewSuggestionPairList() {
 fun OuterContentForSuggestionsScreen() {
     val drawerNavController = rememberNavController()
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
+    var currentScreenTitleResource by rememberSaveable { mutableIntStateOf(NavigableScreens.SuggestionGenerator.titleResource) }
 
     // TODO: use hilt DI
     ImprovToolsTheme {
@@ -48,7 +53,9 @@ fun OuterContentForSuggestionsScreen() {
                 drawerNavController = drawerNavController,
                 onClickity = { clickedItem: NavigableScreens ->
                     drawerNavController.navigate(clickedItem.route)
+                    currentScreenTitleResource = clickedItem.titleResource
                 },
+                currentScreenTitleResource = currentScreenTitleResource
             )
         }
     }
