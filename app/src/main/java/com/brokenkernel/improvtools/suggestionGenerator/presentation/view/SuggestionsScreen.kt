@@ -38,7 +38,6 @@ fun SuggestionsScreen(
 ) {
 
     val gameUiState by viewModel.uiState.collectAsState()
-    val mediumPadding = dimensionResource(R.dimen.padding_medium)
 
     val categoryWeight = .3f
     val audienceIdeaWeight = .7f
@@ -46,10 +45,7 @@ fun SuggestionsScreen(
 
     Column(
         modifier = Modifier
-//            .statusBarsPadding()
             .verticalScroll(rememberScrollState()) // TODO: normal column and not lazy?
-//            .safeDrawingPadding()
-//            .padding(mediumPadding),
                 ,
         verticalArrangement = Arrangement.spacedBy(4.dp), // TODO: move into dims resource
         horizontalAlignment = Alignment.CenterHorizontally,
