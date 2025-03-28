@@ -52,7 +52,7 @@ fun ImprovToolsScaffold(
                     }) {
                         Icon(
                             imageVector = Icons.Default.Menu,
-                            contentDescription = stringResource(R.string.navigation_menu)
+                            contentDescription = stringResource(R.string.navigation_app_menu)
                         )
                     }
                 }
