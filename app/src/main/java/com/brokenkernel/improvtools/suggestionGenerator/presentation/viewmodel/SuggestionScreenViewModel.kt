@@ -20,20 +20,26 @@ class SuggestionScreenViewModel : ViewModel() {
 
     internal fun updateSuggestionFor(suggestionCategory: SuggestionCategory): Unit {
         _uiState.value = SuggestionScreenUIState(
-            audienceSuggestions = _uiState.value.audienceSuggestions + mapOf(suggestionCategory to pickAnotherItemFromCategoryDatum(
-                    suggestionCategory, _uiState.value.audienceSuggestions.getValue(suggestionCategory)
-                ))
+            audienceSuggestions = _uiState.value.audienceSuggestions + mapOf(
+                suggestionCategory to pickAnotherItemFromCategoryDatum(
+                    suggestionCategory,
+                    _uiState.value.audienceSuggestions.getValue(suggestionCategory)
+                )
+            )
         )
     }
 
-    internal fun resetAllCategories(): Unit{
-        val audienceSuggestions: MutableMap<SuggestionCategory, String> = EnumMap(SuggestionCategory::class.java)
+    internal fun resetAllCategories(): Unit {
+        val audienceSuggestions: MutableMap<SuggestionCategory, String> =
+            EnumMap(SuggestionCategory::class.java)
 
         SuggestionCategory.entries.forEach { item ->
-            val word = pickAnotherItemFromCategoryDatum(item, _uiState.value.audienceSuggestions.getOrDefault(
-                item,
-                ""
-            ))
+            val word = pickAnotherItemFromCategoryDatum(
+                item, _uiState.value.audienceSuggestions.getOrDefault(
+                    item,
+                    ""
+                )
+            )
             audienceSuggestions[item] = word
         }
         _uiState.value = SuggestionScreenUIState(audienceSuggestions = audienceSuggestions)
@@ -43,7 +49,10 @@ class SuggestionScreenViewModel : ViewModel() {
     /**
      * Pick a word that differs from the existing word.
      */
-    private fun pickAnotherItemFromCategoryDatum(suggestionCategory: SuggestionCategory, currentWord: String): String {
+    private fun pickAnotherItemFromCategoryDatum(
+        suggestionCategory: SuggestionCategory,
+        currentWord: String,
+    ): String {
         return (suggestionCategory.ideas - currentWord).random()
     }
 

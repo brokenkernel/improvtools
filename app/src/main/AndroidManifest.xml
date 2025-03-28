@@ -15,7 +15,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
+            android:label="@string/suggestions_activity_title"
             android:theme="@style/Theme.ImprovTools">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

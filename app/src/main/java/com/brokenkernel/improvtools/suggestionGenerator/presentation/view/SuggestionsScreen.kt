@@ -48,12 +48,13 @@ fun SuggestionsScreen(
             .verticalScroll(rememberScrollState()) // TODO: normal column and not lazy?
             .safeDrawingPadding()
             .padding(mediumPadding),
-        verticalArrangement = Arrangement.spacedBy(4.dp) // TODO: move into dims resource
+        verticalArrangement = Arrangement.spacedBy(4.dp), // TODO: move into dims resource
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         // Header
         Row(
             Modifier
-                .background(MaterialTheme.colorScheme.tertiary)
+                .background(MaterialTheme.colorScheme.surfaceVariant)
                 .fillMaxWidth()
                 .fillMaxHeight()
         ) {

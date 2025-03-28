@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Improv Tools</string>
+    <string name="suggestions_activity_title">Suggestion Generator</string>
     <string name="suggestions_title_category">Category</string>
     <string name="suggestions_audience_idea">Audience Idea</string>
     <string name="suggestions_reset_all">Reset All</string>
