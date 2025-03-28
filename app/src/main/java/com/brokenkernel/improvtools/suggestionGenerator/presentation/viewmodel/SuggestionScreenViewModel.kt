@@ -12,7 +12,7 @@ class SuggestionScreenViewModel : ViewModel() {
 
 
     private val _uiState = MutableStateFlow(SuggestionScreenUIState())
-    val uiState: StateFlow<SuggestionScreenUIState> = _uiState.asStateFlow()
+    internal val uiState: StateFlow<SuggestionScreenUIState> = _uiState.asStateFlow()
 
     init {
         val audienceSuggestions: MutableMap<SuggestionCategory, String> = HashMap()
@@ -21,17 +21,22 @@ class SuggestionScreenViewModel : ViewModel() {
             audienceSuggestions[item] = item.ideas.random()
         }
         _uiState.value = SuggestionScreenUIState(audienceSuggestions = audienceSuggestions)
-
     }
 
-    //     fun anotherIdea() {
-    //        ideas -
-    //    }
-
-    fun updateSuggestionFor(suggestionCategory: SuggestionCategory) {
+    internal fun updateSuggestionFor(suggestionCategory: SuggestionCategory) {
         _uiState.value = SuggestionScreenUIState(
-            audienceSuggestions = _uiState.value.audienceSuggestions + mapOf(suggestionCategory to suggestionCategory.ideas.random())
+            audienceSuggestions = _uiState.value.audienceSuggestions + mapOf(suggestionCategory to pickAnotherItemFromCategoryDatum(
+                    suggestionCategory, _uiState.value.audienceSuggestions.getValue(suggestionCategory)
+                ))
         )
+    }
+
+
+    /**
+     * Pick a word that differs from the existing word.
+     */
+    private fun pickAnotherItemFromCategoryDatum(suggestionCategory: SuggestionCategory, currentWord: String): String {
+        return (suggestionCategory.ideas - currentWord).random()
     }
 
 }
