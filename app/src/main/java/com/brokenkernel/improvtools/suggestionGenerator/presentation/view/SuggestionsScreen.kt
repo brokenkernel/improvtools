@@ -2,10 +2,15 @@ package com.brokenkernel.improvtools.suggestionGenerator.presentation.view
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawingPadding
+import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -14,6 +19,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -26,42 +32,47 @@ import com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel.S
 
 @Composable
 fun SuggestionsScreen(
-    modifier: Modifier,
-    viewModel: SuggestionScreenViewModel = viewModel()
+    viewModel: SuggestionScreenViewModel = viewModel(),
 ) {
 
     val gameUiState by viewModel.uiState.collectAsState()
+    val mediumPadding = dimensionResource(R.dimen.padding_medium)
 
     val categoryWeight = .3f
     val audienceIdeaWeight = .7f
     // assert total is 100.
-    LazyColumn(
-        modifier,
+
+    Column(
+        modifier = Modifier
+            .statusBarsPadding()
+            .verticalScroll(rememberScrollState()) // TODO: normal column and not lazy?
+            .safeDrawingPadding()
+            .padding(mediumPadding)
+            ,
         verticalArrangement = Arrangement.spacedBy(4.dp)
     ) {
         // Header
-        item {
-            Row(
-                Modifier
-                    .background(MaterialTheme.colorScheme.tertiary)
-                    .fillMaxWidth()
-            ) {
-                TableCell(
-                    text = stringResource(R.string.suggestions_title_category),
-                    weight = categoryWeight,
-                    style = MaterialTheme.typography.titleLarge,
-                )
-                TableCell(
-                    text = stringResource(R.string.suggestions_audience_idea),
-                    weight = audienceIdeaWeight,
-                    style = MaterialTheme.typography.titleLarge,
-                )
-            }
+        Row(
+            Modifier
+                .background(MaterialTheme.colorScheme.tertiary)
+                .fillMaxWidth()
+                .fillMaxHeight()
+        ) {
+            TableCell(
+                text = stringResource(R.string.suggestions_title_category),
+                weight = categoryWeight,
+                style = MaterialTheme.typography.titleLarge,
+            )
+            TableCell(
+                text = stringResource(R.string.suggestions_audience_idea),
+                weight = audienceIdeaWeight,
+                style = MaterialTheme.typography.titleLarge,
+            )
         }
-        // Table
-        items(SuggestionCategory.entries) { suggestionData ->
+        SuggestionCategory.entries.forEach { suggestionData ->
             Row(
-                Modifier.fillMaxWidth(),
+                Modifier.fillMaxWidth()
+                    .fillMaxHeight(),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 TableCell(
@@ -82,15 +93,16 @@ fun SuggestionsScreen(
                 )
             }
         }
-        item {
-            Row(verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.Center,
-                modifier = Modifier
-                    .fillMaxWidth()) {
-                // TODO: figure out difference with ElevatedButton, FilledTonalButton, OutlinedButton
-                Button(onClick = { viewModel.resetAllCategories() }) {
-                    Text(text = stringResource(R.string.suggestions_reset_all))
-                }
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Center,
+            modifier = Modifier
+                .fillMaxWidth()
+                .fillMaxHeight()
+        ) {
+            // TODO: figure out difference with ElevatedButton, FilledTonalButton, OutlinedButton
+            Button(onClick = { viewModel.resetAllCategories() }) {
+                Text(text = stringResource(R.string.suggestions_reset_all))
             }
         }
     }

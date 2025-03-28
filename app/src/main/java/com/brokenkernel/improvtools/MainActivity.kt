@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -28,7 +29,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun PreviewSuggestionPairList() {
     val suggestionsViewModel = SuggestionScreenViewModel()
@@ -40,13 +41,11 @@ fun OuterContentForSuggestionsScreen(
     viewModel: SuggestionScreenViewModel
 ) {
     ImprovToolsTheme {
-        Scaffold { innerPadding ->
-            Surface {
-                SuggestionsScreen(
-                    modifier = Modifier.padding(innerPadding),
-                    viewModel = viewModel
-                )
-            }
+        // TODO: what is Scaffold. do I need it?
+        Surface(modifier = Modifier.fillMaxSize()) {
+            SuggestionsScreen(
+                viewModel = viewModel
+            )
         }
     }
 }
