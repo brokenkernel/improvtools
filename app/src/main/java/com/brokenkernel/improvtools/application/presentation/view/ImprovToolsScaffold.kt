@@ -44,7 +44,7 @@ fun ImprovToolsScaffold(
                     ),
                 navigationIcon = {
                     IconButton(onClick = {
-                        menuScope.launch() {
+                        menuScope.launch {
                             drawerState.apply {
                                 if (isClosed) open() else close()
                             }
