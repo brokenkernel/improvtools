@@ -1,7 +1,6 @@
 package com.brokenkernel.improvtools.application.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
-import com.brokenkernel.improvtools.application.presentation.uistate.ApplicationNavigationState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

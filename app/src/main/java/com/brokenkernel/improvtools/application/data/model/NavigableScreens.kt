@@ -2,12 +2,11 @@ package com.brokenkernel.improvtools.application.data.model
 
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.outlined.Info
+import androidx.compose.material.icons.outlined.Lightbulb
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.brokenkernel.improvtools.R
-
 
 
 internal enum class NavigableScreens(
@@ -17,10 +16,11 @@ internal enum class NavigableScreens(
     internal val route: String,
 
     ) {
+
     SuggestionGenerator(
         titleResource = R.string.suggestions_activity_title,
         contentDescription = "Go To Suggestion Generator",
-        icon = Icons.Default.Home, // TODO - placeholder
+        icon = Icons.Outlined.Lightbulb,
         route = "suggestion_generator_screen",
     ),
     Settings(

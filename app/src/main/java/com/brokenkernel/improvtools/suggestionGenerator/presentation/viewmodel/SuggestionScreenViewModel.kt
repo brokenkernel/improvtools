@@ -9,8 +9,6 @@ import kotlinx.coroutines.flow.asStateFlow
 import java.util.EnumMap
 
 class SuggestionScreenViewModel : ViewModel() {
-
-
     private val _uiState = MutableStateFlow(SuggestionScreenUIState())
     internal val uiState: StateFlow<SuggestionScreenUIState> = _uiState.asStateFlow()
 
