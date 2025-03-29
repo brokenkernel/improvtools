@@ -10,6 +10,7 @@ import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.tooling.preview.Preview
@@ -39,7 +40,11 @@ fun PreviewSuggestionPairList() {
 fun OuterContentForSuggestionsScreen() {
     val drawerNavController = rememberNavController()
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
+
+    // the next two are weird and should be resolvable by tracking 'current screen metadta' instead of individual state,
+    // also annoying since the default is multiple-times replicated, but good enough for now.
     var currentScreenTitleResource by rememberSaveable { mutableIntStateOf(NavigableScreens.SuggestionGenerator.titleResource) }
+    var currentRoute by rememberSaveable { mutableStateOf(NavigableScreens.SuggestionGenerator.route) }
 
     // TODO: use hilt DI
     ImprovToolsTheme {
@@ -50,8 +55,10 @@ fun OuterContentForSuggestionsScreen() {
                 onClickity = { clickedItem: NavigableScreens ->
                     drawerNavController.navigate(clickedItem.route)
                     currentScreenTitleResource = clickedItem.titleResource
+                    currentRoute = clickedItem.route
                 },
-                currentScreenTitleResource = currentScreenTitleResource
+                currentScreenTitleResource = currentScreenTitleResource,
+                currentRoute = currentRoute,
             )
         }
     }

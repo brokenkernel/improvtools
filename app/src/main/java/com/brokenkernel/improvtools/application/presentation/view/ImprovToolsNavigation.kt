@@ -20,12 +20,7 @@ import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.NavigationDrawerItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -40,16 +35,9 @@ internal fun ImprovToolsNavigationDrawer(
     drawerState: DrawerState,
     onClickity: (na: NavigableScreens) -> Unit,
     drawerNavController: NavHostController,
-    @StringRes currentScreenTitleResource: Int
+    @StringRes currentScreenTitleResource: Int,
+    currentRoute: String,
 ) {
-    // TODO: move this to a UIState or some such
-    var selectedItemIndex by rememberSaveable { mutableIntStateOf(0) }
-
-    var currentRoute by rememberSaveable { mutableStateOf("route") }
-
-    drawerNavController.addOnDestinationChangedListener { controller, destination, arguments ->
-        currentRoute = destination.route.orEmpty()
-    }
 
     val scope: CoroutineScope = rememberCoroutineScope()
 
@@ -74,8 +62,7 @@ internal fun ImprovToolsNavigationDrawer(
                         style = MaterialTheme.typography.titleMedium
                     )
 
-                    val currentRoute = drawerNavController.currentBackStackEntry?.destination?.route
-                    NavigableScreens.entries.forEachIndexed { index, item ->
+                    NavigableScreens.entries.forEach { item ->
                         NavigationDrawerItem(
                             label = {
                                 Text(
@@ -91,9 +78,6 @@ internal fun ImprovToolsNavigationDrawer(
                             },
                             onClick = {
                                 onClickity(item)
-                                // TODO - launch activity or something here
-//                                item.route == currentroute;
-                                selectedItemIndex = index
                                 scope.launch {
                                     drawerState.close() // TODO: close on launch
                                 }
@@ -117,7 +101,9 @@ internal fun ImprovToolsNavigationDrawer(
                                 contentDescription = stringResource(R.string.navigation_settings)
                             )
                         },
-                        onClick = {}
+                        onClick = {
+                            onClickity(NavigableScreens.Settings)
+                        }
                     )
                     NavigationDrawerItem(
                         label = { Text(stringResource(R.string.navigation_help_and_feedback)) },
@@ -128,7 +114,9 @@ internal fun ImprovToolsNavigationDrawer(
                                 contentDescription = stringResource(R.string.navigation_help_and_feedback)
                             )
                         },
-                        onClick = { },
+                        onClick = {
+                            onClickity(NavigableScreens.About)
+                        },
                     )
                     Spacer(Modifier.height(12.dp))
                 }
