@@ -25,7 +25,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
 
         setContent {
-            OuterContentForSuggestionsScreen()
+            OuterContentForMasterScreen()
         }
     }
 }
@@ -33,11 +33,11 @@ class MainActivity : ComponentActivity() {
 @Preview(showBackground = true)
 @Composable
 fun PreviewSuggestionPairList() {
-    OuterContentForSuggestionsScreen()
+    OuterContentForMasterScreen()
 }
 
 @Composable
-fun OuterContentForSuggestionsScreen() {
+fun OuterContentForMasterScreen() {
     val drawerNavController = rememberNavController()
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
 

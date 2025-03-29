@@ -1,12 +1,22 @@
 package com.brokenkernel.improvtools
 
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.test.onRoot
+import androidx.navigation.compose.ComposeNavigator
+import androidx.navigation.testing.TestNavHostController
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.brokenkernel.improvtools.application.presentation.view.DrawerNavGraph
 
 import org.junit.Test
 import org.junit.runner.RunWith
 
 import org.junit.Assert.*
+import org.junit.Before
+import org.junit.Rule
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -21,4 +31,37 @@ class ExampleInstrumentedTest {
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
         assertEquals("com.brokenkernel.improvtools", appContext.packageName)
     }
+}
+
+@RunWith(AndroidJUnit4::class)
+public class NavigationTest {
+    @get:Rule
+    val composeTestRule = createComposeRule()
+    lateinit var navController: TestNavHostController
+    @Before
+    fun setupAppNavHost() {
+        composeTestRule.setContent {
+            navController = TestNavHostController(LocalContext.current)
+            navController.navigatorProvider.addNavigator(ComposeNavigator())
+            DrawerNavGraph(drawerNavController = navController)
+        }
+    }
+
+    @Test
+    fun testSomethingIsDisplayedOnRoot() {
+        composeTestRule
+            .onRoot()
+            .assertIsDisplayed()
+
+    }
+
+    // Unit test
+    @Test
+    fun testResetButtonShownOnSuggestionsScreen() {
+        composeTestRule
+            .onNodeWithText("Reset All")
+            .assertIsDisplayed()
+    }
+
+    // test drawered is closed??
 }

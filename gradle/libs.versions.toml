@@ -11,6 +11,7 @@ composeBom = "2025.03.01"
 viewModelCompose = "2.8.7"
 lifecycleViewModelKtx = "2.8.7"
 navigationCompose = "2.8.9"
+navigationTesting = "2.8.9"
 materialIconsExtended = "1.7.8"
 
 [libraries]
@@ -23,7 +24,8 @@ androidx-lifecycle-viewModel-compose = { group = "androidx.lifecycle", name = "l
 androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewModelKtx" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
-androidx-navigation-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
+androidx-navigation-navigationCompose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
+androidx-navigation-navigationTesting = { group = "androidx.navigation", name = "navigation-testing", version.ref = "navigationTesting" }
 androidx-ui = { group = "androidx.compose.ui", name = "ui" }
 androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
