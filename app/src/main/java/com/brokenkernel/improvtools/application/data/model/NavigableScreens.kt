@@ -25,14 +25,14 @@ internal enum class NavigableScreens(
     ),
     Settings(
         titleResource = R.string.settings_activity_title,
-        contentDescription = "Go to about screen",
+        contentDescription = "Go to Settings screen",
         icon = Icons.Outlined.Settings,
         route = "settings_screen",
     ),
     About(
-        titleResource = R.string.about_activity_title,
-        contentDescription = "Go to about screen",
-        icon = Icons.Outlined.Info, // TODO - placeholder
+        titleResource = R.string.navigation_help_and_feedback,
+        contentDescription = "Go to Help And Feedback screen",
+        icon = Icons.Outlined.Info,
         route = "about_screen",
     ),
 }
