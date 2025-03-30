@@ -1,6 +1,5 @@
 package com.brokenkernel.improvtools.application.presentation.view
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -35,11 +34,11 @@ private fun NavigableScreenNavigationDrawerItem(
     currentNavigableScreen: NavigableScreens
     ){
     NavigationDrawerItem(
-        label = { Text(stringResource(R.string.navigation_help_and_feedback)) },
+        label = { Text(stringResource(screen.titleResource)) },
         icon = {
             Icon(
-                NavigableScreens.HelpAndAbout.icon,
-                contentDescription = stringResource(R.string.navigation_help_and_feedback)
+                screen.icon,
+                contentDescription = stringResource(screen.contentDescription)
             )
         },
         onClick = {
@@ -84,6 +83,13 @@ internal fun ImprovToolsNavigationDrawer(
                     )
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.SuggestionGenerator,
+                        onClickity,
+                        scope,
+                        drawerState,
+                        currentNavigableScreen
+                    )
+                    NavigableScreenNavigationDrawerItem(
+                        NavigableScreens.Timer,
                         onClickity,
                         scope,
                         drawerState,

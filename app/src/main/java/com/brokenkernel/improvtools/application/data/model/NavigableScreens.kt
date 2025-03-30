@@ -5,6 +5,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Lightbulb
 import androidx.compose.material.icons.outlined.Settings
+import androidx.compose.material.icons.outlined.Timer
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.brokenkernel.improvtools.R
 
@@ -28,6 +29,12 @@ internal enum class NavigableScreens(
         contentDescription = R.string.go_to_settings_screen,
         icon = Icons.Outlined.Settings,
         route = "settings_screen",
+    ),
+    Timer(
+        titleResource = R.string.timer_activity_title,
+        contentDescription = R.string.go_to_timer_screen,
+        icon = Icons.Outlined.Timer,
+        route = "timer_screen",
     ),
     HelpAndAbout(
         titleResource = R.string.navigation_help_and_feedback,
