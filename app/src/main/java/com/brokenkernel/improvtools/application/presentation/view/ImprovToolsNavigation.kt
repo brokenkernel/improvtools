@@ -31,8 +31,8 @@ private fun NavigableScreenNavigationDrawerItem(
     onClickity: (NavigableScreens) -> Unit,
     scope: CoroutineScope,
     drawerState: DrawerState,
-    currentNavigableScreen: NavigableScreens
-    ){
+    currentNavigableScreen: NavigableScreens,
+) {
     NavigationDrawerItem(
         label = { Text(stringResource(screen.titleResource)) },
         icon = {
@@ -48,7 +48,7 @@ private fun NavigableScreenNavigationDrawerItem(
             }
         },
         selected = (screen.route == currentNavigableScreen.route),
-        )
+    )
 }
 
 @Composable
