@@ -18,7 +18,6 @@ import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.navigation.NavHostController
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import kotlinx.coroutines.CoroutineScope
@@ -30,8 +29,8 @@ internal fun ImprovToolsScaffold(
     content: @Composable () -> Unit,
     menuScope: CoroutineScope, // todo: move to ViewModel
     drawerState: DrawerState, // todo: move to ViewModel
-    drawerNavController: NavHostController,
-    currentNavigableScreen: NavigableScreens, // TODO: figure out better way to handle this
+    currentNavigableScreen: NavigableScreens,
+    doNavigateToNavigableScreen: (NavigableScreens) -> Unit, // TODO: figure out better way to handle this
 ) {
     Scaffold(
         topBar = {
@@ -62,7 +61,7 @@ internal fun ImprovToolsScaffold(
             )
         },
         bottomBar = {
-            ImprovToolsBottomBar(currentNavigableScreen, drawerNavController)
+            ImprovToolsBottomBar(currentNavigableScreen, doNavigateToNavigableScreen)
         }
     ) { innerPadding ->
         Surface(

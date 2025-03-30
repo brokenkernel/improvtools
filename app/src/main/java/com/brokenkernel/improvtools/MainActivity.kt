@@ -63,7 +63,7 @@ fun OuterContentForMasterScreen() {
             ImprovToolsNavigationDrawer(
                 drawerState = drawerState,
                 drawerNavController = drawerNavController,
-                onClickity = { clickedItem: NavigableScreens ->
+                doNavigateToNavigableScreen = { clickedItem: NavigableScreens ->
                     drawerNavController.navigate(clickedItem.route)
                 },
                 currentNavigableScreen = currentNavigableScreen

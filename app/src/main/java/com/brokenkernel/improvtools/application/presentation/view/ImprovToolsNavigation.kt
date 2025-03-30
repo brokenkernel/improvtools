@@ -56,7 +56,7 @@ private fun NavigableScreenNavigationDrawerItem(
 @Composable
 internal fun ImprovToolsBottomBar(
     currentNavigableScreen: NavigableScreens, // TODO: figure out better way to handle this
-    drawerNavController: NavHostController,
+    doNavigateToNavigableScreen: (NavigableScreens) -> Unit,
     ) {
     NavigationBar {
         NavigationBarItem(
@@ -72,7 +72,7 @@ internal fun ImprovToolsBottomBar(
             },
             onClick = {
                 // TODO: change title: ideally based on event
-                drawerNavController.navigate(NavigableScreens.SuggestionGenerator.route)
+                doNavigateToNavigableScreen(NavigableScreens.SuggestionGenerator)
             }
         )
         NavigationBarItem(
@@ -89,7 +89,7 @@ internal fun ImprovToolsBottomBar(
             },
             onClick = {
                 // TODO: change title: ideally based on event
-                drawerNavController.navigate(NavigableScreens.Timer.route)
+                doNavigateToNavigableScreen(NavigableScreens.Timer)
             }
         )
     }
@@ -98,7 +98,7 @@ internal fun ImprovToolsBottomBar(
 @Composable
 internal fun ImprovToolsNavigationDrawer(
     drawerState: DrawerState,
-    onClickity: (na: NavigableScreens) -> Unit,
+    doNavigateToNavigableScreen: (na: NavigableScreens) -> Unit,
     drawerNavController: NavHostController,
     currentNavigableScreen: NavigableScreens,
 ) {
@@ -127,14 +127,14 @@ internal fun ImprovToolsNavigationDrawer(
                     )
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.SuggestionGenerator,
-                        onClickity,
+                        doNavigateToNavigableScreen,
                         scope,
                         drawerState,
                         currentNavigableScreen
                     )
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.Timer,
-                        onClickity,
+                        doNavigateToNavigableScreen,
                         scope,
                         drawerState,
                         currentNavigableScreen
@@ -150,14 +150,14 @@ internal fun ImprovToolsNavigationDrawer(
                     )
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.Settings,
-                        onClickity,
+                        doNavigateToNavigableScreen,
                         scope,
                         drawerState,
                         currentNavigableScreen
                     )
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.HelpAndAbout,
-                        onClickity,
+                        doNavigateToNavigableScreen,
                         scope,
                         drawerState,
                         currentNavigableScreen
@@ -174,8 +174,8 @@ internal fun ImprovToolsNavigationDrawer(
                 },
                 menuScope = scope,
                 drawerState = drawerState,
-                drawerNavController = drawerNavController,
                 currentNavigableScreen = currentNavigableScreen,
+                doNavigateToNavigableScreen = doNavigateToNavigableScreen,
             )
         }
     )
