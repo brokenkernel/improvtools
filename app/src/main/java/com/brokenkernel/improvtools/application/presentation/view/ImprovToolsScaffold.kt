@@ -10,7 +10,6 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -19,17 +18,21 @@ import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.navigation.NavHostController
 import com.brokenkernel.improvtools.R
+import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ImprovToolsScaffold(
+internal fun ImprovToolsScaffold(
     screenTitle: String,
     content: @Composable () -> Unit,
     menuScope: CoroutineScope, // todo: move to ViewModel
     drawerState: DrawerState, // todo: move to ViewModel
+    drawerNavController: NavHostController,
+    currentNavigableScreen: NavigableScreens, // TODO: figure out better way to handle this
 ) {
     Scaffold(
         topBar = {
@@ -60,9 +63,7 @@ fun ImprovToolsScaffold(
             )
         },
         bottomBar = {
-            NavigationBar {
-
-            }
+            ImprovToolsBottomBar(currentNavigableScreen, drawerNavController)
         }
     ) { innerPadding ->
         Surface(

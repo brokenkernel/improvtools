@@ -12,6 +12,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.ModalNavigationDrawer
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationDrawerItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -49,6 +51,48 @@ private fun NavigableScreenNavigationDrawerItem(
         },
         selected = (screen.route == currentNavigableScreen.route),
     )
+}
+
+@Composable
+internal fun ImprovToolsBottomBar(
+    screen: NavigableScreens, // TODO: figure out better way to handle this
+    drawerNavController: NavHostController,
+    ) {
+    NavigationBar {
+        NavigationBarItem(
+            selected = (screen.route == NavigableScreens.SuggestionGenerator.route),
+            label = {
+                NavigableScreens.SuggestionGenerator.titleResource
+            },
+            icon = {
+                Icon(
+                    NavigableScreens.SuggestionGenerator.icon,
+                    contentDescription = stringResource(NavigableScreens.SuggestionGenerator.contentDescription)
+                )
+            },
+            onClick = {
+                // TODO: change title: ideally based on event
+                drawerNavController.navigate(NavigableScreens.SuggestionGenerator.route)
+            }
+        )
+        NavigationBarItem(
+            selected = (screen.route == NavigableScreens.Timer.route),
+            label = {
+                NavigableScreens.Timer.titleResource
+            },
+            icon = {
+                Icon(
+                    NavigableScreens.Timer.icon,
+                    contentDescription = stringResource(NavigableScreens.Timer.contentDescription)
+                )
+
+            },
+            onClick = {
+                // TODO: change title: ideally based on event
+                drawerNavController.navigate(NavigableScreens.Timer.route)
+            }
+        )
+    }
 }
 
 @Composable
@@ -126,10 +170,13 @@ internal fun ImprovToolsNavigationDrawer(
             ImprovToolsScaffold(
                 screenTitle = stringResource(currentNavigableScreen.titleResource),
                 content = {
+                    // TODO: replace with event system instead of passing controller??
                     DrawerNavGraph(drawerNavController = drawerNavController)
                 },
                 menuScope = scope,
-                drawerState = drawerState
+                drawerState = drawerState,
+                drawerNavController = drawerNavController,
+                currentNavigableScreen = currentNavigableScreen,
             )
         }
     )
