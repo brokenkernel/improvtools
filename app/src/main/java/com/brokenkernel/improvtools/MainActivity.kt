@@ -13,6 +13,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
+import androidx.navigation.NavDestination
 import androidx.navigation.compose.rememberNavController
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import com.brokenkernel.improvtools.application.presentation.view.ImprovToolsNavigationDrawer
@@ -42,7 +44,18 @@ fun OuterContentForMasterScreen() {
 
     // the next is should be resolvable by tracking 'current screen metadta' instead of individual state,
     // also annoying since the default is multiple-times replicated, but good enough for now.
+
+    // TODO: I probably don't want the full screen here, but actually title and such??
     var currentNavigableScreen by rememberSaveable { mutableStateOf(NavigableScreens.SuggestionGenerator) }
+
+    drawerNavController.addOnDestinationChangedListener { controller: NavController,
+                                                          destination: NavDestination,
+                                                          args: Bundle? ->
+        val whichScreen = NavigableScreens.byRoute(destination.route)
+        if (whichScreen != null) {
+            currentNavigableScreen = whichScreen
+        }
+    }
 
     // TODO: use hilt DI
     ImprovToolsTheme {
@@ -51,7 +64,6 @@ fun OuterContentForMasterScreen() {
                 drawerState = drawerState,
                 drawerNavController = drawerNavController,
                 onClickity = { clickedItem: NavigableScreens ->
-                    currentNavigableScreen = clickedItem
                     drawerNavController.navigate(clickedItem.route)
                 },
                 currentNavigableScreen = currentNavigableScreen

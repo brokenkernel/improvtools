@@ -27,7 +27,6 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun ImprovToolsScaffold(
-    screenTitle: String,
     content: @Composable () -> Unit,
     menuScope: CoroutineScope, // todo: move to ViewModel
     drawerState: DrawerState, // todo: move to ViewModel
@@ -41,7 +40,7 @@ internal fun ImprovToolsScaffold(
                     containerColor = MaterialTheme.colorScheme.primaryContainer,
                     titleContentColor = MaterialTheme.colorScheme.primary,
                 ),
-                title = { Text(screenTitle) },
+                title = { Text(stringResource(currentNavigableScreen.titleResource)) },
                 scrollBehavior = TopAppBarDefaults
                     .exitUntilCollapsedScrollBehavior(
                         rememberTopAppBarState()

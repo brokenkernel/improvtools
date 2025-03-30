@@ -55,12 +55,12 @@ private fun NavigableScreenNavigationDrawerItem(
 
 @Composable
 internal fun ImprovToolsBottomBar(
-    screen: NavigableScreens, // TODO: figure out better way to handle this
+    currentNavigableScreen: NavigableScreens, // TODO: figure out better way to handle this
     drawerNavController: NavHostController,
     ) {
     NavigationBar {
         NavigationBarItem(
-            selected = (screen.route == NavigableScreens.SuggestionGenerator.route),
+            selected = (currentNavigableScreen.route == NavigableScreens.SuggestionGenerator.route),
             label = {
                 NavigableScreens.SuggestionGenerator.titleResource
             },
@@ -76,7 +76,7 @@ internal fun ImprovToolsBottomBar(
             }
         )
         NavigationBarItem(
-            selected = (screen.route == NavigableScreens.Timer.route),
+            selected = (currentNavigableScreen.route == NavigableScreens.Timer.route),
             label = {
                 NavigableScreens.Timer.titleResource
             },
@@ -168,7 +168,6 @@ internal fun ImprovToolsNavigationDrawer(
         },
         content = {
             ImprovToolsScaffold(
-                screenTitle = stringResource(currentNavigableScreen.titleResource),
                 content = {
                     // TODO: replace with event system instead of passing controller??
                     DrawerNavGraph(drawerNavController = drawerNavController)

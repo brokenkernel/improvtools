@@ -9,7 +9,6 @@ import androidx.compose.material.icons.outlined.Timer
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.brokenkernel.improvtools.R
 
-
 internal enum class NavigableScreens(
     @StringRes internal val titleResource: Int,
     @StringRes internal val contentDescription: Int,
@@ -42,4 +41,13 @@ internal enum class NavigableScreens(
         icon = Icons.Outlined.Info,
         route = "about_screen",
     ),
+    ;
+
+    companion object {
+        fun byRoute(route: String?): NavigableScreens? {
+            return NavigableScreens.entries.find { ns ->
+                ns.route == route
+            }
+        }
+    }
 }
