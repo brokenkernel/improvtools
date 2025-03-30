@@ -9,7 +9,6 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
@@ -41,10 +40,9 @@ fun OuterContentForMasterScreen() {
     val drawerNavController = rememberNavController()
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
 
-    // the next two are weird and should be resolvable by tracking 'current screen metadta' instead of individual state,
+    // the next is should be resolvable by tracking 'current screen metadta' instead of individual state,
     // also annoying since the default is multiple-times replicated, but good enough for now.
-    var currentScreenTitleResource by rememberSaveable { mutableIntStateOf(NavigableScreens.SuggestionGenerator.titleResource) }
-    var currentRoute by rememberSaveable { mutableStateOf(NavigableScreens.SuggestionGenerator.route) }
+    var currentNavigableScreen by rememberSaveable { mutableStateOf(NavigableScreens.SuggestionGenerator) }
 
     // TODO: use hilt DI
     ImprovToolsTheme {
@@ -53,12 +51,10 @@ fun OuterContentForMasterScreen() {
                 drawerState = drawerState,
                 drawerNavController = drawerNavController,
                 onClickity = { clickedItem: NavigableScreens ->
+                    currentNavigableScreen = clickedItem
                     drawerNavController.navigate(clickedItem.route)
-                    currentScreenTitleResource = clickedItem.titleResource
-                    currentRoute = clickedItem.route
                 },
-                currentScreenTitleResource = currentScreenTitleResource,
-                currentRoute = currentRoute,
+                currentNavigableScreen = currentNavigableScreen
             )
         }
     }

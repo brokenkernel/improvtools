@@ -1,6 +1,5 @@
 package com.brokenkernel.improvtools.application.presentation.view
 
-import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -35,8 +34,7 @@ internal fun ImprovToolsNavigationDrawer(
     drawerState: DrawerState,
     onClickity: (na: NavigableScreens) -> Unit,
     drawerNavController: NavHostController,
-    @StringRes currentScreenTitleResource: Int,
-    currentRoute: String,
+    currentNavigableScreen: NavigableScreens,
 ) {
 
     val scope: CoroutineScope = rememberCoroutineScope()
@@ -82,8 +80,9 @@ internal fun ImprovToolsNavigationDrawer(
                                     drawerState.close() // TODO: close on launch
                                 }
                             },
-                            selected = (item.route == currentRoute),
+                            selected = (item.route == currentNavigableScreen.route),
                         )
+
                     }
                     HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
 
@@ -124,7 +123,7 @@ internal fun ImprovToolsNavigationDrawer(
         },
         content = {
             ImprovToolsScaffold(
-                screenTitle = stringResource(currentScreenTitleResource),
+                screenTitle = stringResource(currentNavigableScreen.titleResource),
                 content = {
                     DrawerNavGraph(drawerNavController = drawerNavController)
                 },
