@@ -41,8 +41,8 @@ fun SuggestionsScreen(
 
     Column(
         modifier = Modifier
-            .verticalScroll(rememberScrollState()) // TODO: normal column and not lazy?
-                ,
+            .verticalScroll(rememberScrollState())
+        ,
         verticalArrangement = Arrangement.spacedBy(4.dp), // TODO: move into dims resource
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {

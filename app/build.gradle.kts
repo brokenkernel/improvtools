@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+//    alias(libs.plugins.ksp)
+//    alias(libs.plugins.hilt.android)
 }
 
 android {
@@ -29,11 +31,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_11 // 17
+        targetCompatibility = JavaVersion.VERSION_11 // 17
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "11" // 17
     }
     buildFeatures {
         compose = true
@@ -54,6 +56,8 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewModel.compose)
     implementation(libs.androidx.navigation.navigationCompose)
     implementation(libs.androidx.compose.material.extended)
+    //implementation(libs.hilt.android)
+    //implementation(libs.hilt.compiler)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -62,4 +66,6 @@ dependencies {
     androidTestImplementation(libs.androidx.navigation.navigationTesting)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    //ksp(libs.hilt.android)
 }
