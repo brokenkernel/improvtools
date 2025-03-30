@@ -10,4 +10,7 @@
     <string name="navigation_help_and_feedback">Help and feedback</string>
     <string name="navigation_useful_tools_category">Useful Tools</string>
     <string name="settings_activity_title">Settings</string>
+    <string name="go_to_suggestion_generator">Go To Suggestion Generator</string>
+    <string name="go_to_settings_screen">Go to Settings screen</string>
+    <string name="go_to_help_and_feedback_screen">Go to Help And Feedback screen</string>
 </resources>

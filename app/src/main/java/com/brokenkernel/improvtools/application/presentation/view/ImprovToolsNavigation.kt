@@ -7,9 +7,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Info
-import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.DrawerState
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
@@ -28,6 +25,32 @@ import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
+
+@Composable
+private fun NavigableScreenNavigationDrawerItem(
+    screen: NavigableScreens,
+    onClickity: (NavigableScreens) -> Unit,
+    scope: CoroutineScope,
+    drawerState: DrawerState,
+    currentNavigableScreen: NavigableScreens
+    ){
+    NavigationDrawerItem(
+        label = { Text(stringResource(R.string.navigation_help_and_feedback)) },
+        icon = {
+            Icon(
+                NavigableScreens.HelpAndAbout.icon,
+                contentDescription = stringResource(R.string.navigation_help_and_feedback)
+            )
+        },
+        onClick = {
+            onClickity(screen)
+            scope.launch {
+                drawerState.close()
+            }
+        },
+        selected = (screen.route == currentNavigableScreen.route),
+        )
+}
 
 @Composable
 internal fun ImprovToolsNavigationDrawer(
@@ -59,31 +82,15 @@ internal fun ImprovToolsNavigationDrawer(
                         modifier = Modifier.padding(16.dp),
                         style = MaterialTheme.typography.titleMedium
                     )
+                    NavigableScreenNavigationDrawerItem(
+                        NavigableScreens.SuggestionGenerator,
+                        onClickity,
+                        scope,
+                        drawerState,
+                        currentNavigableScreen
+                    )
 
-                    NavigableScreens.entries.forEach { item ->
-                        NavigationDrawerItem(
-                            label = {
-                                Text(
-                                    text = stringResource(item.titleResource),
-                                    color = MaterialTheme.colorScheme.onBackground
-                                )
-                            },
-                            icon = {
-                                Image(
-                                    item.icon,
-                                    contentDescription = item.contentDescription
-                                )
-                            },
-                            onClick = {
-                                onClickity(item)
-                                scope.launch {
-                                    drawerState.close() // TODO: close on launch
-                                }
-                            },
-                            selected = (item.route == currentNavigableScreen.route),
-                        )
 
-                    }
                     HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
 
                     Text(
@@ -91,31 +98,19 @@ internal fun ImprovToolsNavigationDrawer(
                         modifier = Modifier.padding(16.dp),
                         style = MaterialTheme.typography.titleMedium
                     )
-                    NavigationDrawerItem(
-                        label = { Text(stringResource(R.string.navigation_settings)) },
-                        selected = false,
-                        icon = {
-                            Icon(
-                                Icons.Outlined.Settings,
-                                contentDescription = stringResource(R.string.navigation_settings)
-                            )
-                        },
-                        onClick = {
-                            onClickity(NavigableScreens.Settings)
-                        }
+                    NavigableScreenNavigationDrawerItem(
+                        NavigableScreens.Settings,
+                        onClickity,
+                        scope,
+                        drawerState,
+                        currentNavigableScreen
                     )
-                    NavigationDrawerItem(
-                        label = { Text(stringResource(R.string.navigation_help_and_feedback)) },
-                        selected = false,
-                        icon = {
-                            Icon(
-                                Icons.Outlined.Info,
-                                contentDescription = stringResource(R.string.navigation_help_and_feedback)
-                            )
-                        },
-                        onClick = {
-                            onClickity(NavigableScreens.About)
-                        },
+                    NavigableScreenNavigationDrawerItem(
+                        NavigableScreens.HelpAndAbout,
+                        onClickity,
+                        scope,
+                        drawerState,
+                        currentNavigableScreen
                     )
                     Spacer(Modifier.height(12.dp))
                 }

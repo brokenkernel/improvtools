@@ -7,6 +7,7 @@ import androidx.navigation.compose.composable
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import com.brokenkernel.improvtools.settings.presentation.view.SettingsScreen
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.view.SuggestionsScreen
+import com.brokenkernel.improvtools.timer.presentation.view.TimerScreen
 
 @Composable
 fun DrawerNavGraph(drawerNavController: NavHostController) {
@@ -14,15 +15,17 @@ fun DrawerNavGraph(drawerNavController: NavHostController) {
         navController = drawerNavController,
         startDestination = NavigableScreens.SuggestionGenerator.route
     ) {
-        composable(NavigableScreens.SuggestionGenerator.route) {
-            SuggestionsScreen()
-        }
-
-        composable(NavigableScreens.About.route) {
+        composable(NavigableScreens.HelpAndAbout.route) {
             AboutScreen()
         }
         composable(NavigableScreens.Settings.route) {
             SettingsScreen()
+        }
+        composable(NavigableScreens.SuggestionGenerator.route) {
+            SuggestionsScreen()
+        }
+        composable(NavigableScreens.Timer.route) {
+            TimerScreen()
         }
     }
 }
