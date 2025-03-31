@@ -117,6 +117,11 @@ internal fun ImprovToolsNavigationDrawer(
         }
     }
 
+    fun doNavigateToNavigableScreenWithNavClosure(na: NavigableScreens): Unit {
+        doNavigateToNavigableScreen(na)
+        closeNavMenu()
+    }
+
     ModalNavigationDrawer(
         drawerState = drawerState,
         drawerContent = {
@@ -139,15 +144,12 @@ internal fun ImprovToolsNavigationDrawer(
                     )
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.SuggestionGenerator,
-                        { it ->
-                            doNavigateToNavigableScreen(it)
-                            closeNavMenu()
-                        },
+                        { it ->  doNavigateToNavigableScreenWithNavClosure(it) },
                         currentNavigableScreen,
                     )
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.Timer,
-                        doNavigateToNavigableScreen,
+                        { it ->  doNavigateToNavigableScreenWithNavClosure(it) },
                         currentNavigableScreen,
                     )
 
@@ -161,12 +163,12 @@ internal fun ImprovToolsNavigationDrawer(
                     )
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.Settings,
-                        doNavigateToNavigableScreen,
+                        { it ->  doNavigateToNavigableScreenWithNavClosure(it) },
                         currentNavigableScreen,
                     )
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.HelpAndAbout,
-                        doNavigateToNavigableScreen,
+                        { it ->  doNavigateToNavigableScreenWithNavClosure(it) },
                         currentNavigableScreen,
                     )
                     Spacer(Modifier.height(12.dp))
@@ -180,7 +182,7 @@ internal fun ImprovToolsNavigationDrawer(
                     DrawerNavGraph(drawerNavController = drawerNavController)
                 },
                 currentNavigableScreen = currentNavigableScreen,
-                doNavigateToNavigableScreen = doNavigateToNavigableScreen,
+                doNavigateToNavigableScreen = { it ->  doNavigateToNavigableScreenWithNavClosure(it) },
                 navMenuButtonPressedCallback = {
                     invertNavMenuState()
                 },
