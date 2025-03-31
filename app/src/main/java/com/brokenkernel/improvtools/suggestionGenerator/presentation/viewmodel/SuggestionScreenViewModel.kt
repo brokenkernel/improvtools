@@ -25,6 +25,7 @@ internal class SuggestionScreenViewModel(private val suggestionDatumRepository: 
     internal val uiState: StateFlow<SuggestionScreenUIState> = _uiState.asStateFlow()
 
     private val _isLoading = MutableStateFlow(false)
+    // TODO: move this to a LoadableScreen Compsable
     val isLoading: StateFlow<Boolean> = _isLoading
         .onStart {
             loadAudienceSuggestionDatum()
