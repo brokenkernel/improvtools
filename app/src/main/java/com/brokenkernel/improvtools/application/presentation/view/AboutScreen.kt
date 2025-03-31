@@ -61,12 +61,14 @@ fun AboutScreen() {
             FilledTonalButton(onClick = {
                     // TODO copy all about info into paste
                 },
+                enabled = false, // TODO not yet functional
             ) {
                 Text(stringResource(R.string.about_copy_all))
             }
             ElevatedButton(onClick = {
                     // TODO copy all about info into an email
                 },
+                enabled = false, // TODO not yet functional
             ) {
                 Text(stringResource(R.string.about_send_email))
             }
