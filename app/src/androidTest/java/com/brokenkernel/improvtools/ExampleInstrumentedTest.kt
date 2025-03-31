@@ -2,6 +2,7 @@ package com.brokenkernel.improvtools
 
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.junit4.ComposeContentTestRule
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.onRoot
@@ -36,7 +37,7 @@ class ExampleInstrumentedTest {
 @RunWith(AndroidJUnit4::class)
 public class NavigationTest {
     @get:Rule
-    val composeTestRule = createComposeRule()
+    val composeTestRule: ComposeContentTestRule = createComposeRule()
     lateinit var navController: TestNavHostController
     @Before
     fun setupAppNavHost() {
