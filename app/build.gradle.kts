@@ -57,6 +57,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewModel.compose)
     implementation(libs.androidx.navigation.navigationCompose)
     implementation(libs.androidx.compose.material.extended)
+    implementation(libs.androidx.datastore.datastorePreferences)
     //implementation(libs.hilt.android)
     //implementation(libs.hilt.compiler)
     testImplementation(libs.junit)
