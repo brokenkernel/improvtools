@@ -30,9 +30,7 @@ import kotlinx.coroutines.launch
 @Composable
 private fun NavigableScreenNavigationDrawerItem(
     screen: NavigableScreens,
-    onClickity: (NavigableScreens) -> Unit,
-    scope: CoroutineScope,
-    drawerState: DrawerState,
+    onNavMenuClickCallback: (NavigableScreens) -> Unit,
     currentNavigableScreen: NavigableScreens,
 ) {
     NavigationDrawerItem(
@@ -44,10 +42,7 @@ private fun NavigableScreenNavigationDrawerItem(
             )
         },
         onClick = {
-            onClickity(screen)
-            scope.launch {
-                drawerState.close()
-            }
+            onNavMenuClickCallback(screen)
         },
         selected = (screen.route == currentNavigableScreen.route),
     )
@@ -57,7 +52,7 @@ private fun NavigableScreenNavigationDrawerItem(
 internal fun ImprovToolsBottomBar(
     currentNavigableScreen: NavigableScreens, // TODO: figure out better way to handle this
     doNavigateToNavigableScreen: (NavigableScreens) -> Unit,
-    ) {
+) {
     NavigationBar {
         NavigationBarItem(
             selected = (currentNavigableScreen.route == NavigableScreens.SuggestionGenerator.route),
@@ -105,6 +100,23 @@ internal fun ImprovToolsNavigationDrawer(
 
     val scope: CoroutineScope = rememberCoroutineScope()
 
+    fun closeNavMenu() {
+        scope.launch {
+            drawerState.apply {
+                close()
+            }
+        }
+    }
+
+
+    fun invertNavMenuState(): Unit {
+        scope.launch {
+            drawerState.apply {
+                if (isClosed) open() else close()
+            }
+        }
+    }
+
     ModalNavigationDrawer(
         drawerState = drawerState,
         drawerContent = {
@@ -127,17 +139,16 @@ internal fun ImprovToolsNavigationDrawer(
                     )
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.SuggestionGenerator,
-                        doNavigateToNavigableScreen,
-                        scope,
-                        drawerState,
-                        currentNavigableScreen
+                        { it ->
+                            doNavigateToNavigableScreen(it)
+                            closeNavMenu()
+                        },
+                        currentNavigableScreen,
                     )
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.Timer,
                         doNavigateToNavigableScreen,
-                        scope,
-                        drawerState,
-                        currentNavigableScreen
+                        currentNavigableScreen,
                     )
 
 
@@ -151,16 +162,12 @@ internal fun ImprovToolsNavigationDrawer(
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.Settings,
                         doNavigateToNavigableScreen,
-                        scope,
-                        drawerState,
-                        currentNavigableScreen
+                        currentNavigableScreen,
                     )
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.HelpAndAbout,
                         doNavigateToNavigableScreen,
-                        scope,
-                        drawerState,
-                        currentNavigableScreen
+                        currentNavigableScreen,
                     )
                     Spacer(Modifier.height(12.dp))
                 }
@@ -172,11 +179,13 @@ internal fun ImprovToolsNavigationDrawer(
                     // TODO: replace with event system instead of passing controller??
                     DrawerNavGraph(drawerNavController = drawerNavController)
                 },
-                menuScope = scope,
-                drawerState = drawerState,
                 currentNavigableScreen = currentNavigableScreen,
                 doNavigateToNavigableScreen = doNavigateToNavigableScreen,
-            )
+                navMenuButtonPressedCallback = {
+                    invertNavMenuState()
+                },
+
+                )
         }
     )
 }
