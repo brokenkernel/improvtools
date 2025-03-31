@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
@@ -30,9 +31,27 @@ import com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel.S
 @Preview
 @Composable
 fun SuggestionsScreen(
-    viewModel: SuggestionScreenViewModel = viewModel(),
+    viewModel: SuggestionScreenViewModel = viewModel(factory = SuggestionScreenViewModel.Factory),
 ) {
+    // todo: maybe don't pass view model and make different ones for meta and pending?
+    val isLoading by viewModel.isLoading.collectAsState()
+    if (isLoading) {
+        SuggestionsScreenPendingLoad(viewModel)
+    } else {
+        SuggestionsScreenFullyLoaded(viewModel)
+    }
+}
 
+@Composable
+fun SuggestionsScreenPendingLoad(
+    viewModel: SuggestionScreenViewModel,
+) {
+    CircularProgressIndicator()
+}
+
+
+@Composable
+fun SuggestionsScreenFullyLoaded(viewModel: SuggestionScreenViewModel) {
     val gameUiState by viewModel.uiState.collectAsState()
 
     val categoryWeight = .3f

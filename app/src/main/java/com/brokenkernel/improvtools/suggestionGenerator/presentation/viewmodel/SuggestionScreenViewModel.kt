@@ -2,9 +2,15 @@ package com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel
 
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
 import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.viewmodel.initializer
+import androidx.lifecycle.viewmodel.viewModelFactory
+import com.brokenkernel.improvtools.ImprovToolsApplication
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.suggestionGenerator.data.model.SuggestionCategory
+import com.brokenkernel.improvtools.suggestionGenerator.data.repository.AudienceSuggestionDatumRepository
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.uistate.SuggestionScreenUIState
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -16,7 +22,7 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import java.util.EnumMap
 
-class SuggestionScreenViewModel : ViewModel() {
+class SuggestionScreenViewModel(private val suggestionDatumRepository: AudienceSuggestionDatumRepository) : ViewModel() {
     private val _uiState = MutableStateFlow(SuggestionScreenUIState())
     internal val uiState: StateFlow<SuggestionScreenUIState> = _uiState.asStateFlow()
 
@@ -35,6 +41,12 @@ class SuggestionScreenViewModel : ViewModel() {
     fun loadAudienceSuggestionDatum(): Unit {
         viewModelScope.launch {
             _isLoading.value = true
+//            xmlResource
+//            val context = LocalContext.current
+//            val resources = context.resources
+//            val audienceDatumAsXML = resources.getXml(R.xml.audience_suggestion_datum)
+
+
             delay(2000) // TODO temporary example for myself
             _isLoading.value = false
         }
@@ -82,10 +94,14 @@ class SuggestionScreenViewModel : ViewModel() {
         return (suggestionCategory.ideas - currentWord).random()
     }
 
-    init {
-        val context = LocalContext.current
-        val resources = context.resources
-        val audienceDatumAsXML = resources.getXml(R.xml.audience_suggestion_datum)
+    companion object {
+        val Factory: ViewModelProvider.Factory = viewModelFactory {
+            initializer {
+                val application = (this[APPLICATION_KEY] as ImprovToolsApplication)
+                val suggestionsDatumRepository = application.container.audienceSugestionDatumRespository
+                SuggestionScreenViewModel(suggestionsDatumRepository)
+            }
+        }
     }
 
 }

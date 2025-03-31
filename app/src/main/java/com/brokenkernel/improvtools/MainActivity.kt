@@ -12,7 +12,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
@@ -60,12 +59,6 @@ fun OuterContentForMasterScreen() {
             currentNavigableScreen = whichScreen
         }
     }
-
-
-
-    val context = LocalContext.current
-    val resources = context.resources
-    val audienceDatumAsXML = resources.getXml(R.xml.audience_suggestion_datum)
 
 //    val xyz = resources.openRawResource(R.xml.audience_suggestion_datum)
 //    R.raw.audience_suggestion_datum;
