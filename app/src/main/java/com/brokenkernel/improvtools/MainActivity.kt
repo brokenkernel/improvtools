@@ -46,7 +46,6 @@ fun OuterContentForMasterScreen() {
     // the next is should be resolvable by tracking 'current screen metadta' instead of individual state,
     // also annoying since the default is multiple-times replicated, but good enough for now.
 
-    // TODO: I probably don't want the full screen here, but actually title and such??
     var currentNavigableScreen by rememberSaveable { mutableStateOf(NavigableScreens.SuggestionGenerator) }
 
     drawerNavController.addOnDestinationChangedListener {

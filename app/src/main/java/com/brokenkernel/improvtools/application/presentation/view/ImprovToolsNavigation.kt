@@ -50,7 +50,7 @@ private fun NavigableScreenNavigationDrawerItem(
 
 @Composable
 internal fun ImprovToolsBottomBar(
-    currentNavigableScreen: NavigableScreens, // TODO: figure out better way to handle this
+    currentNavigableScreen: NavigableScreens,
     doNavigateToNavigableScreen: (NavigableScreens) -> Unit,
 ) {
     NavigationBar {
@@ -66,7 +66,6 @@ internal fun ImprovToolsBottomBar(
                 )
             },
             onClick = {
-                // TODO: change title: ideally based on event
                 doNavigateToNavigableScreen(NavigableScreens.SuggestionGenerator)
             }
         )
@@ -83,7 +82,6 @@ internal fun ImprovToolsBottomBar(
 
             },
             onClick = {
-                // TODO: change title: ideally based on event
                 doNavigateToNavigableScreen(NavigableScreens.Timer)
             }
         )

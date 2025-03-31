@@ -25,7 +25,7 @@ import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 internal fun ImprovToolsScaffold(
     content: @Composable () -> Unit,
     currentNavigableScreen: NavigableScreens,
-    doNavigateToNavigableScreen: (NavigableScreens) -> Unit, // TODO: figure out better way to handle this,
+    doNavigateToNavigableScreen: (NavigableScreens) -> Unit,
     navMenuButtonPressedCallback: () -> Unit,
 ) {
     Scaffold(
