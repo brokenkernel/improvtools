@@ -7,6 +7,7 @@ internal enum class SuggestionCategory(
 ) {
     NOUN("Noun", listOf("Chair", "Fork")),
     VERB("Verb", listOf("Deduct", "Think")),
+    ADJECTIVE("Adjective", listOf("Beautiful", "Smooth", "Heavy")),
     WORD("Word", listOf("Blueberry", "Life")),
     EMOTION("Emotion", listOf("Happy", "Sad")),
     LOCATION("Location", listOf("Mortuary", "Kitchen")),
