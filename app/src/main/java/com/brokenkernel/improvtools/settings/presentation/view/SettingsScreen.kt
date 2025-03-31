@@ -6,16 +6,19 @@ import androidx.compose.material3.Checkbox
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.res.stringResource
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.brokenkernel.improvtools.R
+import com.brokenkernel.improvtools.settings.presentation.viewmodel.SettingsScreenViewModel
 
 @Composable
-fun SettingsScreen() {
-    var shouldAllowSuggestionReuse: Boolean by remember { mutableStateOf(false) }
+internal fun SettingsScreen(
+    viewModel: SettingsScreenViewModel = viewModel(factory = SettingsScreenViewModel.Factory),
+) {
+
+    val uiState by viewModel.uiState.collectAsState()
 
     // TODO: figure out how to make this persistent
     // TODO: figure out how to make this available to the other features
@@ -28,13 +31,11 @@ fun SettingsScreen() {
         Row() {
             Text("Allow Reuse")
             Checkbox(
-                checked = shouldAllowSuggestionReuse,
+                checked = uiState.shouldReuseSuggestions,
                 onCheckedChange = {
-                    shouldAllowSuggestionReuse = it
+                    viewModel.onClickUpdateShouldReuseSuggestions(it)
                 },
-                enabled = false, // since this is useless for now, disable
             )
         }
     }
-
 }

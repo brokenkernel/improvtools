@@ -17,7 +17,7 @@ private data class AudienceSuggestionDatum(
 )
 
 internal class ResourcesAudienceSuggestionDatumRepository(
-    resources: Resources
+    resources: Resources,
 ): AudienceSuggestionDatumRepository {
     private val audienceDatumParsed: AudienceSuggestionDatum?
 

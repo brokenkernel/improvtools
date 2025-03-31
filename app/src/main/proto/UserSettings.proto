@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option java_package = "com.brokenkernel.improvtools.datastore";
+option java_multiple_files = true;
+
+message UserPreferences {
+  bool allow_suggestion_reuse = 1;
+
+}

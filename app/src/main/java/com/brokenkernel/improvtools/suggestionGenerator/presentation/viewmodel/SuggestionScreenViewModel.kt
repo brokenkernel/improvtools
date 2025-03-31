@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.brokenkernel.improvtools.ImprovToolsApplication
+import com.brokenkernel.improvtools.settings.data.repository.SettingsRepository
 import com.brokenkernel.improvtools.suggestionGenerator.data.model.SuggestionCategory
 import com.brokenkernel.improvtools.suggestionGenerator.data.repository.AudienceSuggestionDatumRepository
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.uistate.SuggestionScreenUIState
@@ -19,12 +20,16 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import java.util.EnumMap
 
-internal class SuggestionScreenViewModel(private val suggestionDatumRepository: AudienceSuggestionDatumRepository) :
+internal class SuggestionScreenViewModel(
+    private val suggestionDatumRepository: AudienceSuggestionDatumRepository,
+    private val settingsRepository: SettingsRepository,
+) :
     ViewModel() {
     private val _uiState = MutableStateFlow(SuggestionScreenUIState())
     internal val uiState: StateFlow<SuggestionScreenUIState> = _uiState.asStateFlow()
 
     private val _isLoading = MutableStateFlow(false)
+
     // TODO: move this to a LoadableScreen Compsable
     val isLoading: StateFlow<Boolean> = _isLoading
         .onStart {
@@ -90,7 +95,8 @@ internal class SuggestionScreenViewModel(private val suggestionDatumRepository: 
         suggestionCategory: SuggestionCategory,
         currentWord: String,
     ): String {
-        val suggestionIdeasForCategory: Set<String> = suggestionDatumRepository.getAudienceDatumForCategory(suggestionCategory)
+        val suggestionIdeasForCategory: Set<String> =
+            suggestionDatumRepository.getAudienceDatumForCategory(suggestionCategory)
         return (suggestionIdeasForCategory - currentWord).random()
     }
 
@@ -100,7 +106,10 @@ internal class SuggestionScreenViewModel(private val suggestionDatumRepository: 
                 val application = (this[APPLICATION_KEY] as ImprovToolsApplication)
                 val suggestionsDatumRepository =
                     application.container.audienceSugestionDatumRespository
-                SuggestionScreenViewModel(suggestionsDatumRepository)
+                val settingsRepository =
+                    application.container.settingsRepository
+
+                SuggestionScreenViewModel(suggestionsDatumRepository, settingsRepository)
             }
         }
     }
