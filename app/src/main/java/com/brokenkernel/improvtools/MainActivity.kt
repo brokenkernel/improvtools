@@ -12,6 +12,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
@@ -19,6 +20,7 @@ import androidx.navigation.compose.rememberNavController
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import com.brokenkernel.improvtools.application.presentation.view.ImprovToolsNavigationDrawer
 import com.brokenkernel.improvtools.ui.theme.ImprovToolsTheme
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,14 +50,31 @@ fun OuterContentForMasterScreen() {
     // TODO: I probably don't want the full screen here, but actually title and such??
     var currentNavigableScreen by rememberSaveable { mutableStateOf(NavigableScreens.SuggestionGenerator) }
 
-    drawerNavController.addOnDestinationChangedListener { controller: NavController,
-                                                          destination: NavDestination,
-                                                          args: Bundle? ->
+    drawerNavController.addOnDestinationChangedListener {
+            controller: NavController,
+            destination: NavDestination,
+            args: Bundle?,
+        ->
         val whichScreen = NavigableScreens.byRoute(destination.route)
         if (whichScreen != null) {
             currentNavigableScreen = whichScreen
         }
     }
+
+
+
+    val context = LocalContext.current
+    val resources = context.resources
+    val audienceDatumAsXML = resources.getXml(R.xml.audience_suggestion_datum)
+
+//    val xyz = resources.openRawResource(R.xml.audience_suggestion_datum)
+//    R.raw.audience_suggestion_datum;
+
+//    Resources.getXML()
+//    xmlResource()
+//    val res: Resources = this.getResources()
+//    val xrp = res.getXml(R.xml.your_resId)
+
 
     // TODO: use hilt DI
     ImprovToolsTheme {
