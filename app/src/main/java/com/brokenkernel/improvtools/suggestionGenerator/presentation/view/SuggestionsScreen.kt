@@ -30,28 +30,27 @@ import com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel.S
 
 @Preview
 @Composable
-fun SuggestionsScreen(
+internal fun SuggestionsScreen(
     viewModel: SuggestionScreenViewModel = viewModel(factory = SuggestionScreenViewModel.Factory),
 ) {
     // todo: maybe don't pass view model and make different ones for meta and pending?
     val isLoading by viewModel.isLoading.collectAsState()
     if (isLoading) {
-        SuggestionsScreenPendingLoad(viewModel)
+        SuggestionsScreenPendingLoad()
     } else {
         SuggestionsScreenFullyLoaded(viewModel)
     }
 }
 
 @Composable
-fun SuggestionsScreenPendingLoad(
-    viewModel: SuggestionScreenViewModel,
+internal fun SuggestionsScreenPendingLoad(
 ) {
     CircularProgressIndicator()
 }
 
 
 @Composable
-fun SuggestionsScreenFullyLoaded(viewModel: SuggestionScreenViewModel) {
+internal fun SuggestionsScreenFullyLoaded(viewModel: SuggestionScreenViewModel) {
     val gameUiState by viewModel.uiState.collectAsState()
 
     val categoryWeight = .3f

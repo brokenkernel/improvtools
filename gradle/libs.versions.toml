@@ -6,6 +6,7 @@ composeBom = "2025.03.01"
 coreKtx = "1.15.0"
 datastorePreferences = "1.1.4"
 espressoCore = "3.6.1"
+jacksonModuleKotlin = "2.18.2"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 lifecycleRuntimeKtx = "2.8.7"
@@ -14,6 +15,7 @@ materialIconsExtended = "1.7.8"
 navigationCompose = "2.8.9"
 navigationTesting = "2.8.9"
 viewModelCompose = "2.8.7"
+
 
 
 [libraries]
@@ -37,7 +39,7 @@ androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-man
 androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
-
+com-fasterxml-jackson-module-jacksonModuleKotlin = { group = "com.fasterxml.jackson.module", name="jackson-module-kotlin", version.ref="jacksonModuleKotlin" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

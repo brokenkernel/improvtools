@@ -6,6 +6,7 @@
 1. Stop passing view models around
 1. Several text strings are hard-coded (thankfully only placeholders, so its a decent sign that just implementing features will fix)
 1. Proguard (particularly becuase of extended icons_
+1. Provide settings per section
 
 ## Incomplete Featuress
 
@@ -28,6 +29,7 @@
 ### Settings
 
 1. Persistence
+1. Add menu for specific settings on each screen (checkbox, dropdown)
 
 ### Technical
 

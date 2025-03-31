@@ -1,0 +1,59 @@
+{
+  "categories" : {
+    "NOUN": [
+      "Chair",
+      "Fork"
+    ],
+    "VERB": [
+      "Deduct",
+      "Think"
+    ],
+    "ADJECTIVE": [
+      "Beautiful",
+      "Smooth",
+      "Heavy"
+    ],
+    "WORD": [
+      "Blueberry",
+      "Life"
+    ],
+    "EMOTION": [
+      "Happy",
+      "Sad"
+    ],
+    "LOCATION": [
+      "Mortuary",
+      "Kitchen",
+      "Flea Market"
+    ],
+    "JOB": [
+      "Doctor",
+      "Lawyer"
+    ],
+    "RELATION": [
+      "husband/wife",
+      "doctor/patient"
+    ],
+    "SITUATION": [
+      "Playing a practical joke", "Having a Babys"
+    ],
+    "GENRE": [
+    "Horror",
+      "Action",
+      "Romance Novel"
+    ],
+    "DIRECTOR": [
+      "David Lynch", "Stanley Kubrick"
+    ],
+    "PLAYWRITE": [
+      "Shakespere",
+      "Nowel Coward",
+      "Diana Son"
+    ],
+    "HARDCONVO": [
+      "Firing Someone",
+      "Having Cancer"
+    ]
+  }
+}
+

@@ -1,6 +1,5 @@
 package com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel
 
-import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
@@ -8,11 +7,9 @@ import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.brokenkernel.improvtools.ImprovToolsApplication
-import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.suggestionGenerator.data.model.SuggestionCategory
 import com.brokenkernel.improvtools.suggestionGenerator.data.repository.AudienceSuggestionDatumRepository
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.uistate.SuggestionScreenUIState
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -22,14 +19,15 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import java.util.EnumMap
 
-class SuggestionScreenViewModel(private val suggestionDatumRepository: AudienceSuggestionDatumRepository) : ViewModel() {
+internal class SuggestionScreenViewModel(private val suggestionDatumRepository: AudienceSuggestionDatumRepository) :
+    ViewModel() {
     private val _uiState = MutableStateFlow(SuggestionScreenUIState())
     internal val uiState: StateFlow<SuggestionScreenUIState> = _uiState.asStateFlow()
 
     private val _isLoading = MutableStateFlow(false)
     val isLoading: StateFlow<Boolean> = _isLoading
         .onStart {
-             loadAudienceSuggestionDatum()
+            loadAudienceSuggestionDatum()
             emit(_isLoading.value)
         }
         .stateIn(
@@ -91,14 +89,16 @@ class SuggestionScreenViewModel(private val suggestionDatumRepository: AudienceS
         suggestionCategory: SuggestionCategory,
         currentWord: String,
     ): String {
-        return (suggestionCategory.ideas - currentWord).random()
+        val suggestionIdeasForCategory: Set<String> = suggestionDatumRepository.getAudienceDatumForCategory(suggestionCategory)
+        return (suggestionIdeasForCategory - currentWord).random()
     }
 
     companion object {
         val Factory: ViewModelProvider.Factory = viewModelFactory {
             initializer {
                 val application = (this[APPLICATION_KEY] as ImprovToolsApplication)
-                val suggestionsDatumRepository = application.container.audienceSugestionDatumRespository
+                val suggestionsDatumRepository =
+                    application.container.audienceSugestionDatumRespository
                 SuggestionScreenViewModel(suggestionsDatumRepository)
             }
         }
