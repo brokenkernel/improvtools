@@ -1,5 +1,6 @@
 package com.brokenkernel.improvtools
 
+import android.content.res.Resources
 import com.brokenkernel.improvtools.suggestionGenerator.data.repository.AudienceSuggestionDatumRepository
 import com.brokenkernel.improvtools.suggestionGenerator.data.repository.ResourcesAudienceSuggestionDatumRepository
 
@@ -7,8 +8,9 @@ interface AppContainer {
     val audienceSugestionDatumRespository: AudienceSuggestionDatumRepository
 }
 
-class DefaultAppContainer: AppContainer {
+class DefaultAppContainer(resources: Resources) : AppContainer {
+
     override val audienceSugestionDatumRespository: AudienceSuggestionDatumRepository by lazy {
-        ResourcesAudienceSuggestionDatumRepository()
+        ResourcesAudienceSuggestionDatumRepository(resources)
     }
 }
