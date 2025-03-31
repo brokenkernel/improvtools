@@ -47,7 +47,7 @@ class SuggestionScreenViewModel(private val suggestionDatumRepository: AudienceS
 //            val audienceDatumAsXML = resources.getXml(R.xml.audience_suggestion_datum)
 
 
-            delay(2000) // TODO temporary example for myself
+//            delay(2000) // TODO temporary example for myself
             _isLoading.value = false
         }
     }
