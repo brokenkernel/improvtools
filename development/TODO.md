@@ -6,6 +6,7 @@
 1. Several text strings are hard-coded (thankfully only placeholders, so its a decent sign that just implementing features will fix)
 1. Proguard (particularly becuase of extended icons_
 1. Provide settings per section
+1. Type Safe Routes (https://developer.android.com/guide/navigation/design/type-safety)
 
 ## Incomplete Featuress
 
@@ -21,9 +22,13 @@
 
 ### Suggestions
 
-1. Copy/Paste of debug information on about screen
 1. Custom source files (or even network?)
 1. Localised suggestions (different languages)
+
+### About Screen
+
+1. Copy/Paste of debug information on about screen
+1. Make about screen selectable
 
 ### Settings
 

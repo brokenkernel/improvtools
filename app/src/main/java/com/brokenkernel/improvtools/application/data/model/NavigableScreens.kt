@@ -9,6 +9,7 @@ import androidx.compose.material.icons.outlined.Timer
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.brokenkernel.improvtools.R
 
+
 internal enum class NavigableScreens(
     @StringRes internal val titleResource: Int,
     @StringRes internal val contentDescription: Int,
