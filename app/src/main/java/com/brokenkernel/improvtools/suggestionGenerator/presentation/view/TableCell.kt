@@ -1,4 +1,4 @@
-package com.brokenkernel.improvtools.suggestionGenerator.presentation.lib
+package com.brokenkernel.improvtools.suggestionGenerator.presentation.view
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.RowScope
@@ -14,7 +14,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun RowScope.TableCell(
+internal fun RowScope.TableCell(
     text: String,
     weight: Float,
     style: TextStyle,

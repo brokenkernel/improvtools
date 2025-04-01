@@ -22,8 +22,6 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.suggestionGenerator.data.model.SuggestionCategory
-import com.brokenkernel.improvtools.suggestionGenerator.presentation.lib.ClickableTableCell
-import com.brokenkernel.improvtools.suggestionGenerator.presentation.lib.TableCell
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel.SuggestionScreenViewModel
 
 
