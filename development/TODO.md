@@ -59,6 +59,7 @@
 1. SPDX headers and such
 1. README in generalt
 1. README badges :)
+1. Move Privacy policy to hugo site (and update play store)
 
 ## Generation of TODO Items
 
