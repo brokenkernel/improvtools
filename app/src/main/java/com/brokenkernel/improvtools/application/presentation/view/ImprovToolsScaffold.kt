@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -47,7 +48,18 @@ internal fun ImprovToolsScaffold(
                             contentDescription = stringResource(R.string.navigation_app_menu)
                         )
                     }
-                }
+                },
+                actions = {
+                    IconButton(
+                        onClick = {},
+                        enabled = false,
+                    ) {
+                        Icon(
+                            imageVector = Icons.Filled.MoreVert,
+                            contentDescription = stringResource(R.string.navigation_open_screen_specific_menu)
+                        )
+                    }
+                },
             )
         },
         bottomBar = {
