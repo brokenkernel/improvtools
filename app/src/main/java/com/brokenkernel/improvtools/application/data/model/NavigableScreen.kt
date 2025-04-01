@@ -18,6 +18,7 @@ internal sealed class NavigableScreens(
     @StringRes internal val contentDescription: Int,
     internal val icon: ImageVector,
     internal val route: String,
+    internal val shouldShowExtraMenu: Boolean,
 ) {
     @Immutable
     internal object SuggestionGenerator : NavigableScreens(
@@ -25,6 +26,7 @@ internal sealed class NavigableScreens(
         contentDescription = R.string.go_to_suggestion_generator,
         icon = Icons.Outlined.Lightbulb,
         route = "suggestion_generator_screen",
+        shouldShowExtraMenu = true,
     )
 
     @Immutable
@@ -33,6 +35,7 @@ internal sealed class NavigableScreens(
         contentDescription = R.string.go_to_settings_screen,
         icon = Icons.Outlined.Settings,
         route = "settings_screen",
+        shouldShowExtraMenu = false,
     )
 
     @Immutable
@@ -41,6 +44,7 @@ internal sealed class NavigableScreens(
         contentDescription = R.string.go_to_timer_screen,
         icon = Icons.Outlined.Timer,
         route = "timer_screen",
+        shouldShowExtraMenu = false,
     )
 
     @Immutable
@@ -49,6 +53,7 @@ internal sealed class NavigableScreens(
         contentDescription = R.string.go_to_help_and_feedback_screen,
         icon = Icons.Outlined.Info,
         route = "about_screen",
+        shouldShowExtraMenu = false,
     )
 
     companion object {

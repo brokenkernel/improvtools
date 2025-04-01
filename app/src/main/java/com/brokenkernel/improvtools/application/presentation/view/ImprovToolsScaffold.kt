@@ -52,7 +52,8 @@ internal fun ImprovToolsScaffold(
                 actions = {
                     IconButton(
                         onClick = {},
-                        enabled = false,
+                        // possibly use this for visible/invisible rather than enabled/disabled
+                        enabled = currentNavigableScreen.shouldShowExtraMenu,
                     ) {
                         Icon(
                             imageVector = Icons.Filled.MoreVert,
