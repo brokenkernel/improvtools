@@ -7,6 +7,7 @@
 1. Provide settings per section
 1. Type Safe Routes (https://developer.android.com/guide/navigation/design/type-safety)
 1. create dialog/standard "error" route
+1. Make navigation routes encapsulated: https://developer.android.com/guide/navigation/design/encapsulate
 
 ## Incomplete Featuress
 
