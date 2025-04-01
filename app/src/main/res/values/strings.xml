@@ -25,4 +25,6 @@
     <string name="about_copy_all">copy all</string>
     <string name="about_send_email">send email</string>
     <string name="settings_allow_reuse">Allow Reuse</string>
+    <string name="about_improvtools_feature_request" translatable="false">ImprovTools Feature Request</string>
+    <string name="about_contact_email_address" translatable="false">me@me.example</string>
 </resources>

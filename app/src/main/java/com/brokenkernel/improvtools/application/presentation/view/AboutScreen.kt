@@ -1,7 +1,13 @@
 package com.brokenkernel.improvtools.application.presentation.view
 
+import android.content.Intent
 import android.content.pm.PackageInfo
+import android.content.pm.PackageManager
 import android.os.Build
+import android.text.Html
+import android.widget.Toast
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -16,14 +22,17 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.platform.ClipboardManager
 import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
+import androidx.core.app.ActivityOptionsCompat
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.presentation.viewmodel.AboutScreenViewModel
+import androidx.core.net.toUri
 
 @Composable
 internal fun AboutScreen(viewModel: AboutScreenViewModel = viewModel(factory = AboutScreenViewModel.Factory)) {
@@ -137,6 +146,12 @@ internal fun AboutScreen(viewModel: AboutScreenViewModel = viewModel(factory = A
         ) {
             val sectionStyle = MaterialTheme.typography.titleLarge.toSpanStyle()
             val dataNameStyle = MaterialTheme.typography.displayMedium.toSpanStyle()
+            val launcher = rememberLauncherForActivityResult(
+                contract = ActivityResultContracts.StartActivityForResult(),
+                onResult = {},
+            )
+            val myContextForToast = LocalContext.current
+            val packageManager: PackageManager = LocalContext.current.packageManager
             FilledTonalButton(onClick = {
                 copyAboutText(
                     sectionHeaderStyle = sectionStyle,
@@ -148,14 +163,22 @@ internal fun AboutScreen(viewModel: AboutScreenViewModel = viewModel(factory = A
             }
             ElevatedButton(
                 onClick = {
-                    // TODO: implement this
+                    // TODO: Figure out why this is always null. Mostly seems correct though.
                     val textToBeEmailed = generateDebugInformationText(
                         sectionHeaderStyle = sectionStyle,
                         dataNameStyle = dataNameStyle,
                     )
-                    // TODO copy all about info into an email
+
+                    val intent = Intent(Intent.ACTION_SENDTO, "mailto:".toUri())
+                        .putExtra(Intent.EXTRA_EMAIL, arrayOf(aboutScreenData.resources.getString(R.string.about_contact_email_address)))
+                        .putExtra(Intent.EXTRA_SUBJECT, aboutScreenData.resources.getString(R.string.about_improvtools_feature_request))
+                        .putExtra(Intent.EXTRA_TEXT, Html.fromHtml(textToBeEmailed.toString(), Html.FROM_HTML_MODE_COMPACT))
+                    if (intent.resolveActivity(packageManager) != null) {
+                        launcher.launch(intent)
+                    } else {
+                        Toast.makeText(myContextForToast, "No email application available", Toast.LENGTH_SHORT).show()
+                    }
                 },
-                enabled = false, // TODO not yet functional
             ) {
                 Text(stringResource(R.string.about_send_email))
             }
