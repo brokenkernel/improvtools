@@ -2,6 +2,7 @@ package com.brokenkernel.improvtools.application.presentation.view
 
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager.PackageInfoFlags
+import android.os.Build
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -24,6 +25,32 @@ fun AboutScreen() {
     val packageName = packageInfo.packageName
     val longVersionCode: Long = packageInfo.longVersionCode
     val isSafeMode = packageManager.isSafeMode
+
+    // further debug information for the future
+    Build.BOARD
+    Build.BOOTLOADER
+    Build.BRAND
+    Build.DEVICE
+    Build.DISPLAY
+    Build.FINGERPRINT
+    Build.HARDWARE
+    Build.HOST
+    Build.ID
+    Build.MANUFACTURER
+    Build.MODEL
+    Build.ODM_SKU
+    Build.PRODUCT
+    Build.SKU
+    Build.SOC_MANUFACTURER
+    Build.SOC_MODEL
+    Build.SUPPORTED_ABIS
+    Build.TAGS
+    Build.TIME
+    Build.TYPE
+    Build.USER
+//    Build.getFingerprintedPartitions()
+    Build.getRadioVersion()
+//    Build.getMajorSdkVersion()
 
 
 

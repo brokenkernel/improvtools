@@ -14,7 +14,7 @@ data class UserSettings(val allowSuggestionsReuse: Boolean)
 internal interface SettingsRepository {
     val userSettingsFlow: Flow<UserSettings>
 
-    suspend fun updateAllowSuggestionsReuse(showCompleted: Boolean)
+    suspend fun updateAllowSuggestionsReuse(allowSuggestinReUse: Boolean)
 }
 
 internal class DefaultSettingsRespository(private val userPreferenceDataStore: DataStore<Preferences>) :
