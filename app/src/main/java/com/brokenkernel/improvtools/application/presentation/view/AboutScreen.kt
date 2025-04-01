@@ -35,32 +35,6 @@ internal fun AboutScreen(viewModel: AboutScreenViewModel = viewModel(factory = A
     val packageName = packageInfo?.packageName
     val longVersionCode: Long = packageInfo?.longVersionCode ?: -1
 
-    // further debug information for the future
-    Build.BOARD
-    Build.BOOTLOADER
-    Build.BRAND
-    Build.DEVICE
-    Build.DISPLAY
-    Build.FINGERPRINT
-    Build.HARDWARE
-    Build.HOST
-    Build.ID
-    Build.MANUFACTURER
-    Build.MODEL
-    Build.ODM_SKU
-    Build.PRODUCT
-    Build.SKU
-    Build.SOC_MANUFACTURER
-    Build.SOC_MODEL
-    Build.SUPPORTED_ABIS
-    Build.TAGS
-    Build.TIME
-    Build.TYPE
-    Build.USER
-//    Build.getFingerprintedPartitions()
-//    Build.getRadioVersion("versionName")
-//    Build.getMajorSdkVersion()
-
     val clipboardManager: ClipboardManager = LocalClipboardManager.current
 
     fun generateDebugInformationText(sectionHeaderStyle: SpanStyle, dataNameStyle: SpanStyle): AnnotatedString {
@@ -114,6 +88,32 @@ internal fun AboutScreen(viewModel: AboutScreenViewModel = viewModel(factory = A
                 )
             )
             append("\n")
+
+            // further debug information for the future
+            Build.BOARD
+            Build.BOOTLOADER
+            Build.BRAND
+            Build.DEVICE
+            Build.DISPLAY
+            Build.FINGERPRINT
+            Build.HARDWARE
+            Build.HOST
+            Build.ID
+            Build.MANUFACTURER
+            Build.MODEL
+            Build.ODM_SKU
+            Build.PRODUCT
+            Build.SKU
+            Build.SOC_MANUFACTURER
+            Build.SOC_MODEL
+            Build.SUPPORTED_ABIS
+            Build.TAGS
+            Build.TIME
+            Build.TYPE
+            Build.USER
+//    Build.getFingerprintedPartitions()
+//    Build.getRadioVersion("versionName")
+//    Build.getMajorSdkVersion()
         }
         return result
     }
