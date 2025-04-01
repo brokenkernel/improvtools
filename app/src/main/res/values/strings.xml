@@ -24,4 +24,5 @@
     <string name="about_is_safe_mode">Is Safe Mode</string>
     <string name="about_copy_all">copy all</string>
     <string name="about_send_email">send email</string>
+    <string name="settings_allow_reuse">Allow Reuse</string>
 </resources>
