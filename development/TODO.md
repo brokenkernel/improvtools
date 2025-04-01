@@ -7,7 +7,6 @@
 1. Several text strings are hard-coded (thankfully only placeholders, so its a decent sign that just implementing features will fix)
 1. Proguard (particularly becuase of extended icons_
 1. Provide settings per section
-1. Move isLoading to LoadableScreen Composable
 
 ## Incomplete Featuress
 

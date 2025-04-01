@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
@@ -31,26 +30,17 @@ import com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel.S
 @Preview
 @Composable
 internal fun SuggestionsScreen(
-    viewModel: SuggestionScreenViewModel = viewModel(factory = SuggestionScreenViewModel.Factory),
 ) {
-    // todo: maybe don't pass view model and make different ones for meta and pending?
-    val isLoading by viewModel.isLoading.collectAsState()
-    if (isLoading) {
-        SuggestionsScreenPendingLoad()
-    } else {
-        SuggestionsScreenFullyLoaded(viewModel)
+    LoadableScreen(
+        loader = {}
+    ) {
+        SuggestionsScreenFullyLoaded()
     }
 }
 
-@Composable
-internal fun SuggestionsScreenPendingLoad(
-) {
-    CircularProgressIndicator()
-}
-
 
 @Composable
-internal fun SuggestionsScreenFullyLoaded(viewModel: SuggestionScreenViewModel) {
+internal fun SuggestionsScreenFullyLoaded(viewModel: SuggestionScreenViewModel = viewModel(factory = SuggestionScreenViewModel.Factory)) {
     val gameUiState by viewModel.uiState.collectAsState()
 
     val categoryWeight = .3f
@@ -59,8 +49,7 @@ internal fun SuggestionsScreenFullyLoaded(viewModel: SuggestionScreenViewModel) 
 
     Column(
         modifier = Modifier
-            .verticalScroll(rememberScrollState())
-        ,
+            .verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.spacedBy(4.dp), // TODO: move into dims resource
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
@@ -84,7 +73,8 @@ internal fun SuggestionsScreenFullyLoaded(viewModel: SuggestionScreenViewModel) 
         }
         SuggestionCategory.entries.forEach { suggestionData ->
             Row(
-                Modifier.fillMaxWidth()
+                Modifier
+                    .fillMaxWidth()
                     .fillMaxHeight(),
                 verticalAlignment = Alignment.CenterVertically
             ) {
