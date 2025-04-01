@@ -19,8 +19,9 @@ import androidx.navigation.compose.rememberNavController
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import com.brokenkernel.improvtools.application.presentation.view.ImprovToolsNavigationDrawer
 import com.brokenkernel.improvtools.ui.theme.ImprovToolsTheme
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,7 +57,6 @@ fun OuterContentForMasterScreen() {
         }
     }
 
-    // TODO: use hilt DI
     ImprovToolsTheme {
         Surface {
             ImprovToolsNavigationDrawer(

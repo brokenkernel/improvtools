@@ -2,7 +2,6 @@
 
 ## High Level Changes
 
-1. Add Hilt Support
 1. Stop passing view models around
 1. Several text strings are hard-coded (thankfully only placeholders, so its a decent sign that just implementing features will fix)
 1. Proguard (particularly becuase of extended icons_

@@ -2,8 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-//    alias(libs.plugins.ksp)
-//    alias(libs.plugins.dagger.hilt.android)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.dagger.hilt.android)
 }
 
 android {
@@ -69,6 +69,7 @@ dependencies {
     implementation(libs.com.fasterxml.jackson.module.jacksonModuleKotlin)
     implementation(platform(libs.androidx.compose.bom))
     testImplementation(libs.junit)
+    implementation(libs.hilt.android)
 
-    //ksp(libs.hilt.android)
+    ksp(libs.hilt.android.compiler)
 }
