@@ -45,7 +45,6 @@
 
 ## Bugs
 
-1. Suggestions screen has category/button which don't match in size.
 1. about email button does not email (always null)
 
 ## Testing

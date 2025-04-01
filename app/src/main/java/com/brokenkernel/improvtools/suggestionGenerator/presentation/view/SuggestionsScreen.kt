@@ -3,9 +3,11 @@ package com.brokenkernel.improvtools.suggestionGenerator.presentation.view
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
@@ -55,6 +57,7 @@ internal fun SuggestionsScreenFullyLoaded(viewModel: SuggestionScreenViewModel =
         Row(
             Modifier
                 .background(MaterialTheme.colorScheme.surfaceVariant)
+                .height(IntrinsicSize.Max)
                 .fillMaxWidth()
                 .fillMaxHeight()
         ) {
@@ -73,6 +76,7 @@ internal fun SuggestionsScreenFullyLoaded(viewModel: SuggestionScreenViewModel =
             Row(
                 Modifier
                     .fillMaxWidth()
+                    .height(IntrinsicSize.Max)
                     .fillMaxHeight(),
                 verticalAlignment = Alignment.CenterVertically
             ) {
