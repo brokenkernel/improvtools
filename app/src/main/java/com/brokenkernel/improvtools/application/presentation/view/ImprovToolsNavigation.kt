@@ -173,19 +173,18 @@ internal fun ImprovToolsNavigationDrawer(
                 }
             }
         },
-        content = {
-            ImprovToolsScaffold(
-                content = {
-                    // TODO: replace with event system instead of passing controller??
-                    DrawerNavGraph(drawerNavController = drawerNavController)
-                },
-                currentNavigableScreen = currentNavigableScreen,
-                doNavigateToNavigableScreen = { it ->  doNavigateToNavigableScreenWithNavClosure(it) },
-                navMenuButtonPressedCallback = {
-                    invertNavMenuState()
-                },
+    ) {
+        ImprovToolsScaffold(
+            content = {
+                // TODO: replace with event system instead of passing controller??
+                DrawerNavGraph(drawerNavController = drawerNavController)
+            },
+            currentNavigableScreen = currentNavigableScreen,
+            doNavigateToNavigableScreen = { it -> doNavigateToNavigableScreenWithNavClosure(it) },
+            navMenuButtonPressedCallback = {
+                invertNavMenuState()
+            },
 
-                )
-        }
-    )
+            )
+    }
 }

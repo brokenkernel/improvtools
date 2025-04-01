@@ -43,9 +43,6 @@ fun OuterContentForMasterScreen() {
     val drawerNavController = rememberNavController()
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
 
-    // the next is should be resolvable by tracking 'current screen metadta' instead of individual state,
-    // also annoying since the default is multiple-times replicated, but good enough for now.
-
     var currentNavigableScreen by rememberSaveable { mutableStateOf(NavigableScreens.SuggestionGenerator) }
 
     drawerNavController.addOnDestinationChangedListener {
@@ -58,15 +55,6 @@ fun OuterContentForMasterScreen() {
             currentNavigableScreen = whichScreen
         }
     }
-
-//    val xyz = resources.openRawResource(R.xml.audience_suggestion_datum)
-//    R.raw.audience_suggestion_datum;
-
-//    Resources.getXML()
-//    xmlResource()
-//    val res: Resources = this.getResources()
-//    val xrp = res.getXml(R.xml.your_resId)
-
 
     // TODO: use hilt DI
     ImprovToolsTheme {
