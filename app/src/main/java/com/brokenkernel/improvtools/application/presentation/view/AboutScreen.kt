@@ -118,10 +118,10 @@ internal fun AboutScreen(viewModel: AboutScreenViewModel = viewModel(factory = A
         return result
     }
 
-    fun copyAboutText(dataNameStyle: SpanStyle, sectionStyle: SpanStyle): Unit {
+    fun copyAboutText(dataNameStyle: SpanStyle, sectionHeaderStyle: SpanStyle): Unit {
         clipboardManager.setText(
             generateDebugInformationText(
-                sectionHeaderStyle = sectionStyle,
+                sectionHeaderStyle = sectionHeaderStyle,
                 dataNameStyle = dataNameStyle,
             )
         )
@@ -146,7 +146,7 @@ internal fun AboutScreen(viewModel: AboutScreenViewModel = viewModel(factory = A
             val dataNameStyle = MaterialTheme.typography.displayMedium.toSpanStyle()
             FilledTonalButton(onClick = {
                 copyAboutText(
-                    sectionStyle = sectionStyle,
+                    sectionHeaderStyle = sectionStyle,
                     dataNameStyle = dataNameStyle,
                 )
             }
@@ -155,6 +155,11 @@ internal fun AboutScreen(viewModel: AboutScreenViewModel = viewModel(factory = A
             }
             ElevatedButton(
                 onClick = {
+                    // TODO: implement this
+                    val textToBeEmailed = generateDebugInformationText(
+                        sectionHeaderStyle = sectionStyle,
+                        dataNameStyle = dataNameStyle,
+                    )
                     // TODO copy all about info into an email
                 },
                 enabled = false, // TODO not yet functional
