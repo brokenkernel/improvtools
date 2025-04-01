@@ -15,13 +15,22 @@ android {
         minSdk = 34
         targetSdk = 36
         versionCode = 1
-        versionName = "1.0"
+        versionName = "0.0.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
+            isMinifyEnabled = true
+            isShrinkResources = true
+            isDebuggable = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+        debug {
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(
@@ -45,8 +54,6 @@ android {
 
 dependencies {
 
-    //implementation(libs.hilt.android)
-    //implementation(libs.hilt.compiler)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.navigation.navigationTesting)
@@ -67,9 +74,9 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.com.fasterxml.jackson.module.jacksonModuleKotlin)
+    implementation(libs.hilt.android)
     implementation(platform(libs.androidx.compose.bom))
     testImplementation(libs.junit)
-    implementation(libs.hilt.android)
 
     ksp(libs.hilt.android.compiler)
 }
