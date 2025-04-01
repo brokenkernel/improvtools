@@ -12,19 +12,25 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.res.stringResource
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.platform.ClipboardManager
+import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.withStyle
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.presentation.viewmodel.AboutScreenViewModel
 
 @Composable
 internal fun AboutScreen(viewModel: AboutScreenViewModel = viewModel(factory = AboutScreenViewModel.Factory)) {
-    val aboutScreenScreen by viewModel.uiState.collectAsState()
+    val aboutScreenData by viewModel.uiState.collectAsState()
 
     // todo: null shouldn't be possible here, but need to figure out "default" packageInfo
-    val packageInfo: PackageInfo? = aboutScreenScreen.packageInfo
+    val packageInfo: PackageInfo? = aboutScreenData.packageInfo
     val versionName: String? = packageInfo?.versionName
     val packageName = packageInfo?.packageName
     val longVersionCode: Long = packageInfo?.longVersionCode ?: -1
@@ -52,72 +58,103 @@ internal fun AboutScreen(viewModel: AboutScreenViewModel = viewModel(factory = A
     Build.TYPE
     Build.USER
 //    Build.getFingerprintedPartitions()
-    Build.getRadioVersion()
+//    Build.getRadioVersion("versionName")
 //    Build.getMajorSdkVersion()
 
+    val clipboardManager: ClipboardManager = LocalClipboardManager.current
 
+    fun generateDebugInformationText(sectionHeaderStyle: SpanStyle, dataNameStyle: SpanStyle): AnnotatedString {
+        fun buildHeaderRow(header: String, content: String): AnnotatedString {
+            return buildAnnotatedString {
+                // todo handle material theme
+                withStyle(style = dataNameStyle) {
+                    append(header)
+                }
+                append(" ")
+                append(content)
+            }
+        }
+
+        val result: AnnotatedString = buildAnnotatedString {
+            // MaterialTheme.typography.titleLarge
+            withStyle(style = sectionHeaderStyle) {
+                appendLine(aboutScreenData.resources.getString(R.string.about_version_information))
+                append("\n")
+            }
+            appendLine(
+                buildHeaderRow(
+                    aboutScreenData.resources.getString(R.string.about_package_name),
+                    packageName ?: "(null)"
+                )
+            )
+            append("\n")
+            appendLine(
+                buildHeaderRow(
+                    aboutScreenData.resources.getString(R.string.about_version),
+                    versionName ?: "(null)"
+                )
+            )
+            append("\n")
+            appendLine(
+                buildHeaderRow(
+                    aboutScreenData.resources.getString(R.string.about_long_version_code),
+                    longVersionCode.toString()
+                )
+            )
+            append("\n")
+            // MaterialTheme.typography.titleLarge
+            withStyle(style = sectionHeaderStyle) {
+                appendLine(aboutScreenData.resources.getString(R.string.about_debug_information))
+                append("\n")
+            }
+            appendLine(
+                buildHeaderRow(
+                    aboutScreenData.resources.getString(R.string.about_is_safe_mode),
+                    aboutScreenData.isSafeMode.toString()
+                )
+            )
+            append("\n")
+        }
+        return result
+    }
+
+    fun copyAboutText(dataNameStyle: SpanStyle, sectionStyle: SpanStyle): Unit {
+        clipboardManager.setText(
+            generateDebugInformationText(
+                sectionHeaderStyle = sectionStyle,
+                dataNameStyle = dataNameStyle,
+            )
+        )
+    }
 
     Column {
         Row {
             SelectionContainer {
                 Text(
-                    stringResource(R.string.about_version_information),
-                    style = MaterialTheme.typography.titleLarge
+                    generateDebugInformationText(
+                        sectionHeaderStyle = MaterialTheme.typography.displayMedium.toSpanStyle(),
+                        dataNameStyle = MaterialTheme.typography.titleMedium.toSpanStyle(),
+                    )
                 )
-            }
-        }
-        Row {
-            SelectionContainer {
-                Text(stringResource(R.string.about_package_name))
-            }
-            SelectionContainer {
-                Text(packageName?: "(null)")
-            }
-        }
-        Row {
-            SelectionContainer {
-                Text(stringResource(R.string.about_version))
-            }
-            SelectionContainer {
-                Text(versionName.orEmpty())
-            }
-        }
-        Row {
-            SelectionContainer {
-                Text(stringResource(R.string.about_long_version_code))
-            }
-            SelectionContainer {
-                Text(longVersionCode.toString())
-            }
-        }
-        Row {
-            SelectionContainer {
-                Text(
-                    stringResource(R.string.about_debug_information),
-                    style = MaterialTheme.typography.titleLarge
-                )
-            }
-        }
-        Row {
-            SelectionContainer {
-                Text(stringResource(R.string.about_is_safe_mode))
-            }
-            SelectionContainer {
-                Text(aboutScreenScreen.isSafeMode.toString())
             }
         }
         Row(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center,
         ) {
+            val sectionStyle = MaterialTheme.typography.titleLarge.toSpanStyle()
+            val dataNameStyle = MaterialTheme.typography.displayMedium.toSpanStyle()
             FilledTonalButton(onClick = {
-                    // TODO copy all about info into paste
-                },
-                enabled = false, // TODO not yet functional
+                copyAboutText(
+                    sectionStyle = sectionStyle,
+                    dataNameStyle = dataNameStyle,
+                )
+            }
             ) {
                 Text(stringResource(R.string.about_copy_all))
             }
-            ElevatedButton(onClick = {
+            ElevatedButton(
+                onClick = {
                     // TODO copy all about info into an email
                 },
                 enabled = false, // TODO not yet functional
@@ -126,5 +163,4 @@ internal fun AboutScreen(viewModel: AboutScreenViewModel = viewModel(factory = A
             }
         }
     }
-
 }

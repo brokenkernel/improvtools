@@ -31,6 +31,7 @@
 1. Copy/Paste of debug information on about screen
 1. Make about screen selectable
 1. Figure out "default" nullable for view model
+1. Use Material theme instead of custom style
 
 ### Settings
 

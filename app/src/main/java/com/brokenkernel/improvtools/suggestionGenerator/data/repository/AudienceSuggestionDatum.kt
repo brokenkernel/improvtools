@@ -18,7 +18,7 @@ private data class AudienceSuggestionDatum(
 
 internal class ResourcesAudienceSuggestionDatumRepository(
     resources: Resources,
-): AudienceSuggestionDatumRepository {
+) : AudienceSuggestionDatumRepository {
     private val audienceDatumParsed: AudienceSuggestionDatum?
 
     init {
@@ -31,10 +31,13 @@ internal class ResourcesAudienceSuggestionDatumRepository(
             STRICT_DUPLICATE_DETECTION, true
         )
 
-        val audienceDatumParsedMaybe: AudienceSuggestionDatum? = mapper.readValue<AudienceSuggestionDatum>(unprocessedAudienceDatum,
-                AudienceSuggestionDatum::class.java)
+        val audienceDatumParsedMaybe: AudienceSuggestionDatum? = mapper.readValue<AudienceSuggestionDatum>(
+            unprocessedAudienceDatum,
+            AudienceSuggestionDatum::class.java
+        )
         audienceDatumParsed = audienceDatumParsedMaybe
     }
+
     override fun getAudienceDatumForCategory(category: SuggestionCategory): Set<String> {
         if (audienceDatumParsed == null) {
             // This should never happen but we can't assert it.
