@@ -19,9 +19,9 @@
     <string name="about_version_information">Version Information</string>
     <string name="about_package_name">"Package Name: "</string>
     <string name="about_version">"Version: "</string>
-    <string name="about_long_version_code">"Long Version Code: "</string>
+    <string name="about_long_version_code">Long Version Code: </string>
     <string name="about_debug_information">Debug Information</string>
-    <string name="about_is_safe_mode">Is Safe Mode</string>
+    <string name="about_is_safe_mode">Is Safe Mode: </string>
     <string name="about_copy_all">copy all</string>
     <string name="about_send_email">send email</string>
     <string name="settings_allow_reuse">Allow Reuse</string>

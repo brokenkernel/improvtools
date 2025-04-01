@@ -50,6 +50,7 @@ class ImprovToolsApplication() : Application() {
             .penaltyDialog()
             .build()
         StrictMode.setThreadPolicy(strictModeThreadPolicy)
+
 //        DataStoreFactory.create(USER_PREFERENCES_NAME)
         container = DefaultAppContainer(this.applicationContext.resources, userPreferenceDataStore)
     }

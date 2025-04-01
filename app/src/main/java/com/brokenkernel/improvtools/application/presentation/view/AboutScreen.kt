@@ -1,7 +1,6 @@
 package com.brokenkernel.improvtools.application.presentation.view
 
 import android.content.pm.PackageInfo
-import android.content.pm.PackageManager.PackageInfoFlags
 import android.os.Build
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -12,20 +11,23 @@ import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.compose.runtime.getValue
 import com.brokenkernel.improvtools.R
+import com.brokenkernel.improvtools.application.presentation.viewmodel.AboutScreenViewModel
 
 @Composable
-fun AboutScreen() {
-    val context = LocalContext.current
-    val packageManager = context.packageManager
-    val packageInfo: PackageInfo = packageManager.getPackageInfo(context.packageName, PackageInfoFlags.of(0))
-    val versionName: String? = packageInfo.versionName
-    val packageName = packageInfo.packageName
-    val longVersionCode: Long = packageInfo.longVersionCode
-    val isSafeMode = packageManager.isSafeMode
+internal fun AboutScreen(viewModel: AboutScreenViewModel = viewModel(factory = AboutScreenViewModel.Factory)) {
+    val aboutScreenScreen by viewModel.uiState.collectAsState()
+
+    // todo: null shouldn't be possible here, but need to figure out "default" packageInfo
+    val packageInfo: PackageInfo? = aboutScreenScreen.packageInfo
+    val versionName: String? = packageInfo?.versionName
+    val packageName = packageInfo?.packageName
+    val longVersionCode: Long = packageInfo?.longVersionCode ?: -1
 
     // further debug information for the future
     Build.BOARD
@@ -69,7 +71,7 @@ fun AboutScreen() {
                 Text(stringResource(R.string.about_package_name))
             }
             SelectionContainer {
-                Text(packageName)
+                Text(packageName?: "(null)")
             }
         }
         Row {
@@ -101,7 +103,7 @@ fun AboutScreen() {
                 Text(stringResource(R.string.about_is_safe_mode))
             }
             SelectionContainer {
-                Text(isSafeMode.toString())
+                Text(aboutScreenScreen.isSafeMode.toString())
             }
         }
         Row(

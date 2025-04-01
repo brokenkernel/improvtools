@@ -7,6 +7,7 @@
 1. Proguard (particularly becuase of extended icons_
 1. Provide settings per section
 1. Type Safe Routes (https://developer.android.com/guide/navigation/design/type-safety)
+1. create dialog/standard "error" route
 
 ## Incomplete Featuress
 
@@ -29,6 +30,7 @@
 
 1. Copy/Paste of debug information on about screen
 1. Make about screen selectable
+1. Figure out "default" nullable for view model
 
 ### Settings
 
