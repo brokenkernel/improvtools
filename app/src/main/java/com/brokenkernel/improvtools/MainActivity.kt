@@ -10,7 +10,7 @@ import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
@@ -44,14 +44,14 @@ fun OuterContentForMasterScreen() {
     val drawerNavController = rememberNavController()
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
 
-    var currentNavigableScreen by rememberSaveable { mutableStateOf(NavigableScreens.SuggestionGenerator) }
+    var currentNavigableScreen: NavigableScreens by remember { mutableStateOf(NavigableScreens.SuggestionGenerator) }
 
     drawerNavController.addOnDestinationChangedListener {
             controller: NavController,
             destination: NavDestination,
             args: Bundle?,
         ->
-        val whichScreen = NavigableScreens.byRoute(destination.route)
+        val whichScreen: NavigableScreens? = NavigableScreens.byRoute(destination.route)
         if (whichScreen != null) {
             currentNavigableScreen = whichScreen
         }
