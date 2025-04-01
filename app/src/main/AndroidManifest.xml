@@ -20,7 +20,8 @@
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/suggestions_activity_title"
-            android:theme="@style/Theme.ImprovTools">
+            android:theme="@style/Theme.ImprovTools"
+            android:directBootAware="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
