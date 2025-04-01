@@ -35,8 +35,6 @@ internal class SettingsScreenViewModel(private val settingsRepository: SettingsR
         viewModelScope.launch {
             settingsRepository.updateAllowSuggestionsReuse(newState)
         }
-
-        // todo: likely should read from preferences
         _uiState.value = _uiState.value.copy(shouldReuseSuggestions = newState)
     }
 
