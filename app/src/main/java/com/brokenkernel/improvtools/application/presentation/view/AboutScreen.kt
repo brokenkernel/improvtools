@@ -50,10 +50,8 @@ internal fun AboutScreen(viewModel: AboutScreenViewModel = viewModel(factory = A
         }
 
         val result: AnnotatedString = buildAnnotatedString {
-            // MaterialTheme.typography.titleLarge
             withStyle(style = sectionHeaderStyle) {
                 appendLine(aboutScreenData.resources.getString(R.string.about_version_information))
-                append("\n")
             }
             appendLine(
                 buildHeaderRow(
@@ -61,14 +59,12 @@ internal fun AboutScreen(viewModel: AboutScreenViewModel = viewModel(factory = A
                     packageName ?: "(null)"
                 )
             )
-            append("\n")
             appendLine(
                 buildHeaderRow(
                     aboutScreenData.resources.getString(R.string.about_version),
                     versionName ?: "(null)"
                 )
             )
-            append("\n")
             appendLine(
                 buildHeaderRow(
                     aboutScreenData.resources.getString(R.string.about_long_version_code),
@@ -76,10 +72,8 @@ internal fun AboutScreen(viewModel: AboutScreenViewModel = viewModel(factory = A
                 )
             )
             append("\n")
-            // MaterialTheme.typography.titleLarge
             withStyle(style = sectionHeaderStyle) {
                 appendLine(aboutScreenData.resources.getString(R.string.about_debug_information))
-                append("\n")
             }
             appendLine(
                 buildHeaderRow(
@@ -87,7 +81,6 @@ internal fun AboutScreen(viewModel: AboutScreenViewModel = viewModel(factory = A
                     aboutScreenData.isSafeMode.toString()
                 )
             )
-            append("\n")
 
             // further debug information for the future
             Build.BOARD
