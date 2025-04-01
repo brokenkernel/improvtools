@@ -12,6 +12,7 @@ import com.brokenkernel.improvtools.settings.presentation.uistate.SettingsScreen
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 internal class SettingsScreenViewModel(private val settingsRepository: SettingsRepository) :
@@ -23,7 +24,7 @@ internal class SettingsScreenViewModel(private val settingsRepository: SettingsR
 
     init {
         viewModelScope.launch {
-            settingsRepository.userSettingsFlow.collect { it ->
+            settingsRepository.userSettingsFlow.collectLatest { it ->
                 _uiState.value = SettingsScreenUIState(
                     shouldReuseSuggestions = it.allowSuggestionsReuse
                 )
