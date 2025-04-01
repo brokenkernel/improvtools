@@ -24,7 +24,7 @@ internal data class AboutScreenDebugData(
     // todo: all of this is nullable since we need a default, figure out way to avoid needing default value
     val packageInfo: PackageInfo?,
     val isSafeMode: Boolean,
-    val resources: Resources
+    val resources: Resources,
 )
 
 
@@ -35,7 +35,8 @@ internal class AboutScreenViewModel(
 ) : ViewModel() {
 
     // mutable shared flow to avoid init with default value
-    val _uiState: MutableStateFlow<AboutScreenDebugData> = MutableStateFlow(AboutScreenDebugData(null, false, resources))
+    val _uiState: MutableStateFlow<AboutScreenDebugData> =
+        MutableStateFlow(AboutScreenDebugData(null, false, resources))
     val uiState: StateFlow<AboutScreenDebugData> = _uiState.asStateFlow()
 
     init {

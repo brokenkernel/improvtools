@@ -142,12 +142,12 @@ internal fun ImprovToolsNavigationDrawer(
                     )
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.SuggestionGenerator,
-                        { it ->  doNavigateToNavigableScreenWithNavClosure(it) },
+                        { it -> doNavigateToNavigableScreenWithNavClosure(it) },
                         currentNavigableScreen,
                     )
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.Timer,
-                        { it ->  doNavigateToNavigableScreenWithNavClosure(it) },
+                        { it -> doNavigateToNavigableScreenWithNavClosure(it) },
                         currentNavigableScreen,
                     )
 
@@ -161,12 +161,12 @@ internal fun ImprovToolsNavigationDrawer(
                     )
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.Settings,
-                        { it ->  doNavigateToNavigableScreenWithNavClosure(it) },
+                        { it -> doNavigateToNavigableScreenWithNavClosure(it) },
                         currentNavigableScreen,
                     )
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.HelpAndAbout,
-                        { it ->  doNavigateToNavigableScreenWithNavClosure(it) },
+                        { it -> doNavigateToNavigableScreenWithNavClosure(it) },
                         currentNavigableScreen,
                     )
                     Spacer(Modifier.height(12.dp))
