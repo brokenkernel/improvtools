@@ -5,4 +5,11 @@ import java.util.EnumMap
 
 internal data class SuggestionScreenUIState(
     val audienceSuggestions: Map<SuggestionCategory, String> = EnumMap(SuggestionCategory::class.java),
-)
+    val shouldReuseSuggestions: Boolean
+) {
+    companion object {
+        fun default(): SuggestionScreenUIState {
+            return SuggestionScreenUIState(shouldReuseSuggestions=false)
+        }
+    }
+}

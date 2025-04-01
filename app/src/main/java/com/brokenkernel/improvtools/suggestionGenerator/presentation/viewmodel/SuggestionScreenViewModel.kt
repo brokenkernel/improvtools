@@ -3,6 +3,7 @@ package com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
+import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.brokenkernel.improvtools.ImprovToolsApplication
@@ -13,6 +14,8 @@ import com.brokenkernel.improvtools.suggestionGenerator.presentation.uistate.Sug
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import java.util.EnumMap
 
 internal class SuggestionScreenViewModel(
@@ -20,16 +23,22 @@ internal class SuggestionScreenViewModel(
     private val settingsRepository: SettingsRepository,
 ) :
     ViewModel() {
-    private val _uiState = MutableStateFlow(SuggestionScreenUIState())
+    private val _uiState = MutableStateFlow(SuggestionScreenUIState.default())
     internal val uiState: StateFlow<SuggestionScreenUIState> = _uiState.asStateFlow()
 
     init {
         resetAllCategories()
+        viewModelScope.launch {
+            settingsRepository.userSettingsFlow.collectLatest { it ->
+                _uiState.value =
+                    _uiState.value.copy(shouldReuseSuggestions = it.allowSuggestionsReuse)
+            }
+        }
     }
 
     internal fun updateSuggestionFor(suggestionCategory: SuggestionCategory): Unit {
-        _uiState.value = SuggestionScreenUIState(
-            audienceSuggestions = _uiState.value.audienceSuggestions + mapOf(
+        _uiState.value = _uiState.value.copy(
+            _uiState.value.audienceSuggestions + mapOf(
                 suggestionCategory to pickAnotherItemFromCategoryDatum(
                     suggestionCategory,
                     _uiState.value.audienceSuggestions.getValue(suggestionCategory)
@@ -51,8 +60,7 @@ internal class SuggestionScreenViewModel(
             )
             audienceSuggestions[item] = word
         }
-        _uiState.value = SuggestionScreenUIState(audienceSuggestions = audienceSuggestions)
-
+        _uiState.value = _uiState.value.copy(audienceSuggestions = audienceSuggestions)
     }
 
     /**
@@ -64,7 +72,13 @@ internal class SuggestionScreenViewModel(
     ): String {
         val suggestionIdeasForCategory: Set<String> =
             suggestionDatumRepository.getAudienceDatumForCategory(suggestionCategory)
-        return (suggestionIdeasForCategory - currentWord).random()
+        val legalNewWords: Set<String> = if (_uiState.value.shouldReuseSuggestions) {
+            suggestionIdeasForCategory
+        } else {
+            suggestionIdeasForCategory - currentWord
+        }
+
+        return legalNewWords.random()
     }
 
     companion object {

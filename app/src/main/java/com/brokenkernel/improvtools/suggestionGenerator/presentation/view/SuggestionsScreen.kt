@@ -41,7 +41,7 @@ internal fun SuggestionsScreen(
 
 @Composable
 internal fun SuggestionsScreenFullyLoaded(viewModel: SuggestionScreenViewModel = viewModel(factory = SuggestionScreenViewModel.Factory)) {
-    val gameUiState by viewModel.uiState.collectAsState()
+    val audienceSuggestionUIState by viewModel.uiState.collectAsState()
 
     val categoryWeight = .3f
     val audienceIdeaWeight = .7f
@@ -84,7 +84,7 @@ internal fun SuggestionsScreenFullyLoaded(viewModel: SuggestionScreenViewModel =
                     style = MaterialTheme.typography.bodyMedium,
                 )
                 ClickableTableCell(
-                    text = gameUiState.audienceSuggestions.getOrDefault(
+                    text = audienceSuggestionUIState.audienceSuggestions.getOrDefault(
                         suggestionData,
                         "unknown"
                     ), //  TODO I shouldn't have to do this. Maybe EnumMap
