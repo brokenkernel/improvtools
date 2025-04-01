@@ -6,6 +6,7 @@ import android.os.Build
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.MaterialTheme
@@ -56,30 +57,52 @@ fun AboutScreen() {
 
     Column {
         Row {
-            Text(
-                stringResource(R.string.about_version_information),
-                style = MaterialTheme.typography.titleLarge)
+            SelectionContainer {
+                Text(
+                    stringResource(R.string.about_version_information),
+                    style = MaterialTheme.typography.titleLarge
+                )
+            }
         }
         Row {
-            Text(stringResource(R.string.about_package_name))
-            Text(packageName)
+            SelectionContainer {
+                Text(stringResource(R.string.about_package_name))
+            }
+            SelectionContainer {
+                Text(packageName)
+            }
         }
         Row {
-            Text(stringResource(R.string.about_version))
-            Text(versionName.orEmpty())
+            SelectionContainer {
+                Text(stringResource(R.string.about_version))
+            }
+            SelectionContainer {
+                Text(versionName.orEmpty())
+            }
         }
         Row {
-            Text(stringResource(R.string.about_long_version_code))
-            Text(longVersionCode.toString())
+            SelectionContainer {
+                Text(stringResource(R.string.about_long_version_code))
+            }
+            SelectionContainer {
+                Text(longVersionCode.toString())
+            }
         }
         Row {
-            Text(
-                stringResource(R.string.about_debug_information),
-                style = MaterialTheme.typography.titleLarge)
+            SelectionContainer {
+                Text(
+                    stringResource(R.string.about_debug_information),
+                    style = MaterialTheme.typography.titleLarge
+                )
+            }
         }
         Row {
-            Text(stringResource(R.string.about_is_safe_mode))
-            Text(isSafeMode.toString())
+            SelectionContainer {
+                Text(stringResource(R.string.about_is_safe_mode))
+            }
+            SelectionContainer {
+                Text(isSafeMode.toString())
+            }
         }
         Row(
             verticalAlignment = Alignment.CenterVertically,
