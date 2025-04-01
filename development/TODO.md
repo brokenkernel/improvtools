@@ -3,7 +3,6 @@
 ## High Level Changes
 
 1. Stop passing view models around
-1. Several text strings are hard-coded (thankfully only placeholders, so its a decent sign that just implementing features will fix)
 1. Proguard (particularly becuase of extended icons_
 1. Provide settings per section
 1. Type Safe Routes (https://developer.android.com/guide/navigation/design/type-safety)
@@ -45,7 +44,8 @@
 
 ## Bugs
 
-1. Suggestions screen has category/button which don't match.
+1. Suggestions screen has category/button which don't match in size.
+1. about email button does not email (always null)
 
 ## Testing
 
