@@ -1,12 +1,27 @@
 {
   "categories" : {
     "NOUN": [
-      "Chair",
-      "Fork"
+      "book",
+      "can",
+      "case",
+      "chair",
+      "child",
+      "company",
+      "eye",
+      "fork",
+      "hand",
+      "money",
+      "night",
+      "water"
     ],
     "VERB": [
-      "Deduct",
-      "Think"
+      "ask",
+      "call",
+      "can",
+      "deduct",
+      "feel",
+      "find",
+      "think"
     ],
     "ADJECTIVE": [
       "Beautiful",
