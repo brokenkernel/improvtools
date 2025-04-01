@@ -20,7 +20,6 @@ internal fun SettingsScreen(
 
     val uiState by viewModel.uiState.collectAsState()
 
-    // TODO: figure out how to make this persistent
     // TODO: figure out how to make this available to the other features
 
     Column {

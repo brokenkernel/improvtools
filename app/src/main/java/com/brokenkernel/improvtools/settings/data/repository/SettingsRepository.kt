@@ -8,6 +8,7 @@ import androidx.datastore.preferences.core.edit
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
+// TODO: require named params?
 @Immutable
 data class UserSettings(val allowSuggestionsReuse: Boolean)
 

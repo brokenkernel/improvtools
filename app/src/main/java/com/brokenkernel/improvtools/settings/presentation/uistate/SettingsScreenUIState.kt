@@ -5,4 +5,10 @@ import androidx.compose.runtime.Immutable
 @Immutable
 internal data class SettingsScreenUIState(
     val shouldReuseSuggestions: Boolean
-)
+) {
+    companion object {
+        fun default(): SettingsScreenUIState {
+            return SettingsScreenUIState(shouldReuseSuggestions = false)
+        }
+    }
+}

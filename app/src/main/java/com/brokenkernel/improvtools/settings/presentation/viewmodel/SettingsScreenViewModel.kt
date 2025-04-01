@@ -17,12 +17,19 @@ import kotlinx.coroutines.launch
 internal class SettingsScreenViewModel(private val settingsRepository: SettingsRepository) :
     ViewModel() {
 
-    // todo: need to read initial value from preferences
-    private val _uiState = MutableStateFlow(SettingsScreenUIState(false))
+    // Is there a way to avoid needing the the default here, shouldn't it come from settings provider initially ?
+    private val _uiState = MutableStateFlow(SettingsScreenUIState.default())
     internal val uiState: StateFlow<SettingsScreenUIState> = _uiState.asStateFlow()
 
-//    internal val _shouldReuseSuggestions = MutableStateFlow(Boolean)
-//    internal val shouldReuseSuggestions = _shouldReuseSuggestions.asStateFlow()
+    init {
+        viewModelScope.launch {
+            settingsRepository.userSettingsFlow.collect { it ->
+                _uiState.value = SettingsScreenUIState(
+                    shouldReuseSuggestions = it.allowSuggestionsReuse
+                )
+            }
+        }
+    }
 
     fun onClickUpdateShouldReuseSuggestions(newState: Boolean) {
         viewModelScope.launch {

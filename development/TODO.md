@@ -32,7 +32,6 @@
 
 ### Settings
 
-1. Persistence
 1. Add menu for specific settings on each screen (checkbox, dropdown)
 
 ### Technical
