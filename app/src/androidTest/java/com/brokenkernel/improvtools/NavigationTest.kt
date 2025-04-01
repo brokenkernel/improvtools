@@ -8,37 +8,19 @@ import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.onRoot
 import androidx.navigation.compose.ComposeNavigator
 import androidx.navigation.testing.TestNavHostController
-import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.brokenkernel.improvtools.application.presentation.view.DrawerNavGraph
-
+import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
-import org.junit.Assert.*
-import org.junit.Before
-import org.junit.Rule
-
-/**
- * Instrumented test, which will execute on an Android device.
- *
- * See [testing documentation](http://d.android.com/tools/testing).
- */
 @RunWith(AndroidJUnit4::class)
-class ExampleInstrumentedTest {
-    @Test
-    fun useAppContext() {
-        // Context of the app under test.
-        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.brokenkernel.improvtools", appContext.packageName)
-    }
-}
-
-@RunWith(AndroidJUnit4::class)
-public class NavigationTest {
+class NavigationTest {
     @get:Rule
     val composeTestRule: ComposeContentTestRule = createComposeRule()
     lateinit var navController: TestNavHostController
+
     @Before
     fun setupAppNavHost() {
         composeTestRule.setContent {
@@ -64,5 +46,5 @@ public class NavigationTest {
             .assertIsDisplayed()
     }
 
-    // test drawered is closed??
+    // todo: test drawer is closed??
 }
