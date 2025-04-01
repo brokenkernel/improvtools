@@ -27,13 +27,13 @@ internal fun SettingsScreen(
             stringResource(R.string.suggestions_activity_title),
             style = MaterialTheme.typography.titleLarge
         )
-        Row() {
+        Row {
             Box(modifier = Modifier.weight(.8f)) {
                 Text(
                     stringResource(R.string.settings_allow_reuse),
                 )
             }
-            Box() {
+            Box {
                 Switch(
                     checked = uiState.shouldReuseSuggestions,
                     onCheckedChange = {

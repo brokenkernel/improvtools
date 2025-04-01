@@ -41,6 +41,6 @@ internal class ResourcesAudienceSuggestionDatumRepository(
             // It will also currently result in error on read since the Set is empty but that's a future bug to fix
             return setOf()
         }
-        return audienceDatumParsed.categories.get(category.toString()).orEmpty()
+        return audienceDatumParsed.categories[category.toString()].orEmpty()
     }
 }

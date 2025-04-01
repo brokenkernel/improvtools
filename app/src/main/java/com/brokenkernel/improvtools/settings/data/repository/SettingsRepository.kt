@@ -24,13 +24,6 @@ internal class DefaultSettingsRespository(private val userPreferenceDataStore: D
         val ALLOW_SUGGESTION_REUSE = booleanPreferencesKey("show_completed")
     }
 
-    fun shouldAllowSuggestionReuse(): Flow<Boolean> =
-        userPreferenceDataStore.data.map { preferences ->
-            val allowSuggestionsReuse = preferences[PreferencesKeys.ALLOW_SUGGESTION_REUSE] ?: false
-            allowSuggestionsReuse
-        }
-
-
     override val userSettingsFlow: Flow<UserSettings> =
         userPreferenceDataStore.data.map { preferences ->
             // Get our show completed value, defaulting to false if not set:
