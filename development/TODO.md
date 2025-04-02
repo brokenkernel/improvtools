@@ -40,7 +40,8 @@
 
 ### Technical
 
-1. Set up fastlane
+1. Set up fastlane pre-commit)
+1. Fix markdownlint (and exclude fastlane dir)
 
 ### Deployment
 
@@ -74,6 +75,7 @@
 ## Github
 
 1. Branch Protection
+
 
 ## Computer Setup
 

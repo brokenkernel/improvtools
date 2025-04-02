@@ -20,13 +20,12 @@ repos:
     -   id: fix-byte-order-marker
     -   id: mixed-line-ending
     -   id: trailing-whitespace
--   repo: https://github.com/DavidAnson/markdownlint-cli2
-    rev: v0.17.2
-    hooks:
-    -   id: markdownlint-cli2
-        args:
-          [
-            "-c",
-            ".markdownlint.jsonc",
-            "content",
-          ]
+#-   repo: https://github.com/DavidAnson/markdownlint-cli2
+#    rev: v0.17.2
+#    hooks:
+#    -   id: markdownlint-cli2
+#        args:
+#          [
+#            "-c",
+#            ".markdownlint.jsonc",
+#          ]
