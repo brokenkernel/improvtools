@@ -72,3 +72,7 @@
 
 1. Branch Protection
 1. Move to an org instead of personal?
+
+## Computer Setup
+
+1. merge android studio JAVA_HOME and shell JAVA_HOME
