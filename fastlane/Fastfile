@@ -50,6 +50,8 @@ platform :android do
 
   desc "Full Play Store Deployment"
   lane :playstore do
+    increment_gradle_version
+
     gradle(
       task: 'assemble',
       build_type: 'Release'
@@ -60,7 +62,7 @@ platform :android do
     )
 
     improv_tools_screenshots
-    increment_gradle_version
+
     current_build_number = android_get_version_code(
       gradle_file: "app/build.gradle.kts",
     )
