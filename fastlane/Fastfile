@@ -51,7 +51,19 @@ platform :android do
     )
   end
 
-  lane :screenshots do
+  desc "Bump Version In Gradle File"
+  lane :increment_gradle_version do
+    increment_version_code(
+          gradle_file_path: "app/build.gradle.kts",
+    )
+  end
+
+  desc "Full Play Store Deployment"
+  lane :playstore do
+    gradle(
+      task: 'assemble',
+      build_type: 'Release'
+    )
     capture_android_screenshots
     upload_to_play_store
   end

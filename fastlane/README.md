@@ -47,10 +47,26 @@ Deploy a new version to the Google Play
 
 Build debug and test APK for screenshots
 
+### android increment_gradle_version
+
+```sh
+[bundle exec] fastlane android increment_gradle_version
+```
+
+Bump Version In Gradle File
+
 ### android screenshots
 
 ```sh
 [bundle exec] fastlane android screenshots
+```
+
+Take Screenshots And Upload them
+
+### android playstore
+
+```sh
+[bundle exec] fastlane android playstore
 ```
 
 
