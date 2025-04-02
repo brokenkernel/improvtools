@@ -90,8 +90,7 @@ platform :android do
     upload_to_play_store(
       aab: "app/build/outputs/bundle/release/app-release.aab",
       skip_upload_apk: true,
-      validate_only: true, ## TODO
-      skip_upload_changelogs: false, ## TODO
+#       validate_only: true, ## TODO
       version_code: current_build_number
     )
   end
