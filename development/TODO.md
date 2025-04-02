@@ -40,7 +40,7 @@
 
 ### Technical
 
-1. Routing currently requires manual route name. Maybe just use enum name?
+1. Set up fastlane
 
 ### Deployment
 
