@@ -10,9 +10,6 @@
 #     https://docs.fastlane.tools/plugins/available-plugins
 #
 
-# Uncomment the line if you want fastlane to automatically update itself
-# update_fastlane
-
 default_platform(:android)
 
 platform :android do
@@ -21,26 +18,8 @@ platform :android do
     gradle(task: "test")
   end
 
-  desc "Submit a new Beta Build to Crashlytics Beta"
-  lane :beta do
-    gradle(task: "clean assembleRelease")
-    crashlytics
-
-    # sh "your_script.sh"
-    # You can also use other beta testing services here
-  end
-
-  desc "Deploy a new version to the Google Play"
-  lane :deploy do
-    gradle(task: "clean assembleRelease")
-    upload_to_play_store
-  end
-
   desc "Build debug and test APK for screenshots"
   lane :build_for_screengrab do
-    gradle(
-      task: 'clean'
-    )
     build_android_app(
       task: 'assemble',
       build_type: 'Debug'
@@ -60,6 +39,7 @@ platform :android do
 
   desc "Take Screenshots"
   lane :improv_tools_screenshots do
+    build_for_screengrab
     capture_android_screenshots(
       clear_previous_screenshots: true,
       skip_open_summary: true,
@@ -79,8 +59,8 @@ platform :android do
       build_type: 'Release'
     )
 
-#     improv_tools_screenshots
-#     increment_gradle_version
+    improv_tools_screenshots
+    increment_gradle_version
     current_build_number = android_get_version_code(
       gradle_file: "app/build.gradle.kts",
     )
