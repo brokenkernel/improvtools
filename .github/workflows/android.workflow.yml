@@ -22,6 +22,17 @@ jobs:
           ruby-version: '3.4'
           bundler-cache: true
       - uses: ashutoshgngwr/validate-fastlane-supply-metadata@v2
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: 17
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+      - name: Build with Gradle
+        run: ./gradlew build
+      - name: Test with Gradle
+        run: ./gradlew test
       - name: Super-linter
         uses: super-linter/super-linter@v7.3.0
         env:
