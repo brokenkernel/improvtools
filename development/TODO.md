@@ -57,12 +57,15 @@
 
 ## Documentation
 
-1. Hugo website for documentation (including this todo list)
 1. License. Define a licence.
 1. SPDX headers and such
 1. README in generalt
 1. README badges :)
 1. Move Privacy policy to hugo site (and update play store)
+1. Move TODO list to documenation site
+1. Add domain for documentation site
+1. Set up github pages for docs site
+1. Set up automation for github pages deployment
 
 ## Generation of TODO Items
 
@@ -71,7 +74,6 @@
 ## Github
 
 1. Branch Protection
-1. Move to an org instead of personal?
 
 ## Computer Setup
 
