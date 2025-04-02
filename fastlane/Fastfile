@@ -58,13 +58,41 @@ platform :android do
     )
   end
 
+  desc "Take Screenshots"
+  lane :improv_tools_screenshots do
+    capture_android_screenshots(
+      clear_previous_screenshots: true,
+      skip_open_summary: true,
+      use_tests_in_packages: "com.brokenkernel.improvtools.deployment.screenshots",
+      exit_on_test_failure: true,
+    )
+  end
+
   desc "Full Play Store Deployment"
   lane :playstore do
     gradle(
       task: 'assemble',
       build_type: 'Release'
     )
-    capture_android_screenshots
-    upload_to_play_store
+    gradle(
+      task: 'bundle',
+      build_type: 'Release'
+    )
+
+#     improv_tools_screenshots
+#     increment_gradle_version
+    current_build_number = android_get_version_code(
+      gradle_file: "app/build.gradle.kts",
+    )
+
+    puts "Using build number: #{current_build_number}".yellow
+
+    upload_to_play_store(
+      aab: "app/build/outputs/bundle/release/app-release.aab",
+      skip_upload_apk: true,
+      validate_only: true, ## TODO
+      skip_upload_changelogs: false, ## TODO
+      version_code: current_build_number
+    )
   end
 end

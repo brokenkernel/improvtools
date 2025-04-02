@@ -55,13 +55,13 @@ Build debug and test APK for screenshots
 
 Bump Version In Gradle File
 
-### android screenshots
+### android improv_tools_screenshots
 
 ```sh
-[bundle exec] fastlane android screenshots
+[bundle exec] fastlane android improv_tools_screenshots
 ```
 
-Take Screenshots And Upload them
+Take Screenshots
 
 ### android playstore
 
@@ -69,7 +69,7 @@ Take Screenshots And Upload them
 [bundle exec] fastlane android playstore
 ```
 
-
+Full Play Store Deployment
 
 ----
 
