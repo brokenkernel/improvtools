@@ -1,8 +1,6 @@
 [versions]
-agp = "8.9.1"
-kotlin = "2.1.20"
-kotlinxSerialization = "1.8.0"
 activityCompose = "1.10.1"
+agp = "8.9.1"
 composeBom = "2025.03.01"
 coreKtx = "1.15.0"
 datastorePreferences = "1.1.4"
@@ -13,14 +11,16 @@ hiltNavigationTesting = "1.2.0"
 jacksonModuleKotlin = "2.18.3"
 junit = "4.13.2"
 junitVersion = "1.2.1"
+kotlin = "2.1.20"
+kotlinxSerialization = "1.8.0"
 ksp = "2.1.20-1.0.32"
 lifecycleRuntimeKtx = "2.8.7"
 lifecycleViewModelKtx = "2.8.7"
 materialIconsExtended = "1.7.8"
 navigationCompose = "2.8.9"
 navigationTesting = "2.8.9"
+screengrab = "2.1.1"
 viewModelCompose = "2.8.7"
-
 
 
 [libraries]
@@ -50,6 +50,7 @@ hilt-android-compiler = { group = "com.google.dagger", name = "hilt-android-comp
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerialization"}
 kotlinx-serialization-protobuf = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-protobuf", version.ref = "kotlinxSerialization"}
+tools-fastlane-screengrab = { group ="tools.fastlane", name="screengrab", version.ref="screengrab" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

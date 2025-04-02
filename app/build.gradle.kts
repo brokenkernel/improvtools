@@ -54,6 +54,7 @@ dependencies {
     androidTestImplementation(libs.androidx.navigation.navigationTesting)
     androidTestImplementation(libs.androidx.ui.test.junit4)
     androidTestImplementation(platform(libs.androidx.compose.bom))
+    androidTestImplementation(libs.tools.fastlane.screengrab)
     debugImplementation(libs.androidx.ui.test.manifest)
     debugImplementation(libs.androidx.ui.tooling)
     implementation(libs.androidx.activity.compose)
