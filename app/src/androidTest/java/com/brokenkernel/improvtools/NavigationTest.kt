@@ -38,7 +38,6 @@ class NavigationTest {
 
     }
 
-    // Unit test
     @Test
     fun testResetButtonShownOnSuggestionsScreen() {
         composeTestRule

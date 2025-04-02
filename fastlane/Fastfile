@@ -42,7 +42,7 @@ platform :android do
     build_for_screengrab
     capture_android_screenshots(
       clear_previous_screenshots: true,
-      skip_open_summary: true,
+#       skip_open_summary: true,
       use_tests_in_packages: "com.brokenkernel.improvtools.deployment.screenshots",
       exit_on_test_failure: true,
     )
