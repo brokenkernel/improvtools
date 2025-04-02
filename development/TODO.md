@@ -46,6 +46,7 @@
 ### Deployment
 
 1. Actually deploy to android store (and f-droid or other stores?)
+1. automate changelog creation
 
 ## Bugs
 
