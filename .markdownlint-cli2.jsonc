@@ -1,3 +1,7 @@
 {
   "noBanner": true,
+  "globs": [
+    "app/**/*.md",
+    "docs/**/*.md",
+  ],
 }
