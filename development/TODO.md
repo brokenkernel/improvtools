@@ -5,7 +5,6 @@
 1. Stop passing view models around
 1. Proguard (particularly becuase of extended icons_
 1. Provide settings per section
-1. Type Safe Routes (https://developer.android.com/guide/navigation/design/type-safety)
 1. create dialog/standard "error" route
 1. Make navigation routes encapsulated: https://developer.android.com/guide/navigation/design/encapsulate
 
@@ -34,6 +33,10 @@
 ### Settings
 
 1. Add menu for specific settings on each screen (checkbox, dropdown)
+
+### Workshop Generation
+
+1. Include list of games, tagged, make a day generator
 
 ### Technical
 

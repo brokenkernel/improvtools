@@ -2,7 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-//    alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.ksp)
     alias(libs.plugins.dagger.hilt.android)
 }
@@ -72,6 +72,9 @@ dependencies {
     implementation(libs.hilt.android)
     implementation(platform(libs.androidx.compose.bom))
     testImplementation(libs.junit)
+    implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.kotlinx.serialization.protobuf)
 
     ksp(libs.hilt.android.compiler)
 }
