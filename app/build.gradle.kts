@@ -17,7 +17,8 @@ try {
         keystoreProperties.load(it)
     }
     successfulLoadProperties = true
-} catch (_: IOException) {}
+} catch (_: IOException) {
+}
 
 android {
     namespace = "com.brokenkernel.improvtools"
