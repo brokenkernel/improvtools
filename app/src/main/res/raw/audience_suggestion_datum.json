@@ -1,5 +1,5 @@
 {
-  "categories" : {
+  "categories": {
     "NOUN": [
       "book",
       "can",
@@ -50,15 +50,49 @@
       "doctor/patient"
     ],
     "SITUATION": [
-      "Playing a practical joke", "Having a Babys"
+      "Playing a practical joke",
+      "Having a Babys"
     ],
     "GENRE": [
-    "Horror",
+      "Absurdist",
       "Action",
-      "Romance Novel"
+      "Adventure",
+      "Biographical",
+      "Comedy",
+      "Crime",
+      "Cyberpunk",
+      "Fairy Tale",
+      "Fantasy romance",
+      "Fantasy",
+      "Heist",
+      "Historical",
+      "Horror",
+      "Horror",
+      "Legal Thriller",
+      "Military Fiction",
+      "Musical",
+      "Noir",
+      "Romance",
+      "Satire",
+      "Science fiction",
+      "Shenmo",
+      "Space Opera",
+      "Sports",
+      "Spy Fiction",
+      "Superhero",
+      "Surrealist",
+      "Swashbuckler",
+      "Sword & Sorcery",
+      "Telenovela",
+      "Urban fantasy",
+      "Western",
+      "Wuxia"
     ],
     "DIRECTOR": [
-      "David Lynch", "Stanley Kubrick"
+      "David Lynch",
+      "Quentin Tarantino",
+      "Stanley Kubrick",
+      "Wes Anderson"
     ],
     "PLAYWRITE": [
       "Shakespere",
