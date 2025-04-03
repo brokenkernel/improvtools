@@ -1,11 +1,10 @@
 package com.brokenkernel.improvtools.application.presentation.view
 
+import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.content.pm.PackageInfo
-import android.content.pm.PackageManager
 import android.os.Build
 import android.text.Html
-import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Arrangement
@@ -15,28 +14,32 @@ import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.platform.ClipboardManager
 import androidx.compose.ui.platform.LocalClipboardManager
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
-import androidx.core.app.ActivityOptionsCompat
+import androidx.core.net.toUri
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.presentation.viewmodel.AboutScreenViewModel
-import androidx.core.net.toUri
+import kotlinx.coroutines.launch
 
 @Composable
 internal fun AboutScreen(viewModel: AboutScreenViewModel = viewModel(factory = AboutScreenViewModel.Factory)) {
     val aboutScreenData by viewModel.uiState.collectAsState()
+    val snackbarHostState = remember { SnackbarHostState() }
+    val crScope = rememberCoroutineScope()
 
     // todo: null shouldn't be possible here, but need to figure out "default" packageInfo
     val packageInfo: PackageInfo? = aboutScreenData.packageInfo
@@ -150,8 +153,6 @@ internal fun AboutScreen(viewModel: AboutScreenViewModel = viewModel(factory = A
                 contract = ActivityResultContracts.StartActivityForResult(),
                 onResult = {},
             )
-            val myContextForToast = LocalContext.current
-            val packageManager: PackageManager = LocalContext.current.packageManager
             FilledTonalButton(onClick = {
                 copyAboutText(
                     sectionHeaderStyle = sectionStyle,
@@ -170,13 +171,26 @@ internal fun AboutScreen(viewModel: AboutScreenViewModel = viewModel(factory = A
                     )
 
                     val intent = Intent(Intent.ACTION_SENDTO, "mailto:".toUri())
-                        .putExtra(Intent.EXTRA_EMAIL, arrayOf(aboutScreenData.resources.getString(R.string.about_contact_email_address)))
-                        .putExtra(Intent.EXTRA_SUBJECT, aboutScreenData.resources.getString(R.string.about_improvtools_feature_request))
-                        .putExtra(Intent.EXTRA_TEXT, Html.fromHtml(textToBeEmailed.toString(), Html.FROM_HTML_MODE_COMPACT))
-                    if (intent.resolveActivity(packageManager) != null) {
+                        .putExtra(
+                            Intent.EXTRA_EMAIL,
+                            arrayOf(aboutScreenData.resources.getString(R.string.about_contact_email_address))
+                        )
+                        .putExtra(
+                            Intent.EXTRA_SUBJECT,
+                            aboutScreenData.resources.getString(R.string.about_improvtools_feature_request)
+                        )
+                        .putExtra(
+                            Intent.EXTRA_TEXT,
+                            Html.fromHtml(textToBeEmailed.toString(), Html.FROM_HTML_MODE_COMPACT)
+                        )
+                    try {
                         launcher.launch(intent)
-                    } else {
-                        Toast.makeText(myContextForToast, "No email application available", Toast.LENGTH_SHORT).show()
+                    } catch (_: ActivityNotFoundException) {
+                        crScope.launch {
+                            snackbarHostState.showSnackbar(
+                                aboutScreenData.resources.getString(R.string.error_no_email_application_available)
+                            )
+                        }
                     }
                 },
             ) {
