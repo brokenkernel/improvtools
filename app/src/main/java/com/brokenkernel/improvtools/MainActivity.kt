@@ -40,7 +40,6 @@ fun PreviewSuggestionPairList() {
 }
 
 
-
 @Composable
 fun OuterContentForMasterScreen() {
     val drawerNavController = rememberNavController()

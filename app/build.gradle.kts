@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.protobuf)
     alias(libs.plugins.dagger.hilt.android)
 }
 
@@ -118,6 +119,22 @@ dependencies {
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.kotlinx.serialization.protobuf)
+    implementation(libs.com.google.protobuf.protobufJavalite)
 
     ksp(libs.hilt.android.compiler)
+}
+
+protobuf {
+    protoc {
+        artifact = libs.com.google.protobuf.protoc.get().toString()
+    }
+    generateProtoTasks {
+        all().forEach {
+            it.builtins {
+                create("java") {
+                    option("lite")
+                }
+            }
+        }
+    }
 }

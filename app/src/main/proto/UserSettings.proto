@@ -4,6 +4,6 @@ option java_package = "com.brokenkernel.improvtools.datastore";
 option java_multiple_files = true;
 
 message UserSettings {
-  bool allow_suggestion_reuse = 1;
+  bool allow_suggestions_reuse = 1;
 
 }

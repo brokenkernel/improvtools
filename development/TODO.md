@@ -66,6 +66,9 @@
 1. Branch Protection
 1. Add secret keystore info(?); remove silent exception swallowing
 
+## Technical
+
+1. Migrate to protobuf 4.x
 
 ## Computer Setup
 

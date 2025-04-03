@@ -19,6 +19,9 @@ lifecycleViewModelKtx = "2.8.7"
 materialIconsExtended = "1.7.8"
 navigationCompose = "2.8.9"
 navigationTesting = "2.8.9"
+protobuf = "0.9.5"
+protobufJavalite = "3.25.6" # TODO: migrate to 4.x
+protoc = "3.25.6"  # TODO: migrate to 4.x
 screengrab = "2.1.1"
 viewModelCompose = "2.8.7"
 
@@ -26,9 +29,9 @@ viewModelCompose = "2.8.7"
 [libraries]
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
-androidx-compose-material-extended = {group="androidx.compose.material", name="material-icons-extended", version.ref="materialIconsExtended"}
+androidx-compose-material-extended = { group = "androidx.compose.material", name = "material-icons-extended", version.ref = "materialIconsExtended" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
-androidx-datastore-datastorePreferences = { group = "androidx.datastore", name = "datastore-preferences", version.ref="datastorePreferences" }
+androidx-datastore-datastorePreferences = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastorePreferences" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
@@ -44,18 +47,25 @@ androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
-com-fasterxml-jackson-module-jacksonModuleKotlin = { group = "com.fasterxml.jackson.module", name="jackson-module-kotlin", version.ref="jacksonModuleKotlin" }
-hilt-android = { group = "com.google.dagger", name = "hilt-android" , version.ref = "hilt"}
-hilt-android-compiler = { group = "com.google.dagger", name = "hilt-android-compiler" , version.ref = "hilt"}
+com-fasterxml-jackson-module-jacksonModuleKotlin = { group = "com.fasterxml.jackson.module", name = "jackson-module-kotlin", version.ref = "jacksonModuleKotlin" }
+com-google-protobuf-protobufJavalite = { group = "com.google.protobuf", name = "protobuf-javalite", version.ref = "protobufJavalite" }
+com-google-protobuf-protoc = { group = "com.google.protobuf", name = "protoc", version.ref = "protoc" }
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
+hilt-android-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
+hilt-android-testing = { group = "com.google.dagger", name = "hilt-android-testing", version.ref = "hilt" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
-kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerialization"}
-kotlinx-serialization-protobuf = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-protobuf", version.ref = "kotlinxSerialization"}
-tools-fastlane-screengrab = { group ="tools.fastlane", name="screengrab", version.ref="screengrab" }
+kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
+kotlinx-serialization-protobuf = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-protobuf", version.ref = "kotlinxSerialization" }
+tools-fastlane-screengrab = { group = "tools.fastlane", name = "screengrab", version.ref = "screengrab" }
+
+[bundles]
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 dagger-hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+protobuf = { id = "com.google.protobuf", version.ref = "protobuf" }

@@ -3,19 +3,24 @@ package com.brokenkernel.improvtools
 import android.app.Application
 import android.content.Context
 import android.os.StrictMode
-//import androidx.datastore.core.DataStoreFactory
-import androidx.datastore.preferences.preferencesDataStore
+import androidx.datastore.core.DataStore
+import androidx.datastore.dataStore
+import com.brokenkernel.improvtools.datastore.UserSettings
+import com.brokenkernel.improvtools.settings.data.serialisation.UserSettingsSerializer
 import dagger.hilt.android.HiltAndroidApp
 
-private const val USER_SETTINGS_NAME = "user_settings"
+private const val USER_SETTINGS_NAME = "user_settings.pb"
 
 @HiltAndroidApp
 class ImprovToolsApplication() : Application() {
 
-    private val Context.userPreferenceDataStore by preferencesDataStore(
-        name = USER_SETTINGS_NAME
+    // TODO: this should be injected by hilt
+    private val Context.userPreferenceDataStore: DataStore<UserSettings> by dataStore(
+        fileName = USER_SETTINGS_NAME,
+        serializer = UserSettingsSerializer
     )
 
+    // TODO: migrate to hilt instead of AppContainer
     internal lateinit var container: AppContainer
 
     override fun onCreate() {
@@ -33,7 +38,7 @@ class ImprovToolsApplication() : Application() {
             .detectLeakedClosableObjects()
             .detectLeakedRegistrationObjects()
             .detectLeakedSqlLiteObjects()
-//            .detectNonSdkApiUsage() // used by ScreenshotGenerationTest
+//            .detectNonSdkApiUsage() // TODO: used by ScreenshotGenerationTest
             .detectUnsafeIntentLaunch()
             .detectUntaggedSockets()
 //            .penaltyLog()

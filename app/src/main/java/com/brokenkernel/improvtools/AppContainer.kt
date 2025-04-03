@@ -3,6 +3,7 @@ package com.brokenkernel.improvtools
 import android.content.res.Resources
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
+import com.brokenkernel.improvtools.datastore.UserSettings
 import com.brokenkernel.improvtools.settings.data.repository.DefaultSettingsRespository
 import com.brokenkernel.improvtools.settings.data.repository.SettingsRepository
 import com.brokenkernel.improvtools.suggestionGenerator.data.repository.AudienceSuggestionDatumRepository
@@ -15,7 +16,7 @@ internal interface AppContainer {
 
 internal class DefaultAppContainer(
     resources: Resources,
-    userPreferenceDataStore: DataStore<Preferences>
+    userPreferenceDataStore: DataStore<UserSettings>
 ) : AppContainer {
 
     override val audienceSugestionDatumRespository: AudienceSuggestionDatumRepository by lazy {
