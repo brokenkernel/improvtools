@@ -16,3 +16,4 @@
 local.properties
 /secret
 /keystore.properties
+/fastlane/metadata/**/images
