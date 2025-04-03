@@ -52,7 +52,6 @@ internal fun AboutScreen(viewModel: AboutScreenViewModel = viewModel(factory = A
     fun generateDebugInformationText(sectionHeaderStyle: SpanStyle, dataNameStyle: SpanStyle): AnnotatedString {
         fun buildHeaderRow(header: String, content: String): AnnotatedString {
             return buildAnnotatedString {
-                // todo handle material theme
                 withStyle(style = dataNameStyle) {
                     append(header)
                 }
@@ -164,7 +163,6 @@ internal fun AboutScreen(viewModel: AboutScreenViewModel = viewModel(factory = A
             }
             ElevatedButton(
                 onClick = {
-                    // TODO: Figure out why this is always null. Mostly seems correct though.
                     val textToBeEmailed = generateDebugInformationText(
                         sectionHeaderStyle = sectionStyle,
                         dataNameStyle = dataNameStyle,
