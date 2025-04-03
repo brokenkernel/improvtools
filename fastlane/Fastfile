@@ -35,6 +35,10 @@ platform :android do
     increment_version_code(
           gradle_file_path: "app/build.gradle.kts",
     )
+    git_commit(
+      path: "app/build.gradle.kts",
+      message: "[fastlane] bump version code"
+    )
   end
 
   desc "Take Screenshots"
