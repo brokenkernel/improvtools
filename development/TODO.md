@@ -10,10 +10,6 @@
 
 ## Incomplete Featuress
 
-### Application
-
-1. Make an icon and such
-
 ### Timer
 
 1. Implement Timer
@@ -24,6 +20,7 @@
 
 1. Custom source files (or even network?)
 1. Localised suggestions (different languages)
+1. Change Suggestion on Timer
 
 ### About Screen
 
@@ -55,7 +52,6 @@
 ## Testing
 
 1. Test navigation
-1. Github actions, testing, etc.
 
 ## Documentation
 
@@ -68,10 +64,6 @@
 1. Add domain for documentation site
 1. Set up github pages for docs site
 1. Set up automation for github pages deployment
-
-## Generation of TODO Items
-
-1. Go through the list of features
 
 ## Github
 

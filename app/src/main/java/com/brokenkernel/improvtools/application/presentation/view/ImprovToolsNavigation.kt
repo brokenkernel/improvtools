@@ -150,7 +150,11 @@ internal fun ImprovToolsNavigationDrawer(
                         { it -> doNavigateToNavigableScreenWithNavClosure(it) },
                         currentNavigableScreen,
                     )
-
+                    NavigableScreenNavigationDrawerItem(
+                        NavigableScreens.WorkshopGenerator,
+                        { it -> doNavigateToNavigableScreenWithNavClosure(it) },
+                        currentNavigableScreen,
+                    )
 
                     HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
 
@@ -159,6 +163,12 @@ internal fun ImprovToolsNavigationDrawer(
                         modifier = Modifier.padding(16.dp),
                         style = MaterialTheme.typography.titleMedium
                     )
+                    NavigableScreenNavigationDrawerItem(
+                        NavigableScreens.TipsAndAdvice,
+                        { it -> doNavigateToNavigableScreenWithNavClosure(it) },
+                        currentNavigableScreen,
+                    )
+
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.Settings,
                         { it -> doNavigateToNavigableScreenWithNavClosure(it) },

@@ -2,10 +2,12 @@ package com.brokenkernel.improvtools.application.data.model
 
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Games
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Lightbulb
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.outlined.Timer
+import androidx.compose.material.icons.outlined.TipsAndUpdates
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.brokenkernel.improvtools.R
@@ -13,6 +15,8 @@ import com.brokenkernel.improvtools.application.data.model.NavigableRoute.HelpAn
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute.SettingsRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute.SuggestionGeneratorRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute.TimerRoute
+import com.brokenkernel.improvtools.application.data.model.NavigableRoute.TipsAndAdviceRoute
+import com.brokenkernel.improvtools.application.data.model.NavigableRoute.WorkshopGeneratorRoute
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -28,6 +32,13 @@ internal sealed class NavigableRoute() {
 
     @Serializable
     internal object HelpAndAboutRoute : NavigableRoute()
+
+    @Serializable
+    internal object WorkshopGeneratorRoute : NavigableRoute()
+
+    @Serializable
+    internal object TipsAndAdviceRoute : NavigableRoute()
+
 }
 
 
@@ -73,6 +84,25 @@ internal sealed class NavigableScreens(
         route = HelpAndAboutRoute,
         shouldShowExtraMenu = false,
     )
+
+    @Immutable
+    internal object WorkshopGenerator : NavigableScreens(
+        titleResource = R.string.navigation_workshop_generator,
+        contentDescription = R.string.go_to_workshop_generator_screen,
+        icon = Icons.Outlined.Games,
+        route = WorkshopGeneratorRoute,
+        shouldShowExtraMenu = false,
+    )
+
+    @Immutable
+    internal object TipsAndAdvice : NavigableScreens(
+        titleResource = R.string.navigation_tips_and_advice,
+        contentDescription = R.string.go_to_tips_and_advice_screen,
+        icon = Icons.Outlined.TipsAndUpdates,
+        route = TipsAndAdviceRoute,
+        shouldShowExtraMenu = false,
+    )
+
 
     companion object {
 
