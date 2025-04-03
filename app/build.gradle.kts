@@ -32,7 +32,7 @@ android {
         versionCode = 17
         versionName = "0.0.1"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.brokenkernel.improvtools.infrastructure.ImprovToolsTestRunner"
     }
 
     signingConfigs {
@@ -92,18 +92,21 @@ android {
 
 dependencies {
 
+
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.navigation.navigationTesting)
     androidTestImplementation(libs.androidx.ui.test.junit4)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
+    androidTestImplementation(libs.hilt.android.testing)
     androidTestImplementation(libs.tools.fastlane.screengrab)
+    androidTestImplementation(platform(libs.androidx.compose.bom))
     debugImplementation(libs.androidx.ui.test.manifest)
     debugImplementation(libs.androidx.ui.tooling)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.compose.material.extended)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.datastore.datastorePreferences)
+    implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.lifecycle.viewModel.compose)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
@@ -113,15 +116,18 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.com.fasterxml.jackson.module.jacksonModuleKotlin)
+    implementation(libs.com.google.protobuf.protobufJavalite)
     implementation(libs.hilt.android)
-    implementation(platform(libs.androidx.compose.bom))
-    testImplementation(libs.junit)
-    implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.kotlinx.serialization.protobuf)
-    implementation(libs.com.google.protobuf.protobufJavalite)
+    implementation(platform(libs.androidx.compose.bom))
+    testImplementation(libs.junit)
 
-    ksp(libs.hilt.android.compiler)
+    ksp(libs.hilt.compiler)
+}
+
+hilt {
+    enableAggregatingTask = true
 }
 
 protobuf {

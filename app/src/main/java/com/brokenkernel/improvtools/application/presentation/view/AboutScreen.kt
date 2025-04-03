@@ -30,13 +30,13 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
 import androidx.core.net.toUri
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.presentation.viewmodel.AboutScreenViewModel
 import kotlinx.coroutines.launch
 
 @Composable
-internal fun AboutScreen(viewModel: AboutScreenViewModel = viewModel(factory = AboutScreenViewModel.Factory)) {
+internal fun AboutScreen(viewModel: AboutScreenViewModel = hiltViewModel()) {
     val aboutScreenData by viewModel.uiState.collectAsState()
     val snackbarHostState = remember { SnackbarHostState() }
     val crScope = rememberCoroutineScope()

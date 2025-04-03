@@ -1,30 +1,26 @@
 package com.brokenkernel.improvtools
 
 import android.app.Application
-import android.content.Context
 import android.os.StrictMode
-import androidx.datastore.core.DataStore
-import androidx.datastore.dataStore
-import com.brokenkernel.improvtools.datastore.UserSettings
-import com.brokenkernel.improvtools.settings.data.serialisation.UserSettingsSerializer
 import dagger.hilt.android.HiltAndroidApp
 
-private const val USER_SETTINGS_NAME = "user_settings.pb"
+
+//private const val USER_SETTINGS_NAME = "user_settings.pb"
+//
+//private val Context.userPreferenceDataStore: DataStore<UserSettings> by dataStore(
+//    fileName = USER_SETTINGS_NAME,
+//    serializer = UserSettingsSerializer
+//)
 
 @HiltAndroidApp
-class ImprovToolsApplication() : Application() {
-
-    // TODO: this should be injected by hilt
-    private val Context.userPreferenceDataStore: DataStore<UserSettings> by dataStore(
-        fileName = USER_SETTINGS_NAME,
-        serializer = UserSettingsSerializer
-    )
+class ImprovToolsApplication : Application() {
 
     // TODO: migrate to hilt instead of AppContainer
-    internal lateinit var container: AppContainer
+//    internal lateinit var container: AppContainer
 
     override fun onCreate() {
         super.onCreate()
+
 
         val strictModeVMPolicy = StrictMode.VmPolicy.Builder()
             .detectActivityLeaks()
@@ -41,23 +37,26 @@ class ImprovToolsApplication() : Application() {
 //            .detectNonSdkApiUsage() // TODO: used by ScreenshotGenerationTest
             .detectUnsafeIntentLaunch()
             .detectUntaggedSockets()
+            .penaltyLog()
 //            .penaltyLog()
             .penaltyDeath()
             .build()
         StrictMode.setVmPolicy(strictModeVMPolicy)
         val strictModeThreadPolicy = StrictMode.ThreadPolicy.Builder()
             .detectNetwork()
-//            .detectDiskReads()
-//            .detectDiskWrites()
-            .detectExplicitGc()
+//            .detectDiskReads() // TODO: move off to its own thread, used by settings
+//            .detectDiskWrites() // TODO: move off to its own thread, used by settings
+//            .detectExplicitGc() // TODO: used by tests(?)
             .detectCustomSlowCalls()
             .detectResourceMismatches()
             .detectUnbufferedIo()
-            .penaltyDialog()
+//            .penaltyLog()
+//            .penaltyDialog()
+            .penaltyDeath()
             .build()
         StrictMode.setThreadPolicy(strictModeThreadPolicy)
 
 //        DataStoreFactory.create(USER_PREFERENCES_NAME)
-        container = DefaultAppContainer(this.applicationContext.resources, userPreferenceDataStore)
+//        container = DefaultAppContainer(this.applicationContext.resources, userPreferenceDataStore)
     }
 }

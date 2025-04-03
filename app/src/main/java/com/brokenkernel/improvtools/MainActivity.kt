@@ -21,6 +21,7 @@ import com.brokenkernel.improvtools.application.presentation.view.ImprovToolsNav
 import com.brokenkernel.improvtools.ui.theme.ImprovToolsTheme
 import dagger.hilt.android.AndroidEntryPoint
 
+
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

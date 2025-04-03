@@ -4,13 +4,13 @@ import androidx.datastore.core.DataStore
 import com.brokenkernel.improvtools.datastore.UserSettings
 import kotlinx.coroutines.flow.Flow
 
-internal interface SettingsRepository {
+interface SettingsRepository {
     val userSettingsFlow: Flow<UserSettings>
 
     suspend fun updateAllowSuggestionsReuse(allowSuggestinReUse: Boolean)
 }
 
-internal class DefaultSettingsRespository(private val userPreferenceDataStore: DataStore<UserSettings>) :
+class DefaultSettingsRespository(private val userPreferenceDataStore: DataStore<UserSettings>) :
     SettingsRepository {
 
     override val userSettingsFlow: Flow<UserSettings> =

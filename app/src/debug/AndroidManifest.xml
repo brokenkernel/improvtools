@@ -10,4 +10,8 @@
 
     <!-- Allows changing locales -->
     <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <application>
+        <activity android:name=".HiltComponentActitivity" />
+    </application>
+
 </manifest>

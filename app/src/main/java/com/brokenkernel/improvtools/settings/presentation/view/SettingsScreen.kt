@@ -11,13 +11,14 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.settings.presentation.viewmodel.SettingsScreenViewModel
 
 @Composable
 internal fun SettingsScreen(
-    viewModel: SettingsScreenViewModel = viewModel(factory = SettingsScreenViewModel.Factory),
+    viewModel: SettingsScreenViewModel = hiltViewModel(),
 ) {
 
     val uiState by viewModel.uiState.collectAsState()

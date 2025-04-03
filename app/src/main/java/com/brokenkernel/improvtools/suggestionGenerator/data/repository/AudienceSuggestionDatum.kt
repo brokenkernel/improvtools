@@ -8,7 +8,7 @@ import com.fasterxml.jackson.core.JsonParser.Feature.STRICT_DUPLICATE_DETECTION
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import java.io.InputStream
 
-internal interface AudienceSuggestionDatumRepository {
+interface AudienceSuggestionDatumRepository {
     fun getAudienceDatumForCategory(category: SuggestionCategory): Set<String>
 }
 
@@ -16,7 +16,7 @@ private data class AudienceSuggestionDatum(
     val categories: Map<String, Set<String>>,
 )
 
-internal class ResourcesAudienceSuggestionDatumRepository(
+class ResourcesAudienceSuggestionDatumRepository(
     resources: Resources,
 ) : AudienceSuggestionDatumRepository {
     private val audienceDatumParsed: AudienceSuggestionDatum?

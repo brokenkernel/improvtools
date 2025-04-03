@@ -6,11 +6,14 @@ import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.AP
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
+//import com.brokenkernel.improvtools.AppContainer
 import com.brokenkernel.improvtools.ImprovToolsApplication
 import com.brokenkernel.improvtools.settings.data.repository.SettingsRepository
 import com.brokenkernel.improvtools.suggestionGenerator.data.model.SuggestionCategory
 import com.brokenkernel.improvtools.suggestionGenerator.data.repository.AudienceSuggestionDatumRepository
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.uistate.SuggestionScreenUIState
+import dagger.hilt.android.lifecycle.HiltViewModel
+import jakarta.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -18,7 +21,8 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import java.util.EnumMap
 
-internal class SuggestionScreenViewModel(
+@HiltViewModel
+internal class SuggestionScreenViewModel @Inject constructor(
     private val suggestionDatumRepository: AudienceSuggestionDatumRepository,
     private val settingsRepository: SettingsRepository,
 ) :
@@ -80,19 +84,4 @@ internal class SuggestionScreenViewModel(
 
         return legalNewWords.random()
     }
-
-    companion object {
-        val Factory: ViewModelProvider.Factory = viewModelFactory {
-            initializer {
-                val application = (this[APPLICATION_KEY] as ImprovToolsApplication)
-                val suggestionsDatumRepository =
-                    application.container.audienceSugestionDatumRespository
-                val settingsRepository =
-                    application.container.settingsRepository
-
-                SuggestionScreenViewModel(suggestionsDatumRepository, settingsRepository)
-            }
-        }
-    }
-
 }

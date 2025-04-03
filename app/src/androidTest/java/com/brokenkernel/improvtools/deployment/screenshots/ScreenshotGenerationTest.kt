@@ -3,25 +3,29 @@ package com.brokenkernel.improvtools.deployment.screenshots
 import androidx.annotation.StringRes
 import androidx.compose.ui.test.hasContentDescription
 import androidx.compose.ui.test.junit4.ComposeContentTestRule
+import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.performClick
-import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
+import com.brokenkernel.improvtools.HiltComponentActitivity
 import com.brokenkernel.improvtools.OuterContentForMasterScreen
 import com.brokenkernel.improvtools.R
+import dagger.hilt.android.testing.HiltAndroidRule
+import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.junit.runner.RunWith
 import tools.fastlane.screengrab.Screengrab
 import tools.fastlane.screengrab.UiAutomatorScreenshotStrategy
 
-@RunWith(AndroidJUnit4::class)
+@HiltAndroidTest
 class ScreenshotGenerationTest {
 
+    @get:Rule(order = 0)
+    var hiltRule = HiltAndroidRule(this)
 
     @get:Rule(order = 1)
-    val composeTestRule: ComposeContentTestRule = createComposeRule()
+    val composeTestRule: ComposeContentTestRule = createAndroidComposeRule<HiltComponentActitivity>()
 
 //    lateinit var navController: TestNavHostController
 //
@@ -30,6 +34,7 @@ class ScreenshotGenerationTest {
 
     @Before
     fun setupAppNavHost() {
+        hiltRule.inject()
         Screengrab.setDefaultScreenshotStrategy(UiAutomatorScreenshotStrategy())
 
         composeTestRule.setContent {
