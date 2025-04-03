@@ -23,7 +23,7 @@ class ImprovToolsApplication() : Application() {
 
         val strictModeVMPolicy = StrictMode.VmPolicy.Builder()
             .detectActivityLeaks()
-//            .detectBlockedBackgroundActivityLaunch()
+//            .detectBlockedBackgroundActivityLaunch() // requires sdk 36
             .detectCleartextNetwork()
             .detectContentUriWithoutPermission()
             .detectCredentialProtectedWhileLocked()
@@ -33,11 +33,11 @@ class ImprovToolsApplication() : Application() {
             .detectLeakedClosableObjects()
             .detectLeakedRegistrationObjects()
             .detectLeakedSqlLiteObjects()
-            .detectNonSdkApiUsage()
+//            .detectNonSdkApiUsage() // used by ScreenshotGenerationTest
             .detectUnsafeIntentLaunch()
             .detectUntaggedSockets()
-            .penaltyLog()
-//            .penaltyDeath()
+//            .penaltyLog()
+            .penaltyDeath()
             .build()
         StrictMode.setVmPolicy(strictModeVMPolicy)
         val strictModeThreadPolicy = StrictMode.ThreadPolicy.Builder()
