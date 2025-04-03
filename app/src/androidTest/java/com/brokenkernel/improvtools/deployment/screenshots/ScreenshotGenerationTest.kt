@@ -4,7 +4,6 @@ import androidx.annotation.StringRes
 import androidx.compose.ui.test.hasContentDescription
 import androidx.compose.ui.test.junit4.ComposeContentTestRule
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
-import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.performClick
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
 import com.brokenkernel.improvtools.HiltComponentActitivity
@@ -22,7 +21,7 @@ import tools.fastlane.screengrab.UiAutomatorScreenshotStrategy
 class ScreenshotGenerationTest {
 
     @get:Rule(order = 0)
-    var hiltRule = HiltAndroidRule(this)
+    var hiltRule: HiltAndroidRule = HiltAndroidRule(this)
 
     @get:Rule(order = 1)
     val composeTestRule: ComposeContentTestRule = createAndroidComposeRule<HiltComponentActitivity>()

@@ -19,7 +19,7 @@ import org.junit.Test
 class NavigationTest {
 
     @get:Rule(order = 0)
-    var hiltRule = HiltAndroidRule(this)
+    var hiltRule: HiltAndroidRule = HiltAndroidRule(this)
 
     @get:Rule(order = 1)
     val composeTestRule: ComposeContentTestRule = createAndroidComposeRule<HiltComponentActitivity>()
