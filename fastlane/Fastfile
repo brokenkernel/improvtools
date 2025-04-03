@@ -54,6 +54,7 @@ platform :android do
 
   desc "Full Play Store Deployment"
   lane :playstore do
+    ensure_git_status_clean
     increment_gradle_version
 
     gradle(
