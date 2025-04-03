@@ -12,14 +12,12 @@ plugins {
 
 val keystoreProperties: Properties = Properties()
 var successfulLoadProperties: Boolean = false
-rootProject.file("keystore.properties").inputStream().use { it ->
-    try {
+try {
+    rootProject.file("keystore.properties").inputStream().use { it ->
         keystoreProperties.load(it)
-        successfulLoadProperties = true
-    } catch (_: IOException) {
     }
-
-}
+    successfulLoadProperties = true
+} finally {}
 
 android {
     namespace = "com.brokenkernel.improvtools"
