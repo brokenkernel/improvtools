@@ -13,7 +13,7 @@ plugins {
 val keystoreProperties: Properties = Properties()
 var successfulLoadProperties: Boolean = false
 try {
-    rootProject.file("keystore.properteisx").inputStream().use { it ->
+    rootProject.file("keystore.properteis").inputStream().use { it ->
         keystoreProperties.load(it)
     }
     successfulLoadProperties = true
@@ -28,7 +28,7 @@ android {
         applicationId = "com.brokenkernel.improvtools"
         minSdk = 34
         targetSdk = 36
-        versionCode = 10
+        versionCode = 12
         versionName = "0.0.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
