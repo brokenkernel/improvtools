@@ -20,11 +20,6 @@ jobs:
         with:
           submodules: true  # Fetch Hugo themes (true OR recursive)
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1.99.0
-        with:
-          ruby-version: '3.4.2'
-          bundler-cache: true
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
