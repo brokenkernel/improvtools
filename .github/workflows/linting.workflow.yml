@@ -1,4 +1,4 @@
-name: run all android tests
+name: run super linter
 
 permissions:
   contents: read
