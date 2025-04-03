@@ -76,6 +76,7 @@
 ## Github
 
 1. Branch Protection
+1. Add secret keystore info(?)
 
 
 ## Computer Setup

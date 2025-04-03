@@ -1,4 +1,4 @@
-import java.io.FileInputStream
+import java.io.IOException
 import java.util.Properties
 
 plugins {
@@ -10,9 +10,16 @@ plugins {
     alias(libs.plugins.dagger.hilt.android)
 }
 
-val keystorePropertiesFile = rootProject.file("keystore.properties")
-val keystoreProperties = Properties()
-keystoreProperties.load(FileInputStream(keystorePropertiesFile))
+val keystoreProperties: Properties = Properties()
+var successfulLoadProperties: Boolean = false
+rootProject.file("keystore.properties").inputStream().use { it ->
+    try {
+        keystoreProperties.load(it)
+        successfulLoadProperties = true
+    } catch (_: IOException) {
+    }
+
+}
 
 android {
     namespace = "com.brokenkernel.improvtools"
@@ -29,11 +36,13 @@ android {
     }
 
     signingConfigs {
-        create("config") {
-            keyAlias = keystoreProperties["keyAlias"] as String
-            keyPassword = keystoreProperties["keyPassword"] as String
-            storeFile = file(keystoreProperties["storeFile"] as String)
-            storePassword = keystoreProperties["storePassword"] as String
+        if (successfulLoadProperties) {
+            create("config") {
+                keyAlias = keystoreProperties["keyAlias"] as String
+                keyPassword = keystoreProperties["keyPassword"] as String
+                storeFile = file(keystoreProperties["storeFile"] as String)
+                storePassword = keystoreProperties["storePassword"] as String
+            }
         }
     }
 
