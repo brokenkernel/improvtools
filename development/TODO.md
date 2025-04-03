@@ -4,7 +4,6 @@
 
 1. Stop passing view models around
 1. Proguard (particularly becuase of extended icons_
-1. Provide settings per section
 1. create dialog/standard "error" route
 1. Make navigation routes encapsulated: https://developer.android.com/guide/navigation/design/encapsulate
 
@@ -25,7 +24,6 @@
 ### About Screen
 
 1. Make about screen selectable
-1. Figure out "default" nullable for view model
 
 ### Workshop Generation
 
@@ -61,10 +59,6 @@
 
 1. Branch Protection
 1. Add secret keystore info(?); remove silent exception swallowing
-
-## Technical
-
-1. Migrate to protobuf 4.x
 
 ## Computer Setup
 
