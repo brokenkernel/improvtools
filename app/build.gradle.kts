@@ -13,11 +13,11 @@ plugins {
 val keystoreProperties: Properties = Properties()
 var successfulLoadProperties: Boolean = false
 try {
-    rootProject.file("keystore.properties").inputStream().use { it ->
+    rootProject.file("keystore.properteisx").inputStream().use { it ->
         keystoreProperties.load(it)
     }
     successfulLoadProperties = true
-} finally {}
+} catch (_: IOException) {}
 
 android {
     namespace = "com.brokenkernel.improvtools"
@@ -45,15 +45,27 @@ android {
     }
 
     buildTypes {
-        release {
-            isMinifyEnabled = true
-            isShrinkResources = true
-            isDebuggable = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-            signingConfig = signingConfigs.getByName("config")
+        if (successfulLoadProperties) {
+            release {
+                isMinifyEnabled = true
+                isShrinkResources = true
+                isDebuggable = false
+                proguardFiles(
+                    getDefaultProguardFile("proguard-android-optimize.txt"),
+                    "proguard-rules.pro"
+                )
+                signingConfig = signingConfigs.getByName("config")
+            }
+        } else {
+            release {
+                isMinifyEnabled = true
+                isShrinkResources = true
+                isDebuggable = false
+                proguardFiles(
+                    getDefaultProguardFile("proguard-android-optimize.txt"),
+                    "proguard-rules.pro"
+                )
+            }
         }
         debug {
         }
