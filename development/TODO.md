@@ -27,10 +27,6 @@
 1. Make about screen selectable
 1. Figure out "default" nullable for view model
 
-### Settings
-
-1. Add menu for specific settings on each screen (checkbox, dropdown)
-
 ### Workshop Generation
 
 1. Include list of games, tagged, make a day generator

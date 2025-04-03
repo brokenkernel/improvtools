@@ -17,6 +17,7 @@ import com.brokenkernel.improvtools.application.data.model.NavigableRoute.Sugges
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute.TimerRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute.TipsAndAdviceRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute.WorkshopGeneratorRoute
+import com.brokenkernel.improvtools.settings.presentation.view.SuggestionsScreenMenu
 import kotlinx.serialization.Serializable
 
 @Serializable
