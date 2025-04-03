@@ -1,13 +1,8 @@
 package com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
-import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.initializer
-import androidx.lifecycle.viewmodel.viewModelFactory
 //import com.brokenkernel.improvtools.AppContainer
-import com.brokenkernel.improvtools.ImprovToolsApplication
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.brokenkernel.improvtools.settings.data.repository.SettingsRepository
 import com.brokenkernel.improvtools.suggestionGenerator.data.model.SuggestionCategory
 import com.brokenkernel.improvtools.suggestionGenerator.data.repository.AudienceSuggestionDatumRepository

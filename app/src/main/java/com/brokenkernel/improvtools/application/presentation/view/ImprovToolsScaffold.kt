@@ -1,7 +1,5 @@
 package com.brokenkernel.improvtools.application.presentation.view
 
-import android.R.attr.contentDescription
-import android.R.attr.x
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -25,12 +23,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.Path
 import androidx.compose.ui.res.stringResource
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import com.brokenkernel.improvtools.settings.presentation.view.SuggestionsScreenMenu
-import kotlin.math.exp
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
