@@ -68,7 +68,7 @@
 ## Github
 
 1. Branch Protection
-1. Add secret keystore info(?)
+1. Add secret keystore info(?); remove silent exception swallowing
 
 
 ## Computer Setup
