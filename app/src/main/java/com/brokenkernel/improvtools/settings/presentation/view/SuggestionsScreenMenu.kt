@@ -1,6 +1,5 @@
 package com.brokenkernel.improvtools.settings.presentation.view
 
-import android.R.attr.checked
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.selection.toggleable
