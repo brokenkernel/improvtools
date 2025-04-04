@@ -26,6 +26,7 @@
 ### About Screen
 
 1. Make about screen selectable
+1. Switch to interpolated
 
 ### Workshop Generation
 

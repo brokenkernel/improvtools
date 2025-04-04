@@ -18,3 +18,5 @@ local.properties
 /keystore.properties
 /fastlane/metadata/**/images
 /app/google-services.json
+/fastlane/metadata/android/screenshots.html
+/fastlane/README.md
