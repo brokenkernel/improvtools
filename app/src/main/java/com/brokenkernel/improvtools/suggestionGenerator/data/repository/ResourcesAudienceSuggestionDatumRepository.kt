@@ -32,7 +32,7 @@ internal class ResourcesAudienceSuggestionDatumRepository(
     override fun getAudienceDatumForCategory(category: SuggestionCategory): Set<String> {
         if (audienceDatumParsed == null) {
             // This should never happen but we can't assert it.
-            // It will also currently result in error on read since the Set is empty but that's a future bug to fix
+            // TODO: It will also currently result in error on read since the Set is empty but that's a future bug to fix
             return setOf()
         }
         return audienceDatumParsed.categories[category.toString()].orEmpty()

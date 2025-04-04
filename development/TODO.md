@@ -6,6 +6,8 @@
 1. Proguard (particularly becuase of extended icons_
 1. create dialog/standard "error" route
 1. Make navigation routes encapsulated: https://developer.android.com/guide/navigation/design/encapsulate
+1. Move Hilt modules into per-feature modules rather than giant infrastructure modules (maybe)
+1. Figure out high level naming scheme for "ui" model vs internal "json"/"proto" model, and so on
 
 ## Incomplete Featuress
 
