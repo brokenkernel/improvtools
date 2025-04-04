@@ -47,34 +47,22 @@ android {
     }
 
     buildTypes {
-        if (successfulLoadProperties) {
-            release {
-                isMinifyEnabled = true
-                isShrinkResources = true
-                isDebuggable = false
-                proguardFiles(
-                    getDefaultProguardFile("proguard-android-optimize.txt"),
-                    "proguard-rules.pro"
-                )
+        release {
+            isMinifyEnabled = true
+            isShrinkResources = true
+            isDebuggable = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+            if (successfulLoadProperties) {
                 signingConfig = signingConfigs.getByName("config")
-                ndk {
-                    debugSymbolLevel = "FULL" // SYMBOL_TABLE - if it gets too big
-                }
             }
-        } else {
-            release {
-                isMinifyEnabled = true
-                isShrinkResources = true
-                isDebuggable = false
-                proguardFiles(
-                    getDefaultProguardFile("proguard-android-optimize.txt"),
-                    "proguard-rules.pro"
-                )
-                ndk {
-                    debugSymbolLevel = "FULL" // SYMBOL_TABLE - if it gets too big
-                }
+            ndk {
+                debugSymbolLevel = "FULL" // SYMBOL_TABLE - if it gets too big
             }
         }
+
         debug {
         }
     }
