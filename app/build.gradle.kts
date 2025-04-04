@@ -57,6 +57,9 @@ android {
                     "proguard-rules.pro"
                 )
                 signingConfig = signingConfigs.getByName("config")
+                ndk {
+                    debugSymbolLevel = "FULL" // SYMBOL_TABLE - if it gets too big
+                }
             }
         } else {
             release {
@@ -67,6 +70,9 @@ android {
                     getDefaultProguardFile("proguard-android-optimize.txt"),
                     "proguard-rules.pro"
                 )
+                ndk {
+                    debugSymbolLevel = "FULL" // SYMBOL_TABLE - if it gets too big
+                }
             }
         }
         debug {
