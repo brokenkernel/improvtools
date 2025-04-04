@@ -60,7 +60,10 @@ platform :android do
 
   desc "Full Play Store Deployment"
   lane :playstore do
-    git_pull(only_tags: true) # only the tags, no commits
+    git_pull(
+      only_tags: true,
+      rebase: true,
+    ) # only the tags, no commits
     ensure_git_status_clean
     increment_gradle_version
     current_build_number = android_get_version_code(
