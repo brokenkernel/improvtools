@@ -6,30 +6,26 @@ import androidx.compose.ui.test.junit4.ComposeContentTestRule
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.performClick
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
-import com.brokenkernel.improvtools.infrastructure.HiltComponentActitivity
 import com.brokenkernel.improvtools.OuterContentForMasterScreen
 import com.brokenkernel.improvtools.R
+import com.brokenkernel.improvtools.application.data.model.NavigableScreens
+import com.brokenkernel.improvtools.infrastructure.HiltComponentActitivity
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import org.junit.runner.RunWith
+import org.junit.runners.Parameterized
 import tools.fastlane.screengrab.Screengrab
 import tools.fastlane.screengrab.UiAutomatorScreenshotStrategy
 
-@HiltAndroidTest
-class ScreenshotGenerationTest {
-
+sealed class BaseScreenshotGenerationTest {
     @get:Rule(order = 0)
     var hiltRule: HiltAndroidRule = HiltAndroidRule(this)
 
     @get:Rule(order = 1)
     val composeTestRule: ComposeContentTestRule = createAndroidComposeRule<HiltComponentActitivity>()
-
-//    lateinit var navController: TestNavHostController
-//
-//    @get:Rule
-//    var activityScenarioRule = ActivityScenarioRule(MainActivity::class.java)
 
     @Before
     fun setupAppNavHost() {
@@ -37,88 +33,18 @@ class ScreenshotGenerationTest {
         Screengrab.setDefaultScreenshotStrategy(UiAutomatorScreenshotStrategy())
 
         composeTestRule.setContent {
-//            navController = TestNavHostController(LocalContext.current)
-//            navController.navigatorProvider.addNavigator(ComposeNavigator())
-//            DrawerNavGraph(drawerNavController = navController)
             OuterContentForMasterScreen()
         }
     }
 
-
-    @Test
-    fun takeSettingsPageScreenshot() {
-        composeTestRule.onNode(
-            hasContentDescription(getString(R.string.navigation_app_menu))
-        )
-            .performClick()
-        composeTestRule.waitForIdle()
-        composeTestRule.onNode(
-            hasContentDescription(getString(R.string.go_to_settings_screen))
-        )
-            .performClick()
-        composeTestRule.waitForIdle()
-
-
-
-        Screengrab.screenshot("settings_screen_baseline")
-
+    fun getString(@StringRes id: Int): String {
+        return getInstrumentation().targetContext.getString(id)
     }
 
+}
 
-    @Test
-    fun takeSuggestionsPageScreenshot() {
-        composeTestRule.onNode(
-            hasContentDescription(getString(R.string.navigation_app_menu))
-        )
-            .performClick()
-        composeTestRule.waitForIdle()
-        composeTestRule.onNode(
-            hasContentDescription(getString(R.string.go_to_suggestion_generator))
-        )
-            .performClick()
-        composeTestRule.waitForIdle()
-
-
-
-        Screengrab.screenshot("suggestions_screen_baseline")
-
-    }
-
-    @Test
-    fun takeTimerPageScreenshot() {
-        composeTestRule.onNode(
-            hasContentDescription(getString(R.string.navigation_app_menu))
-        )
-            .performClick()
-        composeTestRule.waitForIdle()
-        composeTestRule.onNode(
-            hasContentDescription(getString(R.string.go_to_timer_screen))
-        )
-            .performClick()
-        composeTestRule.waitForIdle()
-
-
-        Screengrab.screenshot("timer_screen_baseline")
-    }
-
-
-    @Test
-    fun takeAboutPageScreenshot() {
-        composeTestRule.onNode(
-            hasContentDescription(getString(R.string.navigation_app_menu))
-        )
-            .performClick()
-        composeTestRule.waitForIdle()
-        composeTestRule.onNode(
-            hasContentDescription(getString(R.string.go_to_help_and_feedback_screen))
-        )
-            .performClick()
-        composeTestRule.waitForIdle()
-
-
-        Screengrab.screenshot("about_screen_baseline")
-    }
-
+@HiltAndroidTest
+internal class ScreenshotGenerationTest : BaseScreenshotGenerationTest() {
     @Test
     fun testMenuOnTopOfStartPageScreen() {
         composeTestRule.onNode(
@@ -128,8 +54,45 @@ class ScreenshotGenerationTest {
 
         Screengrab.screenshot("menu_on_top_of_start_page")
     }
+}
 
-    fun getString(@StringRes id: Int): String {
-        return getInstrumentation().targetContext.getString(id)
+
+@HiltAndroidTest
+@RunWith(Parameterized::class)
+internal class ScreenshotGeneralPerNavigableScreenTest(
+    private val navigableScreen: NavigableScreens,
+) : BaseScreenshotGenerationTest() {
+
+    companion object {
+        @JvmStatic
+        @Parameterized.Parameters()
+        fun data(): Iterable<Array<Any>> {
+            return arrayListOf(
+                arrayOf(NavigableScreens.HelpAndAbout),
+                arrayOf(NavigableScreens.Settings),
+                arrayOf(NavigableScreens.SuggestionGenerator),
+                arrayOf(NavigableScreens.Timer),
+                arrayOf(NavigableScreens.TipsAndAdvice),
+                arrayOf(NavigableScreens.WorkshopGenerator),
+            )
+        }
+    }
+
+
+    @Test
+    fun takeScreenshotOfNavigableScreen() {
+        composeTestRule.onNode(
+            hasContentDescription(getString(R.string.navigation_app_menu))
+        )
+            .performClick()
+        composeTestRule.waitForIdle()
+        composeTestRule.onNode(
+            hasContentDescription(getString(navigableScreen.contentDescription))
+        )
+            .performClick()
+        composeTestRule.waitForIdle()
+
+        Screengrab.screenshot(navigableScreen.route::class.simpleName + "_screen_baseline")
+
     }
 }
