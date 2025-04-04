@@ -2,11 +2,8 @@ package com.brokenkernel.improvtools
 
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.test.assertIsDisplayed
-import androidx.compose.ui.test.junit4.ComposeContentTestRule
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
-import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.onRoot
-import androidx.navigation.NavController
 import androidx.navigation.compose.ComposeNavigator
 import androidx.navigation.testing.TestNavHostController
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
@@ -19,7 +16,6 @@ import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.junit.Assert.*
 
 @HiltAndroidTest
 class NavigationTest {

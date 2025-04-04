@@ -2,6 +2,8 @@ package com.brokenkernel.improvtools
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import org.hamcrest.MatcherAssert.assertThat
+import org.hamcrest.Matchers
 
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -14,6 +16,6 @@ class PackageInformationTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.brokenkernel.improvtools", appContext.packageName)
+        assertThat(appContext.packageName, Matchers.`is`("com.brokenkernel.improvtools"))
     }
 }
