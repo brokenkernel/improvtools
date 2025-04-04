@@ -110,12 +110,25 @@ platform :android do
   end
 
   desc "Full Play Store Deployment"
+  lane :playstore_internal_deployment do
+    current_build_number = playstore_prep
+    upload_to_play_store(
+      aab: "app/build/outputs/bundle/release/app-release.aab",
+      skip_upload_apk: true,
+      version_code: current_build_number,
+      track: "internal"
+    )
+  end
+
+
+  desc "Full Play Store Deployment"
   lane :playstore_fully_deployment do
     current_build_number = playstore_prep
     upload_to_play_store(
       aab: "app/build/outputs/bundle/release/app-release.aab",
       skip_upload_apk: true,
-      version_code: current_build_number
+      version_code: current_build_number,
+      changes_not_sent_for_review: true, # TODO: to remove
     )
   end
 end
