@@ -4,19 +4,8 @@ import android.app.Application
 import android.os.StrictMode
 import dagger.hilt.android.HiltAndroidApp
 
-
-//private const val USER_SETTINGS_NAME = "user_settings.pb"
-//
-//private val Context.userPreferenceDataStore: DataStore<UserSettings> by dataStore(
-//    fileName = USER_SETTINGS_NAME,
-//    serializer = UserSettingsSerializer
-//)
-
 @HiltAndroidApp
 class ImprovToolsApplication : Application() {
-
-    // TODO: migrate to hilt instead of AppContainer
-//    internal lateinit var container: AppContainer
 
     override fun onCreate() {
         super.onCreate()
@@ -55,8 +44,5 @@ class ImprovToolsApplication : Application() {
             .penaltyDeath()
             .build()
         StrictMode.setThreadPolicy(strictModeThreadPolicy)
-
-//        DataStoreFactory.create(USER_PREFERENCES_NAME)
-//        container = DefaultAppContainer(this.applicationContext.resources, userPreferenceDataStore)
     }
 }

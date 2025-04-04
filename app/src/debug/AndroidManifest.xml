@@ -7,7 +7,7 @@
     <!-- Allows changing locales -->
     <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
     <application>
-        <activity android:name=".HiltComponentActitivity" />
+        <activity android:name=".infrastructure.HiltComponentActitivity" />
     </application>
 
 </manifest>

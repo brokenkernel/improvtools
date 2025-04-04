@@ -9,6 +9,7 @@ import androidx.compose.ui.test.onRoot
 import androidx.navigation.compose.ComposeNavigator
 import androidx.navigation.testing.TestNavHostController
 import com.brokenkernel.improvtools.application.presentation.view.DrawerNavGraph
+import com.brokenkernel.improvtools.infrastructure.HiltComponentActitivity
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Before

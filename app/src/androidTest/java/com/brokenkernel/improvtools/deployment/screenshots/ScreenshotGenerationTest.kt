@@ -6,7 +6,7 @@ import androidx.compose.ui.test.junit4.ComposeContentTestRule
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.performClick
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
-import com.brokenkernel.improvtools.HiltComponentActitivity
+import com.brokenkernel.improvtools.infrastructure.HiltComponentActitivity
 import com.brokenkernel.improvtools.OuterContentForMasterScreen
 import com.brokenkernel.improvtools.R
 import dagger.hilt.android.testing.HiltAndroidRule

@@ -1,4 +1,4 @@
-package com.brokenkernel.improvtools
+package com.brokenkernel.improvtools.infrastructure
 
 import androidx.activity.ComponentActivity
 import dagger.hilt.android.AndroidEntryPoint

@@ -1,6 +1,6 @@
 package com.brokenkernel.improvtools.suggestionGenerator.data.model
 
-enum class SuggestionCategory(
+internal enum class SuggestionCategory(
     val title: String,
 ) {
     NOUN("Noun"),

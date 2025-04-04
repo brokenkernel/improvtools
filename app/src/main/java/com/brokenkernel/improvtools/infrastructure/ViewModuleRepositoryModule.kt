@@ -1,4 +1,4 @@
-package com.brokenkernel.improvtools
+package com.brokenkernel.improvtools.infrastructure
 
 import android.content.Context
 import android.content.pm.PackageInfo
@@ -32,7 +32,6 @@ private const val USER_SETTINGS_NAME = "user_settings.pb"
 internal class ViewModuleRepositoryModule {
 
     @Provides
-//    @ViewModelScoped
     fun providesAudienceSuggestionDatumRepository(
         @ApplicationContext appContext: Context,
     ): AudienceSuggestionDatumRepository {
@@ -50,7 +49,7 @@ internal class ViewModuleRepositoryModule {
 
 @Module
 @InstallIn(ActivityRetainedComponent::class)
-class ApplicationDatastoreModule {
+internal class ApplicationDatastoreModule {
 
     @ActivityRetainedScoped
     @Provides
@@ -68,7 +67,7 @@ class ApplicationDatastoreModule {
 
 @Module
 @InstallIn(ActivityRetainedComponent::class)
-class ApplicationModule {
+internal class ApplicationModule {
     @ActivityRetainedScoped
     @Provides
     fun providesSettingsRepository(datastore: DataStore<UserSettings>): SettingsRepository {
