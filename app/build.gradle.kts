@@ -118,6 +118,7 @@ dependencies {
     testImplementation(libs.junit)
 
     ksp(libs.hilt.compiler)
+    testImplementation(kotlin("test"))
 }
 
 hilt {

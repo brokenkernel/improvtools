@@ -6,15 +6,20 @@ import androidx.compose.ui.test.junit4.ComposeContentTestRule
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.onRoot
+import androidx.navigation.NavController
 import androidx.navigation.compose.ComposeNavigator
 import androidx.navigation.testing.TestNavHostController
+import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import com.brokenkernel.improvtools.application.presentation.view.DrawerNavGraph
 import com.brokenkernel.improvtools.infrastructure.HiltComponentActitivity
+import com.brokenkernel.improvtools.infrastructure.assertCurrentNavigableScreen
+import com.brokenkernel.improvtools.infrastructure.onNodeWithStringId
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import org.junit.Assert.*
 
 @HiltAndroidTest
 class NavigationTest {
@@ -23,7 +28,7 @@ class NavigationTest {
     var hiltRule: HiltAndroidRule = HiltAndroidRule(this)
 
     @get:Rule(order = 1)
-    val composeTestRule: ComposeContentTestRule = createAndroidComposeRule<HiltComponentActitivity>()
+    val composeTestRule = createAndroidComposeRule<HiltComponentActitivity>()
 
     lateinit var navController: TestNavHostController
 
@@ -31,10 +36,16 @@ class NavigationTest {
     fun setupAppNavHost() {
         hiltRule.inject()
         composeTestRule.setContent {
-            navController = TestNavHostController(LocalContext.current)
-            navController.navigatorProvider.addNavigator(ComposeNavigator())
+            navController = TestNavHostController(LocalContext.current).apply {
+                navigatorProvider.addNavigator(ComposeNavigator())
+            }
             DrawerNavGraph(drawerNavController = navController)
         }
+    }
+
+    @Test
+    fun testStartScreenIsSuggestions() {
+        navController.assertCurrentNavigableScreen(NavigableScreens.SuggestionGenerator)
     }
 
     @Test
@@ -48,7 +59,7 @@ class NavigationTest {
     @Test
     fun testResetButtonShownOnSuggestionsScreen() {
         composeTestRule
-            .onNodeWithText("Reset All")
+            .onNodeWithStringId(R.string.suggestions_reset_all)
             .assertIsDisplayed()
     }
 
