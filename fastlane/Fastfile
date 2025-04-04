@@ -105,7 +105,7 @@ platform :android do
       aab: "app/build/outputs/bundle/release/app-release.aab",
       skip_upload_apk: true,
       validate_only: true,
-      version_code: current_build_number
+      version_code: current_build_number,
     )
   end
 
@@ -116,7 +116,10 @@ platform :android do
       aab: "app/build/outputs/bundle/release/app-release.aab",
       skip_upload_apk: true,
       version_code: current_build_number,
-      track: "internal"
+      track: "internal",
+      mapping_paths: [
+        "app/build/outputs/mapping/release/mapping.txt",
+      ],
     )
   end
 
@@ -129,6 +132,9 @@ platform :android do
       skip_upload_apk: true,
       version_code: current_build_number,
       changes_not_sent_for_review: true, # TODO: to remove
+      mapping_paths: [
+        "app/build/outputs/mapping/release/mapping.txt",
+      ],
     )
   end
 end
