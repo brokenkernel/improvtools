@@ -59,7 +59,3 @@
 
 1. Branch Protection
 1. Add secret keystore info(?); remove silent exception swallowing
-
-## Computer Setup
-
-1. merge android studio JAVA_HOME and shell JAVA_HOME
