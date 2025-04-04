@@ -49,7 +49,7 @@ platform :android do
       skip_open_summary: true,
       use_tests_in_packages: "com.brokenkernel.improvtools.deployment.screenshots",
       exit_on_test_failure: true,
-      test_instrumentation_runner: "com.brokenkernel.improvtools.test/com.brokenkernel.improvtools.infrastructure.ImprovToolsTestRunner",
+      test_instrumentation_runner: "com.brokenkernel.improvtools.infrastructure.ImprovToolsTestRunner"
     )
   end
 
