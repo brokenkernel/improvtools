@@ -61,9 +61,11 @@ android {
             ndk {
                 debugSymbolLevel = "FULL" // SYMBOL_TABLE - if it gets too big
             }
+            buildConfigField("Boolean", "ENABLE_STRICT_MODE_DEATH", "false")
         }
 
         debug {
+            buildConfigField("Boolean", "ENABLE_STRICT_MODE_DEATH", "true")
         }
     }
     compileOptions {
@@ -75,6 +77,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     testOptions {
         unitTests {

@@ -31,6 +31,7 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
 import androidx.core.net.toUri
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.brokenkernel.improvtools.BuildConfig
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.presentation.viewmodel.AboutScreenViewModel
 import kotlinx.coroutines.launch
@@ -72,8 +73,26 @@ internal fun AboutScreen(viewModel: AboutScreenViewModel = hiltViewModel()) {
             )
             appendLine(
                 buildHeaderRow(
+                    aboutScreenData.resources.getString(R.string.about_buildconfig_version),
+                    BuildConfig.VERSION_NAME
+                )
+            )
+            appendLine(
+                buildHeaderRow(
                     aboutScreenData.resources.getString(R.string.about_version),
                     versionName ?: "(null)"
+                )
+            )
+            appendLine(
+                buildHeaderRow(
+                    aboutScreenData.resources.getString(R.string.about_buildconfig_buildtype),
+                    BuildConfig.BUILD_TYPE,
+                )
+            )
+            appendLine(
+                buildHeaderRow(
+                    aboutScreenData.resources.getString(R.string.about_buildconfig_version_code),
+                    BuildConfig.VERSION_CODE.toString()
                 )
             )
             appendLine(
@@ -90,6 +109,12 @@ internal fun AboutScreen(viewModel: AboutScreenViewModel = hiltViewModel()) {
                 buildHeaderRow(
                     aboutScreenData.resources.getString(R.string.about_is_safe_mode),
                     aboutScreenData.isSafeMode.toString()
+                )
+            )
+            appendLine(
+                buildHeaderRow(
+                    aboutScreenData.resources.getString(R.string.about_buildconfig_death),
+                    BuildConfig.ENABLE_STRICT_MODE_DEATH.toString(),
                 )
             )
 

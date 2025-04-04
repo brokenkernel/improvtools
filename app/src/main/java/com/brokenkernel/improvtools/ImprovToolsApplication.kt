@@ -10,7 +10,6 @@ class ImprovToolsApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 
-
         val strictModeVMPolicy = StrictMode.VmPolicy.Builder()
             .detectActivityLeaks()
 //            .detectBlockedBackgroundActivityLaunch() // requires sdk 36
@@ -27,10 +26,8 @@ class ImprovToolsApplication : Application() {
             .detectUnsafeIntentLaunch()
             .detectUntaggedSockets()
             .penaltyLog()
-//            .penaltyLog()
-//            .penaltyDeath()
-            .build()
-        StrictMode.setVmPolicy(strictModeVMPolicy)
+
+
         val strictModeThreadPolicy = StrictMode.ThreadPolicy.Builder()
             .detectNetwork()
 //            .detectDiskReads() // TODO: move off to its own thread, used by settings
@@ -40,9 +37,15 @@ class ImprovToolsApplication : Application() {
             .detectResourceMismatches()
             .detectUnbufferedIo()
             .penaltyLog()
-//            .penaltyDialog()
-//            .penaltyDeath()
-            .build()
-        StrictMode.setThreadPolicy(strictModeThreadPolicy)
+
+        if (BuildConfig.ENABLE_STRICT_MODE_DEATH) {
+            strictModeVMPolicy.penaltyDeath()
+            strictModeThreadPolicy.penaltyDeath()
+        } else {
+            strictModeVMPolicy.penaltyDeathOnCleartextNetwork()
+            strictModeThreadPolicy.penaltyLog()
+        }
+        StrictMode.setVmPolicy(strictModeVMPolicy.build())
+        StrictMode.setThreadPolicy(strictModeThreadPolicy.build())
     }
 }
