@@ -8,6 +8,7 @@
 1. Make navigation routes encapsulated: https://developer.android.com/guide/navigation/design/encapsulate
 1. Move Hilt modules into per-feature modules rather than giant infrastructure modules (maybe)
 1. Figure out high level naming scheme for "ui" model vs internal "json"/"proto" model, and so on
+1. switch to https://developer.android.com/guide/topics/resources/string-resource#formatting-strings
 
 ## Incomplete Featuress
 
