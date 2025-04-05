@@ -1,11 +1,21 @@
+
 package com.brokenkernel.improvtools
 
 import android.app.Application
 import android.os.StrictMode
+import com.google.android.gms.common.ConnectionResult
+import com.google.android.gms.common.GoogleApiAvailability
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
 class ImprovToolsApplication : Application() {
+
+    private fun isGooglePlayServicesAvailable(): Boolean {
+        val googleApiAvailability = GoogleApiAvailability.getInstance()
+        val status = googleApiAvailability.isGooglePlayServicesAvailable(this)
+        return status == ConnectionResult.SUCCESS
+    }
 
     override fun onCreate() {
         super.onCreate()
@@ -13,7 +23,7 @@ class ImprovToolsApplication : Application() {
         val strictModeVMPolicy = StrictMode.VmPolicy.Builder()
             .detectActivityLeaks()
 //            .detectBlockedBackgroundActivityLaunch() // requires sdk 36
-//            .detectCleartextNetwork()
+            .detectCleartextNetwork() // TODO: Firebase causes this?
             .detectContentUriWithoutPermission()
             .detectCredentialProtectedWhileLocked()
             .detectFileUriExposure()
@@ -39,6 +49,7 @@ class ImprovToolsApplication : Application() {
             .penaltyLog()
 
         if (BuildConfig.ENABLE_STRICT_MODE_DEATH) {
+            // TODO: firebase now causes this
 //            strictModeVMPolicy.penaltyDeath()
 //            strictModeThreadPolicy.penaltyDeath()
         } else {
@@ -47,5 +58,10 @@ class ImprovToolsApplication : Application() {
         }
         StrictMode.setVmPolicy(strictModeVMPolicy.build())
         StrictMode.setThreadPolicy(strictModeThreadPolicy.build())
+
+        if (isGooglePlayServicesAvailable()) {
+            FirebaseCrashlytics.getInstance()
+                .isCrashlyticsCollectionEnabled = true
+        }
     }
 }
