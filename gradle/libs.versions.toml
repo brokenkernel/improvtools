@@ -6,7 +6,8 @@ coreKtx = "1.15.0"
 datastorePreferences = "1.1.4"
 espressoCore = "3.6.1"
 firebaseBom = "33.12.0"
-firebasePlugin = "3.0.3"
+firebaseCrashlyticsPlugin = "3.0.3"
+firebasePerfPlugin = "1.4.2"
 hilt = "2.56.1"
 hiltNavigationCompose = "1.2.0"
 hiltNavigationTesting = "1.2.0"
@@ -57,6 +58,7 @@ com-google-firebase-crashlytics = { module = "com.google.firebase:firebase-crash
 com-google-firebase-firebaseBom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
 com-google-protobuf-protobufJavalite = { group = "com.google.protobuf", name = "protobuf-javalite", version.ref = "protobufJavalite" }
 com-google-protobuf-protoc = { group = "com.google.protobuf", name = "protoc", version.ref = "protoc" }
+com-google-firebase-firebasePerf = { module = "com.google.firebase:firebase-perf" }
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-android-testing = { group = "com.google.dagger", name = "hilt-android-testing", version.ref = "hilt" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
@@ -67,7 +69,9 @@ tools-fastlane-screengrab = { group = "tools.fastlane", name = "screengrab", ver
 
 [bundles]
 
-firebase = ["com-google-firebase-analytics", "com-google-firebase-crashlytics", ]
+# perf disabled because of
+# 2 files found with path 'google/protobuf/descriptor.proto' from inputs:
+firebase = ["com-google-firebase-analytics", "com-google-firebase-crashlytics" ]
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -77,5 +81,6 @@ kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "ko
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 protobuf = { id = "com.google.protobuf", version.ref = "protobuf" }
-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "firebasePlugin" }
+firebaseCrashlyticsPlugin = { id = "com.google.firebase.crashlytics", version.ref = "firebaseCrashlyticsPlugin" }
+firebasePerfPlugin = { id = "com.google.firebase.firebase-perf", version.ref = "firebasePerfPlugin" }
 google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }

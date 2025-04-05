@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.kotlin.serialization) apply false
     alias(libs.plugins.ksp) apply false
     alias(libs.plugins.protobuf) apply false
-    alias(libs.plugins.crashlytics) apply false
+    alias(libs.plugins.firebaseCrashlyticsPlugin) apply false
+    alias(libs.plugins.firebasePerfPlugin) apply false
     alias(libs.plugins.google.gms.google.services) apply false
 }
