@@ -5,16 +5,18 @@ import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.tipsandadvice.data.model.TipsAndAdviceOnUIModel
 import com.brokenkernel.improvtools.tipsandadvice.data.model.TipsAndAdviceProcessedModel
 import com.brokenkernel.improvtools.tipsandadvice.data.repository.TipsAndAdviceRepository
-import com.fasterxml.jackson.core.JsonParser
-import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jakarta.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.serialization.ExperimentalSerializationApi
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.decodeFromStream
 import java.io.InputStream
 
 
+@OptIn(ExperimentalSerializationApi::class)
 @HiltViewModel
 internal class TipsAndAdviceViewModel @Inject constructor(tipsAndAdviceRepository: TipsAndAdviceRepository) :
     ViewModel() {
@@ -28,19 +30,10 @@ internal class TipsAndAdviceViewModel @Inject constructor(tipsAndAdviceRepositor
     init {
         val unprocessedTipsAndAdvice: InputStream =
             tipsAndAdviceRepository.resources.openRawResource(R.raw.tips_and_advice)
-        val mapper = jacksonObjectMapper()
-        mapper.configure(
-            JsonParser.Feature.INCLUDE_SOURCE_IN_LOCATION, true
-        )
-        mapper.configure(
-            JsonParser.Feature.STRICT_DUPLICATE_DETECTION, true
-        )
+        val tipsAndAdviceDatum: TipsAndAdviceProcessedModel =
+            Json.decodeFromStream<TipsAndAdviceProcessedModel>(unprocessedTipsAndAdvice)
 
-        val tipsAndAdviceDatum: TipsAndAdviceProcessedModel? = mapper.readValue<TipsAndAdviceProcessedModel>(
-            unprocessedTipsAndAdvice,
-            TipsAndAdviceProcessedModel::class.java
-        )
-        val rawDictTipsAndAdvice = tipsAndAdviceDatum ?: TipsAndAdviceProcessedModel.getDefault()
+        val rawDictTipsAndAdvice = tipsAndAdviceDatum
         tipsAndAdviceProcessed = rawDictTipsAndAdvice.asInfiniteSequence().iterator()
         _uiState = MutableStateFlow(getNewlTOTD())
         uiState = _uiState.asStateFlow()

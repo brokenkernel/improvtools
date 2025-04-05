@@ -3,30 +3,23 @@ package com.brokenkernel.improvtools.suggestionGenerator.data.repository
 import android.content.res.Resources
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.suggestionGenerator.data.model.SuggestionCategory
-import com.fasterxml.jackson.core.JsonParser
-import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
+import kotlinx.serialization.ExperimentalSerializationApi
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.decodeFromStream
 import java.io.InputStream
 
+
+@OptIn(ExperimentalSerializationApi::class)
 internal class ResourcesAudienceSuggestionDatumRepository(
     resources: Resources,
 ) : AudienceSuggestionDatumRepository {
     private val audienceDatumParsed: AudienceSuggestionDatum?
 
     init {
-        val unprocessedAudienceDatum: InputStream = resources.openRawResource(R.raw.audience_suggestion_datum)
-        val mapper = jacksonObjectMapper()
-        mapper.configure(
-            JsonParser.Feature.INCLUDE_SOURCE_IN_LOCATION, true
-        )
-        mapper.configure(
-            JsonParser.Feature.STRICT_DUPLICATE_DETECTION, true
-        )
 
-        val audienceDatumParsedMaybe: AudienceSuggestionDatum? = mapper.readValue<AudienceSuggestionDatum>(
-            unprocessedAudienceDatum,
-            AudienceSuggestionDatum::class.java
-        )
-        audienceDatumParsed = audienceDatumParsedMaybe
+        val unprocessedAudienceDatum: InputStream = resources.openRawResource(R.raw.audience_suggestion_datum)
+        audienceDatumParsed =
+            Json.decodeFromStream<AudienceSuggestionDatum>(unprocessedAudienceDatum)
     }
 
     override fun getAudienceDatumForCategory(category: SuggestionCategory): Set<String> {
