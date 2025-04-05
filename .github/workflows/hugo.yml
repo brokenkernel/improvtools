@@ -49,9 +49,9 @@ jobs:
 
       - uses: actions/setup-node@v4.3.0
         with:
-          node-version: '20'
+          node-version: 22
           cache: 'npm'
-          cache-dependency-path: '**/package-lock.json'
+          cache-dependency-path: 'docs/package-lock.json'
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3.0.0
