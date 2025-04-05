@@ -20,14 +20,17 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="@string/suggestions_activity_title"
             android:theme="@style/Theme.ImprovTools"
             android:directBootAware="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
         </activity>
+
         <meta-data
             android:name="firebase_analytics_collection_enabled"
             android:value="false" />
