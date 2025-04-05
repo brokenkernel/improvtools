@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.pm.PackageInfo
 import android.os.Build
 import android.text.Html
+import android.text.Html.FROM_HTML_MODE_COMPACT
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Arrangement
@@ -103,18 +104,35 @@ internal fun AboutScreen(viewModel: AboutScreenViewModel = hiltViewModel()) {
             )
             append("\n")
             withStyle(style = sectionHeaderStyle) {
-                appendLine(aboutScreenData.resources.getString(R.string.about_debug_information))
+                appendLine(
+                        aboutScreenData.resources.getString(R.string.about_debug_information)
+
+                )
             }
+            appendLine(
+                Html.fromHtml(
+                    aboutScreenData.resources.getString(
+                        R.string.about_buildconfig_enable_strict_death,
+                        BuildConfig.ENABLE_STRICT_MODE_DEATH
+                    ),
+                    FROM_HTML_MODE_COMPACT
+                )
+
+            )
+            appendLine(
+                Html.fromHtml(
+                    aboutScreenData.resources.getString(
+                        R.string.about_buildconfig_enable_crashylitics,
+                        BuildConfig.ENABLE_CRASHLYTICS
+                    ),
+                    FROM_HTML_MODE_COMPACT
+                )
+            )
+
             appendLine(
                 buildHeaderRow(
                     aboutScreenData.resources.getString(R.string.about_is_safe_mode),
                     aboutScreenData.isSafeMode.toString()
-                )
-            )
-            appendLine(
-                buildHeaderRow(
-                    aboutScreenData.resources.getString(R.string.about_buildconfig_death),
-                    BuildConfig.ENABLE_STRICT_MODE_DEATH.toString(),
                 )
             )
 
