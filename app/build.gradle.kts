@@ -1,3 +1,4 @@
+import com.android.build.api.dsl.VariantDimension
 import java.io.IOException
 import java.util.Properties
 
@@ -22,6 +23,19 @@ try {
     }
     successfulLoadProperties = true
 } catch (_: IOException) {
+}
+
+/**
+ * Type safety for buildConfigField
+ */
+private inline fun <reified ValueT> VariantDimension.buildConfigField(name: String, value: ValueT): Unit {
+    val resolvedValue: String = when (value) {
+        is String -> "\"$value\""
+        is Boolean -> "Boolean.parseBoolean(\"$value\")"
+        else -> value.toString()
+    }
+
+    buildConfigField(ValueT::class.java.simpleName, name, resolvedValue)
 }
 
 android {
@@ -64,11 +78,13 @@ android {
             ndk {
                 debugSymbolLevel = "FULL" // SYMBOL_TABLE - if it gets too big
             }
-            buildConfigField("Boolean", "ENABLE_STRICT_MODE_DEATH", "false")
+            buildConfigField("ENABLE_STRICT_MODE_DEATH", false)
+            buildConfigField("ENABLE_CRASHLYTICS", true)
         }
 
         debug {
-            buildConfigField("Boolean", "ENABLE_STRICT_MODE_DEATH", "true")
+            buildConfigField("ENABLE_STRICT_MODE_DEATH", true)
+            buildConfigField("ENABLE_CRASHLYTICS", false)
         }
     }
     compileOptions {

@@ -47,6 +47,7 @@ class ImprovToolsApplication : Application() {
             .detectUnbufferedIo()
             .penaltyLog()
 
+        // TODO: add to debug screen
         if (BuildConfig.ENABLE_STRICT_MODE_DEATH) {
             // TODO: firebase now causes this
 //            strictModeVMPolicy.penaltyDeath()
@@ -58,7 +59,8 @@ class ImprovToolsApplication : Application() {
         StrictMode.setVmPolicy(strictModeVMPolicy.build())
         StrictMode.setThreadPolicy(strictModeThreadPolicy.build())
 
-        if (isGooglePlayServicesAvailable()) {
+        // TODO: add to debug screen
+        if (BuildConfig.ENABLE_CRASHLYTICS && isGooglePlayServicesAvailable()) {
             FirebaseCrashlytics.getInstance()
                 .isCrashlyticsCollectionEnabled = true
         }
