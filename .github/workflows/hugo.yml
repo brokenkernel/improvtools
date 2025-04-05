@@ -72,7 +72,8 @@ jobs:
           HUGO_ENVIRONMENT: production
           HUGO_ENV: production
         run: |
-          cd docs; \
+          cd docs
+          npm clean-install
           hugo \
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
