@@ -3,12 +3,14 @@ import java.util.Properties
 
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.dagger.hilt.android)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.ksp)
     alias(libs.plugins.protobuf)
-    alias(libs.plugins.dagger.hilt.android)
+    alias(libs.plugins.crashlytics)
+    alias(libs.plugins.google.gms.google.services)
 }
 
 val keystoreProperties: Properties = Properties()
@@ -119,6 +121,8 @@ dependencies {
     implementation(libs.kotlinx.serialization.protobuf)
     implementation(platform(libs.androidx.compose.bom))
     testImplementation(libs.junit)
+    implementation(platform(libs.com.google.firebase.firebaseBom))
+    implementation(libs.bundles.firebase)
 
     ksp(libs.hilt.compiler)
     testImplementation(kotlin("test"))
