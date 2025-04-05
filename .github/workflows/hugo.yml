@@ -81,12 +81,12 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3.0.1
         with:
-          path: ./public
+          path: './docs/public'
 
       - name: Attest
         uses: actions/attest-build-provenance@v2
         with:
-          subject-path: './public'
+          subject-path: './docs/public'
 
   deploy:
     environment:
