@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1061960911643",
+    "project_id": "improv-tools-cloud",
+    "storage_bucket": "improv-tools-cloud.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1061960911643:android:9ab1645fce4781ad43a1be",
+        "android_client_info": {
+          "package_name": "com.brokenkernel.improvtools"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVnTDZAUlPhUl80DpyCwBp-QsN2VWHgHk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

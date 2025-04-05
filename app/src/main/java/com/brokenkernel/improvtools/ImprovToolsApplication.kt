@@ -13,7 +13,7 @@ class ImprovToolsApplication : Application() {
         val strictModeVMPolicy = StrictMode.VmPolicy.Builder()
             .detectActivityLeaks()
 //            .detectBlockedBackgroundActivityLaunch() // requires sdk 36
-            .detectCleartextNetwork()
+//            .detectCleartextNetwork()
             .detectContentUriWithoutPermission()
             .detectCredentialProtectedWhileLocked()
             .detectFileUriExposure()
@@ -39,8 +39,8 @@ class ImprovToolsApplication : Application() {
             .penaltyLog()
 
         if (BuildConfig.ENABLE_STRICT_MODE_DEATH) {
-            strictModeVMPolicy.penaltyDeath()
-            strictModeThreadPolicy.penaltyDeath()
+//            strictModeVMPolicy.penaltyDeath()
+//            strictModeThreadPolicy.penaltyDeath()
         } else {
             strictModeVMPolicy.penaltyDeathOnCleartextNetwork()
             strictModeThreadPolicy.penaltyLog()
