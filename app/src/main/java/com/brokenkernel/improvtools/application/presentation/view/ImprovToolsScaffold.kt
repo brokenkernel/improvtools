@@ -31,14 +31,16 @@ import com.brokenkernel.improvtools.settings.presentation.view.SuggestionsScreen
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun ImprovToolsScaffold(
-    content: @Composable () -> Unit,
     currentNavigableScreen: NavigableScreens,
     doNavigateToNavigableScreen: (NavigableScreens) -> Unit,
     navMenuButtonPressedCallback: () -> Unit,
+    content: @Composable () -> Unit,
 ) {
     val snackbarHostState = remember { SnackbarHostState() }
     var moreMenuExpandedState: Boolean by remember { mutableStateOf(false) }
 
+
+    // TODO: deal with NavigationSuiteScaffold
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
@@ -101,7 +103,7 @@ internal fun ImprovToolsScaffold(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding),
-            content = content
+            content = content,
         )
     }
 }

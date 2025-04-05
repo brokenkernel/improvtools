@@ -104,6 +104,7 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.compose.material.extended)
+    implementation(libs.androidx.compose.material3.adaptive.navigation.suite)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.datastore.datastorePreferences)
     implementation(libs.androidx.hilt.navigation.compose)
