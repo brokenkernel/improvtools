@@ -46,7 +46,7 @@ internal fun TipsAndAdviceScreen(viewModel: TipsAndAdviceViewModel = hiltViewMod
             }
         }
         Row {
-            SelectionContainer() {
+            SelectionContainer {
                 HtmlText(tipOfTheDay.content)
             }
         }

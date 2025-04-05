@@ -1,4 +1,3 @@
-
 package com.brokenkernel.improvtools
 
 import android.app.Application
