@@ -98,16 +98,17 @@ platform :android do
       current_build_number # last line, return value
   end
 
+  playstoreRelease_variant = "playstoreRelease"
   desc "Play Store Deployment Preperation"
   lane :playstore_validate_only do
     current_build_number = playstore_prep
     upload_to_play_store(
-      aab: "app/build/outputs/bundle/playstoreRelease/app-playstore-release.aab",
+      aab: "app/build/outputs/bundle/" + playstoreRelease_variant + "/app-playstore-release.aab",
       skip_upload_apk: true,
       validate_only: true,
       version_code: current_build_number,
       mapping_paths: [
-        "app/build/outputs/mapping/release/mapping.txt",
+        "app/build/outputs/mapping/" + playstoreRelease_variant + "/mapping.txt",
       ],
     )
   end
@@ -116,12 +117,12 @@ platform :android do
   lane :playstore_internal_deployment do
     current_build_number = playstore_prep
     upload_to_play_store(
-      aab: "app/build/outputs/bundle/playstoreRelease/app-playstore-release.aab",
+      aab: "app/build/outputs/bundle/" + playstoreRelease_variant + "/app-playstore-release.aab",
       skip_upload_apk: true,
       version_code: current_build_number,
       track: "internal",
       mapping_paths: [
-        "app/build/outputs/mapping/release/mapping.txt",
+        "app/build/outputs/mapping/" + playstoreRelease_variant + "/mapping.txt",
       ],
     )
   end
@@ -131,12 +132,12 @@ platform :android do
   lane :playstore_fully_deployment do
     current_build_number = playstore_prep
     upload_to_play_store(
-      aab: "app/build/outputs/bundle/playstoreRelease/app-playstore-release.aab",
+      aab: "app/build/outputs/bundle/" + playstoreRelease_variant + "/app-playstore-release.aab",
       skip_upload_apk: true,
       version_code: current_build_number,
       changes_not_sent_for_review: true, # TODO: to remove
       mapping_paths: [
-        "app/build/outputs/mapping/release/mapping.txt",
+        "app/build/outputs/mapping/" + playstoreRelease_variant + "/mapping.txt",
       ],
     )
   end
