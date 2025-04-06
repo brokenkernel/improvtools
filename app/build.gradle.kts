@@ -15,6 +15,8 @@ plugins {
     alias(libs.plugins.google.gms.google.services)
 }
 
+val DIMENSION_APP_STORE: String = "appstore_dimension"
+
 val keystoreProperties: Properties = Properties()
 var successfulLoadProperties: Boolean = false
 try {
@@ -60,6 +62,14 @@ android {
                 storeFile = file(keystoreProperties["storeFile"] as String)
                 storePassword = keystoreProperties["storePassword"] as String
             }
+        }
+    }
+
+    flavorDimensions += mutableListOf(DIMENSION_APP_STORE)
+    productFlavors {
+        create("playstore") {
+            dimension = DIMENSION_APP_STORE
+            versionNameSuffix = ".playstore"
         }
     }
 
