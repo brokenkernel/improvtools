@@ -115,6 +115,10 @@ android {
         }
     }
     buildToolsVersion = "35.0.0"
+    dependenciesInfo {
+        includeInApk = true
+        includeInBundle = true
+    }
 }
 
 dependencies {
