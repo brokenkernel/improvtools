@@ -77,7 +77,13 @@ platform :android do
       ensure_git_status_clean
       current_build_number = increment_gradle_version
       build_android_app(
-        tasks: ['assemble', 'bundle'],
+        tasks: ['assemble'],
+        build_type: 'Release',
+        flavor: 'playstore',
+      )
+
+      build_android_app(
+        tasks: ['bundle'],
         build_type: 'Release',
         flavor: 'playstore',
       )
