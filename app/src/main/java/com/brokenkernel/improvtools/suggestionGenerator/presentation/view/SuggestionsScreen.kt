@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -26,7 +25,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.suggestionGenerator.data.model.SuggestionCategory
@@ -53,19 +51,16 @@ internal fun SuggestionsScreenFullyLoaded(viewModel: SuggestionScreenViewModel =
     val audienceIdeaWeight = .7f
     // assert total is 100.
 
+    // TODO: the weight are kind of random below. I'm not actually sure why they work. Figure it out.
     Column(
-        modifier = Modifier
-            .verticalScroll(rememberScrollState()),
-        verticalArrangement = Arrangement.spacedBy(4.dp), // TODO: move into dims resource
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         // Header
         Row(
             Modifier
                 .background(MaterialTheme.colorScheme.surfaceVariant)
-                .height(IntrinsicSize.Max)
+                .weight(1f)
                 .fillMaxWidth()
-                .fillMaxHeight()
         ) {
             TableCell(
                 text = stringResource(R.string.suggestions_title_category),
@@ -78,30 +73,32 @@ internal fun SuggestionsScreenFullyLoaded(viewModel: SuggestionScreenViewModel =
                 style = MaterialTheme.typography.titleLarge,
             )
         }
-        SuggestionCategory.entries.forEach { suggestionData ->
-            Row(
-                Modifier
-                    .fillMaxWidth()
-                    .height(IntrinsicSize.Max)
-                    .fillMaxHeight(),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                TableCell(
-                    text = suggestionData.title,
-                    weight = categoryWeight,
-                    style = MaterialTheme.typography.bodyMedium,
-                )
-                ClickableTableCell(
-                    text = audienceSuggestionUIState.audienceSuggestions.getOrDefault(
-                        suggestionData,
-                        "unknown"
-                    ), //  TODO I shouldn't have to do this. Maybe EnumMap
-                    weight = audienceIdeaWeight,
-                    style = MaterialTheme.typography.bodyMedium,
-                    onClick = {
-                        viewModel.updateSuggestionFor(suggestionData)
+        Row(modifier = Modifier.verticalScroll(rememberScrollState()).weight(10f)) {
+            Column {
+                SuggestionCategory.entries.forEach { suggestionData ->
+                    Row(
+                        modifier = Modifier
+                            .height(IntrinsicSize.Max),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        TableCell(
+                            text = suggestionData.title,
+                            weight = categoryWeight,
+                            style = MaterialTheme.typography.bodyMedium,
+                        )
+                        ClickableTableCell(
+                            text = audienceSuggestionUIState.audienceSuggestions.getOrDefault(
+                                suggestionData,
+                                "unknown"
+                            ), //  TODO I shouldn't have to do this. Maybe EnumMap
+                            weight = audienceIdeaWeight,
+                            style = MaterialTheme.typography.bodyMedium,
+                            onClick = {
+                                viewModel.updateSuggestionFor(suggestionData)
+                            }
+                        )
                     }
-                )
+                }
             }
         }
         Row(
@@ -109,7 +106,7 @@ internal fun SuggestionsScreenFullyLoaded(viewModel: SuggestionScreenViewModel =
             horizontalArrangement = Arrangement.Center,
             modifier = Modifier
                 .fillMaxWidth()
-                .fillMaxHeight()
+                .weight(1f)
         ) {
             FilledTonalButton(
                 onClick = { viewModel.resetAllCategories() },
