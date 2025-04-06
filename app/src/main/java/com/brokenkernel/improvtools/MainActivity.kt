@@ -1,5 +1,6 @@
 package com.brokenkernel.improvtools
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -21,6 +22,8 @@ import com.brokenkernel.improvtools.application.presentation.view.ImprovToolsNav
 import com.brokenkernel.improvtools.ui.theme.ImprovToolsTheme
 import dagger.hilt.android.AndroidEntryPoint
 
+private const val ShowSuggestionsIntent: String = "com.brokenkernel.improvtools.intents.ShowSuggestions"
+private const val ShowTimerIntent: String = "com.brokenkernel.improvtools.intents.ShowTimer"
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -28,25 +31,31 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
+        val initialScreen = when (intent.action) {
+            ShowSuggestionsIntent -> NavigableScreens.SuggestionGenerator
+            ShowTimerIntent -> NavigableScreens.Timer
+            else -> NavigableScreens.SuggestionGenerator
+        }
+
         setContent {
-            OuterContentForMasterScreen()
+            OuterContentForMasterScreen(initialScreen)
         }
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewSuggestionPairList() {
-    OuterContentForMasterScreen()
+internal fun PreviewSuggestionPairList() {
+    OuterContentForMasterScreen(NavigableScreens.SuggestionGenerator)
 }
 
 
 @Composable
-fun OuterContentForMasterScreen() {
+internal fun OuterContentForMasterScreen(initialScreen: NavigableScreens) {
     val drawerNavController = rememberNavController()
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
 
-    var currentNavigableScreen: NavigableScreens by remember { mutableStateOf(NavigableScreens.SuggestionGenerator) }
+    var currentNavigableScreen: NavigableScreens by remember { mutableStateOf(initialScreen) }
 
     drawerNavController.addOnDestinationChangedListener {
             controller: NavController,

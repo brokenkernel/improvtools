@@ -1,4 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
-
+    <shortcut
+        android:shortcutId="shortcut_suggestions"
+        android:enabled="true"
+        android:shortcutShortLabel="@string/shortcut_suggestions_short_label"
+        android:shortcutLongLabel="@string/shortcut_suggestions_long_label"
+        android:shortcutDisabledMessage="@string/shortcut_suggestions_disabled_label"
+        android:icon="@mipmap/ic_launcher">
+        <intent
+            android:action="com.brokenkernel.improvtools.intents.ShowSuggestions"
+            android:targetPackage="com.brokenkernel.improvtools"
+            android:targetClass="com.brokenkernel.improvtools.MainActivity" />
+    </shortcut>
+    <shortcut
+        android:shortcutId="shortcut_timer"
+        android:enabled="true"
+        android:shortcutShortLabel="@string/shortcut_timer_short_label"
+        android:shortcutLongLabel="@string/shortcut_timer_long_label"
+        android:shortcutDisabledMessage="@string/shortcut_timer_disabled_label"
+        android:icon="@mipmap/ic_launcher">
+        <intent
+            android:action="com.brokenkernel.improvtools.intents.ShowTimer"
+            android:targetPackage="com.brokenkernel.improvtools"
+            android:targetClass="com.brokenkernel.improvtools.MainActivity" />
+    </shortcut>
 </shortcuts>
