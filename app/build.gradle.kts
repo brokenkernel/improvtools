@@ -110,6 +110,15 @@ android {
         buildConfig = true
     }
     testOptions {
+        managedDevices {
+            localDevices {
+                create("Pixel4Managed") {
+                    device = "Pixel 4"
+                    apiLevel = 35
+                    systemImageSource = "google-atd"
+                }
+            }
+        }
         unitTests {
             isIncludeAndroidResources = true
         }
