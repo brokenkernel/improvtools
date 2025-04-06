@@ -1,11 +1,7 @@
 package com.brokenkernel.improvtools.infrastructure
 
 import android.content.Context
-import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
-import android.content.pm.PackageManager.PackageInfoFlags
-import com.brokenkernel.improvtools.application.data.repository.AboutScreenRepository
-import com.brokenkernel.improvtools.application.data.repository.DefaultAboutScreenRepository
 import com.brokenkernel.improvtools.suggestionGenerator.data.repository.AudienceSuggestionDatumRepository
 import com.brokenkernel.improvtools.suggestionGenerator.data.repository.ResourcesAudienceSuggestionDatumRepository
 import com.brokenkernel.improvtools.tipsandadvice.data.repository.DefaultTipsAndAdviceRepository
@@ -33,12 +29,5 @@ internal class ViewModuleRepositoryModule {
         @ApplicationContext appContext: Context,
     ): AudienceSuggestionDatumRepository {
         return ResourcesAudienceSuggestionDatumRepository(appContext.resources)
-    }
-
-    @Provides
-    fun providesAboutScreenRepository(@ApplicationContext appContext: Context): AboutScreenRepository {
-        val packageManager: PackageManager = appContext.packageManager
-        val packageInfo: PackageInfo = packageManager.getPackageInfo(appContext.packageName, PackageInfoFlags.of(0))
-        return DefaultAboutScreenRepository(packageInfo, packageManager.isSafeMode, appContext.resources)
     }
 }

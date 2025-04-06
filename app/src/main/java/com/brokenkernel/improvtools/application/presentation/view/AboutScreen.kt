@@ -3,6 +3,7 @@ package com.brokenkernel.improvtools.application.presentation.view
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.content.pm.PackageInfo
+import android.content.pm.PackageManager.PackageInfoFlags
 import android.os.Build
 import android.text.Html
 import android.text.Html.FROM_HTML_MODE_COMPACT
@@ -10,195 +11,141 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.selection.SelectionContainer
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.FilledTonalButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ClipboardManager
 import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
-import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.withStyle
+import androidx.compose.ui.text.fromHtml
 import androidx.core.net.toUri
-import androidx.hilt.navigation.compose.hiltViewModel
 import com.brokenkernel.improvtools.BuildConfig
 import com.brokenkernel.improvtools.R
-import com.brokenkernel.improvtools.application.presentation.viewmodel.AboutScreenViewModel
 import kotlinx.coroutines.launch
 
 @Composable
-internal fun AboutScreen(viewModel: AboutScreenViewModel = hiltViewModel()) {
-    val aboutScreenData by viewModel.uiState.collectAsState()
+internal fun AboutScreen() {
     val snackbarHostState = remember { SnackbarHostState() }
     val crScope = rememberCoroutineScope()
+    val resources = LocalContext.current.resources
+    val packageManager = LocalContext.current.packageManager
 
-    // todo: null shouldn't be possible here, but need to figure out "default" packageInfo
-    val packageInfo: PackageInfo? = aboutScreenData.packageInfo
-    val versionName: String? = packageInfo?.versionName
-    val packageName = packageInfo?.packageName
-    val longVersionCode: Long = packageInfo?.longVersionCode ?: -1
+
+    // TODO: figure out how to do content generation off of UI. Maybe bring back viewmodel?
+    val packageInfo: PackageInfo =
+        packageManager.getPackageInfo(LocalContext.current.packageName, PackageInfoFlags.of(0))
+    val versionName: String? = packageInfo.versionName
+    val packageName = packageInfo.packageName
+    val longVersionCode: Long = packageInfo.longVersionCode
 
     val clipboardManager: ClipboardManager = LocalClipboardManager.current
 
-    fun generateDebugInformationText(sectionHeaderStyle: SpanStyle, dataNameStyle: SpanStyle): AnnotatedString {
-        fun buildHeaderRow(header: String, content: String): AnnotatedString {
-            return buildAnnotatedString {
-                withStyle(style = dataNameStyle) {
-                    append(header)
-                }
-                append(" ")
-                append(content)
-            }
+    fun generateDebugInformationText(): String {
+        // TODO: possibly directly handle HTML instead of relying on annotated string
+        val result: String = """
+            |<big>${resources.getString(R.string.about_version_information)}</big>
+            |${
+            resources.getString(
+                R.string.about_buildconfig_version_code,
+                BuildConfig.VERSION_CODE.toString()
+            )
         }
+            |${resources.getString(R.string.about_long_version_code, longVersionCode.toString())}
+            |${resources.getString(R.string.about_package_name, packageName)}
+            |${resources.getString(R.string.about_buildconfig_version, BuildConfig.VERSION_NAME)}
+            |${resources.getString(R.string.about_version, versionName ?: "(null)")}
+            |${resources.getString(R.string.about_buildconfig_buildtype, BuildConfig.BUILD_TYPE)}
+            |<big>${resources.getString(R.string.about_debug_information)}</big>
+            |${
+            resources.getString(
+                R.string.about_buildconfig_enable_strict_death,
+                BuildConfig.ENABLE_STRICT_MODE_DEATH
+            )
+        }
+            |${
+            resources.getString(
+                R.string.about_buildconfig_enable_crashylitics,
+                BuildConfig.ENABLE_CRASHLYTICS
+            )
+        }
+            |${resources.getString(R.string.about_is_safe_mode, packageManager.isSafeMode)}
+            |
+            |BOARD=${Build.BOARD}
+            |BOOTLOADER=${Build.BOOTLOADER}
+            |BRAND=${Build.BRAND}
+            |DEVICE=${Build.DEVICE}
+            |DISPLAY=${Build.DISPLAY}
+            |FINGERPRINT=${Build.FINGERPRINT}
+            |HARDWARE=${Build.HARDWARE}
+            |HOST=${Build.HOST}
+            |ID=${Build.ID}
+            |MANUFACTURER=${Build.MANUFACTURER}
+            |MODEL=${Build.MODEL}
+            |ODM_SKU=${Build.ODM_SKU}
+            |PRODUCT=${Build.PRODUCT}
+            |SKU=${Build.SKU}
+            |SOC_MANUFACTURER=${Build.SOC_MANUFACTURER}
+            |SOC_MODEL=${Build.SOC_MODEL}
+            |SUPPORTED_ABIS=${Build.SUPPORTED_ABIS.contentToString()}
+            |TAGS=${Build.TAGS}
+            |TIME=${Build.TIME}
+            |TYPE=${Build.TYPE}
+            |USER=${Build.USER}
+        """.trimMargin().replace("\n", "<br/>")
 
-        val result: AnnotatedString = buildAnnotatedString {
-            withStyle(style = sectionHeaderStyle) {
-                appendLine(aboutScreenData.resources.getString(R.string.about_version_information))
-            }
-            appendLine(
-                buildHeaderRow(
-                    aboutScreenData.resources.getString(R.string.about_package_name),
-                    packageName ?: "(null)"
-                )
-            )
-            appendLine(
-                buildHeaderRow(
-                    aboutScreenData.resources.getString(R.string.about_buildconfig_version),
-                    BuildConfig.VERSION_NAME
-                )
-            )
-            appendLine(
-                buildHeaderRow(
-                    aboutScreenData.resources.getString(R.string.about_version),
-                    versionName ?: "(null)"
-                )
-            )
-            appendLine(
-                buildHeaderRow(
-                    aboutScreenData.resources.getString(R.string.about_buildconfig_buildtype),
-                    BuildConfig.BUILD_TYPE,
-                )
-            )
-            appendLine(
-                buildHeaderRow(
-                    aboutScreenData.resources.getString(R.string.about_buildconfig_version_code),
-                    BuildConfig.VERSION_CODE.toString()
-                )
-            )
-            appendLine(
-                buildHeaderRow(
-                    aboutScreenData.resources.getString(R.string.about_long_version_code),
-                    longVersionCode.toString()
-                )
-            )
-            append("\n")
-            withStyle(style = sectionHeaderStyle) {
-                appendLine(
-                        aboutScreenData.resources.getString(R.string.about_debug_information)
-
-                )
-            }
-            appendLine(
-                Html.fromHtml(
-                    aboutScreenData.resources.getString(
-                        R.string.about_buildconfig_enable_strict_death,
-                        BuildConfig.ENABLE_STRICT_MODE_DEATH
-                    ),
-                    FROM_HTML_MODE_COMPACT
-                )
-
-            )
-            appendLine(
-                Html.fromHtml(
-                    aboutScreenData.resources.getString(
-                        R.string.about_buildconfig_enable_crashylitics,
-                        BuildConfig.ENABLE_CRASHLYTICS
-                    ),
-                    FROM_HTML_MODE_COMPACT
-                )
-            )
-
-            appendLine(
-                buildHeaderRow(
-                    aboutScreenData.resources.getString(R.string.about_is_safe_mode),
-                    aboutScreenData.isSafeMode.toString()
-                )
-            )
-
-            // further debug information for the future
-            Build.BOARD
-            Build.BOOTLOADER
-            Build.BRAND
-            Build.DEVICE
-            Build.DISPLAY
-            Build.FINGERPRINT
-            Build.HARDWARE
-            Build.HOST
-            Build.ID
-            Build.MANUFACTURER
-            Build.MODEL
-            Build.ODM_SKU
-            Build.PRODUCT
-            Build.SKU
-            Build.SOC_MANUFACTURER
-            Build.SOC_MODEL
-            Build.SUPPORTED_ABIS
-            Build.TAGS
-            Build.TIME
-            Build.TYPE
-            Build.USER
+        // further debug information for the future
 //    Build.getFingerprintedPartitions()
 //    Build.getRadioVersion("versionName")
 //    Build.getMajorSdkVersion()
-        }
         return result
     }
 
-    fun copyAboutText(dataNameStyle: SpanStyle, sectionHeaderStyle: SpanStyle): Unit {
+    fun copyAboutText(): Unit {
         clipboardManager.setText(
-            generateDebugInformationText(
-                sectionHeaderStyle = sectionHeaderStyle,
-                dataNameStyle = dataNameStyle,
-            )
+            AnnotatedString.fromHtml(generateDebugInformationText())
         )
     }
 
-    Column {
-        Row {
+    Column(modifier = Modifier.fillMaxSize()) {
+        Row(modifier = Modifier.verticalScroll(rememberScrollState()).fillMaxHeight().weight(100f)) {
             SelectionContainer {
                 Text(
-                    generateDebugInformationText(
-                        sectionHeaderStyle = MaterialTheme.typography.displayMedium.toSpanStyle(),
-                        dataNameStyle = MaterialTheme.typography.titleMedium.toSpanStyle(),
-                    )
+                    AnnotatedString.fromHtml(generateDebugInformationText())
                 )
             }
         }
+        Spacer(modifier = Modifier.weight(1f))
         Row(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center,
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(IntrinsicSize.Min)
         ) {
-            val sectionStyle = MaterialTheme.typography.titleLarge.toSpanStyle()
-            val dataNameStyle = MaterialTheme.typography.displayMedium.toSpanStyle()
             val launcher = rememberLauncherForActivityResult(
                 contract = ActivityResultContracts.StartActivityForResult(),
                 onResult = {},
             )
             FilledTonalButton(onClick = {
                 copyAboutText(
-                    sectionHeaderStyle = sectionStyle,
-                    dataNameStyle = dataNameStyle,
                 )
             }
             ) {
@@ -207,29 +154,27 @@ internal fun AboutScreen(viewModel: AboutScreenViewModel = hiltViewModel()) {
             ElevatedButton(
                 onClick = {
                     val textToBeEmailed = generateDebugInformationText(
-                        sectionHeaderStyle = sectionStyle,
-                        dataNameStyle = dataNameStyle,
                     )
 
                     val intent = Intent(Intent.ACTION_SENDTO, "mailto:".toUri())
                         .putExtra(
                             Intent.EXTRA_EMAIL,
-                            arrayOf(aboutScreenData.resources.getString(R.string.about_contact_email_address))
+                            arrayOf(resources.getString(R.string.about_contact_email_address))
                         )
                         .putExtra(
                             Intent.EXTRA_SUBJECT,
-                            aboutScreenData.resources.getString(R.string.about_improvtools_feature_request)
+                            resources.getString(R.string.about_improvtools_feature_request)
                         )
                         .putExtra(
                             Intent.EXTRA_TEXT,
-                            Html.fromHtml(textToBeEmailed.toString(), Html.FROM_HTML_MODE_COMPACT)
+                            Html.fromHtml(textToBeEmailed.toString(), FROM_HTML_MODE_COMPACT)
                         )
                     try {
                         launcher.launch(intent)
                     } catch (_: ActivityNotFoundException) {
                         crScope.launch {
                             snackbarHostState.showSnackbar(
-                                aboutScreenData.resources.getString(R.string.error_no_email_application_available)
+                                resources.getString(R.string.error_no_email_application_available)
                             )
                         }
                     }
