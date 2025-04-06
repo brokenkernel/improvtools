@@ -12,6 +12,8 @@
 
 default_platform(:android)
 
+GRADLE_FILE = "app/build.gradle.kts"
+
 platform :android do
   desc "Runs all the tests"
   lane :test do
@@ -30,26 +32,14 @@ platform :android do
     )
   end
 
-  desc "Build for release"
-  lane :build_for_release do
-    build_android_app(
-      task: 'assemble',
-      build_type: 'Release'
-    )
-    gradle(
-      task: 'bundle',
-      build_type: 'Release'
-    )
-  end
-
   desc "Bump Version In Gradle File"
   lane :increment_gradle_version do
     ensure_git_branch(branch: 'master')
     increment_version_code(
-          gradle_file_path: "app/build.gradle.kts",
+          gradle_file_path: GRADLE_FILE,
     )
     current_build_number = android_get_version_code(
-      gradle_file: "app/build.gradle.kts",
+      gradle_file: GRADLE_FILE,
     )
 
     git_commit(
@@ -86,7 +76,11 @@ platform :android do
       ) # only the tags, no commits
       ensure_git_status_clean
       current_build_number = increment_gradle_version
-      build_for_release
+      build_android_app(
+        tasks: ['assemble', 'bundle'],
+        build_type: 'Release',
+        flavor: 'playstore',
+      )
 #       changelog = changelog_from_git_commits(
 #           commits_count: number_of_commits,
 #           pretty: "- %s",
@@ -95,10 +89,17 @@ platform :android do
 #           merge_commit_filtering: "exclude_merges"
 #       )
       improv_tools_screenshots
+      zip(
+        path: "app/build/intermediates/merged_native_libs/playstoreRelease/mergePlaystoreReleaseNativeLibs/out/lib",
+        output_path: "native_debug_symbols.zip",
+        verbose: True,
+      )
+
+#
       current_build_number # last line, return value
   end
 
-  playstoreRelease_variant = "playstoreRelease"
+
   desc "Play Store Deployment Preperation"
   lane :playstore_validate_only do
     current_build_number = playstore_prep
@@ -109,6 +110,7 @@ platform :android do
       version_code: current_build_number,
       mapping_paths: [
         "app/build/outputs/mapping/" + playstoreRelease_variant + "/mapping.txt",
+        "native_debug_symbols.zip",
       ],
     )
   end
@@ -123,6 +125,7 @@ platform :android do
       track: "internal",
       mapping_paths: [
         "app/build/outputs/mapping/" + playstoreRelease_variant + "/mapping.txt",
+        "native_debug_symbols.zip",
       ],
     )
   end
@@ -138,6 +141,7 @@ platform :android do
       changes_not_sent_for_review: true, # TODO: to remove
       mapping_paths: [
         "app/build/outputs/mapping/" + playstoreRelease_variant + "/mapping.txt",
+        "native_debug_symbols.zip",
       ],
     )
   end
