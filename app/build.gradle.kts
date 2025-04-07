@@ -1,5 +1,8 @@
 import com.android.build.api.dsl.VariantDimension
+import com.android.build.gradle.internal.packaging.defaultExcludes
 import com.google.firebase.crashlytics.buildtools.gradle.CrashlyticsExtension
+import org.gradle.internal.impldep.org.junit.experimental.categories.Categories.CategoryFilter.exclude
+import org.gradle.kotlin.dsl.implementation
 import java.io.IOException
 import java.util.Properties
 
@@ -168,6 +171,13 @@ dependencies {
 
     ksp(libs.hilt.compiler)
     testImplementation(kotlin("test"))
+}
+
+// firebase is just broken https://github.com/firebase/firebase-android-sdk/issues/6359
+configurations {
+    implementation {
+        exclude(module = "protolite-well-known-types")
+    }
 }
 
 hilt {
