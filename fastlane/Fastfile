@@ -52,6 +52,9 @@ platform :android do
       prefix: "v",
       build_number: current_build_number
     )
+    push_to_git_remote(
+      tags: true,
+    )
 
     current_build_number # last line, return value
   end
