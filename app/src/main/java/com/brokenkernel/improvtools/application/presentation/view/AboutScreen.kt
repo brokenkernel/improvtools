@@ -65,10 +65,10 @@ internal fun AboutScreen() {
             |${
             resources.getString(
                 R.string.about_buildconfig_version_code,
-                BuildConfig.VERSION_CODE.toString()
+                BuildConfig.VERSION_CODE
             )
         }
-            |${resources.getString(R.string.about_long_version_code, longVersionCode.toString())}
+            |${resources.getString(R.string.about_long_version_code, longVersionCode)}
             |${resources.getString(R.string.about_package_name, packageName)}
             |${resources.getString(R.string.about_buildconfig_version, BuildConfig.VERSION_NAME)}
             |${resources.getString(R.string.about_version, versionName ?: "(null)")}
@@ -153,8 +153,7 @@ internal fun AboutScreen() {
             }
             ElevatedButton(
                 onClick = {
-                    val textToBeEmailed = generateDebugInformationText(
-                    )
+                    val textToBeEmailed = generateDebugInformationText()
 
                     val intent = Intent(Intent.ACTION_SENDTO, "mailto:".toUri())
                         .putExtra(
