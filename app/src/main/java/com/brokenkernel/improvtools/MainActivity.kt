@@ -1,6 +1,5 @@
 package com.brokenkernel.improvtools
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -31,7 +30,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        val initialScreen = when (intent.action) {
+        val initialScreen: NavigableScreens = when (intent.action) {
             ShowSuggestionsIntent -> NavigableScreens.SuggestionGenerator
             ShowTimerIntent -> NavigableScreens.Timer
             else -> NavigableScreens.SuggestionGenerator
