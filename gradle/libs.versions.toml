@@ -66,6 +66,7 @@ com-google-firebase-firebaseBom = { group = "com.google.firebase", name = "fireb
 com-google-firebase-firebasePerf = { module = "com.google.firebase:firebase-perf" }
 com-google-protobuf-protobufJavalite = { group = "com.google.protobuf", name = "protobuf-javalite", version.ref = "protobufJavalite" }
 com-google-protobuf-protoc = { group = "com.google.protobuf", name = "protoc", version.ref = "protoc" }
+firebase-config = { module = "com.google.firebase:firebase-config" }
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-android-testing = { group = "com.google.dagger", name = "hilt-android-testing", version.ref = "hilt" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
