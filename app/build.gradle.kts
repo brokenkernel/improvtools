@@ -131,6 +131,7 @@ android {
         includeInBundle = true
     }
     lint {
+        lintConfig = file("lint.xml")
         baseline = file("lint-baseline.xml")
     }
 }
