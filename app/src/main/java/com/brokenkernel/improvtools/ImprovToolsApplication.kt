@@ -2,12 +2,44 @@ package com.brokenkernel.improvtools
 
 import android.app.Application
 import android.os.StrictMode
+import android.util.Log
+import android.util.Log.DEBUG
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
 import com.google.firebase.Firebase
-import com.google.firebase.crashlytics.FirebaseCrashlytics
+import com.google.firebase.crashlytics.crashlytics
 import com.google.firebase.perf.performance
+import com.google.firebase.remoteconfig.ConfigUpdate
+import com.google.firebase.remoteconfig.ConfigUpdateListener
+import com.google.firebase.remoteconfig.FirebaseRemoteConfig
+import com.google.firebase.remoteconfig.FirebaseRemoteConfigException
+import com.google.firebase.remoteconfig.remoteConfig
+import com.google.firebase.remoteconfig.remoteConfigSettings
 import dagger.hilt.android.HiltAndroidApp
+import kotlin.time.Duration.Companion.hours
+
+const val APPLICATION_TAG: String = "IMPV"
+
+fun configureRemoteConfig() {
+    val remoteConfig: FirebaseRemoteConfig = Firebase.remoteConfig
+    val configSettings = remoteConfigSettings {
+        minimumFetchIntervalInSeconds = 1.hours.inWholeSeconds
+    }
+    remoteConfig.setConfigSettingsAsync(configSettings)
+
+    remoteConfig.addOnConfigUpdateListener(object : ConfigUpdateListener {
+        override fun onUpdate(configUpdate: ConfigUpdate) {
+            if (Log.isLoggable(APPLICATION_TAG, DEBUG)) {
+                Log.d(APPLICATION_TAG, "Updated keys: " + configUpdate.updatedKeys);
+            }
+        }
+
+        override fun onError(error: FirebaseRemoteConfigException) {
+            Log.w(APPLICATION_TAG, "Config update error with code: " + error.code, error)
+        }
+    })
+
+}
 
 @HiltAndroidApp
 class ImprovToolsApplication : Application() {
@@ -60,10 +92,11 @@ class ImprovToolsApplication : Application() {
         StrictMode.setVmPolicy(strictModeVMPolicy.build())
         StrictMode.setThreadPolicy(strictModeThreadPolicy.build())
 
+        configureRemoteConfig()
+
         if (BuildConfig.ENABLE_CRASHLYTICS && isGooglePlayServicesAvailable()) {
             Firebase.performance.isPerformanceCollectionEnabled = true
-            FirebaseCrashlytics.getInstance()
-                .isCrashlyticsCollectionEnabled = true
+            Firebase.crashlytics.isCrashlyticsCollectionEnabled = true
         }
     }
 }
