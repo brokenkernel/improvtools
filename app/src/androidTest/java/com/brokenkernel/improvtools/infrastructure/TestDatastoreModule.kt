@@ -8,15 +8,15 @@ import com.brokenkernel.improvtools.datastore.UserSettings
 import com.brokenkernel.improvtools.settings.data.serialisation.UserSettingsSerializer
 import dagger.Module
 import dagger.Provides
-import dagger.hilt.android.components.ActivityRetainedComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
-import dagger.hilt.android.scopes.ActivityRetainedScoped
+import dagger.hilt.components.SingletonComponent
 import dagger.hilt.testing.TestInstallIn
+import javax.inject.Singleton
 
 
 @Module
 @TestInstallIn(
-    components = [ActivityRetainedComponent::class],
+    components = [SingletonComponent::class],
     replaces = [ApplicationDatastoreModule::class]
 )
 class TestDatastoreModule {
@@ -28,7 +28,7 @@ class TestDatastoreModule {
             .joinToString("")
     }
 
-    @ActivityRetainedScoped
+    @Singleton
     @Provides
     fun providesDatastoreForUserSettings(
         @ApplicationContext appContext: Context,
