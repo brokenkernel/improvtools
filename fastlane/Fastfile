@@ -25,12 +25,10 @@ platform :android do
     build_android_app(
       task: 'assemble',
       build_type: 'Debug',
-      flavor: 'playstore',
     )
     build_android_app(
       task: 'assemble',
       build_type: 'AndroidTest',
-      flavor: 'playstore',
     )
   end
 
@@ -67,8 +65,6 @@ platform :android do
       use_tests_in_packages: "com.brokenkernel.improvtools.deployment.screenshots",
       exit_on_test_failure: true,
       test_instrumentation_runner: "com.brokenkernel.improvtools.infrastructure.ImprovToolsTestRunner",
-      app_apk_path: "app/build/outputs/apk/playstore/release/app-playstore-release.apk",
-      tests_apk_path: "app/build/outputs/apk/androidTest/playstore/debug/app-playstore-debug-androidTest.apk",
     )
   end
 
@@ -83,13 +79,11 @@ platform :android do
       build_android_app(
         task: 'assemble',
         build_type: 'Release',
-        flavor: 'playstore',
       )
 
       build_android_app(
         task: 'bundle',
         build_type: 'Release',
-        flavor: 'playstore',
       )
 #       changelog = changelog_from_git_commits(
 #           commits_count: number_of_commits,
@@ -100,7 +94,7 @@ platform :android do
 #       )
       improv_tools_screenshots
       zip(
-        path: "app/build/intermediates/merged_native_libs/playstoreRelease/mergePlaystoreReleaseNativeLibs/out/lib",
+        path: "app/build/intermediates/merged_native_libs/release/mergeReleaseNativeLibs/out/lib",
         output_path: "native_debug_symbols.zip",
         verbose: True,
       )
@@ -113,12 +107,12 @@ platform :android do
   lane :playstore_validate_only do
     current_build_number = playstore_prep
     upload_to_play_store(
-      aab: "app/build/outputs/bundle/playstoreRelease/app-playstore-release.aab",
+      aab: "app/build/outputs/bundle/release/app-release.aab",
       skip_upload_apk: true,
       validate_only: true,
       version_code: current_build_number,
       mapping_paths: [
-        "app/build/outputs/mapping/playstoreRelease/mapping.txt",
+        "app/build/outputs/mapping/release/mapping.txt",
         "native_debug_symbols.zip",
       ],
     )
@@ -128,12 +122,12 @@ platform :android do
   lane :playstore_internal_deployment do
     current_build_number = playstore_prep
     upload_to_play_store(
-      aab: "app/build/outputs/bundle/playstoreRelease/app-playstore-release.aab",
+      aab: "app/build/outputs/bundle/release/app-playstore-release.aab",
       skip_upload_apk: true,
       version_code: current_build_number,
       track: "internal",
       mapping_paths: [
-        "app/build/outputs/mapping/playstoreRelease/mapping.txt",
+        "app/build/outputs/mapping/release/mapping.txt",
         "native_debug_symbols.zip",
       ],
     )
@@ -144,12 +138,12 @@ platform :android do
   lane :playstore_fully_deployment do
     current_build_number = playstore_prep
     upload_to_play_store(
-      aab: "app/build/outputs/bundle/playstoreRelease/app-playstore-release.aab",
+      aab: "app/build/outputs/bundle/release/app-playstore-release.aab",
       skip_upload_apk: true,
       version_code: current_build_number,
       changes_not_sent_for_review: true, # TODO: to remove
       mapping_paths: [
-        "app/build/outputs/mapping/playstoreRelease/mapping.txt",
+        "app/build/outputs/mapping/release/mapping.txt",
         "native_debug_symbols.zip",
       ],
     )
