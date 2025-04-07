@@ -24,11 +24,13 @@ platform :android do
   lane :build_for_screengrab do
     build_android_app(
       task: 'assemble',
-      build_type: 'Debug'
+      build_type: 'Debug',
+      flavor: 'playstore',
     )
     build_android_app(
       task: 'assemble',
-      build_type: 'AndroidTest'
+      build_type: 'AndroidTest',
+      flavor: 'playstore',
     )
   end
 
