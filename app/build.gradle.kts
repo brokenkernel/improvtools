@@ -41,7 +41,7 @@ private inline fun <reified ValueT> VariantDimension.buildConfigField(name: Stri
 
 android {
     namespace = "com.brokenkernel.improvtools"
-    compileSdk = 36
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.brokenkernel.improvtools"
@@ -51,6 +51,11 @@ android {
         versionName = "0.0.$versionCode"
 
         testInstrumentationRunner = "com.brokenkernel.improvtools.infrastructure.ImprovToolsTestRunner"
+        proguardFiles(
+            getDefaultProguardFile("proguard-android-optimize.txt"),
+            "proguard-rules.pro"
+        )
+
     }
 
     signingConfigs {
@@ -69,10 +74,6 @@ android {
             isMinifyEnabled = true
             isShrinkResources = true
             isDebuggable = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
             if (successfulLoadProperties) {
                 signingConfig = signingConfigs.getByName("config")
             }
