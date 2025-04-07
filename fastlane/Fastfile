@@ -96,7 +96,7 @@ platform :android do
       zip(
         path: "./app/build/intermediates/merged_native_libs/release/mergeReleaseNativeLibs/out/lib/",
         output_path: "native_debug_symbols.zip",
-        verbose: True,
+#         verbose: True,
       )
 
       current_build_number # last line, return value
