@@ -66,7 +66,9 @@ platform :android do
       skip_open_summary: true,
       use_tests_in_packages: "com.brokenkernel.improvtools.deployment.screenshots",
       exit_on_test_failure: true,
-      test_instrumentation_runner: "com.brokenkernel.improvtools.infrastructure.ImprovToolsTestRunner"
+      test_instrumentation_runner: "com.brokenkernel.improvtools.infrastructure.ImprovToolsTestRunner",
+      app_apk_path: "app/build/outputs/apk/playstore/release/app-playstore-release.apk",
+      tests_apk_path: "app/build/outputs/apk/androidTest/playstore/debug/app-playstore-debug-androidTest.apk",
     )
   end
 
