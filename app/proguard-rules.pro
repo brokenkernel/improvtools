@@ -6,8 +6,6 @@
 # Protobuf relies on refelection of field names
 -keep class * extends com.google.protobuf.GeneratedMessageLite
 
--assumenosideeffects System.currentTimeMillis
-
 -assumenosideeffects class android.util.Log {
     public static boolean isLoggable(java.lang.String, int);
 }
