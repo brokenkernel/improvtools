@@ -117,6 +117,9 @@ android {
         includeInApk = true
         includeInBundle = true
     }
+    lint {
+        baseline = file("lint-baseline.xml")
+    }
 }
 
 dependencies {
