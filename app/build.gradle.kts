@@ -1,4 +1,5 @@
 import com.android.build.api.dsl.VariantDimension
+import com.google.firebase.crashlytics.buildtools.gradle.CrashlyticsExtension
 import java.io.IOException
 import java.util.Properties
 
@@ -80,11 +81,19 @@ android {
             }
             buildConfigField("ENABLE_STRICT_MODE_DEATH", false)
             buildConfigField("ENABLE_CRASHLYTICS", true)
+            configure<CrashlyticsExtension> {
+                nativeSymbolUploadEnabled = true
+                mappingFileUploadEnabled = true
+            }
         }
 
         debug {
             buildConfigField("ENABLE_STRICT_MODE_DEATH", true)
             buildConfigField("ENABLE_CRASHLYTICS", false)
+            configure<CrashlyticsExtension> {
+                nativeSymbolUploadEnabled = true
+                mappingFileUploadEnabled = true
+            }
         }
     }
     compileOptions {

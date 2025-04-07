@@ -15,6 +15,8 @@
 # Uncomment this to preserve the line number information for
 # debugging stack traces.
 -keepattributes SourceFile,LineNumberTable
+# https://firebase.google.com/docs/crashlytics/get-deobfuscated-reports?platform=android
+-keep public class * extends java.lang.Exception  # For Crashlytics
 
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
