@@ -1,11 +1,13 @@
 package com.brokenkernel.improvtools.suggestionGenerator.presentation.view
 
+import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -49,11 +51,13 @@ internal fun SuggestionsScreenFullyLoaded(viewModel: SuggestionScreenViewModel =
 
     val categoryWeight = .3f
     val audienceIdeaWeight = .7f
+    val scrollState: ScrollState = rememberScrollState()
     // assert total is 100.
 
     // TODO: the weight are kind of random below. I'm not actually sure why they work. Figure it out.
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.fillMaxSize()
     ) {
         // Header
         Row(
@@ -73,8 +77,8 @@ internal fun SuggestionsScreenFullyLoaded(viewModel: SuggestionScreenViewModel =
                 style = MaterialTheme.typography.titleLarge,
             )
         }
-        Row(modifier = Modifier.verticalScroll(rememberScrollState()).weight(10f)) {
-            Column {
+        Row(modifier = Modifier.fillMaxSize().weight(10f)) {
+            Column(modifier = Modifier.verticalScroll(scrollState)) {
                 SuggestionCategory.entries.forEach { suggestionData ->
                     Row(
                         modifier = Modifier
