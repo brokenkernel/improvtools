@@ -134,6 +134,13 @@ android {
         lintConfig = file("lint.xml")
         baseline = file("lint-baseline.xml")
     }
+    packaging {
+        jniLibs {
+            // unable to strip, so shut up warnings
+            keepDebugSymbols.add("**/libandroidx.graphics.path.so")
+            keepDebugSymbols.add("**/libdatastore_shared_counter.so")
+        }
+    }
 }
 
 dependencies {
