@@ -74,7 +74,7 @@ tools-fastlane-screengrab = { group = "tools.fastlane", name = "screengrab", ver
 
 # perf disabled because of
 # 2 files found with path 'google/protobuf/descriptor.proto' from inputs:
-firebase = ["com-google-firebase-analytics", "com-google-firebase-crashlytics" ]
+firebase = ["com-google-firebase-analytics", "com-google-firebase-crashlytics", "com-google-firebase-firebasePerf" ]
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

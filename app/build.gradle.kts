@@ -12,7 +12,7 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.protobuf)
     alias(libs.plugins.firebaseCrashlyticsPlugin)
-//    alias(libs.plugins.firebasePerfPlugin)
+    alias(libs.plugins.firebasePerfPlugin)
     alias(libs.plugins.google.gms.google.services)
 }
 

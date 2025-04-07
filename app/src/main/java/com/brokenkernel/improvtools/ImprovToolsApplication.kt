@@ -4,7 +4,9 @@ import android.app.Application
 import android.os.StrictMode
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
+import com.google.firebase.Firebase
 import com.google.firebase.crashlytics.FirebaseCrashlytics
+import com.google.firebase.perf.performance
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
@@ -59,6 +61,7 @@ class ImprovToolsApplication : Application() {
         StrictMode.setThreadPolicy(strictModeThreadPolicy.build())
 
         if (BuildConfig.ENABLE_CRASHLYTICS && isGooglePlayServicesAvailable()) {
+            Firebase.performance.isPerformanceCollectionEnabled = true
             FirebaseCrashlytics.getInstance()
                 .isCrashlyticsCollectionEnabled = true
         }
