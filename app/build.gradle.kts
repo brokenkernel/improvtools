@@ -15,8 +15,6 @@ plugins {
     alias(libs.plugins.google.gms.google.services)
 }
 
-val DIMENSION_APP_STORE: String = "appstore_dimension"
-
 val keystoreProperties: Properties = Properties()
 var successfulLoadProperties: Boolean = false
 try {
@@ -48,7 +46,7 @@ android {
         applicationId = "com.brokenkernel.improvtools"
         minSdk = 34
         targetSdk = 36
-        versionCode = 59
+        versionCode = 61
         versionName = "0.0.$versionCode"
 
         testInstrumentationRunner = "com.brokenkernel.improvtools.infrastructure.ImprovToolsTestRunner"
@@ -62,15 +60,6 @@ android {
                 storeFile = file(keystoreProperties["storeFile"] as String)
                 storePassword = keystoreProperties["storePassword"] as String
             }
-        }
-    }
-
-    // https://developer.android.com/build/build-variants#filter-variants
-    flavorDimensions += mutableListOf(DIMENSION_APP_STORE)
-    productFlavors {
-        create("playstore") {
-            dimension = DIMENSION_APP_STORE
-            versionNameSuffix = ".playstore"
         }
     }
 
@@ -131,8 +120,6 @@ android {
 }
 
 dependencies {
-
-
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.navigation.navigationTesting)
