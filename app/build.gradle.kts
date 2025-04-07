@@ -1,8 +1,5 @@
 import com.android.build.api.dsl.VariantDimension
-import com.android.build.gradle.internal.packaging.defaultExcludes
 import com.google.firebase.crashlytics.buildtools.gradle.CrashlyticsExtension
-import org.gradle.internal.impldep.org.junit.experimental.categories.Categories.CategoryFilter.exclude
-import org.gradle.kotlin.dsl.implementation
 import java.io.IOException
 import java.util.Properties
 
@@ -124,6 +121,9 @@ android {
         unitTests {
             isIncludeAndroidResources = true
         }
+        emulatorControl {
+            enable = true
+        }
     }
     buildToolsVersion = "35.0.0"
     dependenciesInfo {
@@ -138,6 +138,7 @@ android {
 
 dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(libs.androidx.espresso.device)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.navigation.navigationTesting)
     androidTestImplementation(libs.androidx.ui.test.junit4)
