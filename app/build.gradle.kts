@@ -119,6 +119,17 @@ android {
                     apiLevel = 35
                     systemImageSource = "google-atd"
                 }
+                create("Nexus9Managed") {
+                    device = "Nexus9"
+                    apiLevel = 35
+                    systemImageSource = "google-atd"
+                }
+            }
+            groups {
+                create("phoneAndTablet") {
+                    targetDevices.add(allDevices["Pixel4Managed"])
+                    targetDevices.add(allDevices["Nexus9Managed"])
+                }
             }
         }
         unitTests {
