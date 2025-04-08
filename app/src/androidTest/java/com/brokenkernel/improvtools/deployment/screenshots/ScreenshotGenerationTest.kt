@@ -33,7 +33,7 @@ sealed class BaseScreenshotGenerationTest {
         Screengrab.setDefaultScreenshotStrategy(UiAutomatorScreenshotStrategy())
 
         composeTestRule.setContent {
-            OuterContentForMasterScreen(initialScreen = NavigableScreens.SuggestionGenerator)
+            OuterContentForMasterScreen()
         }
     }
 
