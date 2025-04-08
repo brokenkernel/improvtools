@@ -73,15 +73,41 @@ platform :android do
 
   desc "Create Native Debug Symbols"
   lane :create_native_debug_symbols do
-    zip(
-      path: "./app/build/intermediates/merged_native_libs/release/mergeReleaseNativeLibs/out/lib/",
-      include: [
-        "arm64-v8a/*.so",
-        "armeabi-v7a/*.so",
-      ],
-      output_path: "app/build/intermediates/merged_native_libs/release/mergeReleaseNativeLibs/out/native_debug_symbols.zip",
-      verbose: true,
-    )
+   symbolsFilePath = File.join(
+        Dir.pwd,
+        "..",
+        "app",
+        "build",
+        "intermediates",
+        "merged_native_libs",
+        "release",
+        "mergeReleaseNativeLibs",
+        "out",
+        "native_debug_symbols.zip",
+      )
+      symbolsFolderPath = File.join(
+        Dir.pwd,
+        "..",
+        "app",
+        "build",
+        "intermediates",
+        "merged_native_libs",
+        "release",
+        "mergeReleaseNativeLibs",
+        "out",
+        "lib"
+      )
+      # native zip includes "lib" prefix which isn't accepted.
+      system("cd #{symbolsFolderPath} && zip -vr #{symbolsFilePath} .")
+#     zip(
+#       path: "./app/build/intermediates/merged_native_libs/release/mergeReleaseNativeLibs/out/lib/",
+#       include: [
+#         "arm64-v8a/*.so",
+#         "armeabi-v7a/*.so",
+#       ],
+#       output_path: "app/build/intermediates/merged_native_libs/release/mergeReleaseNativeLibs/out/native_debug_symbols.zip",
+#       verbose: true,
+#     )
   end
 
 
@@ -126,7 +152,7 @@ platform :android do
       version_code: current_build_number,
       mapping_paths: [
         "app/build/outputs/mapping/release/mapping.txt",
-        # "app/build/intermediates/merged_native_libs/release/mergeReleaseNativeLibs/out/native_debug_symbols.zip",
+        "app/build/intermediates/merged_native_libs/release/mergeReleaseNativeLibs/out/native_debug_symbols.zip",
       ],
     )
   end
@@ -141,7 +167,7 @@ platform :android do
       track: "internal",
       mapping_paths: [
         "app/build/outputs/mapping/release/mapping.txt",
-        # "app/build/intermediates/merged_native_libs/release/mergeReleaseNativeLibs/out/native_debug_symbols.zip",
+        "app/build/intermediates/merged_native_libs/release/mergeReleaseNativeLibs/out/native_debug_symbols.zip",
       ],
     )
   end
@@ -159,7 +185,7 @@ platform :android do
       sync_image_upload: true,
       mapping_paths: [
         "app/build/outputs/mapping/release/mapping.txt",
-#         "app/build/intermediates/merged_native_libs/release/mergeReleaseNativeLibs/out/native_debug_symbols.zip",
+        "app/build/intermediates/merged_native_libs/release/mergeReleaseNativeLibs/out/native_debug_symbols.zip",
       ],
     )
   end
