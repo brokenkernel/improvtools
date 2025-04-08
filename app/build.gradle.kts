@@ -136,6 +136,7 @@ android {
     lint {
         lintConfig = file("lint.xml")
         baseline = file("lint-baseline.xml")
+        checkDependencies = true
     }
     packaging {
         jniLibs {
