@@ -123,7 +123,7 @@ platform :android do
       version_code: current_build_number,
       mapping_paths: [
         "app/build/outputs/mapping/release/mapping.txt",
-        "app/build/intermediates/merged_native_libs/release/mergeReleaseNativeLibs/out/native_debug_symbols.zip",
+        # "app/build/intermediates/merged_native_libs/release/mergeReleaseNativeLibs/out/native_debug_symbols.zip",
       ],
     )
   end
@@ -138,7 +138,7 @@ platform :android do
       track: "internal",
       mapping_paths: [
         "app/build/outputs/mapping/release/mapping.txt",
-        "app/build/intermediates/merged_native_libs/release/mergeReleaseNativeLibs/out/native_debug_symbols.zip",
+        # "app/build/intermediates/merged_native_libs/release/mergeReleaseNativeLibs/out/native_debug_symbols.zip",
       ],
     )
   end
@@ -147,6 +147,7 @@ platform :android do
   desc "Full Play Store Deployment"
   lane :playstore_fully_deployment do
     current_build_number = playstore_prep
+
     upload_to_play_store(
       aab: "app/build/outputs/bundle/release/app-release.aab",
       skip_upload_apk: true,
@@ -154,7 +155,7 @@ platform :android do
       changes_not_sent_for_review: true, # TODO: to remove
       mapping_paths: [
         "app/build/outputs/mapping/release/mapping.txt",
-        "app/build/intermediates/merged_native_libs/release/mergeReleaseNativeLibs/out/native_debug_symbols.zip",
+        # "app/build/intermediates/merged_native_libs/release/mergeReleaseNativeLibs/out/native_debug_symbols.zip",
       ],
     )
   end
