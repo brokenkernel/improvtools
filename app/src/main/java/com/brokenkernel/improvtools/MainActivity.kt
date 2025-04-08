@@ -30,14 +30,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        val initialScreen: NavigableScreens = when (intent.action) {
-            ShowSuggestionsIntent -> NavigableScreens.SuggestionGenerator
-            ShowTimerIntent -> NavigableScreens.Timer
-            else -> NavigableScreens.SuggestionGenerator
-        }
-
         setContent {
-            OuterContentForMasterScreen(initialScreen)
+            OuterContentForMasterScreen()
         }
     }
 }
@@ -45,16 +39,16 @@ class MainActivity : ComponentActivity() {
 @Preview(showBackground = true)
 @Composable
 internal fun PreviewSuggestionPairList() {
-    OuterContentForMasterScreen(NavigableScreens.SuggestionGenerator)
+    OuterContentForMasterScreen()
 }
 
 
 @Composable
-internal fun OuterContentForMasterScreen(initialScreen: NavigableScreens) {
+internal fun OuterContentForMasterScreen() {
     val drawerNavController = rememberNavController()
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
 
-    var currentNavigableScreen: NavigableScreens by remember { mutableStateOf(initialScreen) }
+    var currentNavigableScreen: NavigableScreens by remember { mutableStateOf(NavigableScreens.SuggestionGenerator) }
 
     drawerNavController.addOnDestinationChangedListener {
             controller: NavController,
