@@ -15,6 +15,8 @@ plugins {
     alias(libs.plugins.firebaseCrashlyticsPlugin)
 //    alias(libs.plugins.firebasePerfPlugin)
     alias(libs.plugins.google.gms.google.services)
+    alias(libs.plugins.dependencyAnalysis)
+    alias(libs.plugins.sortDependencies)
 }
 
 val keystoreProperties: Properties = Properties()
@@ -145,17 +147,8 @@ android {
 }
 
 dependencies {
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(libs.androidx.espresso.device)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.navigation.navigationTesting)
-    androidTestImplementation(libs.androidx.ui.test.junit4)
-    androidTestImplementation(libs.androidx.work.testing)
-    androidTestImplementation(libs.hilt.android.testing)
-    androidTestImplementation(libs.tools.fastlane.screengrab)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    debugImplementation(libs.androidx.ui.test.manifest)
-    debugImplementation(libs.androidx.ui.tooling)
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(platform(libs.com.google.firebase.firebaseBom))
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.annotation)
     implementation(libs.androidx.compose.material.extended)
@@ -182,12 +175,24 @@ dependencies {
     implementation(libs.hilt.android)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.kotlinx.serialization.protobuf)
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(platform(libs.com.google.firebase.firebaseBom))
+
+    debugImplementation(libs.androidx.ui.test.manifest)
+    debugImplementation(libs.androidx.ui.tooling)
+
+    testImplementation(kotlin("test"))
     testImplementation(libs.junit)
 
+    androidTestImplementation(platform(libs.androidx.compose.bom))
+    androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(libs.androidx.espresso.device)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.navigation.navigationTesting)
+    androidTestImplementation(libs.androidx.ui.test.junit4)
+    androidTestImplementation(libs.androidx.work.testing)
+    androidTestImplementation(libs.hilt.android.testing)
+    androidTestImplementation(libs.tools.fastlane.screengrab)
+
     ksp(libs.hilt.compiler)
-    testImplementation(kotlin("test"))
 }
 
 // firebase is just broken https://github.com/firebase/firebase-android-sdk/issues/6359

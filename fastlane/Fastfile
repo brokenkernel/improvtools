@@ -151,7 +151,7 @@ platform :android do
     upload_to_play_store(
       aab: "app/build/outputs/bundle/release/app-release.aab",
       skip_upload_apk: true,
-      version_code: current_build_number,
+      version_code: SharedValues::ANDROID_VERSION_CODE,
       changes_not_sent_for_review: true, # TODO: to remove
       mapping_paths: [
         "app/build/outputs/mapping/release/mapping.txt",

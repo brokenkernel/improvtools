@@ -9,4 +9,13 @@ plugins {
     alias(libs.plugins.firebaseCrashlyticsPlugin) apply false
     alias(libs.plugins.firebasePerfPlugin) apply false
     alias(libs.plugins.google.gms.google.services) apply false
+    alias(libs.plugins.dependencyAnalysis)
+    alias(libs.plugins.sortDependencies) apply false
+}
+
+dependencyAnalysis {
+    structure {
+        // This should be false, and we could be more specific about what to add, but meh
+        ignoreKtx(true)
+    }
 }
