@@ -137,7 +137,7 @@ platform :android do
 #       )
       improv_tools_screenshots
       create_native_debug_symbols
-      UI.header "Finished preparing for #{c}"
+      UI.header "Finished preparing for #{current_build_number}"
       current_build_number # last line, return value
   end
 
