@@ -99,7 +99,7 @@ class ImprovToolsApplication : Application() {
         configureRemoteConfig()
 
         if (BuildConfig.ENABLE_CRASHLYTICS && isGooglePlayServicesAvailable()) {
-            Firebase.performance.isPerformanceCollectionEnabled = true
+//            Firebase.performance.isPerformanceCollectionEnabled = true
             Firebase.crashlytics.isCrashlyticsCollectionEnabled = true
         }
     }
