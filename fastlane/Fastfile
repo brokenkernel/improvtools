@@ -108,7 +108,7 @@ platform :android do
 #       )
       improv_tools_screenshots
       create_native_debug_symbols
-      UI.header "Finished preparing for #{current_build_number}"
+      UI.header "Finished preparing for #{c}"
       current_build_number # last line, return value
   end
 
@@ -147,11 +147,12 @@ platform :android do
   desc "Full Play Store Deployment"
   lane :playstore_fully_deployment do
     current_build_number = playstore_prep
+    UI.header "Starting deploy for #{current_build_number}"
 
     upload_to_play_store(
       aab: "app/build/outputs/bundle/release/app-release.aab",
       skip_upload_apk: true,
-      version_code: SharedValues::ANDROID_VERSION_CODE,
+      version_code: current_build_number,
       changes_not_sent_for_review: true, # TODO: to remove
       mapping_paths: [
         "app/build/outputs/mapping/release/mapping.txt",
