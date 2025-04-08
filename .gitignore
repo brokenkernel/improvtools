@@ -19,3 +19,4 @@ local.properties
 /fastlane/metadata/**/images
 /fastlane/metadata/android/screenshots.html
 /fastlane/README.md
+.kotlin

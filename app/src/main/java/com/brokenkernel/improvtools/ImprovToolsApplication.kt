@@ -7,11 +7,7 @@ import android.util.Log.DEBUG
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
 import com.google.firebase.Firebase
-import com.google.firebase.analytics.FirebaseAnalytics.ConsentStatus
-import com.google.firebase.analytics.FirebaseAnalytics.ConsentType
-import com.google.firebase.analytics.analytics
 import com.google.firebase.crashlytics.crashlytics
-import com.google.firebase.perf.performance
 import com.google.firebase.remoteconfig.ConfigUpdate
 import com.google.firebase.remoteconfig.ConfigUpdateListener
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
@@ -19,7 +15,6 @@ import com.google.firebase.remoteconfig.FirebaseRemoteConfigException
 import com.google.firebase.remoteconfig.remoteConfig
 import com.google.firebase.remoteconfig.remoteConfigSettings
 import dagger.hilt.android.HiltAndroidApp
-import java.util.EnumMap
 import kotlin.time.Duration.Companion.hours
 
 
@@ -99,7 +94,7 @@ class ImprovToolsApplication : Application() {
         configureRemoteConfig()
 
         if (BuildConfig.ENABLE_CRASHLYTICS && isGooglePlayServicesAvailable()) {
-            Firebase.performance.isPerformanceCollectionEnabled = true
+//            Firebase.performance.isPerformanceCollectionEnabled = true
             Firebase.crashlytics.isCrashlyticsCollectionEnabled = true
         }
     }

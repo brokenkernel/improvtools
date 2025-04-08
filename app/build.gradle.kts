@@ -12,7 +12,7 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.protobuf)
     alias(libs.plugins.firebaseCrashlyticsPlugin)
-    alias(libs.plugins.firebasePerfPlugin)
+//    alias(libs.plugins.firebasePerfPlugin)
     alias(libs.plugins.google.gms.google.services)
 }
 
@@ -47,7 +47,7 @@ android {
         applicationId = "com.brokenkernel.improvtools"
         minSdk = 34
         targetSdk = 36
-        versionCode = 69
+        versionCode = 70
         versionName = "0.0.$versionCode"
 
         testInstrumentationRunner = "com.brokenkernel.improvtools.infrastructure.ImprovToolsTestRunner"
