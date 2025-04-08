@@ -1,5 +1,6 @@
 import com.android.build.api.dsl.VariantDimension
 import com.google.firebase.crashlytics.buildtools.gradle.CrashlyticsExtension
+import org.gradle.kotlin.dsl.implementation
 import java.io.IOException
 import java.util.Properties
 
@@ -179,6 +180,8 @@ dependencies {
     implementation(platform(libs.androidx.compose.bom))
     implementation(platform(libs.com.google.firebase.firebaseBom))
     testImplementation(libs.junit)
+    implementation(libs.androidx.glance.appwidget)
+    implementation(libs.androidx.glance.material3)
 
     ksp(libs.hilt.compiler)
     testImplementation(kotlin("test"))

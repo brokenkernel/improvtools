@@ -10,6 +10,7 @@ espressoDevice = "1.0.1"
 firebaseBom = "33.12.0"
 firebaseCrashlyticsPlugin = "3.0.3"
 firebasePerfPlugin = "1.4.2"
+glanceAppwidget = "1.1.1"
 googleGmsGoogleServices = "4.4.2"
 hilt = "2.56.1"
 hiltNavigationCompose = "1.2.0"
@@ -45,6 +46,8 @@ androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = 
 androidx-datastore-datastorePreferences = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastorePreferences" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-espresso-device = { module = "androidx.test.espresso:espresso-device", version.ref = "espressoDevice" }
+androidx-glance-appwidget = { module = "androidx.glance:glance-appwidget", version.ref = "glanceAppwidget" }
+androidx-glance-material3 = { module = "androidx.glance:glance-material3", version.ref = "glanceAppwidget" }
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
