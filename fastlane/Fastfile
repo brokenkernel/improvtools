@@ -75,7 +75,10 @@ platform :android do
   lane :create_native_debug_symbols do
     zip(
       path: "./app/build/intermediates/merged_native_libs/release/mergeReleaseNativeLibs/out/lib/",
-      include: [ "arm64-v8a/*.so", "armeabi-v7a/*.so", "x86_64/*.so", ],
+      include: [
+        "arm64-v8a/*.so",
+        "armeabi-v7a/*.so",
+      ],
       output_path: "app/build/intermediates/merged_native_libs/release/mergeReleaseNativeLibs/out/native_debug_symbols.zip",
       verbose: true,
     )
@@ -153,10 +156,10 @@ platform :android do
       aab: "app/build/outputs/bundle/release/app-release.aab",
       skip_upload_apk: true,
       version_code: current_build_number,
-      changes_not_sent_for_review: true, # TODO: to remove
+      sync_image_upload: true,
       mapping_paths: [
         "app/build/outputs/mapping/release/mapping.txt",
-        # "app/build/intermediates/merged_native_libs/release/mergeReleaseNativeLibs/out/native_debug_symbols.zip",
+#         "app/build/intermediates/merged_native_libs/release/mergeReleaseNativeLibs/out/native_debug_symbols.zip",
       ],
     )
   end
