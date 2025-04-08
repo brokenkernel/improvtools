@@ -16,4 +16,5 @@ internal enum class SuggestionCategory(
     DIRECTOR("Director"),
     PLAYWRITE("Playwrite"),
     HARDCONVO("Hard Conversation"),
+    DIALECT("Dialect"),
 }

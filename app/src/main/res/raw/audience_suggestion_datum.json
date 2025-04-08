@@ -102,6 +102,11 @@
     "HARDCONVO": [
       "Firing Someone",
       "Having Cancer"
+    ],
+    "DIALECT": [
+      "Standard English",
+      "Yorkshire",
+      "Cork"
     ]
   }
 }
