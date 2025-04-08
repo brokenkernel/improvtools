@@ -1,5 +1,8 @@
 package com.brokenkernel.improvtools
 
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
@@ -17,7 +20,7 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import androidx.test.espresso.device.action.ScreenOrientation
-import androidx.test.espresso.device.filter.RequiresDeviceMode
+import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 
 @HiltAndroidTest
 class SuggestionsRotationTest {
@@ -41,7 +44,9 @@ class SuggestionsRotationTest {
             navController = TestNavHostController(LocalContext.current).apply {
                 navigatorProvider.addNavigator(ComposeNavigator())
             }
-            DrawerNavGraph(drawerNavController = navController)
+            val currentScreenState: MutableState<NavigableScreens.SuggestionGenerator> =
+                remember { mutableStateOf(NavigableScreens.SuggestionGenerator) }
+            DrawerNavGraph(drawerNavController = navController, currentNavigableScreen = currentScreenState)
         }
     }
 

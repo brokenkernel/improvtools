@@ -17,6 +17,7 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationDrawerItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.State
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -31,7 +32,7 @@ import kotlinx.coroutines.launch
 private fun NavigableScreenNavigationDrawerItem(
     screen: NavigableScreens,
     onNavMenuClickCallback: (NavigableScreens) -> Unit,
-    currentNavigableScreen: NavigableScreens,
+    currentNavigableScreen: State<NavigableScreens>,
 ) {
     NavigationDrawerItem(
         label = { Text(stringResource(screen.titleResource)) },
@@ -44,18 +45,18 @@ private fun NavigableScreenNavigationDrawerItem(
         onClick = {
             onNavMenuClickCallback(screen)
         },
-        selected = (screen.route == currentNavigableScreen.route),
+        selected = (screen.route == currentNavigableScreen.value.route),
     )
 }
 
 @Composable
 internal fun ImprovToolsBottomBar(
-    currentNavigableScreen: NavigableScreens,
+    currentNavigableScreen: State<NavigableScreens>,
     doNavigateToNavigableScreen: (NavigableScreens) -> Unit,
 ) {
     NavigationBar {
         NavigationBarItem(
-            selected = (currentNavigableScreen.route == NavigableScreens.SuggestionGenerator.route),
+            selected = (currentNavigableScreen.value.route == NavigableScreens.SuggestionGenerator.route),
             label = {
                 NavigableScreens.SuggestionGenerator.titleResource
             },
@@ -70,7 +71,7 @@ internal fun ImprovToolsBottomBar(
             }
         )
         NavigationBarItem(
-            selected = (currentNavigableScreen.route == NavigableScreens.Timer.route),
+            selected = (currentNavigableScreen.value.route == NavigableScreens.Timer.route),
             label = {
                 NavigableScreens.Timer.titleResource
             },
@@ -91,9 +92,9 @@ internal fun ImprovToolsBottomBar(
 @Composable
 internal fun ImprovToolsNavigationDrawer(
     drawerState: DrawerState,
-    doNavigateToNavigableScreen: (na: NavigableScreens) -> Unit,
+    doNavigateToNavigableScreen: (NavigableScreens) -> Unit,
     drawerNavController: NavHostController,
-    currentNavigableScreen: NavigableScreens,
+    currentNavigableScreen: State<NavigableScreens>,
 ) {
 
     val scope: CoroutineScope = rememberCoroutineScope()
@@ -192,7 +193,7 @@ internal fun ImprovToolsNavigationDrawer(
             },
             content = {
                 // TODO: replace with event system instead of passing controller??
-                DrawerNavGraph(drawerNavController = drawerNavController)
+                DrawerNavGraph(drawerNavController = drawerNavController, currentNavigableScreen)
             }
         )
     }

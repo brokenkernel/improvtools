@@ -1,31 +1,26 @@
 package com.brokenkernel.improvtools
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.material3.DrawerValue
-import androidx.compose.material3.Surface
-import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.NavController
-import androidx.navigation.NavDestination
-import androidx.navigation.compose.rememberNavController
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
-import com.brokenkernel.improvtools.application.presentation.view.ImprovToolsNavigationDrawer
-import com.brokenkernel.improvtools.ui.theme.ImprovToolsTheme
+import com.brokenkernel.improvtools.application.data.model.OuterContentForMasterScreen
+import com.brokenkernel.improvtools.infrastructure.ImprovToolsNavigator
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 private const val ShowSuggestionsIntent: String = "com.brokenkernel.improvtools.intents.ShowSuggestions"
 private const val ShowTimerIntent: String = "com.brokenkernel.improvtools.intents.ShowTimer"
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    @Inject internal lateinit var improvToolsNavigator: ImprovToolsNavigator
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -33,6 +28,21 @@ class MainActivity : ComponentActivity() {
         setContent {
             OuterContentForMasterScreen()
         }
+
+        Log.e(APPLICATION_TAG, "I HAVE A LIFE")
+
+        if (intent.action != null) {
+            val whichRoute = when (intent.action) {
+                ShowSuggestionsIntent -> NavigableScreens.SuggestionGenerator
+                ShowTimerIntent -> NavigableScreens.Timer
+                else -> NavigableScreens.SuggestionGenerator
+            }
+            Log.w(APPLICATION_TAG, "trying to go to route $whichRoute")
+            improvToolsNavigator.navigateTo(whichRoute)
+            setResult(RESULT_OK)
+        }
+
+
     }
 }
 
@@ -42,35 +52,3 @@ internal fun PreviewSuggestionPairList() {
     OuterContentForMasterScreen()
 }
 
-
-@Composable
-internal fun OuterContentForMasterScreen() {
-    val drawerNavController = rememberNavController()
-    val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
-
-    var currentNavigableScreen: NavigableScreens by remember { mutableStateOf(NavigableScreens.SuggestionGenerator) }
-
-    drawerNavController.addOnDestinationChangedListener {
-            controller: NavController,
-            destination: NavDestination,
-            args: Bundle?,
-        ->
-        val whichScreen: NavigableScreens? = NavigableScreens.byRoute(destination.route)
-        if (whichScreen != null) {
-            currentNavigableScreen = whichScreen
-        }
-    }
-
-    ImprovToolsTheme {
-        Surface {
-            ImprovToolsNavigationDrawer(
-                drawerState = drawerState,
-                drawerNavController = drawerNavController,
-                doNavigateToNavigableScreen = { clickedItem: NavigableScreens ->
-                    drawerNavController.navigate(clickedItem.route)
-                },
-                currentNavigableScreen = currentNavigableScreen
-            )
-        }
-    }
-}

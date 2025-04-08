@@ -18,6 +18,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -31,10 +32,10 @@ import com.brokenkernel.improvtools.settings.presentation.view.SuggestionsScreen
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun ImprovToolsScaffold(
-    currentNavigableScreen: NavigableScreens,
+    currentNavigableScreen: State<NavigableScreens>,
     doNavigateToNavigableScreen: (NavigableScreens) -> Unit,
     navMenuButtonPressedCallback: () -> Unit,
-    content: @Composable () -> Unit,
+    content: @Composable (() -> Unit),
 ) {
     val snackbarHostState = remember { SnackbarHostState() }
     var moreMenuExpandedState: Boolean by remember { mutableStateOf(false) }
@@ -48,7 +49,7 @@ internal fun ImprovToolsScaffold(
                     containerColor = MaterialTheme.colorScheme.primaryContainer,
                     titleContentColor = MaterialTheme.colorScheme.primary,
                 ),
-                title = { Text(stringResource(currentNavigableScreen.titleResource)) },
+                title = { Text(stringResource(currentNavigableScreen.value.titleResource)) },
                 scrollBehavior = TopAppBarDefaults
                     .exitUntilCollapsedScrollBehavior(
                         rememberTopAppBarState()
@@ -67,9 +68,9 @@ internal fun ImprovToolsScaffold(
                             moreMenuExpandedState = !moreMenuExpandedState
                         },
                         // possibly use this for visible/invisible rather than enabled/disabled
-                        enabled = currentNavigableScreen.shouldShowExtraMenu,
+                        enabled = currentNavigableScreen.value.shouldShowExtraMenu,
                     ) {
-                        if (currentNavigableScreen.shouldShowExtraMenu) {
+                        if (currentNavigableScreen.value.shouldShowExtraMenu) {
                             Icon(
                                 imageVector = Icons.Filled.MoreVert,
                                 contentDescription = stringResource(R.string.navigation_open_screen_specific_menu)
