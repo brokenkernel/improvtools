@@ -1,12 +1,16 @@
 package com.brokenkernel.improvtools.tipsandadvice.presentation.view
 
 import android.widget.TextView
+import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.selection.SelectionContainer
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ChangeCircle
 import androidx.compose.material3.FilledTonalButton
@@ -38,14 +42,15 @@ fun HtmlText(html: String, modifier: Modifier = Modifier) {
 @Composable
 internal fun TipsAndAdviceScreen(viewModel: TipsAndAdviceViewModel = hiltViewModel()) {
     val tipOfTheDay by viewModel.uiState.collectAsState()
+    val scrollState: ScrollState = rememberScrollState()
 
     Column {
-        Row {
+        Row(modifier = Modifier.weight(1f)) {
             SelectionContainer {
                 Text(tipOfTheDay.title)
             }
         }
-        Row {
+        Row(modifier = Modifier.verticalScroll(scrollState).fillMaxSize().weight(10f)) {
             SelectionContainer {
                 HtmlText(tipOfTheDay.content)
             }
@@ -53,9 +58,10 @@ internal fun TipsAndAdviceScreen(viewModel: TipsAndAdviceViewModel = hiltViewMod
         Row(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center,
+            modifier = Modifier.weight(1f),
         ) {
             // TODO: maybe make filledtonalbutton composable with ChangeCircle its own component for myself?
-            // TODO: maybe this should be a floating action button. Maybe it should at least be pinned to the bottom
+            // TODO: maybe this should be a floating action button.
             FilledTonalButton(
                 onClick = { viewModel.loadNewTOTD() },
 
