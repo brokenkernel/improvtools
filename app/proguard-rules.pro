@@ -5,8 +5,41 @@
 
 
 # Protobuf relies on refelection of field names
--keep, includedescriptorclasses,includecode class * extends com.google.protobuf.GeneratedMessageLite
--keepnames class * extends com.google.protobuf.GeneratedMessageLite
+-keepclassmembers class * extends com.google.protobuf.GeneratedMessageLite {
+  <fields>;
+}
+
+-keep class * implements android.os.Parcelable {
+  public static final android.os.Parcelable$Creator *;
+}
+
+# https://www.guardsquare.com/manual/configuration/examples#enumerations
+-keepclassmembers enum * {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}
+
+-keepnames class * implements java.io.Serializable
+
+-keepclassmembers class * implements java.io.Serializable {
+    private static final java.io.ObjectStreamField[] serialPersistentFields;
+    private void writeObject(java.io.ObjectOutputStream);
+    private void readObject(java.io.ObjectInputStream);
+    java.lang.Object writeReplace();
+    java.lang.Object readResolve();
+    static final long serialVersionUID;
+    !static !transient <fields>;
+}
+
+-keepclassmembers,allowoptimization enum * {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}
+
+# keep core application
+-keepclasseswithmembers public class * {
+    public static void main(java.lang.String[]);
+}
 
 -assumenosideeffects class android.util.Log {
     public static boolean isLoggable(java.lang.String, int);
