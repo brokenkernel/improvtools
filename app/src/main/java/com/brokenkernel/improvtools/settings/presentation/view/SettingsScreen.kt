@@ -42,5 +42,21 @@ internal fun SettingsScreen(
                 )
             }
         }
+        Row {
+            Box(modifier = Modifier.weight(.8f)) {
+                Text(
+                    stringResource(R.string.settings_allow_analytics_cookie_storage),
+                )
+            }
+            Box {
+                Switch(
+                    checked = uiState.allowAnalyticsCookieStorage,
+                    onCheckedChange = {
+                        viewModel.onClickUpdateAllowAnalyticsCookieStorage(it)
+                    },
+                )
+            }
+
+        }
     }
 }

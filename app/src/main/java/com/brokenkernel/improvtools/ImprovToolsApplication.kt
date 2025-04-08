@@ -7,6 +7,9 @@ import android.util.Log.DEBUG
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
 import com.google.firebase.Firebase
+import com.google.firebase.analytics.FirebaseAnalytics.ConsentStatus
+import com.google.firebase.analytics.FirebaseAnalytics.ConsentType
+import com.google.firebase.analytics.analytics
 import com.google.firebase.crashlytics.crashlytics
 import com.google.firebase.perf.performance
 import com.google.firebase.remoteconfig.ConfigUpdate
@@ -16,7 +19,9 @@ import com.google.firebase.remoteconfig.FirebaseRemoteConfigException
 import com.google.firebase.remoteconfig.remoteConfig
 import com.google.firebase.remoteconfig.remoteConfigSettings
 import dagger.hilt.android.HiltAndroidApp
+import java.util.EnumMap
 import kotlin.time.Duration.Companion.hours
+
 
 const val APPLICATION_TAG: String = "IMPV"
 
@@ -38,7 +43,6 @@ fun configureRemoteConfig() {
             Log.w(APPLICATION_TAG, "Config update error with code: " + error.code, error)
         }
     })
-
 }
 
 @HiltAndroidApp

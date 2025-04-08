@@ -5,5 +5,7 @@ option java_multiple_files = true;
 
 message UserSettings {
   bool allow_suggestions_reuse = 1;
+  // https://analytics.google.com/analytics/web/#/a351396891p484696506/admin/consentmanagement
+  bool allow_analytics_cookie_storage = 2;
 
 }

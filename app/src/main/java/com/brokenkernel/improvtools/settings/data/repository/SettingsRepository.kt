@@ -7,5 +7,5 @@ interface SettingsRepository {
     val userSettingsFlow: Flow<UserSettings>
 
     suspend fun updateAllowSuggestionsReuse(allowSuggestinReUse: Boolean)
+    suspend fun updateAllowAnalyticsCookieStorage(allowAnalyticsCookieStorage: Boolean)
 }
-

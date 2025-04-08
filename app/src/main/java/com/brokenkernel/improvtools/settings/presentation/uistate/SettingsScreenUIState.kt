@@ -4,11 +4,12 @@ import androidx.compose.runtime.Immutable
 
 @Immutable
 internal data class SettingsScreenUIState(
-    val shouldReuseSuggestions: Boolean
+    val shouldReuseSuggestions: Boolean,
+    val allowAnalyticsCookieStorage: Boolean
 ) {
     companion object {
         fun default(): SettingsScreenUIState {
-            return SettingsScreenUIState(shouldReuseSuggestions = false)
+            return SettingsScreenUIState(shouldReuseSuggestions = false, allowAnalyticsCookieStorage = true)
         }
     }
 }

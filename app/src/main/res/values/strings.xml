@@ -44,4 +44,5 @@
     <string name="shortcut_timer_short_label">Timer</string>
     <string name="shortcut_timer_long_label">Show Timer</string>
     <string name="shortcut_timer_disabled_label">Timer (disabled)</string>
+    <string name="settings_allow_analytics_cookie_storage">Allow Analytics Cookie Storage</string>
 </resources>

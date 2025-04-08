@@ -8,7 +8,11 @@ import java.io.InputStream
 import java.io.OutputStream
 
 internal object UserSettingsSerializer : Serializer<UserSettings> {
-    override val defaultValue: UserSettings = UserSettings.getDefaultInstance()
+    override val defaultValue: UserSettings = UserSettings.newBuilder()
+        .setAllowAnalyticsCookieStorage(true)
+        .setAllowSuggestionsReuse(false)
+        .build()
+
     override suspend fun readFrom(input: InputStream): UserSettings {
         try {
             return UserSettings.parseFrom(input)

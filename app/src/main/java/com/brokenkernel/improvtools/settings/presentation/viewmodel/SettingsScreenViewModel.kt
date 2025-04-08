@@ -1,7 +1,10 @@
 package com.brokenkernel.improvtools.settings.presentation.viewmodel
 
+import android.R.attr.data
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
+import com.brokenkernel.improvtools.infrastructure.ConsentManagement
 import com.brokenkernel.improvtools.settings.data.repository.SettingsRepository
 import com.brokenkernel.improvtools.settings.presentation.uistate.SettingsScreenUIState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -24,10 +27,12 @@ internal class SettingsScreenViewModel @Inject constructor(private val settingsR
         viewModelScope.launch {
             settingsRepository.userSettingsFlow.collectLatest { it ->
                 _uiState.value = SettingsScreenUIState(
-                    shouldReuseSuggestions = it.allowSuggestionsReuse
+                    shouldReuseSuggestions = it.allowSuggestionsReuse,
+                    allowAnalyticsCookieStorage = it.allowAnalyticsCookieStorage,
                 )
             }
         }
+        viewModelScope
     }
 
     fun onClickUpdateShouldReuseSuggestions(newState: Boolean) {
@@ -36,5 +41,17 @@ internal class SettingsScreenViewModel @Inject constructor(private val settingsR
         }
         _uiState.value = _uiState.value.copy(shouldReuseSuggestions = newState)
     }
+
+    fun onClickUpdateAllowAnalyticsCookieStorage(newState: Boolean) {
+        viewModelScope.launch {
+            settingsRepository.updateAllowAnalyticsCookieStorage(newState)
+        }
+
+        _uiState.value = _uiState.value.copy(allowAnalyticsCookieStorage = newState)
+
+        // TODO: this really should be handled by an observer but I can't figure out how to do this right now
+        ConsentManagement.configureConsentForFirebase(newState)
+    }
+
 
 }
