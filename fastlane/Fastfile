@@ -71,6 +71,18 @@ platform :android do
     )
   end
 
+  desc "Create Native Debug Symbols"
+  lane :create_native_debug_symbols do
+    zip(
+      path: "./app/build/intermediates/merged_native_libs/release/mergeReleaseNativeLibs/out/lib/",
+      include: [ "arm64-v8a/*.so", "armeabi-v7a/*.so", "x86_64/*.so", ],
+      output_path: "app/build/intermediates/merged_native_libs/release/mergeReleaseNativeLibs/out/native_debug_symbols.zip",
+      verbose: true,
+    )
+
+  end
+
+
   desc "Play Store Deployment Preperation"
   lane :playstore_prep do
       git_pull(
@@ -96,12 +108,7 @@ platform :android do
 #           merge_commit_filtering: "exclude_merges"
 #       )
       improv_tools_screenshots
-      zip(
-        path: "./app/build/intermediates/merged_native_libs/release/mergeReleaseNativeLibs/out/lib/",
-        output_path: "app/build/intermediates/merged_native_libs/release/mergeReleaseNativeLibs/out/native_debug_symbols.zip",
-#         verbose: True,
-      )
-
+      create_native_debug_symbols
       current_build_number # last line, return value
   end
 
@@ -116,7 +123,7 @@ platform :android do
       version_code: current_build_number,
       mapping_paths: [
         "app/build/outputs/mapping/release/mapping.txt",
-#         "app/build/intermediates/merged_native_libs/release/mergeReleaseNativeLibs/out/native_debug_symbols.zip",
+        "app/build/intermediates/merged_native_libs/release/mergeReleaseNativeLibs/out/native_debug_symbols.zip",
       ],
     )
   end
@@ -131,7 +138,7 @@ platform :android do
       track: "internal",
       mapping_paths: [
         "app/build/outputs/mapping/release/mapping.txt",
-#         "app/build/intermediates/merged_native_libs/release/mergeReleaseNativeLibs/out/native_debug_symbols.zip",
+        "app/build/intermediates/merged_native_libs/release/mergeReleaseNativeLibs/out/native_debug_symbols.zip",
       ],
     )
   end
@@ -147,7 +154,7 @@ platform :android do
       changes_not_sent_for_review: true, # TODO: to remove
       mapping_paths: [
         "app/build/outputs/mapping/release/mapping.txt",
-#         "app/build/intermediates/merged_native_libs/release/mergeReleaseNativeLibs/out/native_debug_symbols.zip",
+        "app/build/intermediates/merged_native_libs/release/mergeReleaseNativeLibs/out/native_debug_symbols.zip",
       ],
     )
   end
