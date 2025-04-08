@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?><resources>
+
+  <string name="app_name">Improvisationswerkzeuge</string>
+
+  <string name="app_description">Improvisationswerkzeuge</string>
+
+  <string name="suggestions_activity_title">Vorschlagsgenerator</string>
+
+  <string name="suggestions_title_category">Kategorie</string>
+
+  <string name="suggestions_audience_idea">Zielgruppe</string>
+
+  <string name="suggestions_reset_all">Alles zurücksetzen</string>
+
+  <string name="navigation_app_menu">Speisekarte</string>
+
+  <string name="navigation_settings_category">Einstellungen</string>
+
+  <string name="navigation_help_and_feedback">Hilfe und Feedback</string>
+
+  <string name="navigation_useful_tools_category">Nützliche Tools</string>
+
+  <string name="settings_activity_title">Einstellungen</string>
+
+  <string name="timer_activity_title">Timer</string>
+
+  <string name="go_to_suggestion_generator">Zum Vorschlagsgenerator</string>
+
+  <string name="go_to_settings_screen">Gehen Sie zum Einstellungsbildschirm</string>
+
+  <string name="go_to_timer_screen">Gehen Sie zum Timer-Bildschirm</string>
+
+  <string name="go_to_help_and_feedback_screen">Gehen Sie zum Bildschirm „Hilfe und Feedback“</string>
+
+  <string name="about_version_information">Versionsinformationen</string>
+
+  <string name="about_package_name">&lt;b&gt;Paketname:&lt;/b&gt; %1$s</string>
+
+  <string name="about_version">&lt;b&gt;Version:&lt;/b&gt; %1$s</string>
+
+  <string name="about_buildconfig_buildtype">&lt;b&gt;BuildConfig-Build-Typ:&lt;/b&gt; %1$s</string>
+
+  <string name="about_buildconfig_version">&lt;b&gt;BuildConfig-Version:&lt;/b&gt; %1$s</string>
+
+  <string name="about_buildconfig_version_code">&lt;b&gt;BuildConfig-Versionscode:&lt;/b&gt; %1$d</string>
+
+  <string name="about_buildconfig_enable_strict_death">&lt;b&gt;BuildConfig: Strict Death aktivieren:&lt;/b&gt; %1$b</string>
+
+  <string name="about_buildconfig_enable_crashylitics">&lt;b&gt;BuildConfig Crashylitics aktivieren:&lt;/b&gt; %1$b</string>
+
+  <string name="about_long_version_code">&lt;b&gt;Langversionscode:&lt;/b&gt; %1$d</string>
+
+  <string name="about_debug_information">Debug-Informationen</string>
+
+  <string name="about_is_safe_mode">&lt;b&gt;Ist der abgesicherte Modus:&lt;/b&gt; %1$b</string>
+
+  <string name="about_copy_all">Alles kopieren</string>
+
+  <string name="about_send_email">E-Mail senden</string>
+
+  <string name="settings_allow_reuse">Wiederverwendung zulassen</string>
+
+    <string name="navigation_open_screen_specific_menu">Bildschirmspezifisches Menü öffnen</string>
+
+  <string name="navigation_workshop_generator">Werkstattgenerator</string>
+
+  <string name="go_to_workshop_generator_screen">Zum Workshop-Generator</string>
+
+  <string name="navigation_tips_and_advice">Tipps und Ratschläge</string>
+
+  <string name="go_to_tips_and_advice_screen">Gehen Sie zu Tipps und Ratschläge</string>
+
+  <string name="error_no_email_application_available">Keine E-Mail-Anwendung verfügbar</string>
+
+  <string name="tips_and_advice_reload">Neuer Tipp</string>
+
+  <string name="shortcut_suggestions_short_label">Vorschläge</string>
+
+  <string name="shortcut_suggestions_long_label">Vorschläge anzeigen</string>
+
+  <string name="shortcut_suggestions_disabled_label">Vorschläge (deaktiviert)</string>
+
+  <string name="shortcut_timer_short_label">Timer</string>
+
+  <string name="shortcut_timer_long_label">Timer anzeigen</string>
+
+  <string name="shortcut_timer_disabled_label">Timer (deaktiviert)</string>
+
+  <string name="settings_allow_analytics_cookie_storage">Speicherung von Analytics-Cookies zulassen</string>
+
+</resources>
