@@ -3,8 +3,10 @@
 # https://firebase.google.com/docs/crashlytics/get-deobfuscated-reports?platform=android
 -keep public class * extends java.lang.Exception  # For Crashlytics
 
+
 # Protobuf relies on refelection of field names
--keep class * extends com.google.protobuf.GeneratedMessageLite
+-keep, includedescriptorclasses,includecode class * extends com.google.protobuf.GeneratedMessageLite
+-keepnames class * extends com.google.protobuf.GeneratedMessageLite
 
 -assumenosideeffects class android.util.Log {
     public static boolean isLoggable(java.lang.String, int);
