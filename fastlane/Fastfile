@@ -79,7 +79,6 @@ platform :android do
       output_path: "app/build/intermediates/merged_native_libs/release/mergeReleaseNativeLibs/out/native_debug_symbols.zip",
       verbose: true,
     )
-
   end
 
 
@@ -109,6 +108,7 @@ platform :android do
 #       )
       improv_tools_screenshots
       create_native_debug_symbols
+      UI.header "Finished preparing for #{current_build_number}"
       current_build_number # last line, return value
   end
 

@@ -32,6 +32,7 @@ protobufJavalite = "4.30.2"
 protoc = "4.30.2"
 screengrab = "2.1.1"
 viewModelCompose = "2.8.7"
+workRuntimeKtx = "2.10.0"
 
 
 
@@ -62,6 +63,9 @@ androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-work-multiprocess = { module = "androidx.work:work-multiprocess", version.ref = "workRuntimeKtx" }
+androidx-work-runtime-ktx = { module = "androidx.work:work-runtime-ktx", version.ref = "workRuntimeKtx" }
+androidx-work-testing = { module = "androidx.work:work-testing", version.ref = "workRuntimeKtx" }
 com-fasterxml-jackson-module-jacksonModuleKotlin = { group = "com.fasterxml.jackson.module", name = "jackson-module-kotlin", version.ref = "jacksonModuleKotlin" }
 com-google-firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
 com-google-firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics" }
