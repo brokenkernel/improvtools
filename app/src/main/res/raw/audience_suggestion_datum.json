@@ -1,113 +1,315 @@
 {
-  "categories": {
-    "NOUN": [
-      "book",
-      "can",
-      "case",
-      "chair",
-      "child",
-      "company",
-      "eye",
-      "fork",
-      "hand",
-      "money",
-      "night",
-      "water"
-    ],
-    "VERB": [
-      "ask",
-      "call",
-      "can",
-      "deduct",
-      "feel",
-      "find",
-      "think"
-    ],
-    "ADJECTIVE": [
-      "Beautiful",
-      "Smooth",
-      "Heavy"
-    ],
-    "WORD": [
-      "Blueberry",
-      "Life"
-    ],
-    "EMOTION": [
-      "Happy",
-      "Sad"
-    ],
-    "LOCATION": [
-      "Mortuary",
-      "Kitchen",
-      "Flea Market"
-    ],
-    "JOB": [
-      "Doctor",
-      "Lawyer"
-    ],
-    "RELATION": [
-      "husband/wife",
-      "doctor/patient"
-    ],
-    "SITUATION": [
-      "Playing a practical joke",
-      "Having a Babys"
-    ],
-    "GENRE": [
-      "Absurdist",
-      "Action",
-      "Adventure",
-      "Biographical",
-      "Comedy",
-      "Crime",
-      "Cyberpunk",
-      "Fairy Tale",
-      "Fantasy romance",
-      "Fantasy",
-      "Heist",
-      "Historical",
-      "Horror",
-      "Horror",
-      "Legal Thriller",
-      "Military Fiction",
-      "Musical",
-      "Noir",
-      "Romance",
-      "Satire",
-      "Science fiction",
-      "Shenmo",
-      "Space Opera",
-      "Sports",
-      "Spy Fiction",
-      "Superhero",
-      "Surrealist",
-      "Swashbuckler",
-      "Sword & Sorcery",
-      "Telenovela",
-      "Urban fantasy",
-      "Western",
-      "Wuxia"
-    ],
-    "DIRECTOR": [
-      "David Lynch",
-      "Quentin Tarantino",
-      "Stanley Kubrick",
-      "Wes Anderson"
-    ],
-    "PLAYWRITE": [
-      "Shakespere",
-      "Nowel Coward",
-      "Diana Son"
-    ],
-    "HARDCONVO": [
-      "Firing Someone",
-      "Having Cancer"
-    ],
-    "DIALECT": [
-      "Standard English",
-      "Yorkshire",
-      "Cork"
-    ]
-  }
+  "categories": [
+    {
+      "title": "Noun",
+      "ideas": [
+        {
+          "idea": "book"
+        },
+        {
+          "idea": "can"
+        },
+        {
+          "idea": "case"
+        },
+        {
+          "idea": "chair"
+        },
+        {
+          "idea": "child"
+        },
+        {
+          "idea": "company"
+        },
+        {
+          "idea": "eye"
+        },
+        {
+          "idea": "fork"
+        },
+        {
+          "idea": "hand"
+        },
+        {
+          "idea": "money"
+        },
+        {
+          "idea": "night"
+        },
+        {
+          "idea": "water"
+        }
+      ]
+    },
+    {
+      "title": "verb",
+      "ideas": [
+        {
+          "idea": "ask"
+        },
+        {
+          "idea": "call"
+        },
+        {
+          "idea": "can"
+        },
+        {
+          "idea": "deduct"
+        },
+        {
+          "idea": "feel"
+        },
+        {
+          "idea": "find"
+        },
+        {
+          "idea": "think"
+        }
+      ]
+    },
+    {
+      "title": "Adjective",
+      "ideas": [
+        {
+          "idea": "Beautiful"
+        },
+        {
+          "idea": "Smooth"
+        },
+        {
+          "idea": "Heavy"
+        }
+      ]
+    },
+    {
+      "title": "Word",
+      "ideas": [
+        {
+          "idea": "Blueberry"
+        },
+        {
+          "idea": "Life"
+        }
+      ]
+    },
+    {
+      "title": "Emotion",
+      "ideas": [
+        {
+          "idea": "Happy"
+        },
+        {
+          "idea": "Sad"
+        }
+      ]
+    },
+    {
+      "title": "Location",
+      "ideas": [
+        {
+          "idea": "Mortuary"
+        },
+        {
+          "idea": "Kitchen"
+        },
+        {
+          "idea": "Flea Market"
+        }
+      ]
+    },
+    {
+      "title": "Job",
+      "ideas": [
+        {
+          "idea": "Doctor"
+        },
+        {
+          "idea": "Lawyer"
+        }
+      ]
+    },
+    {
+      "title": "Relation",
+      "ideas": [
+        {
+          "idea": "husband/wife"
+        },
+        {
+          "idea": "doctor/patient"
+        }
+      ]
+    },
+    {
+      "title": "Situation",
+      "ideas": [
+        {
+          "idea": "Playing a practical joke"
+        },
+        {
+          "idea": "Having a Babys"
+        }
+      ]
+    },
+    {
+      "title": "Genre",
+      "ideas": [
+        {
+          "idea": "Absurdist"
+        },
+        {
+          "idea": "Action"
+        },
+        {
+          "idea": "Adventure"
+        },
+        {
+          "idea": "Biographical"
+        },
+        {
+          "idea": "Comedy"
+        },
+        {
+          "idea": "Crime"
+        },
+        {
+          "idea": "Cyberpunk"
+        },
+        {
+          "idea": "Fairy Tale"
+        },
+        {
+          "idea": "Fantasy romance"
+        },
+        {
+          "idea": "Fantasy"
+        },
+        {
+          "idea": "Heist"
+        },
+        {
+          "idea": "Historical"
+        },
+        {
+          "idea": "Horror"
+        },
+        {
+          "idea": "Horror"
+        },
+        {
+          "idea": "Legal Thriller"
+        },
+        {
+          "idea": "Military Fiction"
+        },
+        {
+          "idea": "Musical"
+        },
+        {
+          "idea": "Noir"
+        },
+        {
+          "idea": "Romance"
+        },
+        {
+          "idea": "Satire"
+        },
+        {
+          "idea": "Science fiction"
+        },
+        {
+          "idea": "Shenmo"
+        },
+        {
+          "idea": "Space Opera"
+        },
+        {
+          "idea": "Sports"
+        },
+        {
+          "idea": "Spy Fiction"
+        },
+        {
+          "idea": "Superhero"
+        },
+        {
+          "idea": "Surrealist"
+        },
+        {
+          "idea": "Swashbuckler"
+        },
+        {
+          "idea": "Sword & Sorcery"
+        },
+        {
+          "idea": "Telenovela"
+        },
+        {
+          "idea": "Urban fantasy"
+        },
+        {
+          "idea": "Western"
+        },
+        {
+          "idea": "Wuxia"
+        }
+      ]
+    },
+    {
+      "title": "Director",
+      "ideas": [
+        {
+          "idea": "David Lynch"
+        },
+        {
+          "idea": "Quentin Tarantino"
+        },
+        {
+          "idea": "Stanley Kubrick"
+        },
+        {
+          "idea": "Wes Anderson"
+        }
+      ]
+    },
+    {
+      "title": "Playwrite",
+      "ideas": [
+        {
+          "idea": "Shakespere"
+        },
+        {
+          "idea": "Nowel Coward"
+        },
+        {
+          "idea": "Diana Son"
+        }
+      ]
+    },
+    {
+      "title": "Hard Conversation",
+      "ideas": [
+        {
+          "idea": "Firing Someone"
+        },
+        {
+          "idea": "Having Cancer"
+        }
+      ]
+    },
+    {
+      "title": "Dialect",
+      "ideas": [
+        {
+          "idea": "Standard English"
+        },
+        {
+          "idea": "Yorkshire"
+        },
+        {
+          "idea": "Cork"
+        }
+      ]
+    }
+  ]
 }
 

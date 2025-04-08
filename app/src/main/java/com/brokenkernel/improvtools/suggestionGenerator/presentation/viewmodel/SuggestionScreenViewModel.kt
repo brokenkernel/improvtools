@@ -1,11 +1,10 @@
 package com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel
 
-//import com.brokenkernel.improvtools.AppContainer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.brokenkernel.improvtools.settings.data.repository.SettingsRepository
-import com.brokenkernel.improvtools.suggestionGenerator.data.model.SuggestionCategory
 import com.brokenkernel.improvtools.suggestionGenerator.data.repository.AudienceSuggestionDatumRepository
+import com.brokenkernel.improvtools.suggestionGenerator.data.repository.IdeaCategory
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.uistate.SuggestionScreenUIState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jakarta.inject.Inject
@@ -14,69 +13,48 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import java.util.EnumMap
 
 @HiltViewModel
 internal class SuggestionScreenViewModel @Inject constructor(
-    private val suggestionDatumRepository: AudienceSuggestionDatumRepository,
+    suggestionDatumRepository: AudienceSuggestionDatumRepository,
     private val settingsRepository: SettingsRepository,
 ) :
     ViewModel() {
     private val _uiState = MutableStateFlow(SuggestionScreenUIState.default())
     internal val uiState: StateFlow<SuggestionScreenUIState> = _uiState.asStateFlow()
 
+    val internalCategoryDatum: List<IdeaCategory> = suggestionDatumRepository.getIdeaCategories()
+    val _categoryDatumToSuggestion: MutableMap<IdeaCategory, MutableStateFlow<String>> =
+        HashMap<IdeaCategory, MutableStateFlow<String>>()
+    val categoryDatumToSuggestion: Map<IdeaCategory, StateFlow<String>>
+
     init {
-        resetAllCategories()
         viewModelScope.launch {
             settingsRepository.userSettingsFlow.collectLatest { it ->
                 _uiState.value =
                     _uiState.value.copy(shouldReuseSuggestions = it.allowSuggestionsReuse)
             }
         }
+        internalCategoryDatum.forEach { item ->
+            _categoryDatumToSuggestion[item] = MutableStateFlow(item.ideas.random().idea)
+        }
+        categoryDatumToSuggestion = _categoryDatumToSuggestion.mapValues { x -> x.value.asStateFlow() }
     }
 
-    internal fun updateSuggestionFor(suggestionCategory: SuggestionCategory): Unit {
-        _uiState.value = _uiState.value.copy(
-            _uiState.value.audienceSuggestions + mapOf(
-                suggestionCategory to pickAnotherItemFromCategoryDatum(
-                    suggestionCategory,
-                    _uiState.value.audienceSuggestions.getValue(suggestionCategory)
-                )
-            )
-        )
+    internal fun updateSuggestionXFor(ic: IdeaCategory) {
+        val legalNewWords: Set<String> = if (_uiState.value.shouldReuseSuggestions) {
+            ic.ideas.map { x -> x.idea }.toSet()
+        } else {
+            ic.ideas.map { x -> x.idea }.toSet() - _categoryDatumToSuggestion[ic]?.value.orEmpty()
+        }
+
+        _categoryDatumToSuggestion[ic]?.value = legalNewWords.random()
     }
 
     internal fun resetAllCategories(): Unit {
-        val audienceSuggestions: MutableMap<SuggestionCategory, String> =
-            EnumMap(SuggestionCategory::class.java)
-
-        SuggestionCategory.entries.forEach { item ->
-            val word = pickAnotherItemFromCategoryDatum(
-                item, _uiState.value.audienceSuggestions.getOrDefault(
-                    item,
-                    ""
-                )
-            )
-            audienceSuggestions[item] = word
+        _categoryDatumToSuggestion.keys.forEach { k ->
+            this.updateSuggestionXFor(k)
         }
-        _uiState.value = _uiState.value.copy(audienceSuggestions = audienceSuggestions)
     }
 
-    /**
-     * Pick a word that differs from the existing word.
-     */
-    private fun pickAnotherItemFromCategoryDatum(
-        suggestionCategory: SuggestionCategory,
-        currentWord: String,
-    ): String {
-        val suggestionIdeasForCategory: Set<String> =
-            suggestionDatumRepository.getAudienceDatumForCategory(suggestionCategory)
-        val legalNewWords: Set<String> = if (_uiState.value.shouldReuseSuggestions) {
-            suggestionIdeasForCategory
-        } else {
-            suggestionIdeasForCategory - currentWord
-        }
-
-        return legalNewWords.random()
-    }
 }

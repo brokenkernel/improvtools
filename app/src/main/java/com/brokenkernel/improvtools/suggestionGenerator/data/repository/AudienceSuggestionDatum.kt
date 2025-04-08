@@ -1,14 +1,22 @@
 package com.brokenkernel.improvtools.suggestionGenerator.data.repository
 
-import com.brokenkernel.improvtools.suggestionGenerator.data.model.SuggestionCategory
 import kotlinx.serialization.Serializable
 
 internal interface AudienceSuggestionDatumRepository {
-    fun getAudienceDatumForCategory(category: SuggestionCategory): Set<String>
+    fun getIdeaCategories(): List<IdeaCategory>
 }
+
+
+@Serializable
+internal data class IdeaItem(val idea: String)
+
+@Serializable
+internal data class IdeaCategory(
+    val title: String,
+    val ideas: Set<IdeaItem>,
+)
 
 @Serializable
 internal data class AudienceSuggestionDatum(
-    val categories: Map<String, Set<String>>,
+    val categories: List<IdeaCategory>
 )
-

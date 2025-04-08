@@ -20,8 +20,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.State
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
@@ -29,7 +29,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.brokenkernel.improvtools.R
-import com.brokenkernel.improvtools.suggestionGenerator.data.model.SuggestionCategory
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel.SuggestionScreenViewModel
 
 
@@ -47,7 +46,6 @@ internal fun SuggestionsScreen(
 
 @Composable
 internal fun SuggestionsScreenFullyLoaded(viewModel: SuggestionScreenViewModel = hiltViewModel()) {
-    val audienceSuggestionUIState by viewModel.uiState.collectAsState()
 
     val categoryWeight = .3f
     val audienceIdeaWeight = .7f
@@ -77,31 +75,36 @@ internal fun SuggestionsScreenFullyLoaded(viewModel: SuggestionScreenViewModel =
                 style = MaterialTheme.typography.titleLarge,
             )
         }
-        Row(modifier = Modifier.fillMaxSize().weight(10f)) {
+        Row(
+            modifier = Modifier
+                .fillMaxSize()
+                .weight(10f)
+        ) {
             Column(modifier = Modifier.verticalScroll(scrollState)) {
-                SuggestionCategory.entries.forEach { suggestionData ->
+
+                viewModel.internalCategoryDatum.forEach { ideaCategory ->
+                    val itemSuggestionState: State<String>? =
+                        viewModel.categoryDatumToSuggestion[ideaCategory]?.collectAsState()
                     Row(
                         modifier = Modifier
                             .height(IntrinsicSize.Max),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         TableCell(
-                            text = suggestionData.title,
+                            text = ideaCategory.title,
                             weight = categoryWeight,
                             style = MaterialTheme.typography.bodyMedium,
                         )
                         ClickableTableCell(
-                            text = audienceSuggestionUIState.audienceSuggestions.getOrDefault(
-                                suggestionData,
-                                "unknown"
-                            ), //  TODO I shouldn't have to do this. Maybe EnumMap
+                            text = itemSuggestionState?.value.orEmpty(),
                             weight = audienceIdeaWeight,
                             style = MaterialTheme.typography.bodyMedium,
                             onClick = {
-                                viewModel.updateSuggestionFor(suggestionData)
+                                viewModel.updateSuggestionXFor(ideaCategory)
                             }
                         )
                     }
+
                 }
             }
         }

@@ -22,12 +22,7 @@ internal class ResourcesAudienceSuggestionDatumRepository(
             Json.decodeFromStream<AudienceSuggestionDatum>(unprocessedAudienceDatum)
     }
 
-    override fun getAudienceDatumForCategory(category: SuggestionCategory): Set<String> {
-        if (audienceDatumParsed == null) {
-            // This should never happen but we can't assert it.
-            // TODO: It will also currently result in error on read since the Set is empty but that's a future bug to fix
-            return setOf()
-        }
-        return audienceDatumParsed.categories[category.toString()].orEmpty()
+    override fun getIdeaCategories(): List<IdeaCategory> {
+        return audienceDatumParsed?.categories.orEmpty();
     }
 }
