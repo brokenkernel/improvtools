@@ -5,7 +5,7 @@ dependencyAnalysis = "2.14.0"
 annotation = "1.9.1"
 composeBom = "2025.03.01"
 coreKtx = "1.15.0"
-datastorePreferences = "1.1.4"
+androidXdatastore = "1.1.4"
 espressoCore = "3.6.1"
 espressoDevice = "1.0.1"
 firebaseBom = "33.12.0"
@@ -17,6 +17,7 @@ hilt = "2.56.1"
 hiltNavigationCompose = "1.2.0"
 hiltNavigationTesting = "1.2.0"
 jacksonModuleKotlin = "2.18.3"
+javaxInject = "1"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 kotlin = "2.1.20"
@@ -39,13 +40,17 @@ sortDependencies = "0.14"
 
 
 [libraries]
+androidx-activity = { module = "androidx.activity:activity", version.ref = "activityCompose" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+androidx-activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "activityCompose" }
 androidx-annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
 androidx-compose-material-extended = { group = "androidx.compose.material", name = "material-icons-extended", version.ref = "materialIconsExtended" }
 androidx-compose-material3-adaptive-navigation-suite = { module = "androidx.compose.material3:material3-adaptive-navigation-suite", version.ref = "material3-adaptive-navigation-suite" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
-androidx-datastore-datastorePreferences = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastorePreferences" }
+androidx-datastore = { module = "androidx.datastore:datastore", version.ref = "androidXdatastore" }
+androidx-datastore-core = { module = "androidx.datastore:datastore-core", version.ref = "androidXdatastore" }
+androidx-datastore-datastorePreferences = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "androidXdatastore" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-espresso-device = { module = "androidx.test.espresso:espresso-device", version.ref = "espressoDevice" }
 androidx-glance-appwidget = { module = "androidx.glance:glance-appwidget", version.ref = "glanceAppwidget" }
@@ -78,6 +83,7 @@ firebase-config = { module = "com.google.firebase:firebase-config" }
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-android-testing = { group = "com.google.dagger", name = "hilt-android-testing", version.ref = "hilt" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
+javax-inject = { module = "javax.inject:javax.inject", version.ref = "javaxInject" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
 kotlinx-serialization-protobuf = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-protobuf", version.ref = "kotlinxSerialization" }

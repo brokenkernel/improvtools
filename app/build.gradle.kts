@@ -150,10 +150,13 @@ dependencies {
     implementation(platform(libs.androidx.compose.bom))
     implementation(platform(libs.com.google.firebase.firebaseBom))
     implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.activity.ktx)
     implementation(libs.androidx.annotation)
     implementation(libs.androidx.compose.material.extended)
     implementation(libs.androidx.compose.material3.adaptive.navigation.suite)
     implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.datastore)
+    implementation(libs.androidx.datastore.core)
     implementation(libs.androidx.datastore.datastorePreferences)
     implementation(libs.androidx.glance.appwidget)
     implementation(libs.androidx.glance.material3)
@@ -173,6 +176,7 @@ dependencies {
     implementation(libs.com.google.protobuf.protobufJavalite)
     implementation(libs.firebase.config)
     implementation(libs.hilt.android)
+    implementation(libs.javax.inject)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.kotlinx.serialization.protobuf)
 
@@ -183,6 +187,8 @@ dependencies {
     testImplementation(libs.junit)
 
     androidTestImplementation(platform(libs.androidx.compose.bom))
+    androidTestImplementation(libs.androidx.activity)
+    androidTestImplementation(libs.androidx.datastore)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.espresso.device)
     androidTestImplementation(libs.androidx.junit)
@@ -190,6 +196,7 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     androidTestImplementation(libs.androidx.work.testing)
     androidTestImplementation(libs.hilt.android.testing)
+    androidTestImplementation(libs.junit)
     androidTestImplementation(libs.tools.fastlane.screengrab)
 
     ksp(libs.hilt.compiler)

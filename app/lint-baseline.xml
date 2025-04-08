@@ -89,4 +89,26 @@
             column="12"/>
     </issue>
 
+    <issue
+        id="UnusedResources"
+        message="The resource `R.raw.improv_tools_resources_keep` appears to be unused"
+        errorLine1="&lt;resources xmlns:tools=&quot;http://schemas.android.com/tools&quot; />"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/raw/improv_tools_resources_keep.xml"
+            line="2"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.xml.remote_config_defaults` appears to be unused"
+        errorLine1="&lt;defaultsMap>"
+        errorLine2="^">
+        <location
+            file="src/main/res/xml/remote_config_defaults.xml"
+            line="2"
+            column="1"/>
+    </issue>
+
 </issues>
