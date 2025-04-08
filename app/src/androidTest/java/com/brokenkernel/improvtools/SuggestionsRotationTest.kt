@@ -1,26 +1,20 @@
 package com.brokenkernel.improvtools
 
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.junit4.AndroidComposeTestRule
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onRoot
-import androidx.navigation.compose.ComposeNavigator
-import androidx.navigation.testing.TestNavHostController
 import androidx.test.espresso.device.DeviceInteraction.Companion.setScreenOrientation
 import androidx.test.espresso.device.EspressoDevice.Companion.onDevice
+import androidx.test.espresso.device.action.ScreenOrientation
 import androidx.test.espresso.device.rules.ScreenOrientationRule
-import com.brokenkernel.improvtools.application.presentation.view.DrawerNavGraph
-import com.brokenkernel.improvtools.infrastructure.HiltComponentActitivity
+import androidx.test.ext.junit.rules.ActivityScenarioRule
+import com.brokenkernel.improvtools.infrastructure.onNodeWithStringId
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import androidx.test.espresso.device.action.ScreenOrientation
-import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 
 @HiltAndroidTest
 class SuggestionsRotationTest {
@@ -29,25 +23,15 @@ class SuggestionsRotationTest {
     var hiltRule: HiltAndroidRule = HiltAndroidRule(this)
 
     @get:Rule(order = 1)
-    val composeTestRule = createAndroidComposeRule<HiltComponentActitivity>()
+    val composeTestRule: AndroidComposeTestRule<ActivityScenarioRule<MainActivity>, MainActivity> = createAndroidComposeRule<MainActivity>()
 
     @get:Rule(order = 2)
     val screenOrientationRule: ScreenOrientationRule = ScreenOrientationRule(ScreenOrientation.PORTRAIT)
 
 
-    lateinit var navController: TestNavHostController
-
     @Before
     fun setupAppNavHost() {
         hiltRule.inject()
-        composeTestRule.setContent {
-            navController = TestNavHostController(LocalContext.current).apply {
-                navigatorProvider.addNavigator(ComposeNavigator())
-            }
-            val currentScreenState: MutableState<NavigableScreens.SuggestionGenerator> =
-                remember { mutableStateOf(NavigableScreens.SuggestionGenerator) }
-            DrawerNavGraph(drawerNavController = navController, currentNavigableScreen = currentScreenState)
-        }
     }
 
     @Test
@@ -56,7 +40,9 @@ class SuggestionsRotationTest {
         composeTestRule
             .onRoot()
             .assertIsDisplayed()
-
+        composeTestRule
+            .onNodeWithStringId(R.string.suggestions_reset_all)
+            .assertIsDisplayed()
     }
 
 }
