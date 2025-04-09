@@ -31,6 +31,11 @@
                 android:resource="@xml/shortcuts" />
         </activity>
 
+        <!-- this might actually need multi-process datastore holder, but I think it should be easy and straightforward -->
+        <property
+            android:name="android.window.PROPERTY_SUPPORTS_MULTI_INSTANCE_SYSTEM_UI"
+            android:value="true" />
+
         <meta-data
             android:name="firebase_analytics_collection_enabled"
             android:value="false" />
