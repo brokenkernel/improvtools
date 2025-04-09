@@ -3,7 +3,8 @@
     "Character Creation": "<ul><li><strong>V</strong>oice</li><li><strong>A</strong>ttitude</li><li><strong>P</strong>osture</li><li><strong>P</strong>rop</li><li><strong>A</strong>nimal</li><li><strong>O</strong>bsession</li></ul>",
     "The Four Emotions": "<ul><li>Mad</li><li>Sad</li><li>Glad</li><li>Afrad</li></ul>",
     "Scene Basics": "<ul><li><strong>C</strong>haracter</li><li><strong>R</strong>relationship</li><li><strong>O</strong>bjective</li><li><strong>W</strong>here</li><li><strong>E</strong>motion</li></ul>",
-    "Story Spine": "<ul><li> Once upon a time...</li><li> Every day...</li><li> But, one day...</li><li> Because of that...</li><li> Because of that...</li><li> Because of that...</li><li> Until, finally...</li><li> And, ever since then...</li></ul>"
+    "Story Spine": "<ul><li> Once upon a time...</li><li> Every day...</li><li> But, one day...</li><li> Because of that...</li><li> Because of that...</li><li> Because of that...</li><li> Until, finally...</li><li> And, ever since then...</li></ul>",
+    "Levels of Tension": "<ol><li>Exhausted - Jellyfish</li><li>Laid Back - Californian</li><li>Neutral - no story</li><li>Alert - Curious</li><li>Suspense - Melodrama (is there a bomb in the room?)</li><li>Passsionate - Opera</li><li>Tragic - Petrified</li></ol>"
   }
 }
 
