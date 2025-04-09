@@ -36,13 +36,19 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawWithContent
+import androidx.compose.ui.geometry.CornerRadius
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.text.HtmlCompat
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.brokenkernel.improvtools.R
+import com.brokenkernel.improvtools.application.presentation.view.verticalColumnScrollbar
 import com.brokenkernel.improvtools.tipsandadvice.data.model.TipsAndAdviceViewModeUI
 import com.brokenkernel.improvtools.tipsandadvice.presentation.viewmodel.TipsAndAdviceViewModel
 
@@ -112,12 +118,13 @@ internal fun TipsAndAdviceScreenAsSwipable(viewModel: TipsAndAdviceViewModel = h
     }
 }
 
+
 @Composable
 internal fun TipsAndAdviceScreenAsList(viewModel: TipsAndAdviceViewModel = hiltViewModel()) {
     val uiState by viewModel.uiState.collectAsState()
     val columnScrollState: ScrollState = rememberScrollState()
     Column(
-        modifier = Modifier.verticalScroll(columnScrollState),
+        modifier = Modifier.verticalColumnScrollbar(columnScrollState).verticalScroll(columnScrollState),
     ) {
         uiState.tipsAndAdvice.forEach { it ->
             val isExpanded = remember { mutableStateOf(false) }

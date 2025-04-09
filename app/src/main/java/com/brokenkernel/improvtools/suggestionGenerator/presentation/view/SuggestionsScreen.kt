@@ -29,6 +29,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.brokenkernel.improvtools.R
+import com.brokenkernel.improvtools.application.presentation.view.verticalColumnScrollbar
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel.SuggestionScreenViewModel
 
 
@@ -49,7 +50,7 @@ internal fun SuggestionsScreenFullyLoaded(viewModel: SuggestionScreenViewModel =
 
     val categoryWeight = .3f
     val audienceIdeaWeight = .7f
-    val scrollState: ScrollState = rememberScrollState()
+
     // assert total is 100.
 
     // TODO: the weight are kind of random below. I'm not actually sure why they work. Figure it out.
@@ -80,8 +81,9 @@ internal fun SuggestionsScreenFullyLoaded(viewModel: SuggestionScreenViewModel =
                 .fillMaxSize()
                 .weight(10f)
         ) {
+            val scrollState: ScrollState = rememberScrollState()
             // TODO add sortable?
-            Column(modifier = Modifier.verticalScroll(scrollState)) {
+            Column(modifier = Modifier.verticalColumnScrollbar(scrollState).verticalScroll(scrollState)) {
                 viewModel.internalCategoryDatum.forEach { ideaCategory ->
                     val itemSuggestionState: State<String>? =
                         viewModel.categoryDatumToSuggestion[ideaCategory]?.collectAsState()
