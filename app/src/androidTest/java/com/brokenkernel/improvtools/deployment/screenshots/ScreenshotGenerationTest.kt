@@ -99,6 +99,7 @@ internal class ScreenshotGeneralPerNavigableScreenTest(
                 arrayOf(NavigableScreens.Timer),
                 arrayOf(NavigableScreens.TipsAndAdvice),
                 arrayOf(NavigableScreens.WorkshopGenerator),
+                arrayOf(NavigableScreens.Encyclopaedia),
             )
         }
     }
