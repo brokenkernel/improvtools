@@ -25,7 +25,7 @@ enum class TipsAndAdviceViewModeUI(@Size(min = 1) val internalEnumsMatching: Lis
     companion object {
         fun byInternalEnumValue(v: TipsAndTricksViewMode): TipsAndAdviceViewModeUI {
             return when (v) {
-                TipsAndTricksViewMode.VIEW_MODE_DEFAULT -> SWIPEABLE
+                TipsAndTricksViewMode.VIEW_MODE_DEFAULT -> LIST
                 TipsAndTricksViewMode.VIEW_MODE_LIST -> LIST
                 TipsAndTricksViewMode.VIEW_MODE_SWIPE -> SWIPEABLE
                 TipsAndTricksViewMode.UNRECOGNIZED -> SWIPEABLE // maybe throw instead?
