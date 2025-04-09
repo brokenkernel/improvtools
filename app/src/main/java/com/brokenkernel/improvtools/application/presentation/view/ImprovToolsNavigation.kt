@@ -160,9 +160,14 @@ internal fun ImprovToolsNavigationDrawer(
                     HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
 
                     Text(
-                        stringResource(R.string.navigation_settings_category),
+                        stringResource(R.string.navigation_encyclopaedia_category),
                         modifier = Modifier.padding(16.dp),
                         style = MaterialTheme.typography.titleMedium
+                    )
+                    NavigableScreenNavigationDrawerItem(
+                        NavigableScreens.Encyclopaedia,
+                        { it -> doNavigateToNavigableScreenWithNavClosure(it) },
+                        currentNavigableScreen,
                     )
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.TipsAndAdvice,
@@ -170,6 +175,12 @@ internal fun ImprovToolsNavigationDrawer(
                         currentNavigableScreen,
                     )
 
+                    HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
+                    Text(
+                        stringResource(R.string.navigation_settings_category),
+                        modifier = Modifier.padding(16.dp),
+                        style = MaterialTheme.typography.titleMedium
+                    )
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.Settings,
                         { it -> doNavigateToNavigableScreenWithNavClosure(it) },

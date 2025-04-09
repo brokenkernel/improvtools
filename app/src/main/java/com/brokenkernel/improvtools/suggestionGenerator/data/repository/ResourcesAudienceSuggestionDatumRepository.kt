@@ -1,8 +1,10 @@
 package com.brokenkernel.improvtools.suggestionGenerator.data.repository
 
+import com.brokenkernel.improvtools.suggestionGenerator.data.model.AudienceSuggestionDatum
+import com.brokenkernel.improvtools.suggestionGenerator.data.model.IdeaCategory
+
 import android.content.res.Resources
 import com.brokenkernel.improvtools.R
-import com.brokenkernel.improvtools.suggestionGenerator.data.model.SuggestionCategory
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.decodeFromStream
@@ -16,7 +18,6 @@ internal class ResourcesAudienceSuggestionDatumRepository(
     private val audienceDatumParsed: AudienceSuggestionDatum?
 
     init {
-
         val unprocessedAudienceDatum: InputStream = resources.openRawResource(R.raw.audience_suggestion_datum)
         audienceDatumParsed =
             Json.decodeFromStream<AudienceSuggestionDatum>(unprocessedAudienceDatum)

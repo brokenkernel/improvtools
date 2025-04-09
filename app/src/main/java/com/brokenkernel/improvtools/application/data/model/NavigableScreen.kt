@@ -2,6 +2,7 @@ package com.brokenkernel.improvtools.application.data.model
 
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.BookOnline
 import androidx.compose.material.icons.outlined.Games
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Lightbulb
@@ -11,6 +12,7 @@ import androidx.compose.material.icons.outlined.TipsAndUpdates
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.brokenkernel.improvtools.R
+import com.brokenkernel.improvtools.application.data.model.NavigableRoute.EncyclopaediaRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute.HelpAndAboutRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute.SettingsRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute.SuggestionGeneratorRoute
@@ -38,6 +40,9 @@ internal sealed class NavigableRoute() {
 
     @Serializable
     internal object TipsAndAdviceRoute : NavigableRoute()
+
+    @Serializable
+    internal object EncyclopaediaRoute : NavigableRoute()
 
 }
 
@@ -100,6 +105,16 @@ internal sealed class NavigableScreens(
         contentDescription = R.string.go_to_tips_and_advice_screen,
         icon = Icons.Outlined.TipsAndUpdates,
         route = TipsAndAdviceRoute,
+        shouldShowExtraMenu = false,
+    )
+
+
+    @Immutable
+    internal object Encyclopaedia : NavigableScreens(
+        titleResource = R.string.navigation_encyclopaedia,
+        contentDescription = R.string.go_to_encyclopaedia_screen,
+        icon = Icons.Outlined.BookOnline,
+        route = EncyclopaediaRoute,
         shouldShowExtraMenu = false,
     )
 

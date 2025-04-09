@@ -3,8 +3,8 @@ package com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.brokenkernel.improvtools.settings.data.repository.SettingsRepository
+import com.brokenkernel.improvtools.suggestionGenerator.data.model.IdeaCategory
 import com.brokenkernel.improvtools.suggestionGenerator.data.repository.AudienceSuggestionDatumRepository
-import com.brokenkernel.improvtools.suggestionGenerator.data.repository.IdeaCategory
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.uistate.SuggestionScreenUIState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jakarta.inject.Inject
@@ -21,7 +21,6 @@ internal class SuggestionScreenViewModel @Inject constructor(
 ) :
     ViewModel() {
     private val _uiState = MutableStateFlow(SuggestionScreenUIState.default())
-    internal val uiState: StateFlow<SuggestionScreenUIState> = _uiState.asStateFlow()
 
     val internalCategoryDatum: List<IdeaCategory> = suggestionDatumRepository.getIdeaCategories()
     val _categoryDatumToSuggestion: MutableMap<IdeaCategory, MutableStateFlow<String>> =
