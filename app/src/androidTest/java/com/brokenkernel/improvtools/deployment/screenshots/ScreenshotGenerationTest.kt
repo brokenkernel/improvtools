@@ -12,13 +12,18 @@ import com.brokenkernel.improvtools.application.data.model.OuterContentForMaster
 import com.brokenkernel.improvtools.infrastructure.HiltComponentActitivity
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
+import org.junit.AfterClass
 import org.junit.Before
+import org.junit.BeforeClass
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
 import tools.fastlane.screengrab.Screengrab
 import tools.fastlane.screengrab.UiAutomatorScreenshotStrategy
+import tools.fastlane.screengrab.cleanstatusbar.CleanStatusBar
+import tools.fastlane.screengrab.locale.LocaleTestRule
+
 
 sealed class BaseScreenshotGenerationTest {
     @get:Rule(order = 0)
@@ -26,6 +31,10 @@ sealed class BaseScreenshotGenerationTest {
 
     @get:Rule(order = 1)
     val composeTestRule: ComposeContentTestRule = createAndroidComposeRule<HiltComponentActitivity>()
+
+    @Rule(order = 2)
+    @JvmField
+    val localeTestRule: LocaleTestRule = LocaleTestRule()
 
     @Before
     fun setupAppNavHost() {
@@ -37,6 +46,21 @@ sealed class BaseScreenshotGenerationTest {
         }
         composeTestRule.waitForIdle()
     }
+
+    companion object {
+        @BeforeClass
+        @JvmStatic
+        fun beforeAll() {
+            CleanStatusBar.enableWithDefaults()
+        }
+
+        @AfterClass
+        @JvmStatic
+        fun afterAll() {
+            CleanStatusBar.disable()
+        }
+    }
+
 
     fun getString(@StringRes id: Int): String {
         return getInstrumentation().targetContext.getString(id)
