@@ -3,6 +3,7 @@ package com.brokenkernel.improvtools.settings.data.serialisation
 import androidx.datastore.core.CorruptionException
 import androidx.datastore.core.Serializer
 import com.brokenkernel.improvtools.datastore.UserSettings
+import com.brokenkernel.improvtools.datastore.UserSettings.TipsAndTricksViewMode
 import com.google.protobuf.InvalidProtocolBufferException
 import java.io.InputStream
 import java.io.OutputStream
@@ -11,6 +12,7 @@ internal object UserSettingsSerializer : Serializer<UserSettings> {
     override val defaultValue: UserSettings = UserSettings.newBuilder()
         .setAllowAnalyticsCookieStorage(true)
         .setAllowSuggestionsReuse(false)
+        .setTipsAndTricksViewMode(TipsAndTricksViewMode.VIEW_MODE_DEFAULT)
         .build()
 
     override suspend fun readFrom(input: InputStream): UserSettings {

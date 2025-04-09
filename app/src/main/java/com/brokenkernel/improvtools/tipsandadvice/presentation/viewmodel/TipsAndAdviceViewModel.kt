@@ -1,15 +1,22 @@
 package com.brokenkernel.improvtools.tipsandadvice.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.brokenkernel.improvtools.R
+import com.brokenkernel.improvtools.datastore.UserSettings
+import com.brokenkernel.improvtools.settings.data.repository.SettingsRepository
+import com.brokenkernel.improvtools.tipsandadvice.data.model.TipContentUIModel
 import com.brokenkernel.improvtools.tipsandadvice.data.model.TipsAndAdviceOnUIModel
 import com.brokenkernel.improvtools.tipsandadvice.data.model.TipsAndAdviceProcessedModel
+import com.brokenkernel.improvtools.tipsandadvice.data.model.TipsAndAdviceViewModeUI
 import com.brokenkernel.improvtools.tipsandadvice.data.repository.TipsAndAdviceRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jakarta.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.decodeFromStream
@@ -18,14 +25,25 @@ import java.io.InputStream
 
 @OptIn(ExperimentalSerializationApi::class)
 @HiltViewModel
-internal class TipsAndAdviceViewModel @Inject constructor(tipsAndAdviceRepository: TipsAndAdviceRepository) :
+internal class TipsAndAdviceViewModel @Inject constructor(
+    tipsAndAdviceRepository: TipsAndAdviceRepository,
+    settingsRepository: SettingsRepository,
+) :
     ViewModel() {
 
     // must happen inside of init block since we don't want blank default
     private val _uiState: MutableStateFlow<TipsAndAdviceOnUIModel>
     val uiState: StateFlow<TipsAndAdviceOnUIModel>
 
-    private val tipsAndAdviceProcessed: Iterator<Pair<String, String>>
+    private val _taaViewMode: MutableStateFlow<TipsAndAdviceViewModeUI> = MutableStateFlow(
+        TipsAndAdviceViewModeUI.byInternalEnumValue(
+            UserSettings.TipsAndTricksViewMode.VIEW_MODE_DEFAULT
+        )
+    )
+    val taaViewMode: StateFlow<TipsAndAdviceViewModeUI> = _taaViewMode.asStateFlow()
+
+
+    private val tipsAndAdviceProcessed: List<TipContentUIModel>
 
     init {
         val unprocessedTipsAndAdvice: InputStream =
@@ -34,23 +52,15 @@ internal class TipsAndAdviceViewModel @Inject constructor(tipsAndAdviceRepositor
             Json.decodeFromStream<TipsAndAdviceProcessedModel>(unprocessedTipsAndAdvice)
 
         val rawDictTipsAndAdvice = tipsAndAdviceDatum
-        tipsAndAdviceProcessed = rawDictTipsAndAdvice.asInfiniteSequence().iterator()
-        _uiState = MutableStateFlow(getNewlTOTD())
+        tipsAndAdviceProcessed = rawDictTipsAndAdvice.advice.toList().map { (x, y) -> TipContentUIModel(x, y) }
+        _uiState = MutableStateFlow(TipsAndAdviceOnUIModel(tipsAndAdviceProcessed))
         uiState = _uiState.asStateFlow()
-    }
-
-    fun getNewlTOTD(): TipsAndAdviceOnUIModel {
-        if (tipsAndAdviceProcessed.hasNext()) {
-            val rawEntry: Pair<String, String> = tipsAndAdviceProcessed.next()
-            return TipsAndAdviceOnUIModel(rawEntry.first, rawEntry.second)
-        } else {
-            // This should never happen but we can't assert it.
-            // TODO: This should really have failed in init but we can't deal with that yet.
-            return TipsAndAdviceOnUIModel.getDefault()
+        viewModelScope.launch {
+            settingsRepository.userSettingsFlow.collectLatest { it ->
+                _taaViewMode.value = TipsAndAdviceViewModeUI.byInternalEnumValue(it.tipsAndTricksViewMode)
+            }
         }
     }
 
-    fun loadNewTOTD() {
-        _uiState.value = getNewlTOTD()
-    }
+
 }

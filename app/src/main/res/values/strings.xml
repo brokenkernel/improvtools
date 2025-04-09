@@ -53,4 +53,7 @@
     <string name="encyclopaedia_tab_title_emotions">Emotions</string>
     <string name="encyclopaedia_tab_title_games">Games</string>
     <string name="encyclopaedia_tab_title_people">People</string>
+    <string name="settings_tips_and_tricks_view_mode">Tips And Tricks View Mode</string>
+    <string name="tips_and_advice_expand_card">Expand Card</string>
+    <string name="tips_and_advice_collapse_card">Collapse Card</string>
 </resources>

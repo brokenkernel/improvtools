@@ -2,39 +2,6 @@
 <issues format="6" by="lint 8.9.1" type="baseline" client="gradle" dependencies="true" name="AGP (8.9.1)" variant="all" version="8.9.1">
 
     <issue
-        id="MissingTranslation"
-        message="&quot;navigation_encyclopaedia_category&quot; is not translated in &quot;de&quot; (German)"
-        errorLine1="    &lt;string name=&quot;navigation_encyclopaedia_category&quot;>Encyclopaedia&lt;/string>"
-        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/values/strings.xml"
-            line="48"
-            column="13"/>
-    </issue>
-
-    <issue
-        id="MissingTranslation"
-        message="&quot;navigation_encyclopaedia&quot; is not translated in &quot;de&quot; (German)"
-        errorLine1="    &lt;string name=&quot;navigation_encyclopaedia&quot;>Encyclopaedia&lt;/string>"
-        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/values/strings.xml"
-            line="49"
-            column="13"/>
-    </issue>
-
-    <issue
-        id="MissingTranslation"
-        message="&quot;go_to_encyclopaedia_screen&quot; is not translated in &quot;de&quot; (German)"
-        errorLine1="    &lt;string name=&quot;go_to_encyclopaedia_screen&quot;>Go to Encyclopaedia&lt;/string>"
-        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/values/strings.xml"
-            line="50"
-            column="13"/>
-    </issue>
-
-    <issue
         id="UnusedResources"
         message="The resource `R.color.purple_200` appears to be unused"
         errorLine1="    &lt;color name=&quot;purple_200&quot;>#FFBB86FC&lt;/color>"
@@ -113,17 +80,6 @@
 
     <issue
         id="UnusedResources"
-        message="The resource `R.dimen.padding_medium` appears to be unused"
-        errorLine1="    &lt;dimen name=&quot;padding_medium&quot;>16dp&lt;/dimen>"
-        errorLine2="           ~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/values/dimens.xml"
-            line="4"
-            column="12"/>
-    </issue>
-
-    <issue
-        id="UnusedResources"
         message="The resource `R.raw.improv_tools_resources_keep` appears to be unused"
         errorLine1="&lt;resources xmlns:tools=&quot;http://schemas.android.com/tools&quot; />"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
@@ -142,6 +98,31 @@
             file="src/main/res/xml/remote_config_defaults.xml"
             line="2"
             column="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.tips_and_advice_reload` appears to be unused"
+        errorLine1="    &lt;string name=&quot;tips_and_advice_reload&quot;>New Tip&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="40"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="IconLocation"
+        message="Found bitmap drawable `res/drawable/general_emotion_wheel.png` in densityless folder">
+        <location
+            file="src/main/res/drawable/general_emotion_wheel.png"/>
+    </issue>
+
+    <issue
+        id="IconLocation"
+        message="Found bitmap drawable `res/drawable/plutchik_wheel.webp` in densityless folder">
+        <location
+            file="src/main/res/drawable/plutchik_wheel.webp"/>
     </issue>
 
 </issues>

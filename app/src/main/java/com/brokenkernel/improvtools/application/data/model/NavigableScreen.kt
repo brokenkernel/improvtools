@@ -105,7 +105,7 @@ internal sealed class NavigableScreens(
         contentDescription = R.string.go_to_tips_and_advice_screen,
         icon = Icons.Outlined.TipsAndUpdates,
         route = TipsAndAdviceRoute,
-        shouldShowExtraMenu = false,
+        shouldShowExtraMenu = true,
     )
 
 

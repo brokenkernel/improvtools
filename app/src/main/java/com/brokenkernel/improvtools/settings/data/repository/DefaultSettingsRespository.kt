@@ -2,6 +2,7 @@ package com.brokenkernel.improvtools.settings.data.repository
 
 import androidx.datastore.core.DataStore
 import com.brokenkernel.improvtools.datastore.UserSettings
+import com.brokenkernel.improvtools.datastore.UserSettings.TipsAndTricksViewMode
 import kotlinx.coroutines.flow.Flow
 
 internal class DefaultSettingsRespository(private val userPreferenceDataStore: DataStore<UserSettings>) :
@@ -22,6 +23,14 @@ internal class DefaultSettingsRespository(private val userPreferenceDataStore: D
         userPreferenceDataStore.updateData { preferences ->
             preferences.toBuilder()
                 .setAllowAnalyticsCookieStorage(allowAnalyticsCookieStorage)
+                .build()
+        }
+    }
+
+    override suspend fun updateTipsAndTricksViewMode(tipsAndTricksViewMode: TipsAndTricksViewMode) {
+        userPreferenceDataStore.updateData { preferences ->
+            preferences.toBuilder()
+                .setTipsAndTricksViewMode(tipsAndTricksViewMode)
                 .build()
         }
     }

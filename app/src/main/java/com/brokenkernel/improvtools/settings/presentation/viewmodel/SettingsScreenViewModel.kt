@@ -2,9 +2,11 @@ package com.brokenkernel.improvtools.settings.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.brokenkernel.improvtools.datastore.UserSettings
 import com.brokenkernel.improvtools.infrastructure.ConsentManagement
 import com.brokenkernel.improvtools.settings.data.repository.SettingsRepository
 import com.brokenkernel.improvtools.settings.presentation.uistate.SettingsScreenUIState
+import com.brokenkernel.improvtools.tipsandadvice.data.model.TipsAndAdviceViewModeUI
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -27,6 +29,7 @@ internal class SettingsScreenViewModel @Inject constructor(private val settingsR
                 _uiState.value = SettingsScreenUIState(
                     shouldReuseSuggestions = it.allowSuggestionsReuse,
                     allowAnalyticsCookieStorage = it.allowAnalyticsCookieStorage,
+                    tipsAndTricksViewMode = it.tipsAndTricksViewMode,
                 )
             }
         }
@@ -40,6 +43,15 @@ internal class SettingsScreenViewModel @Inject constructor(private val settingsR
         _uiState.value = _uiState.value.copy(shouldReuseSuggestions = newState)
     }
 
+    fun onClickUpdateTipsAndTricksViewMode(newState: TipsAndAdviceViewModeUI) {
+        val internalNewState: UserSettings.TipsAndTricksViewMode = newState.internalEnumsMatching.first()
+        viewModelScope.launch {
+            settingsRepository.updateTipsAndTricksViewMode(internalNewState)
+        }
+        _uiState.value = _uiState.value.copy(tipsAndTricksViewMode = internalNewState)
+    }
+
+
     fun onClickUpdateAllowAnalyticsCookieStorage(newState: Boolean) {
         viewModelScope.launch {
             settingsRepository.updateAllowAnalyticsCookieStorage(newState)
@@ -50,6 +62,4 @@ internal class SettingsScreenViewModel @Inject constructor(private val settingsR
         // TODO: this really should be handled by an observer but I can't figure out how to do this right now
         ConsentManagement.configureConsentForFirebase(newState)
     }
-
-
 }

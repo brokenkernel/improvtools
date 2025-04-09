@@ -5,9 +5,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
+import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.RadioButton
-import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -22,49 +22,21 @@ import com.brokenkernel.improvtools.settings.utils.toTitleCase
 import com.brokenkernel.improvtools.tipsandadvice.data.model.TipsAndAdviceViewModeUI
 
 
+// TODO: consider moving into 'encyclopedia' package?
 @Composable
-internal fun SettingsScreen(
+internal fun TipsAndAdviceMenu(
     viewModel: SettingsScreenViewModel = hiltViewModel(),
+    expanded: Boolean,
+    onDismiss: () -> Unit,
 ) {
 
     val uiState by viewModel.uiState.collectAsState()
 
-    Column {
-        Text(
-            stringResource(R.string.suggestions_activity_title),
-            style = MaterialTheme.typography.titleLarge
-        )
-        Row {
-            Box(modifier = Modifier.weight(.8f)) {
-                Text(
-                    stringResource(R.string.settings_allow_reuse),
-                )
-            }
-            Box {
-                Switch(
-                    checked = uiState.shouldReuseSuggestions,
-                    onCheckedChange = {
-                        viewModel.onClickUpdateShouldReuseSuggestions(it)
-                    },
-                )
-            }
-        }
-        Row {
-            Box(modifier = Modifier.weight(.8f)) {
-                Text(
-                    stringResource(R.string.settings_allow_analytics_cookie_storage),
-                )
-            }
-            Box {
-                Switch(
-                    checked = uiState.allowAnalyticsCookieStorage,
-                    onCheckedChange = {
-                        viewModel.onClickUpdateAllowAnalyticsCookieStorage(it)
-                    },
-                )
-            }
+    DropdownMenu(
+        expanded = expanded,
+        onDismissRequest = onDismiss,
+    ) {
 
-        }
         Row {
             Box(modifier = Modifier.weight(.8f)) {
                 Text(

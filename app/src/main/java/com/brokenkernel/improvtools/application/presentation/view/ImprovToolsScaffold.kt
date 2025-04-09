@@ -28,6 +28,7 @@ import androidx.compose.ui.res.stringResource
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import com.brokenkernel.improvtools.settings.presentation.view.SuggestionsScreenMenu
+import com.brokenkernel.improvtools.settings.presentation.view.TipsAndAdviceMenu
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -74,14 +75,15 @@ internal fun ImprovToolsScaffold(
                                 imageVector = Icons.Filled.MoreVert,
                                 contentDescription = stringResource(R.string.navigation_open_screen_specific_menu)
                             )
-                            SuggestionsScreenMenu(
-                                expanded = moreMenuExpandedState,
-                                onDismiss = {
-                                    moreMenuExpandedState = !moreMenuExpandedState
-                                }
-                            )
                             when (currentNavigableScreen.value) {
                                 NavigableScreens.SuggestionGenerator -> SuggestionsScreenMenu(
+                                    expanded = moreMenuExpandedState,
+                                    onDismiss = {
+                                        moreMenuExpandedState = !moreMenuExpandedState
+                                    }
+                                )
+
+                                NavigableScreens.TipsAndAdvice -> TipsAndAdviceMenu(
                                     expanded = moreMenuExpandedState,
                                     onDismiss = {
                                         moreMenuExpandedState = !moreMenuExpandedState
