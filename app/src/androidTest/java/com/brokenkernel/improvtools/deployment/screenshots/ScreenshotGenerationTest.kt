@@ -29,10 +29,10 @@ sealed class BaseScreenshotGenerationTest {
     @get:Rule(order = 0)
     var hiltRule: HiltAndroidRule = HiltAndroidRule(this)
 
-    @get:Rule(order = 1)
+    @get:Rule(order = 2)
     val composeTestRule: ComposeContentTestRule = createAndroidComposeRule<HiltComponentActitivity>()
 
-    @Rule(order = 2)
+    @Rule(order = 1)
     @JvmField
     val localeTestRule: LocaleTestRule = LocaleTestRule()
 
