@@ -14,6 +14,11 @@ plugins {
 }
 
 dependencyAnalysis {
+    usage {
+        analysis {
+            checkSuperClasses(true)
+        }
+    }
     structure {
         // This should be false, and we could be more specific about what to add, but meh
         ignoreKtx(true)
