@@ -134,15 +134,6 @@ platform :android do
       )
   end
 
-#       changelog = changelog_from_git_commits(
-#           commits_count: number_of_commits,
-#           pretty: "- %s",
-#           date_format: "long",
-#           match_lightweight_tag: false,
-#           merge_commit_filtering: "exclude_merges"
-#       )
-
-
   desc "Play Store Deployment Preperation"
   lane :playstore_validate_only do
     current_build_number = playstore_prep
@@ -191,7 +182,6 @@ platform :android do
     )
 
     UI.header "Finished INTERNAL deploy for #{current_build_number}"
-
   end
 
 
@@ -203,6 +193,7 @@ platform :android do
     prepare_and_take_screenshots
     create_native_debug_symbols
     UI.header "Finished preparing for #{current_build_number}"
+    changelog_from_git_commits
     current_build_number # last line, return value
 
     UI.header "Starting deploy for #{current_build_number}"
