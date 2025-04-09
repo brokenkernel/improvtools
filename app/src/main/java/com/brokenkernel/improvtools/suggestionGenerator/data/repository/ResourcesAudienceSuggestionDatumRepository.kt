@@ -24,6 +24,6 @@ internal class ResourcesAudienceSuggestionDatumRepository(
     }
 
     override fun getIdeaCategories(): List<IdeaCategory> {
-        return audienceDatumParsed?.categories.orEmpty();
+        return audienceDatumParsed?.categories.orEmpty()
     }
 }

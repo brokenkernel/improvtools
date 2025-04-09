@@ -1,8 +1,6 @@
 package com.brokenkernel.improvtools.settings.presentation.viewmodel
 
-import android.R.attr.data
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.brokenkernel.improvtools.infrastructure.ConsentManagement
 import com.brokenkernel.improvtools.settings.data.repository.SettingsRepository

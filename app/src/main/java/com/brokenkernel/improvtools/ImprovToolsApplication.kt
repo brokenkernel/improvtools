@@ -30,7 +30,7 @@ fun configureRemoteConfig() {
     remoteConfig.addOnConfigUpdateListener(object : ConfigUpdateListener {
         override fun onUpdate(configUpdate: ConfigUpdate) {
             if (Log.isLoggable(APPLICATION_TAG, DEBUG)) {
-                Log.d(APPLICATION_TAG, "Updated keys: " + configUpdate.updatedKeys);
+                Log.d(APPLICATION_TAG, "Updated keys: " + configUpdate.updatedKeys)
             }
         }
 
