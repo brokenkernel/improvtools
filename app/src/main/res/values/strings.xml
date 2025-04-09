@@ -48,4 +48,9 @@
     <string name="navigation_encyclopaedia_category">Encyclopaedia</string>
     <string name="navigation_encyclopaedia">Encyclopaedia</string>
     <string name="go_to_encyclopaedia_screen">Go to Encyclopaedia</string>
+    <string name="encyclopaedia_plutchiks_wheel_of_emotions">Plutchik\'s Wheel of Emotions</string>
+    <string name="encyclopaedia_emotion_wheel">Emotion Wheel</string>
+    <string name="encyclopaedia_tab_title_emotions">Emotions</string>
+    <string name="encyclopaedia_tab_title_games">Games</string>
+    <string name="encyclopaedia_tab_title_people">People</string>
 </resources>

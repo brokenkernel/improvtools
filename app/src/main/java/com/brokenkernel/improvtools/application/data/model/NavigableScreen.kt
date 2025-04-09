@@ -117,20 +117,4 @@ internal sealed class NavigableScreens(
         route = EncyclopaediaRoute,
         shouldShowExtraMenu = false,
     )
-
-
-    companion object {
-
-        fun byRoute(route: String?): NavigableScreens? {
-            val result = NavigableScreens::class.sealedSubclasses
-                .map { it ->
-                    it.objectInstance as NavigableScreens
-                }
-                .find { ns ->
-                    ns.route::class.qualifiedName == route
-                }
-            return result
-        }
-
-    }
 }

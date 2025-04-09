@@ -36,6 +36,8 @@ screengrab = "2.1.1"
 viewModelCompose = "2.8.7"
 workRuntimeKtx = "2.10.0"
 sortDependencies = "0.14"
+zoomable = "2.5.0"
+zoomableImageCoil3 = "0.15.1"
 
 
 
@@ -88,6 +90,8 @@ junit = { group = "junit", name = "junit", version.ref = "junit" }
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
 kotlinx-serialization-protobuf = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-protobuf", version.ref = "kotlinxSerialization" }
 tools-fastlane-screengrab = { group = "tools.fastlane", name = "screengrab", version.ref = "screengrab" }
+net-engawapg-lib-zoomable = { module = "net.engawapg.lib:zoomable", version.ref = "zoomable" }
+zoomable-image-coil3 = { module = "me.saket.telephoto:zoomable-image-coil3", version.ref = "zoomableImageCoil3" }
 
 [bundles]
 

@@ -191,6 +191,7 @@ dependencies {
     implementation(libs.javax.inject)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.kotlinx.serialization.protobuf)
+    implementation(libs.net.engawapg.lib.zoomable)
 
     debugImplementation(libs.androidx.ui.test.manifest)
     debugImplementation(libs.androidx.ui.tooling)
