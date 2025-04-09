@@ -56,4 +56,5 @@ internal class SuggestionScreenViewModel @Inject constructor(
         }
     }
 
+
 }

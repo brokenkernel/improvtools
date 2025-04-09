@@ -80,8 +80,8 @@ internal fun SuggestionsScreenFullyLoaded(viewModel: SuggestionScreenViewModel =
                 .fillMaxSize()
                 .weight(10f)
         ) {
+            // TODO add sortable?
             Column(modifier = Modifier.verticalScroll(scrollState)) {
-
                 viewModel.internalCategoryDatum.forEach { ideaCategory ->
                     val itemSuggestionState: State<String>? =
                         viewModel.categoryDatumToSuggestion[ideaCategory]?.collectAsState()
@@ -91,7 +91,7 @@ internal fun SuggestionsScreenFullyLoaded(viewModel: SuggestionScreenViewModel =
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         TableCell(
-                            text = ideaCategory.title,
+                            text = ideaCategory.titleWithCount(),
                             weight = categoryWeight,
                             style = MaterialTheme.typography.bodyMedium,
                         )
