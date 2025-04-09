@@ -39,6 +39,7 @@ fun HtmlText(html: String, modifier: Modifier = Modifier) {
     )
 }
 
+// TODO: add emotion wheel(s)
 @Composable
 internal fun TipsAndAdviceScreen(viewModel: TipsAndAdviceViewModel = hiltViewModel()) {
     val tipOfTheDay by viewModel.uiState.collectAsState()

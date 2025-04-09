@@ -100,7 +100,11 @@
         },
         {
           "idea": "Sad"
+        },
+        {
+          "idea": "Wounded"
         }
+
       ]
     },
     {
@@ -307,6 +311,23 @@
         },
         {
           "idea": "Cork"
+        }
+      ]
+    },
+    {
+      "title": "Ask Fors",
+      "ideas": [
+        {
+          "idea": "Give me a dangerous activity, thing to say, etc."
+        },
+        {
+          "idea": "Give me a Cable TV channel"
+        },
+        {
+          "idea": "I'm holding a box about yay big. What's inside it?"
+        },
+        {
+          "idea": "If you could invent a new human organ, what would it be?"
         }
       ]
     }
