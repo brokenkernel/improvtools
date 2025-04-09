@@ -60,7 +60,7 @@ platform :android do
   end
 
   desc "Take Screenshots"
-  lane :improv_tools_screenshots do
+  lane :prepare_and_take_screenshots do
     build_for_screengrab
     capture_android_screenshots(
       clear_previous_screenshots: true,
@@ -110,15 +110,19 @@ platform :android do
 #     )
   end
 
-
-  desc "Play Store Deployment Preperation"
-  lane :playstore_prep do
+  desc "Prepare Git Repository For Release"
+  lane :prepare_git_repository do
       git_pull(
         only_tags: true,
         rebase: true,
       ) # only the tags, no commits
       ensure_git_status_clean
       current_build_number = increment_gradle_version
+      current_build_number # last line, return value
+  end
+
+  desc "Prepare Binary For Release"
+  lane :prepare_binary do
       build_android_app(
         task: 'assemble',
         build_type: 'Release',
@@ -128,6 +132,8 @@ platform :android do
         task: 'bundle',
         build_type: 'Release',
       )
+  end
+
 #       changelog = changelog_from_git_commits(
 #           commits_count: number_of_commits,
 #           pretty: "- %s",
@@ -135,11 +141,6 @@ platform :android do
 #           match_lightweight_tag: false,
 #           merge_commit_filtering: "exclude_merges"
 #       )
-      improv_tools_screenshots
-      create_native_debug_symbols
-      UI.header "Finished preparing for #{current_build_number}"
-      current_build_number # last line, return value
-  end
 
 
   desc "Play Store Deployment Preperation"
@@ -157,9 +158,17 @@ platform :android do
     )
   end
 
-  desc "Full Play Store Deployment"
+  desc "Internal Play Store Deployment"
   lane :playstore_internal_deployment do
-    current_build_number = playstore_prep
+      current_build_number = prepare_git_repository
+      UI.header "Starting preparing for #{current_build_number}"
+      prepare_binary
+      create_native_debug_symbols
+      UI.header "Finished preparing for #{current_build_number}"
+      current_build_number # last line, return value
+
+      UI.header "Starting deploy for #{current_build_number}"
+
     upload_to_play_store(
       aab: "app/build/outputs/bundle/release/app-release.aab",
       skip_upload_apk: true,
@@ -181,14 +190,22 @@ platform :android do
       skip_upload_screenshots: true
     )
 
+    UI.header "Finished INTERNAL deploy for #{current_build_number}"
+
   end
 
 
   desc "Full Play Store Deployment"
   lane :playstore_fully_deployment do
-    current_build_number = playstore_prep
-    UI.header "Starting deploy for #{current_build_number}"
+    current_build_number = prepare_git_repository
+    UI.header "Starting preparing for #{current_build_number}"
+    prepare_binary
+    prepare_and_take_screenshots
+    create_native_debug_symbols
+    UI.header "Finished preparing for #{current_build_number}"
+    current_build_number # last line, return value
 
+    UI.header "Starting deploy for #{current_build_number}"
     upload_to_play_store(
       aab: "app/build/outputs/bundle/release/app-release.aab",
       skip_upload_apk: true,
@@ -199,5 +216,6 @@ platform :android do
         "app/build/intermediates/merged_native_libs/release/mergeReleaseNativeLibs/out/native_debug_symbols.zip",
       ],
     )
+    UI.header "Finished FULL deploy for #{current_build_number}"
   end
 end
