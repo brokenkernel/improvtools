@@ -67,7 +67,6 @@ internal fun ImprovToolsScaffold(
                         onClick = {
                             moreMenuExpandedState = !moreMenuExpandedState
                         },
-                        // possibly use this for visible/invisible rather than enabled/disabled
                         enabled = currentNavigableScreen.value.shouldShowExtraMenu,
                     ) {
                         if (currentNavigableScreen.value.shouldShowExtraMenu) {
@@ -75,7 +74,13 @@ internal fun ImprovToolsScaffold(
                                 imageVector = Icons.Filled.MoreVert,
                                 contentDescription = stringResource(R.string.navigation_open_screen_specific_menu)
                             )
-                            when (currentNavigableScreen) {
+                            SuggestionsScreenMenu(
+                                expanded = moreMenuExpandedState,
+                                onDismiss = {
+                                    moreMenuExpandedState = !moreMenuExpandedState
+                                }
+                            )
+                            when (currentNavigableScreen.value) {
                                 NavigableScreens.SuggestionGenerator -> SuggestionsScreenMenu(
                                     expanded = moreMenuExpandedState,
                                     onDismiss = {
