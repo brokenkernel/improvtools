@@ -19,7 +19,8 @@ private const val ShowTimerIntent: String = "com.brokenkernel.improvtools.intent
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-    @Inject internal lateinit var improvToolsNavigator: ImprovToolsNavigator
+    @Inject
+    internal lateinit var improvToolsNavigator: ImprovToolsNavigator
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,15 +30,12 @@ class MainActivity : ComponentActivity() {
             OuterContentForMasterScreen()
         }
 
-        Log.e(APPLICATION_TAG, "I HAVE A LIFE")
-
         if (intent.action != null) {
             val whichRoute = when (intent.action) {
                 ShowSuggestionsIntent -> NavigableScreens.SuggestionGenerator
                 ShowTimerIntent -> NavigableScreens.Timer
                 else -> NavigableScreens.SuggestionGenerator
             }
-            Log.w(APPLICATION_TAG, "trying to go to route $whichRoute")
             improvToolsNavigator.navigateTo(whichRoute)
             setResult(RESULT_OK)
         }
