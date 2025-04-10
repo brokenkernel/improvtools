@@ -156,6 +156,9 @@ android {
             keepDebugSymbols.add("**/libdatastore_shared_counter.so")
         }
     }
+    androidResources {
+        generateLocaleConfig = true
+    }
 }
 
 dependencies {
