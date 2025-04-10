@@ -19,6 +19,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.intl.Locale
+import androidx.compose.ui.tooling.preview.Preview
 import com.brokenkernel.improvtools.R
 import kotlinx.coroutines.delay
 import kotlin.time.Duration
@@ -102,4 +103,10 @@ fun TimerScreen() {
         SimpleTimer("Timer One")
         SimpleTimer("Timer Two")
     }
+}
+
+@Composable
+@Preview
+fun PreviewTimerScreen() {
+    TimerScreen()
 }
