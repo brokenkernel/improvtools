@@ -3,451 +3,415 @@
     {
       "title": "Noun",
       "ideas": [
-        {
-          "idea": "book"
-        },
-        {
-          "idea": "can"
-        },
-        {
-          "idea": "case"
-        },
-        {
-          "idea": "chair"
-        },
-        {
-          "idea": "child"
-        },
-        {
-          "idea": "company"
-        },
-        {
-          "idea": "eye"
-        },
-        {
-          "idea": "fork"
-        },
-        {
-          "idea": "hand"
-        },
-        {
-          "idea": "money"
-        },
-        {
-          "idea": "night"
-        },
-        {
-          "idea": "water"
-        }
+        {"idea": "book"},
+        {"idea": "can"},
+        {"idea": "case"},
+        {"idea": "chair"},
+        {"idea": "child"},
+        {"idea": "company"},
+        {"idea": "eye"},
+        {"idea": "fork"},
+        {"idea": "hand"},
+        {"idea": "money"},
+        {"idea": "night"},
+        {"idea": "water"}
       ]
     },
     {
       "title": "Verb",
       "ideas": [
-        {
-          "idea": "ask"
-        },
-        {
-          "idea": "call"
-        },
-        {
-          "idea": "can"
-        },
-        {
-          "idea": "deduct"
-        },
-        {
-          "idea": "feel"
-        },
-        {
-          "idea": "find"
-        },
-        {
-          "idea": "think"
-        }
+        {"idea": "ask"},
+        {"idea": "call"},
+        {"idea": "can"},
+        {"idea": "deduct"},
+        {"idea": "feel"},
+        {"idea": "find"},
+        {"idea": "think"}
       ]
     },
     {
       "title": "Adjective",
       "ideas": [
-        {
-          "idea": "Beautiful"
-        },
-        {
-          "idea": "Smooth"
-        },
-        {
-          "idea": "Heavy"
-        },
-        {
-          "idea": "Big"
-        },
-        {
-          "idea": "Small"
-        },
-        {
-          "idea": "Hot"
-        },
-        {
-          "idea": "Cold"
-        },
-        {
-          "idea": "Expensive"
-        },
-        {
-          "idea": "Difficult"
-        },
-        {
-          "idea": "Nice"
-        },
-        {
-          "idea": "Hungry"
-        },
-        {
-          "idea": "Late"
-        },
-        {
-          "idea": "Tall"
-        },
-        {
-          "idea": "Short"
-        }
+        {"idea": "Beautiful"},
+        {"idea": "Smooth"},
+        {"idea": "Heavy"},
+        {"idea": "Big"},
+        {"idea": "Small"},
+        {"idea": "Hot"},
+        {"idea": "Cold"},
+        {"idea": "Expensive"},
+        {"idea": "Difficult"},
+        {"idea": "Nice"},
+        {"idea": "Hungry"},
+        {"idea": "Late"},
+        {"idea": "Tall"},
+        {"idea": "Short"}
       ]
     },
     {
       "title": "Word",
       "ideas": [
-        {
-          "idea": "Blueberry"
-        },
-        {
-          "idea": "Life"
-        },
-        {
-          "idea": "Creed"
-        },
-        {
-          "idea": "Disposition"
-        }
+        {"idea": "Blueberry"},
+        {"idea": "Life"},
+        {"idea": "Creed"},
+        {"idea": "Disposition"}
       ]
     },
     {
       "title": "Emotion",
       "ideas": [
-        {
-          "idea": "Happy"
-        },
-        {
-          "idea": "Sad"
-        },
-        {
-          "idea": "Wounded"
-        },
-        {
-          "idea": "Calm"
-        },
-        {
-          "idea": "Relaxed"
-        },
-        {
-          "idea": "Vibrant"
-        },
-        {
-          "idea": "Upset"
-        },
-        {
-          "idea": "Frightened"
-        },
-        {
-          "idea": "Worried"
-        }
+        {"idea": "Accepting"},
+        {"idea": "Accepting"},
+        {"idea": "Adventurous"},
+        {"idea": "Affectionate"},
+        {"idea": "Afraid"},
+        {"idea": "Aggravated"},
+        {"idea": "Agitated"},
+        {"idea": "Aliveness"},
+        {"idea": "Aloof"},
+        {"idea": "Amazed"},
+        {"idea": "Angry"},
+        {"idea": "Anguish"},
+        {"idea": "Annoyed"},
+        {"idea": "Anxious"},
+        {"idea": "Anxious"},
+        {"idea": "Appreciative"},
+        {"idea": "Apprehensive"},
+        {"idea": "Apprehensive"},
+        {"idea": "Ashamed"},
+        {"idea": "Awe"},
+        {"idea": "Bitter"},
+        {"idea": "Blessed"},
+        {"idea": "Bliss"},
+        {"idea": "Bored"},
+        {"idea": "Brave"},
+        {"idea": "Burned out"},
+        {"idea": "Calm"},
+        {"idea": "Calm"},
+        {"idea": "Capable"},
+        {"idea": "Caring"},
+        {"idea": "Caring"},
+        {"idea": "Centered"},
+        {"idea": "Compassion"},
+        {"idea": "Concerned"},
+        {"idea": "Confident"},
+        {"idea": "Confused"},
+        {"idea": "Connected"},
+        {"idea": "Contempt"},
+        {"idea": "Content"},
+        {"idea": "Courageous"},
+        {"idea": "Cranky"},
+        {"idea": "Curious"},
+        {"idea": "Cynical"},
+        {"idea": "Daring"},
+        {"idea": "Delighted"},
+        {"idea": "Delighted"},
+        {"idea": "Depleted"},
+        {"idea": "Depressed"},
+        {"idea": "Despair"},
+        {"idea": "Despondent"},
+        {"idea": "Determined"},
+        {"idea": "Disappointed"},
+        {"idea": "Disconnected"},
+        {"idea": "Discouraged"},
+        {"idea": "Disdain"},
+        {"idea": "Disgruntled"},
+        {"idea": "Dissatisfied"},
+        {"idea": "Distant"},
+        {"idea": "Disturbed"},
+        {"idea": "Disturbed"},
+        {"idea": "Doubt"},
+        {"idea": "Eager"},
+        {"idea": "Ecstatic"},
+        {"idea": "Edgy"},
+        {"idea": "Edgy"},
+        {"idea": "Embarrassed"},
+        {"idea": "Empathy"},
+        {"idea": "Empty"},
+        {"idea": "Enchanted"},
+        {"idea": "Encouraged"},
+        {"idea": "Energized"},
+        {"idea": "Engaged"},
+        {"idea": "Engaged"},
+        {"idea": "Enthusiastic"},
+        {"idea": "Exasperated"},
+        {"idea": "Excited"},
+        {"idea": "Exhausted"},
+        {"idea": "Expectant"},
+        {"idea": "Exploring"},
+        {"idea": "Fascinated"},
+        {"idea": "Fear"},
+        {"idea": "Forlorn"},
+        {"idea": "Fortunate"},
+        {"idea": "Fragile"},
+        {"idea": "Frazzled"},
+        {"idea": "Free"},
+        {"idea": "Free"},
+        {"idea": "Frightened"},
+        {"idea": "Frustrated"},
+        {"idea": "Fulfilled"},
+        {"idea": "Fulfilled"},
+        {"idea": "Furious"},
+        {"idea": "Gloomy"},
+        {"idea": "Grace"},
+        {"idea": "Grateful"},
+        {"idea": "Grief"},
+        {"idea": "Grouchy"},
+        {"idea": "Grouchy"},
+        {"idea": "Grounded"},
+        {"idea": "Guilt"},
+        {"idea": "Happy"},
+        {"idea": "Heartbroken"},
+        {"idea": "Helpless"},
+        {"idea": "Hesitant"},
+        {"idea": "Hesitant"},
+        {"idea": "Hopeful"},
+        {"idea": "Hopeless"},
+        {"idea": "Hostile"},
+        {"idea": "Humbled"},
+        {"idea": "Humiliated"},
+        {"idea": "Impatient"},
+        {"idea": "Impotent"},
+        {"idea": "Incapable"},
+        {"idea": "Indifferent"},
+        {"idea": "Inhibited"},
+        {"idea": "Inhibited"},
+        {"idea": "Inspired"},
+        {"idea": "Interested"},
+        {"idea": "Intrigued"},
+        {"idea": "Invigorated"},
+        {"idea": "Involved"},
+        {"idea": "Irate"},
+        {"idea": "Irritated"},
+        {"idea": "Isolated"},
+        {"idea": "Joy"},
+        {"idea": "Lethargic"},
+        {"idea": "Listless"},
+        {"idea": "Lively"},
+        {"idea": "Lonely"},
+        {"idea": "Longing"},
+        {"idea": "Loving"},
+        {"idea": "Loving"},
+        {"idea": "Lucky"},
+        {"idea": "Melancholy"},
+        {"idea": "Moody"},
+        {"idea": "Mortified"},
+        {"idea": "Moved"},
+        {"idea": "Nervous"},
+        {"idea": "Numb"},
+        {"idea": "On edge"},
+        {"idea": "Open"},
+        {"idea": "Optimistic"},
+        {"idea": "Outraged"},
+        {"idea": "Overwhelm"},
+        {"idea": "Panic"},
+        {"idea": "Paralyzed"},
+        {"idea": "Passionate"},
+        {"idea": "Patient"},
+        {"idea": "Peaceful"},
+        {"idea": "Perplexed"},
+        {"idea": "Pissed"},
+        {"idea": "Playful"},
+        {"idea": "Powerful"},
+        {"idea": "Powerless"},
+        {"idea": "Present"},
+        {"idea": "Present"},
+        {"idea": "Proud"},
+        {"idea": "Questioning"},
+        {"idea": "Radiant"},
+        {"idea": "Rattled"},
+        {"idea": "Reflective"},
+        {"idea": "Refreshed"},
+        {"idea": "Regret"},
+        {"idea": "Rejecting"},
+        {"idea": "Rejecting"},
+        {"idea": "Rejuvenated"},
+        {"idea": "Relaxed"},
+        {"idea": "Reluctant"},
+        {"idea": "Remorseful"},
+        {"idea": "Removed"},
+        {"idea": "Renewed"},
+        {"idea": "Resentful"},
+        {"idea": "Resigned"},
+        {"idea": "Resistant"},
+        {"idea": "Restless"},
+        {"idea": "Sad"},
+        {"idea": "Safe"},
+        {"idea": "Satisfied"},
+        {"idea": "Scared"},
+        {"idea": "Self-conscious"},
+        {"idea": "Self-loving"},
+        {"idea": "Sensitive"},
+        {"idea": "Serene"},
+        {"idea": "Serene"},
+        {"idea": "Shaken"},
+        {"idea": "Shame"},
+        {"idea": "Shocked"},
+        {"idea": "Shut Down"},
+        {"idea": "Skeptical"},
+        {"idea": "Sorrow"},
+        {"idea": "Sorry"},
+        {"idea": "Stimulated"},
+        {"idea": "Stressed"},
+        {"idea": "Strong"},
+        {"idea": "Suspicious"},
+        {"idea": "Teary"},
+        {"idea": "Tender"},
+        {"idea": "Tense"},
+        {"idea": "Terrified"},
+        {"idea": "Thankful"},
+        {"idea": "Thrilled"},
+        {"idea": "Tight"},
+        {"idea": "Touched"},
+        {"idea": "Trapped"},
+        {"idea": "Trusting"},
+        {"idea": "Trusting"},
+        {"idea": "Uneasy"},
+        {"idea": "Ungrounded"},
+        {"idea": "Unhappy"},
+        {"idea": "Unsettled"},
+        {"idea": "Unsure"},
+        {"idea": "Upset"},
+        {"idea": "Upset"},
+        {"idea": "Useless"},
+        {"idea": "Valiant"},
+        {"idea": "Vibrant"},
+        {"idea": "Victim"},
+        {"idea": "Vindictive"},
+        {"idea": "Vulnerable"},
+        {"idea": "Warm"},
+        {"idea": "Warm"},
+        {"idea": "Weak"},
+        {"idea": "Weary"},
+        {"idea": "Weary"},
+        {"idea": "Withdrawn"},
+        {"idea": "Worn out"},
+        {"idea": "Worried"},
+        {"idea": "Worried"},
+        {"idea": "Worthless"},
+        {"idea": "Worthy"},
+        {"idea": "Worthy"},
+        {"idea": "Wounded"},
+        {"idea": "Yearning"}
       ]
     },
     {
       "title": "Location",
       "ideas": [
-        {
-          "idea": "Mortuary"
-        },
-        {
-          "idea": "Kitchen"
-        },
-        {
-          "idea": "Flea market"
-        },
-        {
-          "idea": "Observation tower"
-        },
-        {
-          "idea": "Prison"
-        },
-        {
-          "idea": "Hardware store"
-        },
-        {
-          "idea": "Glacier"
-        },
-        {
-          "idea": "Forest"
-        },
-        {
-          "idea": "Oasis"
-        },
-        {
-          "idea": "Public lbrary"
-        },
-        {
-          "idea": "Empty Kingergarden Classroom"
-        },
-        {
-          "idea": "Moon"
-        },
-        {
-          "idea": "On a Zeppelin"
-        },
-        {
-          "idea": "On a Crematorium"
-        }
+        {"idea": "Mortuary"},
+        {"idea": "Kitchen"},
+        {"idea": "Flea market"},
+        {"idea": "Observation tower"},
+        {"idea": "Prison"},
+        {"idea": "Hardware store"},
+        {"idea": "Glacier"},
+        {"idea": "Forest"},
+        {"idea": "Oasis"},
+        {"idea": "Public lbrary"},
+        {"idea": "Empty Kingergarden Classroom"},
+        {"idea": "Moon"},
+        {"idea": "On a Zeppelin"},
+        {"idea": "On a Crematorium"}
       ]
     },
     {
       "title": "Job",
       "ideas": [
-        {
-          "idea": "Doctor"
-        },
-        {
-          "idea": "Lawyer"
-        },
-        {
-          "idea": "Observation tower"
-        },
-        {
-          "idea": "Farmhouse"
-        },
-        {
-          "idea": "Chicken coop"
-        }
+        {"idea": "Doctor"},
+        {"idea": "Lawyer"},
+        {"idea": "Observation tower"},
+        {"idea": "Farmhouse"},
+        {"idea": "Chicken coop"}
       ]
     },
     {
       "title": "Relation",
       "ideas": [
-        {
-          "idea": "Spouces"
-        },
-        {
-          "idea": "Doctor/Patient"
-        },
-        {
-          "idea": "Parent/Child"
-        },
-        {
-          "idea": "Sibblings"
-        },
-        {
-          "idea": "Grandparent/Grandchild"
-        },
-        {
-          "idea": "Uncle/Nephew"
-        },
-        {
-          "idea": "Love Trinagle"
-        },
-        {
-          "idea": "Truant Officer/Parent/Child"
-        },
-        {
-          "idea": "Psychopath/Victim"
-        },
-        {
-          "idea": "Ventriloquist/Doll"
-        },
-        {
-          "idea": "Dog/Bone"
-        },
-        {
-          "idea": "Priest/Consitutant"
-        },
-        {
-          "idea": "Waiter/guest"
-        },
-        {
-          "idea": "Actor/Director"
-        },
-        {
-          "idea": "Tailor/Customer"
-        },
-        {
-          "idea": "Hairdresser/Customer"
-        }
+        {"idea": "Spouces"},
+        {"idea": "Doctor/Patient"},
+        {"idea": "Parent/Child"},
+        {"idea": "Sibblings"},
+        {"idea": "Grandparent/Grandchild"},
+        {"idea": "Uncle/Nephew"},
+        {"idea": "Love Trinagle"},
+        {"idea": "Truant Officer/Parent/Child"},
+        {"idea": "Psychopath/Victim"},
+        {"idea": "Ventriloquist/Doll"},
+        {"idea": "Dog/Bone"},
+        {"idea": "Priest/Consitutant"},
+        {"idea": "Waiter/guest"},
+        {"idea": "Actor/Director"},
+        {"idea": "Tailor/Customer"},
+        {"idea": "Hairdresser/Customer"}
       ]
     },
     {
       "title": "Situation/Quirk",
       "ideas": [
-        {
-          "idea": "Playing a practical joke"
-        },
-        {
-          "idea": "Having a Babys"
-        },
-        {
-          "idea": "Someone tries to hide their \"invisible\" friend from the others"
-        },
-        {
-          "idea": "Someone is convinced they are invisible (but are not really)"
-        },
-        {
-          "idea": "Someone pretends their friend doesn't speak the native language (but they do)"
-        },
-        {
-          "idea": "Someone replicates another figure in the scene with a delay of 5 seconds."
-        },
-        {
-          "idea": "Someone thinks that all the other figures are constantly evaluating and judging him/her."
-        }
+        {"idea": "Playing a practical joke"},
+        {"idea": "Having a Babys"},
+        {"idea": "Someone tries to hide their \"invisible\" friend from the others"},
+        {"idea": "Someone is convinced they are invisible (but are not really)"},
+        {"idea": "Someone pretends their friend doesn't speak the native language (but they do)"},
+        {"idea": "Someone replicates another figure in the scene with a delay of 5 seconds."},
+        {"idea": "Someone thinks that all the other figures are constantly evaluating and judging him/her."}
       ]
     },
     {
       "title": "Genre",
       "ideas": [
-        {
-          "idea": "Absurdist"
-        },
-        {
-          "idea": "Action"
-        },
-        {
-          "idea": "Adventure"
-        },
-        {
-          "idea": "Biographical"
-        },
-        {
-          "idea": "Comedy"
-        },
-        {
-          "idea": "Crime"
-        },
-        {
-          "idea": "Cyberpunk"
-        },
-        {
-          "idea": "Fairy Tale"
-        },
-        {
-          "idea": "Fantasy romance"
-        },
-        {
-          "idea": "Fantasy"
-        },
-        {
-          "idea": "Heist"
-        },
-        {
-          "idea": "Historical"
-        },
-        {
-          "idea": "Horror"
-        },
-        {
-          "idea": "Horror"
-        },
-        {
-          "idea": "Legal Thriller"
-        },
-        {
-          "idea": "Military Fiction"
-        },
-        {
-          "idea": "Musical"
-        },
-        {
-          "idea": "Noir"
-        },
-        {
-          "idea": "Romance"
-        },
-        {
-          "idea": "Satire"
-        },
-        {
-          "idea": "Science fiction"
-        },
-        {
-          "idea": "Shenmo"
-        },
-        {
-          "idea": "Space Opera"
-        },
-        {
-          "idea": "Sports"
-        },
-        {
-          "idea": "Spy Fiction"
-        },
-        {
-          "idea": "Superhero"
-        },
-        {
-          "idea": "Surrealist"
-        },
-        {
-          "idea": "Swashbuckler"
-        },
-        {
-          "idea": "Sword & Sorcery"
-        },
-        {
-          "idea": "Telenovela"
-        },
-        {
-          "idea": "Urban fantasy"
-        },
-        {
-          "idea": "Western"
-        },
-        {
-          "idea": "Wuxia"
-        }
+        {"idea": "Absurdist"},
+        {"idea": "Action"},
+        {"idea": "Adventure"},
+        {"idea": "Biographical"},
+        {"idea": "Comedy"},
+        {"idea": "Crime"},
+        {"idea": "Cyberpunk"},
+        {"idea": "Fairy Tale"},
+        {"idea": "Fantasy romance"},
+        {"idea": "Fantasy"},
+        {"idea": "Heist"},
+        {"idea": "Historical"},
+        {"idea": "Horror"},
+        {"idea": "Horror"},
+        {"idea": "Legal Thriller"},
+        {"idea": "Military Fiction"},
+        {"idea": "Musical"},
+        {"idea": "Noir"},
+        {"idea": "Romance"},
+        {"idea": "Satire"},
+        {"idea": "Science fiction"},
+        {"idea": "Shenmo"},
+        {"idea": "Space Opera"},
+        {"idea": "Sports"},
+        {"idea": "Spy Fiction"},
+        {"idea": "Superhero"},
+        {"idea": "Surrealist"},
+        {"idea": "Swashbuckler"},
+        {"idea": "Sword & Sorcery"},
+        {"idea": "Telenovela"},
+        {"idea": "Urban fantasy"},
+        {"idea": "Western"},
+        {"idea": "Wuxia"}
       ]
     },
     {
       "title": "Director",
       "ideas": [
-        {
-          "idea": "David Lynch"
-        },
-        {
-          "idea": "Quentin Tarantino"
-        },
-        {
-          "idea": "Stanley Kubrick"
-        },
-        {
-          "idea": "Wes Anderson"
-        },
-        {
-          "idea": "Alfred Hitchcock"
-        },
-        {
-          "idea": "Christopher Nolan"
-        }
+        {"idea": "David Lynch"},
+        {"idea": "Quentin Tarantino"},
+        {"idea": "Stanley Kubrick"},
+        {"idea": "Wes Anderson"},
+        {"idea": "Alfred Hitchcock"},
+        {"idea": "Christopher Nolan"}
       ]
     },
     {
       "title": "Playwrite",
       "ideas": [
-        {
-          "idea": "Shakespere"
-        },
-        {
-          "idea": "Nowel Coward"
-        },
-        {
-          "idea": "Diana Son"
-        },
+        {"idea": "Shakespere"},
+        {"idea": "Nowel Coward"},
+        {"idea": "Diana Son"},
         {
           "idea": "Anton Checkov"
         }
@@ -456,63 +420,35 @@
     {
       "title": "Hard Conversation",
       "ideas": [
-        {
-          "idea": "Firing Someone"
-        },
-        {
-          "idea": "Having Cancer"
-        }
+        {"idea": "Firing Someone"},
+        {"idea": "Having Cancer"}
       ]
     },
     {
       "title": "Dialect",
       "ideas": [
-        {
-          "idea": "Standard English"
-        },
-        {
-          "idea": "Yorkshire"
-        },
-        {
-          "idea": "Cork"
-        },
-        {
-          "idea": "North Irish"
-        }
+        {"idea": "Standard English"},
+        {"idea": "Yorkshire"},
+        {"idea": "Cork"},
+        {"idea": "North Irish"}
       ]
     },
     {
       "title": "Ask Fors",
       "ideas": [
-        {
-          "idea": "Give me a dangerous activity, thing to say, etc."
-        },
-        {
-          "idea": "Give me a Cable TV channel"
-        },
-        {
-          "idea": "I'm holding a box about yay big. What's inside it?"
-        },
-        {
-          "idea": "If you could invent a new human organ, what would it be?"
-        }
+        {"idea": "Give me a dangerous activity, thing to say, etc."},
+        {"idea": "Give me a Cable TV channel"},
+        {"idea": "I'm holding a box about yay big. What's inside it?"},
+        {"idea": "If you could invent a new human organ, what would it be?"}
       ]
     },
     {
       "title": "Occupations",
       "ideas": [
-        {
-          "idea": "Tailor"
-        },
-        {
-          "idea": "Hairdressor"
-        },
-        {
-          "idea": "Mortition"
-        },
-        {
-          "idea": "Architect"
-        }
+        {"idea": "Tailor"},
+        {"idea": "Hairdressor"},
+        {"idea": "Mortition"},
+        {"idea": "Architect"}
       ]
     }
   ]
