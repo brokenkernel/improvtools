@@ -33,7 +33,7 @@ import kotlin.time.Duration.Companion.seconds
 // TODO control of how many timers. Add some. Remove some.
 // TODO: Add titles.
 
-const val INITIAL_TIMER_DURATION = 60L // as seconds
+const val INITIAL_TIMER_DURATION: Long = 60L // as seconds
 
 private fun Duration.formatTime(): String {
     val hours = this.inWholeHours

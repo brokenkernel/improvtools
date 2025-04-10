@@ -113,9 +113,9 @@
 
     <issue
         id="IconLocation"
-        message="Found bitmap drawable `res/drawable/general_emotion_wheel.png` in densityless folder">
+        message="Found bitmap drawable `res/drawable/general_emotion_wheel.webp` in densityless folder">
         <location
-            file="src/main/res/drawable/general_emotion_wheel.png"/>
+            file="src/main/res/drawable/general_emotion_wheel.webp"/>
     </issue>
 
     <issue
