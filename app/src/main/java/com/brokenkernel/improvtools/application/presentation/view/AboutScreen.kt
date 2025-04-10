@@ -5,6 +5,19 @@ import android.content.Intent
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager.PackageInfoFlags
 import android.os.Build
+import android.os.Build.BOARD
+import android.os.Build.BOOTLOADER
+import android.os.Build.BRAND
+import android.os.Build.DEVICE
+import android.os.Build.FINGERPRINT
+import android.os.Build.MANUFACTURER
+import android.os.Build.MODEL
+import android.os.Build.ODM_SKU
+import android.os.Build.PRODUCT
+import android.os.Build.SKU
+import android.os.Build.SOC_MANUFACTURER
+import android.os.Build.SOC_MODEL
+import android.os.Build.SUPPORTED_ABIS
 import android.text.Html
 import android.text.Html.FROM_HTML_MODE_COMPACT
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -58,8 +71,15 @@ internal fun AboutScreen() {
 
     val clipboardManager: ClipboardManager = LocalClipboardManager.current
 
+    fun generateGeneralInformationText(): String {
+        val result: String = """
+        |<big>${resources.getString(R.string.about_contact_info)}</big>
+        |🌐 <u><a href=https://github.com/brokenkernel/improvtools">${resources.getString(R.string.about_contact_code_repo)}</a></u>
+         """.trimMargin().replace("\n", "<br/>")
+        return result
+    }
+
     fun generateDebugInformationText(): String {
-        // TODO: possibly directly handle HTML instead of relying on annotated string
         val result: String = """
             |<big>${resources.getString(R.string.about_version_information)}</big>
             |${
@@ -127,9 +147,14 @@ internal fun AboutScreen() {
     Column(modifier = Modifier.fillMaxSize()) {
         Row(modifier = Modifier.verticalScroll(rememberScrollState()).fillMaxHeight().weight(100f)) {
             SelectionContainer {
-                Text(
-                    AnnotatedString.fromHtml(generateDebugInformationText())
-                )
+                Column {
+                    Text(
+                        AnnotatedString.fromHtml(generateGeneralInformationText())
+                    )
+                    Text(
+                        AnnotatedString.fromHtml(generateDebugInformationText())
+                    )
+                }
             }
         }
         Spacer(modifier = Modifier.weight(1f))

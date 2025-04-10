@@ -60,4 +60,6 @@
     <string name="timer_pause">Pause</string>
     <string name="timer_reset">Reset</string>
     <string name="timer_start">Start</string>
+    <string name="about_contact_info">Contact Information</string>
+    <string name="about_contact_code_repo">Code Repository</string>
 </resources>
