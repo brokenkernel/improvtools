@@ -78,6 +78,39 @@
         },
         {
           "idea": "Heavy"
+        },
+        {
+          "idea": "Big"
+        },
+        {
+          "idea": "Small"
+        },
+        {
+          "idea": "Hot"
+        },
+        {
+          "idea": "Cold"
+        },
+        {
+          "idea": "Expensive"
+        },
+        {
+          "idea": "Difficult"
+        },
+        {
+          "idea": "Nice"
+        },
+        {
+          "idea": "Hungry"
+        },
+        {
+          "idea": "Late"
+        },
+        {
+          "idea": "Tall"
+        },
+        {
+          "idea": "Short"
         }
       ]
     },
@@ -89,6 +122,12 @@
         },
         {
           "idea": "Life"
+        },
+        {
+          "idea": "Creed"
+        },
+        {
+          "idea": "Disposition"
         }
       ]
     },
@@ -103,8 +142,25 @@
         },
         {
           "idea": "Wounded"
+        },
+        {
+          "idea": "Calm"
+        },
+        {
+          "idea": "Relaxed"
+        },
+        {
+          "idea": "Vibrant"
+        },
+        {
+          "idea": "Upset"
+        },
+        {
+          "idea": "Frightened"
+        },
+        {
+          "idea": "Worried"
         }
-
       ]
     },
     {
@@ -129,6 +185,15 @@
         },
         {
           "idea": "Lawyer"
+        },
+        {
+          "idea": "Observation tower"
+        },
+        {
+          "idea": "Farmhouse"
+        },
+        {
+          "idea": "Chicken coop"
         }
       ]
     },
@@ -136,10 +201,52 @@
       "title": "Relation",
       "ideas": [
         {
-          "idea": "husband/wife"
+          "idea": "Spouces"
         },
         {
-          "idea": "doctor/patient"
+          "idea": "Doctor/Patient"
+        },
+        {
+          "idea": "Parent/Child"
+        },
+        {
+          "idea": "Sibblings"
+        },
+        {
+          "idea": "Grandparent/Grandchild"
+        },
+        {
+          "idea": "Uncle/Nephew"
+        },
+        {
+          "idea": "Love Trinagle"
+        },
+        {
+          "idea": "Truant Officer/Parent/Child"
+        },
+        {
+          "idea": "Psychopath/Victim"
+        },
+        {
+          "idea": "Ventriloquist/Doll"
+        },
+        {
+          "idea": "Dog/Bone"
+        },
+        {
+          "idea": "Priest/Consitutant"
+        },
+        {
+          "idea": "Waiter/guest"
+        },
+        {
+          "idea": "Actor/Director"
+        },
+        {
+          "idea": "Tailor/Customer"
+        },
+        {
+          "idea": "Hairdresser/Customer"
         }
       ]
     },
@@ -272,6 +379,12 @@
         },
         {
           "idea": "Wes Anderson"
+        },
+        {
+          "idea": "Alfred Hitchcock"
+        },
+        {
+          "idea": "Christopher Nolan"
         }
       ]
     },
@@ -286,6 +399,9 @@
         },
         {
           "idea": "Diana Son"
+        },
+        {
+          "idea": "Anton Checkov"
         }
       ]
     },
@@ -311,6 +427,9 @@
         },
         {
           "idea": "Cork"
+        },
+        {
+          "idea": "North Irish"
         }
       ]
     },
@@ -328,6 +447,23 @@
         },
         {
           "idea": "If you could invent a new human organ, what would it be?"
+        }
+      ]
+    },
+    {
+      "title": "Occupations",
+      "ideas": [
+        {
+          "idea": "Tailor"
+        },
+        {
+          "idea": "Hairdressor"
+        },
+        {
+          "idea": "Mortition"
+        },
+        {
+          "idea": "Architect"
         }
       ]
     }
