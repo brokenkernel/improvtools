@@ -95,6 +95,7 @@ android {
         debug {
             buildConfigField("ENABLE_STRICT_MODE_DEATH", true)
             buildConfigField("ENABLE_CRASHLYTICS", false)
+            isPseudoLocalesEnabled = true
             configure<CrashlyticsExtension> {
                 nativeSymbolUploadEnabled = true
                 mappingFileUploadEnabled = true
