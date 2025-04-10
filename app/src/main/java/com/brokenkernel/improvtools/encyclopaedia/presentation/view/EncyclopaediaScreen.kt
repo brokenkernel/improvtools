@@ -33,7 +33,7 @@ internal fun EncyclopaediaScreen() {
         stringResource(R.string.encyclopaedia_tab_title_emotions)
     )
     // start on emotions since the others are placeholders
-    val pagerState = rememberPagerState(pageCount = { tabs.size }, initialPage = 2)
+    val pagerState = rememberPagerState(pageCount = { tabs.size }, initialPage = 1)
     val selectedTabIndex = remember { derivedStateOf { pagerState.currentPage } }
     val scope = rememberCoroutineScope()
 
@@ -66,11 +66,13 @@ internal fun EncyclopaediaScreen() {
                 )
             }
         }
+        /* TODO: maybe handle some idea of sub-routing. or Add another nav graph. This should allow navigating to
+        *   a specific tab. Also keeps the entire screen state in a graph. Also makes analytics proper for crash debugging. */
         HorizontalPager(state = pagerState) {
             Surface(modifier = Modifier.fillMaxSize()) {
                 when (pagerState.currentPage) {
-                    0 -> Text("TODO: games list and explanation")
-                    1 -> Text("TODO: people list and explanation")
+                    0 -> GamesTab()
+                    1 -> PeopleTab()
                     2 -> EmotionTab()
                 }
             }
