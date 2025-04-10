@@ -16,6 +16,7 @@ object ConsentManagement {
         } else {
             consentMap.put(ConsentType.ANALYTICS_STORAGE, ConsentStatus.DENIED)
         }
+
         consentMap.put(ConsentType.AD_STORAGE, ConsentStatus.DENIED)
         consentMap.put(ConsentType.AD_USER_DATA, ConsentStatus.DENIED)
         consentMap.put(ConsentType.AD_PERSONALIZATION, ConsentStatus.DENIED)
