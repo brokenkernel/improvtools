@@ -118,7 +118,7 @@ internal fun AboutScreen() {
         return result
     }
 
-    fun copyAboutText(): Unit {
+    fun copyAboutText() {
         clipboardManager.setText(
             AnnotatedString.fromHtml(generateDebugInformationText())
         )
@@ -166,7 +166,7 @@ internal fun AboutScreen() {
                         )
                         .putExtra(
                             Intent.EXTRA_TEXT,
-                            Html.fromHtml(textToBeEmailed.toString(), FROM_HTML_MODE_COMPACT)
+                            Html.fromHtml(textToBeEmailed, FROM_HTML_MODE_COMPACT)
                         )
                     try {
                         launcher.launch(intent)

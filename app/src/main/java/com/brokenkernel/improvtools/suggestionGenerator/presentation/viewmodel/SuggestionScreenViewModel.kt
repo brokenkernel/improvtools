@@ -50,7 +50,7 @@ internal class SuggestionScreenViewModel @Inject constructor(
         _categoryDatumToSuggestion[ic]?.value = legalNewWords.random()
     }
 
-    internal fun resetAllCategories(): Unit {
+    internal fun resetAllCategories() {
         _categoryDatumToSuggestion.keys.forEach { k ->
             this.updateSuggestionXFor(k)
         }

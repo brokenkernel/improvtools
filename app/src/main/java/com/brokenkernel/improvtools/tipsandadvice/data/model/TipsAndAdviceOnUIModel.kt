@@ -8,7 +8,7 @@ internal data class TipContentUIModel(
     val content: String,
 )
 
-enum class TipsAndAdviceViewModeUI(@Size(min = 1) val internalEnumsMatching: List<TipsAndTricksViewMode>) {
+enum class TipsAndAdviceViewModeUI(@param:Size(min = 1) @field:Size(min = 1) val internalEnumsMatching: List<TipsAndTricksViewMode>) {
     SWIPEABLE(
         internalEnumsMatching = listOf(
             TipsAndTricksViewMode.VIEW_MODE_SWIPE,

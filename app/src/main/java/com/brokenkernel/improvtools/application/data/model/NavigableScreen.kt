@@ -48,8 +48,8 @@ internal sealed class NavigableRoute() {
 
 
 internal sealed class NavigableScreens(
-    @StringRes internal val titleResource: Int,
-    @StringRes internal val contentDescription: Int,
+    @param:StringRes @field:StringRes internal val titleResource: Int,
+    @param:StringRes @field:StringRes internal val contentDescription: Int,
     internal val icon: ImageVector,
     internal val route: NavigableRoute,
     internal val shouldShowExtraMenu: Boolean,

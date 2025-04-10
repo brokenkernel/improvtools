@@ -149,6 +149,7 @@ android {
         lintConfig = file("lint.xml")
         baseline = file("lint-baseline.xml")
         checkDependencies = true
+        warningsAsErrors = true
     }
     packaging {
         jniLibs {
@@ -231,6 +232,14 @@ dependencies {
 configurations {
     implementation {
         exclude(module = "protolite-well-known-types")
+    }
+}
+
+kotlin {
+    compilerOptions {
+        allWarningsAsErrors = true
+        extraWarnings = true
+        progressiveMode = true
     }
 }
 

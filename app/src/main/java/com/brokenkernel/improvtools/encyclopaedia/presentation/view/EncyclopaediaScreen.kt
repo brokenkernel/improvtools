@@ -66,7 +66,7 @@ internal fun EncyclopaediaScreen() {
                 )
             }
         }
-        HorizontalPager(state = pagerState) { page ->
+        HorizontalPager(state = pagerState) {
             Surface(modifier = Modifier.fillMaxSize()) {
                 when (pagerState.currentPage) {
                     0 -> Text("TODO: games list and explanation")

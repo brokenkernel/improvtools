@@ -108,7 +108,7 @@ internal fun ImprovToolsNavigationDrawer(
     }
 
 
-    fun invertNavMenuState(): Unit {
+    fun invertNavMenuState() {
         scope.launch {
             drawerState.apply {
                 if (isClosed) open() else close()
@@ -116,7 +116,7 @@ internal fun ImprovToolsNavigationDrawer(
         }
     }
 
-    fun doNavigateToNavigableScreenWithNavClosure(na: NavigableScreens): Unit {
+    fun doNavigateToNavigableScreenWithNavClosure(na: NavigableScreens) {
         doNavigateToNavigableScreen(na)
         closeNavMenu()
     }
