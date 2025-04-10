@@ -103,7 +103,7 @@ internal fun SuggestionsScreenFullyLoaded(viewModel: SuggestionScreenViewModel =
                             style = MaterialTheme.typography.bodyMedium,
                             onClick = {
                                 viewModel.updateSuggestionXFor(ideaCategory)
-                            }
+                            },
                         )
                     }
 
