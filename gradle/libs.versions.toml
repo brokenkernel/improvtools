@@ -16,6 +16,7 @@ googleGmsGoogleServices = "4.4.2"
 hilt = "2.56.1"
 hiltNavigationCompose = "1.2.0"
 hiltNavigationTesting = "1.2.0"
+inputMotionprediction = "1.0.0-beta05"
 jacksonModuleKotlin = "2.18.3"
 javaxInject = "1"
 junit = "4.13.2"
@@ -23,6 +24,7 @@ junitVersion = "1.2.1"
 kotlin = "2.1.20"
 kotlinxSerialization = "1.8.1"
 ksp = "2.1.20-2.0.0"
+leakcanaryAndroid = "2.14"
 lifecycleRuntimeKtx = "2.8.7"
 lifecycleViewModelKtx = "2.8.7"
 lintGradle = "1.0.0-alpha03"
@@ -63,6 +65,7 @@ androidx-espresso-device = { module = "androidx.test.espresso:espresso-device", 
 androidx-glance-appwidget = { module = "androidx.glance:glance-appwidget", version.ref = "glanceAppwidget" }
 androidx-glance-material3 = { module = "androidx.glance:glance-material3", version.ref = "glanceAppwidget" }
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
+androidx-input-motionprediction = { module = "androidx.input:input-motionprediction", version.ref = "inputMotionprediction" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-lifecycle-viewModel-compose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "viewModelCompose" }
@@ -99,6 +102,7 @@ javax-inject = { module = "javax.inject:javax.inject", version.ref = "javaxInjec
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
 kotlinx-serialization-protobuf = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-protobuf", version.ref = "kotlinxSerialization" }
+leakcanary-android = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakcanaryAndroid" }
 tools-fastlane-screengrab = { group = "tools.fastlane", name = "screengrab", version.ref = "screengrab" }
 net-engawapg-lib-zoomable = { module = "net.engawapg.lib:zoomable", version.ref = "zoomable" }
 zoomable-image-coil3 = { module = "me.saket.telephoto:zoomable-image-coil3", version.ref = "zoomableImageCoil3" }

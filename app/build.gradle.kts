@@ -1,5 +1,6 @@
 import com.android.build.api.dsl.VariantDimension
 import com.google.firebase.crashlytics.buildtools.gradle.CrashlyticsExtension
+import org.gradle.kotlin.dsl.debugImplementation
 import org.gradle.kotlin.dsl.implementation
 import java.io.IOException
 import java.util.Properties
@@ -176,6 +177,7 @@ dependencies {
     implementation(libs.androidx.glance.appwidget)
     implementation(libs.androidx.glance.material3)
     implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.androidx.input.motionprediction)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.lifecycle.viewModel.compose)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
@@ -202,6 +204,7 @@ dependencies {
 
     debugImplementation(libs.androidx.ui.test.manifest)
     debugImplementation(libs.androidx.ui.tooling)
+    debugImplementation(libs.leakcanary.android)
 
     testImplementation(kotlin("test"))
     testImplementation(libs.junit)
