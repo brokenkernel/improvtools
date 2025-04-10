@@ -48,7 +48,7 @@ android {
 
     defaultConfig {
         applicationId = "com.brokenkernel.improvtools"
-        minSdk = 34
+        minSdk = 33
         targetSdk = 36
         versionCode = 92
         versionName = "0.0.$versionCode"
