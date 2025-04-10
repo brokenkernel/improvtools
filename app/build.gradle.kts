@@ -196,6 +196,7 @@ dependencies {
     implementation(libs.com.fasterxml.jackson.module.jacksonModuleKotlin)
     implementation(libs.com.google.protobuf.protobufJavalite)
     implementation(libs.firebase.config)
+    implementation(libs.guava)
     implementation(libs.hilt.android)
     implementation(libs.javax.inject)
     implementation(libs.kotlinx.serialization.json)
