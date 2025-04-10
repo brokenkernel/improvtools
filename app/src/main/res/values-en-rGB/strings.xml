@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="navigation_encyclopaedia_category">Encyclopaedia</string>
+    <string name="navigation_encyclopaedia">Encyclopaedia</string>
+    <string name="go_to_encyclopaedia_screen">Go to Encyclopaedia</string>
+</resources>
