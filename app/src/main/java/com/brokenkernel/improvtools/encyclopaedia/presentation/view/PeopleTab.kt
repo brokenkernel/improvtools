@@ -28,12 +28,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.traversalIndex
 import androidx.compose.ui.unit.dp
 import com.brokenkernel.improvtools.application.presentation.view.verticalColumnScrollbar
-
-enum class PeopleDaatum(val personName: String) {
-    ViolaSpolin("Viola Spolin"),
-    KeithJohnstone("Keith Johnstone"),
-    PaulSills("Paul Sills"),
-}
+import com.brokenkernel.improvtools.encyclopaedia.data.model.PeopleDaatum
 
 private fun String.transformForSearch(): String {
     return this.lowercase().filterNot { it.isWhitespace() }
