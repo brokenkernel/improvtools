@@ -8,7 +8,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Pause
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.Button
-import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -51,9 +50,9 @@ private fun Duration.formatTime(): String {
 }
 
 @Composable
-fun SimpleTimer(title: String) {
+fun SimpleCountDownTimer(title: String) {
     var timerStarted by remember { mutableStateOf(false) }
-    var timeLeft: Duration by remember { mutableStateOf(INITIAL_TIMER_DURATION.seconds) }
+    var timeLeft: Duration by remember { mutableStateOf(1.minutes) }
 
     LaunchedEffect(timeLeft, timerStarted) {
         if (timerStarted) {
@@ -106,6 +105,54 @@ fun SimpleTimer(title: String) {
 }
 
 @Composable
+fun SimpleStopWatchTimer(title: String) {
+    var timerStarted by remember { mutableStateOf(false) }
+    var timeLeft: Duration by remember { mutableStateOf(Duration.ZERO) }
+
+    LaunchedEffect(timeLeft, timerStarted) {
+        if (timerStarted) {
+            delay(1.seconds)
+            timeLeft += 1.seconds
+        }
+    }
+
+
+    Column {
+        Text(title, style = MaterialTheme.typography.headlineLarge)
+        Text(timeLeft.formatTime(), style = MaterialTheme.typography.displayLarge)
+        Row {
+            Button(onClick = {
+                timerStarted = !timerStarted
+            }) {
+                val curButtonText: String =
+                    if (timerStarted) {
+                        stringResource(R.string.timer_pause)
+                    } else {
+                        stringResource(R.string.timer_start)
+                    }
+                val curButtonIcon: ImageVector =
+                    if (timerStarted) {
+                        Icons.Default.Pause
+                    } else {
+                        Icons.Default.PlayArrow
+                    }
+                Icon(
+                    curButtonIcon,
+                    contentDescription = curButtonText
+                )
+                Text(curButtonText)
+            }
+            OutlinedButton(onClick = {
+                timerStarted = false
+                timeLeft = Duration.ZERO
+            }) {
+                Text(stringResource(R.string.timer_reset))
+            }
+        }
+    }
+}
+
+@Composable
 fun TimerScreen() {
     Column {
         OutlinedCard(
@@ -115,7 +162,7 @@ fun TimerScreen() {
                 containerColor = MaterialTheme.colorScheme.surface,
             ),
         ) {
-            SimpleTimer("Timer One")
+            SimpleCountDownTimer("Timer One")
         }
         OutlinedCard(
             modifier = Modifier.fillMaxWidth(),
@@ -124,7 +171,25 @@ fun TimerScreen() {
                 containerColor = MaterialTheme.colorScheme.surface,
             ),
         ) {
-            SimpleTimer("Timer Two")
+            SimpleCountDownTimer("Timer Two")
+        }
+        OutlinedCard(
+            modifier = Modifier.fillMaxWidth(),
+            border = BorderStroke(1.dp, Color.Black),
+            colors = CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.surface,
+            ),
+        ) {
+            SimpleStopWatchTimer("Stopwatch One")
+        }
+        OutlinedCard(
+            modifier = Modifier.fillMaxWidth(),
+            border = BorderStroke(1.dp, Color.Black),
+            colors = CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.surface,
+            ),
+        ) {
+            SimpleStopWatchTimer("Stopwatch Two")
         }
     }
 }
