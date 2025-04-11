@@ -1,7 +1,6 @@
 package com.brokenkernel.improvtools
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -15,6 +14,7 @@ import javax.inject.Inject
 
 private const val ShowSuggestionsIntent: String = "com.brokenkernel.improvtools.intents.ShowSuggestions"
 private const val ShowTimerIntent: String = "com.brokenkernel.improvtools.intents.ShowTimer"
+private const val ShowEncyclopaediaIntent: String = "com.brokenkernel.improvtools.intents.ShowEncyclopaedia"
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -34,6 +34,7 @@ class MainActivity : ComponentActivity() {
             val whichRoute = when (intent.action) {
                 ShowSuggestionsIntent -> NavigableScreens.SuggestionGenerator
                 ShowTimerIntent -> NavigableScreens.Timer
+                ShowEncyclopaediaIntent -> NavigableScreens.Encyclopaedia
                 else -> NavigableScreens.SuggestionGenerator
             }
             improvToolsNavigator.navigateTo(whichRoute)

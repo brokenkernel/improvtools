@@ -3,4 +3,7 @@
     <string name="navigation_encyclopaedia_category">Encyclopaedia</string>
     <string name="navigation_encyclopaedia">Encyclopaedia</string>
     <string name="go_to_encyclopaedia_screen">Go to Encyclopaedia</string>
+    <string name="shortcut_encyclopaedia_short_label">Encyclopaedia</string>
+    <string name="shortcut_encyclopaedia_long_label">Encyclopaedia</string>
+    <string name="shortcut_encyclopaedia_disabled_label">Encyclopaedia (disabled)</string>
 </resources>

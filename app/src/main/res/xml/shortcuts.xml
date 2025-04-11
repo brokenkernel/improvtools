@@ -24,4 +24,16 @@
             android:targetPackage="com.brokenkernel.improvtools"
             android:targetClass="com.brokenkernel.improvtools.MainActivity" />
     </shortcut>
+    <shortcut
+        android:shortcutId="shortcut_encyclopaedia"
+        android:enabled="true"
+        android:shortcutShortLabel="@string/shortcut_encyclopaedia_short_label"
+        android:shortcutLongLabel="@string/shortcut_encyclopaedia_long_label"
+        android:shortcutDisabledMessage="@string/shortcut_encyclopaedia_disabled_label"
+        android:icon="@mipmap/ic_launcher">
+        <intent
+            android:action="com.brokenkernel.improvtools.intents.ShowEncyclopaedia"
+            android:targetPackage="com.brokenkernel.improvtools"
+            android:targetClass="com.brokenkernel.improvtools.MainActivity" />
+    </shortcut>
 </shortcuts>

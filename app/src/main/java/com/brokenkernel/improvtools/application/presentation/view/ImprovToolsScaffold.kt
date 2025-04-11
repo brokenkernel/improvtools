@@ -43,7 +43,6 @@ internal fun ImprovToolsScaffold(
     val snackbarHostState = remember { SnackbarHostState() }
     var moreMenuExpandedState: Boolean by remember { mutableStateOf(false) }
 
-    // TODO: maybe do as loop rather than extension method?
     fun NavigationSuiteScope.simpleNavigableScreen(it: NavigableScreens) {
         return item(
             icon = {
@@ -67,6 +66,7 @@ internal fun ImprovToolsScaffold(
         navigationSuiteItems = {
             simpleNavigableScreen(NavigableScreens.SuggestionGenerator)
             simpleNavigableScreen(NavigableScreens.Timer)
+            simpleNavigableScreen(NavigableScreens.Encyclopaedia)
         },
     ) {
         Scaffold(
