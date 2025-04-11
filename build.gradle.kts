@@ -14,6 +14,7 @@ plugins {
 }
 
 dependencyAnalysis {
+    useTypesafeProjectAccessors(true)
     usage {
         analysis {
             checkSuperClasses(true)
