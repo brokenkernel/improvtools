@@ -7,7 +7,7 @@ import androidx.navigation.compose.composable
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import com.brokenkernel.improvtools.application.data.model.rememberImprovToolsAppState
-import com.brokenkernel.improvtools.encyclopaedia.presentation.view.EncyclopaediaScreen
+import com.brokenkernel.improvtools.encyclopaedia.presentation.view.encyclopaediaPageDestinations
 import com.brokenkernel.improvtools.settings.presentation.view.SettingsScreen
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.view.SuggestionsScreen
 import com.brokenkernel.improvtools.timer.presentation.view.TimerScreen
@@ -40,9 +40,6 @@ internal fun DrawerNavGraph(currentNavigableScreen: State<NavigableScreens>) {
         composable<NavigableRoute.WorkshopGeneratorRoute> {
             WorkshopGeneratorScreen()
         }
-        composable<NavigableRoute.EncyclopaediaRoute> {
-            EncyclopaediaScreen()
-        }
-
+        encyclopaediaPageDestinations()
     }
 }

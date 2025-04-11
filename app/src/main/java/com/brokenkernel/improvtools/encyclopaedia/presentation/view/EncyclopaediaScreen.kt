@@ -17,6 +17,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -24,21 +25,24 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavGraphBuilder
+import androidx.navigation.compose.composable
 import com.brokenkernel.improvtools.R
+import com.brokenkernel.improvtools.application.data.model.NavigableRoute
+import com.brokenkernel.improvtools.application.data.model.NavigableScreens
+import com.brokenkernel.improvtools.application.data.model.rememberImprovToolsAppState
 import kotlinx.coroutines.launch
-
-private enum class EncyclopaediaPages(@param:StringRes val title: Int, val icon: ImageVector) {
-    GamesPage(R.string.encyclopaedia_tab_title_games, Icons.Outlined.Games),
-    PeoplePage(R.string.encyclopaedia_tab_title_people, Icons.Outlined.People),
-    EmotionPage(R.string.encyclopaedia_tab_title_emotions, Icons.Outlined.EmojiEmotions),
-    ThesaurusPage(R.string.encyclopaedia_tab_title_thesaurus, Icons.Filled.Book),
-}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun EncyclopaediaScreen() {
     val pagerState = rememberPagerState(pageCount = { EncyclopaediaPages.entries.size }, initialPage = 1)
     val selectedTabIndex = remember { derivedStateOf { pagerState.currentPage } }
+    val appState = rememberImprovToolsAppState()
+
+    LaunchedEffect(pagerState) {
+        appState.navigateTo(EncyclopaediaPages.entries[pagerState.currentPage].navigableScreen)
+    }
 
 
     Column(modifier = Modifier.fillMaxSize()) {
@@ -68,7 +72,7 @@ internal fun EncyclopaediaScreen() {
         *   a specific tab. Also keeps the entire screen state in a graph. Also makes analytics proper for crash debugging. */
         HorizontalPager(state = pagerState) {
             Surface(modifier = Modifier.fillMaxSize()) {
-                EncyclopaediaPages.entries[pagerState.currentPage]
+                EncyclopaediaPages.entries[pagerState.currentPage].content()
             }
         }
     }

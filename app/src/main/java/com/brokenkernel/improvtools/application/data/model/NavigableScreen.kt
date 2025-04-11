@@ -12,10 +12,13 @@ import androidx.compose.material.icons.outlined.TipsAndUpdates
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.brokenkernel.improvtools.R
-import com.brokenkernel.improvtools.application.data.model.NavigableRoute.EncyclopaediaRoute
+import com.brokenkernel.improvtools.application.data.model.NavigableRoute.EmotionPageRoute
+import com.brokenkernel.improvtools.application.data.model.NavigableRoute.GamesPageRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute.HelpAndAboutRoute
+import com.brokenkernel.improvtools.application.data.model.NavigableRoute.PeoplePageRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute.SettingsRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute.SuggestionGeneratorRoute
+import com.brokenkernel.improvtools.application.data.model.NavigableRoute.ThesaurusPageRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute.TimerRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute.TipsAndAdviceRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute.WorkshopGeneratorRoute
@@ -42,7 +45,16 @@ internal sealed class NavigableRoute() {
     internal object TipsAndAdviceRoute : NavigableRoute()
 
     @Serializable
-    internal object EncyclopaediaRoute : NavigableRoute()
+    internal object GamesPageRoute : NavigableRoute()
+
+    @Serializable
+    internal object PeoplePageRoute : NavigableRoute()
+
+    @Serializable
+    internal object EmotionPageRoute : NavigableRoute()
+
+    @Serializable
+    internal object ThesaurusPageRoute : NavigableRoute()
 }
 
 
@@ -113,7 +125,43 @@ internal sealed class NavigableScreens(
         titleResource = R.string.navigation_encyclopaedia,
         contentDescription = R.string.go_to_encyclopaedia_screen,
         icon = Icons.Outlined.BookOnline,
-        route = EncyclopaediaRoute,
+        route = EmotionPageRoute,
+        shouldShowExtraMenu = false,
+    )
+
+    @Immutable
+    internal object GamesPage : NavigableScreens(
+        titleResource = R.string.navigation_encyclopaedia,
+        contentDescription = R.string.go_to_encyclopaedia_screen,
+        icon = Icons.Outlined.BookOnline,
+        route = GamesPageRoute,
+        shouldShowExtraMenu = false,
+    )
+
+    @Immutable
+    internal object PeoplePage : NavigableScreens(
+        titleResource = R.string.navigation_encyclopaedia,
+        contentDescription = R.string.go_to_encyclopaedia_screen,
+        icon = Icons.Outlined.BookOnline,
+        route = PeoplePageRoute,
+        shouldShowExtraMenu = false,
+    )
+
+    @Immutable
+    internal object EmotionsPage : NavigableScreens(
+        titleResource = R.string.navigation_encyclopaedia,
+        contentDescription = R.string.go_to_encyclopaedia_screen,
+        icon = Icons.Outlined.BookOnline,
+        route = EmotionPageRoute,
+        shouldShowExtraMenu = false,
+    )
+
+    @Immutable
+    internal object ThesaurusPage : NavigableScreens(
+        titleResource = R.string.navigation_encyclopaedia,
+        contentDescription = R.string.go_to_encyclopaedia_screen,
+        icon = Icons.Outlined.BookOnline,
+        route = ThesaurusPageRoute,
         shouldShowExtraMenu = false,
     )
 }
