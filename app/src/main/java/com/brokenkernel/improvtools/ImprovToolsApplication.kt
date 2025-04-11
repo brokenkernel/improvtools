@@ -1,6 +1,7 @@
 package com.brokenkernel.improvtools
 
 import android.app.Application
+import android.os.Build
 import android.os.StrictMode
 import android.util.Log
 import android.util.Log.DEBUG
@@ -57,15 +58,20 @@ class ImprovToolsApplication : Application() {
 //            .detectBlockedBackgroundActivityLaunch() // requires sdk 36
             .detectCleartextNetwork() // TODO: Firebase causes this?
             .detectContentUriWithoutPermission()
-            .detectCredentialProtectedWhileLocked()
-            .detectFileUriExposure()
-            .detectImplicitDirectBoot()
-            .detectIncorrectContextUse()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            strictModeVMPolicy.detectCredentialProtectedWhileLocked()
+                .detectImplicitDirectBoot()
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            strictModeVMPolicy
+                .detectIncorrectContextUse()
+                .detectUnsafeIntentLaunch()
+        }
+        strictModeVMPolicy.detectFileUriExposure()
             .detectLeakedClosableObjects()
             .detectLeakedRegistrationObjects()
             .detectLeakedSqlLiteObjects()
 //            .detectNonSdkApiUsage() // TODO: used by ScreenshotGenerationTest
-            .detectUnsafeIntentLaunch()
             .detectUntaggedSockets()
             .penaltyLog()
 

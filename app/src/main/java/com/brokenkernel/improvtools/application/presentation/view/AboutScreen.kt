@@ -63,11 +63,15 @@ internal fun AboutScreen() {
 
 
     // TODO: figure out how to do content generation off of UI. Maybe bring back viewmodel?
-    val packageInfo: PackageInfo =
-        packageManager.getPackageInfo(LocalContext.current.packageName, PackageInfoFlags.of(0))
-    val versionName: String? = packageInfo.versionName
-    val packageName = packageInfo.packageName
-    val longVersionCode: Long = packageInfo.longVersionCode
+    val packageInfo: PackageInfo? =
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            packageManager.getPackageInfo(LocalContext.current.packageName, PackageInfoFlags.of(0))
+        } else {
+            null
+        }
+    val versionName: String? = packageInfo?.versionName
+    val packageName = packageInfo?.packageName
+    val longVersionCode = packageInfo?.longVersionCode
 
     val clipboardManager: ClipboardManager = LocalClipboardManager.current
 
@@ -80,7 +84,7 @@ internal fun AboutScreen() {
     }
 
     fun generateDebugInformationText(): String {
-        val result: String = """
+        val basicResult: String = """
             |<big>${resources.getString(R.string.about_version_information)}</big>
             |${
             resources.getString(
@@ -119,17 +123,26 @@ internal fun AboutScreen() {
             |ID=${Build.ID}
             |MANUFACTURER=${Build.MANUFACTURER}
             |MODEL=${Build.MODEL}
-            |ODM_SKU=${Build.ODM_SKU}
             |PRODUCT=${Build.PRODUCT}
-            |SKU=${Build.SKU}
-            |SOC_MANUFACTURER=${Build.SOC_MANUFACTURER}
-            |SOC_MODEL=${Build.SOC_MODEL}
             |SUPPORTED_ABIS=${Build.SUPPORTED_ABIS.contentToString()}
             |TAGS=${Build.TAGS}
             |TIME=${Build.TIME}
             |TYPE=${Build.TYPE}
             |USER=${Build.USER}
         """.trimMargin().replace("\n", "<br/>")
+
+        val additionalDataForSDK33Plus = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            """
+                |ODM_SKU=${Build.ODM_SKU}
+                |SKU=${Build.SKU}
+                |SOC_MANUFACTURER=${Build.SOC_MANUFACTURER}
+                |SOC_MODEL=${Build.SOC_MODEL}
+            """.trimMargin().replace("\n", "<br/>")
+        } else {
+            ""
+        }
+
+        val result = basicResult + additionalDataForSDK33Plus
 
         // further debug information for the future
 //    Build.getFingerprintedPartitions()
