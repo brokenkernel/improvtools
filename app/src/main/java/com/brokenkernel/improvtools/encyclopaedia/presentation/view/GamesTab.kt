@@ -8,12 +8,10 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.FormatQuote
 import androidx.compose.material.icons.filled.Games
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.outlined.FormatQuote
 import androidx.compose.material.icons.outlined.Games
-import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItem
@@ -43,7 +41,7 @@ private fun String.transformForSearch(): String {
 private fun doesMatch(search: String, gameData: GamesDatum): Boolean {
     return gameData.gameName.transformForSearch().contains(search) or
             gameData.topic.transformForSearch().contains(search) or
-            gameData.unpublishedMatches.map { it -> it.transformForSearch() }.fastAny {  it -> it.contains(search)}
+            gameData.unpublishedMatches.map { it -> it.transformForSearch() }.fastAny { it -> it.contains(search) }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -94,7 +92,7 @@ internal fun GamesTab() {
                     .verticalScroll(scrollState)
 
             ) {
-                GamesDatum.entries.forEach { it: GamesDatum ->
+                GamesDatum.entries.sortedBy { it.gameName }.forEach { it: GamesDatum ->
                     if (doesMatch(textFieldState.text.toString().transformForSearch(), it)) {
                         ListItem(
                             headlineContent = { Text(it.gameName) },
