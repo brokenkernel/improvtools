@@ -1,5 +1,6 @@
 package com.brokenkernel.improvtools.encyclopaedia.presentation.view
 
+import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.pager.HorizontalPager
@@ -20,32 +21,34 @@ import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.brokenkernel.improvtools.R
 import kotlinx.coroutines.launch
 
+private enum class EncyclopaediaPages(@param:StringRes val title: Int, val icon: ImageVector) {
+    GamesPage(R.string.encyclopaedia_tab_title_games, Icons.Outlined.Games),
+    PeoplePage(R.string.encyclopaedia_tab_title_people, Icons.Outlined.People),
+    EmotionPage(R.string.encyclopaedia_tab_title_emotions, Icons.Outlined.EmojiEmotions),
+    ThesaurusPage(R.string.encyclopaedia_tab_title_thesaurus, Icons.Filled.Book),
+}
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun EncyclopaediaScreen() {
-    val tabs = listOf(
-        stringResource(R.string.encyclopaedia_tab_title_games),
-        stringResource(R.string.encyclopaedia_tab_title_people),
-        stringResource(R.string.encyclopaedia_tab_title_emotions),
-        stringResource(R.string.encyclopaedia_tab_title_thesaurus),
-    )
-    // start on emotions since the others are placeholders
-    val pagerState = rememberPagerState(pageCount = { tabs.size }, initialPage = 1)
+    val pagerState = rememberPagerState(pageCount = { EncyclopaediaPages.entries.size }, initialPage = 1)
     val selectedTabIndex = remember { derivedStateOf { pagerState.currentPage } }
-    val scope = rememberCoroutineScope()
+
 
     Column(modifier = Modifier.fillMaxSize()) {
         SecondaryTabRow(
             selectedTabIndex = selectedTabIndex.value,
         ) {
-            tabs.forEachIndexed { idx, title ->
+            val scope = rememberCoroutineScope()
+            EncyclopaediaPages.entries.forEachIndexed { idx, page ->
                 Tab(
-                    text = { Text(title) },
+                    text = { Text(stringResource(page.title)) },
                     selected = selectedTabIndex.value == idx,
                     onClick = {
                         scope.launch {
@@ -54,16 +57,8 @@ internal fun EncyclopaediaScreen() {
                     },
                     icon = {
                         Icon(
-                            imageVector =
-                                // TODO: move into class of some kind to avoid this
-                                when (idx) {
-                                    0 -> Icons.Outlined.Games
-                                    1 -> Icons.Outlined.People
-                                    2 -> Icons.Outlined.EmojiEmotions
-                                    3 -> Icons.Filled.Book
-                                    else -> throw (IllegalStateException()) // this should never happen.
-                                },
-                            contentDescription = tabs[idx]
+                            imageVector = page.icon,
+                            contentDescription = stringResource(page.title),
                         )
                     },
                 )
@@ -73,12 +68,7 @@ internal fun EncyclopaediaScreen() {
         *   a specific tab. Also keeps the entire screen state in a graph. Also makes analytics proper for crash debugging. */
         HorizontalPager(state = pagerState) {
             Surface(modifier = Modifier.fillMaxSize()) {
-                when (pagerState.currentPage) {
-                    0 -> GamesTab()
-                    1 -> PeopleTab()
-                    2 -> EmotionTab()
-                    3 -> ThesaurusTab()
-                }
+                EncyclopaediaPages.entries[pagerState.currentPage]
             }
         }
     }
