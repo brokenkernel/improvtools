@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Book
 import androidx.compose.material.icons.outlined.EmojiEmotions
 import androidx.compose.material.icons.outlined.Games
 import androidx.compose.material.icons.outlined.People
@@ -30,7 +31,8 @@ internal fun EncyclopaediaScreen() {
     val tabs = listOf(
         stringResource(R.string.encyclopaedia_tab_title_games),
         stringResource(R.string.encyclopaedia_tab_title_people),
-        stringResource(R.string.encyclopaedia_tab_title_emotions)
+        stringResource(R.string.encyclopaedia_tab_title_emotions),
+        stringResource(R.string.encyclopaedia_tab_title_thesaurus),
     )
     // start on emotions since the others are placeholders
     val pagerState = rememberPagerState(pageCount = { tabs.size }, initialPage = 1)
@@ -58,6 +60,7 @@ internal fun EncyclopaediaScreen() {
                                     0 -> Icons.Outlined.Games
                                     1 -> Icons.Outlined.People
                                     2 -> Icons.Outlined.EmojiEmotions
+                                    3 -> Icons.Filled.Book
                                     else -> throw (IllegalStateException()) // this should never happen.
                                 },
                             contentDescription = tabs[idx]
@@ -74,6 +77,7 @@ internal fun EncyclopaediaScreen() {
                     0 -> GamesTab()
                     1 -> PeopleTab()
                     2 -> EmotionTab()
+                    3 -> ThesaurusTab()
                 }
             }
         }

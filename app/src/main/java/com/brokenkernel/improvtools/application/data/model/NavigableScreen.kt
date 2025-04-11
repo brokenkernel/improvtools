@@ -43,7 +43,6 @@ internal sealed class NavigableRoute() {
 
     @Serializable
     internal object EncyclopaediaRoute : NavigableRoute()
-
 }
 
 

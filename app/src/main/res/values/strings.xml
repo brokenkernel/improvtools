@@ -62,4 +62,5 @@
     <string name="timer_start">Start</string>
     <string name="about_contact_info">Contact Information</string>
     <string name="about_contact_code_repo">Code Repository</string>
+    <string name="encyclopaedia_tab_title_thesaurus">Thesaurus</string>
 </resources>
