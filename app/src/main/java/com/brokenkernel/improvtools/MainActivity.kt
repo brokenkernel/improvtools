@@ -16,8 +16,11 @@ private const val ShowSuggestionsIntent: String = "com.brokenkernel.improvtools.
 private const val ShowTimerIntent: String = "com.brokenkernel.improvtools.intents.ShowTimer"
 private const val ShowEncyclopaediaIntent: String = "com.brokenkernel.improvtools.intents.ShowEncyclopaedia"
 
+private const val ShowApplicationPreferencesIntent: String = "android.intent.action.APPLICATION_PREFERENCES"
+
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
 
     @Inject
     internal lateinit var improvToolsNavigator: ImprovToolsNavigator
@@ -35,6 +38,7 @@ class MainActivity : ComponentActivity() {
                 ShowSuggestionsIntent -> NavigableScreens.SuggestionGenerator
                 ShowTimerIntent -> NavigableScreens.Timer
                 ShowEncyclopaediaIntent -> NavigableScreens.Encyclopaedia
+                ShowApplicationPreferencesIntent -> NavigableScreens.Settings
                 else -> NavigableScreens.SuggestionGenerator
             }
             improvToolsNavigator.navigateTo(whichRoute)
