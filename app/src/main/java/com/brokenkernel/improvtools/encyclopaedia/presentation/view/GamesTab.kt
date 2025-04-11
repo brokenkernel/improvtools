@@ -8,7 +8,11 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.FormatQuote
+import androidx.compose.material.icons.filled.Games
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.outlined.FormatQuote
+import androidx.compose.material.icons.outlined.Games
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -27,12 +31,19 @@ import androidx.compose.ui.semantics.isTraversalGroup
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.traversalIndex
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.util.fastAny
 import com.brokenkernel.improvtools.application.presentation.view.verticalColumnScrollbar
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GamesDatum
 
 
 private fun String.transformForSearch(): String {
     return this.lowercase().filterNot { it.isWhitespace() }
+}
+
+private fun doesMatch(search: String, gameData: GamesDatum): Boolean {
+    return gameData.gameName.transformForSearch().contains(search) or
+            gameData.topic.transformForSearch().contains(search) or
+            gameData.unpublishedMatches.map { it -> it.transformForSearch() }.fastAny {  it -> it.contains(search)}
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -83,20 +94,23 @@ internal fun GamesTab() {
                     .verticalScroll(scrollState)
 
             ) {
-                GamesDatum.entries.forEach { it ->
-                    if (it.personName.transformForSearch()
-                            .contains(
-                                textFieldState.text.toString().transformForSearch()
-                            )
-                    ) {
+                GamesDatum.entries.forEach { it: GamesDatum ->
+                    if (doesMatch(textFieldState.text.toString().transformForSearch(), it)) {
                         ListItem(
-                            headlineContent = { Text(it.personName) },
+                            headlineContent = { Text(it.gameName) },
                             leadingContent = {
                                 Icon(
-                                    Icons.Outlined.Person,
+                                    when (it.topic) {
+                                        // TODO: maybe put into `it` or make topic enum?
+                                        "Warmup" -> Icons.Filled.Games
+                                        "Format" -> Icons.Outlined.FormatQuote
+                                        "Game" -> Icons.Outlined.Games
+                                        else -> Icons.Outlined.Games
+                                    },
                                     contentDescription = "Person",
                                 )
                             },
+                            overlineContent = { Text(it.topic) }
                         )
                     }
                 }

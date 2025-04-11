@@ -34,6 +34,11 @@ private fun String.transformForSearch(): String {
     return this.lowercase().filterNot { it.isWhitespace() }
 }
 
+private fun doesMatch(search: String, peopleData: PeopleDaatum): Boolean {
+    return peopleData.personName.transformForSearch().contains(search) or
+            peopleData.knownFor.transformForSearch().contains(search)
+}
+
 // TODO: sort, search, filter by name
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -84,11 +89,7 @@ internal fun PeopleTab() {
 
             ) {
                 PeopleDaatum.entries.forEach { it ->
-                    if (it.personName.transformForSearch()
-                            .contains(
-                                textFieldState.text.toString().transformForSearch()
-                            )
-                    ) {
+                    if (doesMatch(textFieldState.text.toString().transformForSearch(), it)) {
                         ListItem(
                             headlineContent = { Text(it.personName) },
                             leadingContent = {
@@ -97,6 +98,7 @@ internal fun PeopleTab() {
                                     contentDescription = "Person",
                                 )
                             },
+                            trailingContent = { Text(it.knownFor) }
                         )
                     }
                 }
