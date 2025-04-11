@@ -63,4 +63,7 @@
     <string name="about_contact_info">Contact Information</string>
     <string name="about_contact_code_repo">Code Repository</string>
     <string name="encyclopaedia_tab_title_thesaurus">Thesaurus</string>
+    <string name="shortcut_encyclopaedia_short_label">Encyclopaedia</string>
+    <string name="shortcut_encyclopaedia_long_label">Encyclopaedia</string>
+    <string name="shortcut_encyclopaedia_disabled_label">Encyclopaedia (Disabled)</string>
 </resources>
