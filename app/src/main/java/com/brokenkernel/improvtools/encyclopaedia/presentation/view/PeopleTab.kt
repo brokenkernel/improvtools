@@ -1,5 +1,6 @@
 package com.brokenkernel.improvtools.encyclopaedia.presentation.view
 
+import android.icu.text.Collator
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
@@ -88,7 +89,8 @@ internal fun PeopleTab() {
                     .verticalScroll(scrollState)
 
             ) {
-                PeopleDaatum.entries.forEach { it ->
+                //
+                PeopleDaatum.entries.sortedBy { it.personName }.forEach { it ->
                     if (doesMatch(textFieldState.text.toString().transformForSearch(), it)) {
                         ListItem(
                             headlineContent = { Text(it.personName) },
