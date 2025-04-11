@@ -42,7 +42,7 @@ class NavigationTest {
             }
             val currentScreenState: MutableState<NavigableScreens.SuggestionGenerator> =
                 remember { mutableStateOf(NavigableScreens.SuggestionGenerator) }
-            DrawerNavGraph(drawerNavController = navController, currentNavigableScreen = currentScreenState)
+            DrawerNavGraph(currentNavigableScreen = currentScreenState)
         }
     }
 

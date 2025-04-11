@@ -6,8 +6,10 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.rememberNavController
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
-import com.brokenkernel.improvtools.application.data.model.OuterContentForMasterScreen
+import com.brokenkernel.improvtools.application.data.model.rememberImprovToolsAppState
+import com.brokenkernel.improvtools.application.presentation.view.OuterContentForMasterScreen
 import com.brokenkernel.improvtools.infrastructure.ImprovToolsNavigator
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -30,20 +32,23 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
 
         setContent {
+//            val abc = rememberImprovToolsAppState()
+            if (intent.action != null) {
+                val whichRoute = when (intent.action) {
+                    ShowSuggestionsIntent -> NavigableScreens.SuggestionGenerator
+                    ShowTimerIntent -> NavigableScreens.Timer
+                    ShowEncyclopaediaIntent -> NavigableScreens.Encyclopaedia
+                    ShowApplicationPreferencesIntent -> NavigableScreens.Settings
+                    else -> NavigableScreens.SuggestionGenerator
+                }
+                improvToolsNavigator.navigateTo(whichRoute)
+                setResult(RESULT_OK)
+            }
+
             OuterContentForMasterScreen()
         }
 
-        if (intent.action != null) {
-            val whichRoute = when (intent.action) {
-                ShowSuggestionsIntent -> NavigableScreens.SuggestionGenerator
-                ShowTimerIntent -> NavigableScreens.Timer
-                ShowEncyclopaediaIntent -> NavigableScreens.Encyclopaedia
-                ShowApplicationPreferencesIntent -> NavigableScreens.Settings
-                else -> NavigableScreens.SuggestionGenerator
-            }
-            improvToolsNavigator.navigateTo(whichRoute)
-            setResult(RESULT_OK)
-        }
+
 
 
     }
