@@ -18,10 +18,4 @@ internal class ApplicationModule {
     fun providesSettingsRepository(datastore: DataStore<UserSettings>): SettingsRepository {
         return DefaultSettingsRespository(datastore)
     }
-
-    @Singleton
-    @Provides
-    fun providesImprovToolsNavigator(): ImprovToolsNavigator {
-        return ImprovToolsNavigator()
-    }
 }

@@ -1,37 +1,49 @@
 package com.brokenkernel.improvtools.application.data.model
 
+import android.os.Bundle
 import androidx.compose.material3.DrawerState
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.remember
-import androidx.navigation.NavDestination
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.google.firebase.Firebase
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.analytics
+import kotlinx.coroutines.flow.MutableStateFlow
 
 @Stable
 internal class ImprovToolsAppState(
     val drawerState: DrawerState,
     val navController: NavHostController,
-    val _currentNavigableScreen_unused: NavigableScreens,
+    val currentNavigableScreen: MutableStateFlow<NavigableScreens> = MutableStateFlow(NavigableScreens.SuggestionGenerator),
 ) {
-    // UI State
-    val currentDestination: NavDestination?
-        @Composable get() = navController
-            .currentBackStackEntryAsState().value?.destination
+//    // UI State
+//    val currentDestination: NavDestination?
+//        @Composable get() = navController
+//            .currentBackStackEntryAsState().value?.destination
+
+    fun navigateTo(dest: NavigableScreens) {
+        val firebaseBundle = Bundle()
+        firebaseBundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, dest.route.toString())
+        firebaseBundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, dest::class.qualifiedName)
+        Firebase.analytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, firebaseBundle)
+        Firebase.analytics.setDefaultEventParameters(firebaseBundle)
+        currentNavigableScreen.value = dest
+
+    }
 }
 
 @Composable
 internal fun rememberImprovToolsAppState(
     drawerState: DrawerState = rememberDrawerState(initialValue = DrawerValue.Closed),
     navController: NavHostController = rememberNavController(),
-    currentNavigableScreen: NavigableScreens = NavigableScreens.SuggestionGenerator,
+    currentNavigableScreen: NavigableScreens = remember { NavigableScreens.SuggestionGenerator },
 ): ImprovToolsAppState = remember(drawerState, navController) {
-    ImprovToolsAppState(drawerState, navController, currentNavigableScreen)
+    ImprovToolsAppState(drawerState, navController, MutableStateFlow(currentNavigableScreen))
 }
-
 
 //    drawerNavController.addOnDestinationChangedListener {
 //            controller: NavController,
