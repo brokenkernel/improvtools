@@ -9,10 +9,29 @@ import androidx.annotation.RestrictTo
 internal enum class GamesDatum(
     val gameName: String,
     val topic: String,
+    val detailedInformation: String = "",
     val unpublishedMatches: Set<String> = emptySet<String>(),
 ) {
-    ThreeThings("3 Things", "Game", setOf("Three Things")),
-    Ball("Ball", "Warmup"),
-    Armando("The Armando", "Format"),
-    Harold("The Harold", "Format"),
+    ThreeThings(
+        gameName = "3 Things",
+        topic = "Game",
+        detailedInformation = """ """,
+        unpublishedMatches = setOf("Three Things"),
+    ),
+    Ball(
+        gameName = "Ball",
+        topic = "Warmup",
+    ),
+    Armando(
+        gameName = "The Armando",
+        topic = "Format",
+        detailedInformation = """
+            |A Harlold based a monolog.
+            |Typically this monolog is inspired by a suggestion itself.
+        """.trimMargin(),
+    ),
+    Harold(
+        gameName = "The Harold",
+        topic = "Format",
+    ),
 }

@@ -1,5 +1,8 @@
 package com.brokenkernel.improvtools.encyclopaedia.presentation.view
 
+import android.util.Log
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
@@ -21,10 +24,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.isTraversalGroup
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.traversalIndex
@@ -44,7 +49,7 @@ private fun doesMatch(search: String, gameData: GamesDatum): Boolean {
             gameData.unpublishedMatches.map { it -> it.transformForSearch() }.fastAny { it -> it.contains(search) }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 internal fun GamesTab() {
     var searchBarExpandedState by rememberSaveable { mutableStateOf(false) }
@@ -93,6 +98,7 @@ internal fun GamesTab() {
 
             ) {
                 GamesDatum.entries.sortedBy { it.gameName }.forEach { it: GamesDatum ->
+                    var isListItemInformationExpanded: Boolean by remember { mutableStateOf(false) }
                     if (doesMatch(textFieldState.text.toString().transformForSearch(), it)) {
                         ListItem(
                             headlineContent = { Text(it.gameName) },
@@ -108,7 +114,20 @@ internal fun GamesTab() {
                                     contentDescription = "Person",
                                 )
                             },
-                            overlineContent = { Text(it.topic) }
+                            overlineContent = { Text(it.topic) },
+                            supportingContent = {
+                                if (isListItemInformationExpanded) {
+                                    Text(it.detailedInformation)
+                                }
+                            },
+                            modifier = Modifier.clickable(
+                                enabled = true,
+                                role = Role.Button,
+                                onClick = {
+                                    Log.w("ABC", "I did a thing")
+                                    isListItemInformationExpanded = !isListItemInformationExpanded
+                                },
+                            )
                         )
                     }
                 }
