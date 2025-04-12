@@ -5,6 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.collectAsState
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
+import com.brokenkernel.improvtools.application.data.model.NavigableRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import com.brokenkernel.improvtools.ui.theme.ImprovToolsTheme
 
@@ -17,8 +18,8 @@ internal fun OuterContentForMasterScreen(improvToolsState: ImprovToolsAppState) 
     ImprovToolsTheme {
         Surface {
             ImprovToolsNavigationDrawer(
-                doNavigateToNavigableScreen = { clickedItem: NavigableScreens ->
-                    improvToolsState.navigateTo(clickedItem)
+                doNavigateToNavigableRoute = { route: NavigableRoute ->
+                    improvToolsState.navigateTo(route)
                 },
                 currentNavigableScreen = currentNavigableScreen,
                 drawerState = improvToolsState.drawerState,

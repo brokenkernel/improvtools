@@ -72,7 +72,6 @@ internal sealed class NavigableRoute() {
     internal object ThesaurusPageRoute : NavigableRoute()
 }
 
-
 internal sealed class NavigableScreens(
     @param:StringRes @field:StringRes internal val titleResource: Int,
     @param:StringRes @field:StringRes internal val contentDescription: Int,
@@ -180,3 +179,25 @@ internal sealed class NavigableScreens(
         shouldShowExtraMenu = false,
     )
 }
+
+internal fun routeToScreen(route: NavigableRoute): NavigableScreens {
+    return when (route) {
+        EmotionPageRoute -> NavigableScreens.EmotionsPage
+        GamesPageRoute -> NavigableScreens.GamesPage
+        HelpAndAboutRoute -> NavigableScreens.HelpAndAbout
+        PeoplePageRoute -> NavigableScreens.PeoplePage
+        SettingsRoute -> NavigableScreens.Settings
+        SuggestionGeneratorRoute -> NavigableScreens.SuggestionGenerator
+        ThesaurusPageRoute -> NavigableScreens.ThesaurusPage
+        TimerRoute -> NavigableScreens.Timer
+        TipsAndAdviceRoute -> NavigableScreens.TipsAndAdvice
+        WorkshopGeneratorRoute -> NavigableScreens.WorkshopGenerator
+    }
+}
+
+// TODO: consider making this CompositionLocal
+// TODO:  consider passing callbacks instead of direct refs to routes - but that's another story
+//internal class ImprovToolsNavigator(
+//    val doNavigateToNavigableScreen: (NavigableScreens) -> Unit,
+//    val doNavigateToNavigableRoute: (NavigableRoute) -> Unit,
+//)

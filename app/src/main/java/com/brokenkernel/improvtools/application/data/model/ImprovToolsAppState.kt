@@ -31,15 +31,16 @@ internal class ImprovToolsAppState(
         return currentNavigableScreen.asStateFlow()
     }
 
-    fun navigateTo(dest: NavigableScreens) {
+    fun navigateTo(dest: NavigableRoute) {
         val firebaseBundle = Bundle()
-        firebaseBundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, dest.route.toString())
+        // TODO: do I even need this anymore once I am fully on routes?
+        firebaseBundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, dest.toString())
         firebaseBundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, dest::class.qualifiedName)
         Firebase.analytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, firebaseBundle)
         Firebase.analytics.setDefaultEventParameters(firebaseBundle)
-        currentNavigableScreen.value = dest
-
+        currentNavigableScreen.value = routeToScreen(dest)
     }
+
 }
 
 @Composable

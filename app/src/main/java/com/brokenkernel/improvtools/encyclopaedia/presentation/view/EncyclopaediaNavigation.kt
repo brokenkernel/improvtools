@@ -12,54 +12,53 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute
-import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 
 internal enum class EncyclopaediaPages(
     @param:StringRes val title: Int,
     val icon: ImageVector,
-    val navigableScreen: NavigableScreens,
+    val navigableRoute: NavigableRoute,
     val content: @Composable () -> Unit,
 ) {
     GamesPage(
         R.string.encyclopaedia_tab_title_games,
         Icons.Outlined.Games,
-        NavigableScreens.GamesPage,
+        NavigableRoute.GamesPageRoute,
         { GamesTab() },
     ),
     PeoplePage(
         R.string.encyclopaedia_tab_title_people,
         Icons.Outlined.People,
-        NavigableScreens.PeoplePage,
+        NavigableRoute.PeoplePageRoute,
         { PeopleTab() },
     ),
     EmotionsPage(
         R.string.encyclopaedia_tab_title_emotions,
         Icons.Outlined.EmojiEmotions,
-        NavigableScreens.EmotionsPage,
+        NavigableRoute.EmotionPageRoute,
         { EmotionTab() },
     ),
     ThesaurusPage(
         R.string.encyclopaedia_tab_title_thesaurus,
         Icons.Filled.Book,
-        NavigableScreens.ThesaurusPage,
+        NavigableRoute.ThesaurusPageRoute,
         { ThesaurusTab() },
     ),
 }
 
-internal fun NavGraphBuilder.encyclopaediaPageDestinations(onNavigateToScreen: (NavigableScreens) -> Unit) {
+internal fun NavGraphBuilder.encyclopaediaPageDestinations(onNavigateToRoute: (NavigableRoute) -> Unit) {
     composable<NavigableRoute.GamesPageRoute> {
-        EncyclopaediaScreen(onNavigateToScreen = onNavigateToScreen, initialTab = EncyclopaediaPages.GamesPage)
+        EncyclopaediaScreen(onNavigateToRoute = onNavigateToRoute, initialTab = EncyclopaediaPages.GamesPage)
     }
 
     composable<NavigableRoute.PeoplePageRoute> {
-        EncyclopaediaScreen(onNavigateToScreen = onNavigateToScreen, initialTab = EncyclopaediaPages.PeoplePage)
+        EncyclopaediaScreen(onNavigateToRoute = onNavigateToRoute, initialTab = EncyclopaediaPages.PeoplePage)
     }
 
     composable<NavigableRoute.EmotionPageRoute> {
-        EncyclopaediaScreen(onNavigateToScreen = onNavigateToScreen, initialTab = EncyclopaediaPages.EmotionsPage)
+        EncyclopaediaScreen(onNavigateToRoute = onNavigateToRoute, initialTab = EncyclopaediaPages.EmotionsPage)
     }
 
     composable<NavigableRoute.ThesaurusPageRoute> {
-        EncyclopaediaScreen(onNavigateToScreen = onNavigateToScreen, initialTab = EncyclopaediaPages.ThesaurusPage)
+        EncyclopaediaScreen(onNavigateToRoute = onNavigateToRoute, initialTab = EncyclopaediaPages.ThesaurusPage)
     }
 }

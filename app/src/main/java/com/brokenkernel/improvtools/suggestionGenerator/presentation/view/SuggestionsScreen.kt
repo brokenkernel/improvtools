@@ -37,7 +37,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.brokenkernel.improvtools.R
-import com.brokenkernel.improvtools.application.data.model.NavigableScreens
+import com.brokenkernel.improvtools.application.data.model.NavigableRoute
 import com.brokenkernel.improvtools.application.presentation.view.verticalColumnScrollbar
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel.SuggestionScreenViewModel
 
@@ -45,7 +45,7 @@ import com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel.S
 @Composable
 internal fun SuggestionsScreen(
     viewModel: SuggestionScreenViewModel = hiltViewModel(),
-    onNavigateToScreen: (NavigableScreens) -> Unit,
+    onNavigateToRoute: (NavigableRoute) -> Unit,
 ) {
 // TODO: add info icon - general
 
@@ -142,7 +142,7 @@ internal fun SuggestionsScreen(
 
                                     IconButton(
                                         onClick = {
-                                            onNavigateToScreen(NavigableScreens.EmotionsPage)
+                                            onNavigateToRoute(NavigableRoute.EmotionPageRoute)
                                         },
                                         modifier = Modifier.weight(1f)
                                     ) {

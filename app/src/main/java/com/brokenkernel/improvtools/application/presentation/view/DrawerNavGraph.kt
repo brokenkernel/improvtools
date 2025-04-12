@@ -18,7 +18,7 @@ import com.brokenkernel.improvtools.workshopgenerator.presentation.view.Workshop
 internal fun DrawerNavGraph(
     navController: NavHostController,
     currentNavigableScreen: State<NavigableScreens>,
-    onNavigateToScreen: (NavigableScreens) -> Unit,
+    onNavigateToRoute: (NavigableRoute) -> Unit,
 ) {
 
     NavHost(
@@ -33,7 +33,7 @@ internal fun DrawerNavGraph(
         }
         composable<NavigableRoute.SuggestionGeneratorRoute> {
             SuggestionsScreen(
-                onNavigateToScreen = onNavigateToScreen,
+                onNavigateToRoute = onNavigateToRoute,
             )
         }
         composable<NavigableRoute.TimerRoute> {
@@ -46,7 +46,7 @@ internal fun DrawerNavGraph(
             WorkshopGeneratorScreen()
         }
         encyclopaediaPageDestinations(
-            onNavigateToScreen = onNavigateToScreen,
+            onNavigateToRoute = onNavigateToRoute,
         )
     }
 }

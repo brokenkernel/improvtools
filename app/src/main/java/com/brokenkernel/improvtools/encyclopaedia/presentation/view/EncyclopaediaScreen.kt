@@ -17,13 +17,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import com.brokenkernel.improvtools.application.data.model.NavigableScreens
+import com.brokenkernel.improvtools.application.data.model.NavigableRoute
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun EncyclopaediaScreen(
-    onNavigateToScreen: (NavigableScreens) -> Unit,
+    onNavigateToRoute: (NavigableRoute) -> Unit,
     initialTab: EncyclopaediaPages,
 ) {
     val pagerState =
@@ -34,7 +34,7 @@ internal fun EncyclopaediaScreen(
     val selectedTabIndex = remember { derivedStateOf { pagerState.currentPage } }
 
     LaunchedEffect(pagerState) {
-        onNavigateToScreen(EncyclopaediaPages.entries[pagerState.currentPage].navigableScreen)
+        onNavigateToRoute(EncyclopaediaPages.entries[pagerState.currentPage].navigableRoute)
     }
 
 

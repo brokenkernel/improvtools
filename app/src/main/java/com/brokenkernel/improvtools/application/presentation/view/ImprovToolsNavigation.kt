@@ -24,6 +24,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.brokenkernel.improvtools.R
+import com.brokenkernel.improvtools.application.data.model.NavigableRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -31,7 +32,7 @@ import kotlinx.coroutines.launch
 @Composable
 private fun NavigableScreenNavigationDrawerItem(
     screen: NavigableScreens,
-    onNavMenuClickCallback: (NavigableScreens) -> Unit,
+    onNavMenuClickCallback: (NavigableRoute) -> Unit,
     currentNavigableScreen: State<NavigableScreens>,
 ) {
     NavigationDrawerItem(
@@ -43,16 +44,17 @@ private fun NavigableScreenNavigationDrawerItem(
             )
         },
         onClick = {
-            onNavMenuClickCallback(screen)
+            onNavMenuClickCallback(screen.route)
         },
         selected = (screen.route == currentNavigableScreen.value.route),
     )
 }
 
+@Suppress("unused") // reminds me if I want to get rid of the doubled scaffold.
 @Composable
 internal fun ImprovToolsBottomBar(
     currentNavigableScreen: State<NavigableScreens>,
-    doNavigateToNavigableScreen: (NavigableScreens) -> Unit,
+    doNavigateToNavigableRoute: (NavigableRoute) -> Unit,
 ) {
     NavigationBar {
         NavigationBarItem(
@@ -67,7 +69,7 @@ internal fun ImprovToolsBottomBar(
                 )
             },
             onClick = {
-                doNavigateToNavigableScreen(NavigableScreens.SuggestionGenerator)
+                doNavigateToNavigableRoute(NavigableRoute.SuggestionGeneratorRoute)
             }
         )
         NavigationBarItem(
@@ -83,7 +85,7 @@ internal fun ImprovToolsBottomBar(
 
             },
             onClick = {
-                doNavigateToNavigableScreen(NavigableScreens.Timer)
+                doNavigateToNavigableRoute(NavigableRoute.TimerRoute)
             }
         )
     }
@@ -91,7 +93,7 @@ internal fun ImprovToolsBottomBar(
 
 @Composable
 internal fun ImprovToolsNavigationDrawer(
-    doNavigateToNavigableScreen: (NavigableScreens) -> Unit,
+    doNavigateToNavigableRoute: (NavigableRoute) -> Unit,
     currentNavigableScreen: State<NavigableScreens>,
     drawerState: DrawerState,
     navController: NavHostController,
@@ -107,7 +109,6 @@ internal fun ImprovToolsNavigationDrawer(
         }
     }
 
-
     fun invertNavMenuState() {
         scope.launch {
             drawerState.apply {
@@ -116,8 +117,8 @@ internal fun ImprovToolsNavigationDrawer(
         }
     }
 
-    fun doNavigateToNavigableScreenWithNavClosure(na: NavigableScreens) {
-        doNavigateToNavigableScreen(na)
+    fun doNavigateToNavigableRouteWithNavClosure(nr: NavigableRoute) {
+        doNavigateToNavigableRoute(nr)
         closeNavMenu()
     }
 
@@ -143,17 +144,17 @@ internal fun ImprovToolsNavigationDrawer(
                     )
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.SuggestionGenerator,
-                        { it -> doNavigateToNavigableScreenWithNavClosure(it) },
+                        { it -> doNavigateToNavigableRouteWithNavClosure(it) },
                         currentNavigableScreen,
                     )
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.Timer,
-                        { it -> doNavigateToNavigableScreenWithNavClosure(it) },
+                        { it -> doNavigateToNavigableRouteWithNavClosure(it) },
                         currentNavigableScreen,
                     )
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.WorkshopGenerator,
-                        { it -> doNavigateToNavigableScreenWithNavClosure(it) },
+                        { it -> doNavigateToNavigableRouteWithNavClosure(it) },
                         currentNavigableScreen,
                     )
 
@@ -166,12 +167,12 @@ internal fun ImprovToolsNavigationDrawer(
                     )
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.Encyclopaedia,
-                        { it -> doNavigateToNavigableScreenWithNavClosure(it) },
+                        { it -> doNavigateToNavigableRouteWithNavClosure(it) },
                         currentNavigableScreen,
                     )
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.TipsAndAdvice,
-                        { it -> doNavigateToNavigableScreenWithNavClosure(it) },
+                        { it -> doNavigateToNavigableRouteWithNavClosure(it) },
                         currentNavigableScreen,
                     )
 
@@ -183,12 +184,12 @@ internal fun ImprovToolsNavigationDrawer(
                     )
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.Settings,
-                        { it -> doNavigateToNavigableScreenWithNavClosure(it) },
+                        { it -> doNavigateToNavigableRouteWithNavClosure(it) },
                         currentNavigableScreen,
                     )
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.HelpAndAbout,
-                        { it -> doNavigateToNavigableScreenWithNavClosure(it) },
+                        { it -> doNavigateToNavigableRouteWithNavClosure(it) },
                         currentNavigableScreen,
                     )
                     Spacer(Modifier.height(12.dp))
@@ -198,7 +199,7 @@ internal fun ImprovToolsNavigationDrawer(
     ) {
         ImprovToolsScaffold(
             currentNavigableScreen = currentNavigableScreen,
-            doNavigateToNavigableScreen = { it -> doNavigateToNavigableScreenWithNavClosure(it) },
+            doNavigateToNavigableRoute = { route -> doNavigateToNavigableRouteWithNavClosure(route) },
             navMenuButtonPressedCallback = {
                 invertNavMenuState()
             },
@@ -207,7 +208,7 @@ internal fun ImprovToolsNavigationDrawer(
                 DrawerNavGraph(
                     navController = navController,
                     currentNavigableScreen = currentNavigableScreen,
-                    onNavigateToScreen = doNavigateToNavigableScreen
+                    onNavigateToRoute = doNavigateToNavigableRoute,
                 )
             }
         )

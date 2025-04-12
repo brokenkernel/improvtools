@@ -28,6 +28,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.brokenkernel.improvtools.R
+import com.brokenkernel.improvtools.application.data.model.NavigableRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import com.brokenkernel.improvtools.settings.presentation.view.SuggestionsScreenMenu
 import com.brokenkernel.improvtools.settings.presentation.view.TipsAndAdviceMenu
@@ -36,7 +37,7 @@ import com.brokenkernel.improvtools.settings.presentation.view.TipsAndAdviceMenu
 @Composable
 internal fun ImprovToolsScaffold(
     currentNavigableScreen: State<NavigableScreens>,
-    doNavigateToNavigableScreen: (NavigableScreens) -> Unit,
+    doNavigateToNavigableRoute: (NavigableRoute) -> Unit,
     navMenuButtonPressedCallback: () -> Unit,
     content: @Composable (() -> Unit),
 ) {
@@ -56,7 +57,7 @@ internal fun ImprovToolsScaffold(
             },
             selected = (currentNavigableScreen.value == it),
             onClick = {
-                doNavigateToNavigableScreen(it)
+                doNavigateToNavigableRoute(it.route)
             }
         )
     }

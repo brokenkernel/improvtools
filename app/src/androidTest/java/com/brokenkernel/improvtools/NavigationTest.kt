@@ -46,9 +46,8 @@ class NavigationTest {
             DrawerNavGraph(
                 currentNavigableScreen = currentScreenState,
                 navController = navController,
-                onNavigateToScreen = {
-                    currentScreenState.value = it
-                })
+                onNavigateToRoute = {}, // TODO - deal with app state
+            )
         }
     }
 
