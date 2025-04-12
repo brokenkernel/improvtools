@@ -30,13 +30,14 @@ import androidx.compose.ui.res.stringResource
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
+import com.brokenkernel.improvtools.application.data.model.routeToScreen
 import com.brokenkernel.improvtools.settings.presentation.view.SuggestionsScreenMenu
 import com.brokenkernel.improvtools.settings.presentation.view.TipsAndAdviceMenu
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun ImprovToolsScaffold(
-    currentNavigableScreen: State<NavigableScreens>,
+    currentNavigableRoute: State<NavigableRoute>,
     doNavigateToNavigableRoute: (NavigableRoute) -> Unit,
     navMenuButtonPressedCallback: () -> Unit,
     content: @Composable (() -> Unit),
@@ -55,7 +56,7 @@ internal fun ImprovToolsScaffold(
             label = {
                 Text(stringResource(it.titleResource))
             },
-            selected = (currentNavigableScreen.value == it),
+            selected = (currentNavigableRoute.value == it.route),
             onClick = {
                 doNavigateToNavigableRoute(it.route)
             }
@@ -77,7 +78,7 @@ internal fun ImprovToolsScaffold(
                         containerColor = MaterialTheme.colorScheme.primaryContainer,
                         titleContentColor = MaterialTheme.colorScheme.primary,
                     ),
-                    title = { Text(stringResource(currentNavigableScreen.value.titleResource)) },
+                    title = { Text(stringResource(routeToScreen(currentNavigableRoute.value).titleResource)) },
                     scrollBehavior = TopAppBarDefaults
                         .exitUntilCollapsedScrollBehavior(
                             rememberTopAppBarState()
@@ -95,14 +96,14 @@ internal fun ImprovToolsScaffold(
                             onClick = {
                                 moreMenuExpandedState = !moreMenuExpandedState
                             },
-                            enabled = currentNavigableScreen.value.shouldShowExtraMenu,
+                            enabled = routeToScreen(currentNavigableRoute.value).shouldShowExtraMenu,
                         ) {
-                            if (currentNavigableScreen.value.shouldShowExtraMenu) {
+                            if (routeToScreen(currentNavigableRoute.value).shouldShowExtraMenu) {
                                 Icon(
                                     imageVector = Icons.Filled.MoreVert,
                                     contentDescription = stringResource(R.string.navigation_open_screen_specific_menu)
                                 )
-                                when (currentNavigableScreen.value) {
+                                when (routeToScreen(currentNavigableRoute.value)) {
                                     NavigableScreens.SuggestionGenerator -> SuggestionsScreenMenu(
                                         expanded = moreMenuExpandedState,
                                         onDismiss = {
@@ -127,9 +128,6 @@ internal fun ImprovToolsScaffold(
                     },
                 )
             },
-//            bottomBar = {
-//                ImprovToolsBottomBar(currentNavigableScreen, doNavigateToNavigableScreen)
-//            },
             snackbarHost = {
                 SnackbarHost(hostState = snackbarHostState)
             },

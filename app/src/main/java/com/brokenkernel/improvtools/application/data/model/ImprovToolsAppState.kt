@@ -20,15 +20,15 @@ import kotlinx.coroutines.flow.asStateFlow
 internal class ImprovToolsAppState(
     val drawerState: DrawerState,
     val navController: NavHostController,
-    private val currentNavigableScreen: MutableStateFlow<NavigableScreens> = MutableStateFlow(NavigableScreens.SuggestionGenerator),
+    private val currentNavigableRoute: MutableStateFlow<NavigableRoute> = MutableStateFlow(NavigableRoute.SuggestionGeneratorRoute),
 ) {
 //    // UI State
 //    val currentDestination: NavDestination?
 //        @Composable get() = navController
 //            .currentBackStackEntryAsState().value?.destination
 
-    fun currentNavigableScreenAsState(): StateFlow<NavigableScreens> {
-        return currentNavigableScreen.asStateFlow()
+    fun currentNavigableRouteAsState(): StateFlow<NavigableRoute> {
+        return currentNavigableRoute.asStateFlow()
     }
 
     fun navigateTo(dest: NavigableRoute) {
@@ -38,7 +38,7 @@ internal class ImprovToolsAppState(
         firebaseBundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, dest::class.qualifiedName)
         Firebase.analytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, firebaseBundle)
         Firebase.analytics.setDefaultEventParameters(firebaseBundle)
-        currentNavigableScreen.value = routeToScreen(dest)
+        currentNavigableRoute.value = dest
     }
 
 }
@@ -47,18 +47,7 @@ internal class ImprovToolsAppState(
 internal fun rememberImprovToolsAppState(
     drawerState: DrawerState = rememberDrawerState(initialValue = DrawerValue.Closed),
     navController: NavHostController = rememberNavController(),
-    currentNavigableScreen: NavigableScreens = remember { NavigableScreens.SuggestionGenerator },
-): ImprovToolsAppState = remember(drawerState, navController, currentNavigableScreen) {
-    ImprovToolsAppState(drawerState, navController, MutableStateFlow(currentNavigableScreen))
+    currentNavigableRoute: NavigableRoute = remember { NavigableRoute.SuggestionGeneratorRoute },
+): ImprovToolsAppState = remember(drawerState, navController, currentNavigableRoute) {
+    ImprovToolsAppState(drawerState, navController, MutableStateFlow(currentNavigableRoute))
 }
-
-//    drawerNavController.addOnDestinationChangedListener {
-//            controller: NavController,
-//            destination: NavDestination,
-//            args: Bundle?,
-//        ->
-//        val whichScreen: NavigableScreens? = NavigableScreens.byRoute(destination.route)
-//        if (whichScreen != null) {
-//            currentNavigableScreen = whichScreen
-//        }
-//    }

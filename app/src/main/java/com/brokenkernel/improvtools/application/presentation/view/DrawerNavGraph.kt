@@ -6,7 +6,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute
-import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import com.brokenkernel.improvtools.encyclopaedia.presentation.view.encyclopaediaPageDestinations
 import com.brokenkernel.improvtools.settings.presentation.view.SettingsScreen
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.view.SuggestionsScreen
@@ -17,13 +16,13 @@ import com.brokenkernel.improvtools.workshopgenerator.presentation.view.Workshop
 @Composable
 internal fun DrawerNavGraph(
     navController: NavHostController,
-    currentNavigableScreen: State<NavigableScreens>,
+    currentNavigableRoute: State<NavigableRoute>,
     onNavigateToRoute: (NavigableRoute) -> Unit,
 ) {
 
     NavHost(
         navController = navController,
-        startDestination = currentNavigableScreen.value.route
+        startDestination = currentNavigableRoute.value
     ) {
         composable<NavigableRoute.HelpAndAboutRoute> {
             AboutScreen()

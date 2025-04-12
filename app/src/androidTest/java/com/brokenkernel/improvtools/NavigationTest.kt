@@ -11,10 +11,10 @@ import androidx.compose.ui.test.onRoot
 import androidx.navigation.compose.ComposeNavigator
 import androidx.navigation.testing.TestNavHostController
 import androidx.test.ext.junit.rules.ActivityScenarioRule
-import com.brokenkernel.improvtools.application.data.model.NavigableScreens
+import com.brokenkernel.improvtools.application.data.model.NavigableRoute
 import com.brokenkernel.improvtools.application.presentation.view.DrawerNavGraph
 import com.brokenkernel.improvtools.infrastructure.HiltComponentActitivity
-import com.brokenkernel.improvtools.infrastructure.assertCurrentNavigableScreen
+import com.brokenkernel.improvtools.infrastructure.assertCurrentNavigableRoute
 import com.brokenkernel.improvtools.infrastructure.onNodeWithStringId
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
@@ -41,10 +41,10 @@ class NavigationTest {
             navController = TestNavHostController(LocalContext.current).apply {
                 navigatorProvider.addNavigator(ComposeNavigator())
             }
-            val currentScreenState: MutableState<NavigableScreens> =
-                remember { mutableStateOf(NavigableScreens.SuggestionGenerator) }
+            val currentRouteState: MutableState<NavigableRoute> =
+                remember { mutableStateOf(NavigableRoute.SuggestionGeneratorRoute) }
             DrawerNavGraph(
-                currentNavigableScreen = currentScreenState,
+                currentNavigableRoute = currentRouteState,
                 navController = navController,
                 onNavigateToRoute = {}, // TODO - deal with app state
             )
@@ -53,7 +53,7 @@ class NavigationTest {
 
     @Test
     fun testStartScreenIsSuggestions() {
-        navController.assertCurrentNavigableScreen(NavigableScreens.SuggestionGenerator)
+        navController.assertCurrentNavigableRoute(NavigableRoute.SuggestionGeneratorRoute)
     }
 
     @Test

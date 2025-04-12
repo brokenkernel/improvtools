@@ -30,13 +30,14 @@ import kotlinx.serialization.Serializable
 
 //
 /*
- * TODO: the distinction between route and screen is wrong and likely breaks back handling amongst other things
- * 1. Information about the *route* should be in NavigableRoute and this should be "what is the current page" related information.
  *
- * Also, most external references should rely on NavigableRoute rather than NavigableScreens
+ * Put another way the [NavigableRoute] is "where to go" and [NavigableScreens] is "what am I going to"
  *
- * Separterly NavigableScreens should really be closer to "scaffold" information. And there should be a mapping from
- * NavigableRoute -> NavigableScreens (which should likley be renamed to RouteScaffoldInformation or some such).
+ *
+ * TODO: currently we lose all "back" state information about the [NavigableRoute] since we implement our own navigation infrastructure.
+ * This should be fixed.
+ *
+ * @see [NavigableScreens]
  */
 
 @Serializable

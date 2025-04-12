@@ -1,13 +1,13 @@
 package com.brokenkernel.improvtools.infrastructure
 
 import androidx.navigation.NavController
-import com.brokenkernel.improvtools.application.data.model.NavigableScreens
+import com.brokenkernel.improvtools.application.data.model.NavigableRoute
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers
 
-internal fun NavController.assertCurrentNavigableScreen(expectedRoute: NavigableScreens) {
+internal fun NavController.assertCurrentNavigableRoute(expectedRoute: NavigableRoute) {
     assertThat(
         currentBackStackEntry?.destination?.route,
-        Matchers.`is`(expectedRoute.route::class.qualifiedName)
+        Matchers.`is`(expectedRoute::class.qualifiedName)
     )
 }

@@ -12,8 +12,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.ModalNavigationDrawer
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationDrawerItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -33,7 +31,7 @@ import kotlinx.coroutines.launch
 private fun NavigableScreenNavigationDrawerItem(
     screen: NavigableScreens,
     onNavMenuClickCallback: (NavigableRoute) -> Unit,
-    currentNavigableScreen: State<NavigableScreens>,
+    currentNavigableRoute: State<NavigableRoute>,
 ) {
     NavigationDrawerItem(
         label = { Text(stringResource(screen.titleResource)) },
@@ -46,55 +44,14 @@ private fun NavigableScreenNavigationDrawerItem(
         onClick = {
             onNavMenuClickCallback(screen.route)
         },
-        selected = (screen.route == currentNavigableScreen.value.route),
+        selected = (screen.route == currentNavigableRoute.value),
     )
-}
-
-@Suppress("unused") // reminds me if I want to get rid of the doubled scaffold.
-@Composable
-internal fun ImprovToolsBottomBar(
-    currentNavigableScreen: State<NavigableScreens>,
-    doNavigateToNavigableRoute: (NavigableRoute) -> Unit,
-) {
-    NavigationBar {
-        NavigationBarItem(
-            selected = (currentNavigableScreen.value.route == NavigableScreens.SuggestionGenerator.route),
-            label = {
-                NavigableScreens.SuggestionGenerator.titleResource
-            },
-            icon = {
-                Icon(
-                    NavigableScreens.SuggestionGenerator.icon,
-                    contentDescription = stringResource(NavigableScreens.SuggestionGenerator.contentDescription)
-                )
-            },
-            onClick = {
-                doNavigateToNavigableRoute(NavigableRoute.SuggestionGeneratorRoute)
-            }
-        )
-        NavigationBarItem(
-            selected = (currentNavigableScreen.value.route == NavigableScreens.Timer.route),
-            label = {
-                NavigableScreens.Timer.titleResource
-            },
-            icon = {
-                Icon(
-                    NavigableScreens.Timer.icon,
-                    contentDescription = stringResource(NavigableScreens.Timer.contentDescription)
-                )
-
-            },
-            onClick = {
-                doNavigateToNavigableRoute(NavigableRoute.TimerRoute)
-            }
-        )
-    }
 }
 
 @Composable
 internal fun ImprovToolsNavigationDrawer(
     doNavigateToNavigableRoute: (NavigableRoute) -> Unit,
-    currentNavigableScreen: State<NavigableScreens>,
+    currentNavigableRoute: State<NavigableRoute>,
     drawerState: DrawerState,
     navController: NavHostController,
 ) {
@@ -145,17 +102,17 @@ internal fun ImprovToolsNavigationDrawer(
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.SuggestionGenerator,
                         { it -> doNavigateToNavigableRouteWithNavClosure(it) },
-                        currentNavigableScreen,
+                        currentNavigableRoute,
                     )
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.Timer,
                         { it -> doNavigateToNavigableRouteWithNavClosure(it) },
-                        currentNavigableScreen,
+                        currentNavigableRoute,
                     )
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.WorkshopGenerator,
                         { it -> doNavigateToNavigableRouteWithNavClosure(it) },
-                        currentNavigableScreen,
+                        currentNavigableRoute,
                     )
 
                     HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
@@ -168,12 +125,12 @@ internal fun ImprovToolsNavigationDrawer(
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.Encyclopaedia,
                         { it -> doNavigateToNavigableRouteWithNavClosure(it) },
-                        currentNavigableScreen,
+                        currentNavigableRoute,
                     )
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.TipsAndAdvice,
                         { it -> doNavigateToNavigableRouteWithNavClosure(it) },
-                        currentNavigableScreen,
+                        currentNavigableRoute,
                     )
 
                     HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
@@ -185,12 +142,12 @@ internal fun ImprovToolsNavigationDrawer(
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.Settings,
                         { it -> doNavigateToNavigableRouteWithNavClosure(it) },
-                        currentNavigableScreen,
+                        currentNavigableRoute,
                     )
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.HelpAndAbout,
                         { it -> doNavigateToNavigableRouteWithNavClosure(it) },
-                        currentNavigableScreen,
+                        currentNavigableRoute,
                     )
                     Spacer(Modifier.height(12.dp))
                 }
@@ -198,7 +155,7 @@ internal fun ImprovToolsNavigationDrawer(
         },
     ) {
         ImprovToolsScaffold(
-            currentNavigableScreen = currentNavigableScreen,
+            currentNavigableRoute = currentNavigableRoute,
             doNavigateToNavigableRoute = { route -> doNavigateToNavigableRouteWithNavClosure(route) },
             navMenuButtonPressedCallback = {
                 invertNavMenuState()
@@ -207,7 +164,7 @@ internal fun ImprovToolsNavigationDrawer(
                 // TODO: replace with event system instead of passing controller??
                 DrawerNavGraph(
                     navController = navController,
-                    currentNavigableScreen = currentNavigableScreen,
+                    currentNavigableRoute = currentNavigableRoute,
                     onNavigateToRoute = doNavigateToNavigableRoute,
                 )
             }
