@@ -41,7 +41,7 @@ internal fun rememberImprovToolsAppState(
     drawerState: DrawerState = rememberDrawerState(initialValue = DrawerValue.Closed),
     navController: NavHostController = rememberNavController(),
     currentNavigableScreen: NavigableScreens = remember { NavigableScreens.SuggestionGenerator },
-): ImprovToolsAppState = remember(drawerState, navController) {
+): ImprovToolsAppState = remember(drawerState, navController, currentNavigableScreen) {
     ImprovToolsAppState(drawerState, navController, MutableStateFlow(currentNavigableScreen))
 }
 
