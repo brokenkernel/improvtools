@@ -1,7 +1,6 @@
 package com.brokenkernel.improvtools.application.presentation.view
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.State
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -16,13 +15,13 @@ import com.brokenkernel.improvtools.workshopgenerator.presentation.view.Workshop
 @Composable
 internal fun DrawerNavGraph(
     navController: NavHostController,
-    currentNavigableRoute: State<NavigableRoute>,
     onNavigateToRoute: (NavigableRoute) -> Unit,
+    initialRoute: NavigableRoute,
 ) {
 
     NavHost(
         navController = navController,
-        startDestination = currentNavigableRoute.value
+        startDestination = initialRoute,
     ) {
         composable<NavigableRoute.HelpAndAboutRoute> {
             AboutScreen()
@@ -44,8 +43,6 @@ internal fun DrawerNavGraph(
         composable<NavigableRoute.WorkshopGeneratorRoute> {
             WorkshopGeneratorScreen()
         }
-        encyclopaediaPageDestinations(
-            onNavigateToRoute = onNavigateToRoute,
-        )
+        encyclopaediaPageDestinations()
     }
 }

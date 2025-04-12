@@ -1,8 +1,5 @@
 package com.brokenkernel.improvtools
 
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.AndroidComposeTestRule
@@ -41,12 +38,10 @@ class NavigationTest {
             navController = TestNavHostController(LocalContext.current).apply {
                 navigatorProvider.addNavigator(ComposeNavigator())
             }
-            val currentRouteState: MutableState<NavigableRoute> =
-                remember { mutableStateOf(NavigableRoute.SuggestionGeneratorRoute) }
             DrawerNavGraph(
-                currentNavigableRoute = currentRouteState,
                 navController = navController,
-                onNavigateToRoute = {}, // TODO - deal with app state
+                onNavigateToRoute = {},
+                initialRoute = NavigableRoute.SuggestionGeneratorRoute, // TODO - deal with app state
             )
         }
     }

@@ -16,49 +16,44 @@ import com.brokenkernel.improvtools.application.data.model.NavigableRoute
 internal enum class EncyclopaediaPages(
     @param:StringRes val title: Int,
     val icon: ImageVector,
-    val navigableRoute: NavigableRoute,
     val content: @Composable () -> Unit,
 ) {
     GamesPage(
         R.string.encyclopaedia_tab_title_games,
         Icons.Outlined.Games,
-        NavigableRoute.GamesPageRoute,
         { GamesTab() },
     ),
     PeoplePage(
         R.string.encyclopaedia_tab_title_people,
         Icons.Outlined.People,
-        NavigableRoute.PeoplePageRoute,
         { PeopleTab() },
     ),
     EmotionsPage(
         R.string.encyclopaedia_tab_title_emotions,
         Icons.Outlined.EmojiEmotions,
-        NavigableRoute.EmotionPageRoute,
         { EmotionTab() },
     ),
     ThesaurusPage(
         R.string.encyclopaedia_tab_title_thesaurus,
         Icons.Filled.Book,
-        NavigableRoute.ThesaurusPageRoute,
         { ThesaurusTab() },
     ),
 }
 
-internal fun NavGraphBuilder.encyclopaediaPageDestinations(onNavigateToRoute: (NavigableRoute) -> Unit) {
+internal fun NavGraphBuilder.encyclopaediaPageDestinations() {
     composable<NavigableRoute.GamesPageRoute> {
-        EncyclopaediaScreen(onNavigateToRoute = onNavigateToRoute, initialTab = EncyclopaediaPages.GamesPage)
+        EncyclopaediaScreen(initialTab = EncyclopaediaPages.GamesPage)
     }
 
     composable<NavigableRoute.PeoplePageRoute> {
-        EncyclopaediaScreen(onNavigateToRoute = onNavigateToRoute, initialTab = EncyclopaediaPages.PeoplePage)
+        EncyclopaediaScreen(initialTab = EncyclopaediaPages.PeoplePage)
     }
 
     composable<NavigableRoute.EmotionPageRoute> {
-        EncyclopaediaScreen(onNavigateToRoute = onNavigateToRoute, initialTab = EncyclopaediaPages.EmotionsPage)
+        EncyclopaediaScreen(initialTab = EncyclopaediaPages.EmotionsPage)
     }
 
     composable<NavigableRoute.ThesaurusPageRoute> {
-        EncyclopaediaScreen(onNavigateToRoute = onNavigateToRoute, initialTab = EncyclopaediaPages.ThesaurusPage)
+        EncyclopaediaScreen(initialTab = EncyclopaediaPages.ThesaurusPage)
     }
 }

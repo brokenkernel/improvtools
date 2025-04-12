@@ -8,6 +8,7 @@ import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -27,6 +28,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.navigation.NavBackStackEntry
+import androidx.navigation.NavDestination
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
@@ -34,10 +37,21 @@ import com.brokenkernel.improvtools.application.data.model.routeToScreen
 import com.brokenkernel.improvtools.settings.presentation.view.SuggestionsScreenMenu
 import com.brokenkernel.improvtools.settings.presentation.view.TipsAndAdviceMenu
 
+
+internal fun wrongfullyFindRouteByNavDestination(dest: NavDestination?): NavigableRoute {
+    NavigableRoute::class.sealedSubclasses.forEach {
+        if (dest?.hasRoute(it) == true) {
+            return it.objectInstance!!
+        }
+    }
+    // should never happyn
+    return NavigableRoute.SuggestionGeneratorRoute
+}
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun ImprovToolsScaffold(
-    currentNavigableRoute: State<NavigableRoute>,
+    currentBackStackEntryAsState: State<NavBackStackEntry?>,
     doNavigateToNavigableRoute: (NavigableRoute) -> Unit,
     navMenuButtonPressedCallback: () -> Unit,
     content: @Composable (() -> Unit),
@@ -56,7 +70,7 @@ internal fun ImprovToolsScaffold(
             label = {
                 Text(stringResource(it.titleResource))
             },
-            selected = (currentNavigableRoute.value == it.route),
+            selected = (currentBackStackEntryAsState.value?.destination?.hasRoute(it.route::class) == true),
             onClick = {
                 doNavigateToNavigableRoute(it.route)
             }
@@ -71,6 +85,7 @@ internal fun ImprovToolsScaffold(
             simpleNavigableScreen(NavigableScreens.EncyclopaediaScreen)
         },
     ) {
+        val currentNavigableRoute = wrongfullyFindRouteByNavDestination(currentBackStackEntryAsState.value?.destination)
         Scaffold(
             topBar = {
                 CenterAlignedTopAppBar(
@@ -78,7 +93,7 @@ internal fun ImprovToolsScaffold(
                         containerColor = MaterialTheme.colorScheme.primaryContainer,
                         titleContentColor = MaterialTheme.colorScheme.primary,
                     ),
-                    title = { Text(stringResource(routeToScreen(currentNavigableRoute.value).titleResource)) },
+                    title = { Text(stringResource(routeToScreen(currentNavigableRoute).titleResource)) },
                     scrollBehavior = TopAppBarDefaults
                         .exitUntilCollapsedScrollBehavior(
                             rememberTopAppBarState()
@@ -96,14 +111,14 @@ internal fun ImprovToolsScaffold(
                             onClick = {
                                 moreMenuExpandedState = !moreMenuExpandedState
                             },
-                            enabled = routeToScreen(currentNavigableRoute.value).shouldShowExtraMenu,
+                            enabled = routeToScreen(currentNavigableRoute).shouldShowExtraMenu,
                         ) {
-                            if (routeToScreen(currentNavigableRoute.value).shouldShowExtraMenu) {
+                            if (routeToScreen(currentNavigableRoute).shouldShowExtraMenu) {
                                 Icon(
                                     imageVector = Icons.Filled.MoreVert,
                                     contentDescription = stringResource(R.string.navigation_open_screen_specific_menu)
                                 )
-                                when (routeToScreen(currentNavigableRoute.value)) {
+                                when (routeToScreen(currentNavigableRoute)) {
                                     NavigableScreens.SuggestionGeneratorScreen -> SuggestionsScreenMenu(
                                         expanded = moreMenuExpandedState,
                                         onDismiss = {

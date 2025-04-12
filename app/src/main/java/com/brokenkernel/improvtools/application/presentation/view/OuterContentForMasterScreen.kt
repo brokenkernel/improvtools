@@ -4,15 +4,16 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.collectAsState
+import androidx.navigation.NavBackStackEntry
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute
 import com.brokenkernel.improvtools.ui.theme.ImprovToolsTheme
 
 
 @Composable
-internal fun OuterContentForMasterScreen(improvToolsState: ImprovToolsAppState) {
-    val currentNavigableRoute: State<NavigableRoute> =
-        improvToolsState.currentNavigableRouteAsState().collectAsState()
+internal fun OuterContentForMasterScreen(improvToolsState: ImprovToolsAppState, initialRoute: NavigableRoute) {
+    val currentBackStackEntryAsState: State<NavBackStackEntry?> =
+        improvToolsState.currentBackStackEntryAsState().collectAsState()
 
     ImprovToolsTheme {
         Surface {
@@ -20,9 +21,10 @@ internal fun OuterContentForMasterScreen(improvToolsState: ImprovToolsAppState) 
                 doNavigateToNavigableRoute = { route: NavigableRoute ->
                     improvToolsState.navigateTo(route)
                 },
-                currentNavigableRoute = currentNavigableRoute,
+                currentBackStackEntryAsState = currentBackStackEntryAsState,
                 drawerState = improvToolsState.drawerState,
                 navController = improvToolsState.navController,
+                initialRoute = initialRoute,
             )
         }
     }

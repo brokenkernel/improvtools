@@ -40,6 +40,7 @@
                 <action android:name="android.intent.action.APPLICATION_PREFERENCES" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.action.NOTIFICATION_PREFERENCES" />
             </intent-filter>
             <meta-data
                 android:name="android.app.shortcuts"
@@ -51,7 +52,8 @@
             android:name="android.window.PROPERTY_SUPPORTS_MULTI_INSTANCE_SYSTEM_UI"
             android:value="true" />
 
-        <profileable android:shell="true"
+        <profileable
+            android:shell="true"
             tools:targetApi="29" />
 
         <meta-data

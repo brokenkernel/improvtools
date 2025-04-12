@@ -11,19 +11,16 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import com.brokenkernel.improvtools.application.data.model.NavigableRoute
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun EncyclopaediaScreen(
-    onNavigateToRoute: (NavigableRoute) -> Unit,
     initialTab: EncyclopaediaPages,
 ) {
     val pagerState =
@@ -32,11 +29,6 @@ internal fun EncyclopaediaScreen(
             initialPage = initialTab.ordinal
         )
     val selectedTabIndex = remember { derivedStateOf { pagerState.currentPage } }
-
-    LaunchedEffect(pagerState) {
-        onNavigateToRoute(EncyclopaediaPages.entries[pagerState.currentPage].navigableRoute)
-    }
-
 
     Column(modifier = Modifier.fillMaxSize()) {
         SecondaryTabRow(

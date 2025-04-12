@@ -7,6 +7,7 @@ import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.performClick
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
 import com.brokenkernel.improvtools.R
+import com.brokenkernel.improvtools.application.data.model.NavigableRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import com.brokenkernel.improvtools.application.data.model.rememberImprovToolsAppState
 import com.brokenkernel.improvtools.application.presentation.view.OuterContentForMasterScreen
@@ -44,7 +45,7 @@ sealed class BaseScreenshotGenerationTest {
 
         composeTestRule.setContent {
             val improvToolsState = rememberImprovToolsAppState()
-            OuterContentForMasterScreen(improvToolsState)
+            OuterContentForMasterScreen(improvToolsState, NavigableRoute.SuggestionGeneratorRoute)
         }
         composeTestRule.waitForIdle()
     }

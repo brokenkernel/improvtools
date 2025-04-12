@@ -15,6 +15,7 @@ private const val ShowTimerIntent: String = "com.brokenkernel.improvtools.intent
 private const val ShowEncyclopaediaIntent: String = "com.brokenkernel.improvtools.intents.ShowEncyclopaedia"
 
 private const val ShowApplicationPreferencesIntent: String = "android.intent.action.APPLICATION_PREFERENCES"
+//private const val ShowNotificationPreferencesIntent: String = "android.intent.action.NOTIFICATION_PREFERENCES"
 // TODO: NotficiationPreferenes
 
 @AndroidEntryPoint
@@ -27,20 +28,25 @@ class MainActivity : ComponentActivity() {
         setContent {
             val improvToolsState: ImprovToolsAppState = rememberImprovToolsAppState()
 
-            if (intent.action != null) {
+            intent.categories
+            // CATEGORY_LEANBACK_SETTINGS, CATEGORY_COMMUNAL_MODE, CATEGORY_PREFERENCE, CATEGORY_LEANBACK_LAUNCHER
+            val initialRoute: NavigableRoute = if (intent.action != null) {
                 val whichRoute = when (intent.action) {
                     ShowSuggestionsIntent -> NavigableRoute.SuggestionGeneratorRoute
                     ShowTimerIntent -> NavigableRoute.TimerRoute
                     ShowEncyclopaediaIntent -> NavigableRoute.EmotionPageRoute
                     ShowApplicationPreferencesIntent -> NavigableRoute.SettingsRoute
+//                    ShowNotificationPreferencesIntent -> NavigableRoute.SettingsRoute
                     else -> NavigableRoute.SuggestionGeneratorRoute
                 }
-                improvToolsState.navigateTo(whichRoute)
                 setResult(RESULT_OK)
+                whichRoute
+            } else {
+                NavigableRoute.SuggestionGeneratorRoute
             }
 
             // maybe ImprovToolsState, or at least a subset should be passed via LocalContent so it doesn't need to be threaded all over the place
-            OuterContentForMasterScreen(improvToolsState = improvToolsState)
+            OuterContentForMasterScreen(improvToolsState = improvToolsState, initialRoute = initialRoute)
         }
 
     }
