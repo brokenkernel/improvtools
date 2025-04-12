@@ -66,9 +66,9 @@ internal fun ImprovToolsScaffold(
 
     NavigationSuiteScaffold(
         navigationSuiteItems = {
-            simpleNavigableScreen(NavigableScreens.SuggestionGenerator)
-            simpleNavigableScreen(NavigableScreens.Timer)
-            simpleNavigableScreen(NavigableScreens.Encyclopaedia)
+            simpleNavigableScreen(NavigableScreens.SuggestionGeneratorScreen)
+            simpleNavigableScreen(NavigableScreens.TimerScreen)
+            simpleNavigableScreen(NavigableScreens.EncyclopaediaScreen)
         },
     ) {
         Scaffold(
@@ -104,14 +104,14 @@ internal fun ImprovToolsScaffold(
                                     contentDescription = stringResource(R.string.navigation_open_screen_specific_menu)
                                 )
                                 when (routeToScreen(currentNavigableRoute.value)) {
-                                    NavigableScreens.SuggestionGenerator -> SuggestionsScreenMenu(
+                                    NavigableScreens.SuggestionGeneratorScreen -> SuggestionsScreenMenu(
                                         expanded = moreMenuExpandedState,
                                         onDismiss = {
                                             moreMenuExpandedState = !moreMenuExpandedState
                                         }
                                     )
 
-                                    NavigableScreens.TipsAndAdvice -> TipsAndAdviceMenu(
+                                    NavigableScreens.TipsAndAdviceScreen -> TipsAndAdviceMenu(
                                         expanded = moreMenuExpandedState,
                                         onDismiss = {
                                             moreMenuExpandedState = !moreMenuExpandedState

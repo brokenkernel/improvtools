@@ -100,17 +100,17 @@ internal fun ImprovToolsNavigationDrawer(
                         style = MaterialTheme.typography.titleMedium
                     )
                     NavigableScreenNavigationDrawerItem(
-                        NavigableScreens.SuggestionGenerator,
+                        NavigableScreens.SuggestionGeneratorScreen,
                         { it -> doNavigateToNavigableRouteWithNavClosure(it) },
                         currentNavigableRoute,
                     )
                     NavigableScreenNavigationDrawerItem(
-                        NavigableScreens.Timer,
+                        NavigableScreens.TimerScreen,
                         { it -> doNavigateToNavigableRouteWithNavClosure(it) },
                         currentNavigableRoute,
                     )
                     NavigableScreenNavigationDrawerItem(
-                        NavigableScreens.WorkshopGenerator,
+                        NavigableScreens.WorkshopGeneratorScreen,
                         { it -> doNavigateToNavigableRouteWithNavClosure(it) },
                         currentNavigableRoute,
                     )
@@ -123,12 +123,12 @@ internal fun ImprovToolsNavigationDrawer(
                         style = MaterialTheme.typography.titleMedium
                     )
                     NavigableScreenNavigationDrawerItem(
-                        NavigableScreens.Encyclopaedia,
+                        NavigableScreens.EncyclopaediaScreen,
                         { it -> doNavigateToNavigableRouteWithNavClosure(it) },
                         currentNavigableRoute,
                     )
                     NavigableScreenNavigationDrawerItem(
-                        NavigableScreens.TipsAndAdvice,
+                        NavigableScreens.TipsAndAdviceScreen,
                         { it -> doNavigateToNavigableRouteWithNavClosure(it) },
                         currentNavigableRoute,
                     )
@@ -140,12 +140,12 @@ internal fun ImprovToolsNavigationDrawer(
                         style = MaterialTheme.typography.titleMedium
                     )
                     NavigableScreenNavigationDrawerItem(
-                        NavigableScreens.Settings,
+                        NavigableScreens.SettingsScreen,
                         { it -> doNavigateToNavigableRouteWithNavClosure(it) },
                         currentNavigableRoute,
                     )
                     NavigableScreenNavigationDrawerItem(
-                        NavigableScreens.HelpAndAbout,
+                        NavigableScreens.HelpAndAboutScreen,
                         { it -> doNavigateToNavigableRouteWithNavClosure(it) },
                         currentNavigableRoute,
                     )

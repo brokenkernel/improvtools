@@ -27,19 +27,20 @@ import com.brokenkernel.improvtools.application.data.model.NavigableRoute.TipsAn
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute.WorkshopGeneratorRoute
 import kotlinx.serialization.Serializable
 
-
-//
-/*
+/**
+ * A [NavigableRoute] is a destination that can be navigated to. It should display anique inner content.
+ * If somewhere else can display a button to click to get there, it needs a route.
+ *
+ * This is contrast to a [NavigableScreens] which is meta-information about possible locations to visit. The same [NavigableRoute] might have multiple
+ * [NavigableScreens] (for instance, the top level of a page with tabs might have an entry with different info than the entry tab).
+ * It isn't required that every route have a [NavigableScreens] either.
  *
  * Put another way the [NavigableRoute] is "where to go" and [NavigableScreens] is "what am I going to"
  *
- *
  * TODO: currently we lose all "back" state information about the [NavigableRoute] since we implement our own navigation infrastructure.
  * This should be fixed.
- *
  * @see [NavigableScreens]
  */
-
 @Serializable
 internal sealed class NavigableRoute() {
     @Serializable
@@ -81,7 +82,7 @@ internal sealed class NavigableScreens(
     internal val shouldShowExtraMenu: Boolean,
 ) {
     @Immutable
-    internal object SuggestionGenerator : NavigableScreens(
+    internal object SuggestionGeneratorScreen : NavigableScreens(
         titleResource = R.string.suggestions_activity_title,
         contentDescription = R.string.go_to_suggestion_generator,
         icon = Icons.Outlined.Lightbulb,
@@ -90,7 +91,7 @@ internal sealed class NavigableScreens(
     )
 
     @Immutable
-    internal object Settings : NavigableScreens(
+    internal object SettingsScreen : NavigableScreens(
         titleResource = R.string.settings_activity_title,
         contentDescription = R.string.go_to_settings_screen,
         icon = Icons.Outlined.Settings,
@@ -99,7 +100,7 @@ internal sealed class NavigableScreens(
     )
 
     @Immutable
-    internal object Timer : NavigableScreens(
+    internal object TimerScreen : NavigableScreens(
         titleResource = R.string.timer_activity_title,
         contentDescription = R.string.go_to_timer_screen,
         icon = Icons.Outlined.Timer,
@@ -108,7 +109,7 @@ internal sealed class NavigableScreens(
     )
 
     @Immutable
-    internal object HelpAndAbout : NavigableScreens(
+    internal object HelpAndAboutScreen : NavigableScreens(
         titleResource = R.string.navigation_help_and_feedback,
         contentDescription = R.string.go_to_help_and_feedback_screen,
         icon = Icons.Outlined.Info,
@@ -117,7 +118,7 @@ internal sealed class NavigableScreens(
     )
 
     @Immutable
-    internal object WorkshopGenerator : NavigableScreens(
+    internal object WorkshopGeneratorScreen : NavigableScreens(
         titleResource = R.string.navigation_workshop_generator,
         contentDescription = R.string.go_to_workshop_generator_screen,
         icon = Icons.Outlined.Games,
@@ -126,7 +127,7 @@ internal sealed class NavigableScreens(
     )
 
     @Immutable
-    internal object TipsAndAdvice : NavigableScreens(
+    internal object TipsAndAdviceScreen : NavigableScreens(
         titleResource = R.string.navigation_tips_and_advice,
         contentDescription = R.string.go_to_tips_and_advice_screen,
         icon = Icons.Outlined.TipsAndUpdates,
@@ -136,7 +137,7 @@ internal sealed class NavigableScreens(
 
 
     @Immutable
-    internal object Encyclopaedia : NavigableScreens(
+    internal object EncyclopaediaScreen : NavigableScreens(
         titleResource = R.string.navigation_encyclopaedia,
         contentDescription = R.string.go_to_encyclopaedia_screen,
         icon = Icons.Outlined.BookOnline,
@@ -145,7 +146,7 @@ internal sealed class NavigableScreens(
     )
 
     @Immutable
-    internal object GamesPage : NavigableScreens(
+    internal object GamesPageScreen : NavigableScreens(
         titleResource = R.string.navigation_encyclopaedia,
         contentDescription = R.string.go_to_encyclopaedia_screen,
         icon = Icons.Outlined.Games,
@@ -154,7 +155,7 @@ internal sealed class NavigableScreens(
     )
 
     @Immutable
-    internal object PeoplePage : NavigableScreens(
+    internal object PeoplePageScreen : NavigableScreens(
         titleResource = R.string.navigation_encyclopaedia,
         contentDescription = R.string.go_to_encyclopaedia_screen,
         icon = Icons.Outlined.People,
@@ -163,7 +164,7 @@ internal sealed class NavigableScreens(
     )
 
     @Immutable
-    internal object EmotionsPage : NavigableScreens(
+    internal object EmotionsPageScreen : NavigableScreens(
         titleResource = R.string.navigation_encyclopaedia,
         contentDescription = R.string.go_to_encyclopaedia_screen,
         icon = Icons.Outlined.EmojiEmotions,
@@ -172,7 +173,7 @@ internal sealed class NavigableScreens(
     )
 
     @Immutable
-    internal object ThesaurusPage : NavigableScreens(
+    internal object ThesaurusPageScreen : NavigableScreens(
         titleResource = R.string.navigation_encyclopaedia,
         contentDescription = R.string.go_to_encyclopaedia_screen,
         icon = Icons.Filled.Book,
@@ -183,16 +184,16 @@ internal sealed class NavigableScreens(
 
 internal fun routeToScreen(route: NavigableRoute): NavigableScreens {
     return when (route) {
-        EmotionPageRoute -> NavigableScreens.EmotionsPage
-        GamesPageRoute -> NavigableScreens.GamesPage
-        HelpAndAboutRoute -> NavigableScreens.HelpAndAbout
-        PeoplePageRoute -> NavigableScreens.PeoplePage
-        SettingsRoute -> NavigableScreens.Settings
-        SuggestionGeneratorRoute -> NavigableScreens.SuggestionGenerator
-        ThesaurusPageRoute -> NavigableScreens.ThesaurusPage
-        TimerRoute -> NavigableScreens.Timer
-        TipsAndAdviceRoute -> NavigableScreens.TipsAndAdvice
-        WorkshopGeneratorRoute -> NavigableScreens.WorkshopGenerator
+        EmotionPageRoute -> NavigableScreens.EmotionsPageScreen
+        GamesPageRoute -> NavigableScreens.GamesPageScreen
+        HelpAndAboutRoute -> NavigableScreens.HelpAndAboutScreen
+        PeoplePageRoute -> NavigableScreens.PeoplePageScreen
+        SettingsRoute -> NavigableScreens.SettingsScreen
+        SuggestionGeneratorRoute -> NavigableScreens.SuggestionGeneratorScreen
+        ThesaurusPageRoute -> NavigableScreens.ThesaurusPageScreen
+        TimerRoute -> NavigableScreens.TimerScreen
+        TipsAndAdviceRoute -> NavigableScreens.TipsAndAdviceScreen
+        WorkshopGeneratorRoute -> NavigableScreens.WorkshopGeneratorScreen
     }
 }
 
