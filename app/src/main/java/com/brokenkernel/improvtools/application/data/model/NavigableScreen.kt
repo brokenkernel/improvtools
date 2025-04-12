@@ -2,10 +2,13 @@ package com.brokenkernel.improvtools.application.data.model
 
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Book
 import androidx.compose.material.icons.outlined.BookOnline
+import androidx.compose.material.icons.outlined.EmojiEmotions
 import androidx.compose.material.icons.outlined.Games
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Lightbulb
+import androidx.compose.material.icons.outlined.People
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.outlined.Timer
 import androidx.compose.material.icons.outlined.TipsAndUpdates
@@ -23,6 +26,18 @@ import com.brokenkernel.improvtools.application.data.model.NavigableRoute.TimerR
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute.TipsAndAdviceRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute.WorkshopGeneratorRoute
 import kotlinx.serialization.Serializable
+
+
+//
+/*
+ * TODO: the distinction between route and screen is wrong and likely breaks back handling amongst other things
+ * 1. Information about the *route* should be in NavigableRoute and this should be "what is the current page" related information.
+ *
+ * Also, most external references should rely on NavigableRoute rather than NavigableScreens
+ *
+ * Separterly NavigableScreens should really be closer to "scaffold" information. And there should be a mapping from
+ * NavigableRoute -> NavigableScreens (which should likley be renamed to RouteScaffoldInformation or some such).
+ */
 
 @Serializable
 internal sealed class NavigableRoute() {
@@ -133,7 +148,7 @@ internal sealed class NavigableScreens(
     internal object GamesPage : NavigableScreens(
         titleResource = R.string.navigation_encyclopaedia,
         contentDescription = R.string.go_to_encyclopaedia_screen,
-        icon = Icons.Outlined.BookOnline,
+        icon = Icons.Outlined.Games,
         route = GamesPageRoute,
         shouldShowExtraMenu = false,
     )
@@ -142,7 +157,7 @@ internal sealed class NavigableScreens(
     internal object PeoplePage : NavigableScreens(
         titleResource = R.string.navigation_encyclopaedia,
         contentDescription = R.string.go_to_encyclopaedia_screen,
-        icon = Icons.Outlined.BookOnline,
+        icon = Icons.Outlined.People,
         route = PeoplePageRoute,
         shouldShowExtraMenu = false,
     )
@@ -151,7 +166,7 @@ internal sealed class NavigableScreens(
     internal object EmotionsPage : NavigableScreens(
         titleResource = R.string.navigation_encyclopaedia,
         contentDescription = R.string.go_to_encyclopaedia_screen,
-        icon = Icons.Outlined.BookOnline,
+        icon = Icons.Outlined.EmojiEmotions,
         route = EmotionPageRoute,
         shouldShowExtraMenu = false,
     )
@@ -160,7 +175,7 @@ internal sealed class NavigableScreens(
     internal object ThesaurusPage : NavigableScreens(
         titleResource = R.string.navigation_encyclopaedia,
         contentDescription = R.string.go_to_encyclopaedia_screen,
-        icon = Icons.Outlined.BookOnline,
+        icon = Icons.Filled.Book,
         route = ThesaurusPageRoute,
         shouldShowExtraMenu = false,
     )

@@ -2,11 +2,11 @@ package com.brokenkernel.improvtools.application.presentation.view
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
-import com.brokenkernel.improvtools.application.data.model.rememberImprovToolsAppState
 import com.brokenkernel.improvtools.encyclopaedia.presentation.view.encyclopaediaPageDestinations
 import com.brokenkernel.improvtools.settings.presentation.view.SettingsScreen
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.view.SuggestionsScreen
@@ -15,11 +15,14 @@ import com.brokenkernel.improvtools.tipsandadvice.presentation.view.TipsAndAdvic
 import com.brokenkernel.improvtools.workshopgenerator.presentation.view.WorkshopGeneratorScreen
 
 @Composable
-internal fun DrawerNavGraph(currentNavigableScreen: State<NavigableScreens>) {
-    val improvToolsAppState = rememberImprovToolsAppState()
+internal fun DrawerNavGraph(
+    navController: NavHostController,
+    currentNavigableScreen: State<NavigableScreens>,
+    onNavigateToScreen: (NavigableScreens) -> Unit,
+) {
 
     NavHost(
-        navController = improvToolsAppState.navController,
+        navController = navController,
         startDestination = currentNavigableScreen.value.route
     ) {
         composable<NavigableRoute.HelpAndAboutRoute> {
@@ -29,7 +32,9 @@ internal fun DrawerNavGraph(currentNavigableScreen: State<NavigableScreens>) {
             SettingsScreen()
         }
         composable<NavigableRoute.SuggestionGeneratorRoute> {
-            SuggestionsScreen()
+            SuggestionsScreen(
+                onNavigateToScreen = onNavigateToScreen,
+            )
         }
         composable<NavigableRoute.TimerRoute> {
             TimerScreen()
@@ -40,6 +45,8 @@ internal fun DrawerNavGraph(currentNavigableScreen: State<NavigableScreens>) {
         composable<NavigableRoute.WorkshopGeneratorRoute> {
             WorkshopGeneratorScreen()
         }
-        encyclopaediaPageDestinations()
+        encyclopaediaPageDestinations(
+            onNavigateToScreen = onNavigateToScreen,
+        )
     }
 }

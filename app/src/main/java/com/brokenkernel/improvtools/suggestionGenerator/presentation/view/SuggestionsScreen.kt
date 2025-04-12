@@ -38,14 +38,14 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
-import com.brokenkernel.improvtools.application.data.model.rememberImprovToolsAppState
 import com.brokenkernel.improvtools.application.presentation.view.verticalColumnScrollbar
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel.SuggestionScreenViewModel
 
 
 @Composable
 internal fun SuggestionsScreen(
-    viewModel: SuggestionScreenViewModel = hiltViewModel()
+    viewModel: SuggestionScreenViewModel = hiltViewModel(),
+    onNavigateToScreen: (NavigableScreens) -> Unit,
 ) {
 // TODO: add info icon - general
 
@@ -113,7 +113,6 @@ internal fun SuggestionsScreen(
                                 .fillMaxWidth(.3f),
                             textAlign = TextAlign.Center,
 
-//                                .weight(1f),
                             style = MaterialTheme.typography.bodyMedium,
                         )
                         Box(
@@ -138,23 +137,21 @@ internal fun SuggestionsScreen(
                                 )
 
                                 // figure out way to generalise this. also deal with i18n
-//                                if (ideaCategory.title == "Emotion") {
-//                                    Spacer(modifier = Modifier.weight(2f))
-//
-//                                    IconButton(
-//                                        onClick = {
-//                                            appState.navigateTo(NavigableScreens.Encyclopaedia)
-////                                            // todo: avoid the need for _both_ of these
-////                                            appState.navController.navigate(NavigableScreens.EmotionsPage.route)
-//                                        },
-//                                        modifier = Modifier.weight(1f)
-//                                    ) {
-//                                        Icon(
-//                                            Icons.Default.Info,
-//                                            contentDescription = "TODO",
-//                                        )
-//                                    }
-//                                : }
+                                if (ideaCategory.title == "Emotion") {
+                                    Spacer(modifier = Modifier.weight(2f))
+
+                                    IconButton(
+                                        onClick = {
+                                            onNavigateToScreen(NavigableScreens.EmotionsPage)
+                                        },
+                                        modifier = Modifier.weight(1f)
+                                    ) {
+                                        Icon(
+                                            Icons.Default.Info,
+                                            contentDescription = "TODO",
+                                        )
+                                    }
+                                }
                             }
                         }
                     }

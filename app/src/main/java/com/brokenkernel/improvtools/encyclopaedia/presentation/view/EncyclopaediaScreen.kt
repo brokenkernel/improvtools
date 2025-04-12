@@ -1,15 +1,9 @@
 package com.brokenkernel.improvtools.encyclopaedia.presentation.view
 
-import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Book
-import androidx.compose.material.icons.outlined.EmojiEmotions
-import androidx.compose.material.icons.outlined.Games
-import androidx.compose.material.icons.outlined.People
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.SecondaryTabRow
@@ -22,26 +16,25 @@ import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.NavGraphBuilder
-import androidx.navigation.compose.composable
-import com.brokenkernel.improvtools.R
-import com.brokenkernel.improvtools.application.data.model.NavigableRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
-import com.brokenkernel.improvtools.application.data.model.rememberImprovToolsAppState
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-internal fun EncyclopaediaScreen() {
-    val pagerState = rememberPagerState(pageCount = { EncyclopaediaPages.entries.size }, initialPage = 1)
+internal fun EncyclopaediaScreen(
+    onNavigateToScreen: (NavigableScreens) -> Unit,
+    initialTab: EncyclopaediaPages,
+) {
+    val pagerState =
+        rememberPagerState(
+            pageCount = { EncyclopaediaPages.entries.size },
+            initialPage = initialTab.ordinal
+        )
     val selectedTabIndex = remember { derivedStateOf { pagerState.currentPage } }
-    val appState = rememberImprovToolsAppState()
 
     LaunchedEffect(pagerState) {
-        appState.navigateTo(EncyclopaediaPages.entries[pagerState.currentPage].navigableScreen)
+        onNavigateToScreen(EncyclopaediaPages.entries[pagerState.currentPage].navigableScreen)
     }
 
 
@@ -76,10 +69,4 @@ internal fun EncyclopaediaScreen() {
             }
         }
     }
-}
-
-@Preview
-@Composable
-fun PreviewEncyclopaediaScreen() {
-    EncyclopaediaScreen()
 }

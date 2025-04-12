@@ -4,15 +4,15 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.collectAsState
+import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
-import com.brokenkernel.improvtools.application.data.model.rememberImprovToolsAppState
 import com.brokenkernel.improvtools.ui.theme.ImprovToolsTheme
 
 
 @Composable
-internal fun OuterContentForMasterScreen() {
-    val improvToolsState = rememberImprovToolsAppState()
-    val currentNavigableScreen: State<NavigableScreens> = improvToolsState.currentNavigableScreen.collectAsState()
+internal fun OuterContentForMasterScreen(improvToolsState: ImprovToolsAppState) {
+    val currentNavigableScreen: State<NavigableScreens> =
+        improvToolsState.currentNavigableScreenAsState().collectAsState()
 
     ImprovToolsTheme {
         Surface {
@@ -20,7 +20,9 @@ internal fun OuterContentForMasterScreen() {
                 doNavigateToNavigableScreen = { clickedItem: NavigableScreens ->
                     improvToolsState.navigateTo(clickedItem)
                 },
-                currentNavigableScreen = currentNavigableScreen
+                currentNavigableScreen = currentNavigableScreen,
+                drawerState = improvToolsState.drawerState,
+                navController = improvToolsState.navController,
             )
         }
     }

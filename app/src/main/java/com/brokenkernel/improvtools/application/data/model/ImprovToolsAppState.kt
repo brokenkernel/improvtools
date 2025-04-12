@@ -13,17 +13,23 @@ import com.google.firebase.Firebase
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.analytics
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 
 @Stable
 internal class ImprovToolsAppState(
     val drawerState: DrawerState,
     val navController: NavHostController,
-    val currentNavigableScreen: MutableStateFlow<NavigableScreens> = MutableStateFlow(NavigableScreens.SuggestionGenerator),
+    private val currentNavigableScreen: MutableStateFlow<NavigableScreens> = MutableStateFlow(NavigableScreens.SuggestionGenerator),
 ) {
 //    // UI State
 //    val currentDestination: NavDestination?
 //        @Composable get() = navController
 //            .currentBackStackEntryAsState().value?.destination
+
+    fun currentNavigableScreenAsState(): StateFlow<NavigableScreens> {
+        return currentNavigableScreen.asStateFlow()
+    }
 
     fun navigateTo(dest: NavigableScreens) {
         val firebaseBundle = Bundle()

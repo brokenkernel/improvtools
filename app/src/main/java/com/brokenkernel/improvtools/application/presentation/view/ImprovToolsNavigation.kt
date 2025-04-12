@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.DrawerState
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -21,9 +22,9 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
-import com.brokenkernel.improvtools.application.data.model.rememberImprovToolsAppState
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -92,15 +93,15 @@ internal fun ImprovToolsBottomBar(
 internal fun ImprovToolsNavigationDrawer(
     doNavigateToNavigableScreen: (NavigableScreens) -> Unit,
     currentNavigableScreen: State<NavigableScreens>,
+    drawerState: DrawerState,
+    navController: NavHostController,
 ) {
-
-    val improvToolsAppState = rememberImprovToolsAppState()
 
     val scope: CoroutineScope = rememberCoroutineScope()
 
     fun closeNavMenu() {
         scope.launch {
-            improvToolsAppState.drawerState.apply {
+            drawerState.apply {
                 close()
             }
         }
@@ -109,7 +110,7 @@ internal fun ImprovToolsNavigationDrawer(
 
     fun invertNavMenuState() {
         scope.launch {
-            improvToolsAppState.drawerState.apply {
+            drawerState.apply {
                 if (isClosed) open() else close()
             }
         }
@@ -121,7 +122,7 @@ internal fun ImprovToolsNavigationDrawer(
     }
 
     ModalNavigationDrawer(
-        drawerState = improvToolsAppState.drawerState,
+        drawerState = drawerState,
         drawerContent = {
             ModalDrawerSheet {
                 Column(
@@ -203,7 +204,11 @@ internal fun ImprovToolsNavigationDrawer(
             },
             content = {
                 // TODO: replace with event system instead of passing controller??
-                DrawerNavGraph(currentNavigableScreen)
+                DrawerNavGraph(
+                    navController = navController,
+                    currentNavigableScreen = currentNavigableScreen,
+                    onNavigateToScreen = doNavigateToNavigableScreen
+                )
             }
         )
     }

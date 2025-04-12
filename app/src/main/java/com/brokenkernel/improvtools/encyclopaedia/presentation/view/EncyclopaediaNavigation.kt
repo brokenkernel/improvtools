@@ -32,7 +32,7 @@ internal enum class EncyclopaediaPages(
         NavigableScreens.PeoplePage,
         { PeopleTab() },
     ),
-    EmotionPage(
+    EmotionsPage(
         R.string.encyclopaedia_tab_title_emotions,
         Icons.Outlined.EmojiEmotions,
         NavigableScreens.EmotionsPage,
@@ -46,20 +46,20 @@ internal enum class EncyclopaediaPages(
     ),
 }
 
-internal fun NavGraphBuilder.encyclopaediaPageDestinations() {
+internal fun NavGraphBuilder.encyclopaediaPageDestinations(onNavigateToScreen: (NavigableScreens) -> Unit) {
     composable<NavigableRoute.GamesPageRoute> {
-        EncyclopaediaScreen()
+        EncyclopaediaScreen(onNavigateToScreen = onNavigateToScreen, initialTab = EncyclopaediaPages.GamesPage)
     }
 
     composable<NavigableRoute.PeoplePageRoute> {
-        EncyclopaediaScreen()
+        EncyclopaediaScreen(onNavigateToScreen = onNavigateToScreen, initialTab = EncyclopaediaPages.PeoplePage)
     }
 
     composable<NavigableRoute.EmotionPageRoute> {
-        EncyclopaediaScreen()
+        EncyclopaediaScreen(onNavigateToScreen = onNavigateToScreen, initialTab = EncyclopaediaPages.EmotionsPage)
     }
 
     composable<NavigableRoute.ThesaurusPageRoute> {
-        EncyclopaediaScreen()
+        EncyclopaediaScreen(onNavigateToScreen = onNavigateToScreen, initialTab = EncyclopaediaPages.ThesaurusPage)
     }
 }

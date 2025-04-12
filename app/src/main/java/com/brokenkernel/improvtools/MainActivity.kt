@@ -4,8 +4,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import com.brokenkernel.improvtools.application.data.model.rememberImprovToolsAppState
@@ -39,18 +37,11 @@ class MainActivity : ComponentActivity() {
                 setResult(RESULT_OK)
             }
 
-            OuterContentForMasterScreen()
+            // maybe ImprovToolsState, or at least a subset should be passed via LocalContent so it doesn't need to be threaded all over the place
+            OuterContentForMasterScreen(improvToolsState = improvToolsState)
         }
-
 
 
 
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-internal fun PreviewSuggestionPairList() {
-    OuterContentForMasterScreen()
-}
-

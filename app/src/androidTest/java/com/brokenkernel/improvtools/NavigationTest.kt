@@ -29,7 +29,8 @@ class NavigationTest {
     var hiltRule: HiltAndroidRule = HiltAndroidRule(this)
 
     @get:Rule(order = 1)
-    val composeTestRule: AndroidComposeTestRule<ActivityScenarioRule<HiltComponentActitivity>, HiltComponentActitivity> = createAndroidComposeRule<HiltComponentActitivity>()
+    val composeTestRule: AndroidComposeTestRule<ActivityScenarioRule<HiltComponentActitivity>, HiltComponentActitivity> =
+        createAndroidComposeRule<HiltComponentActitivity>()
 
     lateinit var navController: TestNavHostController
 
@@ -40,9 +41,14 @@ class NavigationTest {
             navController = TestNavHostController(LocalContext.current).apply {
                 navigatorProvider.addNavigator(ComposeNavigator())
             }
-            val currentScreenState: MutableState<NavigableScreens.SuggestionGenerator> =
+            val currentScreenState: MutableState<NavigableScreens> =
                 remember { mutableStateOf(NavigableScreens.SuggestionGenerator) }
-            DrawerNavGraph(currentNavigableScreen = currentScreenState)
+            DrawerNavGraph(
+                currentNavigableScreen = currentScreenState,
+                navController = navController,
+                onNavigateToScreen = {
+                    currentScreenState.value = it
+                })
         }
     }
 
