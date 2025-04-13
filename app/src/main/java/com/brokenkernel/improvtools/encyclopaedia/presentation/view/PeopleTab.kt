@@ -5,7 +5,9 @@ import android.icu.text.Collator
 import android.icu.text.SearchIterator.DONE
 import android.icu.text.StringSearch
 import android.icu.util.ULocale
+import android.util.Log
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
@@ -41,6 +43,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.isTraversalGroup
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.traversalIndex
@@ -139,6 +142,7 @@ internal fun PeopleTab() {
                     //
                     PeopleDaatum.entries.sortedWith { s1, s2 -> comparator.compare(s1.personName, s2.personName) }
                         .forEach { it ->
+                            var isListItemInformationExpanded: Boolean by remember { mutableStateOf(false) }
                             val foundText =
                                 if (textFieldState.text.isNotEmpty()) {
                                     // there is probably a better way to handle transformForSearch
@@ -178,7 +182,19 @@ internal fun PeopleTab() {
                                                 )
                                             }
                                         }
-                                    }
+                                    },
+                                    supportingContent = {
+                                        if (isListItemInformationExpanded) {
+                                            Text(it.detailedInformation)
+                                        }
+                                    },
+                                    modifier = Modifier.clickable(
+                                        enabled = true,
+                                        role = Role.Button,
+                                        onClick = {
+                                            isListItemInformationExpanded = !isListItemInformationExpanded
+                                        },
+                                    )
                                 )
                             }
                         }

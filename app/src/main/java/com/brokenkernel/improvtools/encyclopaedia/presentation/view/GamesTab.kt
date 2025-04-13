@@ -141,7 +141,7 @@ internal fun GamesTab() {
                                             GamesDatumTopic.WARMUP -> Icons.Outlined.Games
                                             GamesDatumTopic.FORMAT -> Icons.Outlined.FormatQuote
                                         },
-                                        contentDescription = "Person",
+                                        contentDescription = "Person", // TODO text
                                     )
                                 },
                                 overlineContent = { Text(it.topic.name) },
@@ -154,7 +154,6 @@ internal fun GamesTab() {
                                     enabled = true,
                                     role = Role.Button,
                                     onClick = {
-                                        Log.w("ABC", "I did a thing")
                                         isListItemInformationExpanded = !isListItemInformationExpanded
                                     },
                                 )
