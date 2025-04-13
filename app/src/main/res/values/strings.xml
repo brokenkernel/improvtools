@@ -46,8 +46,6 @@
     <string name="shortcut_timer_disabled_label">Timer (disabled)</string>
     <string name="settings_allow_analytics_cookie_storage">Allow Analytics Cookie Storage</string>
     <string name="navigation_encyclopaedia_category">Encyclopaedia</string>
-    <string name="navigation_encyclopaedia">Encyclopaedia</string>
-    <string name="go_to_encyclopaedia_screen">Go to Encyclopaedia</string>
     <string name="encyclopaedia_plutchiks_wheel_of_emotions">Plutchik\’s Wheel of Emotions</string>
     <string name="encyclopaedia_emotion_wheel">Emotion Wheel</string>
     <string name="encyclopaedia_tab_title_emotions">Emotions</string>
@@ -66,4 +64,12 @@
     <string name="shortcut_encyclopaedia_short_label">Encyclopaedia</string>
     <string name="shortcut_encyclopaedia_long_label">Encyclopaedia</string>
     <string name="shortcut_encyclopaedia_disabled_label">Encyclopaedia (Disabled)</string>
+    <string name="navigation_games">Activities Catalog</string>
+    <string name="go_to_games_screen">Go to Activities Catalog</string>
+    <string name="navigation_people">People</string>
+    <string name="go_to_navigation_people_screen">Go to geople screen</string>
+    <string name="navigation_emotions_reference">Emotions</string>
+    <string name="go_to_emotions_reference_screen">Go to Emotions screen</string>
+    <string name="navigation_thesaurus">Thesaurus</string>
+    <string name="go_to_thesaurus_screen">Go to Thesaurus screen</string>
 </resources>

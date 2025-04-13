@@ -3,7 +3,6 @@ package com.brokenkernel.improvtools.application.data.model
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Book
-import androidx.compose.material.icons.outlined.BookOnline
 import androidx.compose.material.icons.outlined.EmojiEmotions
 import androidx.compose.material.icons.outlined.Games
 import androidx.compose.material.icons.outlined.Info
@@ -137,18 +136,9 @@ internal sealed class NavigableScreens(
 
 
     @Immutable
-    internal object EncyclopaediaScreen : NavigableScreens(
-        titleResource = R.string.navigation_encyclopaedia,
-        contentDescription = R.string.go_to_encyclopaedia_screen,
-        icon = Icons.Outlined.BookOnline,
-        route = GamesPageRoute,
-        shouldShowExtraMenu = false,
-    )
-
-    @Immutable
     internal object GamesPageScreen : NavigableScreens(
-        titleResource = R.string.navigation_encyclopaedia,
-        contentDescription = R.string.go_to_encyclopaedia_screen,
+        titleResource = R.string.navigation_games,
+        contentDescription = R.string.go_to_games_screen,
         icon = Icons.Outlined.Games,
         route = GamesPageRoute,
         shouldShowExtraMenu = false,
@@ -156,8 +146,8 @@ internal sealed class NavigableScreens(
 
     @Immutable
     internal object PeoplePageScreen : NavigableScreens(
-        titleResource = R.string.navigation_encyclopaedia,
-        contentDescription = R.string.go_to_encyclopaedia_screen,
+        titleResource = R.string.navigation_people,
+        contentDescription = R.string.go_to_navigation_people_screen,
         icon = Icons.Outlined.People,
         route = PeoplePageRoute,
         shouldShowExtraMenu = false,
@@ -165,8 +155,8 @@ internal sealed class NavigableScreens(
 
     @Immutable
     internal object EmotionsPageScreen : NavigableScreens(
-        titleResource = R.string.navigation_encyclopaedia,
-        contentDescription = R.string.go_to_encyclopaedia_screen,
+        titleResource = R.string.navigation_emotions_reference,
+        contentDescription = R.string.go_to_emotions_reference_screen,
         icon = Icons.Outlined.EmojiEmotions,
         route = EmotionPageRoute,
         shouldShowExtraMenu = false,
@@ -174,8 +164,8 @@ internal sealed class NavigableScreens(
 
     @Immutable
     internal object ThesaurusPageScreen : NavigableScreens(
-        titleResource = R.string.navigation_encyclopaedia,
-        contentDescription = R.string.go_to_encyclopaedia_screen,
+        titleResource = R.string.navigation_thesaurus,
+        contentDescription = R.string.go_to_thesaurus_screen,
         icon = Icons.Filled.Book,
         route = ThesaurusPageRoute,
         shouldShowExtraMenu = false,

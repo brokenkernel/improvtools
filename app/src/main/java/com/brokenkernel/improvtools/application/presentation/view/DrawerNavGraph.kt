@@ -10,7 +10,6 @@ import com.brokenkernel.improvtools.settings.presentation.view.SettingsScreen
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.view.SuggestionsScreen
 import com.brokenkernel.improvtools.timer.presentation.view.TimerScreen
 import com.brokenkernel.improvtools.tipsandadvice.presentation.view.TipsAndAdviceScreen
-import com.brokenkernel.improvtools.workshopgenerator.presentation.view.WorkshopGeneratorScreen
 
 @Composable
 internal fun DrawerNavGraph(
@@ -39,9 +38,6 @@ internal fun DrawerNavGraph(
         }
         composable<NavigableRoute.TipsAndAdviceRoute> {
             TipsAndAdviceScreen()
-        }
-        composable<NavigableRoute.WorkshopGeneratorRoute> {
-            WorkshopGeneratorScreen()
         }
         encyclopaediaPageDestinations()
     }

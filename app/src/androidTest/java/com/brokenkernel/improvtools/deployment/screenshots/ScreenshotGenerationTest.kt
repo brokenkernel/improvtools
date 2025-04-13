@@ -101,8 +101,9 @@ internal class ScreenshotGeneralPerNavigableScreenTest(
                 arrayOf(NavigableScreens.SuggestionGeneratorScreen),
                 arrayOf(NavigableScreens.TimerScreen),
                 arrayOf(NavigableScreens.TipsAndAdviceScreen),
-                arrayOf(NavigableScreens.WorkshopGeneratorScreen),
-                arrayOf(NavigableScreens.EncyclopaediaScreen),
+                arrayOf(NavigableScreens.PeoplePageScreen),
+                arrayOf(NavigableScreens.GamesPageScreen),
+                arrayOf(NavigableScreens.EmotionsPageScreen),
             )
         }
     }

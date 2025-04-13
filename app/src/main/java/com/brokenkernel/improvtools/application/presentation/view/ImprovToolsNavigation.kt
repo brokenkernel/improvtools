@@ -113,11 +113,6 @@ internal fun ImprovToolsNavigationDrawer(
                         { it -> doNavigateToNavigableRouteWithNavClosure(it) },
                         currentBackStackEntryAsState?.destination,
                     )
-                    NavigableScreenNavigationDrawerItem(
-                        NavigableScreens.WorkshopGeneratorScreen,
-                        { it -> doNavigateToNavigableRouteWithNavClosure(it) },
-                        currentBackStackEntryAsState?.destination,
-                    )
 
                     HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
 
@@ -127,7 +122,22 @@ internal fun ImprovToolsNavigationDrawer(
                         style = MaterialTheme.typography.titleMedium
                     )
                     NavigableScreenNavigationDrawerItem(
-                        NavigableScreens.EncyclopaediaScreen,
+                        NavigableScreens.GamesPageScreen,
+                        { it -> doNavigateToNavigableRouteWithNavClosure(it) },
+                        currentBackStackEntryAsState?.destination,
+                    )
+                    NavigableScreenNavigationDrawerItem(
+                        NavigableScreens.PeoplePageScreen,
+                        { it -> doNavigateToNavigableRouteWithNavClosure(it) },
+                        currentBackStackEntryAsState?.destination,
+                    )
+                    NavigableScreenNavigationDrawerItem(
+                        NavigableScreens.EmotionsPageScreen,
+                        { it -> doNavigateToNavigableRouteWithNavClosure(it) },
+                        currentBackStackEntryAsState?.destination,
+                    )
+                    NavigableScreenNavigationDrawerItem(
+                        NavigableScreens.ThesaurusPageScreen,
                         { it -> doNavigateToNavigableRouteWithNavClosure(it) },
                         currentBackStackEntryAsState?.destination,
                     )
