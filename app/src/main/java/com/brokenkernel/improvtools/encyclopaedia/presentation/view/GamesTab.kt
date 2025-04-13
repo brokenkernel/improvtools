@@ -37,6 +37,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.fastAny
 import com.brokenkernel.improvtools.application.presentation.view.verticalColumnScrollbar
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GamesDatum
+import com.brokenkernel.improvtools.encyclopaedia.data.model.GamesDatumTopic
 
 
 private fun String.transformForSearch(): String {
@@ -45,13 +46,14 @@ private fun String.transformForSearch(): String {
 
 private fun doesMatch(search: String, gameData: GamesDatum): Boolean {
     return gameData.gameName.transformForSearch().contains(search) or
-            gameData.topic.transformForSearch().contains(search) or
+            gameData.topic.name.transformForSearch().contains(search) or
             gameData.unpublishedMatches.map { it -> it.transformForSearch() }.fastAny { it -> it.contains(search) }
 }
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 internal fun GamesTab() {
+    // TODO: split butotn on top to limit by topics
     var searchBarExpandedState by rememberSaveable { mutableStateOf(false) }
     val scrollState = rememberScrollState()
     val textFieldState = rememberTextFieldState()
@@ -105,16 +107,14 @@ internal fun GamesTab() {
                             leadingContent = {
                                 Icon(
                                     when (it.topic) {
-                                        // TODO: maybe put into `it` or make topic enum?
-                                        "Warmup" -> Icons.Filled.Games
-                                        "Format" -> Icons.Outlined.FormatQuote
-                                        "Game" -> Icons.Outlined.Games
-                                        else -> Icons.Outlined.Games
+                                        GamesDatumTopic.GAME -> Icons.Filled.Games
+                                        GamesDatumTopic.WARMUP -> Icons.Outlined.Games
+                                        GamesDatumTopic.FORMAT -> Icons.Outlined.FormatQuote
                                     },
                                     contentDescription = "Person",
                                 )
                             },
-                            overlineContent = { Text(it.topic) },
+                            overlineContent = { Text(it.topic.name) },
                             supportingContent = {
                                 if (isListItemInformationExpanded) {
                                     Text(it.detailedInformation)
