@@ -11,8 +11,13 @@
         </dist:delivery>
     </dist:module>
 
-    <!--        -->
-    <!--        -->
+    <uses-feature
+        android:name="android.hardware.faketouch"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
+
     <application
         android:name=".ImprovToolsApplication"
         android:allowBackup="true"
