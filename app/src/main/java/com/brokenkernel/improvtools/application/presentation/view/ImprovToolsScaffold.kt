@@ -21,7 +21,8 @@ import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffo
 import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScope
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.State
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -51,7 +52,7 @@ internal fun wrongfullyFindRouteByNavDestination(dest: NavDestination?): Navigab
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun ImprovToolsScaffold(
-    currentBackStackEntryAsState: State<NavBackStackEntry?>,
+    currentBackStackEntry: NavBackStackEntry?,
     doNavigateToNavigableRoute: (NavigableRoute) -> Unit,
     navMenuButtonPressedCallback: () -> Unit,
     content: @Composable (() -> Unit),
@@ -70,90 +71,83 @@ internal fun ImprovToolsScaffold(
             label = {
                 Text(stringResource(it.titleResource))
             },
-            selected = (currentBackStackEntryAsState.value?.destination?.hasRoute(it.route::class) == true),
+            selected = (currentBackStackEntry?.destination?.hasRoute(it.route::class) == true),
             onClick = {
                 doNavigateToNavigableRoute(it.route)
             }
         )
     }
 
+    val currentNavigableRoute = wrongfullyFindRouteByNavDestination(currentBackStackEntry?.destination)
 
-    NavigationSuiteScaffold(
-        navigationSuiteItems = {
-            simpleNavigableScreen(NavigableScreens.SuggestionGeneratorScreen)
-            simpleNavigableScreen(NavigableScreens.TimerScreen)
-            simpleNavigableScreen(NavigableScreens.EncyclopaediaScreen)
-        },
-    ) {
-        val currentNavigableRoute = wrongfullyFindRouteByNavDestination(currentBackStackEntryAsState.value?.destination)
-        Scaffold(
-            topBar = {
-                CenterAlignedTopAppBar(
-                    colors = TopAppBarDefaults.topAppBarColors(
-                        containerColor = MaterialTheme.colorScheme.primaryContainer,
-                        titleContentColor = MaterialTheme.colorScheme.primary,
+
+    Scaffold(
+        topBar = {
+            CenterAlignedTopAppBar(
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.primaryContainer,
+                    titleContentColor = MaterialTheme.colorScheme.primary,
+                ),
+                title = { Text(stringResource(routeToScreen(currentNavigableRoute).titleResource)) },
+                scrollBehavior = TopAppBarDefaults
+                    .exitUntilCollapsedScrollBehavior(
+                        rememberTopAppBarState()
                     ),
-                    title = { Text(stringResource(routeToScreen(currentNavigableRoute).titleResource)) },
-                    scrollBehavior = TopAppBarDefaults
-                        .exitUntilCollapsedScrollBehavior(
-                            rememberTopAppBarState()
-                        ),
-                    navigationIcon = {
-                        IconButton(onClick = navMenuButtonPressedCallback) {
+                navigationIcon = {
+                    IconButton(onClick = navMenuButtonPressedCallback) {
+                        Icon(
+                            imageVector = Icons.Default.Menu,
+                            contentDescription = stringResource(R.string.navigation_app_menu)
+                        )
+                    }
+                },
+                actions = {
+                    IconButton(
+                        onClick = {
+                            moreMenuExpandedState = !moreMenuExpandedState
+                        },
+                        enabled = routeToScreen(currentNavigableRoute).shouldShowExtraMenu,
+                    ) {
+                        if (routeToScreen(currentNavigableRoute).shouldShowExtraMenu) {
                             Icon(
-                                imageVector = Icons.Default.Menu,
-                                contentDescription = stringResource(R.string.navigation_app_menu)
+                                imageVector = Icons.Filled.MoreVert,
+                                contentDescription = stringResource(R.string.navigation_open_screen_specific_menu)
                             )
-                        }
-                    },
-                    actions = {
-                        IconButton(
-                            onClick = {
-                                moreMenuExpandedState = !moreMenuExpandedState
-                            },
-                            enabled = routeToScreen(currentNavigableRoute).shouldShowExtraMenu,
-                        ) {
-                            if (routeToScreen(currentNavigableRoute).shouldShowExtraMenu) {
-                                Icon(
-                                    imageVector = Icons.Filled.MoreVert,
-                                    contentDescription = stringResource(R.string.navigation_open_screen_specific_menu)
-                                )
-                                when (routeToScreen(currentNavigableRoute)) {
-                                    NavigableScreens.SuggestionGeneratorScreen -> SuggestionsScreenMenu(
-                                        expanded = moreMenuExpandedState,
-                                        onDismiss = {
-                                            moreMenuExpandedState = !moreMenuExpandedState
-                                        }
-                                    )
-
-                                    NavigableScreens.TipsAndAdviceScreen -> TipsAndAdviceMenu(
-                                        expanded = moreMenuExpandedState,
-                                        onDismiss = {
-                                            moreMenuExpandedState = !moreMenuExpandedState
-                                        }
-                                    )
-
-                                    else -> {
-                                        // There is no menu, so we're good.
+                            when (routeToScreen(currentNavigableRoute)) {
+                                NavigableScreens.SuggestionGeneratorScreen -> SuggestionsScreenMenu(
+                                    expanded = moreMenuExpandedState,
+                                    onDismiss = {
+                                        moreMenuExpandedState = !moreMenuExpandedState
                                     }
+                                )
+
+                                NavigableScreens.TipsAndAdviceScreen -> TipsAndAdviceMenu(
+                                    expanded = moreMenuExpandedState,
+                                    onDismiss = {
+                                        moreMenuExpandedState = !moreMenuExpandedState
+                                    }
+                                )
+
+                                else -> {
+                                    // There is no menu, so we're good.
                                 }
                             }
-
                         }
-                    },
-                )
-            },
-            snackbarHost = {
-                SnackbarHost(hostState = snackbarHostState)
-            },
-        ) { innerPadding ->
-            Surface(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(innerPadding),
-                content = content,
+
+                    }
+                },
             )
-        }
+        },
+        snackbarHost = {
+            SnackbarHost(hostState = snackbarHostState)
+        },
+    ) { innerPadding ->
+        Surface(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding),
+            content = content,
+        )
     }
 
 }

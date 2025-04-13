@@ -15,7 +15,6 @@ import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.NavigationDrawerItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.State
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -55,7 +54,7 @@ private fun NavigableScreenNavigationDrawerItem(
 @Composable
 internal fun ImprovToolsNavigationDrawer(
     doNavigateToNavigableRoute: (NavigableRoute) -> Unit,
-    currentBackStackEntryAsState: State<NavBackStackEntry?>,
+    currentBackStackEntryAsState: NavBackStackEntry?,
     drawerState: DrawerState,
     navController: NavHostController,
     initialRoute: NavigableRoute,
@@ -107,17 +106,17 @@ internal fun ImprovToolsNavigationDrawer(
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.SuggestionGeneratorScreen,
                         { it -> doNavigateToNavigableRouteWithNavClosure(it) },
-                        currentBackStackEntryAsState.value?.destination,
+                        currentBackStackEntryAsState?.destination,
                     )
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.TimerScreen,
                         { it -> doNavigateToNavigableRouteWithNavClosure(it) },
-                        currentBackStackEntryAsState.value?.destination,
+                        currentBackStackEntryAsState?.destination,
                     )
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.WorkshopGeneratorScreen,
                         { it -> doNavigateToNavigableRouteWithNavClosure(it) },
-                        currentBackStackEntryAsState.value?.destination,
+                        currentBackStackEntryAsState?.destination,
                     )
 
                     HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
@@ -130,12 +129,12 @@ internal fun ImprovToolsNavigationDrawer(
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.EncyclopaediaScreen,
                         { it -> doNavigateToNavigableRouteWithNavClosure(it) },
-                        currentBackStackEntryAsState.value?.destination,
+                        currentBackStackEntryAsState?.destination,
                     )
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.TipsAndAdviceScreen,
                         { it -> doNavigateToNavigableRouteWithNavClosure(it) },
-                        currentBackStackEntryAsState.value?.destination,
+                        currentBackStackEntryAsState?.destination,
                     )
 
                     HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
@@ -147,12 +146,12 @@ internal fun ImprovToolsNavigationDrawer(
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.SettingsScreen,
                         { it -> doNavigateToNavigableRouteWithNavClosure(it) },
-                        currentBackStackEntryAsState.value?.destination,
+                        currentBackStackEntryAsState?.destination,
                     )
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.HelpAndAboutScreen,
                         { it -> doNavigateToNavigableRouteWithNavClosure(it) },
-                        currentBackStackEntryAsState.value?.destination,
+                        currentBackStackEntryAsState?.destination,
                     )
                     Spacer(Modifier.height(12.dp))
                 }
@@ -160,7 +159,7 @@ internal fun ImprovToolsNavigationDrawer(
         },
     ) {
         ImprovToolsScaffold(
-            currentBackStackEntryAsState = currentBackStackEntryAsState,
+            currentBackStackEntry = currentBackStackEntryAsState,
             doNavigateToNavigableRoute = { route -> doNavigateToNavigableRouteWithNavClosure(route) },
             navMenuButtonPressedCallback = {
                 invertNavMenuState()
