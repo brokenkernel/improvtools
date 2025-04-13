@@ -5,6 +5,7 @@ import android.icu.text.Collator
 import android.icu.text.SearchIterator.DONE
 import android.icu.text.StringSearch
 import android.icu.util.ULocale
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
@@ -20,6 +21,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.MultiChoiceSegmentedButtonRow
+import androidx.compose.material3.OutlinedIconButton
 import androidx.compose.material3.SearchBar
 import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.material3.SegmentedButton
@@ -35,6 +37,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -162,11 +165,13 @@ internal fun PeopleTab() {
                                     trailingContent = {
                                         if (it.wikipediaLink != null) {
                                             val context = LocalContext.current
-                                            IconButton(onClick = {
-                                                // webview.setWebViewClient(new WebViewClient());
-                                                val browserIntent = Intent(Intent.ACTION_VIEW, it.wikipediaLink);
-                                                context.startActivity(browserIntent)
-                                            }) {
+                                            OutlinedIconButton(
+                                                onClick = {
+                                                    // webview.setWebViewClient(new WebViewClient());
+                                                    val browserIntent = Intent(Intent.ACTION_VIEW, it.wikipediaLink);
+                                                    context.startActivity(browserIntent)
+                                                },
+                                            ) {
                                                 Icon(
                                                     painterResource(R.drawable.logo_wikipedia),
                                                     contentDescription = stringResource(R.string.wikipedia),
