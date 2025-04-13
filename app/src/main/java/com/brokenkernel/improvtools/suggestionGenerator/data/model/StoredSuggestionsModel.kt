@@ -1,5 +1,9 @@
 package com.brokenkernel.improvtools.suggestionGenerator.data.model
 
+import android.icu.text.Collator
+import android.icu.util.ULocale
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalConfiguration
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -14,7 +18,6 @@ internal data class IdeaCategory(
 ) {
     internal fun titleWithCount(): String {
         return "${this.title} (${ideas.size})"
-
     }
 }
 

@@ -1,5 +1,7 @@
 package com.brokenkernel.improvtools.encyclopaedia.presentation.view
 
+import android.icu.text.Collator
+import android.icu.util.ULocale
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
@@ -26,6 +28,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.isTraversalGroup
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.traversalIndex
+import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.dp
 import com.brokenkernel.improvtools.application.presentation.view.verticalColumnScrollbar
 import com.brokenkernel.improvtools.encyclopaedia.data.model.PeopleDaatum
@@ -69,7 +72,6 @@ internal fun PeopleTab() {
                             contentDescription = "Search"
                         )
                     },
-
 //                    trailingIcon = {
 //                        Icon(
 //                            Icons.Default.UnfoldMoreDouble,
@@ -83,33 +85,35 @@ internal fun PeopleTab() {
             modifier = Modifier.align(Alignment.TopCenter).semantics { traversalIndex = 0f },
             windowInsets = WindowInsets(top = 0.dp),
         ) {
+            val languageTag = Locale.current.toLanguageTag()
+            val fullCollationTag = "$languageTag@collation=phonebook"
+            val ulocale = ULocale(fullCollationTag)
+            val collator = Collator.getInstance(ulocale)
+            val comparator: Comparator<String> = Comparator { s1, s2 ->
+                collator.compare(s1, s2)
+            }
+
             Column(
                 modifier = Modifier.verticalColumnScrollbar(scrollState)
                     .verticalScroll(scrollState)
 
             ) {
                 //
-                PeopleDaatum.entries.sortedBy { it.personName }.forEach { it ->
-                    if (doesMatch(textFieldState.text.toString().transformForSearch(), it)) {
-                        ListItem(
-                            headlineContent = { Text(it.personName) },
-                            leadingContent = {
-                                Icon(
-                                    Icons.Outlined.Person,
-                                    contentDescription = "Person",
-                                )
-                            },
-                            trailingContent = { Text(it.knownFor) }
-                        )
+                PeopleDaatum.entries.sortedWith { s1, s2 -> comparator.compare(s1.personName, s2.personName) }
+                    .forEach { it ->
+                        if (doesMatch(textFieldState.text.toString().transformForSearch(), it)) {
+                            ListItem(
+                                headlineContent = { Text(it.personName) },
+                                leadingContent = {
+                                    Icon(
+                                        Icons.Outlined.Person,
+                                        contentDescription = "Person",
+                                    )
+                                },
+                                trailingContent = { Text(it.knownFor) }
+                            )
+                        }
                     }
-                }
-//                ListItem(
-//                    headlineContent = { Text("heading") },
-//                    supportingContent = { Text("supporting") },
-//                    leadingContent = { Text("leading") },
-//                    overlineContent = { Text("overline") },
-//                    trailingContent = { Text("trailing") },
-//                )
             }
         }
     }
