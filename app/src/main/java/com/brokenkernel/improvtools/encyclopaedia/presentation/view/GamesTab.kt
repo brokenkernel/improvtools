@@ -18,15 +18,20 @@ import androidx.compose.material.icons.outlined.Games
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItem
+import androidx.compose.material3.MultiChoiceSegmentedButtonRow
 import androidx.compose.material3.SearchBar
 import androidx.compose.material3.SearchBarDefaults
+import androidx.compose.material3.SegmentedButton
+import androidx.compose.material3.SegmentedButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.Role
@@ -46,40 +51,60 @@ private fun String.transformForSearch(): String {
 
 private fun doesMatch(search: String, gameData: GamesDatum): Boolean {
     return gameData.gameName.transformForSearch().contains(search) or
-            gameData.topic.name.transformForSearch().contains(search) or
             gameData.unpublishedMatches.map { it -> it.transformForSearch() }.fastAny { it -> it.contains(search) }
 }
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 internal fun GamesTab() {
-    // TODO: split butotn on top to limit by topics
+
     var searchBarExpandedState by rememberSaveable { mutableStateOf(false) }
     val scrollState = rememberScrollState()
     val textFieldState = rememberTextFieldState()
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .semantics { isTraversalGroup = true }) {
-        SearchBar(
-            inputField = {
-                SearchBarDefaults.InputField(
-                    query = textFieldState.text.toString(),
-                    onQueryChange = { it ->
-                        textFieldState.edit { replace(0, length, it) }
+    Column {
+        // TODO: figure out how to deal with dynamic size and derive from size of enum
+        val isSegementedButtonChecked: SnapshotStateList<Boolean> = remember { mutableStateListOf(true, true, true) }
+
+        MultiChoiceSegmentedButtonRow {
+            // TODO: i18n
+            // TODO: Respect the button
+            GamesDatumTopic.entries.forEach { topic ->
+                SegmentedButton(
+                    onCheckedChange = {
+                        isSegementedButtonChecked[topic.ordinal] = !isSegementedButtonChecked[topic.ordinal]
                     },
-                    onSearch = {
-                        searchBarExpandedState = false
-                    },
-                    expanded = searchBarExpandedState,
-                    onExpandedChange = { searchBarExpandedState != searchBarExpandedState },
-                    placeholder = { Text("Search") },
-                    leadingIcon = {
-                        Icon(
-                            Icons.Default.Search,
-                            contentDescription = "Search"
-                        )
-                    },
+                    checked = isSegementedButtonChecked[topic.ordinal],
+                    shape = SegmentedButtonDefaults.itemShape(
+                        index = topic.ordinal,
+                        count = GamesDatumTopic.entries.size,
+                    ),
+                    label = { Text(topic.name) },
+                )
+            }
+        }
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .semantics { isTraversalGroup = true }) {
+            SearchBar(
+                inputField = {
+                    SearchBarDefaults.InputField(
+                        query = textFieldState.text.toString(),
+                        onQueryChange = { it ->
+                            textFieldState.edit { replace(0, length, it) }
+                        },
+                        onSearch = {
+                            searchBarExpandedState = false
+                        },
+                        expanded = searchBarExpandedState,
+                        onExpandedChange = { searchBarExpandedState != searchBarExpandedState },
+                        placeholder = { Text("Search") },
+                        leadingIcon = {
+                            Icon(
+                                Icons.Default.Search,
+                                contentDescription = "Search"
+                            )
+                        },
 
 //                    trailingIcon = {
 //                        Icon(
@@ -87,50 +112,56 @@ internal fun GamesTab() {
 //                            contentDescription = "Search"
 //                        )
 //                    },
-                )
-            },
-            expanded = true,
-            onExpandedChange = { it -> searchBarExpandedState = it },
-            modifier = Modifier.align(Alignment.TopCenter).semantics { traversalIndex = 0f },
-            windowInsets = WindowInsets(top = 0.dp),
-        ) {
-            Column(
-                modifier = Modifier.verticalColumnScrollbar(scrollState)
-                    .verticalScroll(scrollState)
-
+                    )
+                },
+                expanded = true,
+                onExpandedChange = { it -> searchBarExpandedState = it },
+                modifier = Modifier
+                    .align(Alignment.TopCenter)
+                    .semantics { traversalIndex = 0f },
+                windowInsets = WindowInsets(top = 0.dp),
             ) {
-                GamesDatum.entries.sortedBy { it.gameName }.forEach { it: GamesDatum ->
-                    var isListItemInformationExpanded: Boolean by remember { mutableStateOf(false) }
-                    if (doesMatch(textFieldState.text.toString().transformForSearch(), it)) {
-                        ListItem(
-                            headlineContent = { Text(it.gameName) },
-                            leadingContent = {
-                                Icon(
-                                    when (it.topic) {
-                                        GamesDatumTopic.GAME -> Icons.Filled.Games
-                                        GamesDatumTopic.WARMUP -> Icons.Outlined.Games
-                                        GamesDatumTopic.FORMAT -> Icons.Outlined.FormatQuote
-                                    },
-                                    contentDescription = "Person",
-                                )
-                            },
-                            overlineContent = { Text(it.topic.name) },
-                            supportingContent = {
-                                if (isListItemInformationExpanded) {
-                                    Text(it.detailedInformation)
-                                }
-                            },
-                            modifier = Modifier.clickable(
-                                enabled = true,
-                                role = Role.Button,
-                                onClick = {
-                                    Log.w("ABC", "I did a thing")
-                                    isListItemInformationExpanded = !isListItemInformationExpanded
-                                },
+                Column(
+                    modifier = Modifier
+                        .verticalColumnScrollbar(scrollState)
+                        .verticalScroll(scrollState)
+
+                ) {
+                    GamesDatum.entries.sortedBy { it.gameName }.forEach { it: GamesDatum ->
+                        var isListItemInformationExpanded: Boolean by remember { mutableStateOf(false) }
+                        if (isSegementedButtonChecked[it.topic.ordinal] && doesMatch(
+                                textFieldState.text.toString().transformForSearch(), it
                             )
-                        )
+                        ) {
+                            ListItem(
+                                headlineContent = { Text(it.gameName) },
+                                leadingContent = {
+                                    Icon(
+                                        when (it.topic) {
+                                            GamesDatumTopic.GAME -> Icons.Filled.Games
+                                            GamesDatumTopic.WARMUP -> Icons.Outlined.Games
+                                            GamesDatumTopic.FORMAT -> Icons.Outlined.FormatQuote
+                                        },
+                                        contentDescription = "Person",
+                                    )
+                                },
+                                overlineContent = { Text(it.topic.name) },
+                                supportingContent = {
+                                    if (isListItemInformationExpanded) {
+                                        Text(it.detailedInformation)
+                                    }
+                                },
+                                modifier = Modifier.clickable(
+                                    enabled = true,
+                                    role = Role.Button,
+                                    onClick = {
+                                        Log.w("ABC", "I did a thing")
+                                        isListItemInformationExpanded = !isListItemInformationExpanded
+                                    },
+                                )
+                            )
+                        }
                     }
-                }
 //                ListItem(
 //                    headlineContent = { Text("heading") },
 //                    supportingContent = { Text("supporting") },
@@ -138,6 +169,7 @@ internal fun GamesTab() {
 //                    overlineContent = { Text("overline") },
 //                    trailingContent = { Text("trailing") },
 //                )
+                }
             }
         }
     }

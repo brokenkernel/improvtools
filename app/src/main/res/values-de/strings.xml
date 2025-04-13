@@ -6,9 +6,9 @@
 
   <string name="suggestions_activity_title">Vorschlagsgenerator</string>
 
-  <string name="suggestions_title_category">Kategorie</string>
+<!--  <string name="suggestions_title_category">Kategorie</string>-->
 
-  <string name="suggestions_audience_idea">Zielgruppe</string>
+<!--  <string name="suggestions_audience_idea">Zielgruppe</string>-->
 
   <string name="suggestions_reset_all">Alles zurücksetzen</string>
 

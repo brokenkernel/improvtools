@@ -141,7 +141,7 @@ internal sealed class NavigableScreens(
         titleResource = R.string.navigation_encyclopaedia,
         contentDescription = R.string.go_to_encyclopaedia_screen,
         icon = Icons.Outlined.BookOnline,
-        route = EmotionPageRoute,
+        route = GamesPageRoute,
         shouldShowExtraMenu = false,
     )
 
