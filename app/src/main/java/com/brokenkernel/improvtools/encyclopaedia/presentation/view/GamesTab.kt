@@ -67,7 +67,6 @@ internal fun GamesTab() {
 
         MultiChoiceSegmentedButtonRow {
             // TODO: i18n
-            // TODO: Respect the button
             GamesDatumTopic.entries.forEach { topic ->
                 SegmentedButton(
                     onCheckedChange = {
