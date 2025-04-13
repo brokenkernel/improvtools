@@ -42,18 +42,18 @@ internal enum class EncyclopaediaPages(
 
 internal fun NavGraphBuilder.encyclopaediaPageDestinations() {
     composable<NavigableRoute.GamesPageRoute> {
-        EncyclopaediaScreen(initialTab = EncyclopaediaPages.GamesPage)
+        GamesTab()
     }
 
     composable<NavigableRoute.PeoplePageRoute> {
-        EncyclopaediaScreen(initialTab = EncyclopaediaPages.PeoplePage)
+        PeopleTab()
     }
 
     composable<NavigableRoute.EmotionPageRoute> {
-        EncyclopaediaScreen(initialTab = EncyclopaediaPages.EmotionsPage)
+        EmotionTab()
     }
 
     composable<NavigableRoute.ThesaurusPageRoute> {
-        EncyclopaediaScreen(initialTab = EncyclopaediaPages.ThesaurusPage)
+        ThesaurusTab()
     }
 }
