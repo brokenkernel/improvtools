@@ -154,13 +154,13 @@ internal fun PeopleTab() {
                             )
                         }
                     }
-                ListItem(
-                    headlineContent = { Text("headline") },
-                    leadingContent = { Text("leading") },
-                    trailingContent = { Text("trailing") },
-                    supportingContent = { Text("supporting") },
-                    overlineContent = { Text("overline") },
-                )
+//                ListItem(
+//                    headlineContent = { Text("headline") },
+//                    leadingContent = { Text("leading") },
+//                    trailingContent = { Text("trailing") },
+//                    supportingContent = { Text("supporting") },
+//                    overlineContent = { Text("overline") },
+//                )
             }
         }
     }
