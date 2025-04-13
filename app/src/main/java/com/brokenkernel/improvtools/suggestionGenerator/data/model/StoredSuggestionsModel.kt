@@ -7,7 +7,9 @@ internal data class IdeaItem(val idea: String)
 
 @Serializable
 internal data class IdeaCategory(
-    val title: String,
+    private val title: String,
+    // perhaps there is a better or more generic way, but this is better than checking the title.
+    val showLinkToEmotion: Boolean = false,
     val ideas: Set<IdeaItem>,
 ) {
     internal fun titleWithCount(): String {

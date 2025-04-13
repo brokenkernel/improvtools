@@ -136,8 +136,7 @@ internal fun SuggestionsScreen(
                                     modifier = Modifier.weight(1f)
                                 )
 
-                                // figure out way to generalise this. also deal with i18n
-                                if (ideaCategory.title == "Emotion") {
+                                if (ideaCategory.showLinkToEmotion) {
                                     Spacer(modifier = Modifier.weight(2f))
 
                                     IconButton(

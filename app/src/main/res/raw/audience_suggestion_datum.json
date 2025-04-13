@@ -59,6 +59,7 @@
     },
     {
       "title": "Emotion",
+      "showLinkToEmotion": true,
       "ideas": [
         {"idea": "Accepting"},
         {"idea": "Accepting"},
