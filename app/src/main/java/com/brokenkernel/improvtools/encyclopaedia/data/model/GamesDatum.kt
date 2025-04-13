@@ -2,15 +2,16 @@ package com.brokenkernel.improvtools.encyclopaedia.data.model
 
 import androidx.annotation.RestrictTo
 
-/**
- * @param unpublishedMatches This is a set of strings which will match but are not shown to the user. Useful for "3" -> "Three" or similar
- */
 
 internal enum class GamesDatumTopic {
     GAME,
     WARMUP,
     FORMAT,
 }
+
+/**
+ * @param unpublishedMatches This is a set of strings which will match but are not shown to the user Useful for "3" -> "Three" or similar
+ */
 @RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
 internal enum class GamesDatum(
     val gameName: String,
@@ -48,5 +49,6 @@ internal enum class GamesDatum(
             |This scene is then replayed twice. The first time every choice
             | works out with the best possible result,
             | in the second, everything ends up going the worst way you can imagine.
-        """.trimMargin().replace("\n", "")),
+        """.trimMargin().replace("\n", "")
+    ),
 }
