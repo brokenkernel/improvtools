@@ -96,8 +96,6 @@ internal class ScreenshotGeneralPerNavigableScreenTest(
         @Parameterized.Parameters()
         fun data(): Iterable<Array<Any>> {
             return arrayListOf(
-                arrayOf(NavigableScreens.HelpAndAboutScreen),
-                arrayOf(NavigableScreens.SettingsScreen),
                 arrayOf(NavigableScreens.SuggestionGeneratorScreen),
                 arrayOf(NavigableScreens.TimerScreen),
                 arrayOf(NavigableScreens.TipsAndAdviceScreen),

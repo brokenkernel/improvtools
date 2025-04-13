@@ -184,6 +184,11 @@ platform :android do
     UI.header "Finished INTERNAL deploy for #{current_build_number}"
   end
 
+  desc "Changelogs Only"
+  lane :show_changelog_from_git_commits do
+    changelog_from_git_commits
+  end
+
 
   desc "Full Play Store Deployment"
   lane :playstore_fully_deployment do
