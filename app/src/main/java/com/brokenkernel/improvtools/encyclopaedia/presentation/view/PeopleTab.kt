@@ -1,6 +1,8 @@
 package com.brokenkernel.improvtools.encyclopaedia.presentation.view
 
 import android.icu.text.Collator
+import android.icu.text.SearchIterator.DONE
+import android.icu.text.StringSearch
 import android.icu.util.ULocale
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -32,14 +34,11 @@ import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.dp
 import com.brokenkernel.improvtools.application.presentation.view.verticalColumnScrollbar
 import com.brokenkernel.improvtools.encyclopaedia.data.model.PeopleDaatum
+import java.text.StringCharacterIterator
+
 
 private fun String.transformForSearch(): String {
     return this.lowercase().filterNot { it.isWhitespace() }
-}
-
-private fun doesMatch(search: String, peopleData: PeopleDaatum): Boolean {
-    return peopleData.personName.transformForSearch().contains(search) or
-            peopleData.knownFor.transformForSearch().contains(search)
 }
 
 // TODO: sort, search, filter by name
@@ -82,7 +81,9 @@ internal fun PeopleTab() {
             },
             expanded = true,
             onExpandedChange = { it -> searchBarExpandedState = it },
-            modifier = Modifier.align(Alignment.TopCenter).semantics { traversalIndex = 0f },
+            modifier = Modifier
+                .align(Alignment.TopCenter)
+                .semantics { traversalIndex = 0f },
             windowInsets = WindowInsets(top = 0.dp),
         ) {
             val languageTag = Locale.current.toLanguageTag()
@@ -94,14 +95,28 @@ internal fun PeopleTab() {
             }
 
             Column(
-                modifier = Modifier.verticalColumnScrollbar(scrollState)
+                modifier = Modifier
+                    .verticalColumnScrollbar(scrollState)
                     .verticalScroll(scrollState)
 
             ) {
                 //
                 PeopleDaatum.entries.sortedWith { s1, s2 -> comparator.compare(s1.personName, s2.personName) }
                     .forEach { it ->
-                        if (doesMatch(textFieldState.text.toString().transformForSearch(), it)) {
+                        val foundText =
+                            if (textFieldState.text.isNotEmpty()) {
+                                // there is probably a better way to handle transformForSearch
+                                // by directly asking ICU to convert to lowercase and so on, but keep for now while I figure this out.
+                                val search = StringSearch(
+                                    textFieldState.text.toString().transformForSearch(),
+                                    StringCharacterIterator(it.personName.transformForSearch()),
+                                    Locale.current.platformLocale
+                                )
+                                search.first() != DONE
+                            } else {
+                                true
+                            }
+                        if (foundText) {
                             ListItem(
                                 headlineContent = { Text(it.personName) },
                                 leadingContent = {
