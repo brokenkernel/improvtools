@@ -47,7 +47,7 @@ import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.dp
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.presentation.view.verticalColumnScrollbar
-import com.brokenkernel.improvtools.encyclopaedia.data.model.PeopleDaatum
+import com.brokenkernel.improvtools.encyclopaedia.data.model.PeopleDatum
 import com.brokenkernel.improvtools.encyclopaedia.data.model.PeopleDatumTopic
 import java.text.StringCharacterIterator
 
@@ -136,7 +136,7 @@ internal fun PeopleTab() {
 
                 ) {
                     //
-                    PeopleDaatum.entries.sortedWith { s1, s2 -> comparator.compare(s1.personName, s2.personName) }
+                    PeopleDatum.entries.sortedWith { s1, s2 -> comparator.compare(s1.personName, s2.personName) }
                         .forEach { it ->
                             var isListItemInformationExpanded: Boolean by remember { mutableStateOf(false) }
                             val foundText =

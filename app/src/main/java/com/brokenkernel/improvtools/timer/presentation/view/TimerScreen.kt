@@ -1,56 +1,51 @@
 package com.brokenkernel.improvtools.timer.presentation.view
 
-import androidx.compose.animation.animateColorAsState
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
+import android.util.Log
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Timer
+import androidx.compose.material.icons.outlined.Timer
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedButton
-import androidx.compose.material3.SwipeToDismissBox
-import androidx.compose.material3.SwipeToDismissBoxValue
 import androidx.compose.material3.Text
-import androidx.compose.material3.rememberSwipeToDismissBoxState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.State
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.brokenkernel.improvtools.APPLICATION_TAG
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.presentation.view.verticalColumnScrollbar
+import com.brokenkernel.improvtools.timer.presentation.viewmodel.CountDownTimerViewModel
+import com.brokenkernel.improvtools.timer.presentation.viewmodel.INITIAL_TIMER_DURATION
+import com.brokenkernel.improvtools.timer.presentation.viewmodel.StopWatchTimerViewModel
+import com.brokenkernel.improvtools.timer.presentation.viewmodel.TimerListViewModel
+import com.brokenkernel.improvtools.timer.presentation.viewmodel.TimerState
 import kotlinx.coroutines.delay
 import kotlin.time.Duration
-import kotlin.time.Duration.Companion.minutes
 import kotlin.time.Duration.Companion.seconds
 
 
-// TODO: move timer state into view model (per timer)
 // TODO: allow for optional starting time setting
 // TODO control of how many timers. Add some. Remove some.
-// TODO: Add titles.
-
-const val INITIAL_TIMER_DURATION: Long = 60L // as seconds
 
 @Composable
-fun SimpleCountDownTimer(
-    title: String,
-    onNewTimer: (() -> Unit),
-    onRemoveTimer: (() -> Unit),
-) {
-    var timeLeft: Duration by remember { mutableStateOf(1.minutes) }
-    var timerState by remember { mutableStateOf(TimerState.PAUSED) }
+internal fun SimpleCountDownTimer(viewModel: CountDownTimerViewModel, onRemoveTimer: () -> Unit) {
+    // TODO: move into viewModel (and updates off the UI thread :))
+    var timeLeft: Duration by remember { mutableStateOf(INITIAL_TIMER_DURATION) }
+    val timerState = viewModel.timerState.collectAsState()
 
-    LaunchedEffect(timeLeft, timerState) {
-        if (timerState == TimerState.STARTED) {
+    LaunchedEffect(timeLeft, timerState.value) {
+        if (timerState.value.isStarted()) {
             while (timeLeft.isPositive()) {
                 delay(1.seconds)
                 timeLeft -= 1.seconds
@@ -59,17 +54,17 @@ fun SimpleCountDownTimer(
     }
 
     SlottedTimerCardContent(
-        title = title,
+        title = viewModel.title,
         currentTime = timeLeft,
-        timerState = timerState,
+        timerState = timerState.value,
         actions = {
             StartPauseButton(
-                timerState,
+                timerState.value,
                 onPause = {
-                    timerState = TimerState.PAUSED
+                    viewModel.setTimerState(TimerState.PAUSED)
                 },
                 onStart = {
-                    timerState = TimerState.STARTED
+                    viewModel.setTimerState(TimerState.STARTED)
                 })
             OutlinedButton(onClick = {
                 timeLeft /= 2
@@ -77,13 +72,13 @@ fun SimpleCountDownTimer(
                 Text(stringResource(R.string.timer_half_time))
             }
             OutlinedButton(onClick = {
-                timerState = TimerState.STOPPED
-                timeLeft = INITIAL_TIMER_DURATION.seconds
+                viewModel.setTimerState(TimerState.STOPPED)
+                timeLeft = INITIAL_TIMER_DURATION
             }) {
                 Text(stringResource(R.string.timer_reset))
             }
         },
-        onNewTimer = onNewTimer,
+        onNewTimer = { },
         onRemoveTimer = onRemoveTimer,
         leadingIcon = {
             Icon(
@@ -95,124 +90,87 @@ fun SimpleCountDownTimer(
 }
 
 @Composable
-fun SimpleStopWatchTimer(title: String) {
+internal fun SimpleStopWatchTimer(viewModel: StopWatchTimerViewModel, onRemoveTimer: () -> Unit) {
     var timeLeft: Duration by remember { mutableStateOf(Duration.ZERO) }
-    var timerState by remember { mutableStateOf(TimerState.PAUSED) }
+    val timerState = viewModel.timerState.collectAsState()
 
-    LaunchedEffect(timeLeft, timerState) {
-        if (timerState == TimerState.STARTED) {
+    LaunchedEffect(timeLeft, timerState.value) {
+        if (timerState.value.isStarted()) {
             delay(1.seconds)
             timeLeft += 1.seconds
         }
     }
 
     SlottedTimerCardContent(
-        title = title,
+        title = viewModel.title,
         currentTime = timeLeft,
-        timerState = timerState,
-        onRemoveTimer = {},
+        timerState = timerState.value,
+        onRemoveTimer = onRemoveTimer,
         onNewTimer = {},
         actions = {
             StartPauseButton(
-                timerState = timerState,
+                timerState = timerState.value,
                 onStart = {
-                    timerState = TimerState.STARTED
+                    viewModel.setTimerState(TimerState.STARTED)
                 },
                 onPause = {
-                    timerState = TimerState.PAUSED
+                    viewModel.setTimerState(TimerState.PAUSED)
                 }
             )
             OutlinedButton(onClick = {
-                timerState = TimerState.STOPPED
+                viewModel.setTimerState(TimerState.STOPPED)
                 timeLeft = Duration.ZERO
             }) {
                 Text(stringResource(R.string.timer_reset))
             }
         },
+        leadingIcon = {
+            Icon(
+                Icons.Outlined.Timer, // timerOff
+                contentDescription = stringResource(R.string.count_down_timer),
+            )
+        }
     )
 }
 
+
 @Composable
-fun TimerScreen() {
+internal fun TimerScreen(viewModel: TimerListViewModel = hiltViewModel()) {
     val scrollState = rememberScrollState()
+    val allTimers: State<MutableList<TimerListViewModel.TimerInfo>> = viewModel.allTimers.collectAsState()
+
     Column(
         modifier = Modifier
             .verticalColumnScrollbar(scrollState)
             .verticalScroll(scrollState)
     ) {
-        // TODO dynamic size.
-//        SwipeToDismissBox() { }
-        var timerOneCDExists by remember { mutableStateOf(true) }
-        var timerTwoCDExists by remember { mutableStateOf(true) }
-        val timerOneSTDState = rememberSwipeToDismissBoxState()
-        val timerTwoSTDState = rememberSwipeToDismissBoxState()
 
-        when (timerOneSTDState.currentValue) {
-            SwipeToDismissBoxValue.StartToEnd -> {
-                // not used
-            }
 
-            SwipeToDismissBoxValue.EndToStart -> {
-                timerOneCDExists = false
-            }
+        // toList to copy to avoid ConcurrentModificationException. Maybe a better way exists to handle?
+        allTimers.value.toList().forEach { timer ->
 
-            SwipeToDismissBoxValue.Settled -> {
-                // not used
+            // TODO/bug: why does removing one remove all the remaining ones below?
+            val onRemove = {
+                viewModel.removeTimer(timer)
+                Log.w(APPLICATION_TAG, "removing timer $timer")
+                Unit
             }
-        }
-        when (timerTwoSTDState.currentValue) {
-            SwipeToDismissBoxValue.StartToEnd -> {
-                // not used
-            }
-
-            SwipeToDismissBoxValue.EndToStart -> {
-                timerTwoCDExists = false
-            }
-
-            SwipeToDismissBoxValue.Settled -> {
-                // not used
-            }
-        }
-
-        // https://medium.com/better-programming/extending-swipetodismiss-in-jetpack-compose-7ed356df073a
-        // TODO: pull dismiss out to separate content
-        if (timerOneCDExists) {
-            SwipeToDismissBox(
-                state = timerOneSTDState,
-                backgroundContent = {
-                    val color by
-                    animateColorAsState(
-                        when (timerOneSTDState.dismissDirection) {
-                            SwipeToDismissBoxValue.Settled -> Color.LightGray
-                            SwipeToDismissBoxValue.StartToEnd -> Color.Red
-                            SwipeToDismissBoxValue.EndToStart -> Color.Red
+            OneWayDismissableContent(onRemove = onRemove) {
+                when (timer.timerType) {
+                    TimerListViewModel.TimerType.STOPWATCH -> {
+                        TimerBorderOutlineCard {
+                            SimpleStopWatchTimer(StopWatchTimerViewModel(timer.title), onRemove)
                         }
-                    )
-                    Box(
-                        Modifier
-                            .fillMaxSize()
-                            .background(color)
-                    )
-                },
-                enableDismissFromStartToEnd = false,
-                enableDismissFromEndToStart = true,
-                gesturesEnabled = true,
-            ) {
-                TimerBorderOutlineCard {
-                    SimpleCountDownTimer("Timer One", onRemoveTimer = { timerOneCDExists = false }, onNewTimer = {})
+
+                    }
+
+                    TimerListViewModel.TimerType.COUNTDOWN -> {
+                        TimerBorderOutlineCard {
+                            SimpleCountDownTimer(CountDownTimerViewModel(timer.title), onRemove)
+                        }
+                    }
                 }
             }
-        }
-        if (timerTwoCDExists) {
-            TimerBorderOutlineCard {
-                SimpleCountDownTimer("Timer Two", onRemoveTimer = { timerTwoCDExists = false }, onNewTimer = {})
-            }
-        }
-        TimerBorderOutlineCard {
-            SimpleStopWatchTimer("Stopwatch One")
-        }
-        TimerBorderOutlineCard {
-            SimpleStopWatchTimer("Stopwatch Two")
         }
     }
 }
@@ -220,5 +178,5 @@ fun TimerScreen() {
 @Composable
 @Preview
 fun PreviewTimerScreen() {
-    TimerScreen()
+    TimerScreen(TimerListViewModel())
 }

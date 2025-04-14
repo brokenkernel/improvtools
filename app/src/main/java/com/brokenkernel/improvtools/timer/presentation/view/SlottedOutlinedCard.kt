@@ -25,6 +25,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.dp
 import com.brokenkernel.improvtools.R
+import com.brokenkernel.improvtools.timer.presentation.viewmodel.TimerState
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.hours
 import kotlin.time.Duration.Companion.minutes
@@ -36,11 +37,6 @@ private fun Duration.formatTime(): String {
     return String.format(Locale.current.platformLocale, "%02d:%02d:%02d", hours, minutes, seconds)
 }
 
-internal enum class TimerState {
-    STARTED,
-    PAUSED,
-    STOPPED
-}
 
 @Composable()
 internal fun SlottedTimerCardContent(
@@ -74,48 +70,5 @@ internal fun SlottedTimerCardContent(
         Row {
             actions()
         }
-    }
-}
-
-@Composable
-internal fun StartPauseButton(
-    timerState: TimerState,
-    onStart: (() -> Unit),
-    onPause: (() -> Unit),
-) {
-    Button(onClick = {
-        if (timerState == TimerState.STARTED) {
-            onPause()
-        } else {
-            onStart()
-        }
-    }) {
-        val curButtonText: String =
-            if (timerState == TimerState.STARTED) {
-                stringResource(R.string.timer_pause)
-            } else {
-                stringResource(R.string.timer_start)
-            }
-        val curButtonIcon: ImageVector =
-            if (timerState == TimerState.STARTED) {
-                Icons.Default.Pause
-            } else {
-                Icons.Default.PlayArrow
-            }
-        Icon(
-            curButtonIcon,
-            contentDescription = curButtonText
-        )
-        Text(curButtonText)
-    }
-}
-
-@Composable
-internal fun TimerBorderOutlineCard(content: @Composable (() -> Unit) = {}) {
-    OutlinedCard(
-        modifier = Modifier.fillMaxWidth(),
-        border = BorderStroke(1.dp, Color.Black),
-    ) {
-        content()
     }
 }

@@ -13,7 +13,7 @@ internal enum class PeopleDatumTopic {
 }
 
 @RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
-internal enum class PeopleDaatum(
+internal enum class PeopleDatum(
     val personName: String,
     val topic: PeopleDatumTopic,
     val knownFor: String,
