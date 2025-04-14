@@ -19,6 +19,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.hapticfeedback.HapticFeedback
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -137,6 +140,8 @@ internal fun SimpleStopWatchTimer(viewModel: StopWatchTimerViewModel, onRemoveTi
 @Composable
 internal fun TimerScreen(viewModel: TimerListViewModel = hiltViewModel()) {
     val scrollState = rememberScrollState()
+    val haptic = LocalHapticFeedback.current
+    val shouldHapticOnRemove = viewModel.shouldHaptic.collectAsState()
     val allTimers: State<MutableList<TimerListViewModel.TimerInfo>> = viewModel.allTimers.collectAsState()
 
     Column(
@@ -151,6 +156,9 @@ internal fun TimerScreen(viewModel: TimerListViewModel = hiltViewModel()) {
 
             // TODO/bug: why does removing one remove all the remaining ones below?
             val onRemove = {
+                if (shouldHapticOnRemove.value) {
+                    haptic.performHapticFeedback(HapticFeedbackType.LongPress)
+                }
                 viewModel.removeTimer(timer)
                 Log.w(APPLICATION_TAG, "removing timer $timer")
                 Unit
@@ -173,10 +181,4 @@ internal fun TimerScreen(viewModel: TimerListViewModel = hiltViewModel()) {
             }
         }
     }
-}
-
-@Composable
-@Preview
-fun PreviewTimerScreen() {
-    TimerScreen(TimerListViewModel())
 }

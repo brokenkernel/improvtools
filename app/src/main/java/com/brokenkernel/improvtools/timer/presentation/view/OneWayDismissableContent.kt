@@ -11,10 +11,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalHapticFeedback
 
 @Composable
 internal fun OneWayDismissableContent(onRemove: () -> Unit, content: @Composable (() -> Unit) = {}) {
     val contentSTDState = rememberSwipeToDismissBoxState()
+
     when (contentSTDState.currentValue) {
         SwipeToDismissBoxValue.StartToEnd -> {
             // not used
@@ -22,7 +25,6 @@ internal fun OneWayDismissableContent(onRemove: () -> Unit, content: @Composable
 
         SwipeToDismissBoxValue.EndToStart -> {
             onRemove()
-            // haptic.performHapticFeedback(HapticFeedbackType.LongPress)
         }
 
         SwipeToDismissBoxValue.Settled -> {

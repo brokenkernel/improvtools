@@ -34,4 +34,13 @@ internal class DefaultSettingsRespository(private val userPreferenceDataStore: D
                 .build()
         }
     }
+
+    override suspend fun updateTimerHapticsMode(timerHapticsMode: UserSettings.TimerHapticsMode) {
+        userPreferenceDataStore.updateData { preferences ->
+            preferences.toBuilder()
+                .setHapticFeedbackTimerMode(timerHapticsMode)
+                .build()
+        }
+    }
+
 }

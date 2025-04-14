@@ -3,6 +3,7 @@ package com.brokenkernel.improvtools.settings.presentation.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.brokenkernel.improvtools.datastore.UserSettings
+import com.brokenkernel.improvtools.datastore.UserSettings.TimerHapticsMode
 import com.brokenkernel.improvtools.infrastructure.ConsentManagement
 import com.brokenkernel.improvtools.settings.data.repository.SettingsRepository
 import com.brokenkernel.improvtools.settings.presentation.uistate.SettingsScreenUIState
@@ -30,6 +31,7 @@ internal class SettingsScreenViewModel @Inject constructor(private val settingsR
                     shouldReuseSuggestions = it.allowSuggestionsReuse,
                     allowAnalyticsCookieStorage = it.allowAnalyticsCookieStorage,
                     tipsAndTricksViewMode = it.tipsAndTricksViewMode,
+                    timerHapticsMode = it.hapticFeedbackTimerMode,
                 )
             }
         }
@@ -61,5 +63,13 @@ internal class SettingsScreenViewModel @Inject constructor(private val settingsR
 
         // TODO: this really should be handled by an observer but I can't figure out how to do this right now
         ConsentManagement.configureConsentForFirebase(newState)
+    }
+
+    fun onClickUpdateTimerHapticsMode(newState: TimerHapticsMode) {
+        viewModelScope.launch {
+            settingsRepository.updateTimerHapticsMode(newState)
+        }
+
+        _uiState.value = _uiState.value.copy(timerHapticsMode = newState)
     }
 }

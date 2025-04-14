@@ -2,10 +2,15 @@ package com.brokenkernel.improvtools.timer.presentation.viewmodel
 
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.brokenkernel.improvtools.datastore.UserSettings
+import com.brokenkernel.improvtools.settings.data.repository.SettingsRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import java.sql.Time
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 import kotlin.time.Duration.Companion.seconds
 
@@ -50,7 +55,17 @@ internal class StopWatchTimerViewModel(
 }
 
 
-internal class TimerListViewModel @Inject constructor() : ViewModel() {
+@HiltViewModel
+internal class TimerListViewModel @Inject constructor(val settingsRespository: SettingsRepository) : ViewModel() {
+    init {
+        viewModelScope.launch {
+            settingsRespository.userSettingsFlow.collectLatest { it ->
+                _shouldHaptic.value =
+                    it.hapticFeedbackTimerMode != UserSettings.TimerHapticsMode.TIMER_HAPTICS_MODE_NONE
+            }
+        }
+    }
+
     enum class TimerType {
         STOPWATCH,
         COUNTDOWN,
@@ -60,6 +75,9 @@ internal class TimerListViewModel @Inject constructor() : ViewModel() {
         val title: String,
         val timerType: TimerType,
     )
+
+    private val _shouldHaptic = MutableStateFlow(true)
+    val shouldHaptic = _shouldHaptic.asStateFlow()
 
     // hide the mutable ability from the UI
     private val _allTimers: MutableStateFlow<MutableList<TimerInfo>> = MutableStateFlow<MutableList<TimerInfo>>(

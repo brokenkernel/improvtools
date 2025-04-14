@@ -11,9 +11,17 @@ message UserSettings {
     VIEW_MODE_SWIPE = 2;
   }
 
+  // consider more detailed settings, enum for future proofing
+  enum TimerHapticsMode {
+    TIMER_HAPTICS_MODE_DEFAULT = 0;
+    TIMER_HAPTICS_MODE_ALL = 1;
+    TIMER_HAPTICS_MODE_NONE = 2;
+  }
+
   bool allow_suggestions_reuse = 1;
   // https://analytics.google.com/analytics/web/#/a351396891p484696506/admin/consentmanagement
   bool allow_analytics_cookie_storage = 2;
   TipsAndTricksViewMode tips_and_tricks_view_mode = 3;
 
+  TimerHapticsMode haptic_feedback_timer_mode = 4;
 }

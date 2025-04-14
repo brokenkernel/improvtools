@@ -9,4 +9,5 @@ interface SettingsRepository {
     suspend fun updateAllowSuggestionsReuse(allowSuggestinReUse: Boolean)
     suspend fun updateAllowAnalyticsCookieStorage(allowAnalyticsCookieStorage: Boolean)
     suspend fun updateTipsAndTricksViewMode(tipsAndTricksViewMode: UserSettings.TipsAndTricksViewMode)
+    suspend fun updateTimerHapticsMode(timerHapticsMode: UserSettings.TimerHapticsMode)
 }
