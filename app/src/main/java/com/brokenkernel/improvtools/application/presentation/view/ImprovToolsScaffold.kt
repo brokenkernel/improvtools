@@ -39,15 +39,15 @@ import com.brokenkernel.improvtools.settings.presentation.view.SuggestionsScreen
 import com.brokenkernel.improvtools.settings.presentation.view.TipsAndAdviceMenu
 
 
-internal fun wrongfullyFindRouteByNavDestination(dest: NavDestination?): NavigableRoute {
+internal fun wrongfullyFindRouteByNavDestination(dest: NavDestination?, initialRoute: NavigableRoute): NavigableRoute {
     NavigableRoute::class.sealedSubclasses.forEach {
         if (dest?.hasRoute(it) == true) {
             return it.objectInstance!!
         }
     }
-    Log.wtf(APPLICATION_TAG, "Nav destination fallback")
+    Log.wtf(APPLICATION_TAG, "Nav destination fallback when looking for $dest")
     // should never happen
-    return NavigableRoute.SuggestionGeneratorRoute
+    return initialRoute
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -55,15 +55,16 @@ internal fun wrongfullyFindRouteByNavDestination(dest: NavDestination?): Navigab
 internal fun ImprovToolsScaffold(
     currentBackStackEntry: State<NavBackStackEntry?>,
     navMenuButtonPressedCallback: () -> Unit,
+    initialRoute: NavigableRoute,
     content: @Composable (() -> Unit),
 ) {
     val snackbarHostState = remember { SnackbarHostState() }
     var moreMenuExpandedState: Boolean by remember { mutableStateOf(false) }
 
-    var currentNavigableRoute = wrongfullyFindRouteByNavDestination(currentBackStackEntry.value?.destination)
+    var currentNavigableRoute = wrongfullyFindRouteByNavDestination(currentBackStackEntry.value?.destination, initialRoute)
 
     LaunchedEffect(currentBackStackEntry) {
-        currentNavigableRoute = wrongfullyFindRouteByNavDestination(currentBackStackEntry.value?.destination)
+        currentNavigableRoute = wrongfullyFindRouteByNavDestination(currentBackStackEntry.value?.destination, initialRoute)
     }
 
 
@@ -132,8 +133,9 @@ internal fun ImprovToolsScaffold(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding),
-            content = content,
-        )
+        ) {
+            content()
+        }
     }
 
 }

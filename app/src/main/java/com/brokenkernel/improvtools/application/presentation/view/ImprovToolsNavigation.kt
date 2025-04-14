@@ -29,6 +29,7 @@ import com.brokenkernel.improvtools.application.data.model.NavigableRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
+import kotlinx.serialization.json.JsonNull.content
 
 @Composable
 private fun NavigableScreenNavigationDrawerItem(
@@ -174,14 +175,15 @@ internal fun ImprovToolsNavigationDrawer(
             navMenuButtonPressedCallback = {
                 invertNavMenuState()
             },
-            content = {
-                // TODO: replace with event system instead of passing controller??
-                DrawerNavGraph(
-                    navController = navController,
-                    onNavigateToRoute = doNavigateToNavigableRoute,
-                    initialRoute = initialRoute,
-                )
-            }
-        )
+            initialRoute = initialRoute
+        ) {
+            // TODO: replace with event system instead of passing controller??
+            DrawerNavGraph(
+                navController = navController,
+                onNavigateToRoute = doNavigateToNavigableRoute,
+                initialRoute = initialRoute,
+            )
+        }
+
     }
 }
