@@ -73,4 +73,7 @@
     <string name="navigation_thesaurus">Thesaurus</string>
     <string name="go_to_thesaurus_screen">Go to Thesaurus screen</string>
     <string name="wikipedia">Wikipedia</string>
+    <string name="slotted_timer_create_new_timer">Create New Timer</string>
+    <string name="slotted_timer_remove_timer">Remove timer</string>
+    <string name="count_down_timer">Count Down Timer</string>
 </resources>
