@@ -7,7 +7,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.remember
 import androidx.navigation.NavBackStackEntry
-import androidx.navigation.NavDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
@@ -18,23 +17,10 @@ internal class ImprovToolsAppState(
     val drawerState: DrawerState,
     val navController: NavHostController,
 ) {
-////    // UI State
-//    val currentDestination: NavDestination?
-//        @Composable get() = navController
-//            .currentBackStackEntryAsState().value?.destination
 
     @Composable
     fun currentBackStackEntryAsState(): MutableStateFlow<NavBackStackEntry?> {
         return MutableStateFlow(navController.currentBackStackEntryAsState().value)
-    }
-
-    @Suppress("unused")
-    @Composable
-    private fun currentStackDestination(): NavDestination? {
-        val navBackStackEntry = navController.currentBackStackEntryAsState().value
-        val currentDestination = navBackStackEntry?.destination
-        return currentDestination
-        //        currentDestination?.hasRoute(SuggestionGeneratorRoute::class)
     }
 
     fun navigateTo(dest: NavigableRoute) {

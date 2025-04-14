@@ -1,7 +1,5 @@
 import com.android.build.api.dsl.VariantDimension
 import com.google.firebase.crashlytics.buildtools.gradle.CrashlyticsExtension
-import org.gradle.kotlin.dsl.debugImplementation
-import org.gradle.kotlin.dsl.implementation
 import java.io.IOException
 import java.util.Properties
 
