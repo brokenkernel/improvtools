@@ -192,9 +192,10 @@ platform :android do
 
   desc "Full Play Store Deployment"
   lane :playstore_fully_deployment do
-    current_build_number = prepare_git_repository
+#     current_build_number = prepare_git_repository
+    current_build_number = 115
     UI.header "Starting preparing for #{current_build_number}"
-    prepare_binary
+#     prepare_binary
     prepare_and_take_screenshots
     create_native_debug_symbols
     UI.header "Finished preparing for #{current_build_number}"

@@ -18,9 +18,6 @@ import com.google.firebase.remoteconfig.remoteConfigSettings
 import dagger.hilt.android.HiltAndroidApp
 import kotlin.time.Duration.Companion.hours
 
-
-const val APPLICATION_TAG: String = "IMPV"
-
 fun configureRemoteConfig() {
     val remoteConfig: FirebaseRemoteConfig = Firebase.remoteConfig
     val configSettings = remoteConfigSettings {

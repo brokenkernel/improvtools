@@ -18,6 +18,10 @@ private const val ShowApplicationPreferencesIntent: String = "android.intent.act
 //private const val ShowNotificationPreferencesIntent: String = "android.intent.action.NOTIFICATION_PREFERENCES"
 // TODO: NotficiationPreferenes
 
+
+// TODO features of relationships
+// power dynamics. Competive, thearenative, emabled, scared, love, grudge, trusting suspicion
+
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 

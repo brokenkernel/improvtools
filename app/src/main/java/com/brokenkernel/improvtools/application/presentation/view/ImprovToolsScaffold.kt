@@ -1,5 +1,6 @@
 package com.brokenkernel.improvtools.application.presentation.view
 
+import android.util.Log
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -16,9 +17,10 @@ import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScope
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -28,6 +30,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hasRoute
+import com.brokenkernel.improvtools.APPLICATION_TAG
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
@@ -42,40 +45,26 @@ internal fun wrongfullyFindRouteByNavDestination(dest: NavDestination?): Navigab
             return it.objectInstance!!
         }
     }
-    // should never happyn
+    Log.wtf(APPLICATION_TAG, "Nav destination fallback")
+    // should never happen
     return NavigableRoute.SuggestionGeneratorRoute
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun ImprovToolsScaffold(
-    currentBackStackEntry: NavBackStackEntry?,
-    doNavigateToNavigableRoute: (NavigableRoute) -> Unit,
+    currentBackStackEntry: State<NavBackStackEntry?>,
     navMenuButtonPressedCallback: () -> Unit,
     content: @Composable (() -> Unit),
 ) {
     val snackbarHostState = remember { SnackbarHostState() }
     var moreMenuExpandedState: Boolean by remember { mutableStateOf(false) }
 
-    fun NavigationSuiteScope.simpleNavigableScreen(it: NavigableScreens) {
-        return item(
-            icon = {
-                Icon(
-                    it.icon,
-                    contentDescription = stringResource(it.contentDescription)
-                )
-            },
-            label = {
-                Text(stringResource(it.titleResource))
-            },
-            selected = (currentBackStackEntry?.destination?.hasRoute(it.route::class) == true),
-            onClick = {
-                doNavigateToNavigableRoute(it.route)
-            }
-        )
-    }
+    var currentNavigableRoute = wrongfullyFindRouteByNavDestination(currentBackStackEntry.value?.destination)
 
-    val currentNavigableRoute = wrongfullyFindRouteByNavDestination(currentBackStackEntry?.destination)
+    LaunchedEffect(currentBackStackEntry) {
+        currentNavigableRoute = wrongfullyFindRouteByNavDestination(currentBackStackEntry.value?.destination)
+    }
 
 
     Scaffold(

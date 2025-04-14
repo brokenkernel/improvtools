@@ -15,6 +15,7 @@ import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.NavigationDrawerItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.State
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -54,7 +55,7 @@ private fun NavigableScreenNavigationDrawerItem(
 @Composable
 internal fun ImprovToolsNavigationDrawer(
     doNavigateToNavigableRoute: (NavigableRoute) -> Unit,
-    currentBackStackEntryAsState: NavBackStackEntry?,
+    currentBackStackEntryAsState: State<NavBackStackEntry?>,
     drawerState: DrawerState,
     navController: NavHostController,
     initialRoute: NavigableRoute,
@@ -106,12 +107,12 @@ internal fun ImprovToolsNavigationDrawer(
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.SuggestionGeneratorScreen,
                         { it -> doNavigateToNavigableRouteWithNavClosure(it) },
-                        currentBackStackEntryAsState?.destination,
+                        currentBackStackEntryAsState.value?.destination,
                     )
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.TimerScreen,
                         { it -> doNavigateToNavigableRouteWithNavClosure(it) },
-                        currentBackStackEntryAsState?.destination,
+                        currentBackStackEntryAsState.value?.destination,
                     )
 
                     HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
@@ -124,27 +125,27 @@ internal fun ImprovToolsNavigationDrawer(
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.GamesPageScreen,
                         { it -> doNavigateToNavigableRouteWithNavClosure(it) },
-                        currentBackStackEntryAsState?.destination,
+                        currentBackStackEntryAsState.value?.destination,
                     )
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.PeoplePageScreen,
                         { it -> doNavigateToNavigableRouteWithNavClosure(it) },
-                        currentBackStackEntryAsState?.destination,
+                        currentBackStackEntryAsState.value?.destination,
                     )
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.EmotionsPageScreen,
                         { it -> doNavigateToNavigableRouteWithNavClosure(it) },
-                        currentBackStackEntryAsState?.destination,
+                        currentBackStackEntryAsState.value?.destination,
                     )
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.ThesaurusPageScreen,
                         { it -> doNavigateToNavigableRouteWithNavClosure(it) },
-                        currentBackStackEntryAsState?.destination,
+                        currentBackStackEntryAsState.value?.destination,
                     )
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.TipsAndAdviceScreen,
                         { it -> doNavigateToNavigableRouteWithNavClosure(it) },
-                        currentBackStackEntryAsState?.destination,
+                        currentBackStackEntryAsState.value?.destination,
                     )
 
                     HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
@@ -156,12 +157,12 @@ internal fun ImprovToolsNavigationDrawer(
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.SettingsScreen,
                         { it -> doNavigateToNavigableRouteWithNavClosure(it) },
-                        currentBackStackEntryAsState?.destination,
+                        currentBackStackEntryAsState.value?.destination,
                     )
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.HelpAndAboutScreen,
                         { it -> doNavigateToNavigableRouteWithNavClosure(it) },
-                        currentBackStackEntryAsState?.destination,
+                        currentBackStackEntryAsState.value?.destination,
                     )
                     Spacer(Modifier.height(12.dp))
                 }
@@ -170,7 +171,6 @@ internal fun ImprovToolsNavigationDrawer(
     ) {
         ImprovToolsScaffold(
             currentBackStackEntry = currentBackStackEntryAsState,
-            doNavigateToNavigableRoute = { route -> doNavigateToNavigableRouteWithNavClosure(route) },
             navMenuButtonPressedCallback = {
                 invertNavMenuState()
             },
