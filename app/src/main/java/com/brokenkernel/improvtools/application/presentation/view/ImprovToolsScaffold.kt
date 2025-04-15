@@ -19,7 +19,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -61,12 +60,10 @@ internal fun ImprovToolsScaffold(
     val snackbarHostState = remember { SnackbarHostState() }
     var moreMenuExpandedState: Boolean by remember { mutableStateOf(false) }
 
-    var currentNavigableRoute = wrongfullyFindRouteByNavDestination(currentBackStackEntry.value?.destination, initialRoute)
-
-    LaunchedEffect(currentBackStackEntry) {
-        currentNavigableRoute = wrongfullyFindRouteByNavDestination(currentBackStackEntry.value?.destination, initialRoute)
-    }
-
+    val currentNavigableRoute = wrongfullyFindRouteByNavDestination(
+        currentBackStackEntry.value?.destination,
+        initialRoute
+    )
 
     Scaffold(
         topBar = {
