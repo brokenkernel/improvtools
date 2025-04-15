@@ -2,12 +2,19 @@ package com.brokenkernel.improvtools.timer.presentation.view
 
 import android.util.Log
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Alarm
+import androidx.compose.material.icons.filled.AlarmAdd
+import androidx.compose.material.icons.filled.AlarmOff
+import androidx.compose.material.icons.filled.AlarmOn
 import androidx.compose.material.icons.filled.Timer
+import androidx.compose.material.icons.filled.TimerOff
 import androidx.compose.material.icons.outlined.Timer
 import androidx.compose.material3.Icon
+import androidx.compose.material3.LargeFloatingActionButton
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -37,6 +44,7 @@ import kotlin.time.Duration
 internal fun SimpleCountDownTimer(viewModel: CountDownTimerViewModel, onRemoveTimer: () -> Unit) {
     val timeLeft by viewModel.timeLeft.collectAsStateWithLifecycle()
     val timerState by viewModel.timerState.collectAsStateWithLifecycle()
+
     SlottedTimerCardContent(
         title = viewModel.title,
         currentTime = timeLeft,
@@ -66,7 +74,12 @@ internal fun SimpleCountDownTimer(viewModel: CountDownTimerViewModel, onRemoveTi
         onRemoveTimer = onRemoveTimer,
         leadingIcon = {
             Icon(
-                Icons.Default.Timer,
+                if (timerState.isStarted()) {
+                    Icons.Default.Timer
+                } else {
+                    Icons.Default.TimerOff
+                }
+                ,
                 contentDescription = stringResource(R.string.count_down_timer),
             )
         }
@@ -103,7 +116,11 @@ internal fun SimpleStopWatchTimer(viewModel: StopWatchTimerViewModel, onRemoveTi
         },
         leadingIcon = {
             Icon(
-                Icons.Outlined.Timer, // timerOff
+                if (timerState.isStarted()) {
+                    Icons.Default.AlarmOn
+                } else {
+                    Icons.Default.AlarmOff
+                },
                 contentDescription = stringResource(R.string.count_down_timer),
             )
         }
@@ -152,6 +169,22 @@ internal fun TimerScreen(viewModel: TimerListViewModel = hiltViewModel()) {
                         }
                     }
                 }
+            }
+        }
+        Row {
+            LargeFloatingActionButton(
+                onClick = {
+                    viewModel.addTimer("wat", TimerListViewModel.TimerType.STOPWATCH)
+                },
+            ) {
+                Icon(Icons.Filled.Timer, "New StopWatch Timer")
+            }
+            LargeFloatingActionButton(
+                onClick = {
+                    viewModel.addTimer("pot", TimerListViewModel.TimerType.COUNTDOWN)
+                },
+            ) {
+                Icon(Icons.Filled.AlarmAdd, "New CountDown Timer")
             }
         }
     }
