@@ -7,4 +7,5 @@ bundle exec fastlane update_plugins
 (
   cd docs;
   hugo mod get -u
+  npm upgrade
 )

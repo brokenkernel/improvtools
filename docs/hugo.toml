@@ -15,6 +15,25 @@ weight = 1
 title = 'Improv & Acting Tools'
 description = "Improv & Acting Tools"
 
+[params]
+offlineSearch = true
+
+[[cascade]]
+type = "blog"
+toc_root = true
+
+  [cascade._target]
+  path = "/news/**"
+
+[[cascade]]
+type = "docs"
+
+  [cascade._target]
+  path = "/**"
+
+[[params.versions]]
+  version = "master"
+
 [module.hugoVersion]
 extended = true
 min = "0.146.4"
