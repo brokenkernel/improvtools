@@ -6,13 +6,11 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Alarm
 import androidx.compose.material.icons.filled.AlarmAdd
 import androidx.compose.material.icons.filled.AlarmOff
 import androidx.compose.material.icons.filled.AlarmOn
 import androidx.compose.material.icons.filled.Timer
 import androidx.compose.material.icons.filled.TimerOff
-import androidx.compose.material.icons.outlined.Timer
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LargeFloatingActionButton
 import androidx.compose.material3.OutlinedButton
@@ -78,8 +76,7 @@ internal fun SimpleCountDownTimer(viewModel: CountDownTimerViewModel, onRemoveTi
                     Icons.Default.Timer
                 } else {
                     Icons.Default.TimerOff
-                }
-                ,
+                },
                 contentDescription = stringResource(R.string.count_down_timer),
             )
         }
@@ -140,8 +137,6 @@ internal fun TimerScreen(viewModel: TimerListViewModel = hiltViewModel()) {
             .verticalColumnScrollbar(scrollState)
             .verticalScroll(scrollState)
     ) {
-
-
         // toList to copy to avoid ConcurrentModificationException. Maybe a better way exists to handle?
         allTimers.value.toList().forEach { timer ->
 
