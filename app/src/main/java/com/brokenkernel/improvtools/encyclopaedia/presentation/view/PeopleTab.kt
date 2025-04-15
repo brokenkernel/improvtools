@@ -168,7 +168,7 @@ internal fun PeopleTab() {
                                             OutlinedIconButton(
                                                 onClick = {
                                                     // webview.setWebViewClient(new WebViewClient());
-                                                    val browserIntent = Intent(Intent.ACTION_VIEW, it.wikipediaLink);
+                                                    val browserIntent = Intent(Intent.ACTION_VIEW, it.wikipediaLink)
                                                     context.startActivity(browserIntent)
                                                 },
                                             ) {
