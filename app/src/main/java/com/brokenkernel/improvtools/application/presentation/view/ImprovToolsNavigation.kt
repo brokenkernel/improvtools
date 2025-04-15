@@ -26,11 +26,11 @@ import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavHostController
 import com.brokenkernel.improvtools.R
+import com.brokenkernel.improvtools.application.data.model.ImprovToolsNavigationGraph
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
-import kotlinx.serialization.json.JsonNull.content
 
 @Composable
 private fun NavigableScreenNavigationDrawerItem(
@@ -169,6 +169,17 @@ internal fun ImprovToolsNavigationDrawer(
                         currentBackStackEntryAsState.value?.destination,
                     )
                     Spacer(Modifier.height(12.dp))
+                    HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
+                    Text(
+                        stringResource(R.string.navigation_legal_category),
+                        modifier = Modifier.padding(16.dp),
+                        style = MaterialTheme.typography.titleMedium
+                    )
+                    NavigableScreenNavigationDrawerItem(
+                        NavigableScreens.PrivacyScreen,
+                        { it -> doNavigateToNavigableRouteWithNavClosure(it) },
+                        currentBackStackEntryAsState.value?.destination,
+                    )
                 }
             }
         },
@@ -181,7 +192,7 @@ internal fun ImprovToolsNavigationDrawer(
             initialRoute = initialRoute
         ) {
             // TODO: replace with event system instead of passing controller??
-            DrawerNavGraph(
+            ImprovToolsNavigationGraph(
                 navController = navController,
                 onNavigateToRoute = doNavigateToNavigableRoute,
                 initialRoute = initialRoute,

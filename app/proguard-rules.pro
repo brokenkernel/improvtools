@@ -58,4 +58,14 @@
     static void checkNotNull(java.lang.Object, java.lang.String);
 }
 
+# For Kotlin Coroutines
+-keepclassmembernames class kotlinx.** {
+    volatile <fields>;
+}
+
+## Room
+#-keep class * extends androidx.room.RoomDatabase
+#-keep @androidx.room.Entity class *
+#-keep @androidx.room.Dao class *
+
 -verbose

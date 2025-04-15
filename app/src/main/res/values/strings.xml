@@ -79,4 +79,8 @@
     <string name="privacy_notification_use">Notifications are used for timers and countdowns</string>
     <string name="navigation_privacy_information">Privacy Information</string>
     <string name="go_to_privacy_information">Go To Privacy Page</string>
+    <string name="component_collapse_card">Collapse Card</string>
+    <string name="about_show_debug_data">Show Debug Data</string>
+    <string name="about_show_privacy_screen">Show Privacy Screen</string>
+    <string name="navigation_legal_category">Legal</string>
 </resources>

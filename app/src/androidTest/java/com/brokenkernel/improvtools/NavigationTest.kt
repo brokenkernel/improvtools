@@ -9,7 +9,7 @@ import androidx.navigation.compose.ComposeNavigator
 import androidx.navigation.testing.TestNavHostController
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute
-import com.brokenkernel.improvtools.application.presentation.view.DrawerNavGraph
+import com.brokenkernel.improvtools.application.data.model.ImprovToolsNavigationGraph
 import com.brokenkernel.improvtools.infrastructure.HiltComponentActitivity
 import com.brokenkernel.improvtools.infrastructure.assertCurrentNavigableRoute
 import com.brokenkernel.improvtools.infrastructure.onNodeWithStringId
@@ -38,7 +38,7 @@ class NavigationTest {
             navController = TestNavHostController(LocalContext.current).apply {
                 navigatorProvider.addNavigator(ComposeNavigator())
             }
-            DrawerNavGraph(
+            ImprovToolsNavigationGraph(
                 navController = navController,
                 onNavigateToRoute = {},
                 initialRoute = NavigableRoute.SuggestionGeneratorRoute, // TODO - deal with app state

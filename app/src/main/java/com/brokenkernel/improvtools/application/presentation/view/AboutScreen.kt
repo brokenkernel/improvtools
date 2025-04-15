@@ -9,6 +9,7 @@ import android.text.Html
 import android.text.Html.FROM_HTML_MODE_COMPACT
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
@@ -21,11 +22,14 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Card
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
@@ -34,22 +38,23 @@ import androidx.compose.ui.platform.ClipboardManager
 import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.fromHtml
 import androidx.core.net.toUri
 import com.brokenkernel.improvtools.BuildConfig
 import com.brokenkernel.improvtools.R
+import com.brokenkernel.improvtools.application.data.model.NavigableRoute
 import kotlinx.coroutines.launch
 
 @Composable
-internal fun AboutScreen() {
+internal fun AboutScreen(onNavigateToRoute: (NavigableRoute) -> Unit) {
     // move  snackbar host state into app state. And then inject it?
     // also include more injected stuff (settings for ex) into debug datum
     val snackbarHostState = remember { SnackbarHostState() }
     val crScope = rememberCoroutineScope()
     val resources = LocalContext.current.resources
     val packageManager = LocalContext.current.packageManager
-
 
     // TODO: figure out how to do content generation off of UI. Maybe bring back viewmodel?
     val packageInfo: PackageInfo? =
@@ -147,15 +152,43 @@ internal fun AboutScreen() {
     }
 
     Column(modifier = Modifier.fillMaxSize()) {
-        Row(modifier = Modifier.verticalScroll(rememberScrollState()).fillMaxHeight().weight(100f)) {
+        Row(
+            modifier = Modifier
+                .verticalScroll(rememberScrollState())
+                .fillMaxHeight()
+                .weight(100f)
+        ) {
             SelectionContainer {
                 Column {
                     Text(
                         AnnotatedString.fromHtml(generateGeneralInformationText())
                     )
-                    Text(
-                        AnnotatedString.fromHtml(generateDebugInformationText())
-                    )
+                    val isExpanded = remember { mutableStateOf(false) }
+                    // TODO: make utility collapseable card
+                    Card(
+                        modifier = Modifier
+                            .clickable(
+                                onClick = { isExpanded.value = !isExpanded.value },
+                                onClickLabel = stringResource(R.string.component_collapse_card),
+                                enabled = true,
+                                role = Role.Switch,
+                            )
+                    ) {
+                        if (isExpanded.value) {
+                            Text(
+                                AnnotatedString.fromHtml(generateDebugInformationText())
+                            )
+                        } else {
+                            Text(
+                                stringResource(R.string.about_show_debug_data)
+                            )
+                        }
+                    }
+                    TextButton(onClick = {
+                        onNavigateToRoute(NavigableRoute.PrivacyRoute)
+                    }) {
+                        Text(stringResource(R.string.about_show_privacy_screen))
+                    }
                 }
             }
         }
