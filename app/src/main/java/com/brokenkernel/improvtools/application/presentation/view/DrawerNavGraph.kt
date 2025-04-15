@@ -39,6 +39,11 @@ internal fun DrawerNavGraph(
         composable<NavigableRoute.TipsAndAdviceRoute> {
             TipsAndAdviceScreen()
         }
+
+        composable<NavigableRoute.PrivacyRoute> {
+            PrivacyScreen()
+        }
+
         encyclopaediaPageDestinations()
     }
 }

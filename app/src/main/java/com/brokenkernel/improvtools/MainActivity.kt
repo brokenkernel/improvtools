@@ -1,5 +1,6 @@
 package com.brokenkernel.improvtools
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -14,7 +15,6 @@ private const val ShowSuggestionsIntent: String = "com.brokenkernel.improvtools.
 private const val ShowTimerIntent: String = "com.brokenkernel.improvtools.intents.ShowTimer"
 private const val ShowEncyclopaediaIntent: String = "com.brokenkernel.improvtools.intents.ShowEncyclopaedia"
 
-private const val ShowApplicationPreferencesIntent: String = "android.intent.action.APPLICATION_PREFERENCES"
 //private const val ShowNotificationPreferencesIntent: String = "android.intent.action.NOTIFICATION_PREFERENCES"
 // TODO: NotficiationPreferenes
 
@@ -39,7 +39,9 @@ class MainActivity : ComponentActivity() {
                     ShowSuggestionsIntent -> NavigableRoute.SuggestionGeneratorRoute
                     ShowTimerIntent -> NavigableRoute.TimerRoute
                     ShowEncyclopaediaIntent -> NavigableRoute.EmotionPageRoute
-                    ShowApplicationPreferencesIntent -> NavigableRoute.SettingsRoute
+                    Intent.ACTION_APPLICATION_PREFERENCES -> NavigableRoute.SettingsRoute
+                    Intent.ACTION_VIEW_PERMISSION_USAGE -> NavigableRoute.PrivacyRoute // consider a seperate privacy page eventualyl
+                    Intent.ACTION_VIEW_PERMISSION_USAGE_FOR_PERIOD -> NavigableRoute.PrivacyRoute // consider a seperate privacy page eventualyl
 //                    ShowNotificationPreferencesIntent -> NavigableRoute.SettingsRoute
                     else -> NavigableRoute.SuggestionGeneratorRoute
                 }

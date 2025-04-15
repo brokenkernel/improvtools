@@ -3,6 +3,7 @@ package com.brokenkernel.improvtools.application.data.model
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Book
+import androidx.compose.material.icons.filled.PrivacyTip
 import androidx.compose.material.icons.outlined.EmojiEmotions
 import androidx.compose.material.icons.outlined.Games
 import androidx.compose.material.icons.outlined.Info
@@ -71,6 +72,10 @@ internal sealed class NavigableRoute() {
 
     @Serializable
     internal object ThesaurusPageRoute : NavigableRoute()
+
+    @Serializable
+    internal object PrivacyRoute : NavigableRoute()
+
 }
 
 internal sealed class NavigableScreens(
@@ -170,6 +175,16 @@ internal sealed class NavigableScreens(
         route = ThesaurusPageRoute,
         shouldShowExtraMenu = false,
     )
+
+
+    @Immutable
+    internal object PrivacyScreen : NavigableScreens(
+        titleResource = R.string.navigation_privacy_information,
+        contentDescription = R.string.go_to_privacy_information,
+        icon = Icons.Filled.PrivacyTip,
+        route = NavigableRoute.PrivacyRoute,
+        shouldShowExtraMenu = false,
+    )
 }
 
 internal fun routeToScreen(route: NavigableRoute): NavigableScreens {
@@ -184,6 +199,7 @@ internal fun routeToScreen(route: NavigableRoute): NavigableScreens {
         TimerRoute -> NavigableScreens.TimerScreen
         TipsAndAdviceRoute -> NavigableScreens.TipsAndAdviceScreen
         WorkshopGeneratorRoute -> NavigableScreens.WorkshopGeneratorScreen
+        NavigableRoute.PrivacyRoute -> NavigableScreens.PrivacyScreen
     }
 }
 

@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hasRoute
+import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavHostController
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute
@@ -48,7 +49,9 @@ private fun NavigableScreenNavigationDrawerItem(
         onClick = {
             onNavMenuClickCallback(screen.route)
         },
-        selected = (currentNavigableRoute?.hasRoute(screen.route::class) == true),
+        selected = (currentNavigableRoute?.hierarchy?.any { it ->
+            it.hasRoute(screen.route::class)
+        } == true),
     )
 }
 

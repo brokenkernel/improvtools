@@ -43,6 +43,8 @@ import kotlinx.coroutines.launch
 
 @Composable
 internal fun AboutScreen() {
+    // move  snackbar host state into app state. And then inject it?
+    // also include more injected stuff (settings for ex) into debug datum
     val snackbarHostState = remember { SnackbarHostState() }
     val crScope = rememberCoroutineScope()
     val resources = LocalContext.current.resources

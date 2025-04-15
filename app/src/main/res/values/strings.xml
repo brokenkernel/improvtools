@@ -76,4 +76,7 @@
     <string name="slotted_timer_create_new_timer">Create New Timer</string>
     <string name="slotted_timer_remove_timer">Remove timer</string>
     <string name="count_down_timer">Count Down Timer</string>
+    <string name="privacy_notification_use">Notifications are used for timers and countdowns</string>
+    <string name="navigation_privacy_information">Privacy Information</string>
+    <string name="go_to_privacy_information">Go To Privacy Page</string>
 </resources>

@@ -67,4 +67,4 @@ class NavigationTest {
     }
 
     // todo: test drawer is closed??
-}ilt
+}
