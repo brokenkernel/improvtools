@@ -400,8 +400,8 @@
     <issue
         id="UnusedResources"
         message="The resource `R.raw.improv_tools_resources_keep` appears to be unused"
-        errorLine1="&lt;resources xmlns:tools=&quot;http://schemas.android.com/tools&quot; />"
-        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        errorLine1="&lt;resources />"
+        errorLine2="~~~~~~~~~~~~~">
         <location
             file="src/main/res/raw/improv_tools_resources_keep.xml"
             line="2"
