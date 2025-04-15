@@ -4,6 +4,7 @@ languageCode = 'en-us'
 contentDir = "content/en"
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = true
+enableGitInfo = true
 
 
 [languages]
@@ -17,6 +18,10 @@ description = "Improv & Acting Tools"
 
 [params]
 offlineSearch = true
+github_repo = "https://github.com/brokenkernel/improvtools"
+github_subdir = "docs"
+github_project_repo = "https://github.com/brokenkernel/improvtools"
+github_branch = "master"
 
 [[cascade]]
 type = "blog"
@@ -33,6 +38,9 @@ type = "docs"
 
 [[params.versions]]
   version = "master"
+
+[outputs]
+section = [ "HTML", "RSS", "print" ]
 
 [module.hugoVersion]
 extended = true
