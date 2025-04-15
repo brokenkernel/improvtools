@@ -11,12 +11,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
@@ -31,36 +27,23 @@ import com.brokenkernel.improvtools.timer.presentation.viewmodel.INITIAL_TIMER_D
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.StopWatchTimerViewModel
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.TimerListViewModel
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.TimerState
-import kotlinx.coroutines.delay
 import kotlin.time.Duration
-import kotlin.time.Duration.Companion.seconds
 
 
 // TODO: allow for optional starting time setting
-// TODO control of how many timers. Add some. Remove some.
+// TODO control of how many timers. Add some.
 
 @Composable
 internal fun SimpleCountDownTimer(viewModel: CountDownTimerViewModel, onRemoveTimer: () -> Unit) {
-    // TODO: move into viewModel (and updates off the UI thread :))
-    var timeLeft: Duration by remember { mutableStateOf(INITIAL_TIMER_DURATION) }
-    val timerState = viewModel.timerState.collectAsStateWithLifecycle()
-
-    LaunchedEffect(timeLeft, timerState.value) {
-        if (timerState.value.isStarted()) {
-            while (timeLeft.isPositive()) {
-                delay(1.seconds)
-                timeLeft -= 1.seconds
-            }
-        }
-    }
-
+    val timeLeft by viewModel.timeLeft.collectAsStateWithLifecycle()
+    val timerState by viewModel.timerState.collectAsStateWithLifecycle()
     SlottedTimerCardContent(
         title = viewModel.title,
         currentTime = timeLeft,
-        timerState = timerState.value,
+        timerState = timerState,
         actions = {
             StartPauseButton(
-                timerState.value,
+                timerState,
                 onPause = {
                     viewModel.setTimerState(TimerState.PAUSED)
                 },
@@ -68,13 +51,13 @@ internal fun SimpleCountDownTimer(viewModel: CountDownTimerViewModel, onRemoveTi
                     viewModel.setTimerState(TimerState.STARTED)
                 })
             OutlinedButton(onClick = {
-                timeLeft /= 2
+                viewModel.setTimeLeft(timeLeft / 2)
             }) {
                 Text(stringResource(R.string.timer_half_time))
             }
             OutlinedButton(onClick = {
                 viewModel.setTimerState(TimerState.STOPPED)
-                timeLeft = INITIAL_TIMER_DURATION
+                viewModel.setTimeLeft(INITIAL_TIMER_DURATION)
             }) {
                 Text(stringResource(R.string.timer_reset))
             }
@@ -92,25 +75,18 @@ internal fun SimpleCountDownTimer(viewModel: CountDownTimerViewModel, onRemoveTi
 
 @Composable
 internal fun SimpleStopWatchTimer(viewModel: StopWatchTimerViewModel, onRemoveTimer: () -> Unit) {
-    var timeLeft: Duration by remember { mutableStateOf(Duration.ZERO) }
-    val timerState = viewModel.timerState.collectAsStateWithLifecycle()
-
-    LaunchedEffect(timeLeft, timerState.value) {
-        if (timerState.value.isStarted()) {
-            delay(1.seconds)
-            timeLeft += 1.seconds
-        }
-    }
+    val timeLeft by viewModel.timeLeft.collectAsStateWithLifecycle()
+    val timerState by viewModel.timerState.collectAsStateWithLifecycle()
 
     SlottedTimerCardContent(
         title = viewModel.title,
         currentTime = timeLeft,
-        timerState = timerState.value,
+        timerState = timerState,
         onRemoveTimer = onRemoveTimer,
         onNewTimer = {},
         actions = {
             StartPauseButton(
-                timerState = timerState.value,
+                timerState = timerState,
                 onStart = {
                     viewModel.setTimerState(TimerState.STARTED)
                 },
@@ -120,7 +96,7 @@ internal fun SimpleStopWatchTimer(viewModel: StopWatchTimerViewModel, onRemoveTi
             )
             OutlinedButton(onClick = {
                 viewModel.setTimerState(TimerState.STOPPED)
-                timeLeft = Duration.ZERO
+                viewModel.setTimeLeft(Duration.ZERO)
             }) {
                 Text(stringResource(R.string.timer_reset))
             }

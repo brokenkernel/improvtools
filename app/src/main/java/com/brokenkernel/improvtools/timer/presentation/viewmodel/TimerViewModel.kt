@@ -11,11 +11,14 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import java.util.Timer
 import javax.inject.Inject
+import kotlin.concurrent.fixedRateTimer
+import kotlin.time.Duration
 import kotlin.time.Duration.Companion.seconds
 
 private const val INITIAL_TIMER_SECONDS: Long = 60L // as seconds
-val INITIAL_TIMER_DURATION = INITIAL_TIMER_SECONDS.seconds
+val INITIAL_TIMER_DURATION: Duration = INITIAL_TIMER_SECONDS.seconds
 
 // TODO: consider migrating to assisted inject. Will be required for using injected timer, etc.
 
@@ -32,26 +35,56 @@ internal enum class TimerState {
 
 internal sealed class BaseTimerViewModel(
     val title: String,
+    initialTime: Duration,
 ) : ViewModel() {
 
     private val _timerState: MutableStateFlow<TimerState> = MutableStateFlow(TimerState.STOPPED)
     internal val timerState: StateFlow<TimerState> = _timerState.asStateFlow()
 
+    // TODO: handle initial time originally?
+    protected val _timeLeft: MutableStateFlow<Duration> = MutableStateFlow(initialTime)
+    internal val timeLeft: StateFlow<Duration> = _timeLeft.asStateFlow()
+
+
     // TODO: consider three different funs instead of generic setter?
     fun setTimerState(state: TimerState) {
         _timerState.value = state
+    }
+
+    fun setTimeLeft(duration: Duration) {
+        _timeLeft.value = duration
     }
 }
 
 internal class CountDownTimerViewModel(
     title: String,
-) : BaseTimerViewModel(title) {
+) : BaseTimerViewModel(title, initialTime = INITIAL_TIMER_DURATION) {
+    private val myTimerThread: Timer = fixedRateTimer(
+        "fixed rate timer for: $title",
+        daemon = true,
+        initialDelay = 0L,
+        period = 1.seconds.inWholeMilliseconds
+    ) {
+        if (_timeLeft.value.isPositive() && timerState.value.isStarted()) {
+            _timeLeft.value -= 1.seconds
+        }
+    }
 
 }
 
 internal class StopWatchTimerViewModel(
     title: String,
-) : BaseTimerViewModel(title) {
+) : BaseTimerViewModel(title, initialTime = Duration.ZERO) {
+    private val myTimerThread: Timer = fixedRateTimer(
+        "fixed rate timer for: $title",
+        daemon = true,
+        initialDelay = 0L,
+        period = 1.seconds.inWholeMilliseconds
+    ) {
+        if (timerState.value.isStarted()) {
+            _timeLeft.value += 1.seconds
+        }
+    }
 }
 
 
