@@ -13,18 +13,16 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.State
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.hapticfeedback.HapticFeedback
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.brokenkernel.improvtools.APPLICATION_TAG
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.presentation.view.verticalColumnScrollbar
@@ -45,7 +43,7 @@ import kotlin.time.Duration.Companion.seconds
 internal fun SimpleCountDownTimer(viewModel: CountDownTimerViewModel, onRemoveTimer: () -> Unit) {
     // TODO: move into viewModel (and updates off the UI thread :))
     var timeLeft: Duration by remember { mutableStateOf(INITIAL_TIMER_DURATION) }
-    val timerState = viewModel.timerState.collectAsState()
+    val timerState = viewModel.timerState.collectAsStateWithLifecycle()
 
     LaunchedEffect(timeLeft, timerState.value) {
         if (timerState.value.isStarted()) {
@@ -95,7 +93,7 @@ internal fun SimpleCountDownTimer(viewModel: CountDownTimerViewModel, onRemoveTi
 @Composable
 internal fun SimpleStopWatchTimer(viewModel: StopWatchTimerViewModel, onRemoveTimer: () -> Unit) {
     var timeLeft: Duration by remember { mutableStateOf(Duration.ZERO) }
-    val timerState = viewModel.timerState.collectAsState()
+    val timerState = viewModel.timerState.collectAsStateWithLifecycle()
 
     LaunchedEffect(timeLeft, timerState.value) {
         if (timerState.value.isStarted()) {
@@ -141,8 +139,8 @@ internal fun SimpleStopWatchTimer(viewModel: StopWatchTimerViewModel, onRemoveTi
 internal fun TimerScreen(viewModel: TimerListViewModel = hiltViewModel()) {
     val scrollState = rememberScrollState()
     val haptic = LocalHapticFeedback.current
-    val shouldHapticOnRemove = viewModel.shouldHaptic.collectAsState()
-    val allTimers: State<MutableList<TimerListViewModel.TimerInfo>> = viewModel.allTimers.collectAsState()
+    val shouldHapticOnRemove = viewModel.shouldHaptic.collectAsStateWithLifecycle()
+    val allTimers: State<MutableList<TimerListViewModel.TimerInfo>> = viewModel.allTimers.collectAsStateWithLifecycle()
 
     Column(
         modifier = Modifier

@@ -30,7 +30,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -42,6 +41,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.text.HtmlCompat
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.presentation.view.verticalColumnScrollbar
 import com.brokenkernel.improvtools.tipsandadvice.data.model.TipsAndAdviceViewModeUI
@@ -59,7 +59,7 @@ fun HtmlText(html: String, modifier: Modifier = Modifier) {
 
 @Composable
 internal fun TipsAndAdviceScreenAsSwipable(viewModel: TipsAndAdviceViewModel = hiltViewModel()) {
-    val uiState by viewModel.uiState.collectAsState()
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val scrollState: ScrollState = rememberScrollState()
     val pagerState = rememberPagerState(
         initialPage = 1, // TODO: maybe remember this in settings or something? (maybe split 'remembered data' from 'settings'?)
@@ -116,7 +116,7 @@ internal fun TipsAndAdviceScreenAsSwipable(viewModel: TipsAndAdviceViewModel = h
 
 @Composable
 internal fun TipsAndAdviceScreenAsList(viewModel: TipsAndAdviceViewModel = hiltViewModel()) {
-    val uiState by viewModel.uiState.collectAsState()
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val columnScrollState: ScrollState = rememberScrollState()
     Column(
         modifier = Modifier.verticalColumnScrollbar(columnScrollState).verticalScroll(columnScrollState),
@@ -180,7 +180,7 @@ internal fun TipsAndAdviceScreenAsList(viewModel: TipsAndAdviceViewModel = hiltV
 @Composable
 internal fun TipsAndAdviceScreen(viewModel: TipsAndAdviceViewModel = hiltViewModel()) {
 
-    val taaViewMode by viewModel.taaViewMode.collectAsState()
+    val taaViewMode by viewModel.taaViewMode.collectAsStateWithLifecycle()
     when (taaViewMode) {
         TipsAndAdviceViewModeUI.SWIPEABLE -> TipsAndAdviceScreenAsSwipable()
         TipsAndAdviceViewModeUI.LIST -> TipsAndAdviceScreenAsList()
