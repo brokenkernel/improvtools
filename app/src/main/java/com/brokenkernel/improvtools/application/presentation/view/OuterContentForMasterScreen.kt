@@ -14,7 +14,6 @@ import com.brokenkernel.improvtools.ui.theme.ImprovToolsTheme
 internal fun OuterContentForMasterScreen(improvToolsState: ImprovToolsAppState, initialRoute: NavigableRoute) {
     val currentBackStackEntryAsState: State<NavBackStackEntry?> = improvToolsState
         .currentBackStackEntryAsState()
-        .collectAsState()
 
     ImprovToolsTheme {
         Surface {

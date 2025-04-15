@@ -5,6 +5,7 @@ import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
+import androidx.compose.runtime.State
 import androidx.compose.runtime.remember
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavHostController
@@ -19,8 +20,8 @@ internal class ImprovToolsAppState(
 ) {
 
     @Composable
-    fun currentBackStackEntryAsState(): MutableStateFlow<NavBackStackEntry?> {
-        return MutableStateFlow(navController.currentBackStackEntryAsState().value)
+    fun currentBackStackEntryAsState(): State<NavBackStackEntry?> {
+        return navController.currentBackStackEntryAsState()
     }
 
     fun navigateTo(dest: NavigableRoute) {
