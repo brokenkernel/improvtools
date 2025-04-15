@@ -24,7 +24,6 @@ import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.brokenkernel.improvtools.APPLICATION_TAG
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.presentation.view.verticalColumnScrollbar
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.CountDownTimerViewModel
@@ -34,6 +33,7 @@ import com.brokenkernel.improvtools.timer.presentation.viewmodel.TimerListViewMo
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.TimerState
 import kotlin.time.Duration
 
+private const val TAG = "TimerScreen"
 
 // TODO: allow for optional starting time setting
 // TODO control of how many timers. Add some.
@@ -146,7 +146,7 @@ internal fun TimerScreen(viewModel: TimerListViewModel = hiltViewModel()) {
                     haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                 }
                 viewModel.removeTimer(timer)
-                Log.w(APPLICATION_TAG, "removing timer $timer")
+                Log.w(TAG, "removing timer $timer")
                 Unit
             }
             OneWayDismissableContent(onRemove = onRemove) {

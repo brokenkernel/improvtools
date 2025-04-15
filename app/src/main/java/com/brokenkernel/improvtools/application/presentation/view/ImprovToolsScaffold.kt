@@ -29,14 +29,15 @@ import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hasRoute
-import com.brokenkernel.improvtools.APPLICATION_TAG
 import com.brokenkernel.improvtools.R
+import com.brokenkernel.improvtools.TAG
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import com.brokenkernel.improvtools.application.data.model.routeToScreen
 import com.brokenkernel.improvtools.settings.presentation.view.SuggestionsScreenMenu
 import com.brokenkernel.improvtools.settings.presentation.view.TipsAndAdviceMenu
 
+private const val TAG = "ImprovToolsScaffold"
 
 internal fun wrongfullyFindRouteByNavDestination(dest: NavDestination?, initialRoute: NavigableRoute): NavigableRoute {
     NavigableRoute::class.sealedSubclasses.forEach {
@@ -44,7 +45,7 @@ internal fun wrongfullyFindRouteByNavDestination(dest: NavDestination?, initialR
             return it.objectInstance!!
         }
     }
-    Log.wtf(APPLICATION_TAG, "Nav destination fallback when looking for $dest")
+    Log.wtf(TAG, "Nav destination fallback when looking for $dest")
     // should never happen
     return initialRoute
 }

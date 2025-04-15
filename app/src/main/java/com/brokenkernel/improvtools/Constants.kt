@@ -1,3 +1,4 @@
 package com.brokenkernel.improvtools
 
-const val APPLICATION_TAG: String = "IMPV"
+val Any.TAG: String
+    get() = this::class.java.simpleName

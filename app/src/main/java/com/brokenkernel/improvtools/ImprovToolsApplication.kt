@@ -27,13 +27,13 @@ fun configureRemoteConfig() {
 
     remoteConfig.addOnConfigUpdateListener(object : ConfigUpdateListener {
         override fun onUpdate(configUpdate: ConfigUpdate) {
-            if (Log.isLoggable(APPLICATION_TAG, DEBUG)) {
-                Log.d(APPLICATION_TAG, "Updated keys: " + configUpdate.updatedKeys)
+            if (Log.isLoggable(TAG, DEBUG)) {
+                Log.d(TAG, "Updated keys: " + configUpdate.updatedKeys)
             }
         }
 
         override fun onError(error: FirebaseRemoteConfigException) {
-            Log.w(APPLICATION_TAG, "Config update error with code: " + error.code, error)
+            Log.w(TAG, "Config update error with code: " + error.code, error)
         }
     })
 }
