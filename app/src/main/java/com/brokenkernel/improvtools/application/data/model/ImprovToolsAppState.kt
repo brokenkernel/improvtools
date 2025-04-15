@@ -1,5 +1,7 @@
 package com.brokenkernel.improvtools.application.data.model
 
+import android.util.Log
+import android.util.Log.INFO
 import androidx.compose.material3.DrawerState
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.rememberDrawerState
@@ -11,6 +13,7 @@ import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.brokenkernel.improvtools.TAG
 
 @Stable
 internal class ImprovToolsAppState(
@@ -24,6 +27,9 @@ internal class ImprovToolsAppState(
     }
 
     fun navigateTo(dest: NavigableRoute) {
+        if (Log.isLoggable(TAG, INFO)) {
+            Log.i(TAG, "Navigating to $dest")
+        }
         navController.navigate(dest) {
             launchSingleTop = true
             restoreState = true
