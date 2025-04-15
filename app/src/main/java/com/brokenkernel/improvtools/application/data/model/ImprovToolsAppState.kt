@@ -41,7 +41,6 @@ internal class ImprovToolsAppState(
 internal fun rememberImprovToolsAppState(
     drawerState: DrawerState = rememberDrawerState(initialValue = DrawerValue.Closed),
     navController: NavHostController = rememberNavController(),
-    currentNavigableRoute: NavigableRoute = remember { NavigableRoute.SuggestionGeneratorRoute },
-): ImprovToolsAppState = remember(drawerState, navController, currentNavigableRoute) {
+): ImprovToolsAppState = remember(drawerState, navController) {
     ImprovToolsAppState(drawerState, navController)
 }
