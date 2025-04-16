@@ -1,7 +1,6 @@
 package com.brokenkernel.improvtools.application.presentation.view
 
 import android.util.Log
-import android.webkit.ConsoleMessage.MessageLevel.LOG
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons

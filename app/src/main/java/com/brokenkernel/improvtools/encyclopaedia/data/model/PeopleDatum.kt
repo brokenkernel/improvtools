@@ -52,8 +52,13 @@ internal enum class PeopleDatum(
 
     // todo: figure out how to combine both people and troops?
     // todo: add segment button for people and troops
-    CommediaDellArte("commedia dell'arte", PeopleDatumTopic.TROOP, "", "https://en.wikipedia.org/wiki/Commedia_dell'arte".toUri(),),
-    MagnetTheater("Magnet Theater", PeopleDatumTopic.TROOP, "", "https://en.wikipedia.org/wiki/Magnet_Theater".toUri(),),
+    CommediaDellArte(
+        "commedia dell'arte",
+        PeopleDatumTopic.TROOP,
+        "",
+        "https://en.wikipedia.org/wiki/Commedia_dell'arte".toUri(),
+    ),
+    MagnetTheater("Magnet Theater", PeopleDatumTopic.TROOP, "", "https://en.wikipedia.org/wiki/Magnet_Theater".toUri()),
 
     JacquesCopeau(
         "Jacques Copeau",
