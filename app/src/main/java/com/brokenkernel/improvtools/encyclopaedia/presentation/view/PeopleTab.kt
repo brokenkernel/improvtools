@@ -54,9 +54,8 @@ internal fun PeopleTab() {
         val scrollState = rememberScrollState()
         val textFieldState = rememberTextFieldState()
         val isSegementedButtonChecked: SnapshotStateList<Boolean> =
-            PeopleDatumTopic.entries
-                .map { x -> true } // TODO there has got to be a better way of doing this?
-                .toMutableStateList<Boolean>()
+            MutableList(PeopleDatumTopic.entries.size, { true })
+                .toMutableStateList()
 
         EnumLinkedMultiChoiceSegmentedButtonRow<PeopleDatumTopic>(
             isSegementedButtonChecked = isSegementedButtonChecked,
