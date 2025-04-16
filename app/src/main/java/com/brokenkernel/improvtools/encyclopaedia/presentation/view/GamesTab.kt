@@ -34,6 +34,8 @@ import com.brokenkernel.improvtools.application.presentation.view.verticalColumn
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GamesDataItem
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GamesDatum
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GamesDatumTopic
+import com.brokenkernel.improvtools.components.presentation.view.EnumLinkedMultiChoiceSegmentedButtonRow
+import com.brokenkernel.improvtools.components.presentation.view.SimpleSearchBar
 
 
 private fun String.transformForSearch(): String {

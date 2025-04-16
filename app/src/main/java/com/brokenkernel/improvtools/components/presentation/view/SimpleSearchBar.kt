@@ -1,4 +1,4 @@
-package com.brokenkernel.improvtools.encyclopaedia.presentation.view
+package com.brokenkernel.improvtools.components.presentation.view
 
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.WindowInsets

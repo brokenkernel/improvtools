@@ -1,4 +1,4 @@
-package com.brokenkernel.improvtools.timer.presentation.view
+package com.brokenkernel.improvtools.components.presentation.view
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.background

@@ -38,6 +38,8 @@ import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.presentation.view.verticalColumnScrollbar
 import com.brokenkernel.improvtools.encyclopaedia.data.model.PeopleDatum
 import com.brokenkernel.improvtools.encyclopaedia.data.model.PeopleDatumTopic
+import com.brokenkernel.improvtools.components.presentation.view.EnumLinkedMultiChoiceSegmentedButtonRow
+import com.brokenkernel.improvtools.components.presentation.view.SimpleSearchBar
 import java.text.StringCharacterIterator
 
 

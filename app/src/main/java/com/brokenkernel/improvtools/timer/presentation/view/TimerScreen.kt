@@ -26,6 +26,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.presentation.view.verticalColumnScrollbar
+import com.brokenkernel.improvtools.components.presentation.view.OneWayDismissableContent
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.CountDownTimerViewModel
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.INITIAL_TIMER_DURATION
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.StopWatchTimerViewModel
