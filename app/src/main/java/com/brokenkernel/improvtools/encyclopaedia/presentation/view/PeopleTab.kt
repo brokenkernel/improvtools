@@ -136,7 +136,7 @@ internal fun PeopleTab() {
 
                 ) {
                     //
-                    PeopleDatum.entries.sortedWith { s1, s2 -> comparator.compare(s1.personName, s2.personName) }
+                    PeopleDatum.sortedWith { s1, s2 -> comparator.compare(s1.personName, s2.personName) }
                         .forEach { it ->
                             var isListItemInformationExpanded: Boolean by remember { mutableStateOf(false) }
                             val foundText =
