@@ -14,6 +14,7 @@ import androidx.compose.material.icons.filled.Games
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.outlined.FormatQuote
 import androidx.compose.material.icons.outlined.Games
+import androidx.compose.material.icons.outlined.SelfImprovement
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItem
@@ -25,12 +26,12 @@ import androidx.compose.material3.SegmentedButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshots.SnapshotStateList
+import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.Role
@@ -40,6 +41,7 @@ import androidx.compose.ui.semantics.traversalIndex
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.fastAny
 import com.brokenkernel.improvtools.application.presentation.view.verticalColumnScrollbar
+import com.brokenkernel.improvtools.encyclopaedia.data.model.GamesDataItem
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GamesDatum
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GamesDatumTopic
 
@@ -48,11 +50,12 @@ private fun String.transformForSearch(): String {
     return this.lowercase().filterNot { it.isWhitespace() }
 }
 
-private fun doesMatch(search: String, gameData: GamesDatum): Boolean {
+private fun doesMatch(search: String, gameData: GamesDataItem): Boolean {
     return gameData.gameName.transformForSearch().contains(search) or
             gameData.unpublishedMatches.map { it -> it.transformForSearch() }.fastAny { it -> it.contains(search) }
 }
 
+// TODO: combine people and games versions of this
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 internal fun GamesTab() {
@@ -61,8 +64,10 @@ internal fun GamesTab() {
     val scrollState = rememberScrollState()
     val textFieldState = rememberTextFieldState()
     Column {
-        // TODO: figure out how to deal with dynamic size and derive from size of enum
-        val isSegementedButtonChecked: SnapshotStateList<Boolean> = remember { mutableStateListOf(true, true, true) }
+        val isSegementedButtonChecked: SnapshotStateList<Boolean> =
+            GamesDatumTopic.entries
+                .map { x -> true } // TODO there has got to be a better way of doing this?
+                .toMutableStateList<Boolean>()
 
         MultiChoiceSegmentedButtonRow {
             // TODO: i18n
@@ -125,7 +130,7 @@ internal fun GamesTab() {
                         .verticalScroll(scrollState)
 
                 ) {
-                    GamesDatum.entries.sortedBy { it.gameName }.forEach { it: GamesDatum ->
+                    GamesDatum.sortedBy { it.gameName }.forEach { it: GamesDataItem ->
                         var isListItemInformationExpanded: Boolean by remember { mutableStateOf(false) }
                         if (isSegementedButtonChecked[it.topic.ordinal] && doesMatch(
                                 textFieldState.text.toString().transformForSearch(), it
@@ -139,6 +144,7 @@ internal fun GamesTab() {
                                             GamesDatumTopic.GAME -> Icons.Filled.Games
                                             GamesDatumTopic.WARMUP -> Icons.Outlined.Games
                                             GamesDatumTopic.FORMAT -> Icons.Outlined.FormatQuote
+                                            GamesDatumTopic.EXERCISE -> Icons.Outlined.SelfImprovement
                                         },
                                         contentDescription = "Person", // TODO text
                                     )

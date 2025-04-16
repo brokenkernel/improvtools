@@ -1,35 +1,36 @@
 package com.brokenkernel.improvtools.encyclopaedia.data.model
 
-import androidx.annotation.RestrictTo
-
 
 internal enum class GamesDatumTopic {
     GAME,
     WARMUP,
+    EXERCISE,
     FORMAT,
 }
 
 /**
  * @param unpublishedMatches This is a set of strings which will match but are not shown to the user Useful for "3" -> "Three" or similar
  */
-@RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
-internal enum class GamesDatum(
+internal data class GamesDataItem(
     val gameName: String,
     val topic: GamesDatumTopic,
     val detailedInformation: String = "",
     val unpublishedMatches: Set<String> = emptySet<String>(),
 ) {
-    ThreeThings(
+}
+
+internal val GamesDatum: Collection<GamesDataItem> = listOf(
+    GamesDataItem(
         gameName = "3 Things",
         topic = GamesDatumTopic.GAME,
         detailedInformation = """ """,
         unpublishedMatches = setOf("Three Things"),
     ),
-    Ball(
+    GamesDataItem(
         gameName = "Ball",
         topic = GamesDatumTopic.WARMUP,
     ),
-    Armando(
+    GamesDataItem(
         gameName = "The Armando",
         topic = GamesDatumTopic.FORMAT,
         detailedInformation = """
@@ -37,11 +38,16 @@ internal enum class GamesDatum(
             |Typically this monolog is inspired by a suggestion itself.
         """.trimMargin(),
     ),
-    Harold(
+    GamesDataItem(
         gameName = "The Harold",
         topic = GamesDatumTopic.FORMAT,
     ),
-    BestOfTimesWorstOfTimes(
+    GamesDataItem(
+        gameName = "Character Gauntlet",
+        topic = GamesDatumTopic.EXERCISE,
+    ),
+
+    GamesDataItem(
         gameName = "Best of Times, Worst of Times",
         topic = GamesDatumTopic.GAME,
         detailedInformation = """
@@ -51,4 +57,4 @@ internal enum class GamesDatum(
             | in the second, everything ends up going the worst way you can imagine.
         """.trimMargin().replace("\n", "")
     ),
-}
+)

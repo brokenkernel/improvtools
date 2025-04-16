@@ -28,12 +28,12 @@ import androidx.compose.material3.SegmentedButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshots.SnapshotStateList
+import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -64,8 +64,10 @@ internal fun PeopleTab() {
     val scrollState = rememberScrollState()
     val textFieldState = rememberTextFieldState()
     Column {
-        // TODO: figure out how to deal with dynamic size and derive from size of enum
-        val isSegementedButtonChecked: SnapshotStateList<Boolean> = remember { mutableStateListOf(true, true) }
+        val isSegementedButtonChecked: SnapshotStateList<Boolean> =
+            PeopleDatumTopic.entries
+                .map { x -> true } // TODO there has got to be a better way of doing this?
+                .toMutableStateList<Boolean>()
 
         MultiChoiceSegmentedButtonRow {
             // TODO: i18n
