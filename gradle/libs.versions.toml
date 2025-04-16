@@ -1,6 +1,8 @@
 [versions]
 activityCompose = "1.10.1"
 agp = "8.9.1"
+androidbrowserhelper = "2.5.0"
+browser = "1.8.0"
 dependencyAnalysis = "2.16.0"
 annotation = "1.9.1"
 composeBom = "2025.04.00"
@@ -16,7 +18,6 @@ googleGmsGoogleServices = "4.4.2"
 guava = "33.4.8-android"
 hilt = "2.56.1"
 hiltNavigationCompose = "1.2.0"
-hiltNavigationTesting = "1.2.0"
 inputMotionprediction = "1.0.0-beta05"
 jacksonModuleKotlin = "2.18.3"
 javaxInject = "1"
@@ -51,10 +52,12 @@ zoomableImageCoil3 = "0.15.1"
 
 
 [libraries]
+androidbrowserhelper = { module = "com.google.androidbrowserhelper:androidbrowserhelper", version.ref = "androidbrowserhelper" }
 androidx-activity = { module = "androidx.activity:activity", version.ref = "activityCompose" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
 androidx-activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "activityCompose" }
 androidx-annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
+androidx-browser = { module = "androidx.browser:browser", version.ref = "browser" }
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
 androidx-compose-material-extended = { group = "androidx.compose.material", name = "material-icons-extended", version.ref = "materialIconsExtended" }
 androidx-compose-material3-adaptive-navigation-suite = { module = "androidx.compose.material3:material3-adaptive-navigation-suite", version.ref = "material3-adaptive-navigation-suite" }

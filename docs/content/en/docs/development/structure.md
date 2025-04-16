@@ -42,5 +42,7 @@ application/presentation/view/
 
 The base infra for the application is in `/infrastructure` and should have dependencies on nothing else.
 
+The components for the application is in `/components` and should have dependencies on nothing else except infrastructure. These are composable typically.
+
 TODO: make into chart
 TODO: make into multi-module project so that `internal` actually helps.
