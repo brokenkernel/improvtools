@@ -65,7 +65,11 @@ internal fun AboutScreen(onNavigateToRoute: (NavigableRoute) -> Unit) {
         }
     val versionName: String? = packageInfo?.versionName
     val packageName = packageInfo?.packageName
-    val longVersionCode = packageInfo?.longVersionCode
+    val longVersionCode: Long? = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+        packageInfo?.longVersionCode
+    } else {
+        null
+    }
 
     val clipboardManager: ClipboardManager = LocalClipboardManager.current
 

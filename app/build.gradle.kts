@@ -48,7 +48,7 @@ android {
 
     defaultConfig {
         applicationId = "com.brokenkernel.improvtools"
-        minSdk = 28
+        minSdk = 26
         targetSdk = 36
         versionCode = 121
         versionName = "0.0.$versionCode"
@@ -166,11 +166,11 @@ android {
 dependencies {
     implementation(platform(libs.androidx.compose.bom))
     implementation(platform(libs.com.google.firebase.firebaseBom))
+    implementation(libs.androidbrowserhelper)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.activity.ktx)
     implementation(libs.androidx.annotation)
     implementation(libs.androidx.browser)
-    implementation(libs.androidbrowserhelper)
     implementation(libs.androidx.compose.material.extended)
     implementation(libs.androidx.compose.material3.adaptive.navigation.suite)
     implementation(libs.androidx.core.ktx)
