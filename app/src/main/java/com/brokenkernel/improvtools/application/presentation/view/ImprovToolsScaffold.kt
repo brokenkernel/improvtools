@@ -1,6 +1,7 @@
 package com.brokenkernel.improvtools.application.presentation.view
 
 import android.util.Log
+import android.webkit.ConsoleMessage.MessageLevel.LOG
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -33,6 +34,7 @@ import androidx.navigation.NavDestination.Companion.hierarchy
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
+import com.brokenkernel.improvtools.application.data.model.allNavigableRoutes
 import com.brokenkernel.improvtools.application.data.model.routeToScreen
 import com.brokenkernel.improvtools.settings.presentation.view.SuggestionsScreenMenu
 import com.brokenkernel.improvtools.settings.presentation.view.TipsAndAdviceMenu
@@ -40,11 +42,19 @@ import com.brokenkernel.improvtools.settings.presentation.view.TipsAndAdviceMenu
 private const val TAG = "ImprovToolsScaffold"
 
 internal fun wrongfullyFindRouteByNavDestination(dest: NavDestination?, initialRoute: NavigableRoute): NavigableRoute {
-    NavigableRoute::class.sealedSubclasses.forEach { possibleRoute ->
+    if (Log.isLoggable(TAG, Log.DEBUG)) {
+        Log.d(TAG, "count of possible routes is ${allNavigableRoutes.size}")
+    }
+
+    allNavigableRoutes.forEach { possibleRoute ->
+        if (Log.isLoggable(TAG, Log.DEBUG)) {
+            Log.d(TAG, "checking against $possibleRoute")
+        }
+
         if (dest?.hierarchy?.any { it ->
-                it.hasRoute(possibleRoute)
+                it.hasRoute(possibleRoute::class)
             } == true) {
-            return possibleRoute.objectInstance!!
+            return possibleRoute
         }
     }
     Log.wtf(TAG, "Nav destination fallback when looking for $dest")

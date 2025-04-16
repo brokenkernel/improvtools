@@ -19,6 +19,7 @@ import com.brokenkernel.improvtools.application.data.model.NavigableRoute.Emotio
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute.GamesPageRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute.HelpAndAboutRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute.PeoplePageRoute
+import com.brokenkernel.improvtools.application.data.model.NavigableRoute.PrivacyRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute.SettingsRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute.SuggestionGeneratorRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute.ThesaurusPageRoute
@@ -37,8 +38,6 @@ import kotlinx.serialization.Serializable
  *
  * Put another way the [NavigableRoute] is "where to go" and [NavigableScreens] is "what am I going to"
  *
- * TODO: currently we lose all "back" state information about the [NavigableRoute] since we implement our own navigation infrastructure.
- * This should be fixed.
  * @see [NavigableScreens]
  */
 @Serializable
@@ -75,8 +74,23 @@ internal sealed class NavigableRoute() {
 
     @Serializable
     internal object PrivacyRoute : NavigableRoute()
-
 }
+
+// iterating through .sealedSubclasses in release is broken
+// I can't figure out which proguard rules fix it
+internal val allNavigableRoutes: Set<NavigableRoute> = setOf(
+    SuggestionGeneratorRoute,
+    SettingsRoute,
+    TimerRoute,
+    HelpAndAboutRoute,
+    WorkshopGeneratorRoute,
+    TipsAndAdviceRoute,
+    GamesPageRoute,
+    PeoplePageRoute,
+    EmotionPageRoute,
+    ThesaurusPageRoute,
+    PrivacyRoute,
+)
 
 internal sealed class NavigableScreens(
     @param:StringRes @field:StringRes internal val titleResource: Int,
