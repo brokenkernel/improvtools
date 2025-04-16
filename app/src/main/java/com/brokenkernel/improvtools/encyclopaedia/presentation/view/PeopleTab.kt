@@ -8,33 +8,24 @@ import android.icu.util.ULocale
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItem
-import androidx.compose.material3.MultiChoiceSegmentedButtonRow
 import androidx.compose.material3.OutlinedIconButton
-import androidx.compose.material3.SearchBar
-import androidx.compose.material3.SearchBarDefaults
-import androidx.compose.material3.SegmentedButton
-import androidx.compose.material3.SegmentedButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.runtime.toMutableStateList
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -42,9 +33,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.isTraversalGroup
 import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.semantics.traversalIndex
 import androidx.compose.ui.text.intl.Locale
-import androidx.compose.ui.unit.dp
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.presentation.view.verticalColumnScrollbar
 import com.brokenkernel.improvtools.encyclopaedia.data.model.PeopleDatum
@@ -56,72 +45,29 @@ private fun String.transformForSearch(): String {
     return this.lowercase().filterNot { it.isWhitespace() }
 }
 
-// TODO: sort, search, filter by name
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun PeopleTab() {
-    var searchBarExpandedState by rememberSaveable { mutableStateOf(false) }
-    val scrollState = rememberScrollState()
-    val textFieldState = rememberTextFieldState()
+
     Column {
+        val scrollState = rememberScrollState()
+        val textFieldState = rememberTextFieldState()
         val isSegementedButtonChecked: SnapshotStateList<Boolean> =
             PeopleDatumTopic.entries
                 .map { x -> true } // TODO there has got to be a better way of doing this?
                 .toMutableStateList<Boolean>()
 
-        MultiChoiceSegmentedButtonRow {
-            // TODO: i18n
-            PeopleDatumTopic.entries.forEach { topic ->
-                SegmentedButton(
-                    onCheckedChange = {
-                        isSegementedButtonChecked[topic.ordinal] = !isSegementedButtonChecked[topic.ordinal]
-                    },
-                    checked = isSegementedButtonChecked[topic.ordinal],
-                    shape = SegmentedButtonDefaults.itemShape(
-                        index = topic.ordinal,
-                        count = PeopleDatumTopic.entries.size,
-                    ),
-                    label = { Text(topic.name) },
-                )
-            }
-        }
+        EnumLinkedMultiChoiceSegmentedButtonRow<PeopleDatumTopic>(
+            isSegementedButtonChecked = isSegementedButtonChecked,
+            enumToName = { it -> it.name },
+        )
         Box(
             modifier = Modifier
                 .fillMaxSize()
                 .semantics { isTraversalGroup = true }) {
-            SearchBar(
-                inputField = {
-                    SearchBarDefaults.InputField(
-                        query = textFieldState.text.toString(),
-                        onQueryChange = { it ->
-                            textFieldState.edit { replace(0, length, it) }
-                        },
-                        onSearch = {
-                            searchBarExpandedState = false
-                        },
-                        expanded = searchBarExpandedState,
-                        onExpandedChange = { searchBarExpandedState != searchBarExpandedState },
-                        placeholder = { Text("Search") },
-                        leadingIcon = {
-                            Icon(
-                                Icons.Default.Search,
-                                contentDescription = "Search"
-                            )
-                        },
-//                    trailingIcon = {
-//                        Icon(
-//                            Icons.Default.UnfoldMoreDouble,
-//                            contentDescription = "Search"
-//                        )
-//                    },
-                    )
-                },
-                expanded = true,
-                onExpandedChange = { it -> searchBarExpandedState = it },
-                modifier = Modifier
-                    .align(Alignment.TopCenter)
-                    .semantics { traversalIndex = 0f },
-                windowInsets = WindowInsets(top = 0.dp),
+            SimpleSearchBar(
+                textFieldState = textFieldState
             ) {
                 val languageTag = Locale.current.toLanguageTag()
                 val fullCollationTag = "$languageTag@collation=phonebook"

@@ -83,4 +83,5 @@
     <string name="about_show_debug_data">Show Debug Data</string>
     <string name="about_show_privacy_screen">Show Privacy Screen</string>
     <string name="navigation_legal_category">Legal</string>
+    <string name="search_bar_search">Search</string>
 </resources>
