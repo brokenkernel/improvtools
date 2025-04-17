@@ -1,5 +1,8 @@
 import com.android.build.api.dsl.VariantDimension
 import com.google.firebase.crashlytics.buildtools.gradle.CrashlyticsExtension
+import com.mikepenz.aboutlibraries.plugin.DuplicateMode
+import com.mikepenz.aboutlibraries.plugin.DuplicateRule
+import com.mikepenz.aboutlibraries.plugin.StrictMode
 import org.gradle.kotlin.dsl.implementation
 import java.io.IOException
 import java.util.Properties
@@ -263,4 +266,10 @@ protobuf {
             }
         }
     }
+}
+
+aboutLibraries {
+    strictMode = StrictMode.FAIL
+    duplicationMode = DuplicateMode.LINK
+    duplicationRule = DuplicateRule.EXACT
 }
