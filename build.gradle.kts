@@ -11,6 +11,7 @@ plugins {
     alias(libs.plugins.google.gms.google.services) apply false
     alias(libs.plugins.dependencyAnalysis)
     alias(libs.plugins.sortDependencies) apply false
+    alias(libs.plugins.aboutLibraries) apply false
 }
 
 dependencyAnalysis {

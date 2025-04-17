@@ -1,4 +1,5 @@
 [versions]
+aboutLibraries = "11.6.3"
 activityCompose = "1.10.1"
 agp = "8.9.1"
 androidbrowserhelper = "2.5.0"
@@ -113,6 +114,9 @@ play-services-instantapps = { module = "com.google.android.gms:play-services-ins
 tools-fastlane-screengrab = { group = "tools.fastlane", name = "screengrab", version.ref = "screengrab" }
 net-engawapg-lib-zoomable = { module = "net.engawapg.lib:zoomable", version.ref = "zoomable" }
 zoomable-image-coil3 = { module = "me.saket.telephoto:zoomable-image-coil3", version.ref = "zoomableImageCoil3" }
+aboutlibraries-core = { module = "com.mikepenz:aboutlibraries-core", version.ref = "aboutLibraries" }
+aboutlibraries-compose-core = { module = "com.mikepenz:aboutlibraries-compose", version.ref = "aboutLibraries" }
+aboutlibraries-compose-m3 = { module = "com.mikepenz:aboutlibraries-compose-m3", version.ref = "aboutLibraries" }
 
 [bundles]
 
@@ -122,6 +126,7 @@ firebase = ["com-google-firebase-analytics", "com-google-firebase-crashlytics" ]
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
+aboutLibraries = { id="com.mikepenz.aboutlibraries.plugin", version.ref = "aboutLibraries" }
 dagger-hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }

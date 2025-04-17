@@ -28,6 +28,7 @@
         </intent>
     </queries>
 
+    <!-- TODO: SDK 36 android:intentMatchingFlags="enforceIntentFilter -->
     <application
         android:name=".ImprovToolsApplication"
         android:allowBackup="true"

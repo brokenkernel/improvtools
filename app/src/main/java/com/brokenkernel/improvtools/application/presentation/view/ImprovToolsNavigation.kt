@@ -180,6 +180,11 @@ internal fun ImprovToolsNavigationDrawer(
                         { it -> doNavigateToNavigableRouteWithNavClosure(it) },
                         currentBackStackEntryAsState.value?.destination,
                     )
+                    NavigableScreenNavigationDrawerItem(
+                        NavigableScreens.LibrariesScreen,
+                        { it -> doNavigateToNavigableRouteWithNavClosure(it) },
+                        currentBackStackEntryAsState.value?.destination,
+                    )
                 }
             }
         },

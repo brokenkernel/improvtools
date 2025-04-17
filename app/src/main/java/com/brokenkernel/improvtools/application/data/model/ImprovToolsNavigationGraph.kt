@@ -5,6 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.brokenkernel.improvtools.application.presentation.view.AboutScreen
+import com.brokenkernel.improvtools.application.presentation.view.LibrariesScreen
 import com.brokenkernel.improvtools.application.presentation.view.PrivacyScreen
 import com.brokenkernel.improvtools.encyclopaedia.presentation.view.encyclopaediaPageDestinations
 import com.brokenkernel.improvtools.settings.presentation.view.SettingsScreen
@@ -48,6 +49,10 @@ internal fun ImprovToolsNavigationGraph(
 
         composable<NavigableRoute.PrivacyRoute> {
             PrivacyScreen()
+        }
+
+        composable<NavigableRoute.LibrariesRoute> {
+            LibrariesScreen()
         }
 
         encyclopaediaPageDestinations()

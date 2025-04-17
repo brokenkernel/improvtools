@@ -17,6 +17,7 @@ plugins {
     alias(libs.plugins.google.gms.google.services)
     alias(libs.plugins.dependencyAnalysis)
     alias(libs.plugins.sortDependencies)
+    alias(libs.plugins.aboutLibraries)
 }
 
 val keystoreProperties: Properties = Properties()
@@ -166,6 +167,8 @@ android {
 dependencies {
     implementation(platform(libs.androidx.compose.bom))
     implementation(platform(libs.com.google.firebase.firebaseBom))
+    implementation(libs.aboutlibraries.compose.m3)
+    implementation(libs.aboutlibraries.core)
     implementation(libs.androidbrowserhelper)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.activity.ktx)

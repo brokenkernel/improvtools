@@ -86,4 +86,6 @@
     <string name="search_bar_search">Search</string>
     <string name="privacy_policy">Privacy Policy</string>
     <string name="privacy_settings_category">Privacy Settings</string>
+    <string name="navigation_libraries_information">Licenses</string>
+    <string name="go_to_libraries_information">Go to Licences</string>
 </resources>

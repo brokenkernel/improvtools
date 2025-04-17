@@ -3,7 +3,9 @@ package com.brokenkernel.improvtools.application.data.model
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Book
+import androidx.compose.material.icons.filled.Copyright
 import androidx.compose.material.icons.filled.PrivacyTip
+import androidx.compose.material.icons.outlined.Copyright
 import androidx.compose.material.icons.outlined.EmojiEmotions
 import androidx.compose.material.icons.outlined.Games
 import androidx.compose.material.icons.outlined.Info
@@ -18,6 +20,7 @@ import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute.EmotionPageRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute.GamesPageRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute.HelpAndAboutRoute
+import com.brokenkernel.improvtools.application.data.model.NavigableRoute.LibrariesRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute.PeoplePageRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute.PrivacyRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute.SettingsRoute
@@ -74,10 +77,15 @@ internal sealed class NavigableRoute() {
 
     @Serializable
     internal object PrivacyRoute : NavigableRoute()
+
+    @Serializable
+    internal object LibrariesRoute : NavigableRoute()
 }
 
+
+// TODO: making this a companion object of NavigableRoute is also broken
+// There is some proguard rule needed but not sure what or why
 // iterating through .sealedSubclasses in release is broken
-// I can't figure out which proguard rules fix it
 internal val allNavigableRoutes: Set<NavigableRoute> = setOf(
     SuggestionGeneratorRoute,
     SettingsRoute,
@@ -90,7 +98,10 @@ internal val allNavigableRoutes: Set<NavigableRoute> = setOf(
     EmotionPageRoute,
     ThesaurusPageRoute,
     PrivacyRoute,
+    LibrariesRoute,
 )
+
+
 
 internal sealed class NavigableScreens(
     @param:StringRes @field:StringRes internal val titleResource: Int,
@@ -196,7 +207,16 @@ internal sealed class NavigableScreens(
         titleResource = R.string.navigation_privacy_information,
         contentDescription = R.string.go_to_privacy_information,
         icon = Icons.Filled.PrivacyTip,
-        route = NavigableRoute.PrivacyRoute,
+        route = PrivacyRoute,
+        shouldShowExtraMenu = false,
+    )
+
+    @Immutable
+    internal object LibrariesScreen : NavigableScreens(
+        titleResource = R.string.navigation_libraries_information,
+        contentDescription = R.string.go_to_libraries_information,
+        icon = Icons.Default.Copyright,
+        route = LibrariesRoute,
         shouldShowExtraMenu = false,
     )
 }
@@ -213,7 +233,8 @@ internal fun routeToScreen(route: NavigableRoute): NavigableScreens {
         TimerRoute -> NavigableScreens.TimerScreen
         TipsAndAdviceRoute -> NavigableScreens.TipsAndAdviceScreen
         WorkshopGeneratorRoute -> NavigableScreens.WorkshopGeneratorScreen
-        NavigableRoute.PrivacyRoute -> NavigableScreens.PrivacyScreen
+        PrivacyRoute -> NavigableScreens.PrivacyScreen
+        LibrariesRoute -> NavigableScreens.LibrariesScreen
     }
 }
 
