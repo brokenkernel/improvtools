@@ -49,6 +49,11 @@ internal fun SettingsScreen(
                 )
             }
         }
+        Text(
+            stringResource(R.string.privacy_settings_category),
+            style = MaterialTheme.typography.titleLarge
+        )
+
         Row {
             Box(modifier = Modifier.weight(.8f)) {
                 Text(
@@ -65,6 +70,11 @@ internal fun SettingsScreen(
             }
 
         }
+        Text(
+            stringResource(R.string.navigation_tips_and_advice),
+            style = MaterialTheme.typography.titleLarge
+        )
+
         Row {
             Box(modifier = Modifier.weight(.8f)) {
                 Text(

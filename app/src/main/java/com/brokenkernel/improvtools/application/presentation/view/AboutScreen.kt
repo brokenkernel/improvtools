@@ -76,7 +76,7 @@ internal fun AboutScreen(onNavigateToRoute: (NavigableRoute) -> Unit) {
     fun generateGeneralInformationText(): String {
         val result: String = """
         |<big>${resources.getString(R.string.about_contact_info)}</big>
-        |🌐 <u><a href=https://github.com/brokenkernel/improvtools">${resources.getString(R.string.about_contact_code_repo)}</a></u>
+        |🌐 <u><a href="https://github.com/brokenkernel/improvtools">${resources.getString(R.string.about_contact_code_repo)}</a></u>
          """.trimMargin().replace("\n", "<br/>")
         return result
     }

@@ -85,4 +85,5 @@
     <string name="navigation_legal_category">Legal</string>
     <string name="search_bar_search">Search</string>
     <string name="privacy_policy">Privacy Policy</string>
+    <string name="privacy_settings_category">Privacy Settings</string>
 </resources>
