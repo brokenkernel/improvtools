@@ -12,6 +12,7 @@ plugins {
     alias(libs.plugins.dependencyAnalysis)
     alias(libs.plugins.sortDependencies) apply false
     alias(libs.plugins.aboutLibraries) apply false
+    alias(libs.plugins.ktlint) apply false
 }
 
 dependencyAnalysis {
