@@ -420,17 +420,6 @@
     </issue>
 
     <issue
-        id="UnusedResources"
-        message="The resource `R.string.tips_and_advice_reload` appears to be unused"
-        errorLine1="    &lt;string name=&quot;tips_and_advice_reload&quot;>New Tip&lt;/string>"
-        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/values/strings.xml"
-            line="40"
-            column="13"/>
-    </issue>
-
-    <issue
         id="IconLocation"
         message="Found bitmap drawable `res/drawable/general_emotion_wheel.webp` in densityless folder">
         <location

@@ -37,7 +37,6 @@
     <string name="navigation_tips_and_advice">Tips And Advice</string>
     <string name="go_to_tips_and_advice_screen">Go to Tips And Advice</string>
     <string name="error_no_email_application_available">No email application available</string>
-    <string name="tips_and_advice_reload">New Tip</string>
     <string name="shortcut_suggestions_short_label">Suggestions</string>
     <string name="shortcut_suggestions_long_label">Show Suggestions</string>
     <string name="shortcut_suggestions_disabled_label">Suggestions (disabled)</string>

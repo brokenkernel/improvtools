@@ -72,8 +72,6 @@
 
   <string name="error_no_email_application_available">Keine E-Mail-Anwendung verfügbar</string>
 
-  <string name="tips_and_advice_reload">Neuer Tipp</string>
-
   <string name="shortcut_suggestions_short_label">Vorschläge</string>
 
   <string name="shortcut_suggestions_long_label">Vorschläge anzeigen</string>
