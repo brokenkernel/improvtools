@@ -269,7 +269,16 @@ protobuf {
 }
 
 aboutLibraries {
-    strictMode = StrictMode.FAIL
-    duplicationMode = DuplicateMode.LINK
-    duplicationRule = DuplicateRule.EXACT
+    license {
+        strictMode = StrictMode.FAIL
+        allowedLicenses.addAll("ASDKL") // Android SDK
+        allowedLicenses.addAll("Apache-2.0")
+        allowedLicenses.addAll("BSD-3-Clause")
+        allowedLicenses.addAll("EPL-1.0")
+        allowedLicenses.addAll("MIT")
+    }
+    library {
+        duplicationMode = DuplicateMode.LINK
+        duplicationRule = DuplicateRule.EXACT
+    }
 }
