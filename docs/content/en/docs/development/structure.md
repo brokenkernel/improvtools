@@ -17,10 +17,14 @@ Each component is isolated from each other and has the following directories
 
 ```
 /utils/
+
 /data/
+  should have no reference to Compose at all
+
 /data/repository/
 /data/model/
 /data/serialisation/
+
 /presentation/
 /presentation/viewmodel/
 /presentation/uistate/

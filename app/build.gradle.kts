@@ -172,6 +172,7 @@ dependencies {
     implementation(platform(libs.com.google.firebase.firebaseBom))
     implementation(libs.aboutlibraries.compose.m3)
     implementation(libs.aboutlibraries.core)
+    implementation(libs.accompanist.permissions)
     implementation(libs.androidbrowserhelper)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.activity.ktx)
