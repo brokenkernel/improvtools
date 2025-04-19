@@ -72,7 +72,6 @@ class ImprovToolsApplication : Application() {
             .detectUntaggedSockets()
             .penaltyLog()
 
-
         val strictModeThreadPolicy = StrictMode.ThreadPolicy.Builder()
             .detectNetwork()
 //            .detectDiskReads() // TODO: move off to its own thread, used by settings

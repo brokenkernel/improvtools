@@ -26,7 +26,6 @@ import tools.fastlane.screengrab.UiAutomatorScreenshotStrategy
 import tools.fastlane.screengrab.cleanstatusbar.CleanStatusBar
 import tools.fastlane.screengrab.locale.LocaleTestRule
 
-
 sealed class BaseScreenshotGenerationTest {
     @get:Rule(order = 0)
     var hiltRule: HiltAndroidRule = HiltAndroidRule(this)
@@ -64,11 +63,9 @@ sealed class BaseScreenshotGenerationTest {
         }
     }
 
-
     fun getString(@StringRes id: Int): String {
         return getInstrumentation().targetContext.getString(id)
     }
-
 }
 
 @HiltAndroidTest
@@ -76,14 +73,13 @@ internal class ScreenshotGenerationTest : BaseScreenshotGenerationTest() {
     @Test
     fun testMenuOnTopOfStartPageScreen() {
         composeTestRule.onNode(
-            hasContentDescription(getInstrumentation().targetContext.getString(R.string.navigation_app_menu))
+            hasContentDescription(getInstrumentation().targetContext.getString(R.string.navigation_app_menu)),
         ).performClick()
         composeTestRule.waitForIdle()
 
         Screengrab.screenshot("menu_on_top_of_start_page")
     }
 }
-
 
 @HiltAndroidTest
 @RunWith(Parameterized::class)
@@ -106,21 +102,19 @@ internal class ScreenshotGeneralPerNavigableScreenTest(
         }
     }
 
-
     @Test
     fun takeScreenshotOfNavigableScreen() {
         composeTestRule.onNode(
-            hasContentDescription(getString(R.string.navigation_app_menu))
+            hasContentDescription(getString(R.string.navigation_app_menu)),
         )
             .performClick()
         composeTestRule.waitForIdle()
         composeTestRule.onNode(
-            hasContentDescription(getString(navigableScreen.contentDescription))
+            hasContentDescription(getString(navigableScreen.contentDescription)),
         )
             .performClick()
         composeTestRule.waitForIdle()
 
         Screengrab.screenshot(navigableScreen.route::class.simpleName + "_screen_baseline")
-
     }
 }

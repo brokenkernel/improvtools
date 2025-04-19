@@ -9,7 +9,6 @@ import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.decodeFromStream
 import java.io.InputStream
 
-
 @OptIn(ExperimentalSerializationApi::class)
 internal class ResourcesAudienceSuggestionDatumRepository(
     resources: Resources,

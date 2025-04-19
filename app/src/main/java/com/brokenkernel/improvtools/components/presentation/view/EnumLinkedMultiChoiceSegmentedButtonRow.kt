@@ -9,16 +9,16 @@ import androidx.compose.runtime.snapshots.SnapshotStateList
 
 @Composable
 internal inline fun <reified T : Enum<T>> EnumLinkedMultiChoiceSegmentedButtonRow(
-    isSegementedButtonChecked: SnapshotStateList<Boolean>,  // todo: figure out how to make sure that size matches
+    isSegmentedButtonChecked: SnapshotStateList<Boolean>, // todo: figure out how to make sure that size matches
     crossinline enumToName: (T) -> String,
 ) {
     MultiChoiceSegmentedButtonRow {
         enumValues<T>().forEach { topic: T ->
             SegmentedButton(
                 onCheckedChange = {
-                    isSegementedButtonChecked[topic.ordinal] = !isSegementedButtonChecked[topic.ordinal]
+                    isSegmentedButtonChecked[topic.ordinal] = !isSegmentedButtonChecked[topic.ordinal]
                 },
-                checked = isSegementedButtonChecked[topic.ordinal],
+                checked = isSegmentedButtonChecked[topic.ordinal],
                 shape = SegmentedButtonDefaults.itemShape(
                     index = topic.ordinal,
                     count = enumValues<T>().size,
@@ -26,7 +26,6 @@ internal inline fun <reified T : Enum<T>> EnumLinkedMultiChoiceSegmentedButtonRo
                 // TODO: i18n
                 label = { Text(enumToName(topic)) },
             )
-
         }
     }
 }

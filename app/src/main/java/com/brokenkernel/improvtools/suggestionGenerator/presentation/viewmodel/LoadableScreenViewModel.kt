@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
 
-class LoadableScreenViewModel(private val loader: () -> Unit):
+class LoadableScreenViewModel(private val loader: () -> Unit) :
     ViewModel() {
     private val _isLoading = MutableStateFlow(false)
 
@@ -23,7 +23,7 @@ class LoadableScreenViewModel(private val loader: () -> Unit):
         .stateIn(
             scope = viewModelScope,
             started = SharingStarted.Eagerly,
-            initialValue = false
+            initialValue = false,
         )
 
     fun doLoad() {
@@ -33,7 +33,6 @@ class LoadableScreenViewModel(private val loader: () -> Unit):
         _isLoading.value = false
     }
 
-
     companion object {
         fun Factory(loader: () -> Unit): ViewModelProvider.Factory {
             return viewModelFactory {
@@ -42,6 +41,5 @@ class LoadableScreenViewModel(private val loader: () -> Unit):
                 }
             }
         }
-
     }
 }

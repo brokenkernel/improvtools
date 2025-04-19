@@ -1,6 +1,5 @@
 package com.brokenkernel.improvtools.encyclopaedia.data.model
 
-
 internal enum class GamesDatumTopic {
     GAME,
     WARMUP,
@@ -16,8 +15,7 @@ internal data class GamesDataItem(
     val topic: GamesDatumTopic,
     val detailedInformation: String = "",
     val unpublishedMatches: Set<String> = emptySet<String>(),
-) {
-}
+)
 
 internal val GamesDatum: Collection<GamesDataItem> = listOf(
     GamesDataItem(
@@ -55,6 +53,6 @@ internal val GamesDatum: Collection<GamesDataItem> = listOf(
             |This scene is then replayed twice. The first time every choice
             | works out with the best possible result,
             | in the second, everything ends up going the worst way you can imagine.
-        """.trimMargin().replace("\n", "")
+        """.trimMargin().replace("\n", ""),
     ),
 )

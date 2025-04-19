@@ -55,6 +55,4 @@ internal class SuggestionScreenViewModel @Inject constructor(
             this.updateSuggestionXFor(k)
         }
     }
-
-
 }

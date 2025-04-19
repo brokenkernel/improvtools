@@ -31,12 +31,11 @@ import androidx.compose.ui.semantics.isTraversalGroup
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.util.fastAny
 import com.brokenkernel.improvtools.application.presentation.view.verticalColumnScrollbar
+import com.brokenkernel.improvtools.components.presentation.view.EnumLinkedMultiChoiceSegmentedButtonRow
+import com.brokenkernel.improvtools.components.presentation.view.SimpleSearchBar
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GamesDataItem
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GamesDatum
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GamesDatumTopic
-import com.brokenkernel.improvtools.components.presentation.view.EnumLinkedMultiChoiceSegmentedButtonRow
-import com.brokenkernel.improvtools.components.presentation.view.SimpleSearchBar
-
 
 private fun String.transformForSearch(): String {
     return this.lowercase().filterNot { it.isWhitespace() }
@@ -44,7 +43,7 @@ private fun String.transformForSearch(): String {
 
 private fun doesMatch(search: String, gameData: GamesDataItem): Boolean {
     return gameData.gameName.transformForSearch().contains(search) or
-            gameData.unpublishedMatches.map { it -> it.transformForSearch() }.fastAny { it -> it.contains(search) }
+        gameData.unpublishedMatches.map { it -> it.transformForSearch() }.fastAny { it -> it.contains(search) }
 }
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
@@ -53,31 +52,32 @@ internal fun GamesTab() {
     Column {
         val scrollState = rememberScrollState()
         val textFieldState: TextFieldState = rememberTextFieldState()
-        val isSegementedButtonChecked: SnapshotStateList<Boolean> =
+        val isSegmentedButtonChecked: SnapshotStateList<Boolean> =
             MutableList(GamesDatumTopic.entries.size, { true })
                 .toMutableStateList()
 
         EnumLinkedMultiChoiceSegmentedButtonRow<GamesDatumTopic>(
-            isSegementedButtonChecked = isSegementedButtonChecked,
+            isSegmentedButtonChecked = isSegmentedButtonChecked,
             enumToName = { it -> it.name },
         )
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .semantics { isTraversalGroup = true }) {
+                .semantics { isTraversalGroup = true },
+        ) {
             SimpleSearchBar(
-                textFieldState = textFieldState
+                textFieldState = textFieldState,
             ) {
                 Column(
                     modifier = Modifier
                         .verticalColumnScrollbar(scrollState)
-                        .verticalScroll(scrollState)
+                        .verticalScroll(scrollState),
 
                 ) {
                     GamesDatum.sortedBy { it.gameName }.forEach { it: GamesDataItem ->
                         var isListItemInformationExpanded: Boolean by remember { mutableStateOf(false) }
-                        if (isSegementedButtonChecked[it.topic.ordinal] && doesMatch(
-                                textFieldState.text.toString().transformForSearch(), it
+                        if (isSegmentedButtonChecked[it.topic.ordinal] && doesMatch(
+                                textFieldState.text.toString().transformForSearch(), it,
                             )
                         ) {
                             ListItem(
@@ -105,7 +105,7 @@ internal fun GamesTab() {
                                     onClick = {
                                         isListItemInformationExpanded = !isListItemInformationExpanded
                                     },
-                                )
+                                ),
                             )
                         }
                     }

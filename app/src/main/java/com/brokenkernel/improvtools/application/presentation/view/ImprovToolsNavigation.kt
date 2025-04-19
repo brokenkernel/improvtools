@@ -43,18 +43,19 @@ private fun NavigableScreenNavigationDrawerItem(
         icon = {
             Icon(
                 screen.icon,
-                contentDescription = stringResource(screen.contentDescription)
+                contentDescription = stringResource(screen.contentDescription),
             )
         },
         onClick = {
             onNavMenuClickCallback(screen.route)
         },
-        selected = (currentNavigableRoute?.hierarchy?.any { it ->
-            it.hasRoute(screen.route::class)
-        } == true),
+        selected = (
+            currentNavigableRoute?.hierarchy?.any { it ->
+                it.hasRoute(screen.route::class)
+            } == true
+            ),
     )
 }
-
 
 @Composable
 internal fun ImprovToolsNavigationDrawer(
@@ -64,7 +65,6 @@ internal fun ImprovToolsNavigationDrawer(
     navController: NavHostController,
     initialRoute: NavigableRoute,
 ) {
-
     val scope: CoroutineScope = rememberCoroutineScope()
 
     fun closeNavMenu() {
@@ -95,18 +95,18 @@ internal fun ImprovToolsNavigationDrawer(
                 Column(
                     modifier = Modifier
                         .padding(horizontal = 16.dp)
-                        .verticalScroll(rememberScrollState())
+                        .verticalScroll(rememberScrollState()),
                 ) {
                     Text(
                         stringResource(R.string.app_name),
                         modifier = Modifier.padding(16.dp),
-                        style = MaterialTheme.typography.titleLarge
+                        style = MaterialTheme.typography.titleLarge,
                     )
                     HorizontalDivider()
                     Text(
                         stringResource(R.string.navigation_useful_tools_category),
                         modifier = Modifier.padding(16.dp),
-                        style = MaterialTheme.typography.titleMedium
+                        style = MaterialTheme.typography.titleMedium,
                     )
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.SuggestionGeneratorScreen,
@@ -124,7 +124,7 @@ internal fun ImprovToolsNavigationDrawer(
                     Text(
                         stringResource(R.string.navigation_encyclopaedia_category),
                         modifier = Modifier.padding(16.dp),
-                        style = MaterialTheme.typography.titleMedium
+                        style = MaterialTheme.typography.titleMedium,
                     )
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.GamesPageScreen,
@@ -156,7 +156,7 @@ internal fun ImprovToolsNavigationDrawer(
                     Text(
                         stringResource(R.string.navigation_settings_category),
                         modifier = Modifier.padding(16.dp),
-                        style = MaterialTheme.typography.titleMedium
+                        style = MaterialTheme.typography.titleMedium,
                     )
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.SettingsScreen,
@@ -173,7 +173,7 @@ internal fun ImprovToolsNavigationDrawer(
                     Text(
                         stringResource(R.string.navigation_legal_category),
                         modifier = Modifier.padding(16.dp),
-                        style = MaterialTheme.typography.titleMedium
+                        style = MaterialTheme.typography.titleMedium,
                     )
                     NavigableScreenNavigationDrawerItem(
                         NavigableScreens.PrivacyScreen,
@@ -194,7 +194,7 @@ internal fun ImprovToolsNavigationDrawer(
             navMenuButtonPressedCallback = {
                 invertNavMenuState()
             },
-            initialRoute = initialRoute
+            initialRoute = initialRoute,
         ) {
             // TODO: replace with event system instead of passing controller??
             ImprovToolsNavigationGraph(
@@ -203,6 +203,5 @@ internal fun ImprovToolsNavigationDrawer(
                 initialRoute = initialRoute,
             )
         }
-
     }
 }

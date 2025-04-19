@@ -53,7 +53,6 @@ internal class SettingsScreenViewModel @Inject constructor(private val settingsR
         _uiState.value = _uiState.value.copy(tipsAndTricksViewMode = internalNewState)
     }
 
-
     fun onClickUpdateAllowAnalyticsCookieStorage(newState: Boolean) {
         viewModelScope.launch {
             settingsRepository.updateAllowAnalyticsCookieStorage(newState)

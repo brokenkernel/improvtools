@@ -56,7 +56,8 @@ internal fun SimpleCountDownTimer(viewModel: CountDownTimerViewModel, onRemoveTi
                 },
                 onStart = {
                     viewModel.setTimerState(TimerState.STARTED)
-                })
+                },
+            )
             OutlinedButton(onClick = {
                 viewModel.setTimeLeft(timeLeft / 2)
             }) {
@@ -80,7 +81,7 @@ internal fun SimpleCountDownTimer(viewModel: CountDownTimerViewModel, onRemoveTi
                 },
                 contentDescription = stringResource(R.string.count_down_timer),
             )
-        }
+        },
     )
 }
 
@@ -103,7 +104,7 @@ internal fun SimpleStopWatchTimer(viewModel: StopWatchTimerViewModel, onRemoveTi
                 },
                 onPause = {
                     viewModel.setTimerState(TimerState.PAUSED)
-                }
+                },
             )
             OutlinedButton(onClick = {
                 viewModel.setTimerState(TimerState.STOPPED)
@@ -121,10 +122,9 @@ internal fun SimpleStopWatchTimer(viewModel: StopWatchTimerViewModel, onRemoveTi
                 },
                 contentDescription = stringResource(R.string.count_down_timer),
             )
-        }
+        },
     )
 }
-
 
 @Composable
 internal fun TimerScreen(viewModel: TimerListViewModel = hiltViewModel()) {
@@ -136,7 +136,7 @@ internal fun TimerScreen(viewModel: TimerListViewModel = hiltViewModel()) {
     Column(
         modifier = Modifier
             .verticalColumnScrollbar(scrollState)
-            .verticalScroll(scrollState)
+            .verticalScroll(scrollState),
     ) {
         // toList to copy to avoid ConcurrentModificationException. Maybe a better way exists to handle?
         allTimers.value.toList().forEach { timer ->
@@ -156,7 +156,6 @@ internal fun TimerScreen(viewModel: TimerListViewModel = hiltViewModel()) {
                         TimerBorderOutlineCard {
                             SimpleStopWatchTimer(StopWatchTimerViewModel(timer.title), onRemove)
                         }
-
                     }
 
                     TimerListViewModel.TimerType.COUNTDOWN -> {

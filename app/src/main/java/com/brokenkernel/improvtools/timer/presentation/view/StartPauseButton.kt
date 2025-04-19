@@ -12,7 +12,6 @@ import androidx.compose.ui.res.stringResource
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.TimerState
 
-
 @Composable
 internal fun StartPauseButton(
     timerState: TimerState,
@@ -40,7 +39,7 @@ internal fun StartPauseButton(
             }
         Icon(
             curButtonIcon,
-            contentDescription = curButtonText
+            contentDescription = curButtonText,
         )
         Text(curButtonText)
     }

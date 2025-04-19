@@ -12,13 +12,13 @@ enum class TipsAndAdviceViewModeUI(@param:Size(min = 1) @field:Size(min = 1) val
     SWIPEABLE(
         internalEnumsMatching = listOf(
             TipsAndTricksViewMode.VIEW_MODE_SWIPE,
-        )
+        ),
     ),
     LIST(
         internalEnumsMatching = listOf(
             TipsAndTricksViewMode.VIEW_MODE_LIST,
             TipsAndTricksViewMode.VIEW_MODE_DEFAULT,
-        )
+        ),
     ),
     ;
 

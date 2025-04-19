@@ -6,7 +6,6 @@ import androidx.compose.runtime.Composable
 
 @Composable
 internal fun ThesaurusTab() {
-
     Column {
         Text("TODO: Placeholder Emotion Thesaurus")
     }

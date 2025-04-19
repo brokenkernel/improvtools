@@ -77,7 +77,7 @@ internal fun AboutScreen(onNavigateToRoute: (NavigableRoute) -> Unit) {
         val result: String = """
         |<big>${resources.getString(R.string.about_contact_info)}</big>
         |🌐 <u><a href="https://github.com/brokenkernel/improvtools">${resources.getString(R.string.about_contact_code_repo)}</a></u>
-         """.trimMargin().replace("\n", "<br/>")
+        """.trimMargin().replace("\n", "<br/>")
         return result
     }
 
@@ -87,7 +87,7 @@ internal fun AboutScreen(onNavigateToRoute: (NavigableRoute) -> Unit) {
             |${
             resources.getString(
                 R.string.about_buildconfig_version_code,
-                BuildConfig.VERSION_CODE
+                BuildConfig.VERSION_CODE,
             )
         }
             |${resources.getString(R.string.about_long_version_code, longVersionCode)}
@@ -99,13 +99,13 @@ internal fun AboutScreen(onNavigateToRoute: (NavigableRoute) -> Unit) {
             |${
             resources.getString(
                 R.string.about_buildconfig_enable_strict_death,
-                BuildConfig.ENABLE_STRICT_MODE_DEATH
+                BuildConfig.ENABLE_STRICT_MODE_DEATH,
             )
         }
             |${
             resources.getString(
                 R.string.about_buildconfig_enable_crashylitics,
-                BuildConfig.ENABLE_CRASHLYTICS
+                BuildConfig.ENABLE_CRASHLYTICS,
             )
         }
             |${resources.getString(R.string.about_is_safe_mode, packageManager.isSafeMode)}
@@ -151,7 +151,7 @@ internal fun AboutScreen(onNavigateToRoute: (NavigableRoute) -> Unit) {
 
     fun copyAboutText() {
         clipboardManager.setText(
-            AnnotatedString.fromHtml(generateDebugInformationText())
+            AnnotatedString.fromHtml(generateDebugInformationText()),
         )
     }
 
@@ -160,12 +160,12 @@ internal fun AboutScreen(onNavigateToRoute: (NavigableRoute) -> Unit) {
             modifier = Modifier
                 .verticalScroll(rememberScrollState())
                 .fillMaxHeight()
-                .weight(100f)
+                .weight(100f),
         ) {
             SelectionContainer {
                 Column {
                     Text(
-                        AnnotatedString.fromHtml(generateGeneralInformationText())
+                        AnnotatedString.fromHtml(generateGeneralInformationText()),
                     )
                     val isExpanded = remember { mutableStateOf(false) }
                     // TODO: make utility collapseable card
@@ -176,15 +176,15 @@ internal fun AboutScreen(onNavigateToRoute: (NavigableRoute) -> Unit) {
                                 onClickLabel = stringResource(R.string.component_collapse_card),
                                 enabled = true,
                                 role = Role.Switch,
-                            )
+                            ),
                     ) {
                         if (isExpanded.value) {
                             Text(
-                                AnnotatedString.fromHtml(generateDebugInformationText())
+                                AnnotatedString.fromHtml(generateDebugInformationText()),
                             )
                         } else {
                             Text(
-                                stringResource(R.string.about_show_debug_data)
+                                stringResource(R.string.about_show_debug_data),
                             )
                         }
                     }
@@ -202,16 +202,16 @@ internal fun AboutScreen(onNavigateToRoute: (NavigableRoute) -> Unit) {
             horizontalArrangement = Arrangement.Center,
             modifier = Modifier
                 .fillMaxWidth()
-                .height(IntrinsicSize.Min)
+                .height(IntrinsicSize.Min),
         ) {
             val launcher = rememberLauncherForActivityResult(
                 contract = ActivityResultContracts.StartActivityForResult(),
                 onResult = {},
             )
-            FilledTonalButton(onClick = {
-                copyAboutText(
-                )
-            }
+            FilledTonalButton(
+                onClick = {
+                    copyAboutText()
+                },
             ) {
                 Text(stringResource(R.string.about_copy_all))
             }
@@ -222,22 +222,22 @@ internal fun AboutScreen(onNavigateToRoute: (NavigableRoute) -> Unit) {
                     val intent = Intent(Intent.ACTION_SENDTO, "mailto:".toUri())
                         .putExtra(
                             Intent.EXTRA_EMAIL,
-                            arrayOf(resources.getString(R.string.about_contact_email_address))
+                            arrayOf(resources.getString(R.string.about_contact_email_address)),
                         )
                         .putExtra(
                             Intent.EXTRA_SUBJECT,
-                            resources.getString(R.string.about_improvtools_feature_request)
+                            resources.getString(R.string.about_improvtools_feature_request),
                         )
                         .putExtra(
                             Intent.EXTRA_TEXT,
-                            Html.fromHtml(textToBeEmailed, FROM_HTML_MODE_COMPACT)
+                            Html.fromHtml(textToBeEmailed, FROM_HTML_MODE_COMPACT),
                         )
                     try {
                         launcher.launch(intent)
                     } catch (_: ActivityNotFoundException) {
                         crScope.launch {
                             snackbarHostState.showSnackbar(
-                                resources.getString(R.string.error_no_email_application_available)
+                                resources.getString(R.string.error_no_email_application_available),
                             )
                         }
                     }

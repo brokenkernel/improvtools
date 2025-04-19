@@ -21,18 +21,16 @@ import com.brokenkernel.improvtools.settings.presentation.viewmodel.SettingsScre
 import com.brokenkernel.improvtools.settings.utils.toTitleCase
 import com.brokenkernel.improvtools.tipsandadvice.data.model.TipsAndAdviceViewModeUI
 
-
 @Composable
 internal fun SettingsScreen(
     viewModel: SettingsScreenViewModel = hiltViewModel(),
 ) {
-
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     Column {
         Text(
             stringResource(R.string.suggestions_activity_title),
-            style = MaterialTheme.typography.titleLarge
+            style = MaterialTheme.typography.titleLarge,
         )
         Row {
             Box(modifier = Modifier.weight(.8f)) {
@@ -51,7 +49,7 @@ internal fun SettingsScreen(
         }
         Text(
             stringResource(R.string.privacy_settings_category),
-            style = MaterialTheme.typography.titleLarge
+            style = MaterialTheme.typography.titleLarge,
         )
 
         Row {
@@ -68,11 +66,10 @@ internal fun SettingsScreen(
                     },
                 )
             }
-
         }
         Text(
             stringResource(R.string.navigation_tips_and_advice),
-            style = MaterialTheme.typography.titleLarge
+            style = MaterialTheme.typography.titleLarge,
         )
 
         Row {
@@ -88,8 +85,8 @@ internal fun SettingsScreen(
                             .selectable(
                                 selected = (opt.internalEnumsMatching.contains(uiState.tipsAndTricksViewMode)),
                                 onClick = { viewModel.onClickUpdateTipsAndTricksViewMode(opt) },
-                                role = Role.RadioButton
-                            )
+                                role = Role.RadioButton,
+                            ),
                     ) {
                         RadioButton(
                             selected = (opt.internalEnumsMatching.contains(uiState.tipsAndTricksViewMode)),

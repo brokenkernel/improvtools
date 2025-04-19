@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 interface SettingsRepository {
     val userSettingsFlow: Flow<UserSettings>
 
-    suspend fun updateAllowSuggestionsReuse(allowSuggestinReUse: Boolean)
+    suspend fun updateAllowSuggestionsReuse(allowSuggestionReUse: Boolean)
     suspend fun updateAllowAnalyticsCookieStorage(allowAnalyticsCookieStorage: Boolean)
     suspend fun updateTipsAndTricksViewMode(tipsAndTricksViewMode: UserSettings.TipsAndTricksViewMode)
     suspend fun updateTimerHapticsMode(timerHapticsMode: UserSettings.TimerHapticsMode)

@@ -22,25 +22,25 @@ internal fun OneWayDismissableContent(onRemove: () -> Unit, content: @Composable
             } else {
                 false
             }
-        }
+        },
     )
 
     SwipeToDismissBox(
         state = contentSTDState,
         backgroundContent = {
             val color by
-            animateColorAsState(
-                when (contentSTDState.dismissDirection) {
-                    // TODO: from theme?
-                    SwipeToDismissBoxValue.Settled -> Color.LightGray
-                    SwipeToDismissBoxValue.StartToEnd -> Color.Red
-                    SwipeToDismissBoxValue.EndToStart -> Color.Red
-                }
-            )
+                animateColorAsState(
+                    when (contentSTDState.dismissDirection) {
+                        // TODO: from theme?
+                        SwipeToDismissBoxValue.Settled -> Color.LightGray
+                        SwipeToDismissBoxValue.StartToEnd -> Color.Red
+                        SwipeToDismissBoxValue.EndToStart -> Color.Red
+                    },
+                )
             Box(
                 Modifier
                     .fillMaxSize()
-                    .background(color)
+                    .background(color),
             )
         },
         enableDismissFromStartToEnd = false,
@@ -49,5 +49,4 @@ internal fun OneWayDismissableContent(onRemove: () -> Unit, content: @Composable
     ) {
         content()
     }
-
 }

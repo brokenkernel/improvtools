@@ -19,7 +19,6 @@ internal fun ImprovToolsNavigationGraph(
     onNavigateToRoute: (NavigableRoute) -> Unit,
     initialRoute: NavigableRoute,
 ) {
-
     NavHost(
         navController = navController,
         startDestination = initialRoute,

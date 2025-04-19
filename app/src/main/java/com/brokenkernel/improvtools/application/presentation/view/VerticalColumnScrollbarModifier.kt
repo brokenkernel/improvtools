@@ -21,7 +21,7 @@ internal fun Modifier.verticalColumnScrollbar(
     scrollBarTrackColor: Color = MaterialTheme.colorScheme.surfaceDim,
     scrollBarColor: Color = MaterialTheme.colorScheme.tertiary,
     scrollBarCornerRadius: Float = 4f,
-    endPadding: Float = 12f
+    endPadding: Float = 12f,
 ): Modifier {
     return drawWithContent {
         // Draw the column's content
@@ -49,7 +49,7 @@ internal fun Modifier.verticalColumnScrollbar(
             cornerRadius = CornerRadius(scrollBarCornerRadius),
             color = scrollBarColor,
             topLeft = Offset(this.size.width - endPadding, scrollBarStartOffset),
-            size = Size(width.toPx(), scrollBarHeight)
+            size = Size(width.toPx(), scrollBarHeight),
         )
     }
 }

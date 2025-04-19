@@ -52,7 +52,8 @@ internal fun wrongfullyFindRouteByNavDestination(dest: NavDestination?, initialR
 
         if (dest?.hierarchy?.any { it ->
                 it.hasRoute(possibleRoute::class)
-            } == true) {
+            } == true
+        ) {
             return possibleRoute
         }
     }
@@ -74,7 +75,7 @@ internal fun ImprovToolsScaffold(
 
     val currentNavigableRoute = wrongfullyFindRouteByNavDestination(
         currentBackStackEntry.value?.destination,
-        initialRoute
+        initialRoute,
     )
 
     Scaffold(
@@ -87,13 +88,13 @@ internal fun ImprovToolsScaffold(
                 title = { Text(stringResource(routeToScreen(currentNavigableRoute).titleResource)) },
                 scrollBehavior = TopAppBarDefaults
                     .exitUntilCollapsedScrollBehavior(
-                        rememberTopAppBarState()
+                        rememberTopAppBarState(),
                     ),
                 navigationIcon = {
                     IconButton(onClick = navMenuButtonPressedCallback) {
                         Icon(
                             imageVector = Icons.Default.Menu,
-                            contentDescription = stringResource(R.string.navigation_app_menu)
+                            contentDescription = stringResource(R.string.navigation_app_menu),
                         )
                     }
                 },
@@ -107,21 +108,21 @@ internal fun ImprovToolsScaffold(
                         if (routeToScreen(currentNavigableRoute).shouldShowExtraMenu) {
                             Icon(
                                 imageVector = Icons.Filled.MoreVert,
-                                contentDescription = stringResource(R.string.navigation_open_screen_specific_menu)
+                                contentDescription = stringResource(R.string.navigation_open_screen_specific_menu),
                             )
                             when (routeToScreen(currentNavigableRoute)) {
                                 NavigableScreens.SuggestionGeneratorScreen -> SuggestionsScreenMenu(
                                     expanded = moreMenuExpandedState,
                                     onDismiss = {
                                         moreMenuExpandedState = !moreMenuExpandedState
-                                    }
+                                    },
                                 )
 
                                 NavigableScreens.TipsAndAdviceScreen -> TipsAndAdviceMenu(
                                     expanded = moreMenuExpandedState,
                                     onDismiss = {
                                         moreMenuExpandedState = !moreMenuExpandedState
-                                    }
+                                    },
                                 )
 
                                 else -> {
@@ -129,7 +130,6 @@ internal fun ImprovToolsScaffold(
                                 }
                             }
                         }
-
                     }
                 },
             )
@@ -146,5 +146,4 @@ internal fun ImprovToolsScaffold(
             content()
         }
     }
-
 }

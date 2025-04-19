@@ -36,39 +36,37 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.intl.Locale
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.presentation.view.verticalColumnScrollbar
-import com.brokenkernel.improvtools.encyclopaedia.data.model.PeopleDatum
-import com.brokenkernel.improvtools.encyclopaedia.data.model.PeopleDatumTopic
 import com.brokenkernel.improvtools.components.presentation.view.EnumLinkedMultiChoiceSegmentedButtonRow
 import com.brokenkernel.improvtools.components.presentation.view.SimpleSearchBar
+import com.brokenkernel.improvtools.encyclopaedia.data.model.PeopleDatum
+import com.brokenkernel.improvtools.encyclopaedia.data.model.PeopleDatumTopic
 import java.text.StringCharacterIterator
-
 
 private fun String.transformForSearch(): String {
     return this.lowercase().filterNot { it.isWhitespace() }
 }
 
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun PeopleTab() {
-
     Column {
         val scrollState = rememberScrollState()
         val textFieldState = rememberTextFieldState()
-        val isSegementedButtonChecked: SnapshotStateList<Boolean> =
+        val isSegmentedButtonChecked: SnapshotStateList<Boolean> =
             MutableList(PeopleDatumTopic.entries.size, { true })
                 .toMutableStateList()
 
         EnumLinkedMultiChoiceSegmentedButtonRow<PeopleDatumTopic>(
-            isSegementedButtonChecked = isSegementedButtonChecked,
+            isSegmentedButtonChecked = isSegmentedButtonChecked,
             enumToName = { it -> it.name },
         )
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .semantics { isTraversalGroup = true }) {
+                .semantics { isTraversalGroup = true },
+        ) {
             SimpleSearchBar(
-                textFieldState = textFieldState
+                textFieldState = textFieldState,
             ) {
                 val languageTag = Locale.current.toLanguageTag()
                 val fullCollationTag = "$languageTag@collation=phonebook"
@@ -81,7 +79,7 @@ internal fun PeopleTab() {
                 Column(
                     modifier = Modifier
                         .verticalColumnScrollbar(scrollState)
-                        .verticalScroll(scrollState)
+                        .verticalScroll(scrollState),
 
                 ) {
                     //
@@ -95,13 +93,13 @@ internal fun PeopleTab() {
                                     val search = StringSearch(
                                         textFieldState.text.toString().transformForSearch(),
                                         StringCharacterIterator(it.personName.transformForSearch()),
-                                        Locale.current.platformLocale
+                                        Locale.current.platformLocale,
                                     )
                                     search.first() != DONE
                                 } else {
                                     true
                                 }
-                            if (isSegementedButtonChecked[it.topic.ordinal] && foundText) {
+                            if (isSegmentedButtonChecked[it.topic.ordinal] && foundText) {
                                 ListItem(
                                     headlineContent = { Text(it.personName) },
                                     leadingContent = {
@@ -139,7 +137,7 @@ internal fun PeopleTab() {
                                         onClick = {
                                             isListItemInformationExpanded = !isListItemInformationExpanded
                                         },
-                                    )
+                                    ),
                                 )
                             }
                         }

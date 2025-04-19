@@ -37,7 +37,7 @@ try {
 /**
  * Type safety for buildConfigField
  */
-private inline fun <reified ValueT> VariantDimension.buildConfigField(name: String, value: ValueT): Unit {
+private inline fun <reified ValueT> VariantDimension.buildConfigField(name: String, value: ValueT) {
     val resolvedValue: String = when (value) {
         is String -> "\"$value\""
         is Boolean -> "Boolean.parseBoolean(\"$value\")"
@@ -61,9 +61,8 @@ android {
         testInstrumentationRunner = "com.brokenkernel.improvtools.infrastructure.ImprovToolsTestRunner"
         proguardFiles(
             getDefaultProguardFile("proguard-android-optimize.txt"),
-            "proguard-rules.pro"
+            "proguard-rules.pro",
         )
-
     }
 
     signingConfigs {
@@ -284,7 +283,6 @@ aboutLibraries {
         duplicationRule = DuplicateRule.EXACT
     }
 }
-
 
 ktlint {
     android = true

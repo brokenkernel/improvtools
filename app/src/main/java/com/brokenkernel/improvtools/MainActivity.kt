@@ -15,12 +15,11 @@ private const val ShowSuggestionsIntent: String = "com.brokenkernel.improvtools.
 private const val ShowTimerIntent: String = "com.brokenkernel.improvtools.intents.ShowTimer"
 private const val ShowEncyclopaediaIntent: String = "com.brokenkernel.improvtools.intents.ShowEncyclopaedia"
 
-//private const val ShowNotificationPreferencesIntent: String = "android.intent.action.NOTIFICATION_PREFERENCES"
-// TODO: NotficiationPreferenes
-
+// private const val ShowNotificationPreferencesIntent: String = "android.intent.action.NOTIFICATION_PREFERENCES"
+// TODO: NotficiationPreferences
 
 // TODO features of relationships
-// power dynamics. Competive, thearenative, emabled, scared, love, grudge, trusting suspicion
+// power dynamics. Competitive, thearenative, enabled, scared, love, grudge, trusting suspicion
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -40,8 +39,8 @@ class MainActivity : ComponentActivity() {
                     ShowTimerIntent -> NavigableRoute.TimerRoute
                     ShowEncyclopaediaIntent -> NavigableRoute.EmotionPageRoute
                     Intent.ACTION_APPLICATION_PREFERENCES -> NavigableRoute.SettingsRoute
-                    Intent.ACTION_VIEW_PERMISSION_USAGE -> NavigableRoute.PrivacyRoute // consider a seperate privacy page eventualyl
-                    Intent.ACTION_VIEW_PERMISSION_USAGE_FOR_PERIOD -> NavigableRoute.PrivacyRoute // consider a seperate privacy page eventualyl
+                    Intent.ACTION_VIEW_PERMISSION_USAGE -> NavigableRoute.PrivacyRoute // consider a separate privacy page eventualyl
+                    Intent.ACTION_VIEW_PERMISSION_USAGE_FOR_PERIOD -> NavigableRoute.PrivacyRoute // consider a separate privacy page eventualyl
 //                    ShowNotificationPreferencesIntent -> NavigableRoute.SettingsRoute
                     else -> NavigableRoute.SuggestionGeneratorRoute
                 }
@@ -54,6 +53,5 @@ class MainActivity : ComponentActivity() {
             // maybe ImprovToolsState, or at least a subset should be passed via LocalContent so it doesn't need to be threaded all over the place
             OuterContentForMasterScreen(improvToolsState = improvToolsState, initialRoute = initialRoute)
         }
-
     }
 }

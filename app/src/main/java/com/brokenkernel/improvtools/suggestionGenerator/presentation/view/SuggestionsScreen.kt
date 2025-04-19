@@ -44,7 +44,6 @@ import com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel.S
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun SuggestionsScreen(
@@ -71,13 +70,13 @@ internal fun SuggestionsScreen(
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
-                .fillMaxSize()
+                .fillMaxSize(),
         ) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(IntrinsicSize.Max)
-                    .weight(11f)
+                    .weight(11f),
             ) {
                 // should these all be ListItem instead??
                 val scrollState: ScrollState = rememberScrollState()
@@ -86,7 +85,7 @@ internal fun SuggestionsScreen(
                     modifier = Modifier
                         .verticalColumnScrollbar(scrollState)
                         .verticalScroll(scrollState)
-                        .fillMaxWidth()
+                        .fillMaxWidth(),
                 ) {
                     viewModel.internalCategoryDatum.forEach { ideaCategory ->
                         val itemSuggestionState: State<String>? =
@@ -105,7 +104,7 @@ internal fun SuggestionsScreen(
                                         onClick = {
                                             onNavigateToRoute(NavigableRoute.EmotionPageRoute)
                                         },
-                                        modifier = Modifier.weight(1f)
+                                        modifier = Modifier.weight(1f),
                                     ) {
                                         Icon(
                                             Icons.Default.Info,
@@ -113,7 +112,7 @@ internal fun SuggestionsScreen(
                                         )
                                     }
                                 }
-                            }
+                            },
                         )
                     }
                 }
@@ -123,17 +122,17 @@ internal fun SuggestionsScreen(
                 horizontalArrangement = Arrangement.Center,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .weight(1f)
+                    .weight(1f),
             ) {
                 // maybe floating action button?
                 FilledTonalButton(
                     onClick = { viewModel.resetAllCategories() },
 
-                    ) {
+                ) {
                     Row {
                         Icon(
                             Icons.Filled.ChangeCircle,
-                            contentDescription = stringResource(R.string.suggestions_reset_all)
+                            contentDescription = stringResource(R.string.suggestions_reset_all),
                         )
                         Spacer(modifier = Modifier.padding(dimensionResource(R.dimen.padding_icon_text_for_button)))
                         Text(text = stringResource(R.string.suggestions_reset_all))

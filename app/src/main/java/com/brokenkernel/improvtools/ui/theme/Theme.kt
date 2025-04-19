@@ -22,7 +22,6 @@ private val LightColorScheme = lightColorScheme(
     tertiary = Pink40,
     background = VeryWhiteishPurple,
 
-
     /* Other default colors to override
 
     surface = Color(0xFFFFFBFE),
@@ -31,14 +30,14 @@ private val LightColorScheme = lightColorScheme(
     onTertiary = Color.White,
     onBackground = Color(0xFF1C1B1F),
     onSurface = Color(0xFF1C1B1F),
-    */
+     */
 )
 
 @Composable
 fun ImprovToolsTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     dynamicColor: Boolean = true,
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
 ) {
     val colorScheme = when {
         dynamicColor -> {
@@ -57,6 +56,6 @@ fun ImprovToolsTheme(
     MaterialTheme(
         colorScheme = colorScheme,
         typography = Typography,
-        content = content
+        content = content,
     )
 }

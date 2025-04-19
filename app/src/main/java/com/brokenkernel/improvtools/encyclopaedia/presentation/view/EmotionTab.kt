@@ -35,8 +35,7 @@ internal fun EmotionTab() {
             colors = CardDefaults.cardColors(
                 containerColor = MaterialTheme.colorScheme.surface,
             ),
-        )
-        {
+        ) {
             Text(
                 stringResource(R.string.encyclopaedia_plutchiks_wheel_of_emotions),
                 style = MaterialTheme.typography.titleLarge,

@@ -25,7 +25,7 @@ val INITIAL_TIMER_DURATION: Duration = INITIAL_TIMER_SECONDS.seconds
 internal enum class TimerState {
     STARTED,
     PAUSED,
-    STOPPED
+    STOPPED,
     ;
 
     fun isStarted(): Boolean {
@@ -45,7 +45,6 @@ internal sealed class BaseTimerViewModel(
     protected val _timeLeft: MutableStateFlow<Duration> = MutableStateFlow(initialTime)
     internal val timeLeft: StateFlow<Duration> = _timeLeft.asStateFlow()
 
-
     // TODO: consider three different funs instead of generic setter?
     fun setTimerState(state: TimerState) {
         _timerState.value = state
@@ -63,13 +62,12 @@ internal class CountDownTimerViewModel(
         "fixed rate timer for: $title",
         daemon = true,
         initialDelay = 0L,
-        period = 1.seconds.inWholeMilliseconds
+        period = 1.seconds.inWholeMilliseconds,
     ) {
         if (_timeLeft.value.isPositive() && timerState.value.isStarted()) {
             _timeLeft.value -= 1.seconds
         }
     }
-
 }
 
 internal class StopWatchTimerViewModel(
@@ -79,7 +77,7 @@ internal class StopWatchTimerViewModel(
         "fixed rate timer for: $title",
         daemon = true,
         initialDelay = 0L,
-        period = 1.seconds.inWholeMilliseconds
+        period = 1.seconds.inWholeMilliseconds,
     ) {
         if (timerState.value.isStarted()) {
             _timeLeft.value += 1.seconds
@@ -87,12 +85,11 @@ internal class StopWatchTimerViewModel(
     }
 }
 
-
 @HiltViewModel
-internal class TimerListViewModel @Inject constructor(val settingsRespository: SettingsRepository) : ViewModel() {
+internal class TimerListViewModel @Inject constructor(val settingsRepository: SettingsRepository) : ViewModel() {
     init {
         viewModelScope.launch {
-            settingsRespository.userSettingsFlow.collectLatest { it ->
+            settingsRepository.userSettingsFlow.collectLatest { it ->
                 _shouldHaptic.value =
                     it.hapticFeedbackTimerMode != UserSettings.TimerHapticsMode.TIMER_HAPTICS_MODE_NONE
             }
@@ -119,7 +116,7 @@ internal class TimerListViewModel @Inject constructor(val settingsRespository: S
             TimerInfo("Stopwatch Two", TimerType.STOPWATCH),
             TimerInfo("Countdown Three", TimerType.COUNTDOWN),
             TimerInfo("Countdown Four", TimerType.COUNTDOWN),
-        )
+        ),
     )
     val allTimers = _allTimers.asStateFlow()
 

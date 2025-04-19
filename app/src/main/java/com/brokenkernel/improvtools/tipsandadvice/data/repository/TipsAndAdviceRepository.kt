@@ -5,4 +5,3 @@ import android.content.res.Resources
 internal interface TipsAndAdviceRepository {
     val resources: Resources
 }
-

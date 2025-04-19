@@ -2,7 +2,7 @@ package com.brokenkernel.improvtools.infrastructure
 
 import androidx.datastore.core.DataStore
 import com.brokenkernel.improvtools.datastore.UserSettings
-import com.brokenkernel.improvtools.settings.data.repository.DefaultSettingsRespository
+import com.brokenkernel.improvtools.settings.data.repository.DefaultSettingsRepository
 import com.brokenkernel.improvtools.settings.data.repository.SettingsRepository
 import dagger.Module
 import dagger.Provides
@@ -16,6 +16,6 @@ internal class ApplicationModule {
     @Singleton
     @Provides
     fun providesSettingsRepository(datastore: DataStore<UserSettings>): SettingsRepository {
-        return DefaultSettingsRespository(datastore)
+        return DefaultSettingsRepository(datastore)
     }
 }

@@ -1,7 +1,6 @@
 package com.brokenkernel.improvtools.encyclopaedia.data.model
 
 import android.net.Uri
-import androidx.annotation.RestrictTo
 import androidx.core.net.toUri
 
 // TODO: add link to wikipedia for others
@@ -11,7 +10,6 @@ internal enum class PeopleDatumTopic {
     PERSON,
     TROOP,
 }
-
 
 internal data class PeopleDataItem(
     val personName: String,
@@ -36,7 +34,8 @@ internal val PeopleDatum: Collection<PeopleDataItem> = listOf(
         "https://en.wikipedia.org/wiki/Viola_Spolin".toUri(),
         detailedInformation = """
             |Focussed on getting in touch with one's impulses here and now—and acting
-            |on them quickly without overthinking or doubting.""".trimMargin()
+            |on them quickly without overthinking or doubting.
+        """.trimMargin(),
     ),
     PeopleDataItem(
         "Keith Johnstone",
@@ -71,7 +70,7 @@ internal val PeopleDatum: Collection<PeopleDataItem> = listOf(
         "Magnet Theater",
         PeopleDatumTopic.TROOP,
         "",
-        "https://en.wikipedia.org/wiki/Magnet_Theater".toUri()
+        "https://en.wikipedia.org/wiki/Magnet_Theater".toUri(),
     ),
 
     PeopleDataItem(

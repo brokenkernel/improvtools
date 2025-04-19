@@ -20,6 +20,6 @@ internal fun SimpleZoomableImage(
         contentDescription = contentDescription,
         contentScale = ContentScale.Fit,
         modifier = Modifier
-            .zoomable(painterZoomState)
+            .zoomable(painterZoomState),
     )
 }

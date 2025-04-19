@@ -4,4 +4,4 @@ import androidx.activity.ComponentActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HiltComponentActitivity: ComponentActivity()
+class HiltComponentActitivity : ComponentActivity()

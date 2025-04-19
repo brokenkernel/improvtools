@@ -1,6 +1,5 @@
 package com.brokenkernel.improvtools.timer.presentation.view
 
-
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -27,7 +26,6 @@ private fun Duration.formatTime(): String {
     val seconds = (this - hours.hours - minutes.minutes).inWholeSeconds
     return String.format(Locale.current.platformLocale, "%02d:%02d:%02d", hours, minutes, seconds)
 }
-
 
 @Composable()
 internal fun SlottedTimerCardContent(

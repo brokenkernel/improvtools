@@ -26,14 +26,12 @@ internal fun SuggestionsScreenMenu(
     expanded: Boolean,
     onDismiss: () -> Unit,
 ) {
-
     val uiState by settingsScreenViewModel.uiState.collectAsStateWithLifecycle()
 
     DropdownMenu(
         expanded = expanded,
         onDismissRequest = onDismiss,
     ) {
-
         Row(
             modifier = Modifier.semantics(
                 mergeDescendants = true,
@@ -44,7 +42,7 @@ internal fun SuggestionsScreenMenu(
                     value = uiState.shouldReuseSuggestions,
                     role = Role.Checkbox,
                     onValueChange = { settingsScreenViewModel.onClickUpdateShouldReuseSuggestions(!uiState.shouldReuseSuggestions) },
-                )
+                ),
         ) {
             // todo: figure out way to make this .8 reusable, and generic for name-and-checkbox
             Box(modifier = Modifier.weight(.8f)) {
@@ -60,7 +58,7 @@ internal fun SuggestionsScreenMenu(
                     checked = uiState.shouldReuseSuggestions,
                     onCheckedChange = { it ->
                         settingsScreenViewModel.onClickUpdateShouldReuseSuggestions(it)
-                    }
+                    },
                 )
             }
         }

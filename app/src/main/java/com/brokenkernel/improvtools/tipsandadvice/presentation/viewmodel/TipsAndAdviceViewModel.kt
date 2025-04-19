@@ -22,7 +22,6 @@ import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.decodeFromStream
 import java.io.InputStream
 
-
 @OptIn(ExperimentalSerializationApi::class)
 @HiltViewModel
 internal class TipsAndAdviceViewModel @Inject constructor(
@@ -37,11 +36,10 @@ internal class TipsAndAdviceViewModel @Inject constructor(
 
     private val _taaViewMode: MutableStateFlow<TipsAndAdviceViewModeUI> = MutableStateFlow(
         TipsAndAdviceViewModeUI.byInternalEnumValue(
-            UserSettings.TipsAndTricksViewMode.VIEW_MODE_DEFAULT
-        )
+            UserSettings.TipsAndTricksViewMode.VIEW_MODE_DEFAULT,
+        ),
     )
     val taaViewMode: StateFlow<TipsAndAdviceViewModeUI> = _taaViewMode.asStateFlow()
-
 
     private val tipsAndAdviceProcessed: List<TipContentUIModel>
 
@@ -61,6 +59,4 @@ internal class TipsAndAdviceViewModel @Inject constructor(
             }
         }
     }
-
-
 }

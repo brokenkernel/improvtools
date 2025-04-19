@@ -21,7 +21,6 @@ import com.brokenkernel.improvtools.settings.presentation.viewmodel.SettingsScre
 import com.brokenkernel.improvtools.settings.utils.toTitleCase
 import com.brokenkernel.improvtools.tipsandadvice.data.model.TipsAndAdviceViewModeUI
 
-
 // TODO: consider moving into 'encyclopedia' package?
 @Composable
 internal fun TipsAndAdviceMenu(
@@ -29,14 +28,12 @@ internal fun TipsAndAdviceMenu(
     expanded: Boolean,
     onDismiss: () -> Unit,
 ) {
-
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     DropdownMenu(
         expanded = expanded,
         onDismissRequest = onDismiss,
     ) {
-
         Row {
             Box(modifier = Modifier.weight(.8f)) {
                 Text(
@@ -50,8 +47,8 @@ internal fun TipsAndAdviceMenu(
                             .selectable(
                                 selected = (opt.internalEnumsMatching.contains(uiState.tipsAndTricksViewMode)),
                                 onClick = { viewModel.onClickUpdateTipsAndTricksViewMode(opt) },
-                                role = Role.RadioButton
-                            )
+                                role = Role.RadioButton,
+                            ),
                     ) {
                         RadioButton(
                             selected = (opt.internalEnumsMatching.contains(uiState.tipsAndTricksViewMode)),

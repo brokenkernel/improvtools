@@ -47,13 +47,12 @@ import com.brokenkernel.improvtools.application.presentation.view.verticalColumn
 import com.brokenkernel.improvtools.tipsandadvice.data.model.TipsAndAdviceViewModeUI
 import com.brokenkernel.improvtools.tipsandadvice.presentation.viewmodel.TipsAndAdviceViewModel
 
-
 @Composable
 fun HtmlText(html: String, modifier: Modifier = Modifier) {
     AndroidView(
         modifier = modifier,
         factory = { context -> TextView(context) },
-        update = { it.text = HtmlCompat.fromHtml(html, HtmlCompat.FROM_HTML_MODE_COMPACT) }
+        update = { it.text = HtmlCompat.fromHtml(html, HtmlCompat.FROM_HTML_MODE_COMPACT) },
     )
 }
 
@@ -63,19 +62,19 @@ internal fun TipsAndAdviceScreenAsSwipable(viewModel: TipsAndAdviceViewModel = h
     val scrollState: ScrollState = rememberScrollState()
     val pagerState = rememberPagerState(
         initialPage = 1, // TODO: maybe remember this in settings or something? (maybe split 'remembered data' from 'settings'?)
-        pageCount = { uiState.tipsAndAdvice.size }
+        pageCount = { uiState.tipsAndAdvice.size },
     )
     Column {
         HorizontalPager(
-            pagerState, modifier = Modifier
+            pagerState,
+            modifier = Modifier
                 .weight(1f)
-                .fillMaxHeight()
+                .fillMaxHeight(),
         ) {
-
             Card(
                 modifier = Modifier
                     .wrapContentHeight()
-                    .fillMaxSize()
+                    .fillMaxSize(),
             ) {
                 Row {
                     SelectionContainer {
@@ -94,7 +93,7 @@ internal fun TipsAndAdviceScreenAsSwipable(viewModel: TipsAndAdviceViewModel = h
                 .wrapContentHeight()
                 .fillMaxWidth()
                 .padding(bottom = 8.dp),
-            horizontalArrangement = Arrangement.Center
+            horizontalArrangement = Arrangement.Center,
         ) {
             repeat(pagerState.pageCount) { iteration ->
                 // TODO: handle themes.
@@ -106,13 +105,12 @@ internal fun TipsAndAdviceScreenAsSwipable(viewModel: TipsAndAdviceViewModel = h
                         .padding(2.dp)
                         .clip(CircleShape)
                         .background(color)
-                        .size(16.dp)
+                        .size(16.dp),
                 )
             }
         }
     }
 }
-
 
 @Composable
 internal fun TipsAndAdviceScreenAsList(viewModel: TipsAndAdviceViewModel = hiltViewModel()) {
@@ -130,7 +128,7 @@ internal fun TipsAndAdviceScreenAsList(viewModel: TipsAndAdviceViewModel = hiltV
                 ),
                 onClick = {
                     isExpanded.value = !isExpanded.value
-                }
+                },
             ) {
                 Row {
                     Box(
@@ -151,13 +149,12 @@ internal fun TipsAndAdviceScreenAsList(viewModel: TipsAndAdviceViewModel = hiltV
                                     Icons.Default.ArrowUpward,
                                     contentDescription = stringResource(R.string.tips_and_advice_collapse_card),
                                 )
-
                             } else {
                                 Icon(
                                     Icons.Default.ArrowDownward,
                                     contentDescription = stringResource(R.string.tips_and_advice_expand_card),
 
-                                    )
+                                )
                             }
                         }
                     }
@@ -172,14 +169,11 @@ internal fun TipsAndAdviceScreenAsList(viewModel: TipsAndAdviceViewModel = hiltV
             }
             Spacer(Modifier.size(1.dp)) // TODO: move to resources?
         }
-
     }
 }
 
-
 @Composable
 internal fun TipsAndAdviceScreen(viewModel: TipsAndAdviceViewModel = hiltViewModel()) {
-
     val taaViewMode by viewModel.taaViewMode.collectAsStateWithLifecycle()
     when (taaViewMode) {
         TipsAndAdviceViewModeUI.SWIPEABLE -> TipsAndAdviceScreenAsSwipable()

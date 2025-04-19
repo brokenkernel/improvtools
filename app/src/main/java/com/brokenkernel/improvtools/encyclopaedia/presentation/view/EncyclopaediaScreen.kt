@@ -26,7 +26,7 @@ internal fun EncyclopaediaScreen(
     val pagerState =
         rememberPagerState(
             pageCount = { EncyclopaediaPages.entries.size },
-            initialPage = initialTab.ordinal
+            initialPage = initialTab.ordinal,
         )
     val selectedTabIndex = remember { derivedStateOf { pagerState.currentPage } }
 
@@ -54,7 +54,7 @@ internal fun EncyclopaediaScreen(
             }
         }
         /* TODO: maybe handle some idea of sub-routing. or Add another nav graph. This should allow navigating to
-        *   a specific tab. Also keeps the entire screen state in a graph. Also makes analytics proper for crash debugging. */
+         *   a specific tab. Also keeps the entire screen state in a graph. Also makes analytics proper for crash debugging. */
         HorizontalPager(state = pagerState) {
             Surface(modifier = Modifier.fillMaxSize()) {
                 EncyclopaediaPages.entries[pagerState.currentPage].content()

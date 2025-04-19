@@ -8,6 +8,6 @@ import org.hamcrest.Matchers
 internal fun NavController.assertCurrentNavigableRoute(expectedRoute: NavigableRoute) {
     assertThat(
         currentBackStackEntry?.destination?.route,
-        Matchers.`is`(expectedRoute::class.qualifiedName)
+        Matchers.`is`(expectedRoute::class.qualifiedName),
     )
 }

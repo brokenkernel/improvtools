@@ -28,7 +28,6 @@ class SuggestionsRotationTest {
     @get:Rule(order = 2)
     val screenOrientationRule: ScreenOrientationRule = ScreenOrientationRule(ScreenOrientation.PORTRAIT)
 
-
     @Before
     fun setupAppNavHost() {
         hiltRule.inject()
@@ -44,5 +43,4 @@ class SuggestionsRotationTest {
             .onNodeWithStringId(R.string.suggestions_reset_all)
             .assertIsDisplayed()
     }
-
 }

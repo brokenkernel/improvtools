@@ -19,5 +19,5 @@ internal data class IdeaCategory(
 
 @Serializable
 internal data class AudienceSuggestionDatum(
-    val categories: List<IdeaCategory>
+    val categories: List<IdeaCategory>,
 )

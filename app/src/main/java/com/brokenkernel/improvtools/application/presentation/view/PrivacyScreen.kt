@@ -5,11 +5,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.core.net.toUri
-import androidx.compose.ui.platform.LocalContext
 import com.brokenkernel.improvtools.R
-
 
 @Composable
 internal fun PrivacyScreen() {
@@ -37,6 +36,5 @@ internal fun PrivacyScreen() {
         ) {
             Text(stringResource(R.string.privacy_policy))
         }
-
     }
 }

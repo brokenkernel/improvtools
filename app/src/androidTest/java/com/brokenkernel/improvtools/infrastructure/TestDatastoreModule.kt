@@ -13,15 +13,14 @@ import dagger.hilt.components.SingletonComponent
 import dagger.hilt.testing.TestInstallIn
 import javax.inject.Singleton
 
-
 @Module
 @TestInstallIn(
     components = [SingletonComponent::class],
-    replaces = [ApplicationDatastoreModule::class]
+    replaces = [ApplicationDatastoreModule::class],
 )
 class TestDatastoreModule {
 
-    private fun getRandomString(length: Int) : String {
+    private fun getRandomString(length: Int): String {
         val allowedChars = ('A'..'Z') + ('a'..'z') + ('0'..'9')
         return (1..length)
             .map { allowedChars.random() }
@@ -35,9 +34,8 @@ class TestDatastoreModule {
     ): DataStore<UserSettings> {
         val datastore: DataStore<UserSettings> = DataStoreFactory.create(
             serializer = UserSettingsSerializer,
-            produceFile = { appContext.dataStoreFile("datastore_for_user_settings_" + getRandomString(12)) }
+            produceFile = { appContext.dataStoreFile("datastore_for_user_settings_" + getRandomString(12)) },
         )
         return datastore
     }
-
 }

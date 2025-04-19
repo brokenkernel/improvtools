@@ -27,7 +27,7 @@ import com.brokenkernel.improvtools.R
 @Composable
 internal fun BoxScope.SimpleSearchBar(
     textFieldState: TextFieldState,
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
 ) {
     var searchBarExpandedState by rememberSaveable { mutableStateOf(false) }
 
@@ -47,7 +47,7 @@ internal fun BoxScope.SimpleSearchBar(
                 leadingIcon = {
                     Icon(
                         Icons.Default.Search,
-                        contentDescription = stringResource(R.string.search_bar_search)
+                        contentDescription = stringResource(R.string.search_bar_search),
                     )
                 },
 

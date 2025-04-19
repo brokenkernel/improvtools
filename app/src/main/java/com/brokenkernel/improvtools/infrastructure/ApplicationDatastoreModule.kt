@@ -26,7 +26,7 @@ internal class ApplicationDatastoreModule {
     ): DataStore<UserSettings> {
         val datastore: DataStore<UserSettings> = DataStoreFactory.create(
             serializer = UserSettingsSerializer,
-            produceFile = { appContext.dataStoreFile(USER_SETTINGS_NAME) }
+            produceFile = { appContext.dataStoreFile(USER_SETTINGS_NAME) },
 
         )
         return datastore

@@ -8,8 +8,8 @@ import androidx.compose.ui.test.onRoot
 import androidx.navigation.compose.ComposeNavigator
 import androidx.navigation.testing.TestNavHostController
 import androidx.test.ext.junit.rules.ActivityScenarioRule
-import com.brokenkernel.improvtools.application.data.model.NavigableRoute
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsNavigationGraph
+import com.brokenkernel.improvtools.application.data.model.NavigableRoute
 import com.brokenkernel.improvtools.infrastructure.HiltComponentActitivity
 import com.brokenkernel.improvtools.infrastructure.assertCurrentNavigableRoute
 import com.brokenkernel.improvtools.infrastructure.onNodeWithStringId
@@ -56,7 +56,6 @@ class NavigationTest {
         composeTestRule
             .onRoot()
             .assertIsDisplayed()
-
     }
 
     @Test

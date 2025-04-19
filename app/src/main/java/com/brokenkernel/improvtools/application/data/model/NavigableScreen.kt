@@ -82,7 +82,6 @@ internal sealed class NavigableRoute() {
     internal object LibrariesRoute : NavigableRoute()
 }
 
-
 // TODO: making this a companion object of NavigableRoute is also broken
 // There is some proguard rule needed but not sure what or why
 // iterating through .sealedSubclasses in release is broken
@@ -100,8 +99,6 @@ internal val allNavigableRoutes: Set<NavigableRoute> = setOf(
     PrivacyRoute,
     LibrariesRoute,
 )
-
-
 
 internal sealed class NavigableScreens(
     @param:StringRes @field:StringRes internal val titleResource: Int,
@@ -164,7 +161,6 @@ internal sealed class NavigableScreens(
         shouldShowExtraMenu = true,
     )
 
-
     @Immutable
     internal object GamesPageScreen : NavigableScreens(
         titleResource = R.string.navigation_games,
@@ -200,7 +196,6 @@ internal sealed class NavigableScreens(
         route = ThesaurusPageRoute,
         shouldShowExtraMenu = false,
     )
-
 
     @Immutable
     internal object PrivacyScreen : NavigableScreens(
@@ -240,7 +235,7 @@ internal fun routeToScreen(route: NavigableRoute): NavigableScreens {
 
 // TODO: consider making this CompositionLocal
 // TODO:  consider passing callbacks instead of direct refs to routes - but that's another story
-//internal class ImprovToolsNavigator(
+// internal class ImprovToolsNavigator(
 //    val doNavigateToNavigableScreen: (NavigableScreens) -> Unit,
 //    val doNavigateToNavigableRoute: (NavigableRoute) -> Unit,
-//)
+// )
