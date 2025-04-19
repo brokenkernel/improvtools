@@ -135,7 +135,7 @@ platform :android do
       )
   end
 
-  desc "Play Store Deployment Preperation"
+  desc "Play Store Deployment Preparation"
   lane :playstore_validate_only do
     current_build_number = playstore_prep
     upload_to_play_store(
@@ -193,9 +193,8 @@ platform :android do
     }
   end
 
-
-  desc "Full Play Store Deployment"
-  lane :playstore_fully_deployment do
+  desc "Full Play Store Build"
+  lane :playstore_full_build do
     current_build_number = prepare_git_repository
     UI.header "Starting preparing for #{current_build_number}"
     prepare_binary
@@ -204,12 +203,16 @@ platform :android do
     UI.header "Finished preparing for #{current_build_number}"
     changelog_from_git_commits
     current_build_number # last line, return value
+  end
 
-    UI.header "Starting deploy for #{current_build_number}"
+  desc "Full Play Store Build"
+  lane :playstore_true_deploy do |options|
+
+    UI.header "Starting deploy for #{options[:build_number]}"
     upload_to_play_store(
       aab: "app/build/outputs/bundle/release/app-release.aab",
       skip_upload_apk: true,
-      version_code: current_build_number,
+      version_code: options[:build_number],
       track: "internal",
       sync_image_upload: true,
       skip_upload_changelogs: true, # TODO: fix this
@@ -251,8 +254,8 @@ platform :android do
     set_github_release(
       repository_name: "brokenkernel/improvtools",
       api_token: ENV["GITHUB_TOKEN"],
-      name: "Improv Tools " + "0.0." + current_build_number,  # TODO: get version number from gradle
-      tag_name: "fastlane-builds/androidplaystore_fully_deployment/v" + current_build_number,
+      name: "Improv Tools " + "0.0." + options[:build_number],  # TODO: get version number from gradle
+      tag_name: "fastlane-builds/androidplaystore_fully_deployment/v" + options[:build_number],
 #       description: File.read(CHANGELOG_FILE),
 #       commitish: "master",
       is_generate_release_notes: true,
@@ -262,6 +265,14 @@ platform :android do
         "app/build/outputs/apk/release/app-release.apk",
       ]
     )
-    UI.header "Finished FULL deploy for #{current_build_number}"
+    puts lane_context[SharedValues::SET_GITHUB_RELEASE_HTML_LINK]
+    UI.header "Finished FULL deploy for #{options[:build_number]}"
+  end
+
+
+  desc "Full Play Store Deployment"
+  lane :playstore_fully_deployment do
+    current_build_number = playstore_full_build
+    playstore_true_deploy(build_number: current_build_number)
   end
 end
