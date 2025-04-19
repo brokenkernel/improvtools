@@ -284,3 +284,9 @@ aboutLibraries {
         duplicationRule = DuplicateRule.EXACT
     }
 }
+
+
+ktlint {
+    android = true
+    coloredOutput = true
+}
