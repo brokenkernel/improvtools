@@ -6,7 +6,6 @@ import com.mikepenz.aboutlibraries.plugin.StrictMode
 import java.io.IOException
 import java.util.Properties
 import org.gradle.kotlin.dsl.implementation
-import org.gradle.kotlin.dsl.ktlintRuleset
 
 plugins {
     alias(libs.plugins.android.application)
