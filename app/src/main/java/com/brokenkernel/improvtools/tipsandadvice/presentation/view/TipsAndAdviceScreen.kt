@@ -1,6 +1,7 @@
 package com.brokenkernel.improvtools.tipsandadvice.presentation.view
 
-import android.widget.TextView
+import android.content.Context
+import androidx.browser.customtabs.CustomTabsIntent
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -36,23 +37,62 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.LinkAnnotation
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.TextLinkStyles
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.fromHtml
+import androidx.compose.ui.text.style.Hyphens
+import androidx.compose.ui.text.style.LineBreak
+import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.viewinterop.AndroidView
-import androidx.core.text.HtmlCompat
+import androidx.core.net.toUri
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.presentation.view.verticalColumnScrollbar
+import com.brokenkernel.improvtools.tipsandadvice.data.model.TipContentUIModel
 import com.brokenkernel.improvtools.tipsandadvice.data.model.TipsAndAdviceViewModeUI
 import com.brokenkernel.improvtools.tipsandadvice.presentation.viewmodel.TipsAndAdviceViewModel
 
+// consider pulling this elsewhere?
+private fun openInCustomTab(context: Context, urlString: String) {
+    val builder: CustomTabsIntent.Builder = CustomTabsIntent.Builder()
+    val customTabsIntent: CustomTabsIntent = builder.build()
+    customTabsIntent.launchUrl(context, urlString.toUri())
+}
+
 @Composable
-fun HtmlText(html: String, modifier: Modifier = Modifier) {
-    AndroidView(
+fun HtmlText(html: String, modifier: Modifier = Modifier, onUrlClick: ((String) -> Unit)) {
+    val text: AnnotatedString = AnnotatedString.fromHtml(
+        html,
+        linkInteractionListener = { linkAnnotation ->
+            when (linkAnnotation) {
+                is LinkAnnotation.Url -> {
+                    val urlString = linkAnnotation.url
+                    onUrlClick(urlString)
+                }
+            }
+        },
+        linkStyles = TextLinkStyles(
+            style = SpanStyle(
+                color = MaterialTheme.colorScheme.primary,
+                textDecoration = TextDecoration.Underline,
+            ),
+        ),
+    )
+    Text(
+        text = text,
         modifier = modifier,
-        factory = { context -> TextView(context) },
-        update = { it.text = HtmlCompat.fromHtml(html, HtmlCompat.FROM_HTML_MODE_COMPACT) },
+        overflow = TextOverflow.Ellipsis,
+        style = TextStyle.Default.copy(
+            lineBreak = LineBreak.Paragraph,
+            hyphens = Hyphens.Auto,
+        ),
     )
 }
 
@@ -83,7 +123,13 @@ internal fun TipsAndAdviceScreenAsSwipable(viewModel: TipsAndAdviceViewModel = h
                 }
                 Row(modifier = Modifier.verticalScroll(scrollState)) {
                     SelectionContainer {
-                        HtmlText(uiState.tipsAndAdvice[pagerState.currentPage].content)
+                        val context = LocalContext.current
+                        HtmlText(
+                            uiState.tipsAndAdvice[pagerState.currentPage].content,
+                            onUrlClick = { it ->
+                                openInCustomTab(context, it)
+                            },
+                        )
                     }
                 }
             }
@@ -121,7 +167,7 @@ internal fun TipsAndAdviceScreenAsList(viewModel: TipsAndAdviceViewModel = hiltV
             columnScrollState,
         ).verticalScroll(columnScrollState),
     ) {
-        uiState.tipsAndAdvice.forEach { it ->
+        uiState.tipsAndAdvice.forEach { it: TipContentUIModel ->
             val isExpanded = remember { mutableStateOf(false) }
             Card(
                 modifier = Modifier.fillMaxWidth(),
@@ -159,7 +205,6 @@ internal fun TipsAndAdviceScreenAsList(viewModel: TipsAndAdviceViewModel = hiltV
                                     contentDescription = stringResource(
                                         R.string.tips_and_advice_expand_card,
                                     ),
-
                                 )
                             }
                         }
@@ -168,7 +213,13 @@ internal fun TipsAndAdviceScreenAsList(viewModel: TipsAndAdviceViewModel = hiltV
                 if (isExpanded.value) {
                     Row {
                         SelectionContainer {
-                            HtmlText(it.content)
+                            val context = LocalContext.current
+                            HtmlText(
+                                it.content,
+                                onUrlClick = { url ->
+                                    openInCustomTab(context, url)
+                                },
+                            )
                         }
                     }
                 }
