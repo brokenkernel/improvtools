@@ -87,4 +87,5 @@
     <string name="privacy_settings_category">Privacy Settings</string>
     <string name="navigation_libraries_information">Licenses</string>
     <string name="go_to_libraries_information">Go to Licences</string>
+    <string name="notification_stop_watches">Stop Watches</string>
 </resources>
