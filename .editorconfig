@@ -16,9 +16,6 @@ trim_trailing_whitespace = true
 # ij_smart_tabs = false
 # ij_visual_guides =
 # ij_wrap_on_typing = false
-ktlint_standard_discouraged-comment-location = disabled
-ktlint_function_naming_ignore_when_annotated_with = Composable
-ktlint_standard_property-naming = disabled
 
 # [*.proto]
 # ij_continuation_indent_size = 4
@@ -152,6 +149,9 @@ ktlint_code_style=intellij_idea
 # ij_kotlin_wrap_elvis_expressions = 1
 # ij_kotlin_wrap_expression_body_functions = 1
 # ij_kotlin_wrap_first_method_in_call_chain = false
+ktlint_standard_discouraged-comment-location = disabled
+ktlint_function_naming_ignore_when_annotated_with = Composable
+ktlint_standard_property-naming = disabled
 
 [{*.markdown,*.md}]
 indent_size = 2
