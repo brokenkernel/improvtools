@@ -45,13 +45,21 @@ internal fun TipsAndAdviceMenu(
                     Row(
                         Modifier
                             .selectable(
-                                selected = (opt.internalEnumsMatching.contains(uiState.tipsAndTricksViewMode)),
+                                selected = (
+                                    opt.internalEnumsMatching.contains(
+                                        uiState.tipsAndTricksViewMode,
+                                    )
+                                    ),
                                 onClick = { viewModel.onClickUpdateTipsAndTricksViewMode(opt) },
                                 role = Role.RadioButton,
                             ),
                     ) {
                         RadioButton(
-                            selected = (opt.internalEnumsMatching.contains(uiState.tipsAndTricksViewMode)),
+                            selected = (
+                                opt.internalEnumsMatching.contains(
+                                    uiState.tipsAndTricksViewMode,
+                                )
+                                ),
                             onClick = null,
                         )
                         Text(

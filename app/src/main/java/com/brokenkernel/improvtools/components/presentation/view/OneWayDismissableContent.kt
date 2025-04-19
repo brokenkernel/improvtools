@@ -13,7 +13,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 
 @Composable
-internal fun OneWayDismissableContent(onRemove: () -> Unit, content: @Composable (() -> Unit) = {}) {
+internal fun OneWayDismissableContent(
+    onRemove: () -> Unit,
+    content: @Composable (() -> Unit) = {},
+) {
     val contentSTDState = rememberSwipeToDismissBoxState(
         confirmValueChange = { newValue ->
             if (newValue == SwipeToDismissBoxValue.EndToStart) {

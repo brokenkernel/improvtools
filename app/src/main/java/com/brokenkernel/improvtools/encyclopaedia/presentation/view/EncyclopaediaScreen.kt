@@ -20,9 +20,7 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-internal fun EncyclopaediaScreen(
-    initialTab: EncyclopaediaPages,
-) {
+internal fun EncyclopaediaScreen(initialTab: EncyclopaediaPages) {
     val pagerState =
         rememberPagerState(
             pageCount = { EncyclopaediaPages.entries.size },

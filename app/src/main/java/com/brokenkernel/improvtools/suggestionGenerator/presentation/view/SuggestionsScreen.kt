@@ -134,7 +134,11 @@ internal fun SuggestionsScreen(
                             Icons.Filled.ChangeCircle,
                             contentDescription = stringResource(R.string.suggestions_reset_all),
                         )
-                        Spacer(modifier = Modifier.padding(dimensionResource(R.dimen.padding_icon_text_for_button)))
+                        Spacer(
+                            modifier = Modifier.padding(
+                                dimensionResource(R.dimen.padding_icon_text_for_button),
+                            ),
+                        )
                         Text(text = stringResource(R.string.suggestions_reset_all))
                     }
                 }

@@ -117,7 +117,9 @@ internal fun TipsAndAdviceScreenAsList(viewModel: TipsAndAdviceViewModel = hiltV
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val columnScrollState: ScrollState = rememberScrollState()
     Column(
-        modifier = Modifier.verticalColumnScrollbar(columnScrollState).verticalScroll(columnScrollState),
+        modifier = Modifier.verticalColumnScrollbar(
+            columnScrollState,
+        ).verticalScroll(columnScrollState),
     ) {
         uiState.tipsAndAdvice.forEach { it ->
             val isExpanded = remember { mutableStateOf(false) }
@@ -147,12 +149,16 @@ internal fun TipsAndAdviceScreenAsList(viewModel: TipsAndAdviceViewModel = hiltV
                             if (isExpanded.value) {
                                 Icon(
                                     Icons.Default.ArrowUpward,
-                                    contentDescription = stringResource(R.string.tips_and_advice_collapse_card),
+                                    contentDescription = stringResource(
+                                        R.string.tips_and_advice_collapse_card,
+                                    ),
                                 )
                             } else {
                                 Icon(
                                     Icons.Default.ArrowDownward,
-                                    contentDescription = stringResource(R.string.tips_and_advice_expand_card),
+                                    contentDescription = stringResource(
+                                        R.string.tips_and_advice_expand_card,
+                                    ),
 
                                 )
                             }

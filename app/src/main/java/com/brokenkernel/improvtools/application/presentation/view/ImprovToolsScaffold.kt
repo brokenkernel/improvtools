@@ -40,7 +40,10 @@ import com.brokenkernel.improvtools.settings.presentation.view.TipsAndAdviceMenu
 
 private const val TAG = "ImprovToolsScaffold"
 
-internal fun wrongfullyFindRouteByNavDestination(dest: NavDestination?, initialRoute: NavigableRoute): NavigableRoute {
+internal fun wrongfullyFindRouteByNavDestination(
+    dest: NavDestination?,
+    initialRoute: NavigableRoute,
+): NavigableRoute {
     if (Log.isLoggable(TAG, Log.DEBUG)) {
         Log.d(TAG, "count of possible routes is ${allNavigableRoutes.size}")
     }
@@ -85,7 +88,11 @@ internal fun ImprovToolsScaffold(
                     containerColor = MaterialTheme.colorScheme.primaryContainer,
                     titleContentColor = MaterialTheme.colorScheme.primary,
                 ),
-                title = { Text(stringResource(routeToScreen(currentNavigableRoute).titleResource)) },
+                title = {
+                    Text(
+                        stringResource(routeToScreen(currentNavigableRoute).titleResource),
+                    )
+                },
                 scrollBehavior = TopAppBarDefaults
                     .exitUntilCollapsedScrollBehavior(
                         rememberTopAppBarState(),
@@ -108,7 +115,9 @@ internal fun ImprovToolsScaffold(
                         if (routeToScreen(currentNavigableRoute).shouldShowExtraMenu) {
                             Icon(
                                 imageVector = Icons.Filled.MoreVert,
-                                contentDescription = stringResource(R.string.navigation_open_screen_specific_menu),
+                                contentDescription = stringResource(
+                                    R.string.navigation_open_screen_specific_menu,
+                                ),
                             )
                             when (routeToScreen(currentNavigableRoute)) {
                                 NavigableScreens.SuggestionGeneratorScreen -> SuggestionsScreenMenu(

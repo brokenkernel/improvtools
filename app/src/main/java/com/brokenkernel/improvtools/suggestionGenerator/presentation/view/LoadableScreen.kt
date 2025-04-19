@@ -10,7 +10,8 @@ import com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel.L
 @Composable
 fun LoadableScreen(
     loader: () -> Unit,
-    viewModel: LoadableScreenViewModel = viewModel(factory = LoadableScreenViewModel.Factory(loader)),
+    viewModel: LoadableScreenViewModel =
+        viewModel(factory = LoadableScreenViewModel.Factory(loader)),
     content: @Composable () -> Unit,
 ) {
     val isLoading by viewModel.isLoading.collectAsStateWithLifecycle()

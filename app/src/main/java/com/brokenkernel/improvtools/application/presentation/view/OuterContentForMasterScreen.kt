@@ -9,7 +9,10 @@ import com.brokenkernel.improvtools.application.data.model.NavigableRoute
 import com.brokenkernel.improvtools.ui.theme.ImprovToolsTheme
 
 @Composable
-internal fun OuterContentForMasterScreen(improvToolsState: ImprovToolsAppState, initialRoute: NavigableRoute) {
+internal fun OuterContentForMasterScreen(
+    improvToolsState: ImprovToolsAppState,
+    initialRoute: NavigableRoute,
+) {
     val currentBackStackEntryAsState: State<NavBackStackEntry?> = improvToolsState
         .currentBackStackEntryAsState()
 

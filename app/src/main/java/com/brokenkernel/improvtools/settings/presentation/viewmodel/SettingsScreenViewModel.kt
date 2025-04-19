@@ -9,15 +9,17 @@ import com.brokenkernel.improvtools.settings.data.repository.SettingsRepository
 import com.brokenkernel.improvtools.settings.presentation.uistate.SettingsScreenUIState
 import com.brokenkernel.improvtools.tipsandadvice.data.model.TipsAndAdviceViewModeUI
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @HiltViewModel
-internal class SettingsScreenViewModel @Inject constructor(private val settingsRepository: SettingsRepository) :
+internal class SettingsScreenViewModel @Inject constructor(
+    private val settingsRepository: SettingsRepository,
+) :
     ViewModel() {
 
     // Is there a way to avoid needing the the default here, shouldn't it come from settings provider initially ?

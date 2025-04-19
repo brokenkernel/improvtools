@@ -31,7 +31,8 @@ sealed class BaseScreenshotGenerationTest {
     var hiltRule: HiltAndroidRule = HiltAndroidRule(this)
 
     @get:Rule(order = 2)
-    val composeTestRule: ComposeContentTestRule = createAndroidComposeRule<HiltComponentActitivity>()
+    val composeTestRule: ComposeContentTestRule =
+        createAndroidComposeRule<HiltComponentActitivity>()
 
     @Rule(order = 1)
     @JvmField
@@ -73,7 +74,9 @@ internal class ScreenshotGenerationTest : BaseScreenshotGenerationTest() {
     @Test
     fun testMenuOnTopOfStartPageScreen() {
         composeTestRule.onNode(
-            hasContentDescription(getInstrumentation().targetContext.getString(R.string.navigation_app_menu)),
+            hasContentDescription(
+                getInstrumentation().targetContext.getString(R.string.navigation_app_menu),
+            ),
         ).performClick()
         composeTestRule.waitForIdle()
 

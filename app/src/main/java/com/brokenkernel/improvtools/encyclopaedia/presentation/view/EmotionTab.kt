@@ -42,7 +42,9 @@ internal fun EmotionTab() {
             )
             SimpleZoomableImage(
                 painter = painterResource(R.drawable.plutchik_wheel),
-                contentDescription = stringResource(R.string.encyclopaedia_plutchiks_wheel_of_emotions),
+                contentDescription = stringResource(
+                    R.string.encyclopaedia_plutchiks_wheel_of_emotions,
+                ),
             )
         }
         OutlinedCard {
@@ -52,7 +54,9 @@ internal fun EmotionTab() {
             )
             SimpleZoomableImage(
                 painter = painterResource(R.drawable.general_emotion_wheel),
-                contentDescription = stringResource(R.string.encyclopaedia_plutchiks_wheel_of_emotions),
+                contentDescription = stringResource(
+                    R.string.encyclopaedia_plutchiks_wheel_of_emotions,
+                ),
             )
         }
     }

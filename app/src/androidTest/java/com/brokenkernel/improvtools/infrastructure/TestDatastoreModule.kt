@@ -34,7 +34,11 @@ class TestDatastoreModule {
     ): DataStore<UserSettings> {
         val datastore: DataStore<UserSettings> = DataStoreFactory.create(
             serializer = UserSettingsSerializer,
-            produceFile = { appContext.dataStoreFile("datastore_for_user_settings_" + getRandomString(12)) },
+            produceFile = {
+                appContext.dataStoreFile(
+                    "datastore_for_user_settings_" + getRandomString(12),
+                )
+            },
         )
         return datastore
     }

@@ -83,9 +83,18 @@ internal fun PeopleTab() {
 
                 ) {
                     //
-                    PeopleDatum.sortedWith { s1, s2 -> comparator.compare(s1.personName, s2.personName) }
+                    PeopleDatum.sortedWith { s1, s2 ->
+                        comparator.compare(
+                            s1.personName,
+                            s2.personName,
+                        )
+                    }
                         .forEach { it ->
-                            var isListItemInformationExpanded: Boolean by remember { mutableStateOf(false) }
+                            var isListItemInformationExpanded: Boolean by remember {
+                                mutableStateOf(
+                                    false,
+                                )
+                            }
                             val foundText =
                                 if (textFieldState.text.isNotEmpty()) {
                                     // there is probably a better way to handle transformForSearch
@@ -115,13 +124,16 @@ internal fun PeopleTab() {
                                             OutlinedIconButton(
                                                 onClick = {
                                                     // webview.setWebViewClient(new WebViewClient());
-                                                    val browserIntent = Intent(Intent.ACTION_VIEW, it.wikipediaLink)
+                                                    val browserIntent =
+                                                        Intent(Intent.ACTION_VIEW, it.wikipediaLink)
                                                     context.startActivity(browserIntent)
                                                 },
                                             ) {
                                                 Icon(
                                                     painterResource(R.drawable.logo_wikipedia),
-                                                    contentDescription = stringResource(R.string.wikipedia),
+                                                    contentDescription = stringResource(
+                                                        R.string.wikipedia,
+                                                    ),
                                                 )
                                             }
                                         }

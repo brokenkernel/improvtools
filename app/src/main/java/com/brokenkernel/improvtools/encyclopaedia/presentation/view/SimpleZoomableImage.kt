@@ -9,10 +9,7 @@ import net.engawapg.lib.zoomable.rememberZoomState
 import net.engawapg.lib.zoomable.zoomable
 
 @Composable
-internal fun SimpleZoomableImage(
-    painter: Painter,
-    contentDescription: String,
-) {
+internal fun SimpleZoomableImage(painter: Painter, contentDescription: String) {
     val painterZoomState = rememberZoomState(contentSize = painter.intrinsicSize)
 
     Image(

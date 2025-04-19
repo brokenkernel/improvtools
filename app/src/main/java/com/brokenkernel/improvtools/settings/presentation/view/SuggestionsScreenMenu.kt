@@ -41,7 +41,11 @@ internal fun SuggestionsScreenMenu(
                 .toggleable(
                     value = uiState.shouldReuseSuggestions,
                     role = Role.Checkbox,
-                    onValueChange = { settingsScreenViewModel.onClickUpdateShouldReuseSuggestions(!uiState.shouldReuseSuggestions) },
+                    onValueChange = {
+                        settingsScreenViewModel.onClickUpdateShouldReuseSuggestions(
+                            !uiState.shouldReuseSuggestions,
+                        )
+                    },
                 ),
         ) {
             // todo: figure out way to make this .8 reusable, and generic for name-and-checkbox
@@ -49,7 +53,9 @@ internal fun SuggestionsScreenMenu(
                 DropdownMenuItem(
                     text = { Text(stringResource(R.string.settings_allow_reuse)) },
                     onClick = {
-                        settingsScreenViewModel.onClickUpdateShouldReuseSuggestions(!uiState.shouldReuseSuggestions)
+                        settingsScreenViewModel.onClickUpdateShouldReuseSuggestions(
+                            !uiState.shouldReuseSuggestions,
+                        )
                     },
                 )
             }

@@ -23,10 +23,12 @@ class SuggestionsRotationTest {
     var hiltRule: HiltAndroidRule = HiltAndroidRule(this)
 
     @get:Rule(order = 1)
-    val composeTestRule: AndroidComposeTestRule<ActivityScenarioRule<MainActivity>, MainActivity> = createAndroidComposeRule<MainActivity>()
+    val composeTestRule: AndroidComposeTestRule<ActivityScenarioRule<MainActivity>, MainActivity> =
+        createAndroidComposeRule<MainActivity>()
 
     @get:Rule(order = 2)
-    val screenOrientationRule: ScreenOrientationRule = ScreenOrientationRule(ScreenOrientation.PORTRAIT)
+    val screenOrientationRule: ScreenOrientationRule =
+        ScreenOrientationRule(ScreenOrientation.PORTRAIT)
 
     @Before
     fun setupAppNavHost() {

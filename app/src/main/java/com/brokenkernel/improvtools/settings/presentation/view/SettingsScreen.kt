@@ -22,9 +22,7 @@ import com.brokenkernel.improvtools.settings.utils.toTitleCase
 import com.brokenkernel.improvtools.tipsandadvice.data.model.TipsAndAdviceViewModeUI
 
 @Composable
-internal fun SettingsScreen(
-    viewModel: SettingsScreenViewModel = hiltViewModel(),
-) {
+internal fun SettingsScreen(viewModel: SettingsScreenViewModel = hiltViewModel()) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     Column {
@@ -83,13 +81,21 @@ internal fun SettingsScreen(
                     Row(
                         Modifier
                             .selectable(
-                                selected = (opt.internalEnumsMatching.contains(uiState.tipsAndTricksViewMode)),
+                                selected = (
+                                    opt.internalEnumsMatching.contains(
+                                        uiState.tipsAndTricksViewMode,
+                                    )
+                                    ),
                                 onClick = { viewModel.onClickUpdateTipsAndTricksViewMode(opt) },
                                 role = Role.RadioButton,
                             ),
                     ) {
                         RadioButton(
-                            selected = (opt.internalEnumsMatching.contains(uiState.tipsAndTricksViewMode)),
+                            selected = (
+                                opt.internalEnumsMatching.contains(
+                                    uiState.tipsAndTricksViewMode,
+                                )
+                                ),
                             onClick = null,
                         )
                         Text(

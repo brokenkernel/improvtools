@@ -75,7 +75,11 @@ internal fun GamesTab() {
 
                 ) {
                     GamesDatum.sortedBy { it.gameName }.forEach { it: GamesDataItem ->
-                        var isListItemInformationExpanded: Boolean by remember { mutableStateOf(false) }
+                        var isListItemInformationExpanded: Boolean by remember {
+                            mutableStateOf(
+                                false,
+                            )
+                        }
                         if (isSegmentedButtonChecked[it.topic.ordinal] && doesMatch(
                                 textFieldState.text.toString().transformForSearch(), it,
                             )

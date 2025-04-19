@@ -6,16 +6,16 @@ import androidx.lifecycle.viewModelScope
 import com.brokenkernel.improvtools.datastore.UserSettings
 import com.brokenkernel.improvtools.settings.data.repository.SettingsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 import java.util.Timer
 import javax.inject.Inject
 import kotlin.concurrent.fixedRateTimer
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.seconds
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 private const val INITIAL_TIMER_SECONDS: Long = 60L // as seconds
 val INITIAL_TIMER_DURATION: Duration = INITIAL_TIMER_SECONDS.seconds
@@ -86,7 +86,9 @@ internal class StopWatchTimerViewModel(
 }
 
 @HiltViewModel
-internal class TimerListViewModel @Inject constructor(val settingsRepository: SettingsRepository) : ViewModel() {
+internal class TimerListViewModel @Inject constructor(
+    val settingsRepository: SettingsRepository,
+) : ViewModel() {
     init {
         viewModelScope.launch {
             settingsRepository.userSettingsFlow.collectLatest { it ->
@@ -110,14 +112,15 @@ internal class TimerListViewModel @Inject constructor(val settingsRepository: Se
     val shouldHaptic = _shouldHaptic.asStateFlow()
 
     // hide the mutable ability from the UI
-    private val _allTimers: MutableStateFlow<MutableList<TimerInfo>> = MutableStateFlow<MutableList<TimerInfo>>(
-        mutableStateListOf(
-            TimerInfo("Stopwatch One", TimerType.STOPWATCH),
-            TimerInfo("Stopwatch Two", TimerType.STOPWATCH),
-            TimerInfo("Countdown Three", TimerType.COUNTDOWN),
-            TimerInfo("Countdown Four", TimerType.COUNTDOWN),
-        ),
-    )
+    private val _allTimers: MutableStateFlow<MutableList<TimerInfo>> =
+        MutableStateFlow<MutableList<TimerInfo>>(
+            mutableStateListOf(
+                TimerInfo("Stopwatch One", TimerType.STOPWATCH),
+                TimerInfo("Stopwatch Two", TimerType.STOPWATCH),
+                TimerInfo("Countdown Three", TimerType.COUNTDOWN),
+                TimerInfo("Countdown Four", TimerType.COUNTDOWN),
+            ),
+        )
     val allTimers = _allTimers.asStateFlow()
 
     fun removeTimer(timerInfo: TimerInfo) {
