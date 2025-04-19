@@ -1,10 +1,14 @@
 package com.brokenkernel.improvtools.timer.presentation.viewmodel
 
 import androidx.compose.runtime.mutableStateListOf
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.brokenkernel.improvtools.datastore.UserSettings
 import com.brokenkernel.improvtools.settings.data.repository.SettingsRepository
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.util.Timer
 import javax.inject.Inject
@@ -34,7 +38,7 @@ internal enum class TimerState {
 }
 
 internal sealed class BaseTimerViewModel(
-    val title: String,
+    open val title: String, // TODO: when everything is assistted inject this won't be required
     initialTime: Duration,
 ) : ViewModel() {
 
@@ -55,8 +59,10 @@ internal sealed class BaseTimerViewModel(
     }
 }
 
-internal class CountDownTimerViewModel(
-    title: String,
+@HiltViewModel(assistedFactory = CountDownTimerViewModel.Factory::class)
+internal class CountDownTimerViewModel @AssistedInject constructor(
+    @Assisted("title") override val title: String,
+    private val savedStateHandle: SavedStateHandle,
 ) : BaseTimerViewModel(title, initialTime = INITIAL_TIMER_DURATION) {
     private val myTimerThread: Timer = fixedRateTimer(
         "fixed rate timer for: $title",
@@ -67,6 +73,10 @@ internal class CountDownTimerViewModel(
         if (_timeLeft.value.isPositive() && timerState.value.isStarted()) {
             _timeLeft.value -= 1.seconds
         }
+    }
+
+    @AssistedFactory interface Factory {
+        fun create(@Assisted("title") title: String): CountDownTimerViewModel
     }
 }
 

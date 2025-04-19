@@ -162,7 +162,6 @@ compose_disallow_unstable_collections = true
 compose_preview_naming_enabled = true
 compose_preview_naming_strategy = suffix
 
-
 [{*.markdown,*.md}]
 indent_size = 2
 tab_width = 2

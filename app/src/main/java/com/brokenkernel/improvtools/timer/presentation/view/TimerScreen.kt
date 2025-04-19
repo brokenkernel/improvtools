@@ -1,6 +1,8 @@
 package com.brokenkernel.improvtools.timer.presentation.view
 
 import android.util.Log
+import android.util.Log.DEBUG
+import android.webkit.ConsoleMessage.MessageLevel.LOG
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.rememberScrollState
@@ -24,6 +26,7 @@ import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.LocalViewModelStoreOwner
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.presentation.view.verticalColumnScrollbar
 import com.brokenkernel.improvtools.components.presentation.view.OneWayDismissableContent
@@ -58,15 +61,19 @@ internal fun SimpleCountDownTimer(viewModel: CountDownTimerViewModel, onRemoveTi
                     viewModel.setTimerState(TimerState.STARTED)
                 },
             )
-            OutlinedButton(onClick = {
-                viewModel.setTimeLeft(timeLeft / 2)
-            }) {
+            OutlinedButton(
+                onClick = {
+                    viewModel.setTimeLeft(timeLeft / 2)
+                },
+            ) {
                 Text(stringResource(R.string.timer_half_time))
             }
-            OutlinedButton(onClick = {
-                viewModel.setTimerState(TimerState.STOPPED)
-                viewModel.setTimeLeft(INITIAL_TIMER_DURATION)
-            }) {
+            OutlinedButton(
+                onClick = {
+                    viewModel.setTimerState(TimerState.STOPPED)
+                    viewModel.setTimeLeft(INITIAL_TIMER_DURATION)
+                },
+            ) {
                 Text(stringResource(R.string.timer_reset))
             }
         },
@@ -106,10 +113,12 @@ internal fun SimpleStopWatchTimer(viewModel: StopWatchTimerViewModel, onRemoveTi
                     viewModel.setTimerState(TimerState.PAUSED)
                 },
             )
-            OutlinedButton(onClick = {
-                viewModel.setTimerState(TimerState.STOPPED)
-                viewModel.setTimeLeft(Duration.ZERO)
-            }) {
+            OutlinedButton(
+                onClick = {
+                    viewModel.setTimerState(TimerState.STOPPED)
+                    viewModel.setTimeLeft(Duration.ZERO)
+                },
+            ) {
                 Text(stringResource(R.string.timer_reset))
             }
         },
@@ -160,7 +169,17 @@ internal fun TimerScreen(viewModel: TimerListViewModel = hiltViewModel()) {
 
                     TimerListViewModel.TimerType.COUNTDOWN -> {
                         TimerBorderOutlineCard {
-                            SimpleCountDownTimer(CountDownTimerViewModel(timer.title), onRemove)
+                            val simpleCountDownTimerViewModel =
+                                hiltViewModel<CountDownTimerViewModel, CountDownTimerViewModel.Factory>(
+                                    creationCallback = { factory ->
+                                        factory.create(title = timer.title)
+                                    },
+                                )
+                            Log.d(
+                                TAG,
+                                "Constructing SimpleCountDownTimer with $simpleCountDownTimerViewModel ViewModel (owned by ${LocalViewModelStoreOwner.current})",
+                            )
+                            SimpleCountDownTimer(simpleCountDownTimerViewModel, onRemove)
                         }
                     }
                 }
