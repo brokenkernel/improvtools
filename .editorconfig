@@ -155,6 +155,13 @@ ktlint_standard_discouraged-comment-location = disabled
 ktlint_function_naming_ignore_when_annotated_with = Composable
 ktlint_standard_property-naming = disabled
 
+# https://mrmans0n.github.io/compose-rules/ktlint/
+compose_disallow_material2 = true
+compose_disallow_unstable_collections = true
+compose_preview_naming_enabled = true
+compose_preview_naming_strategy = suffix
+
+
 [{*.markdown,*.md}]
 indent_size = 2
 tab_width = 2
