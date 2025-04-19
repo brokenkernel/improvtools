@@ -103,7 +103,7 @@ internal class TimerListViewModel @Inject constructor(
         COUNTDOWN,
     }
 
-    internal data class TimerInfo(
+    internal class TimerInfo(
         val title: String,
         val timerType: TimerType,
     )

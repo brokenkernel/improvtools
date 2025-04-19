@@ -76,9 +76,11 @@ internal fun AboutScreen(onNavigateToRoute: (NavigableRoute) -> Unit) {
     fun generateGeneralInformationText(): String {
         val result: String = """
         |<big>${resources.getString(R.string.about_contact_info)}</big>
-        |🌐 <u><a href="https://github.com/brokenkernel/improvtools">${resources.getString(
-            R.string.about_contact_code_repo,
-        )}</a></u>
+        |🌐 <u><a href="https://github.com/brokenkernel/improvtools">${
+            resources.getString(
+                R.string.about_contact_code_repo,
+            )
+        }</a></u>
         """.trimMargin().replace("\n", "<br/>")
         return result
     }
@@ -170,7 +172,7 @@ internal fun AboutScreen(onNavigateToRoute: (NavigableRoute) -> Unit) {
                         AnnotatedString.fromHtml(generateGeneralInformationText()),
                     )
                     val isExpanded = remember { mutableStateOf(false) }
-                    // TODO: make utility collapseable card
+                    // TODO: make utility collapsible card
                     Card(
                         modifier = Modifier
                             .clickable(
@@ -190,9 +192,11 @@ internal fun AboutScreen(onNavigateToRoute: (NavigableRoute) -> Unit) {
                             )
                         }
                     }
-                    TextButton(onClick = {
-                        onNavigateToRoute(NavigableRoute.PrivacyRoute)
-                    }) {
+                    TextButton(
+                        onClick = {
+                            onNavigateToRoute(NavigableRoute.PrivacyRoute)
+                        },
+                    ) {
                         Text(stringResource(R.string.about_show_privacy_screen))
                     }
                 }
