@@ -6,6 +6,7 @@ import com.mikepenz.aboutlibraries.plugin.StrictMode
 import java.io.IOException
 import java.util.Properties
 import org.gradle.kotlin.dsl.implementation
+import org.gradle.kotlin.dsl.ktlintRuleset
 
 plugins {
     alias(libs.plugins.android.application)
@@ -233,6 +234,8 @@ dependencies {
     androidTestImplementation(libs.tools.fastlane.screengrab)
 
     ksp(libs.hilt.compiler)
+
+//    ktlintRuleset(libs.ktlint)
 }
 
 // firebase is just broken https://github.com/firebase/firebase-android-sdk/issues/6359

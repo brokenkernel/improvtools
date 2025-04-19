@@ -29,6 +29,7 @@ kotlin = "2.1.20"
 kotlinxSerialization = "1.8.1"
 ktlint = "12.2.0"
 ksp = "2.1.20-2.0.0"
+ktlintVersion = "0.4.22"
 leakcanaryAndroid = "2.14"
 lifecycleRuntimeKtx = "2.8.7"
 lifecycleViewModelKtx = "2.8.7"
@@ -112,6 +113,7 @@ javax-inject = { module = "javax.inject:javax.inject", version.ref = "javaxInjec
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
 kotlinx-serialization-protobuf = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-protobuf", version.ref = "kotlinxSerialization" }
+ktlint = { module = "io.nlopez.compose.rules:ktlint", version.ref = "ktlintVersion" }
 leakcanary-android = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakcanaryAndroid" }
 play-services-instantapps = { module = "com.google.android.gms:play-services-instantapps", version.ref = "playServicesInstantapps" }
 tools-fastlane-screengrab = { group = "tools.fastlane", name = "screengrab", version.ref = "screengrab" }
