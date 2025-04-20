@@ -22,6 +22,7 @@ plugins {
     alias(libs.plugins.sortDependencies)
     alias(libs.plugins.aboutLibraries)
     alias(libs.plugins.ktlint)
+    alias(libs.plugins.spotless)
 }
 
 val keystoreProperties: Properties = Properties()
@@ -289,4 +290,9 @@ aboutLibraries {
 ktlint {
     android = true
     coloredOutput = true
+}
+
+spotless {
+    kotlin {
+    }
 }

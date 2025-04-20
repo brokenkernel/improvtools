@@ -154,6 +154,7 @@ ktlint_standard_trailing-comma-on-call-site = enabled
 ktlint_standard_discouraged-comment-location = disabled
 ktlint_function_naming_ignore_when_annotated_with = Composable
 ktlint_standard_property-naming = disabled
+ktlint_standard_class-signature = disabled
 
 # https://mrmans0n.github.io/compose-rules/ktlint/
 compose_disallow_material2 = true
