@@ -46,6 +46,7 @@ profileinstaller = "1.4.1"
 protobuf = "0.9.5"
 protobufJavalite = "4.30.2"
 protoc = "4.30.2"
+runtimeTracing = "1.7.8"
 screengrab = "2.1.1"
 spotless = "7.0.3"
 startupRuntime = "1.2.0"
@@ -90,6 +91,7 @@ androidx-material3 = { group = "androidx.compose.material3", name = "material3" 
 androidx-navigation-navigationCompose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
 androidx-navigation-navigationTesting = { group = "androidx.navigation", name = "navigation-testing", version.ref = "navigationTesting" }
 androidx-profileinstaller = { module = "androidx.profileinstaller:profileinstaller", version.ref = "profileinstaller" }
+androidx-runtime-tracing = { module = "androidx.compose.runtime:runtime-tracing", version.ref = "runtimeTracing" }
 androidx-startup-runtime = { module = "androidx.startup:startup-runtime", version.ref = "startupRuntime" }
 androidx-ui = { group = "androidx.compose.ui", name = "ui" }
 androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
