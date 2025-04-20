@@ -7,6 +7,7 @@ import java.io.IOException
 import java.util.Properties
 import org.gradle.kotlin.dsl.implementation
 import org.jetbrains.dokka.gradle.engine.parameters.VisibilityModifier
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 
 plugins {
     alias(libs.plugins.android.application)
@@ -25,6 +26,8 @@ plugins {
     alias(libs.plugins.ktlint)
     alias(libs.plugins.spotless)
     alias(libs.plugins.dokka)
+
+    kotlin("plugin.power-assert") version "2.0.0"
 }
 
 val keystoreProperties: Properties = Properties()
@@ -320,4 +323,16 @@ dokka {
         versioning {
         }
     }
+}
+
+@OptIn(ExperimentalKotlinGradlePluginApi::class)
+powerAssert {
+    functions =
+        listOf(
+            "kotlin.assert",
+            "kotlin.test.assertEquals",
+            "kotlin.test.assertTrue",
+            "kotlin.test.assertNull",
+            "kotlin.require",
+        )
 }
