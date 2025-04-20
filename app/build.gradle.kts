@@ -171,7 +171,9 @@ android {
 }
 
 dependencies {
-    implementation(platform(libs.androidx.compose.bom))
+    implementation(platform(libs.androidx.compose.bom)) {
+        because("we are an android compose application")
+    }
     implementation(platform(libs.com.google.firebase.firebaseBom))
     implementation(libs.aboutlibraries.compose.m3)
     implementation(libs.aboutlibraries.core)
@@ -235,11 +237,9 @@ dependencies {
     androidTestImplementation(libs.junit)
     androidTestImplementation(libs.tools.fastlane.screengrab)
 
-    ksp(libs.hilt.compiler)
-
     dokkaPlugin(libs.android.documentation.plugin)
 
-//    ktlintRuleset(libs.ktlintCompose)
+    ksp(libs.hilt.compiler)
 }
 
 // firebase is just broken https://github.com/firebase/firebase-android-sdk/issues/6359
