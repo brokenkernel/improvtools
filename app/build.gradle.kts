@@ -204,11 +204,16 @@ dependencies {
     implementation(libs.androidx.glance.material3)
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.androidx.input.motionprediction)
+    implementation(libs.androidx.lifecycle.process)
+    implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.lifecycle.service)
     implementation(libs.androidx.lifecycle.viewModel.compose)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.savedstate)
     implementation(libs.androidx.loader)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.metrics.performance)
     implementation(libs.androidx.navigation.navigationCompose)
     implementation(libs.androidx.profileinstaller)
     implementation(libs.androidx.runtime.tracing)
@@ -235,6 +240,7 @@ dependencies {
     debugImplementation(libs.leakcanary.android)
 
     testImplementation(kotlin("test"))
+    testImplementation(libs.androidx.lifecycle.runtime.testing)
     testImplementation(libs.junit)
 
     androidTestImplementation(platform(libs.androidx.compose.bom))
@@ -252,6 +258,7 @@ dependencies {
 
     dokkaPlugin(libs.android.documentation.plugin)
 
+    ksp(libs.androidx.lifecycle.compiler)
     ksp(libs.hilt.compiler)
 }
 
