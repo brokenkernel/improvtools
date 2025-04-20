@@ -7,6 +7,7 @@ import java.io.IOException
 import java.util.Properties
 import org.gradle.kotlin.dsl.implementation
 import org.jetbrains.dokka.gradle.engine.parameters.VisibilityModifier
+import org.jetbrains.kotlin.compose.compiler.gradle.ComposeFeatureFlag
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 
 plugins {
@@ -121,6 +122,14 @@ android {
     buildFeatures {
         compose = true
         buildConfig = true
+    }
+    composeCompiler {
+        includeSourceInformation = true
+        includeTraceMarkers = true
+        featureFlags = setOf(
+            ComposeFeatureFlag.OptimizeNonSkippingGroups,
+            ComposeFeatureFlag.PausableComposition,
+        )
     }
     testOptions {
         managedDevices {
