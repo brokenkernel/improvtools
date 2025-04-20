@@ -6,6 +6,7 @@ import com.mikepenz.aboutlibraries.plugin.StrictMode
 import java.io.IOException
 import java.util.Properties
 import org.gradle.kotlin.dsl.implementation
+import org.jetbrains.dokka.gradle.engine.parameters.VisibilityModifier
 
 plugins {
     alias(libs.plugins.android.application)
@@ -23,6 +24,7 @@ plugins {
     alias(libs.plugins.aboutLibraries)
     alias(libs.plugins.ktlint)
     alias(libs.plugins.spotless)
+    alias(libs.plugins.dokka)
 }
 
 val keystoreProperties: Properties = Properties()
@@ -235,6 +237,8 @@ dependencies {
 
     ksp(libs.hilt.compiler)
 
+    dokkaPlugin(libs.android.documentation.plugin)
+
 //    ktlintRuleset(libs.ktlintCompose)
 }
 
@@ -294,5 +298,26 @@ ktlint {
 
 spotless {
     kotlin {
+    }
+}
+
+dokka {
+    dokkaPublications.html {
+//        failOnWarning = true
+    }
+    dokkaSourceSets.main {
+        sourceLink {
+            localDirectory = file("src/main/java")
+            remoteUrl("https://github.com/brokenkernel/improvtools")
+            remoteLineSuffix = "#L"
+        }
+        documentedVisibilities=
+            setOf(VisibilityModifier.Public, VisibilityModifier.Internal, VisibilityModifier.Package, VisibilityModifier.Protected, VisibilityModifier.Private)
+        }
+    pluginsConfiguration {
+        html {
+        }
+        versioning {
+        }
     }
 }

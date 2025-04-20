@@ -4,11 +4,13 @@ accompanistPermissions = "0.37.2"
 activityCompose = "1.10.1"
 agp = "8.9.1"
 androidbrowserhelper = "2.6.0"
+androidDocumentationPlugin = "2.0.0"
 browser = "1.8.0"
 dependencyAnalysis = "2.16.0"
 annotation = "1.9.1"
 composeBom = "2025.04.00"
 coreKtx = "1.16.0"
+dokka = "2.0.0"
 androidXdatastore = "1.1.4"
 espressoCore = "3.6.1"
 espressoDevice = "1.0.1"
@@ -58,6 +60,7 @@ zoomableImageCoil3 = "0.15.1"
 
 [libraries]
 accompanist-permissions = { module = "com.google.accompanist:accompanist-permissions", version.ref = "accompanistPermissions" }
+android-documentation-plugin = { module = "org.jetbrains.dokka:android-documentation-plugin", version.ref = "androidDocumentationPlugin" }
 androidbrowserhelper = { module = "com.google.androidbrowserhelper:androidbrowserhelper", version.ref = "androidbrowserhelper" }
 androidx-activity = { module = "androidx.activity:activity", version.ref = "activityCompose" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
@@ -134,6 +137,8 @@ firebase = ["com-google-firebase-analytics", "com-google-firebase-crashlytics" ]
 android-application = { id = "com.android.application", version.ref = "agp" }
 aboutLibraries = { id="com.mikepenz.aboutlibraries.plugin", version.ref = "aboutLibraries" }
 dagger-hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
+dokka-javadoc = { id = "org.jetbrains.dokka-javadoc", version.ref = "dokka" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
