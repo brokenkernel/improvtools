@@ -1,56 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <baseline version="1.0">
-    <file name="build.gradle.kts">
-        <error line="61" column="1" source="standard:max-line-length" />
-    </file>
-    <file name="src/androidTest/java/com/brokenkernel/improvtools/NavigationTest.kt">
-        <error line="30" column="1" source="standard:max-line-length" />
-        <error line="45" column="1" source="standard:max-line-length" />
+    <file name="src/androidTest/java/com/brokenkernel/improvtools/infrastructure/TestDatastoreModule.kt">
+        <error line="33" column="9" source="standard:function-signature" />
+        <error line="33" column="49" source="standard:function-signature" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/MainActivity.kt">
-        <error line="14" column="1" source="standard:max-line-length" />
-        <error line="16" column="1" source="standard:max-line-length" />
         <error line="42" column="1" source="standard:max-line-length" />
         <error line="43" column="1" source="standard:max-line-length" />
     </file>
-    <file name="src/main/java/com/brokenkernel/improvtools/components/presentation/view/EnumLinkedMultiChoiceSegmentedButtonRow.kt">
-        <error line="20" column="1" source="standard:max-line-length" />
+    <file name="src/main/java/com/brokenkernel/improvtools/application/presentation/view/ImprovToolsScaffold.kt">
+        <error line="44" column="5" source="standard:function-signature" />
+        <error line="45" column="5" source="standard:function-signature" />
+        <error line="45" column="34" source="standard:function-signature" />
     </file>
-    <file name="src/main/java/com/brokenkernel/improvtools/encyclopaedia/presentation/view/GamesTab.kt">
-        <error line="46" column="1" source="standard:max-line-length" />
-        <error line="95" column="1" source="standard:max-line-length" />
-        <error line="110" column="1" source="standard:max-line-length" />
+    <file name="src/main/java/com/brokenkernel/improvtools/application/presentation/view/OuterContentForMasterScreen.kt">
+        <error line="13" column="5" source="standard:function-signature" />
+        <error line="14" column="5" source="standard:function-signature" />
+        <error line="14" column="34" source="standard:function-signature" />
     </file>
-    <file name="src/main/java/com/brokenkernel/improvtools/encyclopaedia/presentation/view/PeopleTab.kt">
-        <error line="150" column="1" source="standard:max-line-length" />
+    <file name="src/main/java/com/brokenkernel/improvtools/components/presentation/view/OneWayDismissableContent.kt">
+        <error line="17" column="5" source="standard:function-signature" />
+        <error line="18" column="5" source="standard:function-signature" />
+        <error line="18" column="44" source="standard:function-signature" />
     </file>
-    <file name="src/main/java/com/brokenkernel/improvtools/settings/presentation/viewmodel/SettingsScreenViewModel.kt">
-        <error line="51" column="1" source="standard:max-line-length" />
+    <file name="src/main/java/com/brokenkernel/improvtools/components/presentation/view/SimpleSearchBar.kt">
+        <error line="29" column="5" source="standard:function-signature" />
+        <error line="30" column="5" source="standard:function-signature" />
+        <error line="30" column="37" source="standard:function-signature" />
     </file>
-    <file name="src/main/java/com/brokenkernel/improvtools/suggestionGenerator/presentation/view/SuggestionsScreen.kt">
-        <error line="92" column="1" source="standard:max-line-length" />
+    <file name="src/main/java/com/brokenkernel/improvtools/infrastructure/ApplicationDatastoreModule.kt">
+        <error line="25" column="9" source="standard:function-signature" />
+        <error line="25" column="49" source="standard:function-signature" />
+    </file>
+    <file name="src/main/java/com/brokenkernel/improvtools/infrastructure/ViewModuleRepositoryModule.kt">
+        <error line="21" column="9" source="standard:function-signature" />
+        <error line="21" column="49" source="standard:function-signature" />
+    </file>
+    <file name="src/main/java/com/brokenkernel/improvtools/settings/data/repository/SettingsRepository.kt">
+        <error line="12" column="9" source="standard:function-signature" />
+        <error line="12" column="67" source="standard:function-signature" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/suggestionGenerator/presentation/viewmodel/LoadableScreenViewModel.kt">
         <error line="37" column="13" source="standard:function-naming" />
     </file>
-    <file name="src/main/java/com/brokenkernel/improvtools/suggestionGenerator/presentation/viewmodel/SuggestionScreenViewModel.kt">
-        <error line="40" column="1" source="standard:max-line-length" />
+    <file name="src/main/java/com/brokenkernel/improvtools/timer/presentation/view/StartPauseButton.kt">
+        <error line="17" column="5" source="standard:function-signature" />
+        <error line="18" column="5" source="standard:function-signature" />
+        <error line="19" column="5" source="standard:function-signature" />
+        <error line="19" column="27" source="standard:function-signature" />
     </file>
-    <file name="src/main/java/com/brokenkernel/improvtools/timer/presentation/view/TimerScreen.kt">
-        <error line="134" column="1" source="standard:max-line-length" />
-    </file>
-    <file name="src/main/java/com/brokenkernel/improvtools/timer/presentation/viewmodel/TimerViewModel.kt">
-        <error line="96" column="1" source="standard:max-line-length" />
-    </file>
-    <file name="src/main/java/com/brokenkernel/improvtools/tipsandadvice/data/repository/DefaultTipsAndAdviceRepository.kt">
-        <error line="5" column="1" source="standard:max-line-length" />
+    <file name="src/main/java/com/brokenkernel/improvtools/timer/sidecar/notifications/StopWatchNotifications.kt">
+        <error line="33" column="9" source="standard:function-signature" />
+        <error line="34" column="9" source="standard:function-signature" />
+        <error line="34" column="29" source="standard:function-signature" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/tipsandadvice/presentation/view/TipsAndAdviceScreen.kt">
         <error line="104" column="1" source="standard:max-line-length" />
-        <error line="148" column="1" source="standard:max-line-length" />
-    </file>
-    <file name="src/main/java/com/brokenkernel/improvtools/tipsandadvice/presentation/viewmodel/TipsAndAdviceViewModel.kt">
-        <error line="53" column="1" source="standard:max-line-length" />
-        <error line="58" column="1" source="standard:max-line-length" />
     </file>
 </baseline>
