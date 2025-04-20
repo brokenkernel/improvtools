@@ -235,7 +235,7 @@ dependencies {
 
     ksp(libs.hilt.compiler)
 
-//    ktlintRuleset(libs.ktlint)
+//    ktlintRuleset(libs.ktlintCompose)
 }
 
 // firebase is just broken https://github.com/firebase/firebase-android-sdk/issues/6359
