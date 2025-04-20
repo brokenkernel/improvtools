@@ -254,3 +254,5 @@ internal fun AboutScreen(onNavigateToRoute: (NavigableRoute) -> Unit) {
         }
     }
 }
+
+// TODO: add     Log.v(TAG, "verbose: " + Log.isLoggable(TAG, Log.VERBOSE));

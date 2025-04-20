@@ -1,8 +1,6 @@
 package com.brokenkernel.improvtools.timer.presentation.view
 
 import android.util.Log
-import android.util.Log.DEBUG
-import android.webkit.ConsoleMessage.MessageLevel.LOG
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.rememberScrollState
@@ -163,22 +161,39 @@ internal fun TimerScreen(viewModel: TimerListViewModel = hiltViewModel()) {
                 when (timer.timerType) {
                     TimerListViewModel.TimerType.STOPWATCH -> {
                         TimerBorderOutlineCard {
-                            SimpleStopWatchTimer(StopWatchTimerViewModel(timer.title), onRemove)
+                            // TODO: This is a bug and returns the same for every call. Not sure why yet.
+                            val simpleStopStopWatchTimerViewModel =
+                                hiltViewModel<StopWatchTimerViewModel, StopWatchTimerViewModel.Factory>(
+                                    creationCallback = { factory ->
+                                        factory.create(title = timer.title)
+                                    },
+                                )
+                            if (Log.isLoggable(TAG, Log.DEBUG)) {
+                                Log.d(
+                                    TAG,
+                                    "Constructing SimpleCountDownTimer with $simpleStopStopWatchTimerViewModel ViewModel (owned by ${LocalViewModelStoreOwner.current})",
+                                )
+                            }
+                            SimpleStopWatchTimer(simpleStopStopWatchTimerViewModel, onRemove)
                         }
                     }
 
                     TimerListViewModel.TimerType.COUNTDOWN -> {
                         TimerBorderOutlineCard {
+                            // TODO: This is a bug and returns the same for every call. Not sure why yet.
                             val simpleCountDownTimerViewModel =
                                 hiltViewModel<CountDownTimerViewModel, CountDownTimerViewModel.Factory>(
                                     creationCallback = { factory ->
                                         factory.create(title = timer.title)
                                     },
                                 )
-                            Log.d(
-                                TAG,
-                                "Constructing SimpleCountDownTimer with $simpleCountDownTimerViewModel ViewModel (owned by ${LocalViewModelStoreOwner.current})",
-                            )
+                            if (Log.isLoggable(TAG, Log.DEBUG)) {
+                                Log.d(
+                                    TAG,
+                                    "Constructing SimpleCountDownTimer with $simpleCountDownTimerViewModel ViewModel (owned by ${LocalViewModelStoreOwner.current})",
+                                )
+                            }
+
                             SimpleCountDownTimer(simpleCountDownTimerViewModel, onRemove)
                         }
                     }

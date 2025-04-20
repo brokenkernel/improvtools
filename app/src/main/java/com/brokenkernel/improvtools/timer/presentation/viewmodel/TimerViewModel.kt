@@ -38,7 +38,7 @@ internal enum class TimerState {
 }
 
 internal sealed class BaseTimerViewModel(
-    open val title: String, // TODO: when everything is assistted inject this won't be required
+    val title: String,
     initialTime: Duration,
 ) : ViewModel() {
 
@@ -61,10 +61,10 @@ internal sealed class BaseTimerViewModel(
 
 @HiltViewModel(assistedFactory = CountDownTimerViewModel.Factory::class)
 internal class CountDownTimerViewModel @AssistedInject constructor(
-    @Assisted("title") override val title: String,
+    @Assisted("title") title: String,
     private val savedStateHandle: SavedStateHandle,
 ) : BaseTimerViewModel(title, initialTime = INITIAL_TIMER_DURATION) {
-    private val myTimerThread: Timer = fixedRateTimer(
+    private val _myTimerThread: Timer = fixedRateTimer(
         "fixed rate timer for: $title",
         daemon = true,
         initialDelay = 0L,
@@ -80,10 +80,12 @@ internal class CountDownTimerViewModel @AssistedInject constructor(
     }
 }
 
-internal class StopWatchTimerViewModel(
-    title: String,
+@HiltViewModel(assistedFactory = StopWatchTimerViewModel.Factory::class)
+internal class StopWatchTimerViewModel @AssistedInject constructor(
+    @Assisted("title") title: String,
+    private val savedStateHandle: SavedStateHandle,
 ) : BaseTimerViewModel(title, initialTime = Duration.ZERO) {
-    private val myTimerThread: Timer = fixedRateTimer(
+    private val _myTimerThread: Timer = fixedRateTimer(
         "fixed rate timer for: $title",
         daemon = true,
         initialDelay = 0L,
@@ -92,6 +94,10 @@ internal class StopWatchTimerViewModel(
         if (timerState.value.isStarted()) {
             _timeLeft.value += 1.seconds
         }
+    }
+
+    @AssistedFactory interface Factory {
+        fun create(@Assisted("title") title: String): StopWatchTimerViewModel
     }
 }
 
