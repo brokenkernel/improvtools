@@ -20,24 +20,20 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.LocalViewModelStoreOwner
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.presentation.view.verticalColumnScrollbar
 import com.brokenkernel.improvtools.components.presentation.view.OneWayDismissableContent
+import com.brokenkernel.improvtools.timer.data.model.TimerState
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.CountDownTimerViewModel
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.INITIAL_TIMER_DURATION
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.StopWatchTimerViewModel
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.TimerListViewModel
 import kotlin.time.Duration
-import androidx.activity.viewModels
-import androidx.compose.ui.platform.LocalContext
-import androidx.lifecycle.viewmodel.CreationExtras
-import com.brokenkernel.improvtools.timer.data.model.TimerState
-import dagger.hilt.android.lifecycle.withCreationCallback
 
 private const val TAG = "TimerScreen"
 
@@ -47,7 +43,7 @@ private const val TAG = "TimerScreen"
 @Composable
 internal fun SimpleCountDownTimer(
     viewModel: CountDownTimerViewModel,
-    onRemoveTimer: () -> Unit
+    onRemoveTimer: () -> Unit,
 ) {
     val timeLeft by viewModel.timeLeft.collectAsStateWithLifecycle()
     val timerState by viewModel.timerState.collectAsStateWithLifecycle()
@@ -177,12 +173,6 @@ internal fun TimerScreen(viewModel: TimerListViewModel = hiltViewModel()) {
                                         factory.create(title = timer.title)
                                     },
                                 )
-                            if (Log.isLoggable(TAG, Log.DEBUG)) {
-                                Log.d(
-                                    TAG,
-                                    "Constructing SimpleCountDownTimer with $simpleStopStopWatchTimerViewModel ViewModel (owned by ${LocalViewModelStoreOwner.current})",
-                                )
-                            }
                             SimpleStopWatchTimer(simpleStopStopWatchTimerViewModel, onRemove)
                         }
                     }
@@ -196,13 +186,6 @@ internal fun TimerScreen(viewModel: TimerListViewModel = hiltViewModel()) {
                                         factory.create(title = timer.title)
                                     },
                                 )
-                            if (Log.isLoggable(TAG, Log.DEBUG)) {
-                                Log.d(
-                                    TAG,
-                                    "Constructing SimpleCountDownTimer with $simpleCountDownTimerViewModel ViewModel (owned by ${LocalViewModelStoreOwner.current})",
-                                )
-                            }
-
                             SimpleCountDownTimer(simpleCountDownTimerViewModel, onRemove)
                         }
                     }

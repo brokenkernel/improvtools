@@ -334,9 +334,15 @@ dokka {
             remoteUrl("https://github.com/brokenkernel/improvtools")
             remoteLineSuffix = "#L"
         }
-        documentedVisibilities=
-            setOf(VisibilityModifier.Public, VisibilityModifier.Internal, VisibilityModifier.Package, VisibilityModifier.Protected, VisibilityModifier.Private)
-        }
+        documentedVisibilities =
+            setOf(
+                VisibilityModifier.Public,
+                VisibilityModifier.Internal,
+                VisibilityModifier.Package,
+                VisibilityModifier.Protected,
+                VisibilityModifier.Private,
+            )
+    }
     pluginsConfiguration {
         html {
         }
