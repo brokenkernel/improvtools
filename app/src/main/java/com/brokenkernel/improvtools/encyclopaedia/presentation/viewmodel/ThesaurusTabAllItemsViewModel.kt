@@ -1,18 +1,20 @@
 package com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
-import com.brokenkernel.improvtools.encyclopaedia.data.model.ActionsThesaurus
+import com.brokenkernel.improvtools.encyclopaedia.data.repository.ThesaurusRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class ThesaurusTabAllItemsViewModel @Inject constructor() : ViewModel() {
+internal class ThesaurusTabAllItemsViewModel @Inject constructor(
+    val thesaurusRepository: ThesaurusRepository,
+) : ViewModel() {
     fun words(): Iterable<String> {
-        return ActionsThesaurus.keys()
+        return thesaurusRepository.getActionsThesaurus().keys()
     }
 
     fun synonymsForWord(word: String): Iterable<String> {
-        return ActionsThesaurus.synonymsForWord(word).sorted()
+        return thesaurusRepository.getActionsThesaurus().synonymsForWord(word).sorted()
     }
 
     // TODO: this entire section badly needs tests
@@ -24,8 +26,8 @@ class ThesaurusTabAllItemsViewModel @Inject constructor() : ViewModel() {
      * @param newWord the word you're considering showing
      */
     fun hasUniqueSynonymsFrom(word: String, newWord: String): Boolean {
-        val currentSynonyms = ActionsThesaurus.synonymsForWord(word)
-        val newSynonyms = ActionsThesaurus.synonymsForWord(newWord)
+        val currentSynonyms = thesaurusRepository.getActionsThesaurus().synonymsForWord(word)
+        val newSynonyms = thesaurusRepository.getActionsThesaurus().synonymsForWord(newWord)
         val nonInterestingNewSynomums = newSynonyms - currentSynonyms
         return nonInterestingNewSynomums.isNotEmpty()
     }
