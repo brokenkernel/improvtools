@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import com.brokenkernel.improvtools.R
-import com.brokenkernel.improvtools.timer.presentation.viewmodel.TimerState
+import com.brokenkernel.improvtools.timer.data.model.TimerState
 
 @Composable
 internal fun StartPauseButton(

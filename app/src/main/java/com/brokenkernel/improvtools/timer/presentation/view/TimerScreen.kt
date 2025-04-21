@@ -32,10 +32,11 @@ import com.brokenkernel.improvtools.timer.presentation.viewmodel.CountDownTimerV
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.INITIAL_TIMER_DURATION
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.StopWatchTimerViewModel
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.TimerListViewModel
-import com.brokenkernel.improvtools.timer.presentation.viewmodel.TimerState
 import kotlin.time.Duration
 import androidx.activity.viewModels
+import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.CreationExtras
+import com.brokenkernel.improvtools.timer.data.model.TimerState
 import dagger.hilt.android.lifecycle.withCreationCallback
 
 private const val TAG = "TimerScreen"
@@ -44,7 +45,10 @@ private const val TAG = "TimerScreen"
 // TODO control of how many timers. Add some.
 
 @Composable
-internal fun SimpleCountDownTimer(viewModel: CountDownTimerViewModel, onRemoveTimer: () -> Unit) {
+internal fun SimpleCountDownTimer(
+    viewModel: CountDownTimerViewModel,
+    onRemoveTimer: () -> Unit
+) {
     val timeLeft by viewModel.timeLeft.collectAsStateWithLifecycle()
     val timerState by viewModel.timerState.collectAsStateWithLifecycle()
 
@@ -97,6 +101,7 @@ internal fun SimpleCountDownTimer(viewModel: CountDownTimerViewModel, onRemoveTi
 internal fun SimpleStopWatchTimer(viewModel: StopWatchTimerViewModel, onRemoveTimer: () -> Unit) {
     val timeLeft by viewModel.timeLeft.collectAsStateWithLifecycle()
     val timerState by viewModel.timerState.collectAsStateWithLifecycle()
+    val context = LocalContext.current
 
     SlottedTimerCardContent(
         title = viewModel.title,
@@ -108,6 +113,7 @@ internal fun SimpleStopWatchTimer(viewModel: StopWatchTimerViewModel, onRemoveTi
             StartPauseButton(
                 timerState = timerState,
                 onStart = {
+                    viewModel.sendNotification(context)
                     viewModel.setTimerState(TimerState.STARTED)
                 },
                 onPause = {

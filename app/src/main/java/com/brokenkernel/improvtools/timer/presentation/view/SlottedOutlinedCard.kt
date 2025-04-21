@@ -15,7 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.intl.Locale
 import com.brokenkernel.improvtools.R
-import com.brokenkernel.improvtools.timer.presentation.viewmodel.TimerState
+import com.brokenkernel.improvtools.timer.data.model.TimerState
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.hours
 import kotlin.time.Duration.Companion.minutes
