@@ -28,7 +28,7 @@ internal class ThesaurusTabAllItemsViewModel @Inject constructor(
     fun hasUniqueSynonymsFrom(word: String, newWord: String): Boolean {
         val currentSynonyms = thesaurusRepository.getActionsThesaurus().synonymsForWord(word)
         val newSynonyms = thesaurusRepository.getActionsThesaurus().synonymsForWord(newWord)
-        val nonInterestingNewSynomums = newSynonyms - currentSynonyms
+        val nonInterestingNewSynomums = newSynonyms - currentSynonyms - word
         return nonInterestingNewSynomums.isNotEmpty()
     }
 }
