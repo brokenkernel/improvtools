@@ -16,7 +16,7 @@ plugins {
     alias(libs.plugins.spotless) apply false
     alias(libs.plugins.dokka) apply false
 
-    kotlin("plugin.power-assert") version "2.0.0" apply false
+    kotlin("plugin.power-assert") version "2.1.20" apply false
 }
 
 dependencyAnalysis {
