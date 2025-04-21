@@ -1,4 +1,7 @@
+@file:OptIn(KspExperimental::class)
+
 import com.android.build.api.dsl.VariantDimension
+import com.google.devtools.ksp.KspExperimental
 import com.google.firebase.crashlytics.buildtools.gradle.CrashlyticsExtension
 import com.mikepenz.aboutlibraries.plugin.DuplicateMode
 import com.mikepenz.aboutlibraries.plugin.DuplicateRule
@@ -352,4 +355,14 @@ powerAssert {
             "kotlin.test.assertNull",
             "kotlin.require",
         )
+}
+
+ksp {
+    allWarningsAsErrors = true
+    useKsp2 = true
+    arg("dagger.useBindingGraphFix", "enabled")
+    arg("dagger.ignoreProvisionKeyWildcards", "enabled")
+    arg("dagger.experimentalDaggerErrorMessages", "enabled")
+    arg("dagger.warnIfInjectionFactoryNotGeneratedUpstream", "enabled")
+    arg("dagger.fullBindingGraphValidation", "error")
 }
