@@ -5,7 +5,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Book
 import androidx.compose.material.icons.filled.Copyright
 import androidx.compose.material.icons.filled.PrivacyTip
-import androidx.compose.material.icons.outlined.Copyright
 import androidx.compose.material.icons.outlined.EmojiEmotions
 import androidx.compose.material.icons.outlined.Games
 import androidx.compose.material.icons.outlined.Info
@@ -76,6 +75,9 @@ internal sealed class NavigableRoute() {
     internal object ThesaurusPageRoute : NavigableRoute()
 
     @Serializable
+    internal class ThesaurusWordRoute(val word: String) : NavigableRoute()
+
+    @Serializable
     internal object PrivacyRoute : NavigableRoute()
 
     @Serializable
@@ -104,15 +106,19 @@ internal sealed class NavigableScreens(
     @param:StringRes @field:StringRes internal val titleResource: Int,
     @param:StringRes @field:StringRes internal val contentDescription: Int,
     internal val icon: ImageVector,
-    internal val route: NavigableRoute,
+    internal val matchingRoutes: Set<NavigableRoute>,
     internal val shouldShowExtraMenu: Boolean,
+    internal val navigationCallback: (itas: ImprovToolsAppState) -> Unit = { itas ->
+        // TODO: FIXME
+        itas.navigateTo(matchingRoutes.first(), titleResource)
+    }, // TODO: remove default
 ) {
     @Immutable
     internal object SuggestionGeneratorScreen : NavigableScreens(
         titleResource = R.string.suggestions_activity_title,
         contentDescription = R.string.go_to_suggestion_generator,
         icon = Icons.Outlined.Lightbulb,
-        route = SuggestionGeneratorRoute,
+        matchingRoutes = setOf(SuggestionGeneratorRoute),
         shouldShowExtraMenu = true,
     )
 
@@ -121,7 +127,7 @@ internal sealed class NavigableScreens(
         titleResource = R.string.settings_activity_title,
         contentDescription = R.string.go_to_settings_screen,
         icon = Icons.Outlined.Settings,
-        route = SettingsRoute,
+        matchingRoutes = setOf(SettingsRoute),
         shouldShowExtraMenu = false,
     )
 
@@ -130,7 +136,7 @@ internal sealed class NavigableScreens(
         titleResource = R.string.timer_activity_title,
         contentDescription = R.string.go_to_timer_screen,
         icon = Icons.Outlined.Timer,
-        route = TimerRoute,
+        matchingRoutes = setOf(TimerRoute),
         shouldShowExtraMenu = false,
     )
 
@@ -139,7 +145,7 @@ internal sealed class NavigableScreens(
         titleResource = R.string.navigation_help_and_feedback,
         contentDescription = R.string.go_to_help_and_feedback_screen,
         icon = Icons.Outlined.Info,
-        route = HelpAndAboutRoute,
+        matchingRoutes = setOf(HelpAndAboutRoute),
         shouldShowExtraMenu = false,
     )
 
@@ -148,7 +154,7 @@ internal sealed class NavigableScreens(
         titleResource = R.string.navigation_workshop_generator,
         contentDescription = R.string.go_to_workshop_generator_screen,
         icon = Icons.Outlined.Games,
-        route = WorkshopGeneratorRoute,
+        matchingRoutes = setOf(WorkshopGeneratorRoute),
         shouldShowExtraMenu = false,
     )
 
@@ -157,7 +163,7 @@ internal sealed class NavigableScreens(
         titleResource = R.string.navigation_tips_and_advice,
         contentDescription = R.string.go_to_tips_and_advice_screen,
         icon = Icons.Outlined.TipsAndUpdates,
-        route = TipsAndAdviceRoute,
+        matchingRoutes = setOf(TipsAndAdviceRoute),
         shouldShowExtraMenu = true,
     )
 
@@ -166,7 +172,7 @@ internal sealed class NavigableScreens(
         titleResource = R.string.navigation_games,
         contentDescription = R.string.go_to_games_screen,
         icon = Icons.Outlined.Games,
-        route = GamesPageRoute,
+        matchingRoutes = setOf(GamesPageRoute),
         shouldShowExtraMenu = false,
     )
 
@@ -175,7 +181,7 @@ internal sealed class NavigableScreens(
         titleResource = R.string.navigation_people,
         contentDescription = R.string.go_to_navigation_people_screen,
         icon = Icons.Outlined.People,
-        route = PeoplePageRoute,
+        matchingRoutes = setOf(PeoplePageRoute),
         shouldShowExtraMenu = false,
     )
 
@@ -184,7 +190,7 @@ internal sealed class NavigableScreens(
         titleResource = R.string.navigation_emotions_reference,
         contentDescription = R.string.go_to_emotions_reference_screen,
         icon = Icons.Outlined.EmojiEmotions,
-        route = EmotionPageRoute,
+        matchingRoutes = setOf(EmotionPageRoute),
         shouldShowExtraMenu = false,
     )
 
@@ -193,7 +199,7 @@ internal sealed class NavigableScreens(
         titleResource = R.string.navigation_thesaurus,
         contentDescription = R.string.go_to_thesaurus_screen,
         icon = Icons.Filled.Book,
-        route = ThesaurusPageRoute,
+        matchingRoutes = setOf(ThesaurusPageRoute),
         shouldShowExtraMenu = false,
     )
 
@@ -202,7 +208,7 @@ internal sealed class NavigableScreens(
         titleResource = R.string.navigation_privacy_information,
         contentDescription = R.string.go_to_privacy_information,
         icon = Icons.Filled.PrivacyTip,
-        route = PrivacyRoute,
+        matchingRoutes = setOf(PrivacyRoute),
         shouldShowExtraMenu = false,
     )
 
@@ -211,7 +217,7 @@ internal sealed class NavigableScreens(
         titleResource = R.string.navigation_libraries_information,
         contentDescription = R.string.go_to_libraries_information,
         icon = Icons.Default.Copyright,
-        route = LibrariesRoute,
+        matchingRoutes = setOf(LibrariesRoute),
         shouldShowExtraMenu = false,
     )
 }
@@ -230,6 +236,7 @@ internal fun routeToScreen(route: NavigableRoute): NavigableScreens {
         WorkshopGeneratorRoute -> NavigableScreens.WorkshopGeneratorScreen
         PrivacyRoute -> NavigableScreens.PrivacyScreen
         LibrariesRoute -> NavigableScreens.LibrariesScreen
+        is NavigableRoute.ThesaurusWordRoute -> NavigableScreens.ThesaurusPageScreen
     }
 }
 

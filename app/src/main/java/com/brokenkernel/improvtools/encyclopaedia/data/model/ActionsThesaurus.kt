@@ -13,7 +13,7 @@ internal object ActionsThesaurus {
         ActionItem("beg", setOf("solicit")),
         ActionItem("poison", setOf("pollute")),
         ActionItem("punish", setOf()),
-        ActionItem("tolerate", setOf("bear")),
+        ActionItem("tolerate", setOf("bear", "indulge")),
     )
 
     // TODO: back merge words too

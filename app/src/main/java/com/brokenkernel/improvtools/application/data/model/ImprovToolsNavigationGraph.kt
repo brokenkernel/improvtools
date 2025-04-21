@@ -1,7 +1,6 @@
 package com.brokenkernel.improvtools.application.data.model
 
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.brokenkernel.improvtools.application.presentation.view.AboutScreen
@@ -15,12 +14,12 @@ import com.brokenkernel.improvtools.tipsandadvice.presentation.view.TipsAndAdvic
 
 @Composable
 internal fun ImprovToolsNavigationGraph(
-    navController: NavHostController,
+    improvToolsAppState: ImprovToolsAppState,
     onNavigateToRoute: (NavigableRoute) -> Unit,
     initialRoute: NavigableRoute,
 ) {
     NavHost(
-        navController = navController,
+        navController = improvToolsAppState.navController,
         startDestination = initialRoute,
     ) {
         composable<NavigableRoute.HelpAndAboutRoute> {
@@ -54,6 +53,6 @@ internal fun ImprovToolsNavigationGraph(
             LibrariesScreen()
         }
 
-        encyclopaediaPageDestinations()
+        encyclopaediaPageDestinations(improvToolsAppState)
     }
 }

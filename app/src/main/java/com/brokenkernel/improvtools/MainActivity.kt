@@ -5,8 +5,10 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
-import com.brokenkernel.improvtools.application.data.model.NavigableRoute
+import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import com.brokenkernel.improvtools.application.data.model.rememberImprovToolsAppState
 import com.brokenkernel.improvtools.application.presentation.view.OuterContentForMasterScreen
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,32 +30,44 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        setContent {
-            val improvToolsState: ImprovToolsAppState = rememberImprovToolsAppState()
+        // TODO: I just generally dislike how screen and rotues interact. I badly need to decouple
+        // - place I might go
+        // - how to get there
+        // what to show about it
+        // composables for that info
+        // Its better, but not yet perfect.
 
-            intent.categories
+        setContent {
+//            intent.categories
             // CATEGORY_LEANBACK_SETTINGS, CATEGORY_COMMUNAL_MODE, CATEGORY_PREFERENCE, CATEGORY_LEANBACK_LAUNCHER
-            val initialRoute: NavigableRoute = if (intent.action != null) {
+            val initialScreen: NavigableScreens = if (intent.action != null) {
+                // TODO: this will have to change when I change how navigation works
                 val whichRoute = when (intent.action) {
-                    ShowSuggestionsIntent -> NavigableRoute.SuggestionGeneratorRoute
-                    ShowTimerIntent -> NavigableRoute.TimerRoute
-                    ShowEncyclopaediaIntent -> NavigableRoute.EmotionPageRoute
-                    Intent.ACTION_APPLICATION_PREFERENCES -> NavigableRoute.SettingsRoute
-                    Intent.ACTION_VIEW_PERMISSION_USAGE -> NavigableRoute.PrivacyRoute // consider a separate privacy page eventualyl
-                    Intent.ACTION_VIEW_PERMISSION_USAGE_FOR_PERIOD -> NavigableRoute.PrivacyRoute // consider a separate privacy page eventualyl
+                    ShowSuggestionsIntent -> NavigableScreens.SuggestionGeneratorScreen
+                    ShowTimerIntent -> NavigableScreens.TimerScreen
+                    ShowEncyclopaediaIntent -> NavigableScreens.EmotionsPageScreen
+                    Intent.ACTION_APPLICATION_PREFERENCES -> NavigableScreens.SettingsScreen
+                    Intent.ACTION_VIEW_PERMISSION_USAGE -> NavigableScreens.PrivacyScreen // consider a separate privacy page eventualyl
+                    Intent.ACTION_VIEW_PERMISSION_USAGE_FOR_PERIOD -> NavigableScreens.PrivacyScreen // consider a separate privacy page eventually
 //                    ShowNotificationPreferencesIntent -> NavigableRoute.SettingsRoute
-                    else -> NavigableRoute.SuggestionGeneratorRoute
+                    else -> NavigableScreens.SuggestionGeneratorScreen
                 }
                 setResult(RESULT_OK)
+                // TODO? nav callback? something else?
                 whichRoute
             } else {
-                NavigableRoute.SuggestionGeneratorRoute
+                NavigableScreens.SuggestionGeneratorScreen
             }
+
+            val titleState = remember { mutableStateOf(initialScreen.titleResource) }
+            val improvToolsState: ImprovToolsAppState = rememberImprovToolsAppState(
+                titleState = titleState,
+            )
 
             // maybe ImprovToolsState, or at least a subset should be passed via LocalContent so it doesn't need to be threaded all over the place
             OuterContentForMasterScreen(
                 improvToolsState = improvToolsState,
-                initialRoute = initialRoute,
+                initialRoute = initialScreen.matchingRoutes.first(), // TODO: this is broken, but not yet ready
             )
         }
     }

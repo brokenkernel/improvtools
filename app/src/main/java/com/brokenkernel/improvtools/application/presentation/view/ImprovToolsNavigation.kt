@@ -21,11 +21,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavBackStackEntry
-import androidx.navigation.NavDestination
-import androidx.navigation.NavDestination.Companion.hasRoute
-import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavHostController
 import com.brokenkernel.improvtools.R
+import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsNavigationGraph
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
@@ -34,9 +32,9 @@ import kotlinx.coroutines.launch
 
 @Composable
 private fun NavigableScreenNavigationDrawerItem(
+    improvToolsAppState: ImprovToolsAppState,
     screen: NavigableScreens,
-    onNavMenuClickCallback: (NavigableRoute) -> Unit,
-    currentNavigableRoute: NavDestination?,
+    closeNavMenuCallback: () -> Unit,
 ) {
     NavigationDrawerItem(
         label = { Text(stringResource(screen.titleResource)) },
@@ -47,25 +45,25 @@ private fun NavigableScreenNavigationDrawerItem(
             )
         },
         onClick = {
-            onNavMenuClickCallback(screen.route)
+            closeNavMenuCallback()
+            screen.navigationCallback(improvToolsAppState)
         },
-        selected = (
-            currentNavigableRoute?.hierarchy?.any { it ->
-                it.hasRoute(screen.route::class)
-            } == true
-            ),
+        selected = improvToolsAppState.amIOnScreen(screen),
     )
 }
 
 @Composable
 internal fun ImprovToolsNavigationDrawer(
+    improvToolsAppState: ImprovToolsAppState,
     doNavigateToNavigableRoute: (NavigableRoute) -> Unit,
-    currentBackStackEntryAsState: State<NavBackStackEntry?>,
     drawerState: DrawerState,
     navController: NavHostController,
     initialRoute: NavigableRoute,
 ) {
     val scope: CoroutineScope = rememberCoroutineScope()
+
+    val currentBackStackEntryAsState: State<NavBackStackEntry?> = improvToolsAppState
+        .currentBackStackEntryAsState()
 
     fun closeNavMenu() {
         scope.launch {
@@ -81,11 +79,6 @@ internal fun ImprovToolsNavigationDrawer(
                 if (isClosed) open() else close()
             }
         }
-    }
-
-    fun doNavigateToNavigableRouteWithNavClosure(nr: NavigableRoute) {
-        doNavigateToNavigableRoute(nr)
-        closeNavMenu()
     }
 
     ModalNavigationDrawer(
@@ -109,14 +102,14 @@ internal fun ImprovToolsNavigationDrawer(
                         style = MaterialTheme.typography.titleMedium,
                     )
                     NavigableScreenNavigationDrawerItem(
+                        improvToolsAppState,
                         NavigableScreens.SuggestionGeneratorScreen,
-                        { it -> doNavigateToNavigableRouteWithNavClosure(it) },
-                        currentBackStackEntryAsState.value?.destination,
+                        ::closeNavMenu,
                     )
                     NavigableScreenNavigationDrawerItem(
+                        improvToolsAppState,
                         NavigableScreens.TimerScreen,
-                        { it -> doNavigateToNavigableRouteWithNavClosure(it) },
-                        currentBackStackEntryAsState.value?.destination,
+                        ::closeNavMenu,
                     )
 
                     HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
@@ -127,29 +120,29 @@ internal fun ImprovToolsNavigationDrawer(
                         style = MaterialTheme.typography.titleMedium,
                     )
                     NavigableScreenNavigationDrawerItem(
+                        improvToolsAppState,
                         NavigableScreens.GamesPageScreen,
-                        { it -> doNavigateToNavigableRouteWithNavClosure(it) },
-                        currentBackStackEntryAsState.value?.destination,
+                        ::closeNavMenu,
                     )
                     NavigableScreenNavigationDrawerItem(
+                        improvToolsAppState,
                         NavigableScreens.PeoplePageScreen,
-                        { it -> doNavigateToNavigableRouteWithNavClosure(it) },
-                        currentBackStackEntryAsState.value?.destination,
+                        ::closeNavMenu,
                     )
                     NavigableScreenNavigationDrawerItem(
+                        improvToolsAppState,
                         NavigableScreens.EmotionsPageScreen,
-                        { it -> doNavigateToNavigableRouteWithNavClosure(it) },
-                        currentBackStackEntryAsState.value?.destination,
+                        ::closeNavMenu,
                     )
                     NavigableScreenNavigationDrawerItem(
+                        improvToolsAppState,
                         NavigableScreens.ThesaurusPageScreen,
-                        { it -> doNavigateToNavigableRouteWithNavClosure(it) },
-                        currentBackStackEntryAsState.value?.destination,
+                        ::closeNavMenu,
                     )
                     NavigableScreenNavigationDrawerItem(
+                        improvToolsAppState,
                         NavigableScreens.TipsAndAdviceScreen,
-                        { it -> doNavigateToNavigableRouteWithNavClosure(it) },
-                        currentBackStackEntryAsState.value?.destination,
+                        ::closeNavMenu,
                     )
 
                     HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
@@ -159,14 +152,14 @@ internal fun ImprovToolsNavigationDrawer(
                         style = MaterialTheme.typography.titleMedium,
                     )
                     NavigableScreenNavigationDrawerItem(
+                        improvToolsAppState,
                         NavigableScreens.SettingsScreen,
-                        { it -> doNavigateToNavigableRouteWithNavClosure(it) },
-                        currentBackStackEntryAsState.value?.destination,
+                        ::closeNavMenu,
                     )
                     NavigableScreenNavigationDrawerItem(
+                        improvToolsAppState,
                         NavigableScreens.HelpAndAboutScreen,
-                        { it -> doNavigateToNavigableRouteWithNavClosure(it) },
-                        currentBackStackEntryAsState.value?.destination,
+                        ::closeNavMenu,
                     )
                     Spacer(Modifier.height(12.dp))
                     HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
@@ -176,20 +169,21 @@ internal fun ImprovToolsNavigationDrawer(
                         style = MaterialTheme.typography.titleMedium,
                     )
                     NavigableScreenNavigationDrawerItem(
+                        improvToolsAppState,
                         NavigableScreens.PrivacyScreen,
-                        { it -> doNavigateToNavigableRouteWithNavClosure(it) },
-                        currentBackStackEntryAsState.value?.destination,
+                        ::closeNavMenu,
                     )
                     NavigableScreenNavigationDrawerItem(
+                        improvToolsAppState,
                         NavigableScreens.LibrariesScreen,
-                        { it -> doNavigateToNavigableRouteWithNavClosure(it) },
-                        currentBackStackEntryAsState.value?.destination,
+                        ::closeNavMenu,
                     )
                 }
             }
         },
     ) {
         ImprovToolsScaffold(
+            improvToolsAppState,
             currentBackStackEntry = currentBackStackEntryAsState,
             navMenuButtonPressedCallback = {
                 invertNavMenuState()
@@ -198,7 +192,7 @@ internal fun ImprovToolsNavigationDrawer(
         ) {
             // TODO: replace with event system instead of passing controller??
             ImprovToolsNavigationGraph(
-                navController = navController,
+                improvToolsAppState,
                 onNavigateToRoute = doNavigateToNavigableRoute,
                 initialRoute = initialRoute,
             )

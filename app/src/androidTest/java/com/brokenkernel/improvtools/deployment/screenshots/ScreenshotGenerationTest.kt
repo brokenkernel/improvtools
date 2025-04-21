@@ -1,6 +1,8 @@
 package com.brokenkernel.improvtools.deployment.screenshots
 
 import androidx.annotation.StringRes
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.test.hasContentDescription
 import androidx.compose.ui.test.junit4.ComposeContentTestRule
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
@@ -44,7 +46,8 @@ sealed class BaseScreenshotGenerationTest {
         Screengrab.setDefaultScreenshotStrategy(UiAutomatorScreenshotStrategy())
 
         composeTestRule.setContent {
-            val improvToolsState = rememberImprovToolsAppState()
+            val titleState = remember { mutableStateOf(NavigableScreens.SuggestionGeneratorScreen.titleResource) }
+            val improvToolsState = rememberImprovToolsAppState(titleState = titleState)
             OuterContentForMasterScreen(improvToolsState, NavigableRoute.SuggestionGeneratorRoute)
         }
         composeTestRule.waitForIdle()
@@ -118,6 +121,7 @@ internal class ScreenshotGeneralPerNavigableScreenTest(
             .performClick()
         composeTestRule.waitForIdle()
 
-        Screengrab.screenshot(navigableScreen.route::class.simpleName + "_screen_baseline")
+        // TODO: This is wrong, but will change this when I change how navigation works
+        Screengrab.screenshot(navigableScreen.matchingRoutes.first()::class.simpleName + "_screen_baseline")
     }
 }

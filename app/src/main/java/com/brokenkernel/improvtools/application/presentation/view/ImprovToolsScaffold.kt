@@ -31,6 +31,7 @@ import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavDestination.Companion.hierarchy
 import com.brokenkernel.improvtools.R
+import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import com.brokenkernel.improvtools.application.data.model.allNavigableRoutes
@@ -40,6 +41,11 @@ import com.brokenkernel.improvtools.settings.presentation.view.TipsAndAdviceMenu
 
 private const val TAG = "ImprovToolsScaffold"
 
+// move into AppState rather than loop.
+// This will probably break with the back button
+// TODO: and this is why I didn't do this before.
+// maybe should be in savedStateHandle instead of maintained by app state?
+// I duno, but something is deeply wrong. This is why I Got rid of currentTitle in the first place...
 internal fun wrongfullyFindRouteByNavDestination(
     dest: NavDestination?,
     initialRoute: NavigableRoute,
@@ -68,6 +74,7 @@ internal fun wrongfullyFindRouteByNavDestination(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun ImprovToolsScaffold(
+    improvToolsAppState: ImprovToolsAppState,
     currentBackStackEntry: State<NavBackStackEntry?>,
     navMenuButtonPressedCallback: () -> Unit,
     initialRoute: NavigableRoute,
@@ -90,7 +97,7 @@ internal fun ImprovToolsScaffold(
                 ),
                 title = {
                     Text(
-                        stringResource(routeToScreen(currentNavigableRoute).titleResource),
+                        stringResource(improvToolsAppState.currentTitle.value),
                     )
                 },
                 scrollBehavior = TopAppBarDefaults

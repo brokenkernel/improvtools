@@ -1,15 +1,20 @@
 package com.brokenkernel.improvtools
 
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.AndroidComposeTestRule
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
+import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onRoot
 import androidx.navigation.compose.ComposeNavigator
 import androidx.navigation.testing.TestNavHostController
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsNavigationGraph
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute
+import com.brokenkernel.improvtools.application.data.model.NavigableScreens
+import com.brokenkernel.improvtools.application.data.model.rememberImprovToolsAppState
 import com.brokenkernel.improvtools.infrastructure.HiltComponentActitivity
 import com.brokenkernel.improvtools.infrastructure.assertCurrentNavigableRoute
 import com.brokenkernel.improvtools.infrastructure.onNodeWithStringId
@@ -39,8 +44,9 @@ class NavigationTest {
             navController = TestNavHostController(LocalContext.current).apply {
                 navigatorProvider.addNavigator(ComposeNavigator())
             }
+            val titleState = remember { mutableStateOf(NavigableScreens.SuggestionGeneratorScreen.titleResource) }
             ImprovToolsNavigationGraph(
-                navController = navController,
+                improvToolsAppState = rememberImprovToolsAppState(titleState = titleState),
                 onNavigateToRoute = {},
                 initialRoute = NavigableRoute.SuggestionGeneratorRoute, // TODO - deal with app state
             )
@@ -49,7 +55,8 @@ class NavigationTest {
 
     @Test
     fun testStartScreenIsSuggestions() {
-        navController.assertCurrentNavigableRoute(NavigableRoute.SuggestionGeneratorRoute)
+//        navController.assertCurrentNavigableRoute(NavigableRoute.SuggestionGeneratorRoute)
+        composeTestRule.onNodeWithTag("OutermostContentForSuggestionsScreen").assertIsDisplayed()
     }
 
     @Test
