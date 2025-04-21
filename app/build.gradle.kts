@@ -31,7 +31,7 @@ plugins {
     alias(libs.plugins.spotless)
     alias(libs.plugins.dokka)
 
-    kotlin("plugin.power-assert") version "2.0.0"
+    kotlin("plugin.power-assert") version "2.1.20"
 }
 
 val keystoreProperties: Properties = Properties()
