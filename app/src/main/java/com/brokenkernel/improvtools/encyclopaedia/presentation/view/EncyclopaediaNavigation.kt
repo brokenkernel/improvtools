@@ -36,7 +36,7 @@ internal enum class EncyclopaediaPages(
     ThesaurusPage(
         R.string.encyclopaedia_tab_title_thesaurus,
         Icons.Filled.Book,
-        { ThesaurusTab() },
+        { ThesaurusTabAllItems() },
     ),
 }
 
@@ -54,6 +54,6 @@ internal fun NavGraphBuilder.encyclopaediaPageDestinations() {
     }
 
     composable<NavigableRoute.ThesaurusPageRoute> {
-        ThesaurusTab()
+        ThesaurusTabAllItems()
     }
 }

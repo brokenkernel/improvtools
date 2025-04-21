@@ -28,6 +28,10 @@ trim_trailing_whitespace = true
 # ij_protobuf_spaces_within_braces = false
 # ij_protobuf_spaces_within_brackets = false
 
+[AndroidManifest.xml]
+indent_size = 4
+tab_width = 4
+
 [{*.ant,*.fxml,*.jhm,*.jnlp,*.jrxml,*.rng,*.tld,*.wsdl,*.xml,*.xsd,*.xsl,*.xslt,*.xul}]
 indent_size = 2
 tab_width = 2
