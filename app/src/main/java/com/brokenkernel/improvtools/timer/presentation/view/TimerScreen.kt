@@ -34,6 +34,9 @@ import com.brokenkernel.improvtools.timer.presentation.viewmodel.StopWatchTimerV
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.TimerListViewModel
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.TimerState
 import kotlin.time.Duration
+import androidx.activity.viewModels
+import androidx.lifecycle.viewmodel.CreationExtras
+import dagger.hilt.android.lifecycle.withCreationCallback
 
 private const val TAG = "TimerScreen"
 
@@ -161,9 +164,9 @@ internal fun TimerScreen(viewModel: TimerListViewModel = hiltViewModel()) {
                 when (timer.timerType) {
                     TimerListViewModel.TimerType.STOPWATCH -> {
                         TimerBorderOutlineCard {
-                            // TODO: This is a bug and returns the same for every call. Not sure why yet.
                             val simpleStopStopWatchTimerViewModel =
                                 hiltViewModel<StopWatchTimerViewModel, StopWatchTimerViewModel.Factory>(
+                                    key = timer.toString(),
                                     creationCallback = { factory ->
                                         factory.create(title = timer.title)
                                     },
@@ -180,9 +183,9 @@ internal fun TimerScreen(viewModel: TimerListViewModel = hiltViewModel()) {
 
                     TimerListViewModel.TimerType.COUNTDOWN -> {
                         TimerBorderOutlineCard {
-                            // TODO: This is a bug and returns the same for every call. Not sure why yet.
                             val simpleCountDownTimerViewModel =
                                 hiltViewModel<CountDownTimerViewModel, CountDownTimerViewModel.Factory>(
+                                    key = timer.toString(),
                                     creationCallback = { factory ->
                                         factory.create(title = timer.title)
                                     },
