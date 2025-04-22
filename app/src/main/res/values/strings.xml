@@ -91,4 +91,5 @@
     <string name="notification_countdown">Count Down</string>
     <string name="go_to_single_word_thesaurus_view">Go To %1$s</string>
   <string name="navigation_back_to_thesaurus">Back to Thesaurus</string>
+    <string name="action_word">Action Word</string>
 </resources>

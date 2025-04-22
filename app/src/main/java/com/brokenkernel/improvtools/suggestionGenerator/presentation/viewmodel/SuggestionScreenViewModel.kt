@@ -2,9 +2,12 @@ package com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.brokenkernel.improvtools.encyclopaedia.api.ThesaurusAPI
 import com.brokenkernel.improvtools.settings.data.repository.SettingsRepository
 import com.brokenkernel.improvtools.suggestionGenerator.data.model.IdeaCategory
+import com.brokenkernel.improvtools.suggestionGenerator.data.model.IdeaItem
 import com.brokenkernel.improvtools.suggestionGenerator.data.repository.AudienceSuggestionDatumRepository
+import com.brokenkernel.improvtools.suggestionGenerator.data.repository.MergedAudienceSuggestionDatumRepository
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.uistate.SuggestionScreenUIState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jakarta.inject.Inject
@@ -16,11 +19,14 @@ import kotlinx.coroutines.launch
 
 @HiltViewModel
 internal class SuggestionScreenViewModel @Inject constructor(
-    suggestionDatumRepository: AudienceSuggestionDatumRepository,
+    suggestionDatumRepository: MergedAudienceSuggestionDatumRepository,
     private val settingsRepository: SettingsRepository,
 ) :
     ViewModel() {
     private val _uiState = MutableStateFlow(SuggestionScreenUIState.default())
+
+    // TODO: figure out a nicer way to get suggestions from other places. I don't need everything in json, but some should be, and perhaps in the future local GenAI (hey: real use for it :-)
+    // in the meantime, whatever. Also tests!
 
     val internalCategoryDatum: List<IdeaCategory> = suggestionDatumRepository.getIdeaCategories()
     val _categoryDatumToSuggestion: MutableMap<IdeaCategory, MutableStateFlow<String>> =
@@ -37,6 +43,7 @@ internal class SuggestionScreenViewModel @Inject constructor(
         internalCategoryDatum.forEach { item ->
             _categoryDatumToSuggestion[item] = MutableStateFlow(item.ideas.random().idea)
         }
+
         categoryDatumToSuggestion = _categoryDatumToSuggestion.mapValues { x -> x.value.asStateFlow() }
     }
 

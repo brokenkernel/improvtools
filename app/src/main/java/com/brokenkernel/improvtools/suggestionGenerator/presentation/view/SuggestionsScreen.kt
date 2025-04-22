@@ -129,8 +129,7 @@ internal fun SuggestionsScreen(
                 // maybe floating action button?
                 FilledTonalButton(
                     onClick = { viewModel.resetAllCategories() },
-
-                    ) {
+                ) {
                     Row {
                         Icon(
                             Icons.Filled.ChangeCircle,

@@ -26,7 +26,7 @@ internal class ViewModuleRepositoryModule {
     @Provides
     fun providesAudienceSuggestionDatumRepository(
         @ApplicationContext appContext: Context,
-    ): AudienceSuggestionDatumRepository {
+    ): ResourcesAudienceSuggestionDatumRepository {
         return ResourcesAudienceSuggestionDatumRepository(appContext.resources)
     }
 }
