@@ -4,6 +4,7 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ListItem
@@ -24,6 +25,7 @@ import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.application.presentation.view.verticalColumnScrollbar
 import com.brokenkernel.improvtools.encyclopaedia.EncyclopaediaSectionNavigation
 import com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel.ThesaurusTabAllItemsViewModel
+import androidx.compose.foundation.lazy.items
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -32,14 +34,8 @@ internal fun ThesaurusTabAllItems(
     viewModel: ThesaurusTabAllItemsViewModel = hiltViewModel(),
 ) {
     val clipboardManager: ClipboardManager = LocalClipboardManager.current
-    val scrollState = rememberScrollState()
-//    val onClickForWord
-    Column(
-        modifier = Modifier
-            .verticalColumnScrollbar(scrollState)
-            .verticalScroll(scrollState),
-    ) {
-        viewModel.words().forEach { word ->
+    LazyColumn {
+        items(viewModel.words()) { word ->
             ListItem(
                 headlineContent = { Text(word) },
                 supportingContent = {

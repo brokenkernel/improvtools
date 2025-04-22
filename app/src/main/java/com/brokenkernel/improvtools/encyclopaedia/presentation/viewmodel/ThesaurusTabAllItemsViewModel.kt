@@ -9,8 +9,8 @@ import javax.inject.Inject
 internal class ThesaurusTabAllItemsViewModel @Inject constructor(
     val thesaurusRepository: ThesaurusRepository,
 ) : ViewModel() {
-    fun words(): Iterable<String> {
-        return thesaurusRepository.getActionsThesaurus().keys()
+    fun words(): List<String> {
+        return thesaurusRepository.getActionsThesaurus().keys().toList()
     }
 
     fun synonymsForWord(word: String): Iterable<String> {

@@ -130,7 +130,7 @@ internal fun SuggestionsScreen(
                 FilledTonalButton(
                     onClick = { viewModel.resetAllCategories() },
 
-                ) {
+                    ) {
                     Row {
                         Icon(
                             Icons.Filled.ChangeCircle,
