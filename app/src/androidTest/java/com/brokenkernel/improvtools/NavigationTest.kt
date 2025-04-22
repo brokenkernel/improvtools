@@ -74,4 +74,6 @@ class NavigationTest {
     }
 
     // todo: test drawer is closed??
+    // todo: perform gesture swipe. Drawer
+    // TODO: back button,up button, drawer moving? Consider what I actually want my high level navigation to be
 }
