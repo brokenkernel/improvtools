@@ -73,7 +73,6 @@ internal fun ThesaurusTabAllItems(
                             }
                         }
                     }
-                    // TODO go to single item view when clicking on synonym
                 },
                 modifier = Modifier
                     .testTag("word_$word")
@@ -91,7 +90,6 @@ internal fun ThesaurusTabAllItems(
                         },
                     ),
                 overlineContent = { Text("Action") }, // todo: i18n,
-//            supportingContent = TODO(),
 //            leadingContent = TODO(),
 //            trailingContent = TODO(),
             )
