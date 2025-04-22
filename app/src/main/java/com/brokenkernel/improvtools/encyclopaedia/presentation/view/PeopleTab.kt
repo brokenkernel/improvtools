@@ -9,9 +9,9 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.text.input.rememberTextFieldState
-import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -35,7 +35,6 @@ import androidx.compose.ui.semantics.isTraversalGroup
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.intl.Locale
 import com.brokenkernel.improvtools.R
-import com.brokenkernel.improvtools.application.presentation.view.verticalColumnScrollbar
 import com.brokenkernel.improvtools.components.presentation.view.EnumLinkedMultiChoiceSegmentedButtonRow
 import com.brokenkernel.improvtools.components.presentation.view.SimpleSearchBar
 import com.brokenkernel.improvtools.encyclopaedia.data.model.PeopleDatum
@@ -50,7 +49,6 @@ private fun String.transformForSearch(): String {
 @Composable
 internal fun PeopleTab() {
     Column {
-        val scrollState = rememberScrollState()
         val textFieldState = rememberTextFieldState()
         val isSegmentedButtonChecked: SnapshotStateList<Boolean> =
             MutableList(PeopleDatumTopic.entries.size, { true })
@@ -76,83 +74,78 @@ internal fun PeopleTab() {
                     collator.compare(s1, s2)
                 }
 
-                Column(
-                    modifier = Modifier
-                        .verticalColumnScrollbar(scrollState)
-                        .verticalScroll(scrollState),
-
-                ) {
-                    //
-                    PeopleDatum.sortedWith { s1, s2 ->
-                        comparator.compare(
-                            s1.personName,
-                            s2.personName,
-                        )
-                    }
-                        .forEach { it ->
-                            var isListItemInformationExpanded: Boolean by remember {
-                                mutableStateOf(
-                                    false,
-                                )
-                            }
-                            val foundText =
-                                if (textFieldState.text.isNotEmpty()) {
-                                    // there is probably a better way to handle transformForSearch
-                                    // by directly asking ICU to convert to lowercase and so on, but keep for now while I figure this out.
-                                    val search = StringSearch(
-                                        textFieldState.text.toString().transformForSearch(),
-                                        StringCharacterIterator(it.personName.transformForSearch()),
-                                        Locale.current.platformLocale,
-                                    )
-                                    search.first() != DONE
-                                } else {
-                                    true
-                                }
-                            if (isSegmentedButtonChecked[it.topic.ordinal] && foundText) {
-                                ListItem(
-                                    headlineContent = { Text(it.personName) },
-                                    leadingContent = {
-                                        Icon(
-                                            Icons.Outlined.Person,
-                                            contentDescription = "Person",
-                                        )
-                                    },
-                                    overlineContent = { Text(it.knownFor) },
-                                    trailingContent = {
-                                        if (it.wikipediaLink != null) {
-                                            val context = LocalContext.current
-                                            OutlinedIconButton(
-                                                onClick = {
-                                                    // webview.setWebViewClient(new WebViewClient());
-                                                    val browserIntent =
-                                                        Intent(Intent.ACTION_VIEW, it.wikipediaLink)
-                                                    context.startActivity(browserIntent)
-                                                },
-                                            ) {
-                                                Icon(
-                                                    painterResource(R.drawable.logo_wikipedia),
-                                                    contentDescription = stringResource(
-                                                        R.string.wikipedia,
-                                                    ),
-                                                )
-                                            }
-                                        }
-                                    },
-                                    supportingContent = {
-                                        if (isListItemInformationExpanded) {
-                                            Text(it.detailedInformation)
-                                        }
-                                    },
-                                    modifier = Modifier.clickable(
-                                        enabled = true,
-                                        role = Role.Button,
-                                        onClick = {
-                                            isListItemInformationExpanded = !isListItemInformationExpanded
-                                        },
-                                    ),
-                                )
-                            }
+                LazyColumn {
+                    items(
+                        PeopleDatum.sortedWith { s1, s2 ->
+                            comparator.compare(
+                                s1.personName,
+                                s2.personName,
+                            )
+                        },
+                    ) { it ->
+                        var isListItemInformationExpanded: Boolean by remember {
+                            mutableStateOf(
+                                false,
+                            )
                         }
+                        val foundText =
+                            if (textFieldState.text.isNotEmpty()) {
+                                // there is probably a better way to handle transformForSearch
+                                // by directly asking ICU to convert to lowercase and so on, but keep for now while I figure this out.
+                                val search = StringSearch(
+                                    textFieldState.text.toString().transformForSearch(),
+                                    StringCharacterIterator(it.personName.transformForSearch()),
+                                    Locale.current.platformLocale,
+                                )
+                                search.first() != DONE
+                            } else {
+                                true
+                            }
+                        if (isSegmentedButtonChecked[it.topic.ordinal] && foundText) {
+                            ListItem(
+                                headlineContent = { Text(it.personName) },
+                                leadingContent = {
+                                    Icon(
+                                        Icons.Outlined.Person,
+                                        contentDescription = "Person",
+                                    )
+                                },
+                                overlineContent = { Text(it.knownFor) },
+                                trailingContent = {
+                                    if (it.wikipediaLink != null) {
+                                        val context = LocalContext.current
+                                        OutlinedIconButton(
+                                            onClick = {
+                                                // webview.setWebViewClient(new WebViewClient());
+                                                val browserIntent =
+                                                    Intent(Intent.ACTION_VIEW, it.wikipediaLink)
+                                                context.startActivity(browserIntent)
+                                            },
+                                        ) {
+                                            Icon(
+                                                painterResource(R.drawable.logo_wikipedia),
+                                                contentDescription = stringResource(
+                                                    R.string.wikipedia,
+                                                ),
+                                            )
+                                        }
+                                    }
+                                },
+                                supportingContent = {
+                                    if (isListItemInformationExpanded) {
+                                        Text(it.detailedInformation)
+                                    }
+                                },
+                                modifier = Modifier.clickable(
+                                    enabled = true,
+                                    role = Role.Button,
+                                    onClick = {
+                                        isListItemInformationExpanded = !isListItemInformationExpanded
+                                    },
+                                ),
+                            )
+                        }
+                    }
 //                ListItem(
 //                    headlineContent = { Text("headline") },
 //                    leadingContent = { Text("leading") },
