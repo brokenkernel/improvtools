@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Book
 import androidx.compose.material.icons.filled.ChangeCircle
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -39,7 +40,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.brokenkernel.improvtools.R
-import com.brokenkernel.improvtools.application.data.model.NavigableRoute
 import com.brokenkernel.improvtools.application.presentation.view.verticalColumnScrollbar
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel.SuggestionScreenViewModel
 import kotlinx.coroutines.delay
@@ -49,7 +49,8 @@ import kotlinx.coroutines.launch
 @Composable
 internal fun SuggestionsScreen(
     viewModel: SuggestionScreenViewModel = hiltViewModel(),
-    onNavigateToRoute: (NavigableRoute) -> Unit,
+    onNavigateToEmotionsInfographic: () -> Unit,
+    onNavigateToWord: (String) -> Unit,
 ) {
     val state = rememberPullToRefreshState()
     var isRefreshing by remember { mutableStateOf(false) }
@@ -92,26 +93,48 @@ internal fun SuggestionsScreen(
                     viewModel.internalCategoryDatum.forEach { ideaCategory ->
                         val itemSuggestionState: State<String>? =
                             viewModel.categoryDatumToSuggestion[ideaCategory]?.collectAsStateWithLifecycle()
+                        val currentWord = itemSuggestionState?.value.orEmpty()
                         ListItem(
                             overlineContent = { Text(ideaCategory.titleWithCount()) },
-                            headlineContent = { Text(itemSuggestionState?.value.orEmpty()) },
+                            headlineContent = { Text(currentWord) },
                             modifier = Modifier.clickable(
                                 onClick = {
                                     viewModel.updateSuggestionXFor(ideaCategory)
                                 },
                             ),
                             trailingContent = {
-                                if (ideaCategory.showLinkToEmotion) {
-                                    IconButton(
-                                        onClick = {
-                                            onNavigateToRoute(NavigableRoute.EmotionPageRoute)
-                                        },
-                                        modifier = Modifier.weight(1f),
-                                    ) {
-                                        Icon(
-                                            Icons.Default.Info,
-                                            contentDescription = "TODO",
-                                        )
+                                Row(modifier = Modifier.weight(1f)) {
+                                    if (ideaCategory.showLinkToEmotion) {
+                                        IconButton(
+                                            onClick = {
+                                                onNavigateToEmotionsInfographic()
+                                            },
+                                        ) {
+                                            Icon(
+                                                Icons.Default.Info,
+                                                contentDescription = stringResource(
+                                                    R.string.go_to_emotions_reference_screen,
+                                                ),
+                                            )
+                                        }
+                                    }
+                                    if (viewModel.isWordInThesaurus(currentWord)) {
+                                        IconButton(
+                                            onClick = {
+                                                // TODO: consider pop up menu instead of full screen
+                                                // TODO: button says "back to encyclopaedia" instead of "back"
+                                                // TODO: none of the selected words are remembered across screens
+                                                onNavigateToWord(currentWord)
+                                            },
+                                        ) {
+                                            Icon(
+                                                Icons.Filled.Book,
+                                                contentDescription = stringResource(
+                                                    R.string.go_to_single_word_thesaurus_view,
+                                                    currentWord,
+                                                ),
+                                            )
+                                        }
                                     }
                                 }
                             },

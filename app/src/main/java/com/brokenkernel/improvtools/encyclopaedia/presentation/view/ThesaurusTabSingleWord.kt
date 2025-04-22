@@ -43,7 +43,7 @@ internal fun ThesaurusTabSingleWord(
             }
             ExtendedFloatingActionButton(
                 onClick = {
-                    EncyclopaediaSectionNavigation.navigateBackToThesaurus(improvToolsAppState = improvToolsAppState)
+                    EncyclopaediaSectionNavigation.navigateBack(improvToolsAppState)
                 },
             ) {
                 Text(stringResource(R.string.navigation_back_to_thesaurus))

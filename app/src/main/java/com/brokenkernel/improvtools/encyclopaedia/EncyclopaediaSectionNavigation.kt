@@ -13,6 +13,11 @@ internal object EncyclopaediaSectionNavigation {
         )
     }
 
+    fun navigateBack(improvToolsAppState: ImprovToolsAppState) {
+        improvToolsAppState.navigateBack()
+    }
+
+
     fun navigateToThesaurusWord(improvToolsAppState: ImprovToolsAppState, word: String) {
         improvToolsAppState.navigateTo(
             NavigableRoute.ThesaurusWordRoute(word),

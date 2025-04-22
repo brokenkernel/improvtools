@@ -63,6 +63,13 @@ internal class ImprovToolsAppState(
         // popUpTo does not work for reasons I'm not sure. This seems to work for now...
         navController.popBackStack(inclusive = false, route = dest)
     }
+
+    fun navigateBack() {
+        if (Log.isLoggable(TAG, INFO)) {
+            Log.i(TAG, "Navigating BACK")
+        }
+        navController.popBackStack()
+    }
 }
 
 @Composable

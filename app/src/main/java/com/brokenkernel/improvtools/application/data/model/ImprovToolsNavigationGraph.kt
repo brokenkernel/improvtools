@@ -6,6 +6,7 @@ import androidx.navigation.compose.composable
 import com.brokenkernel.improvtools.application.presentation.view.AboutScreen
 import com.brokenkernel.improvtools.application.presentation.view.LibrariesScreen
 import com.brokenkernel.improvtools.application.presentation.view.PrivacyScreen
+import com.brokenkernel.improvtools.encyclopaedia.EncyclopaediaSectionNavigation
 import com.brokenkernel.improvtools.encyclopaedia.presentation.view.encyclopaediaPageDestinations
 import com.brokenkernel.improvtools.settings.presentation.view.SettingsScreen
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.view.SuggestionsScreen
@@ -33,9 +34,12 @@ internal fun ImprovToolsNavigationGraph(
         }
         composable<NavigableRoute.SuggestionGeneratorRoute> {
             SuggestionsScreen(
-
-                // TODO: specific navigator
-                onNavigateToRoute = onNavigateToRoute,
+                onNavigateToEmotionsInfographic = {
+                    onNavigateToRoute(NavigableRoute.EmotionPageRoute)
+                },
+                onNavigateToWord = {
+                    EncyclopaediaSectionNavigation.navigateToThesaurusWord(improvToolsAppState, it)
+                },
             )
         }
         composable<NavigableRoute.TimerRoute> {

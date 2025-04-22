@@ -21,6 +21,7 @@ import kotlinx.coroutines.launch
 internal class SuggestionScreenViewModel @Inject constructor(
     suggestionDatumRepository: MergedAudienceSuggestionDatumRepository,
     private val settingsRepository: SettingsRepository,
+    thesaurusAPI: ThesaurusAPI,
 ) :
     ViewModel() {
     private val _uiState = MutableStateFlow(SuggestionScreenUIState.default())
@@ -61,5 +62,11 @@ internal class SuggestionScreenViewModel @Inject constructor(
         _categoryDatumToSuggestion.keys.forEach { k ->
             this.updateSuggestionXFor(k)
         }
+    }
+
+    private val possibleThesaurusWords = thesaurusAPI.getActionWords()
+
+    internal fun isWordInThesaurus(word: String): Boolean {
+        return possibleThesaurusWords.contains(word)
     }
 }
