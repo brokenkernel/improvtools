@@ -9,7 +9,7 @@ enableGitInfo = true
 
 [languages]
 [languages.en]
-languageName ="English"
+languageName = "English"
 # Weight used for sorting.
 weight = 1
 [languages.en.params]
@@ -27,33 +27,38 @@ github_branch = "master"
 name = "API Docs"
 weight = 50
 url = "../api/index.html"
-
+[[menu.main]]
+name = "Github"
+weight = 40
+url = "https://github.com/brokenkernel/improvtools"
 
 [[cascade]]
 type = "blog"
 toc_root = true
 
-  [cascade._target]
-  path = "/news/**"
+[cascade._target]
+path = "/news/**"
 
 [[cascade]]
 type = "docs"
 
-  [cascade._target]
-  path = "/**"
+[cascade._target]
+path = "/**"
 
 [[params.versions]]
-  version = "master"
+version = "master"
 
 [outputs]
-section = [ "HTML", "RSS", "print" ]
+section = ["HTML", "RSS", "print"]
 
 [module.hugoVersion]
 extended = true
 min = "0.146.4"
+
 [[module.imports]]
 path = "github.com/google/docsy"
+
 [markup]
-  [markup.goldmark]
-    [markup.goldmark.renderer]
-      unsafe = true
+[markup.goldmark]
+[markup.goldmark.renderer]
+unsafe = true
