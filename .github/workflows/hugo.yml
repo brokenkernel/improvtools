@@ -29,7 +29,8 @@ jobs:
         HUGO_CACHEDIR: /tmp/hugo_cache
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: checkout source code
+        uses: actions/checkout@v4
         with:
           submodules: true  # Fetch Hugo themes (true OR recursive)
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
@@ -43,15 +44,27 @@ jobs:
         run: |
           . ./.env
           echo "HUGO_VERSION=${HUGO_VERSION}" >> "${GITHUB_OUTPUT}"
+          echo "JVM_VERSION=${JVM_VERSION}" >> "${GITHUB_OUTPUT}"
 
       - name: Install Dart Sass Embedded
         run: sudo snap install dart-sass-embedded
 
-      - uses: actions/setup-node@v4.3.0
+      - name: set up node
+        uses: actions/setup-node@v4.3.0
         with:
           node-version: 22
           cache: 'npm'
           cache-dependency-path: 'docs/package-lock.json'
+
+      - name: Set up JDK (for dokka)
+        uses: actions/setup-java@v4.7.1
+        with:
+          java-version: '${{ steps.hugo-version.outputs.JVM_VERSION }}'
+          distribution: 'adopt'
+          cache: 'gradle'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3.0.0
@@ -59,7 +72,18 @@ jobs:
           hugo-version: '${{ steps.hugo-version.outputs.HUGO_VERSION }}'
           extended: true
 
-      - uses: actions/cache@v4
+      - name: Generate documentation
+        shell: bash
+        run: |
+          ./gradlew :my-library:dokkaHtml
+
+      - name: Copy output to static directory
+        shell: bash
+        run: |
+          cp -a build/dokka/html docs/static/api/
+
+      - name: set up cache
+        uses: actions/cache@v4
         with:
           path: ${{ env.HUGO_CACHEDIR }}
           key: ${{ runner.os }}-hugomod-${{ hashFiles('**/go.sum') }}

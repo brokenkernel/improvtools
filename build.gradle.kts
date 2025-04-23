@@ -54,7 +54,7 @@ dokka {
     dokkaPublications {
         html {
             enabled = true
-            outputDirectory = rootDir.resolve("docs/static/api")
+            // outputDirectory = rootDir.resolve("docs/static/api")
             includes.from(project.layout.projectDirectory.file("README.md"))
         }
     }

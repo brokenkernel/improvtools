@@ -15,16 +15,23 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Read .env
+        id: hugo-version
+        run: |
+          . ./.env
+          echo "HUGO_VERSION=${HUGO_VERSION}" >> "${GITHUB_OUTPUT}"
+          echo "JVM_VERSION=${JVM_VERSION}" >> "${GITHUB_OUTPUT}"
+
       - name: Checkout sources
         uses: actions/checkout@v4
         with:
           submodules: true  # Fetch Hugo themes (true OR recursive)
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
       - name: Setup Java
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v4.7.1
         with:
-          distribution: 'temurin'
-          java-version: 17
+          distribution: 'adopt'
+          java-version: '${{ steps.hugo-version.outputs.JVM_VERSION }}'
           cache: gradle
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
