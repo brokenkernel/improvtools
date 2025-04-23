@@ -7,7 +7,6 @@ import com.mikepenz.aboutlibraries.plugin.DuplicateMode
 import com.mikepenz.aboutlibraries.plugin.DuplicateRule
 import com.mikepenz.aboutlibraries.plugin.StrictMode
 import java.io.IOException
-import java.net.URI
 import java.util.Properties
 import org.gradle.kotlin.dsl.implementation
 import org.jetbrains.dokka.gradle.engine.parameters.VisibilityModifier
@@ -327,20 +326,9 @@ spotless {
 }
 
 dokka {
-    dokkaPublications {
-        html {
-            enabled = true
-//            failOnWarning = true
-        }
-    }
+    moduleName = "app"
     dokkaSourceSets {
         main {
-            sourceLink {
-                localDirectory = file("src/main/java")
-                remoteUrl("https://github.com/brokenkernel/improvtools")
-                remoteLineSuffix = "#L"
-            }
-
             suppressGeneratedFiles = true
             enableAndroidDocumentationLink = true
             enableJdkDocumentationLink = true
@@ -354,10 +342,16 @@ dokka {
                     VisibilityModifier.Protected,
                 )
             sourceLink {
-                localDirectory = projectDir.resolve("src")
-                remoteUrl = URI.create("https://github.com/brokenkernel/improvtools/tree/master/src")
-                remoteLineSuffix = "#L"
+                localDirectory.set(file("src/main/java"))
+                remoteUrl("https://github.com/brokenkernel/improvtools")
+                remoteLineSuffix.set("#L")
             }
+        }
+    }
+    dokkaPublications {
+        html {
+            enabled = true
+//            failOnWarning = true
         }
     }
     pluginsConfiguration {
