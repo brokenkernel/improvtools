@@ -42,7 +42,7 @@ jobs:
         uses: ashutoshgngwr/validate-fastlane-supply-metadata@v2
 
       - name: Build with Gradle
-        run: ./gradlw build --warning-mode all --stacktrace
+        run: ./gradle build --warning-mode all --stacktrace
 
       - name: Run all verification tasks
         run: ./gradlew check --warning-mode all --stacktrace
