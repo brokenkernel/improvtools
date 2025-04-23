@@ -7,6 +7,7 @@ import com.mikepenz.aboutlibraries.plugin.DuplicateMode
 import com.mikepenz.aboutlibraries.plugin.DuplicateRule
 import com.mikepenz.aboutlibraries.plugin.StrictMode
 import java.io.IOException
+import java.net.URI
 import java.util.Properties
 import org.gradle.kotlin.dsl.implementation
 import org.jetbrains.dokka.gradle.engine.parameters.VisibilityModifier
@@ -329,6 +330,7 @@ dokka {
     dokkaPublications {
         html {
             enabled = true
+//            failOnWarning = true
         }
     }
     dokkaSourceSets {
@@ -350,8 +352,12 @@ dokka {
                     VisibilityModifier.Internal,
                     VisibilityModifier.Package,
                     VisibilityModifier.Protected,
-//                VisibilityModifier.Private,
                 )
+            sourceLink {
+                localDirectory = projectDir.resolve("src")
+                remoteUrl = URI.create("https://github.com/brokenkernel/improvtools/tree/master/src")
+                remoteLineSuffix = "#L"
+            }
         }
     }
     pluginsConfiguration {
