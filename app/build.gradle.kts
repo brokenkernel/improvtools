@@ -203,8 +203,8 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.datastore)
     implementation(libs.androidx.datastore.core)
-//    implementation(libs.androidx.glance.appwidget)
-//    implementation(libs.androidx.glance.material3)
+    //    implementation(libs.androidx.glance.appwidget)
+    //    implementation(libs.androidx.glance.material3)
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.androidx.input.motionprediction)
     implementation(libs.androidx.lifecycle.process)
@@ -259,8 +259,8 @@ dependencies {
     androidTestImplementation(libs.junit)
     androidTestImplementation(libs.tools.fastlane.screengrab)
 
-    dokkaPlugin(libs.mathjax.plugin)
     dokkaPlugin(libs.android.documentation.plugin)
+    dokkaPlugin(libs.mathjax.plugin)
 
     ksp(libs.androidx.lifecycle.compiler)
     ksp(libs.hilt.compiler)
