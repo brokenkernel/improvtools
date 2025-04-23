@@ -110,7 +110,7 @@ internal sealed class NavigableScreens(
     internal val shouldShowExtraMenu: Boolean,
     internal val navigationCallback: (itas: ImprovToolsAppState) -> Unit = { itas ->
         // TODO: FIXME
-        itas.navigateTo(matchingRoutes.first(), titleResource)
+        itas.navigateTo(matchingRoutes.first())
     }, // TODO: remove default
 ) {
     @Immutable

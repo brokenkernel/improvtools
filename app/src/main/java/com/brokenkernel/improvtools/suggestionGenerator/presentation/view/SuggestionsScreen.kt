@@ -26,6 +26,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -51,7 +52,14 @@ internal fun SuggestionsScreen(
     viewModel: SuggestionScreenViewModel = hiltViewModel(),
     onNavigateToEmotionsInfographic: () -> Unit,
     onNavigateToWord: (String) -> Unit,
+    onLaunchTitleCallback: () -> Unit,
 ) {
+    // TODO: consider making a BaseScreenComposable or some such
+    LaunchedEffect(Unit) {
+        // TODO: maybe SideEffect?
+        onLaunchTitleCallback()
+    }
+
     val state = rememberPullToRefreshState()
     var isRefreshing by remember { mutableStateOf(false) }
     val coroutineScope = rememberCoroutineScope()

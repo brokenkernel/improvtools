@@ -31,6 +31,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -230,7 +231,16 @@ internal fun TipsAndAdviceScreenAsList(viewModel: TipsAndAdviceViewModel = hiltV
 }
 
 @Composable
-internal fun TipsAndAdviceScreen(viewModel: TipsAndAdviceViewModel = hiltViewModel()) {
+internal fun TipsAndAdviceScreen(
+    viewModel: TipsAndAdviceViewModel = hiltViewModel(),
+    onLaunchTitleCallback: () -> Unit,
+) {
+    // TODO: consider making a BaseScreenComposable or some such
+    LaunchedEffect(Unit) {
+        // TODO: maybe SideEffect?
+        onLaunchTitleCallback()
+    }
+
     val taaViewMode by viewModel.taaViewMode.collectAsStateWithLifecycle()
     when (taaViewMode) {
         TipsAndAdviceViewModeUI.SWIPEABLE -> TipsAndAdviceScreenAsSwipable()

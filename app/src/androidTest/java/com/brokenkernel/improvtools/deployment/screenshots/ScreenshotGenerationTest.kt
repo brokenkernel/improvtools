@@ -103,7 +103,7 @@ internal class ScreenshotGeneralPerNavigableScreenTest(
                 arrayOf(NavigableScreens.TipsAndAdviceScreen),
                 arrayOf(NavigableScreens.PeoplePageScreen),
                 arrayOf(NavigableScreens.GamesPageScreen),
-//                arrayOf(NavigableScreens.EmotionsPageScreen),
+//                arrayOf(NavigableScreens.EmotionsPageScreen), // TODO: there are now two copies of this button. Maybe add TestTag or more specifically use menu instead of screens? Unsure what to do .
             )
         }
     }

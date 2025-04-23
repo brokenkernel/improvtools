@@ -20,6 +20,7 @@ import androidx.compose.material3.ListItem
 import androidx.compose.material3.OutlinedIconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -47,7 +48,13 @@ private fun String.transformForSearch(): String {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-internal fun PeopleTab() {
+internal fun PeopleTab(onLaunchTitleCallback: () -> Unit) {
+    // TODO: consider making a BaseScreenComposable or some such
+    LaunchedEffect(Unit) {
+        // TODO: maybe SideEffect?
+        onLaunchTitleCallback()
+    }
+
     Column {
         val textFieldState = rememberTextFieldState()
         val isSegmentedButtonChecked: SnapshotStateList<Boolean> =

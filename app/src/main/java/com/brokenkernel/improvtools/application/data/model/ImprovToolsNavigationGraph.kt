@@ -27,15 +27,31 @@ internal fun ImprovToolsNavigationGraph(
             AboutScreen(
                 // TODO: specific navigator
                 onNavigateToRoute = onNavigateToRoute,
+                onLaunchTitleCallback = {
+                    improvToolsAppState.setScreenTitleTo(
+                        NavigableScreens.HelpAndAboutScreen.titleResource,
+                    )
+                },
             )
         }
         composable<NavigableRoute.SettingsRoute> {
-            SettingsScreen()
+            SettingsScreen(
+                onLaunchTitleCallback = {
+                    improvToolsAppState.setScreenTitleTo(
+                        NavigableScreens.SettingsScreen.titleResource,
+                    )
+                },
+            )
         }
         composable<NavigableRoute.SuggestionGeneratorRoute> {
             SuggestionsScreen(
                 onNavigateToEmotionsInfographic = {
                     onNavigateToRoute(NavigableRoute.EmotionPageRoute)
+                },
+                onLaunchTitleCallback = {
+                    improvToolsAppState.setScreenTitleTo(
+                        NavigableScreens.SuggestionGeneratorScreen.titleResource,
+                    )
                 },
                 onNavigateToWord = {
                     EncyclopaediaSectionNavigation.navigateToThesaurusWord(improvToolsAppState, it)
@@ -43,18 +59,44 @@ internal fun ImprovToolsNavigationGraph(
             )
         }
         composable<NavigableRoute.TimerRoute> {
-            TimerScreen()
+            TimerScreen(
+                onLaunchTitleCallback = {
+                    improvToolsAppState.setScreenTitleTo(
+                        NavigableScreens.TimerScreen.titleResource,
+                    )
+                },
+
+            )
         }
         composable<NavigableRoute.TipsAndAdviceRoute> {
-            TipsAndAdviceScreen()
+            TipsAndAdviceScreen(
+                onLaunchTitleCallback = {
+                    improvToolsAppState.setScreenTitleTo(
+                        NavigableScreens.TipsAndAdviceScreen.titleResource,
+                    )
+                },
+
+            )
         }
 
         composable<NavigableRoute.PrivacyRoute> {
-            PrivacyScreen()
+            PrivacyScreen(
+                onLaunchTitleCallback = {
+                    improvToolsAppState.setScreenTitleTo(
+                        NavigableScreens.PrivacyScreen.titleResource,
+                    )
+                },
+            )
         }
 
         composable<NavigableRoute.LibrariesRoute> {
-            LibrariesScreen()
+            LibrariesScreen(
+                onLaunchTitleCallback = {
+                    improvToolsAppState.setScreenTitleTo(
+                        NavigableScreens.LibrariesScreen.titleResource,
+                    )
+                },
+            )
         }
 
         encyclopaediaPageDestinations(improvToolsAppState)

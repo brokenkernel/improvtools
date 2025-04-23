@@ -8,6 +8,6 @@
         <error line="37" column="13" source="standard:function-naming" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/tipsandadvice/presentation/view/TipsAndAdviceScreen.kt">
-        <error line="104" column="1" source="standard:max-line-length" />
+        <error line="105" column="1" source="standard:max-line-length" />
     </file>
 </baseline>

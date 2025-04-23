@@ -19,6 +19,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -48,8 +49,14 @@ private fun doesMatch(search: String, gameData: GamesDataItem): Boolean {
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
-internal fun GamesTab() {
+internal fun GamesTab(onLaunchTitleCallback: () -> Unit) {
     Column {
+        // TODO: consider making a BaseScreenComposable or some such
+        LaunchedEffect(Unit) {
+            // TODO: maybe SideEffect?
+            onLaunchTitleCallback()
+        }
+
         val scrollState = rememberScrollState()
         val textFieldState: TextFieldState = rememberTextFieldState()
         val isSegmentedButtonChecked: SnapshotStateList<Boolean> =

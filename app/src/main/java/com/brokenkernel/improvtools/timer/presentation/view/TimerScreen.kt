@@ -16,6 +16,7 @@ import androidx.compose.material3.LargeFloatingActionButton
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -139,7 +140,13 @@ internal fun SimpleStopWatchTimer(viewModel: StopWatchTimerViewModel, onRemoveTi
 }
 
 @Composable
-internal fun TimerScreen(viewModel: TimerListViewModel = hiltViewModel()) {
+internal fun TimerScreen(viewModel: TimerListViewModel = hiltViewModel(), onLaunchTitleCallback: () -> Unit) {
+    // TODO: consider making a BaseScreenComposable or some such
+    LaunchedEffect(Unit) {
+        // TODO: maybe SideEffect?
+        onLaunchTitleCallback()
+    }
+
     val scrollState = rememberScrollState()
     val haptic = LocalHapticFeedback.current
     val shouldHapticOnRemove = viewModel.shouldHaptic.collectAsStateWithLifecycle()

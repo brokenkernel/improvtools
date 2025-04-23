@@ -21,7 +21,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavBackStackEntry
-import androidx.navigation.NavHostController
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsNavigationGraph
@@ -57,7 +56,6 @@ internal fun ImprovToolsNavigationDrawer(
     improvToolsAppState: ImprovToolsAppState,
     doNavigateToNavigableRoute: (NavigableRoute) -> Unit,
     drawerState: DrawerState,
-    navController: NavHostController,
     initialRoute: NavigableRoute,
 ) {
     val scope: CoroutineScope = rememberCoroutineScope()

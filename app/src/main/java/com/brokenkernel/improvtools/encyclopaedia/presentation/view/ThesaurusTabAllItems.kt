@@ -10,6 +10,7 @@ import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ClipboardManager
 import androidx.compose.ui.platform.LocalClipboardManager
@@ -29,7 +30,14 @@ import com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel.Thesaur
 internal fun ThesaurusTabAllItems(
     improvToolsAppState: ImprovToolsAppState,
     viewModel: ThesaurusTabAllItemsViewModel = hiltViewModel(),
+    onLaunchTitleCallback: () -> Unit,
 ) {
+    // TODO: consider making a BaseScreenComposable or some such
+    LaunchedEffect(Unit) {
+        // TODO: maybe SideEffect?
+        onLaunchTitleCallback()
+    }
+
     val clipboardManager: ClipboardManager = LocalClipboardManager.current
     LazyColumn {
         items(viewModel.words()) { word ->

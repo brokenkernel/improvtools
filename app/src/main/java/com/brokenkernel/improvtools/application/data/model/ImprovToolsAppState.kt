@@ -24,8 +24,12 @@ import com.brokenkernel.improvtools.TAG
 internal class ImprovToolsAppState(
     val drawerState: DrawerState,
     val navController: NavHostController,
-    @param:StringRes val currentTitle: MutableState<Int>,
+    @param:StringRes val currentTitle: MutableState<Int>, // todo: expose a non_mutable variant
 ) {
+
+    fun setScreenTitleTo(@StringRes newTitle: Int) {
+        this.currentTitle.value = newTitle
+    }
 
     @Composable
     fun currentBackStackEntryAsState(): State<NavBackStackEntry?> {
@@ -44,8 +48,7 @@ internal class ImprovToolsAppState(
         } == true
     }
 
-    fun navigateTo(dest: NavigableRoute, @StringRes title: Int) {
-        currentTitle.value = title
+    fun navigateTo(dest: NavigableRoute) {
         if (Log.isLoggable(TAG, INFO)) {
             Log.i(TAG, "Navigating to $dest")
         }
@@ -55,8 +58,7 @@ internal class ImprovToolsAppState(
         }
     }
 
-    fun navigateBackTo(dest: NavigableRoute, @StringRes title: Int) {
-        currentTitle.value = title
+    fun navigateBackTo(dest: NavigableRoute) {
         if (Log.isLoggable(TAG, INFO)) {
             Log.i(TAG, "Navigating BACK to $dest")
         }

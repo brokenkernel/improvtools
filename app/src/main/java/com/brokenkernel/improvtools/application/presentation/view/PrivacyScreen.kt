@@ -5,13 +5,20 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.core.net.toUri
 import com.brokenkernel.improvtools.R
 
 @Composable
-internal fun PrivacyScreen() {
+internal fun PrivacyScreen(onLaunchTitleCallback: () -> Unit) {
+    // TODO: consider making a BaseScreenComposable or some such
+    LaunchedEffect(Unit) {
+        // TODO: maybe SideEffect?
+        onLaunchTitleCallback()
+    }
+
     val currentContext = LocalContext.current
 
     Column {
