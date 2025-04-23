@@ -259,6 +259,7 @@ dependencies {
     androidTestImplementation(libs.junit)
     androidTestImplementation(libs.tools.fastlane.screengrab)
 
+    dokkaPlugin(libs.mathjax.plugin)
     dokkaPlugin(libs.android.documentation.plugin)
 
     ksp(libs.androidx.lifecycle.compiler)
@@ -325,26 +326,37 @@ spotless {
 }
 
 dokka {
-    dokkaPublications.html {
-//        failOnWarning = true
-    }
-    dokkaSourceSets.main {
-        sourceLink {
-            localDirectory = file("src/main/java")
-            remoteUrl("https://github.com/brokenkernel/improvtools")
-            remoteLineSuffix = "#L"
+    dokkaPublications {
+        html {
+            enabled = true
         }
-        documentedVisibilities =
-            setOf(
-                VisibilityModifier.Public,
-                VisibilityModifier.Internal,
-                VisibilityModifier.Package,
-                VisibilityModifier.Protected,
-                VisibilityModifier.Private,
-            )
+    }
+    dokkaSourceSets {
+        main {
+            sourceLink {
+                localDirectory = file("src/main/java")
+                remoteUrl("https://github.com/brokenkernel/improvtools")
+                remoteLineSuffix = "#L"
+            }
+
+            suppressGeneratedFiles = true
+            enableAndroidDocumentationLink = true
+            enableJdkDocumentationLink = true
+            enableKotlinStdLibDocumentationLink = true
+            reportUndocumented = true
+            documentedVisibilities =
+                setOf(
+                    VisibilityModifier.Public,
+                    VisibilityModifier.Internal,
+                    VisibilityModifier.Package,
+                    VisibilityModifier.Protected,
+//                VisibilityModifier.Private,
+                )
+        }
     }
     pluginsConfiguration {
         html {
+            homepageLink = "https://improvtools.brokenkernel.com"
         }
         versioning {
         }

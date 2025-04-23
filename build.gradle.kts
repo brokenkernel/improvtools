@@ -1,3 +1,5 @@
+import org.gradle.kotlin.dsl.dokkaPublications
+
 plugins {
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.dagger.hilt.android) apply false
@@ -14,9 +16,16 @@ plugins {
     alias(libs.plugins.aboutLibraries) apply false
     alias(libs.plugins.ktlint) apply false
     alias(libs.plugins.spotless) apply false
-    alias(libs.plugins.dokka) apply false
+    alias(libs.plugins.dokka)
 
     kotlin("plugin.power-assert") version "2.1.20" apply false
+}
+
+dependencies {
+    dokka(project(":app:"))
+    dokkaPlugin(libs.android.documentation.plugin)
+    dokkaHtmlPlugin(libs.kotlin.as1.java.plugin)
+    dokkaPlugin(libs.mathjax.plugin)
 }
 
 dependencyAnalysis {
@@ -37,6 +46,16 @@ dependencyAnalysis {
             onUsedTransitiveDependencies {
                 severity("ignore")
             }
+        }
+    }
+}
+
+dokka {
+    dokkaPublications {
+        html {
+            enabled = true
+            outputDirectory = rootDir.resolve("docs/static/api")
+            includes.from(project.layout.projectDirectory.file("README.md"))
         }
     }
 }

@@ -23,6 +23,12 @@ github_subdir = "docs"
 github_project_repo = "https://github.com/brokenkernel/improvtools"
 github_branch = "master"
 
+[[menu.main]]
+name = "API Docs"
+weight = 50
+url = "../api/index.html"
+
+
 [[cascade]]
 type = "blog"
 toc_root = true
