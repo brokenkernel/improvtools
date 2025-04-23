@@ -16,7 +16,6 @@ import com.brokenkernel.improvtools.application.data.model.NavigableRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import com.brokenkernel.improvtools.application.data.model.rememberImprovToolsAppState
 import com.brokenkernel.improvtools.infrastructure.HiltComponentActitivity
-import com.brokenkernel.improvtools.infrastructure.assertCurrentNavigableRoute
 import com.brokenkernel.improvtools.infrastructure.onNodeWithStringId
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest

@@ -5,8 +5,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -22,10 +21,8 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
-import com.brokenkernel.improvtools.application.presentation.view.verticalColumnScrollbar
 import com.brokenkernel.improvtools.encyclopaedia.EncyclopaediaSectionNavigation
 import com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel.ThesaurusTabAllItemsViewModel
-import androidx.compose.foundation.lazy.items
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable

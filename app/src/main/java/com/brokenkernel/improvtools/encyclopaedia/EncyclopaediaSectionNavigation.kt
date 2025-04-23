@@ -17,7 +17,6 @@ internal object EncyclopaediaSectionNavigation {
         improvToolsAppState.navigateBack()
     }
 
-
     fun navigateToThesaurusWord(improvToolsAppState: ImprovToolsAppState, word: String) {
         improvToolsAppState.navigateTo(
             NavigableRoute.ThesaurusWordRoute(word),

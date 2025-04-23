@@ -5,8 +5,6 @@ import androidx.lifecycle.viewModelScope
 import com.brokenkernel.improvtools.encyclopaedia.api.ThesaurusAPI
 import com.brokenkernel.improvtools.settings.data.repository.SettingsRepository
 import com.brokenkernel.improvtools.suggestionGenerator.data.model.IdeaCategory
-import com.brokenkernel.improvtools.suggestionGenerator.data.model.IdeaItem
-import com.brokenkernel.improvtools.suggestionGenerator.data.repository.AudienceSuggestionDatumRepository
 import com.brokenkernel.improvtools.suggestionGenerator.data.repository.MergedAudienceSuggestionDatumRepository
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.uistate.SuggestionScreenUIState
 import dagger.hilt.android.lifecycle.HiltViewModel
