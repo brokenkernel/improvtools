@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<issues format="6" by="lint 8.9.1" type="baseline" client="gradle" dependencies="true" name="AGP (8.9.1)" variant="all" version="8.9.1">
+<issues format="6" by="lint 8.9.2" type="baseline" client="gradle" dependencies="true" name="AGP (8.9.2)" variant="all" version="8.9.2">
 
     <issue
         id="VectorPath"
@@ -399,17 +399,6 @@
 
     <issue
         id="UnusedResources"
-        message="The resource `R.raw.improv_tools_resources_keep` appears to be unused"
-        errorLine1="&lt;resources />"
-        errorLine2="~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/raw/improv_tools_resources_keep.xml"
-            line="2"
-            column="1"/>
-    </issue>
-
-    <issue
-        id="UnusedResources"
         message="The resource `R.xml.remote_config_defaults` appears to be unused"
         errorLine1="&lt;defaultsMap>"
         errorLine2="^">
@@ -417,6 +406,50 @@
             file="src/main/res/xml/remote_config_defaults.xml"
             line="2"
             column="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.encyclopaedia_tab_title_emotions` appears to be unused"
+        errorLine1="    &lt;string name=&quot;encyclopaedia_tab_title_emotions&quot;>Emotions&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="50"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.encyclopaedia_tab_title_games` appears to be unused"
+        errorLine1="    &lt;string name=&quot;encyclopaedia_tab_title_games&quot;>Games&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="51"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.encyclopaedia_tab_title_people` appears to be unused"
+        errorLine1="    &lt;string name=&quot;encyclopaedia_tab_title_people&quot;>People&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="52"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.encyclopaedia_tab_title_thesaurus` appears to be unused"
+        errorLine1="    &lt;string name=&quot;encyclopaedia_tab_title_thesaurus&quot;>Thesaurus&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="62"
+            column="13"/>
     </issue>
 
     <issue

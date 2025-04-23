@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
@@ -59,7 +59,7 @@ class MainActivity : ComponentActivity() {
                 NavigableScreens.SuggestionGeneratorScreen
             }
 
-            val titleState = remember { mutableStateOf(initialScreen.titleResource) }
+            val titleState = remember { mutableIntStateOf(initialScreen.titleResource) }
             val improvToolsState: ImprovToolsAppState = rememberImprovToolsAppState(
                 titleState = titleState,
             )
