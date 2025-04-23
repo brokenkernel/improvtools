@@ -15,6 +15,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout sources
+        uses: actions/checkout@v4
+        with:
+          submodules: true  # Fetch Hugo themes (true OR recursive)
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+
       - name: Read .env
         id: hugo-version
         run: |
@@ -22,21 +28,28 @@ jobs:
           echo "HUGO_VERSION=${HUGO_VERSION}" >> "${GITHUB_OUTPUT}"
           echo "JVM_VERSION=${JVM_VERSION}" >> "${GITHUB_OUTPUT}"
 
-      - name: Checkout sources
-        uses: actions/checkout@v4
-        with:
-          submodules: true  # Fetch Hugo themes (true OR recursive)
-          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
       - name: Setup Java
         uses: actions/setup-java@v4.7.1
         with:
           distribution: 'adopt'
           java-version: '${{ steps.hugo-version.outputs.JVM_VERSION }}'
           cache: gradle
+
+      - name: Read .env
+        id: hugo-version
+        run: |
+          . ./.env
+          echo "HUGO_VERSION=${HUGO_VERSION}" >> "${GITHUB_OUTPUT}"
+          echo "JVM_VERSION=${JVM_VERSION}" >> "${GITHUB_OUTPUT}"
+
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
-      - uses: ashutoshgngwr/validate-fastlane-supply-metadata@v2
+
+      - name: Check fastlane
+        uses: ashutoshgngwr/validate-fastlane-supply-metadata@v2
+
       - name: Build with Gradle
         run: ./gradlew build
-      - name: Test with Gradle
-        run: ./gradlew test
+
+      - name: Run all verification tasks
+        run: ./gradlew check
