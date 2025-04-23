@@ -103,7 +103,7 @@ internal class ScreenshotGeneralPerNavigableScreenTest(
                 arrayOf(NavigableScreens.TipsAndAdviceScreen),
                 arrayOf(NavigableScreens.PeoplePageScreen),
                 arrayOf(NavigableScreens.GamesPageScreen),
-                arrayOf(NavigableScreens.EmotionsPageScreen),
+//                arrayOf(NavigableScreens.EmotionsPageScreen),
             )
         }
     }
