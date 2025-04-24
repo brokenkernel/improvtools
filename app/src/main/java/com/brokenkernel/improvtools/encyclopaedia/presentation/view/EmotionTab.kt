@@ -24,7 +24,6 @@ import com.brokenkernel.improvtools.R
 internal fun EmotionTab(onLaunchTitleCallback: () -> Unit) {
     // TODO: consider making a BaseScreenComposable or some such
     LaunchedEffect(Unit) {
-        // TODO: maybe SideEffect?
         onLaunchTitleCallback()
     }
 

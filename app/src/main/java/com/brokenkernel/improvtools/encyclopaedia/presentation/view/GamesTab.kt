@@ -53,7 +53,6 @@ internal fun GamesTab(onLaunchTitleCallback: () -> Unit) {
     Column {
         // TODO: consider making a BaseScreenComposable or some such
         LaunchedEffect(Unit) {
-            // TODO: maybe SideEffect?
             onLaunchTitleCallback()
         }
 

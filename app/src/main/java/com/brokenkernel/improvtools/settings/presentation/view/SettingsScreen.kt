@@ -26,7 +26,6 @@ import com.brokenkernel.improvtools.tipsandadvice.data.model.TipsAndAdviceViewMo
 internal fun SettingsScreen(viewModel: SettingsScreenViewModel = hiltViewModel(), onLaunchTitleCallback: () -> Unit) {
     // TODO: consider making a BaseScreenComposable or some such
     LaunchedEffect(Unit) {
-        // TODO: maybe SideEffect?
         onLaunchTitleCallback()
     }
 

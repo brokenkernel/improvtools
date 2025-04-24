@@ -49,7 +49,6 @@ private fun String.transformForSearch(): String {
 internal fun PeopleTab(onLaunchTitleCallback: () -> Unit) {
     // TODO: consider making a BaseScreenComposable or some such
     LaunchedEffect(Unit) {
-        // TODO: maybe SideEffect?
         onLaunchTitleCallback()
     }
 

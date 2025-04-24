@@ -11,7 +11,6 @@ import com.mikepenz.aboutlibraries.ui.compose.m3.LibrariesContainer
 internal fun LibrariesScreen(onLaunchTitleCallback: () -> Unit) {
     // TODO: consider making a BaseScreenComposable or some such
     LaunchedEffect(Unit) {
-        // TODO: maybe SideEffect?
         onLaunchTitleCallback()
     }
 

@@ -15,7 +15,6 @@ import com.brokenkernel.improvtools.R
 internal fun PrivacyScreen(onLaunchTitleCallback: () -> Unit) {
     // TODO: consider making a BaseScreenComposable or some such
     LaunchedEffect(Unit) {
-        // TODO: maybe SideEffect?
         onLaunchTitleCallback()
     }
 

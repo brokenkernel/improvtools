@@ -37,7 +37,6 @@ internal fun ThesaurusTabAllItems(
 ) {
     // TODO: consider making a BaseScreenComposable or some such
     LaunchedEffect(Unit) {
-        // TODO: maybe SideEffect?
         onLaunchTitleCallback()
     }
 
