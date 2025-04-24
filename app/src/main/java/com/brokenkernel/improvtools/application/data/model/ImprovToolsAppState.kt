@@ -24,7 +24,7 @@ import com.brokenkernel.improvtools.TAG
 internal class ImprovToolsAppState(
     val drawerState: DrawerState,
     val navController: NavHostController,
-    @param:StringRes val currentTitle: MutableState<Int>, // todo: expose a non_mutable variant
+    @param:StringRes private val currentTitle: MutableState<Int>,
 ) {
 
     fun setScreenTitleTo(@StringRes newTitle: Int) {
