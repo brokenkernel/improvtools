@@ -185,11 +185,11 @@ android {
 }
 
 dependencies {
-    implementation(platform(libs.kotlin.bom))
     implementation(platform(libs.androidx.compose.bom)) {
         because("we are an android compose application")
     }
     implementation(platform(libs.com.google.firebase.firebaseBom))
+    implementation(platform(libs.kotlin.bom))
     implementation(libs.aboutlibraries.compose.m3)
     implementation(libs.aboutlibraries.core)
     implementation(libs.accompanist.permissions)
