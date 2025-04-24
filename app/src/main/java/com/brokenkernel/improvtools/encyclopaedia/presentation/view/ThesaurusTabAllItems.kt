@@ -1,6 +1,6 @@
 package com.brokenkernel.improvtools.encyclopaedia.presentation.view
 
-import androidx.compose.foundation.ExperimentalFoundationApi
+import android.content.ClipData
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Column
@@ -11,10 +11,13 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.ClipboardManager
-import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.platform.Clipboard
+import androidx.compose.ui.platform.LocalClipboard
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.platform.toClipEntry
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextStyle
@@ -24,8 +27,8 @@ import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.encyclopaedia.EncyclopaediaSectionNavigation
 import com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel.ThesaurusTabAllItemsViewModel
+import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 internal fun ThesaurusTabAllItems(
     improvToolsAppState: ImprovToolsAppState,
@@ -38,7 +41,9 @@ internal fun ThesaurusTabAllItems(
         onLaunchTitleCallback()
     }
 
-    val clipboardManager: ClipboardManager = LocalClipboardManager.current
+    val context = LocalContext.current
+    val clipboard: Clipboard = LocalClipboard.current
+    val coroutineScope = rememberCoroutineScope()
     LazyColumn {
         items(viewModel.words()) { word ->
             ListItem(
@@ -80,14 +85,21 @@ internal fun ThesaurusTabAllItems(
                     .combinedClickable(
                         onClick = {},
                         onLongClick = {
-                            clipboardManager.setText(
-                                AnnotatedString(
-                                    """
+                            val wordString = AnnotatedString(
+                                """
                                 |$word
                                 |Synonyms: ${viewModel.synonymsForWord(word)}
-                                    """.trimMargin(),
-                                ),
+                                """.trimMargin(),
                             )
+                            val clipData = ClipData.newPlainText(
+                                context.getString(R.string.thesaurus_word_and_synonyms),
+                                wordString,
+                            )
+                            val clipEntry = clipData.toClipEntry()
+
+                            coroutineScope.launch {
+                                clipboard.setClipEntry(clipEntry)
+                            }
                         },
                     ),
                 overlineContent = { Text("Action") }, // todo: i18n,

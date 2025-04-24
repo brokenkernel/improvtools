@@ -1,6 +1,7 @@
 package com.brokenkernel.improvtools.application.presentation.view
 
 import android.content.ActivityNotFoundException
+import android.content.ClipData
 import android.content.Intent
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager.PackageInfoFlags
@@ -35,9 +36,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.ClipboardManager
-import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.platform.Clipboard
+import androidx.compose.ui.platform.LocalClipboard
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.toClipEntry
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.AnnotatedString
@@ -52,10 +54,9 @@ import kotlinx.coroutines.launch
 internal fun AboutScreen(onNavigateToRoute: (NavigableRoute) -> Unit, onLaunchCallback: () -> Unit) {
     // TODO: consider making a BaseScreenComposable or some such
     LaunchedEffect(Unit) {
-        // TODO: maybe SideEffect?
         onLaunchCallback()
     }
-    // move  snackbar host state into app state. And then inject it?
+    // move snackbar host state into app state. And then inject it?
     // also include more injected stuff (settings for ex) into debug datum
     val snackbarHostState = remember { SnackbarHostState() }
     val crScope = rememberCoroutineScope()
@@ -77,7 +78,8 @@ internal fun AboutScreen(onNavigateToRoute: (NavigableRoute) -> Unit, onLaunchCa
         null
     }
 
-    val clipboardManager: ClipboardManager = LocalClipboardManager.current
+    val context = LocalContext.current
+    val clipboard: Clipboard = LocalClipboard.current
 
     fun generateGeneralInformationText(): String {
         val result: String = """
@@ -160,9 +162,17 @@ internal fun AboutScreen(onNavigateToRoute: (NavigableRoute) -> Unit, onLaunchCa
     }
 
     fun copyAboutText() {
-        clipboardManager.setText(
-            AnnotatedString.fromHtml(generateDebugInformationText()),
+        val wordString = AnnotatedString.fromHtml(generateDebugInformationText())
+        val clipData = ClipData.newHtmlText(
+            context.getString(R.string.about_debugging_data),
+            wordString.text,
+            wordString.toString(),
         )
+        val clipEntry = clipData.toClipEntry()
+
+        crScope.launch {
+            clipboard.setClipEntry(clipEntry)
+        }
     }
 
     Column(modifier = Modifier.fillMaxSize()) {

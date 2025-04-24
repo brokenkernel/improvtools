@@ -14,7 +14,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Person
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.OutlinedIconButton
@@ -46,7 +45,6 @@ private fun String.transformForSearch(): String {
     return this.lowercase().filterNot { it.isWhitespace() }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun PeopleTab(onLaunchTitleCallback: () -> Unit) {
     // TODO: consider making a BaseScreenComposable or some such
