@@ -146,6 +146,7 @@ firebase = ["com-google-firebase-analytics", "com-google-firebase-crashlytics" ]
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
+android-lint = { id = "com.android.lint", version.ref = "agp" }
 aboutLibraries = { id="com.mikepenz.aboutlibraries.plugin", version.ref = "aboutLibraries" }
 dagger-hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }

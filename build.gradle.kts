@@ -1,22 +1,24 @@
 import org.gradle.kotlin.dsl.dokkaPublications
 
 plugins {
+    alias(libs.plugins.aboutLibraries) apply false
     alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.android.lint) apply false
     alias(libs.plugins.dagger.hilt.android) apply false
+    alias(libs.plugins.dependencyAnalysis)
+    alias(libs.plugins.firebaseCrashlyticsPlugin) apply false
+    alias(libs.plugins.firebasePerfPlugin) apply false
+    alias(libs.plugins.google.gms.google.services) apply false
     alias(libs.plugins.kotlin.android) apply false
     alias(libs.plugins.kotlin.compose) apply false
     alias(libs.plugins.kotlin.serialization) apply false
     alias(libs.plugins.ksp) apply false
-    alias(libs.plugins.protobuf) apply false
-    alias(libs.plugins.firebaseCrashlyticsPlugin) apply false
-    alias(libs.plugins.firebasePerfPlugin) apply false
-    alias(libs.plugins.google.gms.google.services) apply false
-    alias(libs.plugins.dependencyAnalysis)
-    alias(libs.plugins.sortDependencies) apply false
-    alias(libs.plugins.aboutLibraries) apply false
     alias(libs.plugins.ktlint) apply false
+    alias(libs.plugins.protobuf) apply false
+    alias(libs.plugins.sortDependencies) apply false
     alias(libs.plugins.spotless) apply false
     alias(libs.plugins.dokka)
+
 
     kotlin("plugin.power-assert") version "2.1.20" apply false
 }

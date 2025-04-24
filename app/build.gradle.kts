@@ -13,22 +13,22 @@ import org.jetbrains.kotlin.compose.compiler.gradle.ComposeFeatureFlag
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 
 plugins {
+    alias(libs.plugins.aboutLibraries)
     alias(libs.plugins.android.application)
     alias(libs.plugins.dagger.hilt.android)
+    alias(libs.plugins.dependencyAnalysis)
+    alias(libs.plugins.dokka)
+    alias(libs.plugins.firebaseCrashlyticsPlugin)
+    alias(libs.plugins.google.gms.google.services)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.ksp)
-    alias(libs.plugins.protobuf)
-    alias(libs.plugins.firebaseCrashlyticsPlugin)
-//    alias(libs.plugins.firebasePerfPlugin)
-    alias(libs.plugins.google.gms.google.services)
-    alias(libs.plugins.dependencyAnalysis)
-    alias(libs.plugins.sortDependencies)
-    alias(libs.plugins.aboutLibraries)
     alias(libs.plugins.ktlint)
+    alias(libs.plugins.protobuf)
+    alias(libs.plugins.sortDependencies)
     alias(libs.plugins.spotless)
-    alias(libs.plugins.dokka)
+//    alias(libs.plugins.firebasePerfPlugin)
 
     kotlin("plugin.power-assert") version "2.1.20"
 }
@@ -263,6 +263,8 @@ dependencies {
 
     ksp(libs.androidx.lifecycle.compiler)
     ksp(libs.hilt.compiler)
+
+    lintChecks(libs.androidx.lint.gradle)
 }
 
 // firebase is just broken https://github.com/firebase/firebase-android-sdk/issues/6359
