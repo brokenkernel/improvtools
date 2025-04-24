@@ -110,6 +110,7 @@ androidx-window = { module = "androidx.window:window", version.ref = "window" }
 androidx-work-multiprocess = { module = "androidx.work:work-multiprocess", version.ref = "workRuntimeKtx" }
 androidx-work-runtime-ktx = { module = "androidx.work:work-runtime-ktx", version.ref = "workRuntimeKtx" }
 androidx-work-testing = { module = "androidx.work:work-testing", version.ref = "workRuntimeKtx" }
+# TODO: use BOM https://mvnrepository.com/artifact/com.fasterxml.jackson/jackson-bom
 com-fasterxml-jackson-module-jacksonModuleKotlin = { group = "com.fasterxml.jackson.module", name = "jackson-module-kotlin", version.ref = "jacksonModuleKotlin" }
 com-google-firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
 com-google-firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics" }
@@ -164,4 +165,4 @@ firebasePerfPlugin = { id = "com.google.firebase.firebase-perf", version.ref = "
 google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }
 dependencyAnalysis = { id ="com.autonomousapps.dependency-analysis", version.ref = "dependencyAnalysis" }
 sortDependencies = { id = "com.squareup.sort-dependencies", version.ref = "sortDependencies"}
-#lint = { id = "com.android.lint" }
+
