@@ -163,7 +163,7 @@ internal fun TimerScreen(viewModel: TimerListViewModel = hiltViewModel(), onLaun
             // TODO/bug: why does removing one remove all the remaining ones below?
             val onRemove = {
                 if (shouldHapticOnRemove.value) {
-                    haptic.performHapticFeedback(HapticFeedbackType.LongPress)
+                    haptic.performHapticFeedback(HapticFeedbackType.ToggleOff)
                 }
                 viewModel.removeTimer(timer)
                 Log.w(TAG, "removing timer $timer")
