@@ -20,8 +20,10 @@ import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import com.brokenkernel.improvtools.R
+import com.brokenkernel.improvtools.application.ApplicationConstants.APPLICATION_TITLE
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -43,6 +45,7 @@ internal fun ImprovToolsScaffold(
                 title = {
                     Text(
                         stringResource(improvToolsAppState.currentTitle.value),
+                        modifier = Modifier.testTag(APPLICATION_TITLE),
                     )
                 },
                 scrollBehavior = TopAppBarDefaults

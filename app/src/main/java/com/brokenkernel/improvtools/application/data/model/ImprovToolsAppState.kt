@@ -3,6 +3,7 @@ package com.brokenkernel.improvtools.application.data.model
 import android.util.Log
 import android.util.Log.INFO
 import androidx.annotation.StringRes
+import androidx.annotation.UiThread
 import androidx.compose.material3.DrawerState
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.rememberDrawerState
@@ -60,6 +61,7 @@ internal class ImprovToolsAppState(
         } == true
     }
 
+    @UiThread
     fun navigateTo(dest: NavigableRoute) {
         if (Log.isLoggable(TAG, INFO)) {
             Log.i(TAG, "Navigating to $dest")
@@ -70,6 +72,7 @@ internal class ImprovToolsAppState(
         }
     }
 
+    @UiThread
     fun navigateBackTo(dest: NavigableRoute) {
         if (Log.isLoggable(TAG, INFO)) {
             Log.i(TAG, "Navigating BACK to $dest")
@@ -78,6 +81,7 @@ internal class ImprovToolsAppState(
         navController.popBackStack(inclusive = false, route = dest)
     }
 
+    @UiThread
     fun navigateBack() {
         if (Log.isLoggable(TAG, INFO)) {
             Log.i(TAG, "Navigating BACK")
