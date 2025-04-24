@@ -185,6 +185,7 @@ android {
 }
 
 dependencies {
+    implementation(platform(libs.kotlin.bom))
     implementation(platform(libs.androidx.compose.bom)) {
         because("we are an android compose application")
     }

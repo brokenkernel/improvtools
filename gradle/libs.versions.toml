@@ -124,6 +124,7 @@ hilt-android-testing = { group = "com.google.dagger", name = "hilt-android-testi
 hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
 javax-inject = { module = "javax.inject:javax.inject", version.ref = "javaxInject" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
+kotlin-bom = { module = "org.jetbrains.kotlin:kotlin-bom", version.ref = "kotlin" }
 kotlin-as1-java-plugin = { module = "org.jetbrains.dokka:kotlin-as-java-plugin", version.ref = "androidDocumentationPlugin" }
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
 kotlinx-serialization-protobuf = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-protobuf", version.ref = "kotlinxSerialization" }
