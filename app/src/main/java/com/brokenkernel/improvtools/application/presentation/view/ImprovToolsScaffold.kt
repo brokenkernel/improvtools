@@ -1,6 +1,5 @@
 package com.brokenkernel.improvtools.application.presentation.view
 
-import android.util.Log
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -19,74 +18,20 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.State
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.navigation.NavBackStackEntry
-import androidx.navigation.NavDestination
-import androidx.navigation.NavDestination.Companion.hasRoute
-import androidx.navigation.NavDestination.Companion.hierarchy
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
-import com.brokenkernel.improvtools.application.data.model.NavigableRoute
-import com.brokenkernel.improvtools.application.data.model.NavigableScreens
-import com.brokenkernel.improvtools.application.data.model.allNavigableRoutes
-import com.brokenkernel.improvtools.application.data.model.routeToScreen
-import com.brokenkernel.improvtools.settings.presentation.view.SuggestionsScreenMenu
-import com.brokenkernel.improvtools.settings.presentation.view.TipsAndAdviceMenu
-
-private const val TAG = "ImprovToolsScaffold"
-
-// move into AppState rather than loop.
-// This will probably break with the back button
-// TODO: and this is why I didn't do this before.
-// maybe should be in savedStateHandle instead of maintained by app state?
-// I duno, but something is deeply wrong. This is why I Got rid of currentTitle in the first place...
-internal fun wrongfullyFindRouteByNavDestination(
-    dest: NavDestination?,
-    initialRoute: NavigableRoute,
-): NavigableRoute {
-    if (Log.isLoggable(TAG, Log.DEBUG)) {
-        Log.d(TAG, "count of possible routes is ${allNavigableRoutes.size}")
-    }
-
-    allNavigableRoutes.forEach { possibleRoute ->
-        if (Log.isLoggable(TAG, Log.DEBUG)) {
-            Log.d(TAG, "checking against $possibleRoute")
-        }
-
-        if (dest?.hierarchy?.any { it ->
-                it.hasRoute(possibleRoute::class)
-            } == true
-        ) {
-            return possibleRoute
-        }
-    }
-    Log.wtf(TAG, "Nav destination fallback when looking for $dest")
-    // should never happen
-    return initialRoute
-}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun ImprovToolsScaffold(
     improvToolsAppState: ImprovToolsAppState,
-    currentBackStackEntry: State<NavBackStackEntry?>,
     navMenuButtonPressedCallback: () -> Unit,
-    initialRoute: NavigableRoute,
     content: @Composable (() -> Unit),
 ) {
     val snackbarHostState = remember { SnackbarHostState() }
-    var moreMenuExpandedState: Boolean by remember { mutableStateOf(false) }
-
-    val currentNavigableRoute = wrongfullyFindRouteByNavDestination(
-        currentBackStackEntry.value?.destination,
-        initialRoute,
-    )
 
     Scaffold(
         topBar = {
@@ -113,38 +58,20 @@ internal fun ImprovToolsScaffold(
                     }
                 },
                 actions = {
-                    IconButton(
-                        onClick = {
-                            moreMenuExpandedState = !moreMenuExpandedState
-                        },
-                        enabled = routeToScreen(currentNavigableRoute).shouldShowExtraMenu,
-                    ) {
-                        if (routeToScreen(currentNavigableRoute).shouldShowExtraMenu) {
+                    val curMenu = improvToolsAppState.extraMenu.value
+                    if (curMenu != null) {
+                        IconButton(
+                            onClick = {
+                                improvToolsAppState.extraMenuExpandedState = !improvToolsAppState.extraMenuExpandedState
+                            },
+                        ) {
                             Icon(
                                 imageVector = Icons.Filled.MoreVert,
                                 contentDescription = stringResource(
                                     R.string.navigation_open_screen_specific_menu,
                                 ),
                             )
-                            when (routeToScreen(currentNavigableRoute)) {
-                                NavigableScreens.SuggestionGeneratorScreen -> SuggestionsScreenMenu(
-                                    expanded = moreMenuExpandedState,
-                                    onDismiss = {
-                                        moreMenuExpandedState = !moreMenuExpandedState
-                                    },
-                                )
-
-                                NavigableScreens.TipsAndAdviceScreen -> TipsAndAdviceMenu(
-                                    expanded = moreMenuExpandedState,
-                                    onDismiss = {
-                                        moreMenuExpandedState = !moreMenuExpandedState
-                                    },
-                                )
-
-                                else -> {
-                                    // There is no menu, so we're good.
-                                }
-                            }
+                            curMenu()
                         }
                     }
                 },

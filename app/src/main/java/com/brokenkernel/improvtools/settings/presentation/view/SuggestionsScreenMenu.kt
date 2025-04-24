@@ -19,7 +19,6 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.settings.presentation.viewmodel.SettingsScreenViewModel
 
-// TODO: consider moving into 'suggestions' package?
 @Composable
 internal fun SuggestionsScreenMenu(
     settingsScreenViewModel: SettingsScreenViewModel = hiltViewModel(),

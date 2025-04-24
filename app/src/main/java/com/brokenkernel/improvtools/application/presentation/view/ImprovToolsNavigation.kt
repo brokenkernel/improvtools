@@ -15,12 +15,10 @@ import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.NavigationDrawerItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.State
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavBackStackEntry
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsNavigationGraph
@@ -59,9 +57,6 @@ internal fun ImprovToolsNavigationDrawer(
     initialRoute: NavigableRoute,
 ) {
     val scope: CoroutineScope = rememberCoroutineScope()
-
-    val currentBackStackEntryAsState: State<NavBackStackEntry?> = improvToolsAppState
-        .currentBackStackEntryAsState()
 
     fun closeNavMenu() {
         scope.launch {
@@ -182,11 +177,9 @@ internal fun ImprovToolsNavigationDrawer(
     ) {
         ImprovToolsScaffold(
             improvToolsAppState,
-            currentBackStackEntry = currentBackStackEntryAsState,
             navMenuButtonPressedCallback = {
                 invertNavMenuState()
             },
-            initialRoute = initialRoute,
         ) {
             // TODO: replace with event system instead of passing controller??
             ImprovToolsNavigationGraph(

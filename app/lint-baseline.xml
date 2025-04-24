@@ -2,6 +2,303 @@
 <issues format="6" by="lint 8.9.2" type="baseline" client="gradle" dependencies="true" name="AGP (8.9.2)" variant="all" version="8.9.2">
 
     <issue
+        id="GradleDependency"
+        message="A newer version of androidx.compose:compose-bom than 2025.04.00 is available: 2025.04.01"
+        errorLine1="composeBom = &quot;2025.04.00&quot;"
+        errorLine2="             ~~~~~~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="11"
+            column="14"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.compose:compose-bom than 2025.04.00 is available: 2025.04.01"
+        errorLine1="composeBom = &quot;2025.04.00&quot;"
+        errorLine2="             ~~~~~~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="11"
+            column="14"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.compose:compose-bom than 2025.04.00 is available: 2025.04.01"
+        errorLine1="composeBom = &quot;2025.04.00&quot;"
+        errorLine2="             ~~~~~~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="11"
+            column="14"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.datastore:datastore than 1.1.4 is available: 1.1.5"
+        errorLine1="androidXdatastore = &quot;1.1.4&quot;"
+        errorLine2="                    ~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="14"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.datastore:datastore than 1.1.4 is available: 1.1.5"
+        errorLine1="androidXdatastore = &quot;1.1.4&quot;"
+        errorLine2="                    ~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="14"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.datastore:datastore than 1.1.4 is available: 1.1.5"
+        errorLine1="androidXdatastore = &quot;1.1.4&quot;"
+        errorLine2="                    ~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="14"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.datastore:datastore-core than 1.1.4 is available: 1.1.5"
+        errorLine1="androidXdatastore = &quot;1.1.4&quot;"
+        errorLine2="                    ~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="14"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.datastore:datastore-core than 1.1.4 is available: 1.1.5"
+        errorLine1="androidXdatastore = &quot;1.1.4&quot;"
+        errorLine2="                    ~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="14"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.datastore:datastore-core than 1.1.4 is available: 1.1.5"
+        errorLine1="androidXdatastore = &quot;1.1.4&quot;"
+        errorLine2="                    ~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="14"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.datastore:datastore-preferences than 1.1.4 is available: 1.1.5"
+        errorLine1="androidXdatastore = &quot;1.1.4&quot;"
+        errorLine2="                    ~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="14"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.datastore:datastore-preferences than 1.1.4 is available: 1.1.5"
+        errorLine1="androidXdatastore = &quot;1.1.4&quot;"
+        errorLine2="                    ~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="14"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.datastore:datastore-preferences than 1.1.4 is available: 1.1.5"
+        errorLine1="androidXdatastore = &quot;1.1.4&quot;"
+        errorLine2="                    ~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="14"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.lint:lint-gradle than 1.0.0-alpha03 is available: 1.0.0-alpha04"
+        errorLine1="lintGradle = &quot;1.0.0-alpha03&quot;"
+        errorLine2="             ~~~~~~~~~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="37"
+            column="14"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.lint:lint-gradle than 1.0.0-alpha03 is available: 1.0.0-alpha04"
+        errorLine1="lintGradle = &quot;1.0.0-alpha03&quot;"
+        errorLine2="             ~~~~~~~~~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="37"
+            column="14"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.lint:lint-gradle than 1.0.0-alpha03 is available: 1.0.0-alpha04"
+        errorLine1="lintGradle = &quot;1.0.0-alpha03&quot;"
+        errorLine2="             ~~~~~~~~~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="37"
+            column="14"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.compose.runtime:runtime-tracing than 1.7.8 is available: 1.8.0"
+        errorLine1="runtimeTracing = &quot;1.7.8&quot;"
+        errorLine2="                 ~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="49"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.compose.runtime:runtime-tracing than 1.7.8 is available: 1.8.0"
+        errorLine1="runtimeTracing = &quot;1.7.8&quot;"
+        errorLine2="                 ~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="49"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.compose.runtime:runtime-tracing than 1.7.8 is available: 1.8.0"
+        errorLine1="runtimeTracing = &quot;1.7.8&quot;"
+        errorLine2="                 ~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="49"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.work:work-multiprocess than 2.10.0 is available: 2.10.1"
+        errorLine1="workRuntimeKtx = &quot;2.10.0&quot;"
+        errorLine2="                 ~~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="55"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.work:work-multiprocess than 2.10.0 is available: 2.10.1"
+        errorLine1="workRuntimeKtx = &quot;2.10.0&quot;"
+        errorLine2="                 ~~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="55"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.work:work-multiprocess than 2.10.0 is available: 2.10.1"
+        errorLine1="workRuntimeKtx = &quot;2.10.0&quot;"
+        errorLine2="                 ~~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="55"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.work:work-runtime-ktx than 2.10.0 is available: 2.10.1"
+        errorLine1="workRuntimeKtx = &quot;2.10.0&quot;"
+        errorLine2="                 ~~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="55"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.work:work-runtime-ktx than 2.10.0 is available: 2.10.1"
+        errorLine1="workRuntimeKtx = &quot;2.10.0&quot;"
+        errorLine2="                 ~~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="55"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.work:work-runtime-ktx than 2.10.0 is available: 2.10.1"
+        errorLine1="workRuntimeKtx = &quot;2.10.0&quot;"
+        errorLine2="                 ~~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="55"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.work:work-testing than 2.10.0 is available: 2.10.1"
+        errorLine1="workRuntimeKtx = &quot;2.10.0&quot;"
+        errorLine2="                 ~~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="55"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.work:work-testing than 2.10.0 is available: 2.10.1"
+        errorLine1="workRuntimeKtx = &quot;2.10.0&quot;"
+        errorLine2="                 ~~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="55"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.work:work-testing than 2.10.0 is available: 2.10.1"
+        errorLine1="workRuntimeKtx = &quot;2.10.0&quot;"
+        errorLine2="                 ~~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="55"
+            column="18"/>
+    </issue>
+
+    <issue
         id="VectorPath"
         message="Very long vector path (3390 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector."
         errorLine1="      android:pathData=&quot;M49.85,17c0.01,-0.61 -0.39,-1.27 -0.39,-1.27l-0.03,-0.06c0,0 -0.49,-0.95 -1.3,-1.23c-0.81,-0.28 -1.48,0.34 -1.48,0.34s-0.11,0.13 -0.43,0.49c-0.31,0.36 -0.51,0.67 -1.2,0.94c-0.69,0.27 -1.38,0.2 -1.74,0.03c-0.37,-0.17 -0.46,-0.54 -0.46,-0.54s-0.23,-0.72 -0.31,-1.05c-0.09,-0.33 -0.31,-1.69 -0.31,-1.69s-0.49,-2.75 -0.54,-3.3c0,0 1.48,-0.13 3.69,-0.77c2.3,-0.67 3.04,-1.21 3.04,-1.21s-0.43,-0.16 -0.48,-0.66c-0.05,-0.51 -0.09,-1.19 -0.09,-1.19s-0.09,-0.5 0.48,-1.14c0.57,-0.64 1.35,-0.86 1.76,-0.95c0.41,-0.09 1.28,-0.17 2.09,-0.13c0.81,0.04 1.27,0.11 1.59,0.29c0.33,0.18 0.36,0.61 0.36,0.61l-0.01,1.15c0,0 -0.04,0.4 0.26,0.53c0,0 0.5,0.31 2.2,0.13c0,0 0.72,-0.13 1.85,-0.46c1.13,-0.34 4.13,-1.23 4.55,-1.34c0.43,-0.11 0.95,-0.29 1.64,-0.47c0.69,-0.18 2.04,-0.63 2.31,-0.73c0.27,-0.1 1.81,-0.62 2.93,-0.81c1.11,-0.19 2.23,-0.19 2.81,0.15c0,0 0.36,0.3 0.52,0.66c0.16,0.36 0.48,0.86 0.92,1.09c0.46,0.23 0.75,0.37 1.88,0.27c0,0 0.02,-0.1 -0.4,-0.37c-0.42,-0.28 -0.99,-0.7 -0.99,-0.7s-0.33,-0.25 -0.41,-0.45c-0.07,-0.2 -0.04,-0.31 -0.04,-0.31l0.88,-1.41c0,0 0,-0.17 0.51,-0.24c0.51,-0.07 1.07,-0.13 1.74,-0.31c0.67,-0.18 0.79,-0.31 0.79,-0.31l0.58,0.18c0,0 3.55,2.85 4.66,3.58l0.2,-0.24c0,0 0.44,0.02 0.83,0.17c0.39,0.15 0.98,0.56 0.98,0.56s1.61,1.31 2.07,2.2l0.22,0.68l-0.1,0.16c0,0 0.92,1.31 2.1,2.6c0,0 1.23,1.66 1.69,2.09c0,0 -0.11,-0.4 -0.2,-0.85l0.34,-0.23l0.2,-0.14l0.62,0.26c3.58,4.81 6.43,10.42 8.14,16.33l-0.12,0.48l0.4,0.5c1.13,4.21 1.73,8.64 1.73,13.21c0,1.12 -0.04,2.24 -0.11,3.34l-0.3,0.51l0.23,0.56C99.95,72.64 78.06,93.13 51.38,93.13c-18.5,0 -34.7,-9.85 -43.64,-24.6l-0.1,-0.37l-0.2,-0.15c-3.39,-5.74 -5.68,-12.2 -6.59,-19.1l0.21,-0.52l-0.34,-0.48c-0.21,-1.89 -0.32,-3.81 -0.32,-5.76c0,-2.98 0.25,-5.91 0.75,-8.76l0.25,-0.56l-0.09,-0.33C2.46,26.45 4.69,20.78 7.78,15.7l0.68,-0.38l0.08,0.03c0,0 0.23,-0.17 0.35,-0.22l0.08,-0.02c0,0 1.18,-1.97 1.63,-2.6c0,0 0.54,-0.35 0.75,-0.41c0,0 0.12,-0.02 0.19,0.08c0,0 0.5,-0.43 1.7,-2.05c0,-0 0.01,-0.01 0.01,-0.02c0,0 -0.11,-0.08 -0.13,-0.17c-0.02,-0.1 0.11,-0.59 0.17,-0.72s0.11,-0.16 0.11,-0.16s1.72,-2.03 3.15,-3.24c0,0 0.26,-0.2 0.68,-0.25c0,0 1.47,-0.61 3.26,-2.18c0,0 0.05,-0.29 0.48,-0.86c0.43,-0.57 1.46,-1.16 2.22,-1.34c0.76,-0.17 0.9,-0.04 0.9,-0.04l0.06,0.06l0.51,0.77c0,0 0.56,-0.32 1.41,-0.6c0.85,-0.29 0.98,-0.26 0.98,-0.26l0.82,1.34l-0.99,2c0,0 -0.64,1.42 -1.65,2.18c0,0 -0.47,0.28 -1.12,0.13c-0.65,-0.16 -1.07,0.33 -1.07,0.33l-0.17,0.14c0,0 0.14,-0.02 0.35,-0.1c0,0 0.16,0.06 0.27,0.22c0.11,0.16 0.91,1.17 0.91,1.17s0,0.84 -0.41,1.94c-0.42,1.1 -1.47,2.89 -1.47,2.89s-0.73,1.42 -1.08,2.25c-0.34,0.83 -0.51,1.76 -0.49,2.26c0,0 0.19,0.06 0.71,-0.2c0.65,-0.33 1.08,0.03 1.08,0.03s0.72,0.53 1.04,0.88c0.26,0.29 0.8,1.76 0.21,3.22c0,0 -0.4,1.01 -1.38,1.72c0,0 -0.22,0.33 -1.53,0.17c-0.37,-0.04 -0.58,-0.28 -1.37,-0.2c-0.79,0.08 -1.23,0.81 -1.23,0.81l0.01,-0.02c-0.69,1 -1.15,2.46 -1.15,2.46l-0.06,0.17c0,0 -0.24,0.51 -0.29,1.75c-0.05,1.28 0.28,3.11 0.28,3.11s7.88,-1.39 9.88,-0.05l0.58,0.53c0,0 0.05,0.17 -0.03,0.38c-0.08,0.2 -0.38,0.67 -0.99,1.11c-0.61,0.44 -1.22,1.58 -0.31,2.3c1.03,0.82 1.69,0.77 3.43,0.47c1.74,-0.3 2.9,-1.27 2.9,-1.27s0.97,-0.72 0.78,-1.63c-0.19,-0.91 -1.02,-1.19 -1.02,-1.19s-0.66,-0.42 -0.14,-1.24c0,0 0.14,-0.69 2.55,-1.32c2.41,-0.63 6.81,-1.52 10.56,-1.99c0,0 -2.54,-8.22 -0.74,-9.29c0,0 0.44,-0.3 1.22,-0.41l0.72,-0.04c0.13,-0.03 0.34,0 0.8,0.05c0.45,0.04 1,0.08 1.68,-0.44c0.68,-0.52 0.7,-0.82 0.7,-0.82&quot;>"

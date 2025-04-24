@@ -11,8 +11,9 @@ internal fun NavGraphBuilder.encyclopaediaPageDestinations(improvToolsAppState: 
     composable<NavigableRoute.GamesPageRoute> {
         GamesTab(
             onLaunchTitleCallback = {
-                improvToolsAppState.setScreenTitleTo(
+                improvToolsAppState.setScaffoldData(
                     NavigableScreens.HelpAndAboutScreen.titleResource,
+                    newExtraMenu = null,
                 )
             },
         )
@@ -21,8 +22,9 @@ internal fun NavGraphBuilder.encyclopaediaPageDestinations(improvToolsAppState: 
     composable<NavigableRoute.PeoplePageRoute> {
         PeopleTab(
             onLaunchTitleCallback = {
-                improvToolsAppState.setScreenTitleTo(
+                improvToolsAppState.setScaffoldData(
                     NavigableScreens.PeoplePageScreen.titleResource,
+                    newExtraMenu = null,
                 )
             },
         )
@@ -31,8 +33,9 @@ internal fun NavGraphBuilder.encyclopaediaPageDestinations(improvToolsAppState: 
     composable<NavigableRoute.EmotionPageRoute> {
         EmotionTab(
             onLaunchTitleCallback = {
-                improvToolsAppState.setScreenTitleTo(
+                improvToolsAppState.setScaffoldData(
                     NavigableScreens.EmotionsPageScreen.titleResource,
+                    newExtraMenu = null,
                 )
             },
         )
@@ -42,8 +45,9 @@ internal fun NavGraphBuilder.encyclopaediaPageDestinations(improvToolsAppState: 
         ThesaurusTabAllItems(
             improvToolsAppState = improvToolsAppState,
             onLaunchTitleCallback = {
-                improvToolsAppState.setScreenTitleTo(
+                improvToolsAppState.setScaffoldData(
                     NavigableScreens.ThesaurusPageScreen.titleResource,
+                    newExtraMenu = null,
                 )
             },
         )
@@ -55,8 +59,9 @@ internal fun NavGraphBuilder.encyclopaediaPageDestinations(improvToolsAppState: 
             word = route.word,
             improvToolsAppState = improvToolsAppState,
             onLaunchTitleCallback = {
-                improvToolsAppState.setScreenTitleTo(
+                improvToolsAppState.setScaffoldData(
                     NavigableScreens.ThesaurusPageScreen.titleResource,
+                    newExtraMenu = null,
                 )
             },
         )

@@ -10,7 +10,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.State
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hasRoute
@@ -25,10 +28,19 @@ internal class ImprovToolsAppState(
     val drawerState: DrawerState,
     val navController: NavHostController,
     @param:StringRes val currentTitle: MutableState<Int>, // todo: expose a non_mutable variant
+    var extraMenu: MutableState<(@Composable () -> Unit)?> = mutableStateOf(null),
 ) {
 
-    fun setScreenTitleTo(@StringRes newTitle: Int) {
+    // TODO: this is somewhat passing state down instead of bubbling events up.
+    // I should, instead, be continuously passing `onDismsiss callbacks or some such. I'll try that in the fuutre
+    var extraMenuExpandedState: Boolean by mutableStateOf(false)
+
+    fun setScaffoldData(
+        @StringRes newTitle: Int,
+        newExtraMenu: (@Composable () -> Unit)?,
+    ) {
         this.currentTitle.value = newTitle
+        extraMenu.value = newExtraMenu
     }
 
     @Composable

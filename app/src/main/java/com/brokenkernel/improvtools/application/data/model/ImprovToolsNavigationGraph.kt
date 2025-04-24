@@ -9,8 +9,10 @@ import com.brokenkernel.improvtools.application.presentation.view.PrivacyScreen
 import com.brokenkernel.improvtools.encyclopaedia.EncyclopaediaSectionNavigation
 import com.brokenkernel.improvtools.encyclopaedia.presentation.view.encyclopaediaPageDestinations
 import com.brokenkernel.improvtools.settings.presentation.view.SettingsScreen
+import com.brokenkernel.improvtools.settings.presentation.view.SuggestionsScreenMenu
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.view.SuggestionsScreen
 import com.brokenkernel.improvtools.timer.presentation.view.TimerScreen
+import com.brokenkernel.improvtools.tipsandadvice.presentation.view.TipsAndAdviceMenu
 import com.brokenkernel.improvtools.tipsandadvice.presentation.view.TipsAndAdviceScreen
 
 @Composable
@@ -27,9 +29,10 @@ internal fun ImprovToolsNavigationGraph(
             AboutScreen(
                 // TODO: specific navigator
                 onNavigateToRoute = onNavigateToRoute,
-                onLaunchTitleCallback = {
-                    improvToolsAppState.setScreenTitleTo(
-                        NavigableScreens.HelpAndAboutScreen.titleResource,
+                onLaunchCallback = {
+                    improvToolsAppState.setScaffoldData(
+                        newTitle = NavigableScreens.HelpAndAboutScreen.titleResource,
+                        newExtraMenu = null,
                     )
                 },
             )
@@ -37,8 +40,9 @@ internal fun ImprovToolsNavigationGraph(
         composable<NavigableRoute.SettingsRoute> {
             SettingsScreen(
                 onLaunchTitleCallback = {
-                    improvToolsAppState.setScreenTitleTo(
-                        NavigableScreens.SettingsScreen.titleResource,
+                    improvToolsAppState.setScaffoldData(
+                        newTitle = NavigableScreens.SettingsScreen.titleResource,
+                        newExtraMenu = null,
                     )
                 },
             )
@@ -49,8 +53,17 @@ internal fun ImprovToolsNavigationGraph(
                     onNavigateToRoute(NavigableRoute.EmotionPageRoute)
                 },
                 onLaunchTitleCallback = {
-                    improvToolsAppState.setScreenTitleTo(
-                        NavigableScreens.SuggestionGeneratorScreen.titleResource,
+                    improvToolsAppState.setScaffoldData(
+                        newTitle = NavigableScreens.SuggestionGeneratorScreen.titleResource,
+                        newExtraMenu = {
+                            SuggestionsScreenMenu(
+                                expanded = improvToolsAppState.extraMenuExpandedState,
+                                onDismiss = {
+                                    improvToolsAppState.extraMenuExpandedState =
+                                        !improvToolsAppState.extraMenuExpandedState
+                                },
+                            )
+                        },
                     )
                 },
                 onNavigateToWord = {
@@ -61,29 +74,38 @@ internal fun ImprovToolsNavigationGraph(
         composable<NavigableRoute.TimerRoute> {
             TimerScreen(
                 onLaunchTitleCallback = {
-                    improvToolsAppState.setScreenTitleTo(
+                    improvToolsAppState.setScaffoldData(
                         NavigableScreens.TimerScreen.titleResource,
+                        newExtraMenu = null,
                     )
                 },
-
             )
         }
         composable<NavigableRoute.TipsAndAdviceRoute> {
             TipsAndAdviceScreen(
                 onLaunchTitleCallback = {
-                    improvToolsAppState.setScreenTitleTo(
+                    improvToolsAppState.setScaffoldData(
                         NavigableScreens.TipsAndAdviceScreen.titleResource,
+                        newExtraMenu = null,
                     )
+                    improvToolsAppState.extraMenu.value = {
+                        TipsAndAdviceMenu(
+                            expanded = improvToolsAppState.extraMenuExpandedState,
+                            onDismiss = {
+                                improvToolsAppState.extraMenuExpandedState = !improvToolsAppState.extraMenuExpandedState
+                            },
+                        )
+                    }
                 },
-
             )
         }
 
         composable<NavigableRoute.PrivacyRoute> {
             PrivacyScreen(
                 onLaunchTitleCallback = {
-                    improvToolsAppState.setScreenTitleTo(
+                    improvToolsAppState.setScaffoldData(
                         NavigableScreens.PrivacyScreen.titleResource,
+                        newExtraMenu = null,
                     )
                 },
             )
@@ -92,8 +114,9 @@ internal fun ImprovToolsNavigationGraph(
         composable<NavigableRoute.LibrariesRoute> {
             LibrariesScreen(
                 onLaunchTitleCallback = {
-                    improvToolsAppState.setScreenTitleTo(
+                    improvToolsAppState.setScaffoldData(
                         NavigableScreens.LibrariesScreen.titleResource,
+                        newExtraMenu = null,
                     )
                 },
             )

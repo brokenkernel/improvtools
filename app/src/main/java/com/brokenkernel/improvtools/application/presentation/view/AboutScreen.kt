@@ -49,11 +49,11 @@ import com.brokenkernel.improvtools.application.data.model.NavigableRoute
 import kotlinx.coroutines.launch
 
 @Composable
-internal fun AboutScreen(onNavigateToRoute: (NavigableRoute) -> Unit, onLaunchTitleCallback: () -> Unit) {
+internal fun AboutScreen(onNavigateToRoute: (NavigableRoute) -> Unit, onLaunchCallback: () -> Unit) {
     // TODO: consider making a BaseScreenComposable or some such
     LaunchedEffect(Unit) {
         // TODO: maybe SideEffect?
-        onLaunchTitleCallback()
+        onLaunchCallback()
     }
     // move  snackbar host state into app state. And then inject it?
     // also include more injected stuff (settings for ex) into debug datum
