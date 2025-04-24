@@ -129,6 +129,11 @@ internal fun ImprovToolsNavigationDrawer(
                     )
                     NavigableScreenNavigationDrawerItem(
                         improvToolsAppState,
+                        NavigableScreens.GlossaryPageScreen,
+                        ::closeNavMenu,
+                    )
+                    NavigableScreenNavigationDrawerItem(
+                        improvToolsAppState,
                         NavigableScreens.ThesaurusPageScreen,
                         ::closeNavMenu,
                     )

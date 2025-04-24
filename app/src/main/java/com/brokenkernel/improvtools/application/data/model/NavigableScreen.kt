@@ -5,6 +5,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Book
 import androidx.compose.material.icons.filled.Copyright
 import androidx.compose.material.icons.filled.PrivacyTip
+import androidx.compose.material.icons.outlined.Book
 import androidx.compose.material.icons.outlined.EmojiEmotions
 import androidx.compose.material.icons.outlined.Games
 import androidx.compose.material.icons.outlined.Info
@@ -13,11 +14,16 @@ import androidx.compose.material.icons.outlined.People
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.outlined.Timer
 import androidx.compose.material.icons.outlined.TipsAndUpdates
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.vectorResource
+import androidx.core.content.ContextCompat
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute.EmotionPageRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute.GamesPageRoute
+import com.brokenkernel.improvtools.application.data.model.NavigableRoute.GlossaryRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute.HelpAndAboutRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute.LibrariesRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute.PeoplePageRoute
@@ -63,6 +69,9 @@ internal sealed class NavigableRoute() {
 
     @Serializable
     internal object PeoplePageRoute : NavigableRoute()
+
+    @Serializable
+    internal object GlossaryRoute : NavigableRoute()
 
     @Serializable
     internal object EmotionPageRoute : NavigableRoute()
@@ -147,6 +156,15 @@ internal sealed class NavigableScreens(
     )
 
     @Immutable
+    internal object GlossaryPageScreen : NavigableScreens(
+        titleResource = R.string.navigation_glossary,
+        contentDescription = R.string.go_to_glossary,
+        // TODO: figure out better icon (esp since both Glossary and Thesaurus. Consider supporting Drawable)
+        icon = Icons.Filled.Book,
+        matchingRoutes = setOf(GlossaryRoute),
+    )
+
+    @Immutable
     internal object EmotionsPageScreen : NavigableScreens(
         titleResource = R.string.navigation_emotions_reference,
         contentDescription = R.string.go_to_emotions_reference_screen,
@@ -158,7 +176,7 @@ internal sealed class NavigableScreens(
     internal object ThesaurusPageScreen : NavigableScreens(
         titleResource = R.string.navigation_thesaurus,
         contentDescription = R.string.go_to_thesaurus_screen,
-        icon = Icons.Filled.Book,
+        icon = Icons.Outlined.Book,
         matchingRoutes = setOf(ThesaurusPageRoute),
     )
 

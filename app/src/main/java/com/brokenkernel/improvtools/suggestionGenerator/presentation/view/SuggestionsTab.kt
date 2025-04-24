@@ -41,6 +41,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.brokenkernel.improvtools.R
+import com.brokenkernel.improvtools.application.data.model.NavigableScreens.ThesaurusPageScreen
 import com.brokenkernel.improvtools.application.presentation.view.verticalColumnScrollbar
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel.SuggestionScreenViewModel
 import kotlinx.coroutines.delay
@@ -135,7 +136,7 @@ internal fun SuggestionsTab(
                                             },
                                         ) {
                                             Icon(
-                                                Icons.Filled.Book,
+                                                ThesaurusPageScreen.icon,
                                                 contentDescription = stringResource(
                                                     R.string.go_to_single_word_thesaurus_view,
                                                     currentWord,

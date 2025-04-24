@@ -92,4 +92,7 @@
     <string name="action_word">Action Word</string>
   <string name="thesaurus_word_and_synonyms">word and synonyms</string>
   <string name="about_debugging_data">Debugging Data</string>
+  <string name="glossary_term">Glossary Term</string>
+  <string name="navigation_glossary">Glossary</string>
+  <string name="go_to_glossary">Go To Glossary</string>
 </resources>

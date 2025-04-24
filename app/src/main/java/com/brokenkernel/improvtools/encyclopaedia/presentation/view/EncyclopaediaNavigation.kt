@@ -44,6 +44,17 @@ internal fun NavGraphBuilder.encyclopaediaPageDestinations(improvToolsAppState: 
         )
     }
 
+    composable<NavigableRoute.GlossaryRoute> {
+        GlossaryTab(
+            onLaunchTitleCallback = {
+                improvToolsAppState.setScaffoldData(
+                    NavigableScreens.GlossaryPageScreen.titleResource,
+                    newExtraMenu = null,
+                )
+            },
+        )
+    }
+
     composable<NavigableRoute.ThesaurusPageRoute> {
         ThesaurusTabAllItems(
             improvToolsAppState = improvToolsAppState,
