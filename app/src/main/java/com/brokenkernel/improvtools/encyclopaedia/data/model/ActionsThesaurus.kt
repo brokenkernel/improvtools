@@ -21,21 +21,6 @@ internal object ActionsThesaurus {
         ActionItem("two", setOf("one")),
     )
 
-//    // TODO: back merge words too
-//    private val actionItemMapOneWay: Map<String, Set<String>> = actionItemList
-//        .associate { ail -> ail.word to ail.synonyms }
-//
-//    private val backwardMap: Map<String, Set<String>> = actionItemList
-//        .flatMap { (word, synonyms) ->
-//            synonyms.map { synonym ->
-//                synonym to word
-//            }
-//        }
-//        .groupBy { k -> k.first }
-//        .mapValues { (k, v) ->
-//            v.map { innerV -> innerV.second }.toSet()
-//        }
-
     private val bidirectionalMap: Map<String, Set<String>>
 
     init {

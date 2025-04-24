@@ -21,9 +21,22 @@ internal val GamesDatum: Collection<GamesDataItem> = listOf(
     GamesDataItem(
         gameName = "3 Things",
         topic = GamesDatumTopic.GAME,
-        detailedInformation = """ """,
+        detailedInformation = """
+             The players stand in a circle. The first person turns to the next and
+             says <q>three things</q> and the next person should say three things
+             which match the category.
+             Critically it should be:
+             <ol>
+             <li>As fast as possible (high energy).  Avoid filler words like "erm" or "uh"
+             <li>Answers don't need to be 'correct' or 'true' (they automatically are!)
+             <li>Treated as if the questions and answers are the most important ever given.
+             </ol>
+             <b>Variations:</b> 15 Things, Category Things (name the category), Word-At-A-Time things,
+        """.trimIndent(),
         unpublishedMatches = setOf("Three Things"),
     ),
+    // TODO: how to handle linking to variations? More details?
+    //  TODO variations: 15 things ?  2.5 things? Other
     GamesDataItem(
         gameName = "Ball",
         topic = GamesDatumTopic.WARMUP,
