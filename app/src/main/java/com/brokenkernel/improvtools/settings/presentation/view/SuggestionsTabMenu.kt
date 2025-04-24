@@ -20,7 +20,7 @@ import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.settings.presentation.viewmodel.SettingsScreenViewModel
 
 @Composable
-internal fun SuggestionsScreenMenu(
+internal fun SuggestionsTabMenu(
     settingsScreenViewModel: SettingsScreenViewModel = hiltViewModel(),
     expanded: Boolean,
     onDismiss: () -> Unit,

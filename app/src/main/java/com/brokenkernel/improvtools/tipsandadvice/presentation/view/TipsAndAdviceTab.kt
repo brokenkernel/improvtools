@@ -184,7 +184,7 @@ internal fun TipsAndAdviceScreenAsList(viewModel: TipsAndAdviceViewModel = hiltV
 }
 
 @Composable
-internal fun TipsAndAdviceScreen(
+internal fun TipsAndAdviceTab(
     viewModel: TipsAndAdviceViewModel = hiltViewModel(),
     onLaunchTitleCallback: () -> Unit,
 ) {

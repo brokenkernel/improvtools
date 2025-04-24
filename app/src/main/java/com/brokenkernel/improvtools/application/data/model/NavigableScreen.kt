@@ -56,9 +56,6 @@ internal sealed class NavigableRoute() {
     internal object HelpAndAboutRoute : NavigableRoute()
 
     @Serializable
-    internal object WorkshopGeneratorRoute : NavigableRoute()
-
-    @Serializable
     internal object TipsAndAdviceRoute : NavigableRoute()
 
     @Serializable

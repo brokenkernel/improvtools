@@ -1,17 +1,17 @@
-package com.brokenkernel.improvtools.tipsandadvice.presentation.view
+package com.brokenkernel.improvtools.settings.presentation.view
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
-import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.RadioButton
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
@@ -22,19 +22,60 @@ import com.brokenkernel.improvtools.settings.presentation.viewmodel.SettingsScre
 import com.brokenkernel.improvtools.settings.utils.toTitleCase
 import com.brokenkernel.improvtools.tipsandadvice.data.model.TipsAndAdviceViewModeUI
 
-// TODO: consider moving into 'encyclopedia' package?
 @Composable
-internal fun TipsAndAdviceMenu(
-    viewModel: SettingsScreenViewModel = hiltViewModel(),
-    expanded: Boolean,
-    onDismiss: () -> Unit,
-) {
+internal fun SettingsTab(viewModel: SettingsScreenViewModel = hiltViewModel(), onLaunchTitleCallback: () -> Unit) {
+    // TODO: consider making a BaseScreenComposable or some such
+    LaunchedEffect(Unit) {
+        onLaunchTitleCallback()
+    }
+
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-    DropdownMenu(
-        expanded = expanded,
-        onDismissRequest = onDismiss,
-    ) {
+    Column {
+        Text(
+            stringResource(R.string.suggestions_activity_title),
+            style = MaterialTheme.typography.titleLarge,
+        )
+        Row {
+            Box(modifier = Modifier.weight(.8f)) {
+                Text(
+                    stringResource(R.string.settings_allow_reuse),
+                )
+            }
+            Box {
+                Switch(
+                    checked = uiState.shouldReuseSuggestions,
+                    onCheckedChange = {
+                        viewModel.onClickUpdateShouldReuseSuggestions(it)
+                    },
+                )
+            }
+        }
+        Text(
+            stringResource(R.string.privacy_settings_category),
+            style = MaterialTheme.typography.titleLarge,
+        )
+
+        Row {
+            Box(modifier = Modifier.weight(.8f)) {
+                Text(
+                    stringResource(R.string.settings_allow_analytics_cookie_storage),
+                )
+            }
+            Box {
+                Switch(
+                    checked = uiState.allowAnalyticsCookieStorage,
+                    onCheckedChange = {
+                        viewModel.onClickUpdateAllowAnalyticsCookieStorage(it)
+                    },
+                )
+            }
+        }
+        Text(
+            stringResource(R.string.navigation_tips_and_advice),
+            style = MaterialTheme.typography.titleLarge,
+        )
+
         Row {
             Box(modifier = Modifier.weight(.8f)) {
                 Text(

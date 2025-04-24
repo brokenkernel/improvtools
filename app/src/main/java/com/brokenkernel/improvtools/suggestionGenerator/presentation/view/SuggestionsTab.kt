@@ -48,7 +48,7 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-internal fun SuggestionsScreen(
+internal fun SuggestionsTab(
     viewModel: SuggestionScreenViewModel = hiltViewModel(),
     onNavigateToEmotionsInfographic: () -> Unit,
     onNavigateToWord: (String) -> Unit,

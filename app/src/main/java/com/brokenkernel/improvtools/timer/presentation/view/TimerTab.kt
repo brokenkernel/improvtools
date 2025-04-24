@@ -140,7 +140,7 @@ internal fun SimpleStopWatchTimer(viewModel: StopWatchTimerViewModel, onRemoveTi
 }
 
 @Composable
-internal fun TimerScreen(viewModel: TimerListViewModel = hiltViewModel(), onLaunchTitleCallback: () -> Unit) {
+internal fun TimerTab(viewModel: TimerListViewModel = hiltViewModel(), onLaunchTitleCallback: () -> Unit) {
     // TODO: consider making a BaseScreenComposable or some such
     LaunchedEffect(Unit) {
         onLaunchTitleCallback()

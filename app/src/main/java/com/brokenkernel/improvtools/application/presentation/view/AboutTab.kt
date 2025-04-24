@@ -51,7 +51,7 @@ import com.brokenkernel.improvtools.application.data.model.NavigableRoute
 import kotlinx.coroutines.launch
 
 @Composable
-internal fun AboutScreen(onNavigateToRoute: (NavigableRoute) -> Unit, onLaunchCallback: () -> Unit) {
+internal fun AboutTab(onNavigateToRoute: (NavigableRoute) -> Unit, onLaunchCallback: () -> Unit) {
     // TODO: consider making a BaseScreenComposable or some such
     LaunchedEffect(Unit) {
         onLaunchCallback()

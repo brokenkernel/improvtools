@@ -3,17 +3,17 @@ package com.brokenkernel.improvtools.application.data.model
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.brokenkernel.improvtools.application.presentation.view.AboutScreen
-import com.brokenkernel.improvtools.application.presentation.view.LibrariesScreen
-import com.brokenkernel.improvtools.application.presentation.view.PrivacyScreen
+import com.brokenkernel.improvtools.application.presentation.view.AboutTab
+import com.brokenkernel.improvtools.application.presentation.view.LibrariesTab
+import com.brokenkernel.improvtools.application.presentation.view.PrivacyTab
 import com.brokenkernel.improvtools.encyclopaedia.EncyclopaediaSectionNavigation
 import com.brokenkernel.improvtools.encyclopaedia.presentation.view.encyclopaediaPageDestinations
-import com.brokenkernel.improvtools.settings.presentation.view.SettingsScreen
-import com.brokenkernel.improvtools.settings.presentation.view.SuggestionsScreenMenu
-import com.brokenkernel.improvtools.suggestionGenerator.presentation.view.SuggestionsScreen
-import com.brokenkernel.improvtools.timer.presentation.view.TimerScreen
-import com.brokenkernel.improvtools.tipsandadvice.presentation.view.TipsAndAdviceMenu
-import com.brokenkernel.improvtools.tipsandadvice.presentation.view.TipsAndAdviceScreen
+import com.brokenkernel.improvtools.settings.presentation.view.SettingsTab
+import com.brokenkernel.improvtools.settings.presentation.view.SuggestionsTabMenu
+import com.brokenkernel.improvtools.suggestionGenerator.presentation.view.SuggestionsTab
+import com.brokenkernel.improvtools.timer.presentation.view.TimerTab
+import com.brokenkernel.improvtools.tipsandadvice.presentation.view.TipsAndAdviceTab
+import com.brokenkernel.improvtools.tipsandadvice.presentation.view.TipsAndAdviceTabMenu
 
 @Composable
 internal fun ImprovToolsNavigationGraph(
@@ -26,7 +26,7 @@ internal fun ImprovToolsNavigationGraph(
         startDestination = initialRoute,
     ) {
         composable<NavigableRoute.HelpAndAboutRoute> {
-            AboutScreen(
+            AboutTab(
                 // TODO: specific navigator
                 onNavigateToRoute = onNavigateToRoute,
                 onLaunchCallback = {
@@ -38,7 +38,7 @@ internal fun ImprovToolsNavigationGraph(
             )
         }
         composable<NavigableRoute.SettingsRoute> {
-            SettingsScreen(
+            SettingsTab(
                 onLaunchTitleCallback = {
                     improvToolsAppState.setScaffoldData(
                         newTitle = NavigableScreens.SettingsScreen.titleResource,
@@ -48,7 +48,7 @@ internal fun ImprovToolsNavigationGraph(
             )
         }
         composable<NavigableRoute.SuggestionGeneratorRoute> {
-            SuggestionsScreen(
+            SuggestionsTab(
                 onNavigateToEmotionsInfographic = {
                     onNavigateToRoute(NavigableRoute.EmotionPageRoute)
                 },
@@ -56,7 +56,7 @@ internal fun ImprovToolsNavigationGraph(
                     improvToolsAppState.setScaffoldData(
                         newTitle = NavigableScreens.SuggestionGeneratorScreen.titleResource,
                         newExtraMenu = {
-                            SuggestionsScreenMenu(
+                            SuggestionsTabMenu(
                                 expanded = improvToolsAppState.extraMenuExpandedState,
                                 onDismiss = {
                                     improvToolsAppState.extraMenuExpandedState =
@@ -72,7 +72,7 @@ internal fun ImprovToolsNavigationGraph(
             )
         }
         composable<NavigableRoute.TimerRoute> {
-            TimerScreen(
+            TimerTab(
                 onLaunchTitleCallback = {
                     improvToolsAppState.setScaffoldData(
                         NavigableScreens.TimerScreen.titleResource,
@@ -82,14 +82,14 @@ internal fun ImprovToolsNavigationGraph(
             )
         }
         composable<NavigableRoute.TipsAndAdviceRoute> {
-            TipsAndAdviceScreen(
+            TipsAndAdviceTab(
                 onLaunchTitleCallback = {
                     improvToolsAppState.setScaffoldData(
                         NavigableScreens.TipsAndAdviceScreen.titleResource,
                         newExtraMenu = null,
                     )
                     improvToolsAppState.extraMenu.value = {
-                        TipsAndAdviceMenu(
+                        TipsAndAdviceTabMenu(
                             expanded = improvToolsAppState.extraMenuExpandedState,
                             onDismiss = {
                                 improvToolsAppState.extraMenuExpandedState = !improvToolsAppState.extraMenuExpandedState
@@ -101,7 +101,7 @@ internal fun ImprovToolsNavigationGraph(
         }
 
         composable<NavigableRoute.PrivacyRoute> {
-            PrivacyScreen(
+            PrivacyTab(
                 onLaunchTitleCallback = {
                     improvToolsAppState.setScaffoldData(
                         NavigableScreens.PrivacyScreen.titleResource,
@@ -112,7 +112,7 @@ internal fun ImprovToolsNavigationGraph(
         }
 
         composable<NavigableRoute.LibrariesRoute> {
-            LibrariesScreen(
+            LibrariesTab(
                 onLaunchTitleCallback = {
                     improvToolsAppState.setScaffoldData(
                         NavigableScreens.LibrariesScreen.titleResource,

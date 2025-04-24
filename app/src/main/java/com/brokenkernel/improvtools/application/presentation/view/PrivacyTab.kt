@@ -12,7 +12,7 @@ import androidx.core.net.toUri
 import com.brokenkernel.improvtools.R
 
 @Composable
-internal fun PrivacyScreen(onLaunchTitleCallback: () -> Unit) {
+internal fun PrivacyTab(onLaunchTitleCallback: () -> Unit) {
     // TODO: consider making a BaseScreenComposable or some such
     LaunchedEffect(Unit) {
         onLaunchTitleCallback()
