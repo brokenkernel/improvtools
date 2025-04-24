@@ -19,6 +19,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.brokenkernel.improvtools.R
+import com.brokenkernel.improvtools.components.presentation.view.SimpleZoomableImage
 
 @Composable
 internal fun EmotionTab(onLaunchTitleCallback: () -> Unit) {
