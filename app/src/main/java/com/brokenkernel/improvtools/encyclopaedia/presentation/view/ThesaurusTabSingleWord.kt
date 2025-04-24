@@ -16,16 +16,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.brokenkernel.improvtools.R
-import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
-import com.brokenkernel.improvtools.encyclopaedia.EncyclopaediaSectionNavigation
 import com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel.ThesaurusSingleItemViewModel
 
 @Composable
 internal fun ThesaurusTabSingleWord(
     word: String,
-    improvToolsAppState: ImprovToolsAppState,
     viewModel: ThesaurusSingleItemViewModel = hiltViewModel(),
+    onNavigateBack: () -> Unit,
     onLaunchTitleCallback: () -> Unit,
 ) {
     // TODO: consider making a BaseScreenComposable or some such
@@ -51,7 +49,7 @@ internal fun ThesaurusTabSingleWord(
             }
             ExtendedFloatingActionButton(
                 onClick = {
-                    EncyclopaediaSectionNavigation.navigateBack(improvToolsAppState)
+                    onNavigateBack()
                 },
             ) {
                 Text(stringResource(R.string.navigation_back_to_thesaurus))

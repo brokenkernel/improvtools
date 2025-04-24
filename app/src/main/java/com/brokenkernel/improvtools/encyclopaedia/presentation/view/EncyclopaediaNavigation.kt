@@ -1,4 +1,4 @@
-    package com.brokenkernel.improvtools.encyclopaedia.presentation.view
+package com.brokenkernel.improvtools.encyclopaedia.presentation.view
 
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
@@ -57,7 +57,7 @@ internal fun NavGraphBuilder.encyclopaediaPageDestinations(improvToolsAppState: 
         val route: NavigableRoute.ThesaurusWordRoute = backStackEntry.toRoute()
         ThesaurusTabSingleWord(
             word = route.word,
-            improvToolsAppState = improvToolsAppState,
+            onNavigateBack = { improvToolsAppState.navigateBack() },
             onLaunchTitleCallback = {
                 improvToolsAppState.setScaffoldData(
                     NavigableScreens.ThesaurusPageScreen.titleResource,

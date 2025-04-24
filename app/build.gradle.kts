@@ -11,7 +11,6 @@ import java.util.Properties
 import org.jetbrains.dokka.gradle.engine.parameters.VisibilityModifier
 import org.jetbrains.kotlin.compose.compiler.gradle.ComposeFeatureFlag
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
-import org.jetbrains.kotlin.gradle.internal.config.JvmDefaultMode
 
 plugins {
     alias(libs.plugins.aboutLibraries)
