@@ -1,4 +1,4 @@
-package com.brokenkernel.improvtools.encyclopaedia.presentation.view
+    package com.brokenkernel.improvtools.encyclopaedia.presentation.view
 
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
@@ -12,7 +12,7 @@ internal fun NavGraphBuilder.encyclopaediaPageDestinations(improvToolsAppState: 
         GamesTab(
             onLaunchTitleCallback = {
                 improvToolsAppState.setScaffoldData(
-                    NavigableScreens.HelpAndAboutScreen.titleResource,
+                    NavigableScreens.GamesPageScreen.titleResource,
                     newExtraMenu = null,
                 )
             },
