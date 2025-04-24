@@ -27,7 +27,6 @@ import com.brokenkernel.improvtools.application.data.model.NavigableRoute.Sugges
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute.ThesaurusPageRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute.TimerRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute.TipsAndAdviceRoute
-import com.brokenkernel.improvtools.application.data.model.NavigableRoute.WorkshopGeneratorRoute
 import kotlinx.serialization.Serializable
 
 /**
@@ -84,30 +83,11 @@ internal sealed class NavigableRoute() {
     internal object LibrariesRoute : NavigableRoute()
 }
 
-// TODO: making this a companion object of NavigableRoute is also broken
-// There is some proguard rule needed but not sure what or why
-// iterating through .sealedSubclasses in release is broken
-internal val allNavigableRoutes: Set<NavigableRoute> = setOf(
-    SuggestionGeneratorRoute,
-    SettingsRoute,
-    TimerRoute,
-    HelpAndAboutRoute,
-    WorkshopGeneratorRoute,
-    TipsAndAdviceRoute,
-    GamesPageRoute,
-    PeoplePageRoute,
-    EmotionPageRoute,
-    ThesaurusPageRoute,
-    PrivacyRoute,
-    LibrariesRoute,
-)
-
 internal sealed class NavigableScreens(
     @param:StringRes @field:StringRes internal val titleResource: Int,
     @param:StringRes @field:StringRes internal val contentDescription: Int,
     internal val icon: ImageVector,
     internal val matchingRoutes: Set<NavigableRoute>,
-    internal val shouldShowExtraMenu: Boolean,
     internal val navigationCallback: (itas: ImprovToolsAppState) -> Unit = { itas ->
         // TODO: FIXME
         itas.navigateTo(matchingRoutes.first())
@@ -119,7 +99,6 @@ internal sealed class NavigableScreens(
         contentDescription = R.string.go_to_suggestion_generator,
         icon = Icons.Outlined.Lightbulb,
         matchingRoutes = setOf(SuggestionGeneratorRoute),
-        shouldShowExtraMenu = true,
     )
 
     @Immutable
@@ -128,7 +107,6 @@ internal sealed class NavigableScreens(
         contentDescription = R.string.go_to_settings_screen,
         icon = Icons.Outlined.Settings,
         matchingRoutes = setOf(SettingsRoute),
-        shouldShowExtraMenu = false,
     )
 
     @Immutable
@@ -137,7 +115,6 @@ internal sealed class NavigableScreens(
         contentDescription = R.string.go_to_timer_screen,
         icon = Icons.Outlined.Timer,
         matchingRoutes = setOf(TimerRoute),
-        shouldShowExtraMenu = false,
     )
 
     @Immutable
@@ -146,16 +123,6 @@ internal sealed class NavigableScreens(
         contentDescription = R.string.go_to_help_and_feedback_screen,
         icon = Icons.Outlined.Info,
         matchingRoutes = setOf(HelpAndAboutRoute),
-        shouldShowExtraMenu = false,
-    )
-
-    @Immutable
-    internal object WorkshopGeneratorScreen : NavigableScreens(
-        titleResource = R.string.navigation_workshop_generator,
-        contentDescription = R.string.go_to_workshop_generator_screen,
-        icon = Icons.Outlined.Games,
-        matchingRoutes = setOf(WorkshopGeneratorRoute),
-        shouldShowExtraMenu = false,
     )
 
     @Immutable
@@ -164,7 +131,6 @@ internal sealed class NavigableScreens(
         contentDescription = R.string.go_to_tips_and_advice_screen,
         icon = Icons.Outlined.TipsAndUpdates,
         matchingRoutes = setOf(TipsAndAdviceRoute),
-        shouldShowExtraMenu = true,
     )
 
     @Immutable
@@ -173,7 +139,6 @@ internal sealed class NavigableScreens(
         contentDescription = R.string.go_to_games_screen,
         icon = Icons.Outlined.Games,
         matchingRoutes = setOf(GamesPageRoute),
-        shouldShowExtraMenu = false,
     )
 
     @Immutable
@@ -182,7 +147,6 @@ internal sealed class NavigableScreens(
         contentDescription = R.string.go_to_navigation_people_screen,
         icon = Icons.Outlined.People,
         matchingRoutes = setOf(PeoplePageRoute),
-        shouldShowExtraMenu = false,
     )
 
     @Immutable
@@ -191,7 +155,6 @@ internal sealed class NavigableScreens(
         contentDescription = R.string.go_to_emotions_reference_screen,
         icon = Icons.Outlined.EmojiEmotions,
         matchingRoutes = setOf(EmotionPageRoute),
-        shouldShowExtraMenu = false,
     )
 
     @Immutable
@@ -200,7 +163,6 @@ internal sealed class NavigableScreens(
         contentDescription = R.string.go_to_thesaurus_screen,
         icon = Icons.Filled.Book,
         matchingRoutes = setOf(ThesaurusPageRoute),
-        shouldShowExtraMenu = false,
     )
 
     @Immutable
@@ -209,7 +171,6 @@ internal sealed class NavigableScreens(
         contentDescription = R.string.go_to_privacy_information,
         icon = Icons.Filled.PrivacyTip,
         matchingRoutes = setOf(PrivacyRoute),
-        shouldShowExtraMenu = false,
     )
 
     @Immutable
@@ -218,31 +179,5 @@ internal sealed class NavigableScreens(
         contentDescription = R.string.go_to_libraries_information,
         icon = Icons.Default.Copyright,
         matchingRoutes = setOf(LibrariesRoute),
-        shouldShowExtraMenu = false,
     )
 }
-
-internal fun routeToScreen(route: NavigableRoute): NavigableScreens {
-    return when (route) {
-        EmotionPageRoute -> NavigableScreens.EmotionsPageScreen
-        GamesPageRoute -> NavigableScreens.GamesPageScreen
-        HelpAndAboutRoute -> NavigableScreens.HelpAndAboutScreen
-        PeoplePageRoute -> NavigableScreens.PeoplePageScreen
-        SettingsRoute -> NavigableScreens.SettingsScreen
-        SuggestionGeneratorRoute -> NavigableScreens.SuggestionGeneratorScreen
-        ThesaurusPageRoute -> NavigableScreens.ThesaurusPageScreen
-        TimerRoute -> NavigableScreens.TimerScreen
-        TipsAndAdviceRoute -> NavigableScreens.TipsAndAdviceScreen
-        WorkshopGeneratorRoute -> NavigableScreens.WorkshopGeneratorScreen
-        PrivacyRoute -> NavigableScreens.PrivacyScreen
-        LibrariesRoute -> NavigableScreens.LibrariesScreen
-        is NavigableRoute.ThesaurusWordRoute -> NavigableScreens.ThesaurusPageScreen
-    }
-}
-
-// TODO: consider making this CompositionLocal
-// TODO:  consider passing callbacks instead of direct refs to routes - but that's another story
-// internal class ImprovToolsNavigator(
-//    val doNavigateToNavigableScreen: (NavigableScreens) -> Unit,
-//    val doNavigateToNavigableRoute: (NavigableRoute) -> Unit,
-// )

@@ -60,11 +60,7 @@
 
   <string name="settings_allow_reuse">Wiederverwendung zulassen</string>
 
-    <string name="navigation_open_screen_specific_menu">Bildschirmspezifisches Menü öffnen</string>
-
-  <string name="navigation_workshop_generator">Werkstattgenerator</string>
-
-  <string name="go_to_workshop_generator_screen">Zum Workshop-Generator</string>
+  <string name="navigation_open_screen_specific_menu">Bildschirmspezifisches Menü öffnen</string>
 
   <string name="navigation_tips_and_advice">Tipps und Ratschläge</string>
 
