@@ -299,20 +299,25 @@
     {
       "title": "Location",
       "ideas": [
-        {"idea": "Mortuary"},
-        {"idea": "Kitchen"},
-        {"idea": "Flea market"},
-        {"idea": "Observation tower"},
-        {"idea": "Prison"},
-        {"idea": "Hardware store"},
-        {"idea": "Glacier"},
-        {"idea": "Forest"},
-        {"idea": "Oasis"},
-        {"idea": "Public lbrary"},
+        {"idea": "American Museum of Natural History"},
+        {"idea": "Animal Kingdom"},
+        {"idea": "Arena"},
+        {"idea": "Crematorium"},
         {"idea": "Empty Kingergarden Classroom"},
+        {"idea": "Flea market"},
+        {"idea": "Forest"},
+        {"idea": "Glacier"},
+        {"idea": "Grand Caynon"},
+        {"idea": "Hardware store"},
+        {"idea": "Kitchen"},
         {"idea": "Moon"},
+        {"idea": "Mortuary"},
+        {"idea": "Oasis"},
+        {"idea": "Observation tower"},
         {"idea": "On a Zeppelin"},
-        {"idea": "On a Crematorium"}
+        {"idea": "Prison"},
+        {"idea": "Public lbrary"},
+        {"idea": "Zoo"}
       ]
     },
     {
@@ -334,7 +339,7 @@
         {"idea": "Sibblings"},
         {"idea": "Grandparent/Grandchild"},
         {"idea": "Uncle/Nephew"},
-        {"idea": "Love Trinagle"},
+        {"idea": "Love Triangle"},
         {"idea": "Truant Officer/Parent/Child"},
         {"idea": "Psychopath/Victim"},
         {"idea": "Ventriloquist/Doll"},
@@ -416,9 +421,9 @@
       ]
     },
     {
-      "title": "Playwrite",
+      "title": "Playwright",
       "ideas": [
-        {"idea": "Shakespere"},
+        {"idea": "Shakespeare"},
         {"idea": "Nowel Coward"},
         {"idea": "Diana Son"},
         {

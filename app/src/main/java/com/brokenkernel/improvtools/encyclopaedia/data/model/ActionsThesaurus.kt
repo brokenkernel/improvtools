@@ -11,14 +11,17 @@ internal object ActionsThesaurus {
     // TODO: i18n
     // TODO: bidirectional is not always true, perhaps either explicitly list, or have an option or some such?
     private val actionItemList = setOf(
+        ActionItem("access", setOf("reach", "enter")),
+        ActionItem("accost", setOf("attack", "confront")),
+        ActionItem("acquire", setOf("attain", "obtain")),
         ActionItem("abide", setOf("bear", "tolerate")),
         ActionItem("bear", setOf("stomach")),
         ActionItem("beg", setOf("solicit")),
+        ActionItem("edit", setOf("modify")),
         ActionItem("poison", setOf("pollute")),
         ActionItem("punish", setOf()),
         ActionItem("tolerate", setOf("bear", "indulge")),
-        ActionItem("one", setOf("two")),
-        ActionItem("two", setOf("one")),
+        ActionItem("destroy", setOf("hit", "kill")),
     )
 
     private val bidirectionalMap: Map<String, Set<String>>
