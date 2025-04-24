@@ -1,5 +1,8 @@
 package com.brokenkernel.improvtools.encyclopaedia.presentation.view
 
+import androidx.annotation.StringRes
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.toRoute
@@ -55,6 +58,8 @@ internal fun NavGraphBuilder.encyclopaediaPageDestinations(improvToolsAppState: 
 
     composable<NavigableRoute.ThesaurusWordRoute> { backStackEntry ->
         val route: NavigableRoute.ThesaurusWordRoute = backStackEntry.toRoute()
+
+        @StringRes val priorTitleResource: Int = remember { improvToolsAppState.currentTitle.value }
         ThesaurusTabSingleWord(
             word = route.word,
             onNavigateBack = { improvToolsAppState.navigateBack() },
@@ -64,6 +69,7 @@ internal fun NavGraphBuilder.encyclopaediaPageDestinations(improvToolsAppState: 
                     newExtraMenu = null,
                 )
             },
+            priorTitleResource = priorTitleResource,
         )
     }
 }

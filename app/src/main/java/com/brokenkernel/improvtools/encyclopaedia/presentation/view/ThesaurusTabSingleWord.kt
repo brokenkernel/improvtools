@@ -1,9 +1,12 @@
 package com.brokenkernel.improvtools.encyclopaedia.presentation.view
 
+import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.text.selection.SelectionContainer
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -16,7 +19,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.brokenkernel.improvtools.R
-import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel.ThesaurusSingleItemViewModel
 
 @Composable
@@ -25,6 +27,7 @@ internal fun ThesaurusTabSingleWord(
     viewModel: ThesaurusSingleItemViewModel = hiltViewModel(),
     onNavigateBack: () -> Unit,
     onLaunchTitleCallback: () -> Unit,
+    @StringRes priorTitleResource: Int,
 ) {
     // TODO: consider making a BaseScreenComposable or some such
     LaunchedEffect(Unit) {
@@ -52,13 +55,14 @@ internal fun ThesaurusTabSingleWord(
                     onNavigateBack()
                 },
             ) {
-                Text(stringResource(R.string.navigation_back_to_thesaurus))
+                val backtoText =
+                    stringResource(R.string.navigation_back_to_thesaurus, stringResource(priorTitleResource))
                 Icon(
-                    NavigableScreens.ThesaurusPageScreen.icon,
-                    contentDescription = stringResource(NavigableScreens.ThesaurusPageScreen.contentDescription),
+                    Icons.AutoMirrored.Default.ArrowBack,
+                    contentDescription = backtoText,
                 )
+                Text(backtoText)
             }
         }
-        // back to all words
     }
 }
