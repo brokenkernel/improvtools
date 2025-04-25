@@ -65,7 +65,14 @@ internal val GamesDatum: Collection<GamesDataItem> = listOf(
         gameName = "Character Gauntlet",
         topic = GamesDatumTopic.EXERCISE,
     ),
-
+    GamesDataItem(
+        gameName = "Character Circle",
+        topic = GamesDatumTopic.EXERCISE,
+    ),
+    GamesDataItem(
+        gameName = "Middle School Warmup",
+        topic = GamesDatumTopic.WARMUP,
+    ),
     GamesDataItem(
         gameName = "Best of Times, Worst of Times",
         topic = GamesDatumTopic.GAME,
