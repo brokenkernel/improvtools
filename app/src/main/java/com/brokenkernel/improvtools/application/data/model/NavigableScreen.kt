@@ -14,12 +14,8 @@ import androidx.compose.material.icons.outlined.People
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.outlined.Timer
 import androidx.compose.material.icons.outlined.TipsAndUpdates
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.vectorResource
-import androidx.core.content.ContextCompat
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute.EmotionPageRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute.GamesPageRoute

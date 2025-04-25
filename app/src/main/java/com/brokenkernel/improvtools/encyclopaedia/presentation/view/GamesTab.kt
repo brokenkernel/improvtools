@@ -5,10 +5,10 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.foundation.text.input.rememberTextFieldState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Games
 import androidx.compose.material.icons.outlined.FormatQuote
@@ -33,7 +33,6 @@ import androidx.compose.ui.semantics.isTraversalGroup
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.util.fastAny
 import androidx.core.net.toUri
-import com.brokenkernel.improvtools.application.presentation.view.verticalColumnScrollbar
 import com.brokenkernel.improvtools.components.presentation.view.EnumLinkedMultiChoiceSegmentedButtonRow
 import com.brokenkernel.improvtools.components.presentation.view.HtmlText
 import com.brokenkernel.improvtools.components.presentation.view.SimpleSearchBar
@@ -60,7 +59,6 @@ internal fun GamesTab(onLaunchTitleCallback: () -> Unit) {
             onLaunchTitleCallback()
         }
 
-        val scrollState = rememberScrollState()
         val textFieldState: TextFieldState = rememberTextFieldState()
         val isSegmentedButtonChecked: SnapshotStateList<Boolean> =
             MutableList(GamesDatumTopic.entries.size, { true })
@@ -78,12 +76,8 @@ internal fun GamesTab(onLaunchTitleCallback: () -> Unit) {
             SimpleSearchBar(
                 textFieldState = textFieldState,
             ) {
-                Column(
-                    modifier = Modifier
-                        .verticalColumnScrollbar(scrollState)
-                        .verticalScroll(scrollState),
-                ) {
-                    GamesDatum.sortedBy { it.gameName }.forEach { it: GamesDataItem ->
+                LazyColumn {
+                    items(GamesDatum.sortedBy { it.gameName }.toList()) { it: GamesDataItem ->
                         var isListItemInformationExpanded: Boolean by remember {
                             mutableStateOf(
                                 false,
