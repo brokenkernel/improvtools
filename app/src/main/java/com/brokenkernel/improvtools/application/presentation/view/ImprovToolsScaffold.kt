@@ -53,6 +53,7 @@ internal fun ImprovToolsScaffold(
             LocalUriHandler provides customTabHandler,
         ),
     ) {
+        // TODO: replace with [[NavigationSuiteScaffold]]
         Scaffold(
             topBar = {
                 CenterAlignedTopAppBar(
