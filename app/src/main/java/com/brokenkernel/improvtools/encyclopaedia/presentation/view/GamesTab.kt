@@ -2,13 +2,6 @@ package com.brokenkernel.improvtools.encyclopaedia.presentation.view
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.text.input.TextFieldState
-import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Games
 import androidx.compose.material.icons.outlined.FormatQuote
@@ -24,115 +17,78 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.runtime.snapshots.SnapshotStateList
-import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.Role
-import androidx.compose.ui.semantics.isTraversalGroup
-import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.util.fastAny
 import androidx.core.net.toUri
-import com.brokenkernel.improvtools.components.presentation.view.EnumLinkedMultiChoiceSegmentedButtonRow
 import com.brokenkernel.improvtools.components.presentation.view.HtmlText
-import com.brokenkernel.improvtools.components.presentation.view.SimpleSearchBar
+import com.brokenkernel.improvtools.components.presentation.view.TabbedSearchableColumn
 import com.brokenkernel.improvtools.components.presentation.view.openInCustomTab
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GamesDataItem
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GamesDatum
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GamesDatumTopic
 
-private fun String.transformForSearch(): String {
-    return this.lowercase().filterNot { it.isWhitespace() }
+private fun transformForSearch(str: String): String {
+    return str.lowercase().filterNot { it.isWhitespace() }
 }
 
 private fun doesMatch(search: String, gameData: GamesDataItem): Boolean {
-    return gameData.gameName.transformForSearch().contains(search) or
-        gameData.unpublishedMatches.map { it -> it.transformForSearch() }.fastAny { it -> it.contains(search) }
+    return transformForSearch(gameData.gameName).contains(search) or
+        gameData.unpublishedMatches.map { it -> transformForSearch(it) }.fastAny { it -> it.contains(search) }
 }
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 internal fun GamesTab(onLaunchTitleCallback: () -> Unit) {
-    Column {
-        // TODO: consider making a BaseScreenComposable or some such
-        LaunchedEffect(Unit) {
-            onLaunchTitleCallback()
+    // TODO: consider making a BaseScreenComposable or some such
+    LaunchedEffect(Unit) {
+        onLaunchTitleCallback()
+    }
+
+    TabbedSearchableColumn<GamesDatumTopic, GamesDataItem>(
+        itemDoesMatch = ::doesMatch,
+        itemList = GamesDatum.sortedBy { it.gameName }.toList(),
+        transformForSearch = ::transformForSearch,
+        itemToTopic = { it -> it.topic },
+    ) { it: GamesDataItem ->
+        var isListItemInformationExpanded: Boolean by remember {
+            mutableStateOf(
+                false,
+            )
         }
-
-        val textFieldState: TextFieldState = rememberTextFieldState()
-        val isSegmentedButtonChecked: SnapshotStateList<Boolean> =
-            MutableList(GamesDatumTopic.entries.size, { true })
-                .toMutableStateList()
-
-        EnumLinkedMultiChoiceSegmentedButtonRow<GamesDatumTopic>(
-            isSegmentedButtonChecked = isSegmentedButtonChecked,
-            enumToName = { it -> it.name },
-        )
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .semantics { isTraversalGroup = true },
-        ) {
-            SimpleSearchBar(
-                textFieldState = textFieldState,
-            ) {
-                LazyColumn {
-                    items(GamesDatum.sortedBy { it.gameName }.toList()) { it: GamesDataItem ->
-                        var isListItemInformationExpanded: Boolean by remember {
-                            mutableStateOf(
-                                false,
-                            )
-                        }
-                        if (isSegmentedButtonChecked[it.topic.ordinal] &&
-                            doesMatch(
-                                textFieldState.text.toString().transformForSearch(),
-                                it,
-                            )
-                        ) {
-                            ListItem(
-                                headlineContent = { Text(it.gameName) },
-                                leadingContent = {
-                                    Icon(
-                                        when (it.topic) {
-                                            GamesDatumTopic.GAME -> Icons.Filled.Games
-                                            GamesDatumTopic.WARMUP -> Icons.Outlined.Games
-                                            GamesDatumTopic.FORMAT -> Icons.Outlined.FormatQuote
-                                            GamesDatumTopic.EXERCISE -> Icons.Outlined.SelfImprovement
-                                        },
-                                        contentDescription = "Person", // TODO text
-                                    )
-                                },
-                                overlineContent = { Text(it.topic.name) },
-                                supportingContent = {
-                                    val context = LocalContext.current
-                                    if (isListItemInformationExpanded) {
-                                        HtmlText(
-                                            it.detailedInformation,
-                                            onUrlClick = { it ->
-                                                openInCustomTab(context, it.toUri())
-                                            },
-                                        )
-                                    }
-                                },
-                                modifier = Modifier.clickable(
-                                    enabled = true,
-                                    role = Role.Button,
-                                    onClick = {
-                                        isListItemInformationExpanded = !isListItemInformationExpanded
-                                    },
-                                ),
-                            )
-                        }
-                    }
-//                ListItem(
-//                    headlineContent = { Text("heading") },
-//                    supportingContent = { Text("supporting") },
-//                    leadingContent = { Text("leading") },
-//                    overlineContent = { Text("overline") },
-//                    trailingContent = { Text("trailing") },
-//                )
+        ListItem(
+            headlineContent = { Text(it.gameName) },
+            leadingContent = {
+                Icon(
+                    when (it.topic) {
+                        GamesDatumTopic.GAME -> Icons.Filled.Games
+                        GamesDatumTopic.WARMUP -> Icons.Outlined.Games
+                        GamesDatumTopic.FORMAT -> Icons.Outlined.FormatQuote
+                        GamesDatumTopic.EXERCISE -> Icons.Outlined.SelfImprovement
+                    },
+                    contentDescription = "Person", // TODO text
+                )
+            },
+            overlineContent = { Text(it.topic.name) },
+            supportingContent = {
+                val context = LocalContext.current
+                if (isListItemInformationExpanded) {
+                    HtmlText(
+                        it.detailedInformation,
+                        onUrlClick = { it ->
+                            openInCustomTab(context, it.toUri())
+                        },
+                    )
                 }
-            }
-        }
+            },
+            modifier = Modifier.clickable(
+                enabled = true,
+                role = Role.Button,
+                onClick = {
+                    isListItemInformationExpanded = !isListItemInformationExpanded
+                },
+            ),
+        )
     }
 }
