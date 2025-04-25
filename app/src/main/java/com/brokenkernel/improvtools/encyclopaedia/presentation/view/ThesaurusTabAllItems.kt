@@ -4,8 +4,6 @@ import android.content.ClipData
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -25,7 +23,9 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
+import com.brokenkernel.improvtools.components.presentation.view.TabbedSearchableColumn
 import com.brokenkernel.improvtools.encyclopaedia.EncyclopaediaSectionNavigation
+import com.brokenkernel.improvtools.encyclopaedia.data.model.ActionThesaurusType
 import com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel.ThesaurusTabAllItemsViewModel
 import kotlinx.coroutines.launch
 
@@ -43,69 +43,69 @@ internal fun ThesaurusTabAllItems(
     val context = LocalContext.current
     val clipboard: Clipboard = LocalClipboard.current
     val coroutineScope = rememberCoroutineScope()
-    LazyColumn {
-        items(viewModel.words()) { word ->
-            ListItem(
-                headlineContent = { Text(word) },
-                supportingContent = {
-                    // TODO: make a table component?? antonyms?
-                    Column {
-                        viewModel.synonymsForWord(word).forEach { synonym ->
-                            if (viewModel.hasUniqueSynonymsFrom(word, synonym)) {
-                                Text(
-                                    synonym,
-                                    modifier = Modifier.clickable(
-                                        onClick = {
-                                            EncyclopaediaSectionNavigation.navigateToThesaurusWord(
-                                                improvToolsAppState,
-                                                synonym,
-                                            )
-                                        },
-                                        onClickLabel = stringResource(
-                                            R.string.go_to_single_word_thesaurus_view,
+    TabbedSearchableColumn<ActionThesaurusType, String>(
+        itemDoesMatch = { searchText, word -> word.contains(searchText.lowercase()) },
+        itemList = viewModel.words(),
+        transformForSearch = { s -> s.lowercase() },
+        itemToTopic = { _ -> ActionThesaurusType.Action },
+    ) { word ->
+        ListItem(
+            headlineContent = { Text(word) },
+            supportingContent = {
+                // TODO: make a table component?? antonyms?
+                Column {
+                    viewModel.synonymsForWord(word).forEach { synonym ->
+                        if (viewModel.hasUniqueSynonymsFrom(word, synonym)) {
+                            Text(
+                                synonym,
+                                modifier = Modifier.clickable(
+                                    onClick = {
+                                        EncyclopaediaSectionNavigation.navigateToThesaurusWord(
+                                            improvToolsAppState,
                                             synonym,
-                                        ),
+                                        )
+                                    },
+                                    onClickLabel = stringResource(
+                                        R.string.go_to_single_word_thesaurus_view,
+                                        synonym,
                                     ),
-                                    style = TextStyle.Default.copy(
-                                        color = MaterialTheme.colorScheme.primary,
-                                        textDecoration = TextDecoration.Underline,
-                                    ),
-                                )
-                            } else {
-                                Text(
-                                    synonym,
-                                )
-                            }
+                                ),
+                                style = TextStyle.Default.copy(
+                                    color = MaterialTheme.colorScheme.primary,
+                                    textDecoration = TextDecoration.Underline,
+                                ),
+                            )
+                        } else {
+                            Text(
+                                synonym,
+                            )
                         }
                     }
-                },
-                modifier = Modifier
-                    .testTag("word_$word")
-                    .combinedClickable(
-                        onClick = {},
-                        onLongClick = {
-                            val wordString = AnnotatedString(
-                                """
+                }
+            },
+            modifier = Modifier
+                .testTag("word_$word")
+                .combinedClickable(
+                    onClick = {},
+                    onLongClick = {
+                        val wordString = AnnotatedString(
+                            """
                                 |$word
                                 |Synonyms: ${viewModel.synonymsForWord(word)}
-                                """.trimMargin(),
-                            )
-                            val clipData = ClipData.newPlainText(
-                                context.getString(R.string.thesaurus_word_and_synonyms),
-                                wordString,
-                            )
-                            val clipEntry = clipData.toClipEntry()
+                            """.trimMargin(),
+                        )
+                        val clipData = ClipData.newPlainText(
+                            context.getString(R.string.thesaurus_word_and_synonyms),
+                            wordString,
+                        )
+                        val clipEntry = clipData.toClipEntry()
 
-                            coroutineScope.launch {
-                                clipboard.setClipEntry(clipEntry)
-                            }
-                        },
-                    ),
-                overlineContent = { Text("Action") }, // todo: i18n,
-//            leadingContent = TODO(),
-//            trailingContent = TODO(),
-            )
-        }
+                        coroutineScope.launch {
+                            clipboard.setClipEntry(clipEntry)
+                        }
+                    },
+                ),
+        )
     }
     // todo: consider other types of words?
     // todo: consider "action buttons". For example, "intensify" or "weaken". Also may require custom ListItem type

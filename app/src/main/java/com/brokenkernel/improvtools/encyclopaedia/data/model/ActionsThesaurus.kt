@@ -2,6 +2,10 @@ package com.brokenkernel.improvtools.encyclopaedia.data.model
 
 // TODO: this itself should be injected, future work.
 
+internal enum class ActionThesaurusType {
+    Action,
+}
+
 internal object ActionsThesaurus {
     data class ActionItem(
         val word: String,
