@@ -9,7 +9,7 @@ internal enum class ActionThesaurusType {
 internal object ActionsThesaurus {
     data class ActionItem(
         val word: String,
-        val synonyms: Set<String> = setOf(),
+        val synonyms: Set<String>,
     )
 
     // TODO: i18n
