@@ -1,6 +1,7 @@
 package com.brokenkernel.improvtools.components.presentation.view
 
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -15,6 +16,8 @@ import androidx.compose.ui.text.style.Hyphens
 import androidx.compose.ui.text.style.LineBreak
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
+import com.brokenkernel.improvtools.components.sidecar.preview.ImprovToolsAllPreviews
+import com.brokenkernel.improvtools.ui.theme.ImprovToolsTheme
 
 @Composable
 internal fun HtmlText(html: String, modifier: Modifier = Modifier) {
@@ -46,4 +49,26 @@ internal fun HtmlText(html: String, modifier: Modifier = Modifier) {
             hyphens = Hyphens.Auto,
         ),
     )
+}
+
+@ImprovToolsAllPreviews
+@Composable
+internal fun HtmlTextPreview() {
+    ImprovToolsTheme {
+        Surface {
+            HtmlText(
+                """
+            |<b>Bold Text</b>
+            |<ol>
+            |<li>One</li>
+            |</ol>
+            |<ul>
+            |<li>One</li>
+            |</ul>
+            |<a href="https://improvtools.brokenkernel.com">Link</a>
+            |"""
+                    .trimMargin(),
+            )
+        }
+    }
 }
