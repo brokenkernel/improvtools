@@ -4,8 +4,8 @@
 -keep public class * extends java.lang.Exception  # For Crashlytics
 
 
-# Protobuf relies on refelection of field names
--keepclassmembers class * extends com.google.protobuf.GeneratedMessageLite {
+# Protobuf relies on reflection of field names
+-keepclassmembers class * extends com.google.protobuf.GeneratedMessageLite* {
   <fields>;
 }
 
@@ -62,6 +62,7 @@
 -keepclassmembernames class kotlinx.** {
     volatile <fields>;
 }
+-keep class androidx.datastore.*.** {*;}
 
 ## Room
 #-keep class * extends androidx.room.RoomDatabase
