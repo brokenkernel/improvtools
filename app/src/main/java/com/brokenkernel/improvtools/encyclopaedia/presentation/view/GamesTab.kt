@@ -23,8 +23,8 @@ import androidx.compose.ui.util.fastAny
 import com.brokenkernel.improvtools.components.presentation.view.HtmlText
 import com.brokenkernel.improvtools.components.presentation.view.TabbedSearchableColumn
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GamesDataItem
-import com.brokenkernel.improvtools.encyclopaedia.data.model.GamesDatum
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GamesDatumTopic
+import com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel.GamesTabViewModel
 
 private fun transformForSearch(str: String): String {
     return str.filterNot { it.isWhitespace() }
@@ -40,15 +40,16 @@ private fun doesMatch(search: String, gameData: GamesDataItem): Boolean {
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
-internal fun GamesTab(onLaunchTitleCallback: () -> Unit) {
+internal fun GamesTab(
+    onLaunchTitleCallback: () -> Unit,
+    viewModel: GamesTabViewModel = GamesTabViewModel(),
+) {
     // TODO: consider making a BaseScreenComposable or some such
     LaunchedEffect(Unit) {
         onLaunchTitleCallback()
     }
 
-    val sortedGames = remember {
-        GamesDatum.sortedBy { it.gameName }.toList()
-    }
+    val sortedGames = remember { viewModel.sortedGames }
 
     TabbedSearchableColumn<GamesDatumTopic, GamesDataItem>(
         itemDoesMatch = ::doesMatch,
