@@ -25,11 +25,11 @@ import com.brokenkernel.improvtools.encyclopaedia.data.model.GlossaryDatum
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GlossaryDatumTopic
 
 private fun transformForSearch(str: String): String {
-    return str.lowercase().filterNot { it.isWhitespace() }
+    return str.filterNot { it.isWhitespace() }
 }
 
 private fun doesMatch(search: String, item: GlossaryDataItem): Boolean {
-    return transformForSearch(item.term).contains(search)
+    return transformForSearch(item.term).contains(search, ignoreCase = true)
 }
 
 // TODO: SearchListColumn Composable (filter fn, itemToListItem)

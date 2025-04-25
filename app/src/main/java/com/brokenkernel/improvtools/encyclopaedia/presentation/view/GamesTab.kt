@@ -27,12 +27,12 @@ import com.brokenkernel.improvtools.encyclopaedia.data.model.GamesDatum
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GamesDatumTopic
 
 private fun transformForSearch(str: String): String {
-    return str.lowercase().filterNot { it.isWhitespace() }
+    return str.filterNot { it.isWhitespace() }
 }
 
 private fun doesMatch(search: String, gameData: GamesDataItem): Boolean {
-    return transformForSearch(gameData.gameName).contains(search) or
-        gameData.unpublishedMatches.map { it -> transformForSearch(it) }.fastAny { it -> it.contains(search) }
+    return transformForSearch(gameData.gameName).contains(search, ignoreCase = true) or
+        gameData.unpublishedMatches.map { it -> transformForSearch(it) }.fastAny { it -> it.contains(search, ignoreCase = true) }
 }
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)

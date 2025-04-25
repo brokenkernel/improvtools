@@ -44,9 +44,9 @@ internal fun ThesaurusTabAllItems(
     val clipboard: Clipboard = LocalClipboard.current
     val coroutineScope = rememberCoroutineScope()
     TabbedSearchableColumn<ActionThesaurusType, String>(
-        itemDoesMatch = { searchText, word -> word.contains(searchText.lowercase()) },
+        itemDoesMatch = { searchText, word -> word.contains(searchText, ignoreCase = true) },
         itemList = viewModel.words(),
-        transformForSearch = { s -> s.lowercase() },
+        transformForSearch = { s -> s },
         itemToTopic = { _ -> ActionThesaurusType.Action },
         itemToKey = { it -> it },
     ) { word ->
