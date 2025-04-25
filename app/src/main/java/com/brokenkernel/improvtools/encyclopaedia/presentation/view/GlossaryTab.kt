@@ -41,11 +41,15 @@ internal fun GlossaryTab(onLaunchTitleCallback: () -> Unit) {
     LaunchedEffect(Unit) {
         onLaunchTitleCallback()
     }
+    val sortedGlossaryItems = remember {
+        GlossaryDatum.sortedBy { it.term }.toList()
+    }
     TabbedSearchableColumn<GlossaryDatumTopic, GlossaryDataItem>(
         itemDoesMatch = ::doesMatch,
-        itemList = GlossaryDatum.sortedBy { it.term }.toList(),
+        itemList = sortedGlossaryItems,
         transformForSearch = ::transformForSearch,
         itemToTopic = { it -> it.topic },
+        itemToKey = { it -> it.term },
     ) { it: GlossaryDataItem ->
         var isListItemInformationExpanded: Boolean by remember {
             mutableStateOf(

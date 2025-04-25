@@ -48,6 +48,7 @@ internal fun ThesaurusTabAllItems(
         itemList = viewModel.words(),
         transformForSearch = { s -> s.lowercase() },
         itemToTopic = { _ -> ActionThesaurusType.Action },
+        itemToKey = { it -> it },
     ) { word ->
         ListItem(
             headlineContent = { Text(word) },

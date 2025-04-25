@@ -43,11 +43,16 @@ internal fun GamesTab(onLaunchTitleCallback: () -> Unit) {
         onLaunchTitleCallback()
     }
 
+    val sortedGames = remember {
+        GamesDatum.sortedBy { it.gameName }.toList()
+    }
+
     TabbedSearchableColumn<GamesDatumTopic, GamesDataItem>(
         itemDoesMatch = ::doesMatch,
-        itemList = GamesDatum.sortedBy { it.gameName }.toList(),
+        itemList = sortedGames,
         transformForSearch = ::transformForSearch,
         itemToTopic = { it -> it.topic },
+        itemToKey = { it -> it.gameName },
     ) { it: GamesDataItem ->
         var isListItemInformationExpanded: Boolean by remember {
             mutableStateOf(

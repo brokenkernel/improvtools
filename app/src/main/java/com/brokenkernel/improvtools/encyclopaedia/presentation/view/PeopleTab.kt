@@ -65,17 +65,23 @@ internal fun PeopleTab(onLaunchTitleCallback: () -> Unit) {
     val comparator: Comparator<String> = Comparator { s1, s2 ->
         collator.compare(s1, s2)
     }
-
-    TabbedSearchableColumn<PeopleDatumTopic, PeopleDataItem>(
-        itemDoesMatch = ::doesMatch,
-        itemList = PeopleDatum.sortedWith { s1, s2 ->
+    // TODO: consider moving this into the viewModel
+    val sortedPeople = remember {
+        PeopleDatum.sortedWith { s1, s2 ->
             comparator.compare(
                 s1.personName,
                 s2.personName,
             )
-        }.toList(),
+        }.toList()
+    }
+
+    TabbedSearchableColumn<PeopleDatumTopic, PeopleDataItem>(
+        itemDoesMatch = ::doesMatch,
+        itemList = sortedPeople,
         transformForSearch = ::transformForSearch,
         itemToTopic = { it -> it.topic },
+        itemToKey = { it -> it.personName }
+//        itemToKey
     ) { it ->
         var isListItemInformationExpanded: Boolean by remember {
             mutableStateOf(

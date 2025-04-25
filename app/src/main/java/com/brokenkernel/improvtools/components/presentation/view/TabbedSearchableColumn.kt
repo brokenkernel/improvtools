@@ -24,6 +24,7 @@ internal inline fun <reified T : Enum<T>, I> TabbedSearchableColumn(
     itemList: List<I>,
     crossinline transformForSearch: (String) -> String,
     crossinline itemToTopic: @Composable (I) -> T,
+    noinline itemToKey: (I) -> (Any),
     crossinline itemToListItem: @Composable (I) -> (Unit), // must be last one for nice UX
 ) {
     Column {
@@ -47,7 +48,10 @@ internal inline fun <reified T : Enum<T>, I> TabbedSearchableColumn(
                 textFieldState = textFieldState,
             ) {
                 LazyColumn {
-                    items(itemList) { it: I ->
+                    items(
+                        itemList,
+                        key = itemToKey,
+                    ) { it: I ->
                         if (isSegmentedButtonChecked[itemToTopic(it).ordinal] &&
                             itemDoesMatch(
                                 transformForSearch(textFieldState.text.toString()),

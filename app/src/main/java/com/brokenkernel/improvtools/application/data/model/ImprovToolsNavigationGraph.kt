@@ -26,7 +26,6 @@ internal fun ImprovToolsNavigationGraph(
     ) {
         composable<NavigableRoute.HelpAndAboutRoute> {
             AboutTab(
-                // TODO: specific navigator
                 onNavigateToPrivacyScreen = { improvToolsAppState.navigateTo(NavigableRoute.PrivacyRoute) },
                 onLaunchCallback = {
                     improvToolsAppState.setScaffoldData(
