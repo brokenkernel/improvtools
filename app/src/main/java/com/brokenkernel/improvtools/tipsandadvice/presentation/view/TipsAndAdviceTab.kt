@@ -52,7 +52,7 @@ internal fun TipsAndAdviceScreenAsSwipable(viewModel: TipsAndAdviceViewModel = h
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val scrollState: ScrollState = rememberScrollState()
     val pagerState = rememberPagerState(
-        initialPage = 1, // TODO: maybe remember this in settings or something? (maybe split 'remembered data' from 'settings'?)
+        initialPage = 1, // TODO: maybe remember this in settings? (maybe split 'remembered data' from 'settings'?)
         pageCount = { uiState.tipsAndAdvice.size },
     )
     Column {
@@ -138,9 +138,11 @@ internal fun TipsAndAdviceScreenAsList(viewModel: TipsAndAdviceViewModel = hiltV
                                 )
                             }
                             // force arrow to the end
-                            Spacer(Modifier
-                                .weight(1f)
-                                .height(0.dp))
+                            Spacer(
+                                Modifier
+                                    .weight(1f)
+                                    .height(0.dp),
+                            )
                             if (isExpanded.value) {
                                 Icon(
                                     Icons.Default.ArrowUpward,

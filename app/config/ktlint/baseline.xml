@@ -7,7 +7,4 @@
     <file name="src/main/java/com/brokenkernel/improvtools/suggestionGenerator/presentation/viewmodel/LoadableScreenViewModel.kt">
         <error line="37" column="13" source="standard:function-naming" />
     </file>
-    <file name="src/main/java/com/brokenkernel/improvtools/tipsandadvice/presentation/view/TipsAndAdviceTab.kt">
-        <error line="58" column="1" source="standard:max-line-length" />
-    </file>
 </baseline>

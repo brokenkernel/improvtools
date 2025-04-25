@@ -32,7 +32,10 @@ private fun transformForSearch(str: String): String {
 
 private fun doesMatch(search: String, gameData: GamesDataItem): Boolean {
     return transformForSearch(gameData.gameName).contains(search, ignoreCase = true) or
-        gameData.unpublishedMatches.map { it -> transformForSearch(it) }.fastAny { it -> it.contains(search, ignoreCase = true) }
+        gameData.unpublishedMatches.map { it ->
+            transformForSearch(it)
+        }
+            .fastAny { it -> it.contains(search, ignoreCase = true) }
 }
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)

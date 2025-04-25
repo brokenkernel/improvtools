@@ -1,6 +1,5 @@
 package com.brokenkernel.improvtools.encyclopaedia.presentation.view
 
-import android.content.Intent
 import android.icu.text.Collator
 import android.icu.text.SearchIterator.DONE
 import android.icu.text.StringSearch
@@ -19,7 +18,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -80,7 +78,7 @@ internal fun PeopleTab(onLaunchTitleCallback: () -> Unit) {
         itemList = sortedPeople,
         transformForSearch = ::transformForSearch,
         itemToTopic = { it -> it.topic },
-        itemToKey = { it -> it.personName }
+        itemToKey = { it -> it.personName },
 //        itemToKey
     ) { it ->
         var isListItemInformationExpanded: Boolean by remember {
