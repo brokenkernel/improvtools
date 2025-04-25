@@ -48,11 +48,13 @@ import androidx.compose.ui.text.fromHtml
 import androidx.core.net.toUri
 import com.brokenkernel.improvtools.BuildConfig
 import com.brokenkernel.improvtools.R
-import com.brokenkernel.improvtools.application.data.model.NavigableRoute
 import kotlinx.coroutines.launch
 
 @Composable
-internal fun AboutTab(onNavigateToRoute: (NavigableRoute) -> Unit, onLaunchCallback: () -> Unit) {
+internal fun AboutTab(
+    onLaunchCallback: () -> Unit,
+    onNavigateToPrivacyScreen: () -> Unit,
+) {
     // TODO: consider making a BaseScreenComposable or some such
     LaunchedEffect(Unit) {
         onLaunchCallback()
@@ -235,9 +237,7 @@ internal fun AboutTab(onNavigateToRoute: (NavigableRoute) -> Unit, onLaunchCallb
                         }
                     }
                     TextButton(
-                        onClick = {
-                            onNavigateToRoute(NavigableRoute.PrivacyRoute)
-                        },
+                        onClick = onNavigateToPrivacyScreen,
                     ) {
                         Text(stringResource(R.string.about_show_privacy_screen))
                     }

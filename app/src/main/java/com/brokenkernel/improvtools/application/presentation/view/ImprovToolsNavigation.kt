@@ -52,7 +52,6 @@ private fun NavigableScreenNavigationDrawerItem(
 @Composable
 internal fun ImprovToolsNavigationDrawer(
     improvToolsAppState: ImprovToolsAppState,
-    doNavigateToNavigableRoute: (NavigableRoute) -> Unit,
     drawerState: DrawerState,
     initialRoute: NavigableRoute,
 ) {
@@ -189,7 +188,6 @@ internal fun ImprovToolsNavigationDrawer(
             // TODO: replace with event system instead of passing controller??
             ImprovToolsNavigationGraph(
                 improvToolsAppState,
-                onNavigateToRoute = doNavigateToNavigableRoute,
                 initialRoute = initialRoute,
             )
         }

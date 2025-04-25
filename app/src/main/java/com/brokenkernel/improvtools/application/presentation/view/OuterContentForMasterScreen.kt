@@ -15,9 +15,6 @@ internal fun OuterContentForMasterScreen(
         Surface {
             ImprovToolsNavigationDrawer(
                 improvToolsState,
-                doNavigateToNavigableRoute = { route: NavigableRoute ->
-                    improvToolsState.navigateTo(route)
-                },
                 drawerState = improvToolsState.drawerState,
                 initialRoute = initialRoute,
             )

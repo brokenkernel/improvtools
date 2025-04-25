@@ -46,7 +46,6 @@ class NavigationTest {
             val titleState = remember { mutableStateOf(NavigableScreens.SuggestionGeneratorScreen.titleResource) }
             ImprovToolsNavigationGraph(
                 improvToolsAppState = rememberImprovToolsAppState(titleState = titleState),
-                onNavigateToRoute = {},
                 initialRoute = NavigableRoute.SuggestionGeneratorRoute, // TODO - deal with app state
             )
         }

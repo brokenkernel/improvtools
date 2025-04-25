@@ -18,7 +18,6 @@ import com.brokenkernel.improvtools.tipsandadvice.presentation.view.TipsAndAdvic
 @Composable
 internal fun ImprovToolsNavigationGraph(
     improvToolsAppState: ImprovToolsAppState,
-    onNavigateToRoute: (NavigableRoute) -> Unit,
     initialRoute: NavigableRoute,
 ) {
     NavHost(
@@ -28,7 +27,7 @@ internal fun ImprovToolsNavigationGraph(
         composable<NavigableRoute.HelpAndAboutRoute> {
             AboutTab(
                 // TODO: specific navigator
-                onNavigateToRoute = onNavigateToRoute,
+                onNavigateToPrivacyScreen = { improvToolsAppState.navigateTo(NavigableRoute.PrivacyRoute) },
                 onLaunchCallback = {
                     improvToolsAppState.setScaffoldData(
                         newTitle = NavigableScreens.HelpAndAboutScreen.titleResource,
@@ -50,7 +49,7 @@ internal fun ImprovToolsNavigationGraph(
         composable<NavigableRoute.SuggestionGeneratorRoute> {
             SuggestionsTab(
                 onNavigateToEmotionsInfographic = {
-                    onNavigateToRoute(NavigableRoute.EmotionPageRoute)
+                    improvToolsAppState.navigateTo(NavigableRoute.EmotionPageRoute)
                 },
                 onLaunchTitleCallback = {
                     improvToolsAppState.setScaffoldData(
