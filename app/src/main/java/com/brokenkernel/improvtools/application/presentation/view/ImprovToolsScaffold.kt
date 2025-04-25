@@ -18,6 +18,9 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.ProvidableCompositionLocal
+import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
@@ -25,6 +28,11 @@ import androidx.compose.ui.res.stringResource
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.ApplicationConstants.APPLICATION_TITLE
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
+
+internal val LocalSnackbarHostState: ProvidableCompositionLocal<SnackbarHostState> =
+    compositionLocalOf<SnackbarHostState> {
+        error("No Snackbar Host State")
+    }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -34,62 +42,68 @@ internal fun ImprovToolsScaffold(
     content: @Composable (() -> Unit),
 ) {
     val snackbarHostState = remember { SnackbarHostState() }
-
-    Scaffold(
-        topBar = {
-            CenterAlignedTopAppBar(
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer,
-                    titleContentColor = MaterialTheme.colorScheme.primary,
-                ),
-                title = {
-                    Text(
-                        stringResource(improvToolsAppState.currentTitle.value),
-                        modifier = Modifier.testTag(APPLICATION_TITLE),
-                    )
-                },
-                scrollBehavior = TopAppBarDefaults
-                    .exitUntilCollapsedScrollBehavior(
-                        rememberTopAppBarState(),
+    CompositionLocalProvider(
+        values = arrayOf(
+            LocalSnackbarHostState provides snackbarHostState,
+        ),
+    ) {
+        Scaffold(
+            topBar = {
+                CenterAlignedTopAppBar(
+                    colors = TopAppBarDefaults.topAppBarColors(
+                        containerColor = MaterialTheme.colorScheme.primaryContainer,
+                        titleContentColor = MaterialTheme.colorScheme.primary,
                     ),
-                navigationIcon = {
-                    IconButton(onClick = navMenuButtonPressedCallback) {
-                        Icon(
-                            imageVector = Icons.Default.Menu,
-                            contentDescription = stringResource(R.string.navigation_app_menu),
+                    title = {
+                        Text(
+                            stringResource(improvToolsAppState.currentTitle.value),
+                            modifier = Modifier.testTag(APPLICATION_TITLE),
                         )
-                    }
-                },
-                actions = {
-                    val curMenu = improvToolsAppState.extraMenu.value
-                    if (curMenu != null) {
-                        IconButton(
-                            onClick = {
-                                improvToolsAppState.extraMenuExpandedState = !improvToolsAppState.extraMenuExpandedState
-                            },
-                        ) {
+                    },
+                    scrollBehavior = TopAppBarDefaults
+                        .exitUntilCollapsedScrollBehavior(
+                            rememberTopAppBarState(),
+                        ),
+                    navigationIcon = {
+                        IconButton(onClick = navMenuButtonPressedCallback) {
                             Icon(
-                                imageVector = Icons.Filled.MoreVert,
-                                contentDescription = stringResource(
-                                    R.string.navigation_open_screen_specific_menu,
-                                ),
+                                imageVector = Icons.Default.Menu,
+                                contentDescription = stringResource(R.string.navigation_app_menu),
                             )
-                            curMenu()
                         }
-                    }
-                },
-            )
-        },
-        snackbarHost = {
-            SnackbarHost(hostState = snackbarHostState)
-        },
-    ) { innerPadding ->
-        Surface(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(innerPadding),
-        ) {
-            content()
+                    },
+                    actions = {
+                        val curMenu = improvToolsAppState.extraMenu.value
+                        if (curMenu != null) {
+                            IconButton(
+                                onClick = {
+                                    improvToolsAppState.extraMenuExpandedState =
+                                        !improvToolsAppState.extraMenuExpandedState
+                                },
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Filled.MoreVert,
+                                    contentDescription = stringResource(
+                                        R.string.navigation_open_screen_specific_menu,
+                                    ),
+                                )
+                                curMenu()
+                            }
+                        }
+                    },
+                )
+            },
+            snackbarHost = {
+                SnackbarHost(hostState = LocalSnackbarHostState.current)
+            },
+        ) { innerPadding ->
+            Surface(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(innerPadding),
+            ) {
+                content()
+            }
         }
     }
 }

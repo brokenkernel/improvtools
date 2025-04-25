@@ -26,6 +26,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.FilledTonalButton
+import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -59,7 +60,7 @@ internal fun AboutTab(onNavigateToRoute: (NavigableRoute) -> Unit, onLaunchCallb
     }
     // move snackbar host state into app state. And then inject it?
     // also include more injected stuff (settings for ex) into debug datum
-    val snackbarHostState = remember { SnackbarHostState() }
+    val snackbarHostState = LocalSnackbarHostState.current
     val crScope = rememberCoroutineScope()
     val resources = LocalContext.current.resources
     val packageManager = LocalContext.current.packageManager
@@ -286,6 +287,8 @@ internal fun AboutTab(onNavigateToRoute: (NavigableRoute) -> Unit, onLaunchCallb
                         crScope.launch {
                             snackbarHostState.showSnackbar(
                                 resources.getString(R.string.error_no_email_application_available),
+                                withDismissAction = true,
+                                duration = SnackbarDuration.Short,
                             )
                         }
                     }
