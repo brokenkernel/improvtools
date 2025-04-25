@@ -15,14 +15,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
-import androidx.core.net.toUri
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.components.presentation.view.HtmlText
 import com.brokenkernel.improvtools.components.presentation.view.TabbedSearchableColumn
-import com.brokenkernel.improvtools.components.presentation.view.openInCustomTab
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GlossaryDataItem
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GlossaryDatum
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GlossaryDatumTopic
@@ -64,14 +61,8 @@ internal fun GlossaryTab(onLaunchTitleCallback: () -> Unit) {
                 )
             },
             supportingContent = {
-                val context = LocalContext.current
                 if (isListItemInformationExpanded) {
-                    HtmlText(
-                        it.detailedInformation,
-                        onUrlClick = { it ->
-                            openInCustomTab(context, it.toUri())
-                        },
-                    )
+                    HtmlText(it.detailedInformation)
                 }
             },
             modifier = Modifier.clickable(

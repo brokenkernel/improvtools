@@ -18,13 +18,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.util.fastAny
-import androidx.core.net.toUri
 import com.brokenkernel.improvtools.components.presentation.view.HtmlText
 import com.brokenkernel.improvtools.components.presentation.view.TabbedSearchableColumn
-import com.brokenkernel.improvtools.components.presentation.view.openInCustomTab
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GamesDataItem
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GamesDatum
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GamesDatumTopic
@@ -72,14 +69,8 @@ internal fun GamesTab(onLaunchTitleCallback: () -> Unit) {
             },
             overlineContent = { Text(it.topic.name) },
             supportingContent = {
-                val context = LocalContext.current
                 if (isListItemInformationExpanded) {
-                    HtmlText(
-                        it.detailedInformation,
-                        onUrlClick = { it ->
-                            openInCustomTab(context, it.toUri())
-                        },
-                    )
+                    HtmlText(it.detailedInformation)
                 }
             },
             modifier = Modifier.clickable(

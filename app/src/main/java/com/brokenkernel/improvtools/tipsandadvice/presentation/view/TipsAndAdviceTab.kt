@@ -36,16 +36,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.core.net.toUri
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.presentation.view.verticalColumnScrollbar
 import com.brokenkernel.improvtools.components.presentation.view.HtmlText
-import com.brokenkernel.improvtools.components.presentation.view.openInCustomTab
 import com.brokenkernel.improvtools.tipsandadvice.data.model.TipContentUIModel
 import com.brokenkernel.improvtools.tipsandadvice.data.model.TipsAndAdviceViewModeUI
 import com.brokenkernel.improvtools.tipsandadvice.presentation.viewmodel.TipsAndAdviceViewModel
@@ -77,13 +74,7 @@ internal fun TipsAndAdviceScreenAsSwipable(viewModel: TipsAndAdviceViewModel = h
                 }
                 Row(modifier = Modifier.verticalScroll(scrollState)) {
                     SelectionContainer {
-                        val context = LocalContext.current
-                        HtmlText(
-                            uiState.tipsAndAdvice[pagerState.currentPage].content,
-                            onUrlClick = { it ->
-                                openInCustomTab(context, it.toUri())
-                            },
-                        )
+                        HtmlText(uiState.tipsAndAdvice[pagerState.currentPage].content)
                     }
                 }
             }
@@ -117,9 +108,11 @@ internal fun TipsAndAdviceScreenAsList(viewModel: TipsAndAdviceViewModel = hiltV
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val columnScrollState: ScrollState = rememberScrollState()
     Column(
-        modifier = Modifier.verticalColumnScrollbar(
-            columnScrollState,
-        ).verticalScroll(columnScrollState),
+        modifier = Modifier
+            .verticalColumnScrollbar(
+                columnScrollState,
+            )
+            .verticalScroll(columnScrollState),
     ) {
         uiState.tipsAndAdvice.forEach { it: TipContentUIModel ->
             val isExpanded = remember { mutableStateOf(false) }
@@ -145,7 +138,9 @@ internal fun TipsAndAdviceScreenAsList(viewModel: TipsAndAdviceViewModel = hiltV
                                 )
                             }
                             // force arrow to the end
-                            Spacer(Modifier.weight(1f).height(0.dp))
+                            Spacer(Modifier
+                                .weight(1f)
+                                .height(0.dp))
                             if (isExpanded.value) {
                                 Icon(
                                     Icons.Default.ArrowUpward,
@@ -167,13 +162,7 @@ internal fun TipsAndAdviceScreenAsList(viewModel: TipsAndAdviceViewModel = hiltV
                 if (isExpanded.value) {
                     Row {
                         SelectionContainer {
-                            val context = LocalContext.current
-                            HtmlText(
-                                it.content,
-                                onUrlClick = { it ->
-                                    openInCustomTab(context, it.toUri())
-                                },
-                            )
+                            HtmlText(it.content)
                         }
                     }
                 }

@@ -1,12 +1,10 @@
 package com.brokenkernel.improvtools.components.presentation.view
 
-import android.content.Context
-import android.net.Uri
-import androidx.browser.customtabs.CustomTabsIntent
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.LinkAnnotation
 import androidx.compose.ui.text.SpanStyle
@@ -18,22 +16,17 @@ import androidx.compose.ui.text.style.LineBreak
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 
-// consider pulling this elsewhere?
-internal fun openInCustomTab(context: Context, url: Uri) {
-    val builder: CustomTabsIntent.Builder = CustomTabsIntent.Builder()
-    val customTabsIntent: CustomTabsIntent = builder.build()
-    customTabsIntent.launchUrl(context, url)
-}
-
 @Composable
-internal fun HtmlText(html: String, modifier: Modifier = Modifier, onUrlClick: ((String) -> Unit)) {
+internal fun HtmlText(html: String, modifier: Modifier = Modifier) {
+    val uriHandler = LocalUriHandler.current
+
     val text: AnnotatedString = AnnotatedString.fromHtml(
         html,
         linkInteractionListener = { linkAnnotation ->
             when (linkAnnotation) {
                 is LinkAnnotation.Url -> {
                     val urlString = linkAnnotation.url
-                    onUrlClick(urlString)
+                    uriHandler.openUri(urlString)
                 }
             }
         },

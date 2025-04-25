@@ -23,11 +23,14 @@ import androidx.compose.runtime.ProvidableCompositionLocal
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.ApplicationConstants.APPLICATION_TITLE
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
+import com.brokenkernel.improvtools.sidecar.customtabs.CustomTabUriHandler
 
 internal val LocalSnackbarHostState: ProvidableCompositionLocal<SnackbarHostState> =
     compositionLocalOf<SnackbarHostState> {
@@ -42,9 +45,12 @@ internal fun ImprovToolsScaffold(
     content: @Composable (() -> Unit),
 ) {
     val snackbarHostState = remember { SnackbarHostState() }
+    val customTabHandler = CustomTabUriHandler(LocalContext.current)
+
     CompositionLocalProvider(
         values = arrayOf(
             LocalSnackbarHostState provides snackbarHostState,
+            LocalUriHandler provides customTabHandler,
         ),
     ) {
         Scaffold(

@@ -20,6 +20,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
@@ -92,12 +93,10 @@ internal fun PeopleTab(onLaunchTitleCallback: () -> Unit) {
             overlineContent = { Text(it.knownFor) },
             trailingContent = {
                 if (it.wikipediaLink != null) {
-                    val context = LocalContext.current
+                    val uriHandler = LocalUriHandler.current
                     OutlinedIconButton(
                         onClick = {
-                            val browserIntent =
-                                Intent(Intent.ACTION_VIEW, it.wikipediaLink)
-                            context.startActivity(browserIntent)
+                            uriHandler.openUri(it.wikipediaLink.toString())
                         },
                     ) {
                         Icon(
