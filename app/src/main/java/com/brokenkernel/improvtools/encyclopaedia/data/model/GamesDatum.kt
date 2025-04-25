@@ -26,11 +26,11 @@ internal val GamesDatum: Collection<GamesDataItem> = listOf(
              says <q>three things</q> and the next person should say three things
              which match the category.
              Critically it should be:
-             <ol>
+             <ul>
              <li>As fast as possible (high energy).  Avoid filler words like "erm" or "uh"
              <li>Answers don't need to be 'correct' or 'true' (they automatically are!)
              <li>Treated as if the questions and answers are the most important ever given.
-             </ol>
+             </ul>
              <b>Variations:</b> 15 Things, Category Things (name the category), Word-At-A-Time things,
         """.trimIndent(),
         unpublishedMatches = setOf("Three Things"),
@@ -40,6 +40,14 @@ internal val GamesDatum: Collection<GamesDataItem> = listOf(
     GamesDataItem(
         gameName = "Ball",
         topic = GamesDatumTopic.WARMUP,
+        detailedInformation = """
+            |Stand in a circle. Players take turns hitting a ball.
+            |The game ends if:
+            |<ul>
+            |<li>Any player hits the ball more than once in a row.</li>
+            |<li>The ball hits the floor.</li>
+            |</ul>
+        """.trimMargin(),
     ),
     GamesDataItem(
         gameName = "The Armando",
