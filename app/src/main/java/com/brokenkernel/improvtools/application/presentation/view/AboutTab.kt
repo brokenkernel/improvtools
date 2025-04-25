@@ -38,6 +38,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.Clipboard
 import androidx.compose.ui.platform.LocalClipboard
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.toClipEntry
 import androidx.compose.ui.res.stringResource
@@ -77,6 +78,7 @@ internal fun AboutTab(onNavigateToRoute: (NavigableRoute) -> Unit, onLaunchCallb
     } else {
         null
     }
+    val localConfig = LocalConfiguration.current
 
     val context = LocalContext.current
     val clipboard: Clipboard = LocalClipboard.current
@@ -122,6 +124,7 @@ internal fun AboutTab(onNavigateToRoute: (NavigableRoute) -> Unit, onLaunchCallb
         }
             |${resources.getString(R.string.about_is_safe_mode, packageManager.isSafeMode)}
             |
+            |<big>Build Constants</big>
             |BOARD=${Build.BOARD}
             |BOOTLOADER=${Build.BOOTLOADER}
             |BRAND=${Build.BRAND}
@@ -139,20 +142,43 @@ internal fun AboutTab(onNavigateToRoute: (NavigableRoute) -> Unit, onLaunchCallb
             |TIME=${Build.TIME}
             |TYPE=${Build.TYPE}
             |USER=${Build.USER}
+            |
+            |<big>LocalConfig</big>
+            |Locales=${localConfig.locales}
+            |NavigationType=${localConfig.navigation}
+            |ColorMode=${localConfig.colorMode}
+            |DensityDPI=${localConfig.densityDpi}
+            |NavigationHidden=${localConfig.navigationHidden}
+            |Orientation=${localConfig.orientation}
+            |ScreenLayout=${localConfig.screenLayout}
+            |ScreenHDR=${localConfig.isScreenHdr}
+            |WideColorGamut=${localConfig.isScreenWideColorGamut}
+            |ScreenRound=${localConfig.isScreenRound}
+            |uiMode=${localConfig.uiMode}
+            |Touchscreen=${localConfig.touchscreen}
+            |smallestScreenWidthDp=${localConfig.smallestScreenWidthDp}
+            |layoutDirection=${localConfig.layoutDirection}
+            |layoutDirection=${localConfig.layoutDirection}
         """.trimMargin().replace("\n", "<br/>")
 
-        val additionalDataForSDK33Plus = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+        // Technically this skips some information for 33,34, but not that important.
+        val additionalDataForSDK35Plus = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
             """
+                |<big> Additional Build Datum </big>
                 |ODM_SKU=${Build.ODM_SKU}
                 |SKU=${Build.SKU}
                 |SOC_MANUFACTURER=${Build.SOC_MANUFACTURER}
                 |SOC_MODEL=${Build.SOC_MODEL}
+                |
+                |<big>Additional LocalConfig Datum</big>
+                |NightMode=${localConfig.isNightModeActive}
+                |grammaticalGender=${localConfig.grammaticalGender}
             """.trimMargin().replace("\n", "<br/>")
         } else {
             ""
         }
 
-        val result = basicResult + additionalDataForSDK33Plus
+        val result = basicResult + additionalDataForSDK35Plus
 
         // further debug information for the future
 //    Build.getFingerprintedPartitions()
