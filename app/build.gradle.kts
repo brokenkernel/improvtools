@@ -1,11 +1,13 @@
 @file:OptIn(KspExperimental::class)
 
 import com.android.build.api.dsl.VariantDimension
+import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import com.google.devtools.ksp.KspExperimental
 import com.google.firebase.crashlytics.buildtools.gradle.CrashlyticsExtension
 import com.mikepenz.aboutlibraries.plugin.DuplicateMode
 import com.mikepenz.aboutlibraries.plugin.DuplicateRule
 import com.mikepenz.aboutlibraries.plugin.StrictMode
+import org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.conflicts.DefaultCapabilitiesConflictHandler.candidate
 import java.io.IOException
 import java.util.Properties
 import org.jetbrains.dokka.gradle.engine.parameters.VisibilityModifier
@@ -28,6 +30,7 @@ plugins {
     alias(libs.plugins.protobuf)
     alias(libs.plugins.sortDependencies)
     alias(libs.plugins.spotless)
+    alias(libs.plugins.versions)
 //    alias(libs.plugins.firebasePerfPlugin)
 
     kotlin("plugin.power-assert") version "2.1.20"
@@ -404,4 +407,21 @@ ksp {
     arg("dagger.experimentalDaggerErrorMessages", "enabled")
     arg("dagger.warnIfInjectionFactoryNotGeneratedUpstream", "enabled")
     arg("dagger.fullBindingGraphValidation", "error")
+}
+
+fun isNonStable(version: String): Boolean {
+    val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { version.uppercase().contains(it) }
+    val regex = "^[0-9,.v-]+(-r)?$".toRegex()
+    val isStable = stableKeyword || regex.matches(version)
+    return isStable.not()
+}
+
+tasks.withType<DependencyUpdatesTask> {
+
+    checkConstraints = true
+    checkBuildEnvironmentConstraints = true
+    checkForGradleUpdate = true
+    rejectVersionIf {
+        isNonStable(candidate.version)
+    }
 }

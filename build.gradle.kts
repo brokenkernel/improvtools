@@ -18,6 +18,8 @@ plugins {
     alias(libs.plugins.sortDependencies) apply false
     alias(libs.plugins.spotless) apply false
     alias(libs.plugins.dokka)
+    alias(libs.plugins.versions) apply false
+    alias(libs.plugins.versionCatalogUpdate)
 
     kotlin("plugin.power-assert") version "2.1.20" apply false
 }
@@ -58,5 +60,21 @@ dokka {
             // outputDirectory = rootDir.resolve("docs/static/api")
             includes.from(project.layout.projectDirectory.file("README.md"))
         }
+    }
+}
+
+fun isNonStable(version: String): Boolean {
+    val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { version.uppercase().contains(it) }
+    val regex = "^[0-9,.v-]+(-r)?$".toRegex()
+    val isStable = stableKeyword || regex.matches(version)
+    return isStable.not()
+}
+
+versionCatalogUpdate {
+    sortByKey = true
+    pin {
+    }
+    keep {
+        keepUnusedVersions = true
     }
 }
