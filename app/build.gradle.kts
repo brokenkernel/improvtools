@@ -7,7 +7,6 @@ import com.google.firebase.crashlytics.buildtools.gradle.CrashlyticsExtension
 import com.mikepenz.aboutlibraries.plugin.DuplicateMode
 import com.mikepenz.aboutlibraries.plugin.DuplicateRule
 import com.mikepenz.aboutlibraries.plugin.StrictMode
-import org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.conflicts.DefaultCapabilitiesConflictHandler.candidate
 import java.io.IOException
 import java.util.Properties
 import org.jetbrains.dokka.gradle.engine.parameters.VisibilityModifier
@@ -342,6 +341,7 @@ aboutLibraries {
 ktlint {
     android = true
     coloredOutput = true
+    version = "1.5.0"
 }
 
 spotless {
