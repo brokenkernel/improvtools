@@ -21,6 +21,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ProvidableCompositionLocal
 import androidx.compose.runtime.compositionLocalOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -44,7 +45,7 @@ internal fun ImprovToolsScaffold(
     navMenuButtonPressedCallback: () -> Unit,
     content: @Composable (() -> Unit),
 ) {
-    val snackbarHostState = rememberSaveable { SnackbarHostState() }
+    val snackbarHostState = remember { SnackbarHostState() }
     val customTabHandler = CustomTabUriHandler(LocalContext.current)
 
     CompositionLocalProvider(
