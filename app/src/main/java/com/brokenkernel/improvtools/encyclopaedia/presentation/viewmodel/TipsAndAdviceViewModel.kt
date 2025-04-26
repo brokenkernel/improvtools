@@ -5,8 +5,8 @@ import androidx.lifecycle.viewModelScope
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.datastore.UserSettings
 import com.brokenkernel.improvtools.encyclopaedia.data.model.TipContentUI
-import com.brokenkernel.improvtools.encyclopaedia.data.model.TipsAndAdviceUI
 import com.brokenkernel.improvtools.encyclopaedia.data.model.TipsAndAdviceProcessedModel
+import com.brokenkernel.improvtools.encyclopaedia.data.model.TipsAndAdviceUI
 import com.brokenkernel.improvtools.encyclopaedia.data.model.TipsAndAdviceViewModeUI
 import com.brokenkernel.improvtools.encyclopaedia.data.repository.TipsAndAdviceRepository
 import com.brokenkernel.improvtools.settings.data.repository.SettingsRepository
