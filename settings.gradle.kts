@@ -20,7 +20,9 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "ImprovTools"
-include(":app")
 
 enableFeaturePreview("STABLE_CONFIGURATION_CACHE")
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
+include(":app")
+include(":components")

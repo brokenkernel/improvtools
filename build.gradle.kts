@@ -22,6 +22,7 @@ plugins {
     alias(libs.plugins.versionCatalogUpdate)
 
     kotlin("plugin.power-assert") version "2.1.20" apply false
+    alias(libs.plugins.android.library) apply false
 }
 
 dependencies {
