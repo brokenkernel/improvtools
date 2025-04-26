@@ -48,10 +48,12 @@ import androidx.compose.ui.text.fromHtml
 import androidx.core.net.toUri
 import com.brokenkernel.improvtools.BuildConfig
 import com.brokenkernel.improvtools.R
+import com.brokenkernel.improvtools.application.utils.AboutTabViewModel
 import kotlinx.coroutines.launch
 
 @Composable
 internal fun AboutTab(
+    viewModel: AboutTabViewModel = AboutTabViewModel(),
     onLaunchCallback: () -> Unit,
     onNavigateToPrivacyScreen: () -> Unit,
 ) {
