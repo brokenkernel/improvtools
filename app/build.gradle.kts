@@ -252,9 +252,10 @@ dependencies {
     implementation(libs.play.services.instantapps)
     implementation(libs.reorderable)
 
-    debugImplementation(libs.androidx.ui.test.manifest)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.leakcanary.android)
+
+    debugRuntimeOnly(libs.androidx.ui.test.manifest)
 
     testImplementation(kotlin("test"))
     testImplementation(libs.androidx.lifecycle.runtime.testing)
