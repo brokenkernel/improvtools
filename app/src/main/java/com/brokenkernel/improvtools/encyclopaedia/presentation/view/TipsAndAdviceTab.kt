@@ -1,4 +1,4 @@
-package com.brokenkernel.improvtools.tipsandadvice.presentation.view
+package com.brokenkernel.improvtools.encyclopaedia.presentation.view
 
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.background
@@ -43,9 +43,9 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.presentation.view.verticalColumnScrollbar
 import com.brokenkernel.improvtools.components.presentation.view.HtmlText
-import com.brokenkernel.improvtools.tipsandadvice.data.model.TipContentUIModel
-import com.brokenkernel.improvtools.tipsandadvice.data.model.TipsAndAdviceViewModeUI
-import com.brokenkernel.improvtools.tipsandadvice.presentation.viewmodel.TipsAndAdviceViewModel
+import com.brokenkernel.improvtools.encyclopaedia.data.model.TipContentUIModel
+import com.brokenkernel.improvtools.encyclopaedia.data.model.TipsAndAdviceViewModeUI
+import com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel.TipsAndAdviceViewModel
 
 @Composable
 internal fun TipsAndAdviceScreenAsSwipable(viewModel: TipsAndAdviceViewModel = hiltViewModel()) {

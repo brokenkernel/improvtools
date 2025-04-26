@@ -1,4 +1,4 @@
-package com.brokenkernel.improvtools.tipsandadvice.data.model
+package com.brokenkernel.improvtools.encyclopaedia.data.model
 
 import androidx.annotation.Size
 import com.brokenkernel.improvtools.datastore.UserSettings.TipsAndTricksViewMode

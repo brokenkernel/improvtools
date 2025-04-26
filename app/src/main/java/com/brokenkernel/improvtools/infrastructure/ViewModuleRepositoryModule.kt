@@ -2,8 +2,8 @@ package com.brokenkernel.improvtools.infrastructure
 
 import android.content.Context
 import com.brokenkernel.improvtools.suggestionGenerator.data.repository.ResourcesAudienceSuggestionDatumRepository
-import com.brokenkernel.improvtools.tipsandadvice.data.repository.DefaultTipsAndAdviceRepository
-import com.brokenkernel.improvtools.tipsandadvice.data.repository.TipsAndAdviceRepository
+import com.brokenkernel.improvtools.encyclopaedia.data.repository.DefaultTipsAndAdviceRepository
+import com.brokenkernel.improvtools.encyclopaedia.data.repository.TipsAndAdviceRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

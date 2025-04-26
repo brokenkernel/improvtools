@@ -1,18 +1,17 @@
-package com.brokenkernel.improvtools.tipsandadvice.presentation.viewmodel
+package com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.datastore.UserSettings
+import com.brokenkernel.improvtools.encyclopaedia.data.model.TipContentUIModel
+import com.brokenkernel.improvtools.encyclopaedia.data.model.TipsAndAdviceOnUIModel
+import com.brokenkernel.improvtools.encyclopaedia.data.model.TipsAndAdviceProcessedModel
+import com.brokenkernel.improvtools.encyclopaedia.data.model.TipsAndAdviceViewModeUI
+import com.brokenkernel.improvtools.encyclopaedia.data.repository.TipsAndAdviceRepository
 import com.brokenkernel.improvtools.settings.data.repository.SettingsRepository
-import com.brokenkernel.improvtools.tipsandadvice.data.model.TipContentUIModel
-import com.brokenkernel.improvtools.tipsandadvice.data.model.TipsAndAdviceOnUIModel
-import com.brokenkernel.improvtools.tipsandadvice.data.model.TipsAndAdviceProcessedModel
-import com.brokenkernel.improvtools.tipsandadvice.data.model.TipsAndAdviceViewModeUI
-import com.brokenkernel.improvtools.tipsandadvice.data.repository.TipsAndAdviceRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jakarta.inject.Inject
-import java.io.InputStream
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -21,6 +20,7 @@ import kotlinx.coroutines.launch
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.decodeFromStream
+import java.io.InputStream
 
 @OptIn(ExperimentalSerializationApi::class)
 @HiltViewModel
@@ -35,7 +35,7 @@ internal class TipsAndAdviceViewModel @Inject constructor(
     val uiState: StateFlow<TipsAndAdviceOnUIModel>
 
     private val _taaViewMode: MutableStateFlow<TipsAndAdviceViewModeUI> = MutableStateFlow(
-        TipsAndAdviceViewModeUI.byInternalEnumValue(
+        TipsAndAdviceViewModeUI.Companion.byInternalEnumValue(
             UserSettings.TipsAndTricksViewMode.VIEW_MODE_DEFAULT,
         ),
     )
@@ -47,7 +47,7 @@ internal class TipsAndAdviceViewModel @Inject constructor(
         val unprocessedTipsAndAdvice: InputStream =
             tipsAndAdviceRepository.resources.openRawResource(R.raw.tips_and_advice)
         val tipsAndAdviceDatum: TipsAndAdviceProcessedModel =
-            Json.decodeFromStream<TipsAndAdviceProcessedModel>(unprocessedTipsAndAdvice)
+            Json.Default.decodeFromStream<TipsAndAdviceProcessedModel>(unprocessedTipsAndAdvice)
 
         val rawDictTipsAndAdvice = tipsAndAdviceDatum
         tipsAndAdviceProcessed = rawDictTipsAndAdvice.advice.toList().map { (x, y) -> TipContentUIModel(x, y) }
@@ -55,7 +55,7 @@ internal class TipsAndAdviceViewModel @Inject constructor(
         uiState = _uiState.asStateFlow()
         viewModelScope.launch {
             settingsRepository.userSettingsFlow.collectLatest { it ->
-                _taaViewMode.value = TipsAndAdviceViewModeUI.byInternalEnumValue(it.tipsAndTricksViewMode)
+                _taaViewMode.value = TipsAndAdviceViewModeUI.Companion.byInternalEnumValue(it.tipsAndTricksViewMode)
             }
         }
     }

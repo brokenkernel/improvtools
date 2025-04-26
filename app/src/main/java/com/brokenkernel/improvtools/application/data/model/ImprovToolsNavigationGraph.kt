@@ -12,8 +12,8 @@ import com.brokenkernel.improvtools.settings.presentation.view.SettingsTab
 import com.brokenkernel.improvtools.settings.presentation.view.SuggestionsTabMenu
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.view.SuggestionsTab
 import com.brokenkernel.improvtools.timer.presentation.view.TimerTab
-import com.brokenkernel.improvtools.tipsandadvice.presentation.view.TipsAndAdviceTab
-import com.brokenkernel.improvtools.tipsandadvice.presentation.view.TipsAndAdviceTabMenu
+import com.brokenkernel.improvtools.encyclopaedia.presentation.view.TipsAndAdviceTab
+import com.brokenkernel.improvtools.encyclopaedia.presentation.view.TipsAndAdviceTabMenu
 
 @Composable
 internal fun ImprovToolsNavigationGraph(

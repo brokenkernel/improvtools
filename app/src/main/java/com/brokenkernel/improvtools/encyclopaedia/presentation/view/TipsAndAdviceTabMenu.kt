@@ -1,4 +1,4 @@
-package com.brokenkernel.improvtools.tipsandadvice.presentation.view
+package com.brokenkernel.improvtools.encyclopaedia.presentation.view
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -19,9 +19,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.settings.presentation.viewmodel.SettingsScreenViewModel
 import com.brokenkernel.improvtools.settings.utils.toTitleCase
-import com.brokenkernel.improvtools.tipsandadvice.data.model.TipsAndAdviceViewModeUI
+import com.brokenkernel.improvtools.encyclopaedia.data.model.TipsAndAdviceViewModeUI
 
-// TODO: consider moving into 'encyclopedia' package?
 @Composable
 internal fun TipsAndAdviceTabMenu(
     viewModel: SettingsScreenViewModel = hiltViewModel(),

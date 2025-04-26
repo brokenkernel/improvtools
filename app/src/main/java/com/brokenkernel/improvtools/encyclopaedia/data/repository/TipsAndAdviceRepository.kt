@@ -1,4 +1,4 @@
-package com.brokenkernel.improvtools.tipsandadvice.data.repository
+package com.brokenkernel.improvtools.encyclopaedia.data.repository
 
 import android.content.res.Resources
 
