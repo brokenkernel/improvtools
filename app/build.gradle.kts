@@ -332,6 +332,8 @@ aboutLibraries {
         allowedLicenses.addAll("EPL-1.0")
         allowedLicenses.addAll("MIT")
         allowedLicenses.addAll("CC0-1.0")
+        allowedLicenses.addAll("Eclipse Public License v. 2.0")
+        allowedLicenses.addAll("GNU General Public License, version 2 with the GNU Classpath Exception")
     }
     library {
         duplicationMode = DuplicateMode.LINK

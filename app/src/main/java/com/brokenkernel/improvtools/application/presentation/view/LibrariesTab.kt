@@ -14,9 +14,7 @@ internal fun LibrariesTab(onLaunchTitleCallback: () -> Unit) {
         onLaunchTitleCallback()
     }
 
-    Column {
-        LibrariesContainer(
-            modifier = Modifier.fillMaxSize(),
-        )
-    }
+    LibrariesContainer(
+        modifier = Modifier.fillMaxSize(),
+    )
 }
