@@ -19,7 +19,9 @@ class CustomTabUriHandler(val context: Context) : UriHandler {
         if (Log.isLoggable(TAG, Log.INFO)) {
             Log.i(TAG, "openUri: $uri")
         }
-        val builder: CustomTabsIntent.Builder = CustomTabsIntent.Builder(customTabSessionManager.mSession)
+        val builder: CustomTabsIntent.Builder = CustomTabsIntent
+            .Builder(customTabSessionManager.mSession)
+            .setSendToExternalDefaultHandlerEnabled(true)
         val customTabsIntent: CustomTabsIntent = builder.build()
         val customTabPackage = CustomTabsClient.getPackageName(context, null)
         customTabsIntent.intent.setPackage(customTabPackage)
