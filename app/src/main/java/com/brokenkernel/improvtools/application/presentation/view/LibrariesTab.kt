@@ -1,6 +1,5 @@
 package com.brokenkernel.improvtools.application.presentation.view
 
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
