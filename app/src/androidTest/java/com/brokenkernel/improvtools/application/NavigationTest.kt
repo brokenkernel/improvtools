@@ -1,4 +1,4 @@
-package com.brokenkernel.improvtools
+package com.brokenkernel.improvtools.application
 
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -11,6 +11,7 @@ import androidx.compose.ui.test.onRoot
 import androidx.navigation.compose.ComposeNavigator
 import androidx.navigation.testing.TestNavHostController
 import androidx.test.ext.junit.rules.ActivityScenarioRule
+import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsNavigationGraph
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
@@ -31,7 +32,7 @@ class NavigationTest {
 
     @get:Rule(order = 1)
     val composeTestRule:
-        AndroidComposeTestRule<ActivityScenarioRule<HiltComponentActitivity>, HiltComponentActitivity> =
+            AndroidComposeTestRule<ActivityScenarioRule<HiltComponentActitivity>, HiltComponentActitivity> =
         createAndroidComposeRule<HiltComponentActitivity>()
 
     lateinit var navController: TestNavHostController

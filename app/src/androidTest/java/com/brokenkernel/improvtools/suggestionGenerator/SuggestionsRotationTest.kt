@@ -1,14 +1,16 @@
-package com.brokenkernel.improvtools
+package com.brokenkernel.improvtools.suggestionGenerator
 
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.AndroidComposeTestRule
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onRoot
 import androidx.test.espresso.device.DeviceInteraction.Companion.setScreenOrientation
-import androidx.test.espresso.device.EspressoDevice.Companion.onDevice
+import androidx.test.espresso.device.EspressoDevice
 import androidx.test.espresso.device.action.ScreenOrientation
 import androidx.test.espresso.device.rules.ScreenOrientationRule
 import androidx.test.ext.junit.rules.ActivityScenarioRule
+import com.brokenkernel.improvtools.MainActivity
+import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.infrastructure.onNodeWithStringId
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
@@ -37,7 +39,7 @@ class SuggestionsRotationTest {
 
     @Test
     fun assertRootStillDisplayedAfterRotation() {
-        onDevice().setScreenOrientation(ScreenOrientation.LANDSCAPE)
+        EspressoDevice.Companion.onDevice().setScreenOrientation(ScreenOrientation.LANDSCAPE)
         composeTestRule
             .onRoot()
             .assertIsDisplayed()
