@@ -204,14 +204,14 @@ internal fun TimerTab(viewModel: TimerListViewModel = hiltViewModel(), onLaunchT
                     viewModel.addTimer("wat", TimerListViewModel.TimerType.STOPWATCH)
                 },
             ) {
-                Icon(Icons.Filled.Timer, "New StopWatch Timer")
+                Icon(Icons.Filled.Timer, stringResource(R.string.new_stopwatch_timer))
             }
             LargeFloatingActionButton(
                 onClick = {
                     viewModel.addTimer("pot", TimerListViewModel.TimerType.COUNTDOWN)
                 },
             ) {
-                Icon(Icons.Filled.AlarmAdd, "New CountDown Timer")
+                Icon(Icons.Filled.AlarmAdd, stringResource(R.string.new_countdown_timer))
             }
         }
     }

@@ -95,4 +95,6 @@
   <string name="glossary_term">Glossary Term</string>
   <string name="navigation_glossary">Glossary</string>
   <string name="go_to_glossary">Go To Glossary</string>
+    <string name="new_stopwatch_timer">New StopWatch Timer</string>
+  <string name="new_countdown_timer">New CountDown Timer</string>
 </resources>
