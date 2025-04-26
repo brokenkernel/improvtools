@@ -6,6 +6,7 @@ import android.icu.text.StringSearch
 import android.icu.util.ULocale
 import androidx.compose.foundation.clickable
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Web
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItem
@@ -96,19 +97,26 @@ internal fun PeopleTab(onLaunchTitleCallback: () -> Unit) {
             },
             overlineContent = { Text(it.knownFor) },
             trailingContent = {
-                if (it.wikipediaLink != null) {
+                if (it.learnMoreLink != null) {
                     val uriHandler = LocalUriHandler.current
                     OutlinedIconButton(
                         onClick = {
-                            uriHandler.openUri(it.wikipediaLink.toString())
+                            uriHandler.openUri(it.learnMoreLink.toString())
                         },
                     ) {
-                        Icon(
-                            painterResource(R.drawable.logo_wikipedia),
-                            contentDescription = stringResource(
-                                R.string.wikipedia,
-                            ),
-                        )
+                        if (it.isWikipedia) {
+                            Icon(
+                                painterResource(R.drawable.logo_wikipedia),
+                                contentDescription = stringResource(
+                                    R.string.wikipedia,
+                                ),
+                            )
+                        } else {
+                            Icon(
+                                Icons.Default.Web,
+                                contentDescription = stringResource(R.string.open_website),
+                            )
+                        }
                     }
                 }
             },

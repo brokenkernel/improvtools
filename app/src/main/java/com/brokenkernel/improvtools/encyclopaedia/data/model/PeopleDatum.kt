@@ -5,6 +5,7 @@ import androidx.core.net.toUri
 
 // TODO: add link to wikipedia for others
 // TODO: localise wikipedia link
+// TODO: figure out how to open a specific item at start, or deep link, or similar. For example filter to 'BATS' or some such
 
 internal enum class PeopleDatumTopic {
     PERSON,
@@ -15,15 +16,18 @@ internal data class PeopleDataItem(
     val personName: String,
     val topic: PeopleDatumTopic,
     val knownFor: String,
-    val wikipediaLink: Uri? = null,
+    val learnMoreLink: Uri? = null,
     val detailedInformation: String = "",
 ) {
     init {
         // sanity check/validation
-        if (this.wikipediaLink != null) {
-            require(this.wikipediaLink.scheme == "https")
+        if (this.learnMoreLink != null) {
+            require(this.learnMoreLink.scheme == "https")
         }
     }
+
+    val isWikipedia: Boolean =
+        this.learnMoreLink?.host == "en.wikipedia.org"
 }
 
 internal val PeopleDatum: Collection<PeopleDataItem> = listOf(

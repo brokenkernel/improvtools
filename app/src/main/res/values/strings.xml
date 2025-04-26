@@ -97,4 +97,5 @@
   <string name="go_to_glossary">Go To Glossary</string>
     <string name="new_stopwatch_timer">New StopWatch Timer</string>
   <string name="new_countdown_timer">New CountDown Timer</string>
+  <string name="open_website">Open Website</string>
 </resources>
