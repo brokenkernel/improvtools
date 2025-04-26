@@ -9,3 +9,6 @@ bundle exec fastlane update_plugins
   hugo mod get -u
   npm upgrade
 )
+
+./gradlew dependencyUpdates
+./gradlew versionCatalogFormat
