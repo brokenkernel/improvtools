@@ -5,7 +5,7 @@ import androidx.compose.ui.test.junit4.AndroidComposeTestRule
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onRoot
 import androidx.test.ext.junit.rules.ActivityScenarioRule
-import com.brokenkernel.improvtools.application.presentation.view.LibrariesTab
+import com.brokenkernel.improvtools.application.presentation.view.PrivacyTab
 import com.brokenkernel.improvtools.infrastructure.HiltComponentActitivity
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
@@ -14,7 +14,7 @@ import org.junit.Rule
 import org.junit.Test
 
 @HiltAndroidTest
-class LibrariesTabTest {
+class PrivacyTabTest {
 
     @get:Rule(order = 0)
     var hiltRule: HiltAndroidRule = HiltAndroidRule(this)
@@ -28,7 +28,7 @@ class LibrariesTabTest {
     fun setupAppNavHost() {
         hiltRule.inject()
         composeTestRule.setContent {
-            LibrariesTab(
+            PrivacyTab(
                 onLaunchTitleCallback = { },
             )
         }
