@@ -1,3 +1,4 @@
 # I often work offline. This is a another TODO instead of github
 - move jquery and other such things to local static so it works offline
 - add widget support for suggestions
+- reorder suggestions: https://github.com/Calvin-LL/Reorderable/

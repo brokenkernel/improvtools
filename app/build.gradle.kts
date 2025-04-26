@@ -188,6 +188,7 @@ dependencies {
     implementation(platform(libs.androidx.compose.bom)) {
         because("we are an android compose application")
     }
+    implementation(platform(libs.com.fasterxml.jackson.bom))
     implementation(platform(libs.com.google.firebase.firebaseBom))
     implementation(platform(libs.kotlin.bom))
     implementation(libs.aboutlibraries.compose.m3)
@@ -197,6 +198,8 @@ dependencies {
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.activity.ktx)
     implementation(libs.androidx.annotation)
+    implementation(libs.androidx.appsearch)
+    implementation(libs.androidx.appsearch.platform.storage)
     implementation(libs.androidx.browser)
     implementation(libs.androidx.compose.material.extended)
     implementation(libs.androidx.core.ktx)
@@ -205,6 +208,12 @@ dependencies {
     //    implementation(libs.androidx.glance.appwidget)
     //    implementation(libs.androidx.glance.material3)
     implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.androidx.ink.authoring)
+    implementation(libs.androidx.ink.brush)
+    implementation(libs.androidx.ink.geometry)
+    implementation(libs.androidx.ink.nativeloader)
+    implementation(libs.androidx.ink.rendering)
+    implementation(libs.androidx.ink.strokes)
     implementation(libs.androidx.input.motionprediction)
     implementation(libs.androidx.lifecycle.process)
     implementation(libs.androidx.lifecycle.runtime.compose)
@@ -239,6 +248,7 @@ dependencies {
     implementation(libs.kotlinx.serialization.protobuf)
     implementation(libs.net.engawapg.lib.zoomable)
     implementation(libs.play.services.instantapps)
+    implementation(libs.reorderable)
 
     debugImplementation(libs.androidx.ui.test.manifest)
     debugImplementation(libs.androidx.ui.tooling)
@@ -264,6 +274,7 @@ dependencies {
     dokkaPlugin(libs.android.documentation.plugin)
     dokkaPlugin(libs.mathjax.plugin)
 
+    ksp(libs.androidx.appsearch.compiler)
     ksp(libs.androidx.lifecycle.compiler)
     ksp(libs.hilt.compiler)
 
@@ -314,6 +325,7 @@ aboutLibraries {
         allowedLicenses.addAll("BSD-3-Clause")
         allowedLicenses.addAll("EPL-1.0")
         allowedLicenses.addAll("MIT")
+        allowedLicenses.addAll("CC0-1.0")
     }
     library {
         duplicationMode = DuplicateMode.LINK
