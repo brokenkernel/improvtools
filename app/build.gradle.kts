@@ -362,9 +362,9 @@ dokka {
                     VisibilityModifier.Protected,
                 )
             sourceLink {
-                localDirectory.set(file("src/main/java"))
+                localDirectory = (file("src/main/java"))
                 remoteUrl("https://github.com/brokenkernel/improvtools")
-                remoteLineSuffix.set("#L")
+                remoteLineSuffix = ("#L")
             }
         }
     }
