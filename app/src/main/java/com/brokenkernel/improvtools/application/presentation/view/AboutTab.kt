@@ -32,8 +32,8 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.Clipboard
@@ -217,7 +217,7 @@ internal fun AboutTab(
                     Text(
                         AnnotatedString.fromHtml(generateGeneralInformationText()),
                     )
-                    val isExpanded = remember { mutableStateOf(false) }
+                    val isExpanded = rememberSaveable { mutableStateOf(false) }
                     // TODO: make utility collapsible card
                     Card(
                         modifier = Modifier

@@ -32,7 +32,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -115,7 +115,7 @@ internal fun TipsAndAdviceScreenAsList(viewModel: TipsAndAdviceViewModel = hiltV
             .verticalScroll(columnScrollState),
     ) {
         uiState.tipsAndAdvice.forEach { it: TipContentUIModel ->
-            val isExpanded = remember { mutableStateOf(false) }
+            val isExpanded = rememberSaveable { mutableStateOf(false) }
             Card(
                 modifier = Modifier.fillMaxWidth(),
                 colors = CardDefaults.cardColors(

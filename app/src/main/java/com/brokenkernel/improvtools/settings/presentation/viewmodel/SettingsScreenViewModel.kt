@@ -4,10 +4,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.brokenkernel.improvtools.datastore.UserSettings
 import com.brokenkernel.improvtools.datastore.UserSettings.TimerHapticsMode
+import com.brokenkernel.improvtools.encyclopaedia.data.model.TipsAndAdviceViewModeUI
 import com.brokenkernel.improvtools.infrastructure.ConsentManagement
 import com.brokenkernel.improvtools.settings.data.repository.SettingsRepository
 import com.brokenkernel.improvtools.settings.presentation.uistate.SettingsScreenUIState
-import com.brokenkernel.improvtools.encyclopaedia.data.model.TipsAndAdviceViewModeUI
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow

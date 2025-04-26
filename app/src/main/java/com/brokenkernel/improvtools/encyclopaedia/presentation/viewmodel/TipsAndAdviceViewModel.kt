@@ -12,6 +12,7 @@ import com.brokenkernel.improvtools.encyclopaedia.data.repository.TipsAndAdviceR
 import com.brokenkernel.improvtools.settings.data.repository.SettingsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jakarta.inject.Inject
+import java.io.InputStream
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -20,7 +21,6 @@ import kotlinx.coroutines.launch
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.decodeFromStream
-import java.io.InputStream
 
 @OptIn(ExperimentalSerializationApi::class)
 @HiltViewModel

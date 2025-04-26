@@ -25,17 +25,19 @@ fun configureRemoteConfig() {
     }
     remoteConfig.setConfigSettingsAsync(configSettings)
 
-    remoteConfig.addOnConfigUpdateListener(object : ConfigUpdateListener {
-        override fun onUpdate(configUpdate: ConfigUpdate) {
-            if (Log.isLoggable(TAG, DEBUG)) {
-                Log.d(TAG, "Updated keys: " + configUpdate.updatedKeys)
+    remoteConfig.addOnConfigUpdateListener(
+        object : ConfigUpdateListener {
+            override fun onUpdate(configUpdate: ConfigUpdate) {
+                if (Log.isLoggable(TAG, DEBUG)) {
+                    Log.d(TAG, "Updated keys: " + configUpdate.updatedKeys)
+                }
             }
-        }
 
-        override fun onError(error: FirebaseRemoteConfigException) {
-            Log.w(TAG, "Config update error with code: " + error.code, error)
-        }
-    })
+            override fun onError(error: FirebaseRemoteConfigException) {
+                Log.w(TAG, "Config update error with code: " + error.code, error)
+            }
+        },
+    )
 }
 
 @HiltAndroidApp
@@ -68,15 +70,15 @@ class ImprovToolsApplication : Application() {
             .detectLeakedClosableObjects()
             .detectLeakedRegistrationObjects()
             .detectLeakedSqlLiteObjects()
-//            .detectNonSdkApiUsage() // TODO: used by ScreenshotGenerationTest
+//            .detectNonSdkApiUsage() // TODO: used by ScreenshotGenerationTest WRONG API
             .detectUntaggedSockets()
             .penaltyLog()
 
         val strictModeThreadPolicy = StrictMode.ThreadPolicy.Builder()
             .detectNetwork()
-//            .detectDiskReads() // TODO: move off to its own thread, used by settings
-//            .detectDiskWrites() // TODO: move off to its own thread, used by settings
-//            .detectExplicitGc() // TODO: used by tests(?)
+            .detectDiskReads() // TODO: move off to its own thread, used by settings
+            .detectDiskWrites() // TODO: move off to its own thread, used by settings
+//            .detectExplicitGc() // TODO: used by tests(?). Wrong API
             .detectCustomSlowCalls()
             .detectResourceMismatches()
             .detectUnbufferedIo()

@@ -7,13 +7,13 @@ import com.brokenkernel.improvtools.application.presentation.view.AboutTab
 import com.brokenkernel.improvtools.application.presentation.view.LibrariesTab
 import com.brokenkernel.improvtools.application.presentation.view.PrivacyTab
 import com.brokenkernel.improvtools.encyclopaedia.EncyclopaediaSectionNavigation
+import com.brokenkernel.improvtools.encyclopaedia.presentation.view.TipsAndAdviceTab
+import com.brokenkernel.improvtools.encyclopaedia.presentation.view.TipsAndAdviceTabMenu
 import com.brokenkernel.improvtools.encyclopaedia.presentation.view.encyclopaediaPageDestinations
 import com.brokenkernel.improvtools.settings.presentation.view.SettingsTab
 import com.brokenkernel.improvtools.settings.presentation.view.SuggestionsTabMenu
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.view.SuggestionsTab
 import com.brokenkernel.improvtools.timer.presentation.view.TimerTab
-import com.brokenkernel.improvtools.encyclopaedia.presentation.view.TipsAndAdviceTab
-import com.brokenkernel.improvtools.encyclopaedia.presentation.view.TipsAndAdviceTabMenu
 
 @Composable
 internal fun ImprovToolsNavigationGraph(
