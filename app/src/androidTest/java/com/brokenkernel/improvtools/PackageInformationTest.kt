@@ -10,7 +10,7 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class PackageInformationTest {
     @Test
-    fun useAppContext() {
+    fun packageNameTest() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
         assertThat(appContext.packageName, Matchers.`is`("com.brokenkernel.improvtools"))
