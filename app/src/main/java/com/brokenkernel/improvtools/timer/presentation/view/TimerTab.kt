@@ -190,7 +190,10 @@ internal fun TimerTab(viewModel: TimerListViewModel = hiltViewModel(), onLaunchT
                                 hiltViewModel<CountDownTimerViewModel, CountDownTimerViewModel.Factory>(
                                     key = timer.toString(),
                                     creationCallback = { factory ->
-                                        factory.create(title = timer.title, initialTime = 1.minutes)
+                                        factory.create(
+                                            title = timer.title,
+                                            initialTimeInWholeMilliseconds = 1.minutes.inWholeMilliseconds,
+                                        )
                                     },
                                 )
                             SimpleCountDownTimer(simpleCountDownTimerViewModel, onRemove)

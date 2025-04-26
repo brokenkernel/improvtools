@@ -12,6 +12,9 @@ internal data class IdeaCategory(
     val showLinkToEmotion: Boolean = false,
     val ideas: Set<IdeaItem>,
 ) {
+    internal fun itemKey(): String {
+        return this.title
+    }
     internal fun titleWithCount(): String {
         return "${this.title} (${ideas.size})"
     }
