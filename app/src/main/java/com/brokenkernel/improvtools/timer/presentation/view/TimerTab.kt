@@ -35,6 +35,7 @@ import com.brokenkernel.improvtools.timer.presentation.viewmodel.INITIAL_TIMER_D
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.StopWatchTimerViewModel
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.TimerListViewModel
 import kotlin.time.Duration
+import kotlin.time.Duration.Companion.minutes
 
 private const val TAG = "TimerScreen"
 
@@ -189,7 +190,7 @@ internal fun TimerTab(viewModel: TimerListViewModel = hiltViewModel(), onLaunchT
                                 hiltViewModel<CountDownTimerViewModel, CountDownTimerViewModel.Factory>(
                                     key = timer.toString(),
                                     creationCallback = { factory ->
-                                        factory.create(title = timer.title)
+                                        factory.create(title = timer.title, initialTime = 1.minutes)
                                     },
                                 )
                             SimpleCountDownTimer(simpleCountDownTimerViewModel, onRemove)
