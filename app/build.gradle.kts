@@ -177,6 +177,8 @@ android {
             // unable to strip, so shut up warnings
             keepDebugSymbols.add("**/libandroidx.graphics.path.so")
             keepDebugSymbols.add("**/libdatastore_shared_counter.so")
+            keepDebugSymbols.add("**/libgraphics-core.so")
+            keepDebugSymbols.add("**/libink.so")
         }
     }
     androidResources {
