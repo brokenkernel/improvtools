@@ -3,7 +3,7 @@ package com.brokenkernel.improvtools.encyclopaedia.data.model
 import androidx.annotation.Size
 import com.brokenkernel.improvtools.datastore.UserSettings.TipsAndTricksViewMode
 
-internal data class TipContentUIModel(
+internal data class TipContentUI(
     val title: String,
     val content: String,
 )
@@ -38,6 +38,6 @@ enum class TipsAndAdviceViewModeUI(
     }
 }
 
-internal data class TipsAndAdviceOnUIModel(
-    val tipsAndAdvice: List<TipContentUIModel>,
+internal data class TipsAndAdviceUI(
+    val tipsAndAdvice: List<TipContentUI>,
 )

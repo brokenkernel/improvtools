@@ -4,8 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.datastore.UserSettings
-import com.brokenkernel.improvtools.encyclopaedia.data.model.TipContentUIModel
-import com.brokenkernel.improvtools.encyclopaedia.data.model.TipsAndAdviceOnUIModel
+import com.brokenkernel.improvtools.encyclopaedia.data.model.TipContentUI
+import com.brokenkernel.improvtools.encyclopaedia.data.model.TipsAndAdviceUI
 import com.brokenkernel.improvtools.encyclopaedia.data.model.TipsAndAdviceProcessedModel
 import com.brokenkernel.improvtools.encyclopaedia.data.model.TipsAndAdviceViewModeUI
 import com.brokenkernel.improvtools.encyclopaedia.data.repository.TipsAndAdviceRepository
@@ -31,8 +31,8 @@ internal class TipsAndAdviceViewModel @Inject constructor(
     ViewModel() {
 
     // must happen inside of init block since we don't want blank default
-    private val _uiState: MutableStateFlow<TipsAndAdviceOnUIModel>
-    val uiState: StateFlow<TipsAndAdviceOnUIModel>
+    private val _uiState: MutableStateFlow<TipsAndAdviceUI>
+    val uiState: StateFlow<TipsAndAdviceUI>
 
     private val _taaViewMode: MutableStateFlow<TipsAndAdviceViewModeUI> = MutableStateFlow(
         TipsAndAdviceViewModeUI.Companion.byInternalEnumValue(
@@ -41,7 +41,7 @@ internal class TipsAndAdviceViewModel @Inject constructor(
     )
     val taaViewMode: StateFlow<TipsAndAdviceViewModeUI> = _taaViewMode.asStateFlow()
 
-    private val tipsAndAdviceProcessed: List<TipContentUIModel>
+    private val tipsAndAdviceProcessed: List<TipContentUI>
 
     init {
         val unprocessedTipsAndAdvice: InputStream =
@@ -50,8 +50,8 @@ internal class TipsAndAdviceViewModel @Inject constructor(
             Json.Default.decodeFromStream<TipsAndAdviceProcessedModel>(unprocessedTipsAndAdvice)
 
         val rawDictTipsAndAdvice = tipsAndAdviceDatum
-        tipsAndAdviceProcessed = rawDictTipsAndAdvice.advice.toList().map { (x, y) -> TipContentUIModel(x, y) }
-        _uiState = MutableStateFlow(TipsAndAdviceOnUIModel(tipsAndAdviceProcessed))
+        tipsAndAdviceProcessed = rawDictTipsAndAdvice.advice.toList().map { (x, y) -> TipContentUI(x, y) }
+        _uiState = MutableStateFlow(TipsAndAdviceUI(tipsAndAdviceProcessed))
         uiState = _uiState.asStateFlow()
         viewModelScope.launch {
             settingsRepository.userSettingsFlow.collectLatest { it ->

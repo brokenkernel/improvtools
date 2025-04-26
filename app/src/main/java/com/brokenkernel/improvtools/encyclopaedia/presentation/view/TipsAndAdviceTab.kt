@@ -43,7 +43,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.presentation.view.verticalColumnScrollbar
 import com.brokenkernel.improvtools.components.presentation.view.HtmlText
-import com.brokenkernel.improvtools.encyclopaedia.data.model.TipContentUIModel
+import com.brokenkernel.improvtools.encyclopaedia.data.model.TipContentUI
 import com.brokenkernel.improvtools.encyclopaedia.data.model.TipsAndAdviceViewModeUI
 import com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel.TipsAndAdviceViewModel
 
@@ -114,7 +114,7 @@ internal fun TipsAndAdviceScreenAsList(viewModel: TipsAndAdviceViewModel = hiltV
             )
             .verticalScroll(columnScrollState),
     ) {
-        uiState.tipsAndAdvice.forEach { it: TipContentUIModel ->
+        uiState.tipsAndAdvice.forEach { it: TipContentUI ->
             val isExpanded = rememberSaveable { mutableStateOf(false) }
             Card(
                 modifier = Modifier.fillMaxWidth(),
