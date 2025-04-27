@@ -103,6 +103,5 @@ class ImprovToolsApplication : Application() {
             Firebase.performance.isPerformanceCollectionEnabled = true
             Firebase.crashlytics.isCrashlyticsCollectionEnabled = true
         }
-
     }
 }
