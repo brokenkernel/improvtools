@@ -96,7 +96,7 @@ internal fun ImprovToolsScaffold(
                                 )
                                 curMenu()
                             }
-                            }
+                        }
                     },
                 )
             },

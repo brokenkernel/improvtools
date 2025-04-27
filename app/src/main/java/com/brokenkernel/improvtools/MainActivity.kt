@@ -7,10 +7,16 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.res.stringResource
+import androidx.navigation.NavDestination
+import androidx.navigation.compose.rememberNavController
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import com.brokenkernel.improvtools.application.data.model.rememberImprovToolsAppState
 import com.brokenkernel.improvtools.application.presentation.view.OuterContentForMasterScreen
+import com.google.firebase.Firebase
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.analytics
 import dagger.hilt.android.AndroidEntryPoint
 
 private const val ShowSuggestionsIntent: String = "com.brokenkernel.improvtools.intents.ShowSuggestions"
@@ -60,8 +66,16 @@ class MainActivity : ComponentActivity() {
             }
 
             val titleState = rememberSaveable { mutableIntStateOf(initialScreen.titleResource) }
+            val navController = rememberNavController()
+            navController.addOnDestinationChangedListener { _, destination: NavDestination, _ ->
+                val params = Bundle()
+                params.putString(FirebaseAnalytics.Param.SCREEN_NAME, resources.getString(titleState.intValue))
+                params.putString(FirebaseAnalytics.Param.SCREEN_CLASS, destination.label?.toString())
+                Firebase.analytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, params)
+            }
             val improvToolsState: ImprovToolsAppState = rememberImprovToolsAppState(
                 titleState = titleState,
+                navController = navController,
             )
 
             // maybe ImprovToolsState, or at least a subset should be passed via LocalContent so it doesn't need to be threaded all over the place
