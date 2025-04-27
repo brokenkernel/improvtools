@@ -266,6 +266,8 @@ dependencies {
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.activity)
     androidTestImplementation(libs.androidx.datastore)
+    androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(libs.androidx.espresso.device)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.navigation.navigationTesting)
     androidTestImplementation(libs.androidx.ui.test.junit4)
