@@ -172,6 +172,7 @@ zoomable-image-coil3 = { module = "me.saket.telephoto:zoomable-image-coil3", ver
 firebase = [
     "com-google-firebase-analytics",
     "com-google-firebase-crashlytics",
+    "com-google-firebase-firebasePerf",
 ]
 
 [plugins]

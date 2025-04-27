@@ -30,7 +30,7 @@ plugins {
     alias(libs.plugins.sortDependencies)
     alias(libs.plugins.spotless)
     alias(libs.plugins.versions)
-//    alias(libs.plugins.firebasePerfPlugin)
+    alias(libs.plugins.firebasePerfPlugin)
 
     kotlin("plugin.power-assert") version "2.1.20"
 }
@@ -244,7 +244,6 @@ dependencies {
     implementation(libs.androidx.work.runtime.ktx)
     implementation(libs.bundles.firebase)
     implementation(libs.com.google.protobuf.protobufJavalite)
-    implementation(libs.firebase.config)
     implementation(libs.guava)
     implementation(libs.hilt.android)
     implementation(libs.javax.inject)
