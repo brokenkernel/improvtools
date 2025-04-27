@@ -27,10 +27,10 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.ktlint)
     alias(libs.plugins.protobuf)
-    alias(libs.plugins.sortDependencies)
     alias(libs.plugins.spotless)
     alias(libs.plugins.versions)
     alias(libs.plugins.firebasePerfPlugin)
+    id("shared-build-conventions")
 
     kotlin("plugin.power-assert") version "2.1.20"
 }
@@ -294,6 +294,13 @@ configurations {
 }
 
 kotlin {
+    version = "2.1.20"
+    sourceSets {
+        all {
+            languageSettings.progressiveMode = true
+            languageSettings.enableLanguageFeature("ContextParameters")
+        }
+    }
     compilerOptions {
         allWarningsAsErrors = true
         extraWarnings = true
