@@ -65,16 +65,8 @@ class MainActivity : ComponentActivity() {
             }
 
             val titleState = rememberSaveable { mutableIntStateOf(initialScreen.titleResource) }
-            val navController = rememberNavController()
-            navController.addOnDestinationChangedListener { _, destination: NavDestination, _ ->
-                val params = Bundle()
-                params.putString(FirebaseAnalytics.Param.SCREEN_NAME, resources.getString(titleState.intValue))
-                params.putString(FirebaseAnalytics.Param.SCREEN_CLASS, destination.label?.toString())
-                Firebase.analytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, params)
-            }
             val improvToolsState: ImprovToolsAppState = rememberImprovToolsAppState(
                 titleState = titleState,
-                navController = navController,
             )
 
             // maybe ImprovToolsState, or at least a subset should be passed via LocalContent so it doesn't need to be threaded all over the place
