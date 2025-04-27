@@ -8,6 +8,7 @@ import android.util.Log.DEBUG
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
 import com.google.firebase.Firebase
+import com.google.firebase.analytics.analytics
 import com.google.firebase.crashlytics.crashlytics
 import com.google.firebase.perf.performance
 import com.google.firebase.remoteconfig.ConfigUpdate
@@ -97,6 +98,7 @@ class ImprovToolsApplication : Application() {
         StrictMode.setThreadPolicy(strictModeThreadPolicy.build())
 
         configureRemoteConfig()
+        Firebase.crashlytics.setCustomKey("buildconfig_build_type", BuildConfig.BUILD_TYPE)
 
         Firebase.performance.isPerformanceCollectionEnabled = true
         if (BuildConfig.ENABLE_CRASHLYTICS && isGooglePlayServicesAvailable()) {
