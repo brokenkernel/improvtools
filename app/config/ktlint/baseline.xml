@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <baseline version="1.0">
     <file name="src/main/java/com/brokenkernel/improvtools/MainActivity.kt">
-        <error line="55" column="121" source="standard:max-line-length" />
-        <error line="56" column="121" source="standard:max-line-length" />
+        <error line="50" column="121" source="standard:max-line-length" />
+        <error line="51" column="121" source="standard:max-line-length" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/suggestionGenerator/presentation/viewmodel/SuggestionScreenViewModel.kt">
         <error line="25" column="17" source="standard:backing-property-naming" />
