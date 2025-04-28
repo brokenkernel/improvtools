@@ -27,7 +27,6 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.ktlint)
     alias(libs.plugins.protobuf)
-    alias(libs.plugins.spotless)
     alias(libs.plugins.versions)
     alias(libs.plugins.firebasePerfPlugin)
     id("shared-build-conventions")
@@ -351,11 +350,6 @@ ktlint {
     android = true
     coloredOutput = true
     version = "1.5.0"
-}
-
-spotless {
-    kotlin {
-    }
 }
 
 dokka {

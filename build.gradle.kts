@@ -16,7 +16,6 @@ plugins {
     alias(libs.plugins.ktlint) apply false
     alias(libs.plugins.protobuf) apply false
     alias(libs.plugins.sortDependencies) apply false
-    alias(libs.plugins.spotless) apply false
     alias(libs.plugins.dokka)
     alias(libs.plugins.versions) apply false
     alias(libs.plugins.versionCatalogUpdate)

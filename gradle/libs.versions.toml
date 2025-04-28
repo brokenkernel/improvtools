@@ -58,7 +58,6 @@ reorderable = "2.4.3"
 runtimeTracing = "1.8.0"
 screengrab = "2.1.1"
 sortDependencies = "0.14"
-spotless = "7.0.3"
 startupRuntime = "1.2.0"
 versionCatalogUpdate = "1.0.0"
 versions = "0.52.0"
@@ -197,6 +196,5 @@ ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }
 protobuf = { id = "com.google.protobuf", version.ref = "protobuf" }
 sortDependencies = { id = "com.squareup.sort-dependencies", version.ref = "sortDependencies" }
-spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
 versionCatalogUpdate = { id = "nl.littlerobots.version-catalog-update", version.ref = "versionCatalogUpdate" }
 versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }
