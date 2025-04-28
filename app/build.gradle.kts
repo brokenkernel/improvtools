@@ -448,6 +448,7 @@ tasks.withType<DependencyUpdatesTask> {
                         "android",
                     )
                 ) -> return@rejectVersionIf true
+
             else -> return@rejectVersionIf false
         }
     }
