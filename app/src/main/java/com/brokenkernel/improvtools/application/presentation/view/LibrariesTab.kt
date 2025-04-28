@@ -15,5 +15,9 @@ internal fun LibrariesTab(onLaunchTitleCallback: () -> Unit) {
 
     LibrariesContainer(
         modifier = Modifier.fillMaxSize(),
+        showAuthor = true,
+        showDescription = true,
+        showVersion = true,
+        showLicenseBadges = true,
     )
 }
