@@ -64,6 +64,9 @@
 }
 -keep class androidx.datastore.*.** {*;}
 
+# Not sure where this is coming from. most likely wordnet
+-dontwarn org.slf4j.impl.StaticLoggerBinder
+
 ## Room
 #-keep class * extends androidx.room.RoomDatabase
 #-keep @androidx.room.Entity class *
