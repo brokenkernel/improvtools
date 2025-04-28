@@ -170,9 +170,10 @@ zoomable-image-coil3 = { module = "me.saket.telephoto:zoomable-image-coil3", ver
 # perf disabled because of
 # issues with prod , "com-google-firebase-firebasePerf"
 firebase = [
-    "com-google-firebase-analytics",
-    "com-google-firebase-crashlytics",
-    "com-google-firebase-firebasePerf",
+  "com-google-firebase-analytics",
+  "com-google-firebase-crashlytics",
+  "com-google-firebase-firebasePerf",
+  "firebase-config",
 ]
 
 [plugins]
