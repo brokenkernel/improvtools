@@ -69,6 +69,17 @@ platform :android do
       use_tests_in_packages: "com.brokenkernel.improvtools.deployment.screenshots",
       exit_on_test_failure: true,
       test_instrumentation_runner: "com.brokenkernel.improvtools.infrastructure.ImprovToolsTestRunner",
+      specific_device: "emulator-5556",  # Pixel 9 Pro XL API 36
+      device_type: "phone",
+    )
+    capture_android_screenshots(
+      clear_previous_screenshots: true,
+      skip_open_summary: true,
+      use_tests_in_packages: "com.brokenkernel.improvtools.deployment.screenshots",
+      exit_on_test_failure: true,
+      test_instrumentation_runner: "com.brokenkernel.improvtools.infrastructure.ImprovToolsTestRunner",
+      specific_device: "emulator-5554",  # Pixel Tablet
+      device_type: "tenInch",
     )
   end
 
