@@ -1,54 +1,6 @@
 {
   "categories": [
     {
-      "title": "Noun",
-      "ideas": [
-        {"idea": "book"},
-        {"idea": "can"},
-        {"idea": "case"},
-        {"idea": "chair"},
-        {"idea": "child"},
-        {"idea": "company"},
-        {"idea": "eye"},
-        {"idea": "fork"},
-        {"idea": "hand"},
-        {"idea": "money"},
-        {"idea": "night"},
-        {"idea": "water"}
-      ]
-    },
-    {
-      "title": "Verb",
-      "ideas": [
-        {"idea": "ask"},
-        {"idea": "call"},
-        {"idea": "can"},
-        {"idea": "deduct"},
-        {"idea": "feel"},
-        {"idea": "find"},
-        {"idea": "think"}
-      ]
-    },
-    {
-      "title": "Adjective",
-      "ideas": [
-        {"idea": "Beautiful"},
-        {"idea": "Smooth"},
-        {"idea": "Heavy"},
-        {"idea": "Big"},
-        {"idea": "Small"},
-        {"idea": "Hot"},
-        {"idea": "Cold"},
-        {"idea": "Expensive"},
-        {"idea": "Difficult"},
-        {"idea": "Nice"},
-        {"idea": "Hungry"},
-        {"idea": "Late"},
-        {"idea": "Tall"},
-        {"idea": "Short"}
-      ]
-    },
-    {
       "title": "Word",
       "ideas": [
         {"idea": "Blueberry"},
@@ -384,6 +336,7 @@
         {"idea": "Fairy Tale"},
         {"idea": "Fantasy romance"},
         {"idea": "Fantasy"},
+        {"idea": "Farce"},
         {"idea": "Heist"},
         {"idea": "Historical"},
         {"idea": "Horror"},
@@ -410,6 +363,13 @@
       ]
     },
     {
+      "title": "Actor",
+      "ideas": [
+        {"idea": "Tatiana Maslany"},
+        {"idea": "Helena Bonham Carter"}
+      ]
+    },
+    {
       "title": "Director",
       "ideas": [
         {"idea": "David Lynch"},
@@ -426,9 +386,8 @@
         {"idea": "Shakespeare"},
         {"idea": "Nowel Coward"},
         {"idea": "Diana Son"},
-        {
-          "idea": "Anton Checkov"
-        }
+        {"idea": "Michael Frayn"},
+        { "idea": "Anton Checkov" }
       ]
     },
     {

@@ -29,6 +29,7 @@ plugins {
     alias(libs.plugins.protobuf)
     alias(libs.plugins.versions)
     alias(libs.plugins.firebasePerfPlugin)
+    alias(libs.plugins.sortDependencies)
     id("shared-build-conventions")
 
     kotlin("plugin.power-assert") version "2.1.20"
@@ -243,6 +244,7 @@ dependencies {
     implementation(libs.androidx.work.runtime.ktx)
     implementation(libs.bundles.firebase)
     implementation(libs.com.google.protobuf.protobufJavalite)
+    implementation(libs.extjwnl)
     implementation(libs.guava)
     implementation(libs.hilt.android)
     implementation(libs.javax.inject)
@@ -251,11 +253,13 @@ dependencies {
     implementation(libs.kotlinx.serialization.protobuf)
     implementation(libs.net.engawapg.lib.zoomable)
     implementation(libs.play.services.instantapps)
-    implementation(libs.reorderable)
     implementation(libs.play.services.oss.licenses)
+    implementation(libs.reorderable)
 
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.leakcanary.android)
+
+    runtimeOnly(libs.extjwnl.data.wn31)
 
     debugRuntimeOnly(libs.androidx.ui.test.manifest)
 
@@ -333,12 +337,13 @@ aboutLibraries {
         strictMode = StrictMode.FAIL
         allowedLicenses.addAll("ASDKL") // Android SDK
         allowedLicenses.addAll("Apache-2.0")
+        allowedLicenses.addAll("BSD License")
         allowedLicenses.addAll("BSD-3-Clause")
-        allowedLicenses.addAll("EPL-1.0")
-        allowedLicenses.addAll("MIT")
         allowedLicenses.addAll("CC0-1.0")
+        allowedLicenses.addAll("EPL-1.0")
         allowedLicenses.addAll("Eclipse Public License v. 2.0")
         allowedLicenses.addAll("GNU General Public License, version 2 with the GNU Classpath Exception")
+        allowedLicenses.addAll("MIT")
     }
     library {
         duplicationMode = DuplicateMode.LINK
@@ -437,7 +442,12 @@ tasks.withType<DependencyUpdatesTask> {
             // ideally allow non-stable updates of currently non-stable versions, but only if they match major versions
             !isStable(currentVersion) -> false
             !isStable(candidate.version) -> return@rejectVersionIf true
-            (candidate.moduleIdentifier.toString() == "com.google.guava:guava" && !candidate.version.endsWith("android")) -> return@rejectVersionIf true
+            (
+                candidate.moduleIdentifier.toString() == "com.google.guava:guava" &&
+                    !candidate.version.endsWith(
+                        "android",
+                    )
+                ) -> return@rejectVersionIf true
             else -> return@rejectVersionIf false
         }
     }

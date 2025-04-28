@@ -98,4 +98,8 @@
     <string name="new_stopwatch_timer">New StopWatch Timer</string>
   <string name="new_countdown_timer">New CountDown Timer</string>
   <string name="open_website">Open Website</string>
+  <string name="suggestions_verb">Verb</string>
+  <string name="suggestions_noun">Noun</string>
+  <string name="suggestions_adjective">Adjective</string>
+  <string name="suggestions_adverb">Adverb</string>
 </resources>

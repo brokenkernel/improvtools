@@ -19,6 +19,8 @@ dependencyAnalysis = "2.17.0"
 dokka = "2.0.0"
 espressoCore = "3.6.1"
 espressoDevice = "1.0.1"
+extjwnl = "2.0.5"
+extjwnlDataWn31 = "1.2"
 firebaseBom = "33.13.0"
 firebaseCrashlyticsPlugin = "3.0.3"
 firebasePerfPlugin = "1.4.2"
@@ -144,6 +146,8 @@ com-google-firebase-firebaseBom = { module = "com.google.firebase:firebase-bom",
 com-google-firebase-firebasePerf = { module = "com.google.firebase:firebase-perf" }
 com-google-protobuf-protobufJavalite = { module = "com.google.protobuf:protobuf-javalite", version.ref = "protobufJavalite" }
 com-google-protobuf-protoc = { module = "com.google.protobuf:protoc", version.ref = "protoc" }
+extjwnl = { module = "net.sf.extjwnl:extjwnl", version.ref = "extjwnl" }
+extjwnl-data-wn31 = { module = "net.sf.extjwnl:extjwnl-data-wn31", version.ref = "extjwnlDataWn31" }
 firebase-config = { module = "com.google.firebase:firebase-config" }
 guava = { module = "com.google.guava:guava", version.ref = "guava" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
