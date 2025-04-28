@@ -1,0 +1,15 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls",
+      "delegate_permission/common.get_login_creds"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.brokenkernel.improvtools",
+      "sha256_cert_fingerprints": [
+        "3A:1D:6F:B6:B5:67:0D:FD:8C:48:66:4E:13:41:F8:66:B0:19:D9:6A:CE:DC:D1:1B:49:71:50:08:D2:9E:15:B8"
+      ]
+    }
+  }
+]
