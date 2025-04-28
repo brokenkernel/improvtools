@@ -39,6 +39,9 @@
         android:name="com.google.android.gms.permission.AD_ID"
         tools:node="remove" />
     <uses-permission
+        android:name="com.google.android.gms.permission.ACCESS_ADSERVICES_AD_ID"
+        tools:node="remove" />
+    <uses-permission
         android:name="com.google.android.gms.permission.ACCESS_ADSERVICES_ATTRIBUTION"
         tools:node="remove" />
     <queries>
