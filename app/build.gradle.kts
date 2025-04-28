@@ -299,7 +299,6 @@ kotlin {
     sourceSets {
         all {
             languageSettings.progressiveMode = true
-            languageSettings.enableLanguageFeature("ContextParameters")
         }
     }
     compilerOptions {
@@ -428,19 +427,24 @@ ksp {
     arg("dagger.fullBindingGraphValidation", "error")
 }
 
-fun isNonStable(version: String): Boolean {
+fun isStable(version: String): Boolean {
     val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { version.uppercase().contains(it) }
     val regex = "^[0-9,.v-]+(-r)?$".toRegex()
     val isStable = stableKeyword || regex.matches(version)
-    return isStable.not()
+    return isStable
 }
 
 tasks.withType<DependencyUpdatesTask> {
-
     checkConstraints = true
     checkBuildEnvironmentConstraints = true
     checkForGradleUpdate = true
     rejectVersionIf {
-        isNonStable(candidate.version)
+        when {
+            // ideally allow non-stable updates of currently non-stable versions, but only if they match major versions
+            !isStable(currentVersion) -> false
+            !isStable(candidate.version) -> return@rejectVersionIf true
+            (candidate.moduleIdentifier.toString() == "com.google.guava:guava" && !candidate.version.endsWith("android")) -> return@rejectVersionIf true
+            else -> return@rejectVersionIf false
+        }
     }
 }
