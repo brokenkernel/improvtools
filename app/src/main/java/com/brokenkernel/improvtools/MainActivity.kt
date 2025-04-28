@@ -7,15 +7,10 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.navigation.NavDestination
-import androidx.navigation.compose.rememberNavController
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import com.brokenkernel.improvtools.application.data.model.rememberImprovToolsAppState
 import com.brokenkernel.improvtools.application.presentation.view.OuterContentForMasterScreen
-import com.google.firebase.Firebase
-import com.google.firebase.analytics.FirebaseAnalytics
-import com.google.firebase.analytics.analytics
 import dagger.hilt.android.AndroidEntryPoint
 
 private const val ShowSuggestionsIntent: String = "com.brokenkernel.improvtools.intents.ShowSuggestions"

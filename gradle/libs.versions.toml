@@ -49,6 +49,7 @@ metricsPerformance = "1.0.0-beta02"
 navigationCompose = "2.8.9"
 navigationTesting = "2.8.9"
 playServicesInstantapps = "18.1.0"
+playServicesOssLicenses = "17.1.0"
 profileinstaller = "1.4.1"
 protobuf = "0.9.5"
 protobufJavalite = "4.30.2"
@@ -162,6 +163,7 @@ material = { module = "com.google.android.material:material", version.ref = "mat
 mathjax-plugin = { module = "org.jetbrains.dokka:mathjax-plugin", version.ref = "androidDocumentationPlugin" }
 net-engawapg-lib-zoomable = { module = "net.engawapg.lib:zoomable", version.ref = "zoomable" }
 play-services-instantapps = { module = "com.google.android.gms:play-services-instantapps", version.ref = "playServicesInstantapps" }
+play-services-oss-licenses = { module = "com.google.android.gms:play-services-oss-licenses", version.ref = "playServicesOssLicenses" }
 reorderable = { module = "sh.calvin.reorderable:reorderable", version.ref = "reorderable" }
 tools-fastlane-screengrab = { module = "tools.fastlane:screengrab", version.ref = "screengrab" }
 zoomable-image-coil3 = { module = "me.saket.telephoto:zoomable-image-coil3", version.ref = "zoomableImageCoil3" }
@@ -170,10 +172,10 @@ zoomable-image-coil3 = { module = "me.saket.telephoto:zoomable-image-coil3", ver
 # perf disabled because of
 # issues with prod , "com-google-firebase-firebasePerf"
 firebase = [
-  "com-google-firebase-analytics",
-  "com-google-firebase-crashlytics",
-  "com-google-firebase-firebasePerf",
-  "firebase-config",
+    "com-google-firebase-analytics",
+    "com-google-firebase-crashlytics",
+    "com-google-firebase-firebasePerf",
+    "firebase-config",
 ]
 
 [plugins]

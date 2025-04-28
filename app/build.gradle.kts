@@ -253,6 +253,7 @@ dependencies {
     implementation(libs.net.engawapg.lib.zoomable)
     implementation(libs.play.services.instantapps)
     implementation(libs.reorderable)
+    implementation(libs.play.services.oss.licenses)
 
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.leakcanary.android)
