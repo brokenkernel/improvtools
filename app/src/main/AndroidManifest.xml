@@ -29,6 +29,18 @@
         android:name="android.permission.POST_NOTIFICATIONS"
         android:required="false" />
 
+    <!-- work runtime wants to use this. We don't -->
+<!--    <uses-permission-->
+<!--        android:name="android.permission.WAKE_LOCK"-->
+<!--        tools:node="remove" />-->
+
+    <!-- Firebase adds this. We don't use it -->
+    <uses-permission
+        android:name="com.google.android.gms.permission.AD_ID"
+        tools:node="remove" />
+    <uses-permission
+        android:name="com.google.android.gms.permission.ACCESS_ADSERVICES_ATTRIBUTION"
+        tools:node="remove" />
     <queries>
         <intent>
             <action android:name="android.support.customtabs.action.CustomTabsService" />
@@ -109,6 +121,8 @@
             android:value="false" />
         <meta-data
             android:name="google_analytics_default_allow_ad_personalization_signals"
+            android:value="false" />
+        <meta-data android:name="google_analytics_adid_collection_enabled"
             android:value="false" />
     </application>
 
