@@ -87,7 +87,7 @@
     <string name="go_to_libraries_information">Go to Licences</string>
     <string name="notification_stop_watches">Stop Watches</string>
     <string name="notification_countdown">Count Down</string>
-    <string name="go_to_single_word_thesaurus_view">Go To %1$s</string>
+    <string name="go_to_single_word_thesaurus_view">See word details for ‘%1$s’</string>
   <string name="navigation_back_to_thesaurus">Back to %1$s</string>
     <string name="action_word">Action Word</string>
   <string name="thesaurus_word_and_synonyms">word and synonyms</string>

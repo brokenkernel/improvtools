@@ -5,7 +5,6 @@ import com.brokenkernel.improvtools.TAG
 import com.brokenkernel.improvtools.encyclopaedia.data.model.SenseDatumUI
 import com.brokenkernel.improvtools.encyclopaedia.data.repository.ThesaurusRepository
 import com.brokenkernel.improvtools.encyclopaedia.presentation.view.ThesaurusTabSingleWord
-import net.sf.extjwnl.data.IndexWord
 import javax.inject.Inject
 import net.sf.extjwnl.data.IndexWordSet
 import net.sf.extjwnl.data.Synset

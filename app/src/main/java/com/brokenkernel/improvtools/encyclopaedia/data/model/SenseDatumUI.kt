@@ -1,6 +1,5 @@
 package com.brokenkernel.improvtools.encyclopaedia.data.model
 
-
 data class SenseDatumUI(
     val lemma: String, // for debugging really
     // TODO add PoS
