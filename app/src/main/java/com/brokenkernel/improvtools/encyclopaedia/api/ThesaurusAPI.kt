@@ -13,6 +13,8 @@ import net.sf.extjwnl.dictionary.Dictionary
  * This is the portion of the Thesaurus exposed to other components.
  */
 class ThesaurusAPI @Inject internal constructor(private val thesaurusRepository: ThesaurusRepository) {
+    val dictionary: Dictionary? = thesaurusRepository.getEXTJWNLDictionary()
+
     /**
      * Get the set of words for which there is an entry. If the word is here,
      * navigating to [[ThesaurusTabSingleWord]] is expected to succeed.
@@ -27,15 +29,13 @@ class ThesaurusAPI @Inject internal constructor(private val thesaurusRepository:
      * @param word
      */
     fun hasWordDetailsForVerb(word: String): Boolean {
-        val dictionary = Dictionary.getDefaultResourceInstance()
-        val indexWord: IndexWord? = dictionary.lookupIndexWord(POS.VERB, word)
+        val indexWord: IndexWord? = dictionary?.lookupIndexWord(POS.VERB, word)
         return indexWord != null
     }
 
     // TODO: this really should return model information and something else should render it ...
     fun getSenseDatumForVerb(word: String): List<SenseDatumUI>? {
-        val dictionary = Dictionary.getDefaultResourceInstance()
-        val indexWord: IndexWord? = dictionary.lookupIndexWord(POS.VERB, word)
+        val indexWord: IndexWord? = dictionary?.lookupIndexWord(POS.VERB, word)
         if (indexWord == null) {
             return null
         }

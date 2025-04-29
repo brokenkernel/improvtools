@@ -2,6 +2,7 @@ package com.brokenkernel.improvtools.suggestionGenerator.data.repository
 
 import android.content.Context
 import com.brokenkernel.improvtools.R
+import com.brokenkernel.improvtools.encyclopaedia.data.repository.ThesaurusRepository
 import com.brokenkernel.improvtools.suggestionGenerator.data.model.IdeaCategory
 import com.brokenkernel.improvtools.suggestionGenerator.data.model.IdeaItem
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -12,10 +13,11 @@ import net.sf.extjwnl.dictionary.Dictionary
 
 internal class WordNetSuggestionDatumRepository @Inject constructor(
     @param:ApplicationContext private val context: Context,
+    val thesaurusRepository: ThesaurusRepository,
 ) : AudienceSuggestionDatumRepository {
     override fun getIdeaCategories(): List<IdeaCategory> {
         //
-        val d: Dictionary? = Dictionary.getDefaultResourceInstance()
+        val d: Dictionary? = thesaurusRepository.getEXTJWNLDictionary()
         if (d == null) {
             return emptyList()
         }

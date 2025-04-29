@@ -44,6 +44,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.brokenkernel.improvtools.R
+import com.brokenkernel.improvtools.encyclopaedia.presentation.view.SingleWordThesaurusButton
 import com.brokenkernel.improvtools.suggestionGenerator.data.model.IdeaCategory
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel.SuggestionScreenViewModel
 import kotlinx.coroutines.delay

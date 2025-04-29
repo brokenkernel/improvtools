@@ -1,4 +1,4 @@
-package com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel
+package com.brokenkernel.improvtools.components.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -13,8 +13,8 @@ import kotlinx.coroutines.flow.stateIn
 
 class LoadableScreenViewModel(private val loader: () -> Unit) :
     ViewModel() {
-    private val _isLoading = MutableStateFlow(false)
 
+    private val _isLoading = MutableStateFlow(false)
     val isLoading: StateFlow<Boolean> = _isLoading
         .onStart {
             doLoad()
@@ -22,7 +22,7 @@ class LoadableScreenViewModel(private val loader: () -> Unit) :
         }
         .stateIn(
             scope = viewModelScope,
-            started = SharingStarted.Eagerly,
+            started = SharingStarted.Companion.Eagerly,
             initialValue = false,
         )
 
