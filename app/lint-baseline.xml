@@ -376,17 +376,6 @@
     </issue>
 
     <issue
-        id="UnusedResources"
-        message="The resource `R.string.encyclopaedia_word_details` appears to be unused"
-        errorLine1="  &lt;string name=&quot;encyclopaedia_word_details&quot;>word details&lt;/string>"
-        errorLine2="          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/values/strings.xml"
-            line="105"
-            column="11"/>
-    </issue>
-
-    <issue
         id="IconLocation"
         message="Found bitmap drawable `res/drawable/general_emotion_wheel.webp` in densityless folder">
         <location

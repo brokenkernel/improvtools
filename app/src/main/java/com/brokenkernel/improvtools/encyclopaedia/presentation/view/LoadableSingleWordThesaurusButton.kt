@@ -11,14 +11,17 @@ import com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel.Loadabl
 fun LoadableSingleWordThesaurusButton(
     viewModel: LoadableSingleWordThesaurusButtonViewModel,
     onNavigateToWord: (String) -> Unit,
+    whenDisabledFullyHidden: Boolean = false,
 ) {
     val doesHaveDictionaryDetails by viewModel.doesHaveDictionaryDetails.collectAsStateWithLifecycle()
 
-    SingleWordThesaurusButton(
-        word = viewModel.word,
-        onNavigateToWord = onNavigateToWord,
-        enabled = doesHaveDictionaryDetails,
-    )
+    if (doesHaveDictionaryDetails || !whenDisabledFullyHidden) {
+        SingleWordThesaurusButton(
+            word = viewModel.word,
+            onNavigateToWord = onNavigateToWord,
+            enabled = doesHaveDictionaryDetails,
+        )
+    }
 }
 
 @ImprovToolsAllPreviews

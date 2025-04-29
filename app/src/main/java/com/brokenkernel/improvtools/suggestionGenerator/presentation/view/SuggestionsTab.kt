@@ -44,7 +44,8 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.brokenkernel.improvtools.R
-import com.brokenkernel.improvtools.encyclopaedia.presentation.view.SingleWordThesaurusButton
+import com.brokenkernel.improvtools.encyclopaedia.presentation.view.LoadableSingleWordThesaurusButton
+import com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel.LoadableSingleWordThesaurusButtonViewModel
 import com.brokenkernel.improvtools.suggestionGenerator.data.model.IdeaCategory
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel.SuggestionScreenViewModel
 import kotlinx.coroutines.delay
@@ -149,16 +150,23 @@ internal fun SuggestionsTab(
                                                 )
                                             }
                                         }
-
-                                        // TODO: look up words and show details, not just the few I know of
-                                        if (viewModel.isWordInThesaurus(currentWord)) {
-                                            // TODO: consider pop up menu instead of full screen
-                                            // TODO: none of the selected words are remembered across screens
-                                            SingleWordThesaurusButton(
-                                                word = currentWord,
-                                                onNavigateToWord = onNavigateToWord,
+                                        // TODO: consider pop up menu instead of full screen
+                                        // TODO: none of the selected words are remembered across screens
+                                        val viewModel =
+                                            hiltViewModel<
+                                                LoadableSingleWordThesaurusButtonViewModel,
+                                                LoadableSingleWordThesaurusButtonViewModel.Factory,
+                                                >(
+                                                key = currentWord,
+                                                creationCallback = { factory ->
+                                                    factory.create(currentWord)
+                                                },
                                             )
-                                        }
+                                        LoadableSingleWordThesaurusButton(
+                                            viewModel = viewModel,
+                                            onNavigateToWord = onNavigateToWord,
+                                            whenDisabledFullyHidden = true,
+                                        )
                                         IconButton(
                                             modifier = Modifier.longPressDraggableHandle(
                                                 onDragStarted = {
