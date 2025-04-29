@@ -25,7 +25,7 @@ class LoadableSingleWordThesaurusButtonViewModel @AssistedInject constructor(
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
-            val result = thesaurusAPI.hasWordDetailsForVerb(word)
+            val result = thesaurusAPI.hasWordDetails(word)
             _doesHaveDictionaryDetails.value = result
             if (Log.isLoggable(TAG, Log.DEBUG)) {
                 Log.d(TAG, "Thesaurus result for dictionary details for $word is $result")

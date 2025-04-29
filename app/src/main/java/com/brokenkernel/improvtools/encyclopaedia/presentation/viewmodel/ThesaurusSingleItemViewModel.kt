@@ -19,31 +19,35 @@ internal class ThesaurusSingleItemViewModel @AssistedInject constructor(
     }
 
     fun getWordSensesFullyRenderedString(): String? {
-        val senseDatumForVerb = thesaurusAPI.getSenseDatumForVerb(word)
-        if (senseDatumForVerb == null) {
+        val allSenseDatum = thesaurusAPI.getSenseDatum(word)
+        if (allSenseDatum == null) {
             return null
         }
 
         val senseString: String = buildString {
-            append("<ul>")
-            senseDatumForVerb.forEach { sense ->
-                append("<li>")
-                append("<u>${sense.description}</u>")
-                append("<i>${sense.example}</i>")
+            allSenseDatum.forEach { pos, senseDatum ->
+                append("<h2>$pos</h2>")
                 append("<ul>")
-                sense.synonyms.forEach { synonym ->
-                    append("<li>$synonym</li>")
+                senseDatum.forEach { sense ->
+                    append("<li>")
+                    append("<u>${sense.description}</u>")
+                    append("<i>${sense.example}</i>")
+                    append("<ul>")
+                    sense.synonyms.forEach { synonym ->
+                        append("<li>$synonym</li>")
+                    }
+                    append("</ul>")
+                    append("</li>")
                 }
                 append("</ul>")
-                append("</li>")
             }
-            append("</ul>")
         }
 
         return senseString
     }
 
-    @AssistedFactory interface Factory {
+    @AssistedFactory
+    interface Factory {
         fun create(
             @Assisted("word") word: String,
         ): ThesaurusSingleItemViewModel

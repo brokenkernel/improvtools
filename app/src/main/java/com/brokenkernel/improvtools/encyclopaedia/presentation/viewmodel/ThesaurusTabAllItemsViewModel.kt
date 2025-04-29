@@ -19,10 +19,6 @@ internal class ThesaurusTabAllItemsViewModel @Inject constructor(
         return thesaurusRepository.getActionsThesaurus().synonymsForWord(word).sorted()
     }
 
-    fun hasWordDetails(word: String): Boolean {
-        return thesaurusAPI.hasWordDetailsForVerb(word)
-    }
-
     // TODO: this entire section badly needs tests
 
     /**
