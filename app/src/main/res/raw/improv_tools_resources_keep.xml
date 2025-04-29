@@ -2,5 +2,5 @@
 <resources
   xmlns:tools="http://schemas.android.com/tools"
   tools:shrinkMode="safe"
-  tools:keep="@raw/aboutlibraries.json"
+  tools:keep="@raw/aboutlibraries"
 />

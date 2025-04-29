@@ -1,5 +1,6 @@
 # Preserve the line number information for debugging stack traces.
--keepattributes SourceFile,LineNumberTable
+-keepattributes SourceFile,LineNumberTable,LocalVariableTable,LocalVariableTypeTable
+-keepattributes *Annotation*, Signature, Exception
 # https://firebase.google.com/docs/crashlytics/get-deobfuscated-reports?platform=android
 -keep public class * extends java.lang.Exception  # For Crashlytics
 
@@ -20,6 +21,11 @@
 }
 
 -keepnames class * implements java.io.Serializable
+
+# jwnl relies on reflection and runtime deps
+-keep class net.sf.extjwnl.** {
+ *;
+}
 
 -keepclassmembers class * implements java.io.Serializable {
     private static final java.io.ObjectStreamField[] serialPersistentFields;
