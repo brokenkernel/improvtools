@@ -2,6 +2,7 @@ package com.brokenkernel.improvtools.encyclopaedia.api
 
 import androidx.annotation.StringRes
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.toRoute
@@ -16,6 +17,7 @@ import com.brokenkernel.improvtools.encyclopaedia.presentation.view.ThesaurusTab
 import com.brokenkernel.improvtools.encyclopaedia.presentation.view.ThesaurusTabSingleWord
 import com.brokenkernel.improvtools.encyclopaedia.presentation.view.TipsAndAdviceTab
 import com.brokenkernel.improvtools.encyclopaedia.presentation.view.TipsAndAdviceTabMenu
+import com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel.ThesaurusSingleItemViewModel
 
 internal fun NavGraphBuilder.encyclopaediaPageDestinations(improvToolsAppState: ImprovToolsAppState) {
     composable<NavigableRoute.TipsAndAdviceRoute> {
@@ -96,8 +98,15 @@ internal fun NavGraphBuilder.encyclopaediaPageDestinations(improvToolsAppState: 
         val route: NavigableRoute.ThesaurusWordRoute = backStackEntry.toRoute()
 
         @StringRes val priorTitleResource: Int = rememberSaveable { improvToolsAppState.currentTitle.value }
+
+        val viewModel = hiltViewModel<ThesaurusSingleItemViewModel, ThesaurusSingleItemViewModel.Factory>(
+            creationCallback = { factory ->
+                factory.create(word = route.word)
+            },
+        )
+
         ThesaurusTabSingleWord(
-            word = route.word,
+            viewModel = viewModel,
             onNavigateBack = { improvToolsAppState.navigateBack() },
             onLaunchTitleCallback = {
                 improvToolsAppState.setScaffoldData(

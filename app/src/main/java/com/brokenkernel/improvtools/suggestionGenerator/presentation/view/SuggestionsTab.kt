@@ -13,7 +13,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ReadMore
 import androidx.compose.material.icons.filled.ChangeCircle
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.rounded.DragHandle
@@ -45,7 +44,6 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.brokenkernel.improvtools.R
-import com.brokenkernel.improvtools.application.data.model.NavigableScreens.ThesaurusPageScreen
 import com.brokenkernel.improvtools.suggestionGenerator.data.model.IdeaCategory
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel.SuggestionScreenViewModel
 import kotlinx.coroutines.delay

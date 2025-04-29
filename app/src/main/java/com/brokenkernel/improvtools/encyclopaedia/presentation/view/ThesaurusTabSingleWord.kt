@@ -20,7 +20,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.hilt.navigation.compose.hiltViewModel
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.presentation.view.verticalColumnScrollbar
 import com.brokenkernel.improvtools.components.presentation.view.HtmlText
@@ -28,8 +27,7 @@ import com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel.Thesaur
 
 @Composable
 internal fun ThesaurusTabSingleWord(
-    word: String,
-    viewModel: ThesaurusSingleItemViewModel = hiltViewModel(),
+    viewModel: ThesaurusSingleItemViewModel,
     onNavigateBack: () -> Unit,
     onLaunchTitleCallback: () -> Unit,
     @StringRes priorTitleResource: Int,
@@ -42,24 +40,28 @@ internal fun ThesaurusTabSingleWord(
     val scrollState: ScrollState = rememberScrollState()
 
     SelectionContainer {
-        Column(modifier = Modifier.verticalColumnScrollbar(scrollState).verticalScroll(scrollState)) {
+        Column(
+            modifier = Modifier
+                .verticalColumnScrollbar(scrollState)
+                .verticalScroll(scrollState),
+        ) {
             Box(
                 contentAlignment = Alignment.Center,
                 modifier = Modifier.fillMaxWidth(),
             ) {
                 Text(
-                    word,
+                    viewModel.word,
                     style = MaterialTheme.typography.titleLarge,
                     textAlign = TextAlign.Center,
                 )
             }
             HtmlText("<h1>Action Synonyms</h1>")
-            viewModel.synonymsForWord(word).forEach { synonym ->
+            viewModel.synonyms().forEach { synonym ->
                 Text(synonym)
             }
-            val wordSenseRenderedString = viewModel.getWordSensesFullyRenderedString(word)
+            val wordSenseRenderedString = viewModel.getWordSensesFullyRenderedString()
             if (wordSenseRenderedString != null) {
-                HtmlText("<h1>Word Senses</h1>")
+                HtmlText(stringResource(R.string.encyclopaedia_word_senses))
                 HtmlText(wordSenseRenderedString)
             }
             ExtendedFloatingActionButton(

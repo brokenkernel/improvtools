@@ -29,8 +29,6 @@ internal class CountDownTimerViewModel @AssistedInject constructor(
     }
 
     @AssistedFactory interface Factory {
-//        @JvmName("create")
-//        @Suppress("INAPPLICABLE_JVM_NAME")
         fun create(
             @Assisted("title") title: String,
             @Assisted("initialTime") initialTimeInWholeMilliseconds: Long,

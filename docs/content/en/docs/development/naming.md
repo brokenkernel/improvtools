@@ -35,7 +35,7 @@ For data which needs to be serialised:
 
 enum class NavigableScreen {
   ABC,
-  DEF
+  DEF,
   ;
 }
 

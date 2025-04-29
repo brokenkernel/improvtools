@@ -1,5 +1,6 @@
 package com.brokenkernel.improvtools.encyclopaedia.api
 
+import com.brokenkernel.improvtools.encyclopaedia.data.model.SenseDatumUI
 import com.brokenkernel.improvtools.encyclopaedia.data.repository.ThesaurusRepository
 import com.brokenkernel.improvtools.encyclopaedia.presentation.view.ThesaurusTabSingleWord
 import javax.inject.Inject
@@ -32,7 +33,7 @@ class ThesaurusAPI @Inject internal constructor(private val thesaurusRepository:
     }
 
     // TODO: this really should return model information and something else should render it ...
-    fun getWordSensesFullyRenderedStringForVerb(word: String): String? {
+    fun getSenseDatumForVerb(word: String): List<SenseDatumUI>? {
         val dictionary = Dictionary.getDefaultResourceInstance()
         val indexWord: IndexWord? = dictionary.lookupIndexWord(POS.VERB, word)
         if (indexWord == null) {
@@ -40,25 +41,16 @@ class ThesaurusAPI @Inject internal constructor(private val thesaurusRepository:
         }
         val senses: List<Synset> = indexWord.senses.orEmpty()
 
-        val debugDatum: String = buildString {
-            append("<ul>")
-            senses.forEach { sense: Synset ->
-                append("<li>")
-                val glossSplit = sense.gloss.split(";", limit = 2)
-                val glossPrimary = glossSplit.getOrElse(0, { "..." })
-                val glossSecondary = glossSplit.getOrElse(1, { "..." })
-                append("<u>$glossPrimary</u>")
-                append("<i>$glossSecondary</i>")
-                append("<ul>")
-                sense.words.forEach { subword ->
-                    append("<li>${subword.lemma}</li>")
-                }
-                append("</ul>")
-                append("</li>")
-            }
-            append("</ul>")
-        }
+        return senses.map { sense: Synset ->
+            val glossSplit = sense.gloss.split(";", limit = 2)
+            val glossPrimary = glossSplit.getOrElse(0, { "" })
+            val glossSecondary = glossSplit.getOrElse(1, { "" })
 
-        return debugDatum
+            SenseDatumUI(
+                description = glossPrimary,
+                example = glossSecondary,
+                synonyms = sense.words.map { w -> w.lemma },
+            )
+        }.toList()
     }
 }

@@ -103,4 +103,5 @@
   <string name="suggestions_adjective">Adjective</string>
   <string name="suggestions_adverb">Adverb</string>
   <string name="encyclopaedia_word_details">word details</string>
+    <string name="encyclopaedia_word_senses"><![CDATA[<h1>Word Senses</h1>]]></string>
 </resources>
