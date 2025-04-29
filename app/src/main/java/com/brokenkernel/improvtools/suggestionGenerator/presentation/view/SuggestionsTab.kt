@@ -13,6 +13,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ReadMore
 import androidx.compose.material.icons.filled.ChangeCircle
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.rounded.DragHandle
@@ -149,23 +150,15 @@ internal fun SuggestionsTab(
                                                 )
                                             }
                                         }
+
+                                        // TODO: look up words and show details, not just the few I know of
                                         if (viewModel.isWordInThesaurus(currentWord)) {
-                                            IconButton(
-                                                onClick = {
-                                                    // TODO: consider pop up menu instead of full screen
-                                                    // TODO: button says "back to encyclopaedia" instead of "back"
-                                                    // TODO: none of the selected words are remembered across screens
-                                                    onNavigateToWord(currentWord)
-                                                },
-                                            ) {
-                                                Icon(
-                                                    ThesaurusPageScreen.icon,
-                                                    contentDescription = stringResource(
-                                                        R.string.go_to_single_word_thesaurus_view,
-                                                        currentWord,
-                                                    ),
-                                                )
-                                            }
+                                            // TODO: consider pop up menu instead of full screen
+                                            // TODO: none of the selected words are remembered across screens
+                                            SingleWordThesaurusButton(
+                                                word = currentWord,
+                                                onNavigateToWord = onNavigateToWord,
+                                            )
                                         }
                                         IconButton(
                                             modifier = Modifier.longPressDraggableHandle(

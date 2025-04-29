@@ -1,6 +1,7 @@
 package com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
+import com.brokenkernel.improvtools.encyclopaedia.api.ThesaurusAPI
 import com.brokenkernel.improvtools.encyclopaedia.data.repository.ThesaurusRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -9,8 +10,13 @@ import javax.inject.Inject
 @HiltViewModel
 internal class ThesaurusSingleItemViewModel @Inject constructor(
     val thesaurusRepository: ThesaurusRepository,
+    val thesaurusAPI: ThesaurusAPI, // todo: this should be accessed through a repository
 ) : ViewModel() {
     fun synonymsForWord(word: String): Iterable<String> {
         return thesaurusRepository.getActionsThesaurus().synonymsForWord(word).sorted()
+    }
+
+    fun getWordSensesFullyRenderedString(word: String): String? {
+        return thesaurusAPI.getWordSensesFullyRenderedStringForVerb(word)
     }
 }

@@ -10,6 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.Clipboard
 import androidx.compose.ui.platform.LocalClipboard
@@ -27,6 +28,7 @@ import com.brokenkernel.improvtools.components.presentation.view.TabbedSearchabl
 import com.brokenkernel.improvtools.encyclopaedia.EncyclopaediaSectionNavigation
 import com.brokenkernel.improvtools.encyclopaedia.data.model.ActionThesaurusType
 import com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel.ThesaurusTabAllItemsViewModel
+import com.brokenkernel.improvtools.suggestionGenerator.presentation.view.SingleWordThesaurusButton
 import kotlinx.coroutines.launch
 
 @Composable
@@ -82,6 +84,20 @@ internal fun ThesaurusTabAllItems(
                             )
                         }
                     }
+                }
+            },
+            trailingContent = {
+                val hasWordDetails = rememberSaveable { viewModel.hasWordDetails(word) }
+                if (hasWordDetails) {
+                    SingleWordThesaurusButton(
+                        word = word,
+                        onNavigateToWord = {
+                            EncyclopaediaSectionNavigation.navigateToThesaurusWord(
+                                improvToolsAppState,
+                                word,
+                            )
+                        },
+                    )
                 }
             },
             modifier = Modifier

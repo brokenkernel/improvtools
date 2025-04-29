@@ -257,7 +257,9 @@ dependencies {
     implementation(libs.reorderable)
 
     debugImplementation(libs.androidx.ui.tooling)
-    debugImplementation(libs.leakcanary.android)
+    // TODO: add profilable build
+    // TODO: add leakCanary build
+//    debugImplementation(libs.leakcanary.android)
 
     runtimeOnly(libs.extjwnl.data.wn31)
 

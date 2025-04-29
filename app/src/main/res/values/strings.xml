@@ -102,4 +102,5 @@
   <string name="suggestions_noun">Noun</string>
   <string name="suggestions_adjective">Adjective</string>
   <string name="suggestions_adverb">Adverb</string>
+  <string name="encyclopaedia_word_details">word details</string>
 </resources>
