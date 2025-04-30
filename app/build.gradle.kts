@@ -198,8 +198,6 @@ android {
 }
 
 dependencies {
-    val room_version = "2.7.1"
-
     implementation(platform(libs.androidx.compose.bom)) {
         because("we are an android compose application")
     }
