@@ -2,12 +2,6 @@ package com.brokenkernel.improvtools.encyclopaedia.presentation.view
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Games
-import androidx.compose.material.icons.outlined.FormatQuote
-import androidx.compose.material.icons.outlined.Games
-import androidx.compose.material.icons.outlined.Icecream
-import androidx.compose.material.icons.outlined.SelfImprovement
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItem
@@ -68,14 +62,8 @@ internal fun GamesTab(
             headlineContent = { Text(it.gameName) },
             leadingContent = {
                 Icon(
-                    when (it.topic) {
-                        GamesDatumTopic.GAME -> Icons.Filled.Games
-                        GamesDatumTopic.WARMUP -> Icons.Outlined.Games
-                        GamesDatumTopic.FORMAT -> Icons.Outlined.FormatQuote
-                        GamesDatumTopic.EXERCISE -> Icons.Outlined.SelfImprovement
-                        GamesDatumTopic.ICEBREAKER -> Icons.Outlined.Icecream
-                    },
-                    contentDescription = "Person", // TODO text
+                    it.topic.icon,
+                    contentDescription = it.topic.toString(),
                 )
             },
             overlineContent = { Text(it.topic.name) },
