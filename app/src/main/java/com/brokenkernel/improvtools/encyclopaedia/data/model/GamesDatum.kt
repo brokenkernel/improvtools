@@ -29,7 +29,7 @@ internal data class GamesDataItem(
 
 internal val GamesDatum: Collection<GamesDataItem> = listOf(
     GamesDataItem(
-        gameName = "3 Things",
+        gameName = "Three Things",
         topic = GamesDatumTopic.GAME,
         detailedInformation = """
              The players stand in a circle. The first person turns to the next and
@@ -43,7 +43,7 @@ internal val GamesDatum: Collection<GamesDataItem> = listOf(
              </ul>
              <b>Variations:</b> 15 Things, Category Things (name the category), Word-At-A-Time things,
         """.trimIndent(),
-        unpublishedMatches = setOf("Three Things"),
+        unpublishedMatches = setOf("3 Things"),
     ),
     // TODO: how to handle linking to variations? More details?
     //  TODO variations: 15 things ?  2.5 things? Other

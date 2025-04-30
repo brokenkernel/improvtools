@@ -78,7 +78,7 @@ internal fun PeopleTab(onLaunchTitleCallback: () -> Unit) {
                 s1.personName,
                 s2.personName,
             )
-        }.toList()
+        }.groupBy { it.personName[0].toString() }
     }
 
     TabbedSearchableColumn<PeopleDatumTopic, PeopleDataItem>(
@@ -87,7 +87,6 @@ internal fun PeopleTab(onLaunchTitleCallback: () -> Unit) {
         transformForSearch = ::transformForSearch,
         itemToTopic = { it -> it.topic },
         itemToKey = { it -> it.personName },
-//        itemToKey
     ) { it ->
         var isListItemInformationExpanded: Boolean by remember {
             mutableStateOf(

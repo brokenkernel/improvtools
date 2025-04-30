@@ -53,11 +53,9 @@ internal fun GamesTab(
         onLaunchTitleCallback()
     }
 
-    val sortedGames = remember { viewModel.sortedGames }
-
     TabbedSearchableColumn<GamesDatumTopic, GamesDataItem>(
         itemDoesMatch = ::doesMatch,
-        itemList = sortedGames,
+        itemList = viewModel.groupedGames,
         transformForSearch = ::transformForSearch,
         itemToTopic = { it -> it.topic },
         itemToKey = { it -> it.gameName },

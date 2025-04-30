@@ -11,8 +11,9 @@ internal class ThesaurusTabAllItemsViewModel @Inject constructor(
     val thesaurusRepository: ThesaurusRepository,
     val thesaurusAPI: ThesaurusAPI, // todo: this should be accessed through a repository
 ) : ViewModel() {
-    fun words(): List<String> {
-        return thesaurusRepository.getActionsThesaurus().keys().sorted().toList()
+
+    fun groupedWords(): Map<String, List<String>> {
+        return thesaurusRepository.getActionsThesaurus().keys().sorted().groupBy { k -> k[0].toString() }
     }
 
     fun synonymsForWord(word: String): Iterable<String> {

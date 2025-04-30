@@ -46,7 +46,7 @@ internal fun ThesaurusTabAllItems(
     val coroutineScope = rememberCoroutineScope()
     TabbedSearchableColumn<ActionThesaurusType, String>(
         itemDoesMatch = { searchText, word -> word.contains(searchText, ignoreCase = true) },
-        itemList = viewModel.words(),
+        itemList = viewModel.groupedWords(),
         transformForSearch = { s -> s },
         itemToTopic = { _ -> ActionThesaurusType.Action },
         itemToKey = { it -> it },

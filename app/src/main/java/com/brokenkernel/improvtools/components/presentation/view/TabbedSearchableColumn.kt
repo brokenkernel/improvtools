@@ -7,6 +7,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.foundation.text.input.rememberTextFieldState
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.runtime.toMutableStateList
@@ -21,7 +22,7 @@ import androidx.compose.ui.semantics.semantics
 @Composable
 internal inline fun <reified T : Enum<T>, I> TabbedSearchableColumn(
     crossinline itemDoesMatch: (String, I) -> Boolean,
-    itemList: List<I>,
+    itemList: Map<String, List<I>>,
     crossinline transformForSearch: (String) -> String,
     crossinline itemToTopic: @Composable (I) -> T,
     noinline itemToKey: (I) -> (Any),
@@ -48,17 +49,24 @@ internal inline fun <reified T : Enum<T>, I> TabbedSearchableColumn(
                 textFieldState = textFieldState,
             ) {
                 LazyColumn {
-                    items(
-                        itemList,
-                        key = itemToKey,
-                    ) { it: I ->
-                        if (isSegmentedButtonChecked[itemToTopic(it).ordinal] &&
-                            itemDoesMatch(
-                                transformForSearch(textFieldState.text.toString()),
-                                it,
-                            )
-                        ) {
-                            itemToListItem(it)
+                    itemList.forEach { group, groupList ->
+                        if (itemList.size > 1) {
+                            stickyHeader {
+                                Text(group)
+                            }
+                        }
+                        items(
+                            groupList,
+                            key = itemToKey,
+                        ) { it: I ->
+                            if (isSegmentedButtonChecked[itemToTopic(it).ordinal] &&
+                                itemDoesMatch(
+                                    transformForSearch(textFieldState.text.toString()),
+                                    it,
+                                )
+                            ) {
+                                itemToListItem(it)
+                            }
                         }
 //                ListItem(
 //                    headlineContent = { Text("heading") },
