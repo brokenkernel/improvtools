@@ -31,9 +31,11 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.Clipboard
@@ -49,6 +51,8 @@ import androidx.core.net.toUri
 import com.brokenkernel.improvtools.BuildConfig
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.utils.AboutTabViewModel
+import com.brokenkernel.improvtools.components.presentation.view.ExpandIcon
+import com.brokenkernel.improvtools.components.presentation.view.HtmlText
 import kotlinx.coroutines.launch
 
 @Composable
@@ -217,25 +221,35 @@ internal fun AboutTab(
                     Text(
                         AnnotatedString.fromHtml(generateGeneralInformationText()),
                     )
-                    val isExpanded = rememberSaveable { mutableStateOf(false) }
+                    HtmlText(
+                        resources.getString(
+                            R.string.about_buildconfig_version_code,
+                            BuildConfig.VERSION_CODE,
+                        ),
+                    )
+                    var isDebugDataExpanded by rememberSaveable { mutableStateOf(false) }
                     // TODO: make utility collapsible card
                     Card(
                         modifier = Modifier
                             .clickable(
-                                onClick = { isExpanded.value = !isExpanded.value },
+                                onClick = { isDebugDataExpanded = !isDebugDataExpanded },
                                 onClickLabel = stringResource(R.string.component_collapse_card),
                                 enabled = true,
                                 role = Role.Switch,
                             ),
                     ) {
-                        if (isExpanded.value) {
-                            Text(
-                                AnnotatedString.fromHtml(generateDebugInformationText()),
-                            )
-                        } else {
-                            Text(
-                                stringResource(R.string.about_show_debug_data),
-                            )
+                        Row {
+                            if (isDebugDataExpanded) {
+                                Text(
+                                    AnnotatedString.fromHtml(generateDebugInformationText()),
+                                )
+                            } else {
+                                Text(
+                                    stringResource(R.string.about_show_debug_data),
+                                )
+                                // not shown when expanded, but that's okay.
+                                ExpandIcon(isDebugDataExpanded)
+                            }
                         }
                     }
                     TextButton(
