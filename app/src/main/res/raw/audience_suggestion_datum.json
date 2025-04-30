@@ -245,8 +245,10 @@
         {"idea": "American Museum of Natural History"},
         {"idea": "Animal Kingdom"},
         {"idea": "Arena"},
+        {"idea": "Chicken coop"},
         {"idea": "Crematorium"},
         {"idea": "Empty Kingergarden Classroom"},
+        {"idea": "Farmhouse"},
         {"idea": "Flea market"},
         {"idea": "Forest"},
         {"idea": "Glacier"},
@@ -264,13 +266,21 @@
       ]
     },
     {
-      "title": "Job",
+      "title": "Occupation",
       "ideas": [
+        {"idea": "Carpenter"},
         {"idea": "Doctor"},
+        {"idea": "Landscape Architect"},
         {"idea": "Lawyer"},
-        {"idea": "Observation tower"},
-        {"idea": "Farmhouse"},
-        {"idea": "Chicken coop"}
+        {"idea": "Librarian"},
+        {"idea": "Gynecologist"},
+        {"idea": "Pathologist"},
+        {"idea": "Seamen"},
+        {"idea": "Translator"},
+        {"idea": "Utility Meter Reader"},
+        {"idea": "Veterinarian"},
+        {"idea": "Weather Observer"},
+        {"idea": "Zoologist"}
       ]
     },
     {
