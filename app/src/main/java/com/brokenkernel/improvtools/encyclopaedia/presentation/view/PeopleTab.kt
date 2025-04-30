@@ -5,6 +5,7 @@ import android.icu.text.SearchIterator.DONE
 import android.icu.text.StringSearch
 import android.icu.util.ULocale
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Row
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Web
 import androidx.compose.material.icons.outlined.Person
@@ -25,7 +26,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.intl.Locale
 import com.brokenkernel.improvtools.R
+import com.brokenkernel.improvtools.components.presentation.view.ExpandIcon
 import com.brokenkernel.improvtools.components.presentation.view.TabbedSearchableColumn
+import com.brokenkernel.improvtools.encyclopaedia.data.model.GamesDataItem
 import com.brokenkernel.improvtools.encyclopaedia.data.model.PeopleDataItem
 import com.brokenkernel.improvtools.encyclopaedia.data.model.PeopleDatum
 import com.brokenkernel.improvtools.encyclopaedia.data.model.PeopleDatumTopic
@@ -48,6 +51,10 @@ private fun doesMatch(searchString: String, personData: PeopleDataItem): Boolean
     } else {
         return true
     }
+}
+
+private fun hasExpandableInformation(pdi: PeopleDataItem): Boolean {
+    return pdi.detailedInformation != null
 }
 
 @Composable
@@ -87,6 +94,19 @@ internal fun PeopleTab(onLaunchTitleCallback: () -> Unit) {
                 false,
             )
         }
+
+        val pdiModifier = if (hasExpandableInformation(it)) {
+            Modifier.clickable(
+                enabled = true,
+                role = Role.Button,
+                onClick = {
+                    isListItemInformationExpanded = !isListItemInformationExpanded
+                },
+            )
+        } else {
+            Modifier
+        }
+
         ListItem(
             headlineContent = { Text(it.personName) },
             leadingContent = {
@@ -97,41 +117,42 @@ internal fun PeopleTab(onLaunchTitleCallback: () -> Unit) {
             },
             overlineContent = { Text(it.knownFor) },
             trailingContent = {
-                if (it.learnMoreLink != null) {
-                    val uriHandler = LocalUriHandler.current
-                    OutlinedIconButton(
-                        onClick = {
-                            uriHandler.openUri(it.learnMoreLink.toString())
-                        },
-                    ) {
-                        if (it.isWikipedia) {
-                            Icon(
-                                painterResource(R.drawable.logo_wikipedia),
-                                contentDescription = stringResource(
-                                    R.string.wikipedia,
-                                ),
-                            )
-                        } else {
-                            Icon(
-                                Icons.Default.Web,
-                                contentDescription = stringResource(R.string.open_website),
-                            )
+                Row {
+                    if (it.learnMoreLink != null) {
+                        val uriHandler = LocalUriHandler.current
+                        OutlinedIconButton(
+                            onClick = {
+                                uriHandler.openUri(it.learnMoreLink.toString())
+                            },
+                        ) {
+                            if (it.isWikipedia) {
+                                Icon(
+                                    painterResource(R.drawable.logo_wikipedia),
+                                    contentDescription = stringResource(
+                                        R.string.wikipedia,
+                                    ),
+                                )
+                            } else {
+                                Icon(
+                                    Icons.Default.Web,
+                                    contentDescription = stringResource(R.string.open_website),
+                                )
+                            }
                         }
+                    }
+                    if (hasExpandableInformation(it)) {
+                        ExpandIcon(isListItemInformationExpanded)
                     }
                 }
             },
             supportingContent = {
                 if (isListItemInformationExpanded) {
-                    Text(it.detailedInformation)
+                    if (it.detailedInformation != null) {
+                        Text(it.detailedInformation)
+                    }
                 }
             },
-            modifier = Modifier.clickable(
-                enabled = true,
-                role = Role.Button,
-                onClick = {
-                    isListItemInformationExpanded = !isListItemInformationExpanded
-                },
-            ),
+            modifier = pdiModifier,
         )
     }
 }

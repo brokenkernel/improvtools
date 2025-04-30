@@ -17,7 +17,7 @@ internal data class PeopleDataItem(
     val topic: PeopleDatumTopic,
     val knownFor: String,
     val learnMoreLink: Uri? = null,
-    val detailedInformation: String = "",
+    val detailedInformation: String? = null,
 ) {
     init {
         // sanity check/validation
