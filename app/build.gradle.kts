@@ -198,6 +198,8 @@ android {
 }
 
 dependencies {
+    val room_version = "2.7.1"
+
     implementation(platform(libs.androidx.compose.bom)) {
         because("we are an android compose application")
     }
@@ -243,6 +245,12 @@ dependencies {
     implementation(libs.androidx.metrics.performance)
     implementation(libs.androidx.navigation.navigationCompose)
     implementation(libs.androidx.profileinstaller)
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation(libs.androidx.room.ktx)
+    // optional - Paging 3 Integration
+    implementation(libs.androidx.room.paging)
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.rxjava3)
     implementation(libs.androidx.runtime.tracing)
     implementation(libs.androidx.startup.runtime)
     implementation(libs.androidx.ui)
@@ -266,10 +274,10 @@ dependencies {
     implementation(libs.reorderable)
 
     debugImplementation(libs.androidx.ui.tooling)
+
     // TODO: add profilable build
     // TODO: add leakCanary build
-//    debugImplementation(libs.leakcanary.android)
-
+    //    debugImplementation(libs.leakcanary.android)
     runtimeOnly(libs.extjwnl.data.wn31)
     runtimeOnly(libs.slf4j.android)
 
@@ -277,6 +285,7 @@ dependencies {
 
     testImplementation(kotlin("test"))
     testImplementation(libs.androidx.lifecycle.runtime.testing)
+    testImplementation(libs.androidx.room.testing)
     testImplementation(libs.junit)
 
     androidTestImplementation(platform(libs.androidx.compose.bom))
@@ -297,6 +306,9 @@ dependencies {
 
     ksp(libs.androidx.appsearch.compiler)
     ksp(libs.androidx.lifecycle.compiler)
+    // If this project uses any Kotlin source, use Kotlin Symbol Processing (KSP)
+    // See Add the KSP plugin to your project
+    ksp(libs.androidx.room.compiler)
     ksp(libs.hilt.compiler)
 
     lintChecks(libs.androidx.lint.gradle)
