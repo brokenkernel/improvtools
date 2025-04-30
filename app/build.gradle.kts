@@ -7,9 +7,9 @@ import com.google.firebase.crashlytics.buildtools.gradle.CrashlyticsExtension
 import com.mikepenz.aboutlibraries.plugin.DuplicateMode
 import com.mikepenz.aboutlibraries.plugin.DuplicateRule
 import com.mikepenz.aboutlibraries.plugin.StrictMode
-import org.gradle.kotlin.dsl.implementation
 import java.io.IOException
 import java.util.Properties
+import org.gradle.kotlin.dsl.implementation
 import org.jetbrains.dokka.gradle.engine.parameters.VisibilityModifier
 import org.jetbrains.kotlin.compose.compiler.gradle.ComposeFeatureFlag
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
@@ -187,6 +187,14 @@ android {
     androidResources {
         generateLocaleConfig = true
     }
+
+    // https://kotlinlang.org/docs/whatsnew-eap.html#leave-feedback
+//    kotlinOptions {
+//        freeCompilerArgs += listOf(
+//            "-Werror",
+//            "-Wextra",
+//        )
+//    }
 }
 
 dependencies {
