@@ -14,7 +14,7 @@ import com.brokenkernel.improvtools.ui.theme.ImprovToolsTheme
 
 @Composable
 fun ExpandIcon(isExpanded: Boolean) {
-    if (isExpanded) {
+    if (!isExpanded) {
         Icon(
             Icons.Default.ExpandMore,
             contentDescription = stringResource(R.string.expand),

@@ -39,6 +39,6 @@ annotation class LocalPreviews()
 @FontScalePreviews
 @LocalPreviews
 @Preview(name = "Show Background", showBackground = true)
-//@Preview(name = "Show System UI", showSystemUi = true)
+// @Preview(name = "Show System UI", showSystemUi = true)
 @Preview
 annotation class ImprovToolsAllPreviews()

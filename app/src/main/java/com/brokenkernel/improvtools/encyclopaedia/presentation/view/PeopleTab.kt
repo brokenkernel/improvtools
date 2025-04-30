@@ -28,7 +28,6 @@ import androidx.compose.ui.text.intl.Locale
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.components.presentation.view.ExpandIcon
 import com.brokenkernel.improvtools.components.presentation.view.TabbedSearchableColumn
-import com.brokenkernel.improvtools.encyclopaedia.data.model.GamesDataItem
 import com.brokenkernel.improvtools.encyclopaedia.data.model.PeopleDataItem
 import com.brokenkernel.improvtools.encyclopaedia.data.model.PeopleDatum
 import com.brokenkernel.improvtools.encyclopaedia.data.model.PeopleDatumTopic
