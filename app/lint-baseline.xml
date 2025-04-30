@@ -367,11 +367,11 @@
     <issue
         id="UnusedResources"
         message="The resource `R.string.encyclopaedia_tab_title_thesaurus` appears to be unused"
-        errorLine1="    &lt;string name=&quot;shortcut_encyclopaedia_long_label&quot;>Encyclopaedia&lt;/string>"
+        errorLine1="    &lt;string name=&quot;encyclopaedia_tab_title_thesaurus&quot;>Thesaurus&lt;/string>"
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/res/values/strings.xml"
-            line="60"
+            line="58"
             column="13"/>
     </issue>
 

@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import com.brokenkernel.improvtools.R
+import com.brokenkernel.improvtools.components.presentation.view.ExpandIcon
 import com.brokenkernel.improvtools.components.presentation.view.HtmlText
 import com.brokenkernel.improvtools.components.presentation.view.TabbedSearchableColumn
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GlossaryDataItem
@@ -31,8 +32,6 @@ private fun transformForSearch(str: String): String {
 private fun doesMatch(search: String, item: GlossaryDataItem): Boolean {
     return transformForSearch(item.term).contains(search, ignoreCase = true)
 }
-
-// TODO: SearchListColumn Composable (filter fn, itemToListItem)
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
@@ -70,6 +69,9 @@ internal fun GlossaryTab(onLaunchTitleCallback: () -> Unit) {
                 if (isListItemInformationExpanded) {
                     HtmlText(it.detailedInformation)
                 }
+            },
+            trailingContent = {
+                ExpandIcon(isExpanded = isListItemInformationExpanded)
             },
             modifier = Modifier.clickable(
                 enabled = true,
