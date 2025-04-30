@@ -7,6 +7,7 @@ import com.google.firebase.crashlytics.buildtools.gradle.CrashlyticsExtension
 import com.mikepenz.aboutlibraries.plugin.DuplicateMode
 import com.mikepenz.aboutlibraries.plugin.DuplicateRule
 import com.mikepenz.aboutlibraries.plugin.StrictMode
+import org.gradle.kotlin.dsl.implementation
 import java.io.IOException
 import java.util.Properties
 import org.jetbrains.dokka.gradle.engine.parameters.VisibilityModifier
@@ -117,11 +118,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = "21"
     }
     buildFeatures {
         compose = true
@@ -262,6 +263,7 @@ dependencies {
 //    debugImplementation(libs.leakcanary.android)
 
     runtimeOnly(libs.extjwnl.data.wn31)
+    runtimeOnly(libs.slf4j.android)
 
     debugRuntimeOnly(libs.androidx.ui.test.manifest)
 

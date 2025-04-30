@@ -59,6 +59,7 @@ protoc = "4.30.2"
 reorderable = "2.4.3"
 runtimeTracing = "1.8.0"
 screengrab = "2.1.1"
+slf4jAndroid = "2.0.17-0"
 sortDependencies = "0.14"
 startupRuntime = "1.2.0"
 versionCatalogUpdate = "1.0.0"
@@ -168,6 +169,7 @@ net-engawapg-lib-zoomable = { module = "net.engawapg.lib:zoomable", version.ref 
 play-services-instantapps = { module = "com.google.android.gms:play-services-instantapps", version.ref = "playServicesInstantapps" }
 play-services-oss-licenses = { module = "com.google.android.gms:play-services-oss-licenses", version.ref = "playServicesOssLicenses" }
 reorderable = { module = "sh.calvin.reorderable:reorderable", version.ref = "reorderable" }
+slf4j-android = { module = "uk.uuid.slf4j:slf4j-android", version.ref = "slf4jAndroid" }
 tools-fastlane-screengrab = { module = "tools.fastlane:screengrab", version.ref = "screengrab" }
 zoomable-image-coil3 = { module = "me.saket.telephoto:zoomable-image-coil3", version.ref = "zoomableImageCoil3" }
 
