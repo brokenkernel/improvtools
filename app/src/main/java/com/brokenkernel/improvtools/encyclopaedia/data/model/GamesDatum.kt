@@ -24,6 +24,7 @@ internal data class GamesDataItem(
     val topic: GamesDatumTopic,
     val detailedInformation: String = "",
     val unpublishedMatches: Set<String> = emptySet<String>(),
+    val source: String? = null,
 )
 
 internal val GamesDatum: Collection<GamesDataItem> = listOf(
@@ -109,6 +110,16 @@ internal val GamesDatum: Collection<GamesDataItem> = listOf(
     GamesDataItem(
         gameName = "One For All",
         topic = GamesDatumTopic.GAME,
+    ),
+    GamesDataItem(
+        gameName = "Dysfunctional Relationships",
+        detailedInformation = """
+            | To play the game, two actors come on stage and each draw one relationship card which they look at
+            | and show to the audience (but not each other). They then begin a scene where they have to create a
+            |  relationship similar to what is on their card, but without negating anything the other actor says.
+        """.trimMargin(),
+        topic = GamesDatumTopic.GAME,
+        source = "https://ask.metafilter.com/233371/I-Need-Some-Relationship-Suggestions",
     ),
     GamesDataItem(
         gameName = "Best of Times, Worst of Times",

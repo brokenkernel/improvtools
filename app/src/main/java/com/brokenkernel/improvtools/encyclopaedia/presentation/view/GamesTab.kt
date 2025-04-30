@@ -71,6 +71,9 @@ internal fun GamesTab(
                 if (isListItemInformationExpanded) {
                     HtmlText(it.detailedInformation)
                 }
+                if (it.source != null) {
+                    HtmlText("""<i><a href="${it.source}">source</a></i>""")
+                }
             },
             modifier = Modifier.clickable(
                 enabled = true,
