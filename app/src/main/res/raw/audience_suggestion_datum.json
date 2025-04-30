@@ -1,15 +1,6 @@
 {
   "categories": [
     {
-      "title": "Word",
-      "ideas": [
-        {"idea": "Blueberry"},
-        {"idea": "Life"},
-        {"idea": "Creed"},
-        {"idea": "Disposition"}
-      ]
-    },
-    {
       "title": "Emotion",
       "showLinkToEmotion": true,
       "ideas": [
