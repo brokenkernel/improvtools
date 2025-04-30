@@ -2,6 +2,10 @@ package com.brokenkernel.improvtools.encyclopaedia.presentation.view
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Column
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ExpandLess
+import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItem
@@ -15,6 +19,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.util.fastAny
+import com.brokenkernel.improvtools.components.presentation.view.ExpandIcon
 import com.brokenkernel.improvtools.components.presentation.view.HtmlText
 import com.brokenkernel.improvtools.components.presentation.view.TabbedSearchableColumn
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GamesDataItem
@@ -31,6 +36,10 @@ private fun doesMatch(search: String, gameData: GamesDataItem): Boolean {
             transformForSearch(it)
         }
             .fastAny { it -> it.contains(search, ignoreCase = true) }
+}
+
+private fun hasExpandableInformation(gdi: GamesDataItem): Boolean {
+    return gdi.detailedInformation != null || gdi.source != null
 }
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
@@ -58,6 +67,18 @@ internal fun GamesTab(
                 false,
             )
         }
+        val gdiModifier =
+            if (hasExpandableInformation(it)) {
+                Modifier.clickable(
+                    enabled = true,
+                    role = Role.Button,
+                    onClick = {
+                        isListItemInformationExpanded = !isListItemInformationExpanded
+                    },
+                )
+            } else {
+                Modifier
+            }
         ListItem(
             headlineContent = { Text(it.gameName) },
             leadingContent = {
@@ -69,19 +90,22 @@ internal fun GamesTab(
             overlineContent = { Text(it.topic.name) },
             supportingContent = {
                 if (isListItemInformationExpanded) {
-                    HtmlText(it.detailedInformation)
-                }
-                if (it.source != null) {
-                    HtmlText("""<i><a href="${it.source}">source</a></i>""")
+                    Column {
+                        if (it.detailedInformation != null) {
+                            HtmlText(it.detailedInformation)
+                        }
+                        if (it.source != null) {
+                            HtmlText("""<i><a href="${it.source}">source</a></i>""")
+                        }
+                    }
                 }
             },
-            modifier = Modifier.clickable(
-                enabled = true,
-                role = Role.Button,
-                onClick = {
-                    isListItemInformationExpanded = !isListItemInformationExpanded
-                },
-            ),
+            trailingContent = {
+                if (hasExpandableInformation(it)) {
+                    ExpandIcon(isListItemInformationExpanded)
+                }
+            },
+            modifier = gdiModifier,
         )
     }
 }

@@ -22,7 +22,7 @@ internal enum class GamesDatumTopic(val icon: ImageVector) {
 internal data class GamesDataItem(
     val gameName: String,
     val topic: GamesDatumTopic,
-    val detailedInformation: String = "",
+    val detailedInformation: String? = null,
     val unpublishedMatches: Set<String> = emptySet<String>(),
     val source: String? = null,
 )
