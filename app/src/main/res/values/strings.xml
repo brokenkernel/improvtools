@@ -103,4 +103,5 @@
     <string name="encyclopaedia_word_senses"><![CDATA[<h1>Word Senses</h1>]]></string>
   <string name="expand">Expand</string>
   <string name="collapse">Collapse</string>
+    <string name="encyclopaedia_action_synonyms"><![CDATA[<h1>Action Synonyms</h1>]]></string>
 </resources>

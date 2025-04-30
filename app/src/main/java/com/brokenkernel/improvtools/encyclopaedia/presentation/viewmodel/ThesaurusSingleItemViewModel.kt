@@ -18,7 +18,18 @@ internal class ThesaurusSingleItemViewModel @AssistedInject constructor(
         return thesaurusRepository.getActionsThesaurus().synonymsForWord(word).sorted()
     }
 
-    fun getWordSensesFullyRenderedString(): String? {
+    // TODO: consider using Room in general for caching?
+    fun renderedActionSynonyms(): String {
+        return buildString {
+            append("<ul>")
+            synonyms().forEach { synonym ->
+                append("<li>$synonym</li>")
+            }
+            append("</ul>")
+        }
+    }
+
+    fun renderedWordSenses(): String? {
         val allSenseDatum = thesaurusAPI.getSenseDatum(word)
         if (allSenseDatum == null) {
             return null
