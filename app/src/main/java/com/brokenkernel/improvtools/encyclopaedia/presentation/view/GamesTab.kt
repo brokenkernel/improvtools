@@ -6,6 +6,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Games
 import androidx.compose.material.icons.outlined.FormatQuote
 import androidx.compose.material.icons.outlined.Games
+import androidx.compose.material.icons.outlined.Icecream
 import androidx.compose.material.icons.outlined.SelfImprovement
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -72,6 +73,7 @@ internal fun GamesTab(
                         GamesDatumTopic.WARMUP -> Icons.Outlined.Games
                         GamesDatumTopic.FORMAT -> Icons.Outlined.FormatQuote
                         GamesDatumTopic.EXERCISE -> Icons.Outlined.SelfImprovement
+                        GamesDatumTopic.ICEBREAKER -> Icons.Outlined.Icecream
                     },
                     contentDescription = "Person", // TODO text
                 )

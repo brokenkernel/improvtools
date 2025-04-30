@@ -340,15 +340,18 @@
         {"idea": "Heist"},
         {"idea": "Historical"},
         {"idea": "Horror"},
-        {"idea": "Horror"},
+        {"idea": "Infomercial"},
         {"idea": "Legal Thriller"},
         {"idea": "Military Fiction"},
         {"idea": "Musical"},
         {"idea": "Noir"},
+        {"idea": "Party Advertisement"},
+        {"idea": "Powerpoint Presentation"},
         {"idea": "Romance"},
         {"idea": "Satire"},
         {"idea": "Science fiction"},
         {"idea": "Shenmo"},
+        {"idea": "Sitcom "},
         {"idea": "Space Opera"},
         {"idea": "Sports"},
         {"idea": "Spy Fiction"},
@@ -357,7 +360,9 @@
         {"idea": "Swashbuckler"},
         {"idea": "Sword & Sorcery"},
         {"idea": "Telenovela"},
+        {"idea": "Televangelist"},
         {"idea": "Urban fantasy"},
+        {"idea": "Weather Report"},
         {"idea": "Western"},
         {"idea": "Wuxia"}
       ]
@@ -412,7 +417,9 @@
         {"idea": "Give me a dangerous activity, thing to say, etc."},
         {"idea": "Give me a Cable TV channel"},
         {"idea": "I'm holding a box about yay big. What's inside it?"},
-        {"idea": "If you could invent a new human organ, what would it be?"}
+        {"idea": "If you could invent a new human organ, what would it be?"},
+        {"idea": "Something you do as a part of your daily routine"},
+        {"idea": "A Hobby"}
       ]
     },
     {

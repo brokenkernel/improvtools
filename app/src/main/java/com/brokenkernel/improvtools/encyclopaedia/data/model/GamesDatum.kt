@@ -5,6 +5,7 @@ internal enum class GamesDatumTopic {
     WARMUP,
     EXERCISE,
     FORMAT,
+    ICEBREAKER,
 }
 
 /**
@@ -62,6 +63,14 @@ internal val GamesDatum: Collection<GamesDataItem> = listOf(
         topic = GamesDatumTopic.FORMAT,
     ),
     GamesDataItem(
+        gameName = "Conducted Story",
+        topic = GamesDatumTopic.GAME,
+    ),
+    GamesDataItem(
+        gameName = "Name And Gesture",
+        topic = GamesDatumTopic.ICEBREAKER,
+    ),
+    GamesDataItem(
         gameName = "Character Gauntlet",
         topic = GamesDatumTopic.EXERCISE,
     ),
@@ -72,6 +81,26 @@ internal val GamesDatum: Collection<GamesDataItem> = listOf(
     GamesDataItem(
         gameName = "Middle School Warmup",
         topic = GamesDatumTopic.WARMUP,
+    ),
+    GamesDataItem(
+        gameName = "Half Time",
+        topic = GamesDatumTopic.GAME,
+    ),
+    GamesDataItem(
+        gameName = "Word At a time",
+        topic = GamesDatumTopic.GAME,
+    ),
+    GamesDataItem(
+        gameName = "Questions Only",
+        topic = GamesDatumTopic.GAME,
+    ),
+    GamesDataItem(
+        gameName = "Genre Replay",
+        topic = GamesDatumTopic.GAME,
+    ),
+    GamesDataItem(
+        gameName = "One For All",
+        topic = GamesDatumTopic.GAME,
     ),
     GamesDataItem(
         gameName = "Best of Times, Worst of Times",
