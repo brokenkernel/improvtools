@@ -1,7 +1,5 @@
 package com.brokenkernel.improvtools.encyclopaedia.data.model
 
-// TODO: this itself should be injected, future work.
-
 internal enum class ActionThesaurusType {
     Action,
 }
@@ -15,17 +13,21 @@ internal object ActionsThesaurus {
     // TODO: i18n
     // TODO: bidirectional is not always true, perhaps either explicitly list, or have an option or some such?
     private val actionItemList = setOf(
+        ActionItem("abide", setOf("bear", "tolerate")),
         ActionItem("access", setOf("reach", "enter")),
         ActionItem("accost", setOf("attack", "confront")),
         ActionItem("acquire", setOf("attain", "obtain")),
-        ActionItem("abide", setOf("bear", "tolerate")),
+        ActionItem("addle", setOf("agitate", "befuddle", "confuse", "distact", "dizzy")),
+        ActionItem("aprehend", setOf("arrest", "stop")),
+        ActionItem("attire", setOf("cloth", "dress")),
+        ActionItem("avenge", setOf("punish")),
         ActionItem("bear", setOf("stomach")),
         ActionItem("beg", setOf("solicit")),
+        ActionItem("destroy", setOf("hit", "kill")),
         ActionItem("edit", setOf("modify")),
         ActionItem("poison", setOf("pollute")),
         ActionItem("punish", setOf()),
         ActionItem("tolerate", setOf("bear", "indulge")),
-        ActionItem("destroy", setOf("hit", "kill")),
     )
 
     private val bidirectionalMap: Map<String, Set<String>>
