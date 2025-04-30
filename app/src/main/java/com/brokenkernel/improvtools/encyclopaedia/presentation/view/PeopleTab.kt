@@ -139,7 +139,7 @@ internal fun PeopleTab(onLaunchTitleCallback: () -> Unit) {
                         }
                     }
                     if (hasExpandableInformation(it)) {
-                        ExpandIcon(isListItemInformationExpanded)
+                        ExpandIcon(isExpanded = isListItemInformationExpanded)
                     }
                 }
             },
