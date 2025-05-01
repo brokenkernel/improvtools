@@ -17,9 +17,6 @@ internal fun OneWayDismissableContent(
     onRemove: () -> Unit,
     content: @Composable (() -> Unit) = {},
 ) {
-    // TODO: https://archive.is/I4TPn
-//    val currentItem by rememberUpdatedState(item)
-
     val contentSTDState = rememberSwipeToDismissBoxState(
         confirmValueChange = { newValue ->
             if (newValue == SwipeToDismissBoxValue.EndToStart) {

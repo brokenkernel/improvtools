@@ -112,6 +112,14 @@ internal val GamesDatum: Collection<GamesDataItem> = listOf(
         topic = GamesDatumTopic.GAME,
     ),
     GamesDataItem(
+        gameName = "Freeze Tag",
+        topic = GamesDatumTopic.GAME,
+    ),
+    GamesDataItem(
+        gameName = "What are you doing?",
+        topic = GamesDatumTopic.GAME,
+    ),
+    GamesDataItem(
         gameName = "Dysfunctional Relationships",
         detailedInformation = """
             | To play the game, two actors come on stage and each draw one relationship card which they look at
