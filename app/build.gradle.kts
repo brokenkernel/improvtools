@@ -67,7 +67,7 @@ android {
         applicationId = "com.brokenkernel.improvtools"
         minSdk = 26
         targetSdk = 36
-        versionCode = 180
+        versionCode = 181
         versionName = "0.0.$versionCode"
 
         testInstrumentationRunner = "com.brokenkernel.improvtools.infrastructure.ImprovToolsTestRunner"
