@@ -59,7 +59,6 @@ dependencies {
         because("we are an android compose application")
     }
     implementation(platform(libs.kotlin.bom))
-
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.activity.ktx)
     implementation(libs.androidx.annotation)
@@ -83,11 +82,13 @@ dependencies {
     implementation(libs.androidx.window)
     implementation(libs.material)
 
+    testImplementation(libs.junit)
+
+    androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
 
     ksp(libs.hilt.compiler)
+
     lintChecks(libs.androidx.lint.gradle)
-    testImplementation(libs.junit)
 }
