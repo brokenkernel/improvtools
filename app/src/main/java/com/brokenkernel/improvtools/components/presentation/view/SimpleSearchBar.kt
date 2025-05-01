@@ -22,11 +22,13 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.traversalIndex
 import androidx.compose.ui.unit.dp
 import com.brokenkernel.improvtools.R
+import kotlinx.serialization.json.JsonNull.content
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun BoxScope.SimpleSearchBar(
     textFieldState: TextFieldState,
+    trailingIcon: @Composable (() -> Unit)? = null,
     content: @Composable () -> Unit,
 ) {
     var searchBarExpandedState by rememberSaveable { mutableStateOf(false) }
@@ -50,13 +52,7 @@ internal fun BoxScope.SimpleSearchBar(
                         contentDescription = stringResource(R.string.search_bar_search),
                     )
                 },
-
-//                    trailingIcon = {
-//                        Icon(
-//                            Icons.Default.UnfoldMoreDouble,
-//                            contentDescription = "Search"
-//                        )
-//                    },
+                trailingIcon = trailingIcon,
             )
         },
         expanded = true,

@@ -26,10 +26,11 @@ internal inline fun <reified T : Enum<T>, I> TabbedSearchableColumn(
     crossinline transformForSearch: (String) -> String,
     noinline itemToTopic: @Composable (I) -> T,
     noinline itemToKey: (I) -> (Any),
+    textFieldState: TextFieldState = rememberTextFieldState(),
+    noinline trailingIcon: @Composable (() -> Unit)? = null,
     crossinline itemToListItem: @Composable (I) -> (Unit), // must be last one for nice UX
 ) {
     Column {
-        val textFieldState: TextFieldState = rememberTextFieldState()
         val isSingularTopic = enumValues<T>().size == 1
         val isSegmentedButtonChecked: SnapshotStateList<Boolean> =
             MutableList(enumValues<T>().size, { true })
@@ -47,6 +48,7 @@ internal inline fun <reified T : Enum<T>, I> TabbedSearchableColumn(
         ) {
             SimpleSearchBar(
                 textFieldState = textFieldState,
+                trailingIcon = trailingIcon,
             ) {
                 LazyColumn {
                     itemList.forEach { group, groupList ->

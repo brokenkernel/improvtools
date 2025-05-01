@@ -8,6 +8,20 @@ import androidx.compose.material.icons.outlined.Icecream
 import androidx.compose.material.icons.outlined.SelfImprovement
 import androidx.compose.ui.graphics.vector.ImageVector
 
+// TODO: tags. Show in search. Show in UX. Show Card/BottomCard explaining Tag
+
+internal enum class GamesDatumTag(val label: String) {
+    // TODO: i18n
+    DIVERGENCE("#divergence")
+    ;
+
+    companion object {
+        fun fromLabel(label: String): GamesDatumTag? {
+            return GamesDatumTag.entries.firstOrNull { gdt -> gdt.label.equals(label) }
+        }
+    }
+}
+
 internal enum class GamesDatumTopic(val icon: ImageVector) {
     GAME(icon = Icons.Outlined.Games),
     WARMUP(icon = Icons.Outlined.Fireplace),
@@ -25,6 +39,7 @@ internal data class GamesDataItem(
     val detailedInformation: String? = null,
     val unpublishedMatches: Set<String> = emptySet<String>(),
     val source: String? = null,
+    val tags: Set<GamesDatumTag> = setOf(),
 )
 
 internal val GamesDatum: Collection<GamesDataItem> = listOf(
@@ -44,6 +59,7 @@ internal val GamesDatum: Collection<GamesDataItem> = listOf(
              <b>Variations:</b> 15 Things, Category Things (name the category), Word-At-A-Time things,
         """.trimIndent(),
         unpublishedMatches = setOf("3 Things"),
+        tags = setOf(GamesDatumTag.DIVERGENCE),
     ),
     // TODO: how to handle linking to variations? More details?
     //  TODO variations: 15 things ?  2.5 things? Other
@@ -117,6 +133,26 @@ internal val GamesDatum: Collection<GamesDataItem> = listOf(
     ),
     GamesDataItem(
         gameName = "What are you doing?",
+        topic = GamesDatumTopic.GAME,
+    ),
+    GamesDataItem(
+        gameName = "Project To the Hand",
+        topic = GamesDatumTopic.EXERCISE,
+    ),
+    GamesDataItem(
+        gameName = "So So Scene",
+        topic = GamesDatumTopic.EXERCISE,
+    ),
+    GamesDataItem(
+        gameName = "Name Repetition Opening",
+        topic = GamesDatumTopic.EXERCISE,
+    ),
+    GamesDataItem(
+        gameName = "First Three Scenes",
+        topic = GamesDatumTopic.EXERCISE,
+    ),
+    GamesDataItem(
+        gameName = "Lines From a Hat",
         topic = GamesDatumTopic.GAME,
     ),
     GamesDataItem(
