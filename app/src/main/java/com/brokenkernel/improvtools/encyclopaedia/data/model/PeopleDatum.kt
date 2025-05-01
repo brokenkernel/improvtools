@@ -62,6 +62,12 @@ internal val PeopleDatum: Collection<PeopleDataItem> = listOf(
     PeopleDataItem("Gary Austin", PeopleDatumTopic.PERSON, "BATS Improv"),
     PeopleDataItem("Konstantin Stanislavski", PeopleDatumTopic.PERSON, ""),
     PeopleDataItem(
+        "BATS Improv",
+        PeopleDatumTopic.TROOP,
+        "",
+        "https://en.wikipedia.org/wiki/BATS_Improv".toUri(),
+    ),
+    PeopleDataItem(
         "Commedia Dell'arte",
         PeopleDatumTopic.TROOP,
         "",
