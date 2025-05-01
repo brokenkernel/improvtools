@@ -26,6 +26,7 @@ plugins {
 
 dependencies {
     dokka(project(":app:"))
+    dokka(project(":components:"))
     dokkaPlugin(libs.android.documentation.plugin)
     dokkaHtmlPlugin(libs.kotlin.as1.java.plugin)
     dokkaPlugin(libs.mathjax.plugin)

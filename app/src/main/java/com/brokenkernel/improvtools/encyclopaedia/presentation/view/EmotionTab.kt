@@ -20,9 +20,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.presentation.view.verticalColumnScrollbar
-import com.brokenkernel.improvtools.components.presentation.view.HtmlText
 import com.brokenkernel.improvtools.components.presentation.view.SimpleZoomableImage
 import com.brokenkernel.improvtools.components.sidecar.preview.ImprovToolsAllPreviews
+import com.brokenkernel.components.view.HtmlText
 
 @Composable
 internal fun EmotionTab(onLaunchTitleCallback: () -> Unit) {

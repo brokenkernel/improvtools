@@ -1,4 +1,4 @@
-package com.brokenkernel.improvtools.components.presentation.view
+package com.brokenkernel.components.view
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -16,11 +16,10 @@ import androidx.compose.ui.text.style.Hyphens
 import androidx.compose.ui.text.style.LineBreak
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
-import com.brokenkernel.improvtools.components.sidecar.preview.ImprovToolsAllPreviews
-import com.brokenkernel.improvtools.ui.theme.ImprovToolsTheme
+import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
-internal fun HtmlText(html: String, modifier: Modifier = Modifier) {
+fun HtmlText(html: String, modifier: Modifier = Modifier) {
     val uriHandler = LocalUriHandler.current
 
     val text: AnnotatedString = AnnotatedString.fromHtml(
@@ -51,10 +50,11 @@ internal fun HtmlText(html: String, modifier: Modifier = Modifier) {
     )
 }
 
-@ImprovToolsAllPreviews
+//@ImprovToolsAllPreviews
+@Preview
 @Composable
 internal fun HtmlTextPreview() {
-    ImprovToolsTheme {
+    MaterialTheme {
         Surface {
             HtmlText(
                 """

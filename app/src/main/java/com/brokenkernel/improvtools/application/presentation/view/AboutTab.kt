@@ -48,11 +48,11 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.fromHtml
 import androidx.core.net.toUri
+import com.brokenkernel.components.view.HtmlText
 import com.brokenkernel.improvtools.BuildConfig
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.utils.AboutTabViewModel
 import com.brokenkernel.improvtools.components.presentation.view.ExpandIcon
-import com.brokenkernel.improvtools.components.presentation.view.HtmlText
 import kotlinx.coroutines.launch
 
 @Composable

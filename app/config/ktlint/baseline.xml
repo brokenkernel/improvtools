@@ -17,7 +17,4 @@
     <file name="src/main/java/com/brokenkernel/improvtools/timer/presentation/viewmodel/StopWatchTimerViewModel.kt">
         <error line="22" column="17" source="standard:backing-property-naming" />
     </file>
-    <file name="src/main/java/com/brokenkernel/improvtools/timer/sidecar/TimerManager/TimerManagerModule.kt">
-        <error line="1" column="9" source="standard:package-name" />
-    </file>
 </baseline>

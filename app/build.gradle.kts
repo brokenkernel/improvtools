@@ -243,9 +243,7 @@ dependencies {
     implementation(libs.androidx.metrics.performance)
     implementation(libs.androidx.navigation.navigationCompose)
     implementation(libs.androidx.profileinstaller)
-    // optional - Kotlin Extensions and Coroutines support for Room
     implementation(libs.androidx.room.ktx)
-    // optional - Paging 3 Integration
     implementation(libs.androidx.room.paging)
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.rxjava3)
@@ -270,6 +268,7 @@ dependencies {
     implementation(libs.play.services.instantapps)
     implementation(libs.play.services.oss.licenses)
     implementation(libs.reorderable)
+    implementation(project(":components"))
 
     debugImplementation(libs.androidx.ui.tooling)
 
