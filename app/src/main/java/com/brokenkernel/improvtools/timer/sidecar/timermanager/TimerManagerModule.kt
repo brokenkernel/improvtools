@@ -1,4 +1,4 @@
-package com.brokenkernel.improvtools.timer.sidecar.TimerManager
+package com.brokenkernel.improvtools.timer.sidecar.timermanager
 
 import com.brokenkernel.improvtools.timer.data.repository.DefaultTimerManager
 import com.brokenkernel.improvtools.timer.data.repository.TimerManager
