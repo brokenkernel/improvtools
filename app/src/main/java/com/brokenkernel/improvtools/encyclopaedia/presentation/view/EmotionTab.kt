@@ -19,7 +19,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.brokenkernel.improvtools.R
+import com.brokenkernel.improvtools.components.presentation.view.HtmlText
 import com.brokenkernel.improvtools.components.presentation.view.SimpleZoomableImage
+import com.brokenkernel.improvtools.components.sidecar.preview.ImprovToolsAllPreviews
 
 @Composable
 internal fun EmotionTab(onLaunchTitleCallback: () -> Unit) {
@@ -66,5 +68,53 @@ internal fun EmotionTab(onLaunchTitleCallback: () -> Unit) {
                 ),
             )
         }
+        // TODO: consider pulling these out into data class, and exposing in Thesaurus.
+        OutlinedCard {
+            Text(
+                stringResource(R.string.encyclopaedia_emotion_words),
+                style = MaterialTheme.typography.titleLarge,
+            )
+            HtmlText(
+                """
+                    |<ul>
+                    |<li>
+                    |Nurturing
+                    |<ul>
+                    |<li>Loving</li>
+                    |<li>Encouraging</li>
+                    |<li>Supporting</li>
+                    |</ul>
+                    |</li>
+                    |
+                    |<li>
+                    |Using
+                    |<ul>
+                    |<li>Manipulating</li>
+                    |<li>Distributing</li>
+                    |<li>Deceiving</li>
+                    |</ul>
+                    |</li>
+                    |
+                    |<li>
+                    |Damaging
+                    |<ul>
+                    |<li>Discouraging</li>
+                    |<li>Harming</li>
+                    |<li>Destroying</li>
+                    |</ul>
+                    |</ul>
+                    |</li>
+                    |
+                """.trimMargin().replace("\n", "<br/>"),
+            )
+        }
     }
+}
+
+@ImprovToolsAllPreviews
+@Composable
+internal fun EmotionTabPreview() {
+    EmotionTab(
+        onLaunchTitleCallback = { },
+    )
 }
