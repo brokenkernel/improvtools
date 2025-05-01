@@ -60,12 +60,9 @@ internal val PeopleDatum: Collection<PeopleDataItem> = listOf(
     PeopleDataItem("Stephen Kerrin", PeopleDatumTopic.PERSON, "BATS Improv"),
     PeopleDataItem("Tim Orr", PeopleDatumTopic.PERSON, "BATS Improv"),
     PeopleDataItem("Gary Austin", PeopleDatumTopic.PERSON, "BATS Improv"),
-    PeopleDataItem("Konstantin Stanislavski", PeopleDatumTopic.PERSON, "¸"),
-
-    // todo: figure out how to combine both people and troops?
-    // todo: add segment button for people and troops
+    PeopleDataItem("Konstantin Stanislavski", PeopleDatumTopic.PERSON, ""),
     PeopleDataItem(
-        "commedia dell'arte",
+        "Commedia Dell'arte",
         PeopleDatumTopic.TROOP,
         "",
         "https://en.wikipedia.org/wiki/Commedia_dell'arte".toUri(),
