@@ -24,7 +24,7 @@ internal inline fun <reified T : Enum<T>, I> TabbedSearchableColumn(
     crossinline itemDoesMatch: (String, I) -> Boolean,
     itemList: Map<String, List<I>>,
     crossinline transformForSearch: (String) -> String,
-    crossinline itemToTopic: @Composable (I) -> T,
+    noinline itemToTopic: @Composable (I) -> T,
     noinline itemToKey: (I) -> (Any),
     crossinline itemToListItem: @Composable (I) -> (Unit), // must be last one for nice UX
 ) {
