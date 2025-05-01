@@ -13,7 +13,7 @@ internal class ThesaurusTabAllItemsViewModel @Inject constructor(
 ) : ViewModel() {
 
     fun groupedWords(): Map<String, List<String>> {
-        return thesaurusRepository.getActionsThesaurus().keys().sorted().groupBy { k -> k[0].toString() }
+        return thesaurusRepository.getActionsThesaurus().keys().sorted().groupBy { k -> k[0].uppercase() }
     }
 
     fun synonymsForWord(word: String): Iterable<String> {

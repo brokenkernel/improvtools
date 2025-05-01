@@ -77,7 +77,7 @@ internal fun PeopleTab(onLaunchTitleCallback: () -> Unit) {
                 s1.personName,
                 s2.personName,
             )
-        }.groupBy { it.personName[0].toString() }
+        }.groupBy { it.personName[0].uppercase() }
     }
 
     TabbedSearchableColumn<PeopleDatumTopic, PeopleDataItem>(

@@ -43,7 +43,7 @@ internal fun GlossaryTab(onLaunchTitleCallback: () -> Unit) {
 
     // TODO: move into viewModel
     val sortedGlossaryItems: Map<String, List<GlossaryDataItem>> = remember {
-        GlossaryDatum.sortedBy { it.term }.groupBy { it.term[0].toString() }
+        GlossaryDatum.sortedBy { it.term }.groupBy { it.term[0].uppercase() }
     }
     TabbedSearchableColumn<GlossaryDatumTopic, GlossaryDataItem>(
         itemDoesMatch = ::doesMatch,

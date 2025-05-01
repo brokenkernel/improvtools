@@ -8,5 +8,5 @@ internal class GamesTabViewModel : ViewModel() {
     val sortedGames: List<GamesDataItem> =
         GamesDatum.sortedBy { it.gameName }.toList()
     val groupedGames: Map<String, List<GamesDataItem>> =
-        sortedGames.groupBy { game -> game.gameName[0].toString() }
+        sortedGames.groupBy { game -> game.gameName[0].uppercase() }
 }
