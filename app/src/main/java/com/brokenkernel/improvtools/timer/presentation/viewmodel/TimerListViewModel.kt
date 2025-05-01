@@ -33,6 +33,7 @@ internal class TimerListViewModel @Inject constructor(
     internal class TimerInfo(
         val title: String,
         val timerType: TimerType,
+        val id: Int,
     )
 
     private val _shouldHaptic = MutableStateFlow(true)
@@ -42,10 +43,10 @@ internal class TimerListViewModel @Inject constructor(
     private val _allTimers: MutableStateFlow<MutableList<TimerInfo>> =
         MutableStateFlow<MutableList<TimerInfo>>(
             mutableStateListOf(
-                TimerInfo("Stopwatch One", TimerType.STOPWATCH),
-                TimerInfo("Stopwatch Two", TimerType.STOPWATCH),
-                TimerInfo("Countdown Three", TimerType.COUNTDOWN),
-                TimerInfo("Countdown Four", TimerType.COUNTDOWN),
+                TimerInfo("Stopwatch One", TimerType.STOPWATCH, 1),
+                TimerInfo("Stopwatch Two", TimerType.STOPWATCH, 2),
+                TimerInfo("Countdown Three", TimerType.COUNTDOWN, 3),
+                TimerInfo("Countdown Four", TimerType.COUNTDOWN, 4),
             ),
         )
     val allTimers = _allTimers.asStateFlow()
@@ -55,6 +56,8 @@ internal class TimerListViewModel @Inject constructor(
     }
 
     fun addTimer(title: String, timerType: TimerType) {
-        _allTimers.value.add(TimerInfo(title, timerType))
+        // TODO: ID should be derived from some 'timer manager' like notifications and be independent of
+        // of the viewmodel
+        _allTimers.value.add(TimerInfo(title, timerType, 5)) // TODO: ID FIXME
     }
 }

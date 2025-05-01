@@ -1,10 +1,8 @@
 package com.brokenkernel.improvtools.timer.presentation.view
 
 import android.util.Log
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AlarmAdd
 import androidx.compose.material.icons.filled.AlarmOff
@@ -19,7 +17,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalHapticFeedback
@@ -27,7 +24,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.brokenkernel.improvtools.R
-import com.brokenkernel.improvtools.application.presentation.view.verticalColumnScrollbar
 import com.brokenkernel.improvtools.components.presentation.view.OneWayDismissableContent
 import com.brokenkernel.improvtools.timer.data.model.TimerState
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.CountDownTimerViewModel
@@ -36,6 +32,8 @@ import com.brokenkernel.improvtools.timer.presentation.viewmodel.StopWatchTimerV
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.TimerListViewModel
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.minutes
+import androidx.compose.foundation.lazy.items
+import androidx.compose.runtime.rememberUpdatedState
 
 private const val TAG = "TimerScreen"
 
@@ -148,25 +146,23 @@ internal fun TimerTab(viewModel: TimerListViewModel = hiltViewModel(), onLaunchT
         onLaunchTitleCallback()
     }
 
-    val scrollState = rememberScrollState()
     val haptic = LocalHapticFeedback.current
     val shouldHapticOnRemove = viewModel.shouldHaptic.collectAsStateWithLifecycle()
     val allTimers: State<MutableList<TimerListViewModel.TimerInfo>> = viewModel.allTimers.collectAsStateWithLifecycle()
 
-    Column(
-        modifier = Modifier
-            .verticalColumnScrollbar(scrollState)
-            .verticalScroll(scrollState),
+    LazyColumn(
     ) {
         // toList to copy to avoid ConcurrentModificationException. Maybe a better way exists to handle?
-        allTimers.value.toList().forEach { timer ->
+        items(allTimers.value.toList(), key = { t -> t.id}) { timer: TimerListViewModel.TimerInfo ->
 
+            val currentTimer by rememberUpdatedState(timer)
             // TODO/bug: why does removing one remove all the remaining ones below?
             val onRemove = {
+
                 if (shouldHapticOnRemove.value) {
                     haptic.performHapticFeedback(HapticFeedbackType.ToggleOff)
                 }
-                viewModel.removeTimer(timer)
+                viewModel.removeTimer(currentTimer)
                 Log.w(TAG, "removing timer $timer")
                 Unit
             }
@@ -176,7 +172,7 @@ internal fun TimerTab(viewModel: TimerListViewModel = hiltViewModel(), onLaunchT
                         TimerBorderOutlineCard {
                             val simpleStopStopWatchTimerViewModel =
                                 hiltViewModel<StopWatchTimerViewModel, StopWatchTimerViewModel.Factory>(
-                                    key = timer.toString(),
+                                    key = timer.id.toString(),
                                     creationCallback = { factory ->
                                         factory.create(title = timer.title)
                                     },
@@ -189,7 +185,7 @@ internal fun TimerTab(viewModel: TimerListViewModel = hiltViewModel(), onLaunchT
                         TimerBorderOutlineCard {
                             val simpleCountDownTimerViewModel =
                                 hiltViewModel<CountDownTimerViewModel, CountDownTimerViewModel.Factory>(
-                                    key = timer.toString(),
+                                    key = timer.id.toString(), //
                                     creationCallback = { factory ->
                                         factory.create(
                                             title = timer.title,
@@ -203,20 +199,24 @@ internal fun TimerTab(viewModel: TimerListViewModel = hiltViewModel(), onLaunchT
                 }
             }
         }
-        Row {
-            LargeFloatingActionButton(
-                onClick = {
-                    viewModel.addTimer("wat", TimerListViewModel.TimerType.STOPWATCH)
-                },
-            ) {
-                Icon(Icons.Filled.Timer, stringResource(R.string.new_stopwatch_timer))
-            }
-            LargeFloatingActionButton(
-                onClick = {
-                    viewModel.addTimer("pot", TimerListViewModel.TimerType.COUNTDOWN)
-                },
-            ) {
-                Icon(Icons.Filled.AlarmAdd, stringResource(R.string.new_countdown_timer))
+        item(key = "bottom") {
+            Row {
+                val newStopwatchString = stringResource(R.string.new_stopwatch_timer)
+                val newCountdownString = stringResource(R.string.new_countdown_timer)
+                LargeFloatingActionButton(
+                    onClick = {
+                        viewModel.addTimer(newStopwatchString, TimerListViewModel.TimerType.STOPWATCH)
+                    },
+                ) {
+                    Icon(Icons.Filled.Timer, newStopwatchString)
+                }
+                LargeFloatingActionButton(
+                    onClick = {
+                        viewModel.addTimer(newCountdownString, TimerListViewModel.TimerType.COUNTDOWN)
+                    },
+                ) {
+                    Icon(Icons.Filled.AlarmAdd, newCountdownString)
+                }
             }
         }
     }

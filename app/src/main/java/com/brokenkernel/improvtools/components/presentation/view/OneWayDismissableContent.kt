@@ -9,6 +9,7 @@ import androidx.compose.material3.SwipeToDismissBoxValue
 import androidx.compose.material3.rememberSwipeToDismissBoxState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 
@@ -17,6 +18,9 @@ internal fun OneWayDismissableContent(
     onRemove: () -> Unit,
     content: @Composable (() -> Unit) = {},
 ) {
+    // TODO: https://archive.is/I4TPn
+//    val currentItem by rememberUpdatedState(item)
+
     val contentSTDState = rememberSwipeToDismissBoxState(
         confirmValueChange = { newValue ->
             if (newValue == SwipeToDismissBoxValue.EndToStart) {
