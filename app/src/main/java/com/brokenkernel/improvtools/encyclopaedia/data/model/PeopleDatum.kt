@@ -45,7 +45,7 @@ internal val PeopleDatum: Collection<PeopleDataItem> = listOf(
         "Keith Johnstone",
         PeopleDatumTopic.PERSON,
         "Impro & Theatresports",
-        "https://en.m.wikipedia.org/wiki/Keith_Johnstone".toUri(),
+        "https://en.wikipedia.org/wiki/Keith_Johnstone".toUri(),
     ),
     PeopleDataItem(
         "Paul Sills",
