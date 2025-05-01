@@ -2,10 +2,10 @@ package com.brokenkernel.improvtools.encyclopaedia.presentation.view
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.foundation.text.input.setTextAndPlaceCursorAtEnd
 import androidx.compose.material.icons.Icons
@@ -21,16 +21,14 @@ import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.mutableStateSetOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.util.fastAny
-import androidx.compose.ui.util.fastFilteredMap
-import androidx.compose.ui.util.fastMap
 import com.brokenkernel.components.view.HtmlText
 import com.brokenkernel.improvtools.components.presentation.view.ExpandIcon
 import com.brokenkernel.improvtools.components.presentation.view.TabbedSearchableColumn
@@ -198,5 +196,4 @@ internal fun GamesTab(
 // TODO: make modal bottom sheet a layout
 //    // TODO: maybe bottom sheet should be held by scaffold and moved by navigation
 //
-
 }

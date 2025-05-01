@@ -4,20 +4,24 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Fireplace
 import androidx.compose.material.icons.outlined.FormatQuote
 import androidx.compose.material.icons.outlined.Games
-import androidx.compose.material.icons.outlined.Icecream
 import androidx.compose.material.icons.outlined.SelfImprovement
 import androidx.compose.ui.graphics.vector.ImageVector
 
-// TODO: tags. Show in search. Show in UX. Show Card/BottomCard explaining Tag
+// TODO: find way to filter based on tags
 
 internal enum class GamesDatumTag(val label: String) {
     // TODO: i18n
-    DIVERGENCE("#divergence")
+    DIVERGENCE("#divergence"),
+    CONVERGENCE("#convergence"),
+    ENERGY("#energy"),
+    NAMES("#names"),
+    RANGE("#range"),
+    VOCAL("#vocal"),
     ;
 
     companion object {
         fun fromLabel(label: String): GamesDatumTag? {
-            return GamesDatumTag.entries.firstOrNull { gdt -> gdt.label.equals(label) }
+            return GamesDatumTag.entries.firstOrNull { gdt -> gdt.label == label }
         }
     }
 }
@@ -27,7 +31,6 @@ internal enum class GamesDatumTopic(val icon: ImageVector) {
     WARMUP(icon = Icons.Outlined.Fireplace),
     EXERCISE(icon = Icons.Outlined.FormatQuote),
     FORMAT(icon = Icons.Outlined.SelfImprovement),
-    ICEBREAKER(icon = Icons.Outlined.Icecream),
 }
 
 /**
@@ -93,15 +96,18 @@ internal val GamesDatum: Collection<GamesDataItem> = listOf(
     ),
     GamesDataItem(
         gameName = "Name And Gesture",
-        topic = GamesDatumTopic.ICEBREAKER,
+        topic = GamesDatumTopic.EXERCISE,
+        tags = setOf(GamesDatumTag.NAMES),
     ),
     GamesDataItem(
         gameName = "Character Gauntlet",
         topic = GamesDatumTopic.EXERCISE,
+        tags = setOf(GamesDatumTag.RANGE),
     ),
     GamesDataItem(
         gameName = "Character Circle",
         topic = GamesDatumTopic.EXERCISE,
+        tags = setOf(GamesDatumTag.RANGE),
     ),
     GamesDataItem(
         gameName = "Middle School Warmup",
@@ -138,6 +144,7 @@ internal val GamesDatum: Collection<GamesDataItem> = listOf(
     GamesDataItem(
         gameName = "Project To the Hand",
         topic = GamesDatumTopic.EXERCISE,
+        tags = setOf(GamesDatumTag.VOCAL),
     ),
     GamesDataItem(
         gameName = "So So Scene",

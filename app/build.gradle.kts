@@ -204,6 +204,7 @@ dependencies {
     implementation(platform(libs.com.fasterxml.jackson.bom))
     implementation(platform(libs.com.google.firebase.firebaseBom))
     implementation(platform(libs.kotlin.bom))
+    implementation(project(":components"))
     implementation(libs.aboutlibraries.compose.m3)
     implementation(libs.aboutlibraries.core)
     implementation(libs.accompanist.permissions)
@@ -268,7 +269,6 @@ dependencies {
     implementation(libs.play.services.instantapps)
     implementation(libs.play.services.oss.licenses)
     implementation(libs.reorderable)
-    implementation(project(":components"))
 
     debugImplementation(libs.androidx.ui.tooling)
 

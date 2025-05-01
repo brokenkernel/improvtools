@@ -50,7 +50,7 @@ fun HtmlText(html: String, modifier: Modifier = Modifier) {
     )
 }
 
-//@ImprovToolsAllPreviews
+// @ImprovToolsAllPreviews
 @Preview
 @Composable
 internal fun HtmlTextPreview() {
