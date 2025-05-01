@@ -14,6 +14,11 @@ internal class ThesaurusSingleItemViewModel @AssistedInject constructor(
     val thesaurusRepository: ThesaurusRepository,
     val thesaurusAPI: ThesaurusAPI, // todo: this should be accessed through a repository
 ) : ViewModel() {
+
+    fun shouldShowActionSynonyms(): Boolean {
+        return thesaurusRepository.getActionsThesaurus().synonymsForWord(word).isNotEmpty()
+    }
+
     fun synonyms(): Iterable<String> {
         return thesaurusRepository.getActionsThesaurus().synonymsForWord(word).sorted()
     }

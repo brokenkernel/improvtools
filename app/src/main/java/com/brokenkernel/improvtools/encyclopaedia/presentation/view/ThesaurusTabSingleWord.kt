@@ -55,8 +55,10 @@ internal fun ThesaurusTabSingleWord(
                     textAlign = TextAlign.Center,
                 )
             }
-            HtmlText(stringResource(R.string.encyclopaedia_action_synonyms))
-            HtmlText(viewModel.renderedActionSynonyms())
+            if (viewModel.shouldShowActionSynonyms()) {
+                HtmlText(stringResource(R.string.encyclopaedia_action_synonyms))
+                HtmlText(viewModel.renderedActionSynonyms())
+            }
             val wordSenseRenderedString = viewModel.renderedWordSenses()
             if (wordSenseRenderedString != null) {
                 HtmlText(stringResource(R.string.encyclopaedia_word_senses))
