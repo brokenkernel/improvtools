@@ -18,6 +18,8 @@ import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.components.sidecar.preview.ImprovToolsAllPreviews
 import com.brokenkernel.improvtools.ui.theme.ImprovToolsTheme
 
+// TODO: make simplified tooltip wrapper/modifier?
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SingleWordThesaurusButton(
