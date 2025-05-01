@@ -110,23 +110,24 @@ internal fun ThesaurusTabAllItems(
                 .testTag("word_$word")
                 .combinedClickable(
                     onClick = {},
-                    onLongClick = {
-                        val wordString = AnnotatedString(
-                            """
+                    onLongClick =
+                        {
+                            val wordString = AnnotatedString(
+                                """
                                 |$word
-                                |Synonyms: ${viewModel.synonymsForWord(word)}
+                                |${context.getString(R.string.thesaurus_synonyms, viewModel.synonymsForWord(word))}
                             """.trimMargin(),
-                        )
-                        val clipData = ClipData.newPlainText(
-                            context.getString(R.string.thesaurus_word_and_synonyms),
-                            wordString,
-                        )
-                        val clipEntry = clipData.toClipEntry()
+                            )
+                            val clipData = ClipData.newPlainText(
+                                context.getString(R.string.thesaurus_word_and_synonyms),
+                                wordString,
+                            )
+                            val clipEntry = clipData.toClipEntry()
 
-                        coroutineScope.launch {
-                            clipboard.setClipEntry(clipEntry)
-                        }
-                    },
+                            coroutineScope.launch {
+                                clipboard.setClipEntry(clipEntry)
+                            }
+                        },
                 ),
         )
     }

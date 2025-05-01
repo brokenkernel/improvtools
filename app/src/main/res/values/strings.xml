@@ -105,4 +105,5 @@
   <string name="collapse">Collapse</string>
     <string name="encyclopaedia_action_synonyms"><![CDATA[<h1>Action Synonyms</h1>]]></string>
   <string name="encyclopaedia_emotion_words">Emotion Words</string>
+  <string name="thesaurus_synonyms">Synonyms: %1$s</string>
 </resources>

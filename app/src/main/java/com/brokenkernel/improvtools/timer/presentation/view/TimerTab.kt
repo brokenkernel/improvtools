@@ -40,6 +40,7 @@ private const val TAG = "TimerScreen"
 // TODO: allow for optional starting time setting
 // TODO control of how many timers. Add some.
 // todo: click on title, change name of timer
+// TODO central timer manager
 
 @Composable
 internal fun SimpleCountDownTimer(
