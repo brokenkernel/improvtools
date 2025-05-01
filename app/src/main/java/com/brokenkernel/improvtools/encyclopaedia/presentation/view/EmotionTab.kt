@@ -19,6 +19,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.brokenkernel.improvtools.R
+import com.brokenkernel.improvtools.application.presentation.view.verticalColumnScrollbar
 import com.brokenkernel.improvtools.components.presentation.view.HtmlText
 import com.brokenkernel.improvtools.components.presentation.view.SimpleZoomableImage
 import com.brokenkernel.improvtools.components.sidecar.preview.ImprovToolsAllPreviews
@@ -35,6 +36,7 @@ internal fun EmotionTab(onLaunchTitleCallback: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .verticalColumnScrollbar(columnScrollState)
             .verticalScroll(columnScrollState),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
@@ -69,7 +71,13 @@ internal fun EmotionTab(onLaunchTitleCallback: () -> Unit) {
             )
         }
         // TODO: consider pulling these out into data class, and exposing in Thesaurus.
-        OutlinedCard {
+        OutlinedCard(
+            modifier = Modifier.fillMaxWidth(),
+            border = BorderStroke(1.dp, Color.Black),
+            colors = CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.surface,
+            ),
+        ) {
             Text(
                 stringResource(R.string.encyclopaedia_emotion_words),
                 style = MaterialTheme.typography.titleLarge,
@@ -78,7 +86,7 @@ internal fun EmotionTab(onLaunchTitleCallback: () -> Unit) {
                 """
                     |<ul>
                     |<li>
-                    |Nurturing
+                    |<h2>Nurturing</h2>
                     |<ul>
                     |<li>Loving</li>
                     |<li>Encouraging</li>
@@ -87,7 +95,7 @@ internal fun EmotionTab(onLaunchTitleCallback: () -> Unit) {
                     |</li>
                     |
                     |<li>
-                    |Using
+                    |<h2>Using</h2>
                     |<ul>
                     |<li>Manipulating</li>
                     |<li>Distributing</li>
@@ -96,7 +104,7 @@ internal fun EmotionTab(onLaunchTitleCallback: () -> Unit) {
                     |</li>
                     |
                     |<li>
-                    |Damaging
+                    |<h2>Damaging</h2>
                     |<ul>
                     |<li>Discouraging</li>
                     |<li>Harming</li>
@@ -105,7 +113,7 @@ internal fun EmotionTab(onLaunchTitleCallback: () -> Unit) {
                     |</ul>
                     |</li>
                     |
-                """.trimMargin().replace("\n", "<br/>"),
+                """.trimMargin(),
             )
         }
     }
