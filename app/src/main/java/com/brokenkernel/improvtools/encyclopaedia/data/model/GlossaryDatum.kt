@@ -1,7 +1,5 @@
 package com.brokenkernel.improvtools.encyclopaedia.data.model
 
-// TODO make it easier/simpler to make a new encyclopedia search, segment, list, etc page
-
 internal enum class GlossaryDatumTopic {
     WORD,
 }
