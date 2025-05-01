@@ -312,6 +312,11 @@ dependencies {
     lintChecks(libs.androidx.lint.gradle)
 }
 
+dependencyLocking {
+    lockMode = LockMode.DEFAULT // Not every configuration can be locked so can't use strict :'(
+    lockAllConfigurations()
+}
+
 // firebase is just broken https://github.com/firebase/firebase-android-sdk/issues/6359
 configurations {
     implementation {

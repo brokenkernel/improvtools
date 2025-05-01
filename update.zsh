@@ -12,3 +12,5 @@ bundle exec fastlane update_plugins
 
 ./gradlew dependencyUpdates
 ./gradlew versionCatalogFormat
+./gradlew dependencies --write-locks
+./gradlew :app:dependencies --write-locks
