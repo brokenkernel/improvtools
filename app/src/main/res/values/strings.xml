@@ -107,4 +107,5 @@
   <string name="encyclopaedia_emotion_words">Emotion Words</string>
   <string name="thesaurus_synonyms">Synonyms: %1$s</string>
     <string name="encyclopaedia_tags_header">Tags</string>
+    <string name="timer_title">Timer Title</string>
 </resources>

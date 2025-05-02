@@ -34,10 +34,11 @@ private fun Duration.formatTime(): String {
     val hours = this.inWholeHours
     val minutes = (this - hours.hours).inWholeMinutes
     val seconds = (this - hours.hours - minutes.minutes).inWholeSeconds
+    // TODO: consider making `:` blink when started
     return String.format(Locale.current.platformLocale, "%02d:%02d:%02d", hours, minutes, seconds)
 }
 
-@Composable()
+@Composable
 internal fun SlottedTimerCardContent(
     title: String,
     currentTime: Duration,
@@ -56,10 +57,14 @@ internal fun SlottedTimerCardContent(
             if (isEditTitleMode) {
                 OutlinedTextField(
                     value = currentTitleTextBox,
-                    onValueChange = { currentTitleTextBox = it.trim() },
-                    label = { Text(currentTitleTextBox) },
+                    onValueChange = { newText: String ->
+                        currentTitleTextBox = newText
+                        onTitleChange(newText)
+                    },
+                    label = { Text(stringResource(R.string.timer_title)) },
                     textStyle = MaterialTheme.typography.headlineLarge,
                     maxLines = 1,
+                    singleLine = true,
                     keyboardOptions = KeyboardOptions(
                         capitalization = KeyboardCapitalization.Words,
                         autoCorrectEnabled = true,

@@ -5,8 +5,8 @@
         <error line="51" column="121" source="standard:max-line-length" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/application/data/model/ImprovToolsAppState.kt">
-        <error line="94" column="14" source="compose:param-order-check" />
-        <error line="97" column="16" source="compose:mutable-state-param-check" />
+        <error line="90" column="14" source="compose:param-order-check" />
+        <error line="93" column="16" source="compose:mutable-state-param-check" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/application/presentation/view/AboutTab.kt">
         <error line="59" column="14" source="compose:param-order-check" />
@@ -84,20 +84,21 @@
         <error line="31" column="9" source="standard:backing-property-naming" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/timer/presentation/view/SlottedOutlinedCard.kt">
-        <error line="41" column="14" source="compose:param-order-check" />
+        <error line="42" column="14" source="compose:param-order-check" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/timer/presentation/view/TimerTab.kt">
-        <error line="153" column="72" source="compose:lambda-param-in-effect" />
-        <error line="181" column="33" source="compose:vm-injection-check" />
-        <error line="194" column="33" source="compose:vm-injection-check" />
+        <error line="156" column="72" source="compose:lambda-param-in-effect" />
     </file>
-    <file name="src/main/java/com/brokenkernel/improvtools/timer/presentation/viewmodel/BaseTimerViewModel.kt">
-        <error line="26" column="19" source="standard:backing-property-naming" />
+    <file name="src/main/java/com/brokenkernel/improvtools/timer/presentation/viewmodel/BaseTimerState.kt">
+        <error line="25" column="19" source="standard:backing-property-naming" />
     </file>
-    <file name="src/main/java/com/brokenkernel/improvtools/timer/presentation/viewmodel/CountDownTimerViewModel.kt">
-        <error line="21" column="17" source="standard:backing-property-naming" />
+    <file name="src/main/java/com/brokenkernel/improvtools/timer/presentation/viewmodel/CountDownTimerState.kt">
+        <error line="15" column="17" source="standard:backing-property-naming" />
     </file>
-    <file name="src/main/java/com/brokenkernel/improvtools/timer/presentation/viewmodel/StopWatchTimerViewModel.kt">
-        <error line="23" column="17" source="standard:backing-property-naming" />
+    <file name="src/main/java/com/brokenkernel/improvtools/timer/presentation/viewmodel/StopWatchTimerState.kt">
+        <error line="16" column="17" source="standard:backing-property-naming" />
+    </file>
+    <file name="src/main/java/com/brokenkernel/improvtools/timer/presentation/viewmodel/TimerListViewModel.kt">
+        <error line="68" column="120" source="standard:max-line-length" />
     </file>
 </baseline>

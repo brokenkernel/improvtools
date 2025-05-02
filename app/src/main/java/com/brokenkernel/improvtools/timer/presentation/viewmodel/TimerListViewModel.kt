@@ -11,11 +11,11 @@ import com.brokenkernel.improvtools.timer.sidecar.notifications.CountDownNotific
 import com.brokenkernel.improvtools.timer.sidecar.notifications.StopWatchNotificationManager
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
+import kotlin.time.Duration
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import kotlin.time.Duration
 
 @HiltViewModel
 internal class TimerListViewModel @Inject constructor(
