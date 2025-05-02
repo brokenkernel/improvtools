@@ -107,11 +107,6 @@ jobs:
         with:
           path: './docs/public'
 
-      - name: Attest
-        uses: actions/attest-build-provenance@v2
-        with:
-          subject-path: './docs/public'
-
   deploy:
     environment:
       name: github-pages
