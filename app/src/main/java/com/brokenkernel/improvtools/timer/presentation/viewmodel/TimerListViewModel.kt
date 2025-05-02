@@ -33,8 +33,6 @@ internal class TimerListViewModel @Inject constructor(
         COUNTDOWN,
     }
 
-
-
     private val _shouldHaptic = MutableStateFlow(true)
     val shouldHaptic = _shouldHaptic.asStateFlow()
 
