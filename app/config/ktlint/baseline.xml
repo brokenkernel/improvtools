@@ -4,9 +4,104 @@
         <error line="50" column="121" source="standard:max-line-length" />
         <error line="51" column="121" source="standard:max-line-length" />
     </file>
+    <file name="src/main/java/com/brokenkernel/improvtools/application/data/model/ImprovToolsAppState.kt">
+        <error line="94" column="14" source="compose:param-order-check" />
+        <error line="97" column="16" source="compose:mutable-state-param-check" />
+    </file>
+    <file name="src/main/java/com/brokenkernel/improvtools/application/presentation/view/AboutTab.kt">
+        <error line="59" column="14" source="compose:param-order-check" />
+        <error line="61" column="5" source="compose:lambda-param-in-effect" />
+    </file>
+    <file name="src/main/java/com/brokenkernel/improvtools/application/presentation/view/ImprovToolsScaffold.kt">
+        <error line="14" column="1" source="standard:no-unused-imports" />
+        <error line="26" column="1" source="standard:no-unused-imports" />
+        <error line="30" column="1" source="standard:no-unused-imports" />
+        <error line="40" column="1" source="standard:no-unused-imports" />
+        <error line="42" column="14" source="compose:compositionlocal-allowlist" />
+    </file>
+    <file name="src/main/java/com/brokenkernel/improvtools/application/presentation/view/LibrariesTab.kt">
+        <error line="10" column="27" source="compose:lambda-param-in-effect" />
+    </file>
+    <file name="src/main/java/com/brokenkernel/improvtools/application/presentation/view/PrivacyTab.kt">
+        <error line="15" column="25" source="compose:lambda-param-in-effect" />
+    </file>
+    <file name="src/main/java/com/brokenkernel/improvtools/components/presentation/LoadableScreen.kt">
+        <error line="10" column="5" source="compose:param-order-check" />
+    </file>
+    <file name="src/main/java/com/brokenkernel/improvtools/components/presentation/view/ExpandIcon.kt">
+        <error line="16" column="5" source="compose:modifier-missing-check" />
+        <error line="32" column="5" source="compose:preview-public-check" />
+    </file>
+    <file name="src/main/java/com/brokenkernel/improvtools/components/presentation/view/SimpleTooltipWrapper.kt">
+        <error line="13" column="5" source="compose:modifier-missing-check" />
+    </file>
+    <file name="src/main/java/com/brokenkernel/improvtools/components/presentation/view/TabbedSearchableColumn.kt">
+        <error line="25" column="15" source="compose:unstable-collections" />
+    </file>
+    <file name="src/main/java/com/brokenkernel/improvtools/components/sidecar/preview/ImprovToolsPreview.kt">
+        <error line="20" column="18" source="compose:preview-annotation-naming" />
+        <error line="37" column="18" source="compose:preview-annotation-naming" />
+        <error line="44" column="18" source="compose:preview-annotation-naming" />
+    </file>
+    <file name="src/main/java/com/brokenkernel/improvtools/encyclopaedia/presentation/view/EmotionTab.kt">
+        <error line="28" column="25" source="compose:lambda-param-in-effect" />
+    </file>
+    <file name="src/main/java/com/brokenkernel/improvtools/encyclopaedia/presentation/view/GamesTab.kt">
+        <error line="55" column="5" source="compose:lambda-param-in-effect" />
+        <error line="185" column="1" source="standard:no-empty-first-line-in-method-block" />
+    </file>
+    <file name="src/main/java/com/brokenkernel/improvtools/encyclopaedia/presentation/view/GlossaryTab.kt">
+        <error line="38" column="26" source="compose:lambda-param-in-effect" />
+    </file>
+    <file name="src/main/java/com/brokenkernel/improvtools/encyclopaedia/presentation/view/LoadableSingleWordThesaurusButton.kt">
+        <error line="29" column="5" source="compose:preview-public-check" />
+        <error line="30" column="9" source="compose:vm-injection-check" />
+    </file>
+    <file name="src/main/java/com/brokenkernel/improvtools/encyclopaedia/presentation/view/PeopleTab.kt">
+        <error line="60" column="24" source="compose:lambda-param-in-effect" />
+    </file>
+    <file name="src/main/java/com/brokenkernel/improvtools/encyclopaedia/presentation/view/SingleWordThesaurusButton.kt">
+        <error line="18" column="5" source="compose:modifier-missing-check" />
+        <error line="48" column="5" source="compose:preview-naming" />
+        <error line="48" column="5" source="compose:preview-public-check" />
+    </file>
+    <file name="src/main/java/com/brokenkernel/improvtools/encyclopaedia/presentation/view/ThesaurusTabAllItems.kt">
+        <error line="37" column="5" source="compose:lambda-param-in-effect" />
+        <error line="89" column="21" source="compose:vm-injection-check" />
+        <error line="99" column="17" source="compose:vm-forwarding-check" />
+    </file>
+    <file name="src/main/java/com/brokenkernel/improvtools/encyclopaedia/presentation/view/ThesaurusTabSingleWord.kt">
+        <error line="32" column="5" source="compose:lambda-param-in-effect" />
+    </file>
+    <file name="src/main/java/com/brokenkernel/improvtools/encyclopaedia/presentation/view/TipsAndAdviceTab.kt">
+        <error line="162" column="5" source="compose:lambda-param-in-effect" />
+    </file>
+    <file name="src/main/java/com/brokenkernel/improvtools/encyclopaedia/presentation/view/TipsAndAdviceTabMenu.kt">
+        <error line="25" column="14" source="compose:param-order-check" />
+    </file>
+    <file name="src/main/java/com/brokenkernel/improvtools/settings/presentation/view/SettingsTab.kt">
+        <error line="26" column="80" source="compose:lambda-param-in-effect" />
+    </file>
+    <file name="src/main/java/com/brokenkernel/improvtools/settings/presentation/view/SuggestionsTabMenu.kt">
+        <error line="23" column="14" source="compose:param-order-check" />
+    </file>
+    <file name="src/main/java/com/brokenkernel/improvtools/suggestionGenerator/presentation/view/SuggestionsTab.kt">
+        <error line="58" column="14" source="compose:param-order-check" />
+        <error line="62" column="5" source="compose:lambda-param-in-effect" />
+        <error line="155" column="45" source="compose:vm-injection-check" />
+        <error line="165" column="41" source="compose:vm-forwarding-check" />
+    </file>
     <file name="src/main/java/com/brokenkernel/improvtools/suggestionGenerator/presentation/viewmodel/SuggestionScreenViewModel.kt">
         <error line="25" column="17" source="standard:backing-property-naming" />
         <error line="31" column="9" source="standard:backing-property-naming" />
+    </file>
+    <file name="src/main/java/com/brokenkernel/improvtools/timer/presentation/view/SlottedOutlinedCard.kt">
+        <error line="41" column="14" source="compose:param-order-check" />
+    </file>
+    <file name="src/main/java/com/brokenkernel/improvtools/timer/presentation/view/TimerTab.kt">
+        <error line="153" column="72" source="compose:lambda-param-in-effect" />
+        <error line="181" column="33" source="compose:vm-injection-check" />
+        <error line="194" column="33" source="compose:vm-injection-check" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/timer/presentation/viewmodel/BaseTimerViewModel.kt">
         <error line="26" column="19" source="standard:backing-property-naming" />
