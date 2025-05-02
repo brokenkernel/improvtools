@@ -311,6 +311,10 @@ dependencies {
     ktlintRuleset(libs.ktlintCompose)
 
     lintChecks(libs.androidx.lint.gradle)
+
+    implementation("io.github.raamcosta.compose-destinations:core:2.1.1")
+    ksp("io.github.raamcosta.compose-destinations:ksp:2.1.1")
+    implementation("io.github.raamcosta.compose-destinations:bottom-sheet:2.1.1")
 }
 
 dependencyLocking {

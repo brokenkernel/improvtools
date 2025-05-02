@@ -42,6 +42,9 @@ import com.brokenkernel.improvtools.components.presentation.view.ExpandIcon
 import com.brokenkernel.improvtools.encyclopaedia.data.model.TipContentUI
 import com.brokenkernel.improvtools.encyclopaedia.data.model.TipsAndAdviceViewModeUI
 import com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel.TipsAndAdviceViewModel
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.annotation.RootGraph
+import com.ramcosta.composedestinations.annotation.parameters.CodeGenVisibility
 
 @Composable
 internal fun TipsAndAdviceScreenAsSwipable(viewModel: TipsAndAdviceViewModel = hiltViewModel()) {
@@ -156,6 +159,12 @@ internal fun TipsAndAdviceScreenAsList(viewModel: TipsAndAdviceViewModel = hiltV
     }
 }
 
+
+// TODO: https://composedestinations.rafaelcosta.xyz/v2/defining-destinations#centralizing-destination-annotation-configuration
+@Destination<RootGraph>(
+    start = true,
+    visibility = CodeGenVisibility.INTERNAL,
+)
 @Composable
 internal fun TipsAndAdviceTab(
     viewModel: TipsAndAdviceViewModel = hiltViewModel(),
