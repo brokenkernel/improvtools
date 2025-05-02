@@ -14,6 +14,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.ListItem
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -27,9 +28,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.util.fastAny
 import com.brokenkernel.components.view.HtmlText
+import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.components.presentation.view.ExpandIcon
 import com.brokenkernel.improvtools.components.presentation.view.TabbedSearchableColumn
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GamesDataItem
@@ -186,9 +189,20 @@ internal fun GamesTab(
             sheetState = modalBottomSheetState,
         ) {
             LazyColumn {
+                if (currentTags.isNotEmpty()) {
+                    item {
+                        Text(
+                            stringResource(R.string.encyclopaedia_tags_header),
+                            style = MaterialTheme.typography.headlineLarge,
+                        )
+                    }
+                }
                 items(currentTags.toList(), key = { k -> k }) { tag ->
-                    Text("Tags")
-                    Text(tag.label)
+                    Text(
+                        tag.label,
+                        style = MaterialTheme.typography.headlineMedium,
+                    )
+                    Text(tag.description)
                 }
             }
         }

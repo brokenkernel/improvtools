@@ -1,4 +1,4 @@
-    package com.brokenkernel.improvtools.encyclopaedia.data.model
+package com.brokenkernel.improvtools.encyclopaedia.data.model
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Fireplace
@@ -9,10 +9,10 @@ import androidx.compose.ui.graphics.vector.ImageVector
 
 // TODO: find way to filter based on tags
 
-internal enum class GamesDatumTag(val label: String) {
+internal enum class GamesDatumTag(val label: String, val description: String = "") {
     // TODO: i18n
-    DIVERGENCE("#divergence"),
-    CONVERGENCE("#convergence"),
+    DIVERGENCE("#divergence", """Excersises that help you come up with new ideas"""),
+    CONVERGENCE("#convergence", """Excersises that help the group get on the same wavelength"""),
     ENERGY("#energy"),
     NAMES("#names"),
     RANGE("#range"),
