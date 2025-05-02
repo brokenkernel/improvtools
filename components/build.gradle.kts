@@ -44,6 +44,13 @@ android {
         compose = true
         buildConfig = true
     }
+    buildToolsVersion = "35.0.0"
+    lint {
+        lintConfig = file("lint.xml")
+        baseline = file("lint-baseline.xml")
+        checkDependencies = true
+        warningsAsErrors = true
+    }
     composeCompiler {
         includeSourceInformation = true
         includeTraceMarkers = true
@@ -64,14 +71,6 @@ dependencies {
     implementation(libs.androidx.annotation)
     implementation(libs.androidx.compose.material.extended)
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.hilt.navigation.compose)
-    implementation(libs.androidx.lifecycle.process)
-    implementation(libs.androidx.lifecycle.runtime.compose)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.lifecycle.service)
-    implementation(libs.androidx.lifecycle.viewModel.compose)
-    implementation(libs.androidx.lifecycle.viewmodel.ktx)
-    implementation(libs.androidx.lifecycle.viewmodel.savedstate)
     implementation(libs.androidx.loader)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.material3.adaptive)
@@ -79,7 +78,6 @@ dependencies {
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.window)
     implementation(libs.material)
 
     testImplementation(libs.junit)
