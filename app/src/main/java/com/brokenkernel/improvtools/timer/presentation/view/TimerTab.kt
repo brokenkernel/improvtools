@@ -29,9 +29,9 @@ import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.components.presentation.view.OneWayDismissableContent
 import com.brokenkernel.improvtools.timer.data.model.TimerInfo
 import com.brokenkernel.improvtools.timer.data.model.TimerState
-import com.brokenkernel.improvtools.timer.presentation.viewmodel.CountDownTimerViewModel
+import com.brokenkernel.improvtools.timer.presentation.viewmodel.CountDownTimerState
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.INITIAL_TIMER_DURATION
-import com.brokenkernel.improvtools.timer.presentation.viewmodel.StopWatchTimerViewModel
+import com.brokenkernel.improvtools.timer.presentation.viewmodel.StopWatchTimerState
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.TimerListViewModel
 import kotlin.collections.toList
 import kotlin.time.Duration
@@ -47,7 +47,7 @@ private const val TAG = "TimerScreen"
 
 @Composable
 internal fun SimpleCountDownTimer(
-    viewModel: CountDownTimerViewModel,
+    viewModel: CountDownTimerState,
     onRemoveTimer: () -> Unit,
 ) {
     val timeLeft by viewModel.timeLeft.collectAsStateWithLifecycle()
@@ -102,7 +102,7 @@ internal fun SimpleCountDownTimer(
 }
 
 @Composable
-internal fun SimpleStopWatchTimer(viewModel: StopWatchTimerViewModel, onRemoveTimer: () -> Unit) {
+internal fun SimpleStopWatchTimer(viewModel: StopWatchTimerState, onRemoveTimer: () -> Unit) {
     val timeLeft by viewModel.timeLeft.collectAsStateWithLifecycle()
     val timerState by viewModel.timerState.collectAsStateWithLifecycle()
     val context = LocalContext.current
@@ -178,30 +178,20 @@ internal fun TimerTab(viewModel: TimerListViewModel = hiltViewModel(), onLaunchT
                 when (timer.timerType) {
                     TimerListViewModel.TimerType.STOPWATCH -> {
                         TimerBorderOutlineCard {
-                            val simpleStopStopWatchTimerViewModel =
-                                hiltViewModel<StopWatchTimerViewModel, StopWatchTimerViewModel.Factory>(
-                                    key = timer.id.toString(),
-                                    creationCallback = { factory ->
-                                        factory.create(title = timer.title)
-                                    },
-                                )
-                            SimpleStopWatchTimer(simpleStopStopWatchTimerViewModel, onRemove)
+                            val simpleStopWatchState = viewModel.createStopWatchTimerState(
+                                timer.title,
+                            )
+                            SimpleStopWatchTimer(simpleStopWatchState, onRemove)
                         }
                     }
 
                     TimerListViewModel.TimerType.COUNTDOWN -> {
                         TimerBorderOutlineCard {
-                            val simpleCountDownTimerViewModel =
-                                hiltViewModel<CountDownTimerViewModel, CountDownTimerViewModel.Factory>(
-                                    key = timer.id.toString(), //
-                                    creationCallback = { factory ->
-                                        factory.create(
-                                            title = timer.title,
-                                            initialTimeInWholeMilliseconds = 1.minutes.inWholeMilliseconds,
-                                        )
-                                    },
-                                )
-                            SimpleCountDownTimer(simpleCountDownTimerViewModel, onRemove)
+                            val simpleCountDownTimerState = viewModel.createCountdownNotificationManager(
+                                timer.title,
+                                initialTime = 1.minutes,
+                            )
+                            SimpleCountDownTimer(simpleCountDownTimerState, onRemove)
                         }
                     }
                 }

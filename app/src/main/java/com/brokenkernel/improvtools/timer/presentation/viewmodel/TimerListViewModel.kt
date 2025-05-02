@@ -7,17 +7,22 @@ import com.brokenkernel.improvtools.datastore.UserSettings
 import com.brokenkernel.improvtools.settings.data.repository.SettingsRepository
 import com.brokenkernel.improvtools.timer.data.model.TimerInfo
 import com.brokenkernel.improvtools.timer.data.repository.TimerManager
+import com.brokenkernel.improvtools.timer.sidecar.notifications.CountDownNotificationManager
+import com.brokenkernel.improvtools.timer.sidecar.notifications.StopWatchNotificationManager
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import kotlin.time.Duration
 
 @HiltViewModel
 internal class TimerListViewModel @Inject constructor(
     val settingsRepository: SettingsRepository,
     val timerManager: TimerManager,
+    private val stopWatchNotificationManager: StopWatchNotificationManager,
+    private val countDownNotificationManager: CountDownNotificationManager,
 ) : ViewModel() {
     init {
         viewModelScope.launch {
@@ -55,4 +60,17 @@ internal class TimerListViewModel @Inject constructor(
     fun addTimer(initialTitle: String, timerType: TimerType) {
         _allTimers.value.add(TimerInfo(MutableStateFlow(initialTitle), timerType, timerManager.getNextID()))
     }
+
+    fun createStopWatchTimerState(initialTitle: MutableStateFlow<String>): StopWatchTimerState {
+        return StopWatchTimerState(initialTitle, stopWatchNotificationManager)
+    }
+
+    fun createCountdownNotificationManager(initialTitle: MutableStateFlow<String>, initialTime: Duration): CountDownTimerState {
+        return CountDownTimerState(
+            initialTitle,
+            initialTime,
+            countDownNotificationManager,
+        )
+    }
+
 }

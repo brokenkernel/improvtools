@@ -1,6 +1,5 @@
 package com.brokenkernel.improvtools.timer.presentation.viewmodel
 
-import androidx.lifecycle.ViewModel
 import com.brokenkernel.improvtools.timer.data.model.TimerState
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.seconds
@@ -12,10 +11,10 @@ private const val INITIAL_TIMER_SECONDS: Long = 60L // as seconds
 val INITIAL_TIMER_DURATION: Duration = INITIAL_TIMER_SECONDS.seconds
 
 // the timer itself needs to be pulled out and have its own lifecycle + callback support
-internal sealed class BaseTimerViewModel(
+internal sealed class BaseTimerState(
     private val _title: MutableStateFlow<String>,
     initialTime: Duration,
-) : ViewModel() {
+) {
 
     private val _timerState: MutableStateFlow<TimerState> = MutableStateFlow(TimerState.STOPPED)
     internal val timerState: StateFlow<TimerState> = _timerState.asStateFlow()
