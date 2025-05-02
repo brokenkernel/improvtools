@@ -1,2 +1,0 @@
-[encyclopaedia] Increased amount and quality of content
-[timer] only one timer dismisses at a time
