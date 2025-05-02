@@ -182,7 +182,6 @@ internal fun GamesTab(
     }
 
     if (shouldShowModalBottomSheet) {
-
 //        androidx.compose.material3.ModalBottomSheetDefaults
         ModalBottomSheet(
             onDismissRequest = {

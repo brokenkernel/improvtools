@@ -5,4 +5,3 @@
 - actually move components to components module. This should allow 'internal' to be meaningful.
 - I am misusing viewmodels for many aspects. Fix this.
 - add bottom bar navigation
-- enable ktlint compose rules for components library

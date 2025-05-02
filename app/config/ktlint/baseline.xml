@@ -12,13 +12,6 @@
         <error line="59" column="14" source="compose:param-order-check" />
         <error line="61" column="5" source="compose:lambda-param-in-effect" />
     </file>
-    <file name="src/main/java/com/brokenkernel/improvtools/application/presentation/view/ImprovToolsScaffold.kt">
-        <error line="14" column="1" source="standard:no-unused-imports" />
-        <error line="26" column="1" source="standard:no-unused-imports" />
-        <error line="30" column="1" source="standard:no-unused-imports" />
-        <error line="40" column="1" source="standard:no-unused-imports" />
-        <error line="42" column="14" source="compose:compositionlocal-allowlist" />
-    </file>
     <file name="src/main/java/com/brokenkernel/improvtools/application/presentation/view/LibrariesTab.kt">
         <error line="10" column="27" source="compose:lambda-param-in-effect" />
     </file>
@@ -30,7 +23,6 @@
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/components/presentation/view/ExpandIcon.kt">
         <error line="16" column="5" source="compose:modifier-missing-check" />
-        <error line="32" column="5" source="compose:preview-public-check" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/components/presentation/view/SimpleTooltipWrapper.kt">
         <error line="13" column="5" source="compose:modifier-missing-check" />
@@ -48,13 +40,11 @@
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/encyclopaedia/presentation/view/GamesTab.kt">
         <error line="55" column="5" source="compose:lambda-param-in-effect" />
-        <error line="185" column="1" source="standard:no-empty-first-line-in-method-block" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/encyclopaedia/presentation/view/GlossaryTab.kt">
         <error line="38" column="26" source="compose:lambda-param-in-effect" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/encyclopaedia/presentation/view/LoadableSingleWordThesaurusButton.kt">
-        <error line="29" column="5" source="compose:preview-public-check" />
         <error line="30" column="9" source="compose:vm-injection-check" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/encyclopaedia/presentation/view/PeopleTab.kt">
@@ -62,8 +52,6 @@
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/encyclopaedia/presentation/view/SingleWordThesaurusButton.kt">
         <error line="18" column="5" source="compose:modifier-missing-check" />
-        <error line="48" column="5" source="compose:preview-naming" />
-        <error line="48" column="5" source="compose:preview-public-check" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/encyclopaedia/presentation/view/ThesaurusTabAllItems.kt">
         <error line="37" column="5" source="compose:lambda-param-in-effect" />

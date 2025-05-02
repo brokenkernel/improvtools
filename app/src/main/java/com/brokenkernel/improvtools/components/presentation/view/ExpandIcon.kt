@@ -29,7 +29,7 @@ fun ExpandIcon(isExpanded: Boolean) {
 
 @ImprovToolsAllPreviews
 @Composable
-fun ExpandIconPreview() {
+private fun ExpandIconPreview() {
     ImprovToolsTheme {
         Surface {
             Column {

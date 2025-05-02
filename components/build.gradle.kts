@@ -109,6 +109,8 @@ dependencies {
     implementation(libs.hilt.android)
     implementation(libs.material)
 
+    debugRuntimeOnly(libs.androidx.ui.test.manifest)
+
     testImplementation(libs.junit)
 
     androidTestImplementation(platform(libs.androidx.compose.bom))
@@ -116,9 +118,9 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.ui.test.junit4)
 
-    debugRuntimeOnly(libs.androidx.ui.test.manifest)
-
     ksp(libs.hilt.compiler)
+
+    ktlintRuleset(libs.ktlintCompose)
 
     lintChecks(libs.androidx.lint.gradle)
 }

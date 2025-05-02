@@ -26,7 +26,7 @@ fun LoadableSingleWordThesaurusButton(
 
 @ImprovToolsAllPreviews
 @Composable
-fun ExampleLoadableSingleWordThesaurusButtonPreview() {
+private fun ExampleLoadableSingleWordThesaurusButtonPreview() {
     val viewModel =
         hiltViewModel<
             LoadableSingleWordThesaurusButtonViewModel,

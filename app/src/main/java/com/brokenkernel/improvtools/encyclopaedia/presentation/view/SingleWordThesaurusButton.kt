@@ -45,7 +45,7 @@ fun SingleWordThesaurusButton(
 
 @ImprovToolsAllPreviews
 @Composable
-fun ExampleSingleWordThesaurusButton() {
+private fun ExampleSingleWordThesaurusButtonPreview() {
     ImprovToolsTheme {
         Surface {
             Column {

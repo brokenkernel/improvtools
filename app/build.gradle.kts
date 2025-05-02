@@ -308,9 +308,9 @@ dependencies {
     ksp(libs.androidx.room.compiler)
     ksp(libs.hilt.compiler)
 
-    lintChecks(libs.androidx.lint.gradle)
-
     ktlintRuleset(libs.ktlintCompose)
+
+    lintChecks(libs.androidx.lint.gradle)
 }
 
 dependencyLocking {
