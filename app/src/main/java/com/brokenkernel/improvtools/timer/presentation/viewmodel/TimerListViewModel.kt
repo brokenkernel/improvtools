@@ -5,14 +5,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.brokenkernel.improvtools.datastore.UserSettings
 import com.brokenkernel.improvtools.settings.data.repository.SettingsRepository
-import com.brokenkernel.improvtools.timer.data.model.TimerID
 import com.brokenkernel.improvtools.timer.data.repository.TimerManager
 import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @HiltViewModel
 internal class TimerListViewModel @Inject constructor(
@@ -36,7 +35,7 @@ internal class TimerListViewModel @Inject constructor(
     internal class TimerInfo(
         val title: String,
         val timerType: TimerType,
-        val id: TimerID,
+        val id: Int,
     )
 
     private val _shouldHaptic = MutableStateFlow(true)
