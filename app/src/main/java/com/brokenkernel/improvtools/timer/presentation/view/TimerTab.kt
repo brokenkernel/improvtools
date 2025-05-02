@@ -80,7 +80,6 @@ internal fun SimpleCountDownTimer(
                 Text(stringResource(R.string.timer_reset))
             }
         },
-        onNewTimer = { },
         onRemoveTimer = onRemoveTimer,
         leadingIcon = {
             Icon(
@@ -106,7 +105,6 @@ internal fun SimpleStopWatchTimer(viewModel: StopWatchTimerViewModel, onRemoveTi
         currentTime = timeLeft,
         timerState = timerState,
         onRemoveTimer = onRemoveTimer,
-        onNewTimer = {},
         actions = {
             StartPauseButton(
                 timerState = timerState,

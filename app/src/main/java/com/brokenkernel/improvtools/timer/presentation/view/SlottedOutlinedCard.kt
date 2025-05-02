@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -33,7 +32,6 @@ internal fun SlottedTimerCardContent(
     currentTime: Duration,
     timerState: TimerState,
     actions: @Composable (() -> Unit) = {},
-    onNewTimer: () -> Unit,
     onRemoveTimer: () -> Unit,
     leadingIcon: @Composable (() -> Unit) = {},
 ) {
@@ -42,12 +40,6 @@ internal fun SlottedTimerCardContent(
             leadingIcon()
             Text(title, style = MaterialTheme.typography.headlineLarge)
             Spacer(Modifier.weight(1f))
-            IconButton(onClick = onNewTimer) {
-                Icon(
-                    Icons.Default.Add,
-                    contentDescription = stringResource(R.string.slotted_timer_create_new_timer),
-                )
-            }
             IconButton(onClick = onRemoveTimer) {
                 Icon(
                     Icons.Default.Delete,
