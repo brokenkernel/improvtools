@@ -27,11 +27,13 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.components.presentation.view.OneWayDismissableContent
+import com.brokenkernel.improvtools.timer.data.model.TimerInfo
 import com.brokenkernel.improvtools.timer.data.model.TimerState
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.CountDownTimerViewModel
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.INITIAL_TIMER_DURATION
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.StopWatchTimerViewModel
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.TimerListViewModel
+import kotlin.collections.toList
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.minutes
 
@@ -156,11 +158,11 @@ internal fun TimerTab(viewModel: TimerListViewModel = hiltViewModel(), onLaunchT
 
     val haptic = LocalHapticFeedback.current
     val shouldHapticOnRemove = viewModel.shouldHaptic.collectAsStateWithLifecycle()
-    val allTimers: State<MutableList<TimerListViewModel.TimerInfo>> = viewModel.allTimers.collectAsStateWithLifecycle()
+    val allTimers: State<MutableList<TimerInfo>> = viewModel.allTimers.collectAsStateWithLifecycle()
 
     LazyColumn {
         // toList to copy to avoid ConcurrentModificationException. Maybe a better way exists to handle?
-        items(allTimers.value.toList(), key = { t -> t.id }) { timer: TimerListViewModel.TimerInfo ->
+        items(allTimers.value.toList(), key = { t -> t.id }) { timer: TimerInfo ->
 
             val currentTimer by rememberUpdatedState(timer)
             // TODO/bug: why does removing one remove all the remaining ones below?

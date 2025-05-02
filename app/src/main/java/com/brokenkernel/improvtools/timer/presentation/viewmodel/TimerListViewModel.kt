@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.brokenkernel.improvtools.datastore.UserSettings
 import com.brokenkernel.improvtools.settings.data.repository.SettingsRepository
+import com.brokenkernel.improvtools.timer.data.model.TimerInfo
 import com.brokenkernel.improvtools.timer.data.repository.TimerManager
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -32,11 +33,7 @@ internal class TimerListViewModel @Inject constructor(
         COUNTDOWN,
     }
 
-    internal class TimerInfo(
-        val title: MutableStateFlow<String>,
-        val timerType: TimerType,
-        val id: Int,
-    )
+
 
     private val _shouldHaptic = MutableStateFlow(true)
     val shouldHaptic = _shouldHaptic.asStateFlow()
