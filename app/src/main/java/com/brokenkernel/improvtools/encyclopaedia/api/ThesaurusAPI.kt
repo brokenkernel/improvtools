@@ -35,7 +35,9 @@ class ThesaurusAPI @Inject internal constructor(private val thesaurusRepository:
     fun hasWordDetails(word: String): Boolean {
         val preppedWord = word.trim().lowercase()
         val allIndexWords: IndexWordSet? = dictionary?.lookupAllIndexWords(preppedWord)
-        Log.w(TAG, "$preppedWord: hasWordDetails: ${allIndexWords?.toString()}")
+        if (Log.isLoggable(TAG, Log.VERBOSE)) {
+            Log.v(TAG, "$preppedWord: hasWordDetails: ${allIndexWords?.toString()}")
+        }
 
         // TODO: deal with stemming
         if (allIndexWords?.size() == 0) {
