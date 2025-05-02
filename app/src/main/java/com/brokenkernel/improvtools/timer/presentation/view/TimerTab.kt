@@ -45,6 +45,7 @@ private const val TAG = "TimerScreen"
 // TODO central timer manager
 // TODO: title does not properly recompose. Also too dilluted of where state is stored. Need to fix the entire flow of timers
 // TODO: adding timer stops/resets existing timers. See also: state storage is broken.
+// TODO: possibly add Timer Edit Button (for future editing time, etc. Also clearer UX than clicking on title to edit title)
 
 @Composable
 internal fun SimpleCountDownTimer(
