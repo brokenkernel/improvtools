@@ -9,12 +9,12 @@
         <error line="31" column="9" source="standard:backing-property-naming" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/timer/presentation/viewmodel/BaseTimerViewModel.kt">
-        <error line="24" column="19" source="standard:backing-property-naming" />
+        <error line="26" column="19" source="standard:backing-property-naming" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/timer/presentation/viewmodel/CountDownTimerViewModel.kt">
-        <error line="20" column="17" source="standard:backing-property-naming" />
+        <error line="21" column="17" source="standard:backing-property-naming" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/timer/presentation/viewmodel/StopWatchTimerViewModel.kt">
-        <error line="22" column="17" source="standard:backing-property-naming" />
+        <error line="23" column="17" source="standard:backing-property-naming" />
     </file>
 </baseline>

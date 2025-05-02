@@ -41,6 +41,7 @@ private const val TAG = "TimerScreen"
 // TODO control of how many timers. Add some.
 // todo: click on title, change name of timer
 // TODO central timer manager
+// TODO: title does not properly recompose. Also too dilluted of where state is stored. Need to fix the entire flow of timers
 
 @Composable
 internal fun SimpleCountDownTimer(
@@ -49,9 +50,10 @@ internal fun SimpleCountDownTimer(
 ) {
     val timeLeft by viewModel.timeLeft.collectAsStateWithLifecycle()
     val timerState by viewModel.timerState.collectAsStateWithLifecycle()
+    val currentTitle = viewModel.title.collectAsStateWithLifecycle()
 
     SlottedTimerCardContent(
-        title = viewModel.title,
+        title = currentTitle.value,
         currentTime = timeLeft,
         timerState = timerState,
         actions = {
@@ -91,6 +93,9 @@ internal fun SimpleCountDownTimer(
                 contentDescription = stringResource(R.string.count_down_timer),
             )
         },
+        onTitleChange = {
+            viewModel.setTitle(it)
+        },
     )
 }
 
@@ -99,9 +104,10 @@ internal fun SimpleStopWatchTimer(viewModel: StopWatchTimerViewModel, onRemoveTi
     val timeLeft by viewModel.timeLeft.collectAsStateWithLifecycle()
     val timerState by viewModel.timerState.collectAsStateWithLifecycle()
     val context = LocalContext.current
+    val currentTitle = viewModel.title.collectAsStateWithLifecycle()
 
     SlottedTimerCardContent(
-        title = viewModel.title,
+        title = currentTitle.value,
         currentTime = timeLeft,
         timerState = timerState,
         onRemoveTimer = onRemoveTimer,
@@ -134,6 +140,9 @@ internal fun SimpleStopWatchTimer(viewModel: StopWatchTimerViewModel, onRemoveTi
                 },
                 contentDescription = stringResource(R.string.count_down_timer),
             )
+        },
+        onTitleChange = {
+            viewModel.setTitle(it)
         },
     )
 }

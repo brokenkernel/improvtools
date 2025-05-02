@@ -12,15 +12,16 @@ import java.util.Timer
 import kotlin.concurrent.fixedRateTimer
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.seconds
+import kotlinx.coroutines.flow.MutableStateFlow
 
 @HiltViewModel(assistedFactory = StopWatchTimerViewModel.Factory::class)
 internal class StopWatchTimerViewModel @AssistedInject constructor(
-    @Assisted("title") title: String,
+    @Assisted("title") title: MutableStateFlow<String>, // todo: pass TimerInfo?
     private val savedStateHandle: SavedStateHandle,
     private val stopWatchNotificationManager: StopWatchNotificationManager,
 ) : BaseTimerViewModel(title, initialTime = Duration.ZERO) {
     private val _myTimerThread: Timer = fixedRateTimer(
-        "fixed rate timer for: $title",
+        "fixed rate timer for: $title", // TODO: use TimerID
         daemon = true,
         initialDelay = 0L,
         period = 1.seconds.inWholeMilliseconds,
@@ -37,6 +38,6 @@ internal class StopWatchTimerViewModel @AssistedInject constructor(
     }
 
     @AssistedFactory interface Factory {
-        fun create(@Assisted("title") title: String): StopWatchTimerViewModel
+        fun create(@Assisted("title") title: MutableStateFlow<String>): StopWatchTimerViewModel
     }
 }

@@ -9,10 +9,11 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import java.util.Timer
 import kotlin.concurrent.fixedRateTimer
 import kotlin.time.Duration.Companion.seconds
+import kotlinx.coroutines.flow.MutableStateFlow
 
 @HiltViewModel(assistedFactory = CountDownTimerViewModel.Factory::class)
 internal class CountDownTimerViewModel @AssistedInject constructor(
-    @Assisted("title") title: String,
+    @Assisted("title") title: MutableStateFlow<String>,
     @Assisted("initialTime") initialTimeInWholeMilliseconds: Long,
     private val savedStateHandle: SavedStateHandle,
     private val countDownNotificationManager: CountDownNotificationManager,
@@ -30,7 +31,7 @@ internal class CountDownTimerViewModel @AssistedInject constructor(
 
     @AssistedFactory interface Factory {
         fun create(
-            @Assisted("title") title: String,
+            @Assisted("title") title: MutableStateFlow<String>,
             @Assisted("initialTime") initialTimeInWholeMilliseconds: Long,
         ): CountDownTimerViewModel
     }

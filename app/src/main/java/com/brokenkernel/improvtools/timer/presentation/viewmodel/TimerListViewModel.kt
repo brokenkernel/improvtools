@@ -7,11 +7,11 @@ import com.brokenkernel.improvtools.datastore.UserSettings
 import com.brokenkernel.improvtools.settings.data.repository.SettingsRepository
 import com.brokenkernel.improvtools.timer.data.repository.TimerManager
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @HiltViewModel
 internal class TimerListViewModel @Inject constructor(
@@ -33,7 +33,7 @@ internal class TimerListViewModel @Inject constructor(
     }
 
     internal class TimerInfo(
-        val title: String,
+        val title: MutableStateFlow<String>,
         val timerType: TimerType,
         val id: Int,
     )
@@ -45,10 +45,10 @@ internal class TimerListViewModel @Inject constructor(
     private val _allTimers: MutableStateFlow<MutableList<TimerInfo>> =
         MutableStateFlow<MutableList<TimerInfo>>(
             mutableStateListOf(
-                TimerInfo("Stopwatch One", TimerType.STOPWATCH, timerManager.getNextID()),
-                TimerInfo("Stopwatch Two", TimerType.STOPWATCH, timerManager.getNextID()),
-                TimerInfo("Countdown Three", TimerType.COUNTDOWN, timerManager.getNextID()),
-                TimerInfo("Countdown Four", TimerType.COUNTDOWN, timerManager.getNextID()),
+                TimerInfo(MutableStateFlow("Stopwatch One"), TimerType.STOPWATCH, timerManager.getNextID()),
+                TimerInfo(MutableStateFlow("Stopwatch Two"), TimerType.STOPWATCH, timerManager.getNextID()),
+                TimerInfo(MutableStateFlow("Countdown Three"), TimerType.COUNTDOWN, timerManager.getNextID()),
+                TimerInfo(MutableStateFlow("Countdown Four"), TimerType.COUNTDOWN, timerManager.getNextID()),
             ),
         )
     val allTimers = _allTimers.asStateFlow()
@@ -57,9 +57,7 @@ internal class TimerListViewModel @Inject constructor(
         _allTimers.value.remove(timerInfo)
     }
 
-    fun addTimer(title: String, timerType: TimerType) {
-        // TODO: ID should be derived from some 'timer manager' like notifications and be independent of
-        // of the viewmodel
-        _allTimers.value.add(TimerInfo(title, timerType, timerManager.getNextID())) // TODO: ID FIXME
+    fun addTimer(initialTitle: String, timerType: TimerType) {
+        _allTimers.value.add(TimerInfo(MutableStateFlow(initialTitle), timerType, timerManager.getNextID()))
     }
 }

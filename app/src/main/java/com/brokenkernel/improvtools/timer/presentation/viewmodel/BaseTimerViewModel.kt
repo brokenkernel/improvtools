@@ -13,12 +13,14 @@ val INITIAL_TIMER_DURATION: Duration = INITIAL_TIMER_SECONDS.seconds
 
 // the timer itself needs to be pulled out and have its own lifecycle + callback support
 internal sealed class BaseTimerViewModel(
-    val title: String,
+    private val _title: MutableStateFlow<String>,
     initialTime: Duration,
 ) : ViewModel() {
 
     private val _timerState: MutableStateFlow<TimerState> = MutableStateFlow(TimerState.STOPPED)
     internal val timerState: StateFlow<TimerState> = _timerState.asStateFlow()
+
+    val title = _title.asStateFlow()
 
     // TODO: handle initial time originally?
     protected val _timeLeft: MutableStateFlow<Duration> = MutableStateFlow(initialTime)
@@ -31,5 +33,9 @@ internal sealed class BaseTimerViewModel(
 
     fun setTimeLeft(duration: Duration) {
         _timeLeft.value = duration
+    }
+
+    fun setTitle(newTitle: String) {
+        _title.value = newTitle
     }
 }
