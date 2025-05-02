@@ -16,7 +16,7 @@ internal class CountDownTimerState(
         "fixed rate timer for: $title",
         daemon = true,
         initialDelay = 0L,
-        period = initialTime.inWholeMilliseconds,
+        period = 1.seconds.inWholeMilliseconds,
     ) {
         if (_timeLeft.value.isPositive() && timerState.value.isStarted()) {
             _timeLeft.value -= 1.seconds

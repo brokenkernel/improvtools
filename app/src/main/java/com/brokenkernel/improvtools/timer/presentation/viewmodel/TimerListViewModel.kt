@@ -72,5 +72,4 @@ internal class TimerListViewModel @Inject constructor(
             countDownNotificationManager,
         )
     }
-
 }
