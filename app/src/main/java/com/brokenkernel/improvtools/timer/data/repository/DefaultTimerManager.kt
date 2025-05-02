@@ -4,8 +4,9 @@ package com.brokenkernel.improvtools.timer.data.repository
 // TODO: doc graph layering
 
 class DefaultTimerManager : TimerManager {
-    private val currentTimerID: Int = 0
+    private var currentTimerID: Int = 0
     override fun getNextID(): Int {
-        return currentTimerID + 1
+        currentTimerID += 1
+        return currentTimerID
     }
 }
