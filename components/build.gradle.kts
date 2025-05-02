@@ -114,6 +114,9 @@ dependencies {
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.ui.test.junit4)
+
+    debugRuntimeOnly(libs.androidx.ui.test.manifest)
 
     ksp(libs.hilt.compiler)
 
