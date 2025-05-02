@@ -1,4 +1,4 @@
-package com.brokenkernel.improvtools.encyclopaedia.data.model
+    package com.brokenkernel.improvtools.encyclopaedia.data.model
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Fireplace
@@ -17,6 +17,9 @@ internal enum class GamesDatumTag(val label: String) {
     NAMES("#names"),
     RANGE("#range"),
     VOCAL("#vocal"),
+    SHORTFORM("#shortform"),
+    MEDIUMFORM("#mediumform"),
+    LONGFORM("#longform"),
     ;
 
     companion object {
@@ -85,10 +88,12 @@ internal val GamesDatum: Collection<GamesDataItem> = listOf(
             |A Harlold based a monolog.
             |Typically this monolog is inspired by a suggestion itself.
         """.trimMargin(),
+        tags = setOf(GamesDatumTag.MEDIUMFORM),
     ),
     GamesDataItem(
         gameName = "The Harold",
         topic = GamesDatumTopic.FORMAT,
+        tags = setOf(GamesDatumTag.MEDIUMFORM),
     ),
     GamesDataItem(
         gameName = "Conducted Story",
@@ -116,10 +121,12 @@ internal val GamesDatum: Collection<GamesDataItem> = listOf(
     GamesDataItem(
         gameName = "Half Time",
         topic = GamesDatumTopic.GAME,
+        tags = setOf(GamesDatumTag.SHORTFORM),
     ),
     GamesDataItem(
         gameName = "Word At a time",
         topic = GamesDatumTopic.GAME,
+        tags = setOf(GamesDatumTag.SHORTFORM),
     ),
     GamesDataItem(
         gameName = "Questions Only",
@@ -136,6 +143,7 @@ internal val GamesDatum: Collection<GamesDataItem> = listOf(
     GamesDataItem(
         gameName = "Freeze Tag",
         topic = GamesDatumTopic.GAME,
+        tags = setOf(GamesDatumTag.SHORTFORM),
     ),
     GamesDataItem(
         gameName = "What are you doing?",
@@ -161,6 +169,7 @@ internal val GamesDatum: Collection<GamesDataItem> = listOf(
     GamesDataItem(
         gameName = "Lines From a Hat",
         topic = GamesDatumTopic.GAME,
+        tags = setOf(GamesDatumTag.SHORTFORM),
     ),
     GamesDataItem(
         gameName = "Dysfunctional Relationships",
@@ -171,6 +180,7 @@ internal val GamesDatum: Collection<GamesDataItem> = listOf(
         """.trimMargin(),
         topic = GamesDatumTopic.GAME,
         source = "https://ask.metafilter.com/233371/I-Need-Some-Relationship-Suggestions",
+        tags = setOf(GamesDatumTag.SHORTFORM),
     ),
     GamesDataItem(
         gameName = "Best of Times, Worst of Times",
@@ -181,5 +191,6 @@ internal val GamesDatum: Collection<GamesDataItem> = listOf(
             | works out with the best possible result,
             | in the second, everything ends up going the worst way you can imagine.
         """.trimMargin().replace("\n", ""),
+        tags = setOf(GamesDatumTag.SHORTFORM),
     ),
 )
