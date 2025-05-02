@@ -53,9 +53,7 @@ internal class ImprovToolsAppState(
         val currentNavigableRoute: NavDestination? = currentBackStackEntryAsState().value?.destination
 
         return currentNavigableRoute?.hierarchy?.any { it ->
-            screen.matchingRoutes.any { route ->
-                it.hasRoute(route::class)
-            }
+            it.hasRoute(screen.matchingRoute::class)
         } == true
     }
 

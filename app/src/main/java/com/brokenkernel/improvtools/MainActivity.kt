@@ -67,7 +67,7 @@ class MainActivity : ComponentActivity() {
             // maybe ImprovToolsState, or at least a subset should be passed via LocalContent so it doesn't need to be threaded all over the place
             OuterContentForMasterScreen(
                 improvToolsState = improvToolsState,
-                initialRoute = initialScreen.matchingRoutes.first(), // TODO: this is broken, but not yet ready
+                initialRoute = initialScreen.matchingRoute, // TODO: this is broken, but not yet ready
             )
         }
     }

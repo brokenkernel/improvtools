@@ -89,18 +89,14 @@ internal sealed class NavigableScreens(
     @param:StringRes @field:StringRes internal val titleResource: Int,
     @param:StringRes @field:StringRes internal val contentDescription: Int,
     internal val icon: ImageVector,
-    internal val matchingRoutes: Set<NavigableRoute>,
-    internal val navigationCallback: (itas: ImprovToolsAppState) -> Unit = { itas ->
-        // TODO: FIXME
-        itas.navigateTo(matchingRoutes.first())
-    }, // TODO: remove default
+    internal val matchingRoute: NavigableRoute,
 ) {
     @Immutable
     internal object SuggestionGeneratorScreen : NavigableScreens(
         titleResource = R.string.suggestions_activity_title,
         contentDescription = R.string.go_to_suggestion_generator,
         icon = Icons.Outlined.Lightbulb,
-        matchingRoutes = setOf(SuggestionGeneratorRoute),
+        matchingRoute = SuggestionGeneratorRoute,
     )
 
     @Immutable
@@ -108,7 +104,7 @@ internal sealed class NavigableScreens(
         titleResource = R.string.settings_activity_title,
         contentDescription = R.string.go_to_settings_screen,
         icon = Icons.Outlined.Settings,
-        matchingRoutes = setOf(SettingsRoute),
+        matchingRoute = SettingsRoute,
     )
 
     @Immutable
@@ -116,7 +112,7 @@ internal sealed class NavigableScreens(
         titleResource = R.string.timer_activity_title,
         contentDescription = R.string.go_to_timer_screen,
         icon = Icons.Outlined.Timer,
-        matchingRoutes = setOf(TimerRoute),
+        matchingRoute = TimerRoute,
     )
 
     @Immutable
@@ -124,7 +120,7 @@ internal sealed class NavigableScreens(
         titleResource = R.string.navigation_help_and_feedback,
         contentDescription = R.string.go_to_help_and_feedback_screen,
         icon = Icons.Outlined.Info,
-        matchingRoutes = setOf(HelpAndAboutRoute),
+        matchingRoute = HelpAndAboutRoute,
     )
 
     @Immutable
@@ -132,7 +128,7 @@ internal sealed class NavigableScreens(
         titleResource = R.string.navigation_tips_and_advice,
         contentDescription = R.string.go_to_tips_and_advice_screen,
         icon = Icons.Outlined.TipsAndUpdates,
-        matchingRoutes = setOf(TipsAndAdviceRoute),
+        matchingRoute = TipsAndAdviceRoute,
     )
 
     @Immutable
@@ -140,7 +136,7 @@ internal sealed class NavigableScreens(
         titleResource = R.string.navigation_games,
         contentDescription = R.string.go_to_games_screen,
         icon = Icons.Outlined.Games,
-        matchingRoutes = setOf(GamesPageRoute),
+        matchingRoute = GamesPageRoute,
     )
 
     @Immutable
@@ -148,7 +144,7 @@ internal sealed class NavigableScreens(
         titleResource = R.string.navigation_people,
         contentDescription = R.string.go_to_navigation_people_screen,
         icon = Icons.Outlined.People,
-        matchingRoutes = setOf(PeoplePageRoute),
+        matchingRoute = PeoplePageRoute,
     )
 
     @Immutable
@@ -157,7 +153,7 @@ internal sealed class NavigableScreens(
         contentDescription = R.string.go_to_glossary,
         // TODO: figure out better icon (esp since both Glossary and Thesaurus. Consider supporting Drawable)
         icon = Icons.Filled.Book,
-        matchingRoutes = setOf(GlossaryRoute),
+        matchingRoute = GlossaryRoute,
     )
 
     @Immutable
@@ -165,7 +161,7 @@ internal sealed class NavigableScreens(
         titleResource = R.string.navigation_emotions_reference,
         contentDescription = R.string.go_to_emotions_reference_screen,
         icon = Icons.Outlined.EmojiEmotions,
-        matchingRoutes = setOf(EmotionPageRoute),
+        matchingRoute = EmotionPageRoute,
     )
 
     @Immutable
@@ -173,7 +169,7 @@ internal sealed class NavigableScreens(
         titleResource = R.string.navigation_thesaurus,
         contentDescription = R.string.go_to_thesaurus_screen,
         icon = Icons.Outlined.Book,
-        matchingRoutes = setOf(ThesaurusPageRoute),
+        matchingRoute = ThesaurusPageRoute,
     )
 
     @Immutable
@@ -181,7 +177,7 @@ internal sealed class NavigableScreens(
         titleResource = R.string.navigation_privacy_information,
         contentDescription = R.string.go_to_privacy_information,
         icon = Icons.Filled.PrivacyTip,
-        matchingRoutes = setOf(PrivacyRoute),
+        matchingRoute = PrivacyRoute,
     )
 
     @Immutable
@@ -189,6 +185,10 @@ internal sealed class NavigableScreens(
         titleResource = R.string.navigation_libraries_information,
         contentDescription = R.string.go_to_libraries_information,
         icon = Icons.Default.Copyright,
-        matchingRoutes = setOf(LibrariesRoute),
+        matchingRoute = LibrariesRoute,
     )
+
+    internal val navigationCallback: (itas: ImprovToolsAppState) -> Unit = { itas ->
+        itas.navigateTo(matchingRoute)
+    }
 }
