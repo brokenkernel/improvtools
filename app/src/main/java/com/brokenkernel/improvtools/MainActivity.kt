@@ -7,10 +7,13 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import com.brokenkernel.improvtools.application.data.model.rememberImprovToolsAppState
 import com.brokenkernel.improvtools.application.presentation.view.OuterContentForMasterScreen
+import com.ramcosta.composedestinations.utils.rememberDestinationsNavigator
 import dagger.hilt.android.AndroidEntryPoint
 
 private const val ShowSuggestionsIntent: String = "com.brokenkernel.improvtools.intents.ShowSuggestions"
@@ -62,6 +65,8 @@ class MainActivity : ComponentActivity() {
             val titleState = rememberSaveable { mutableIntStateOf(initialScreen.titleResource) }
             val improvToolsState: ImprovToolsAppState = rememberImprovToolsAppState(
                 titleState = titleState,
+                navigator = rememberNavController().rememberDestinationsNavigator()
+
             )
 
             // maybe ImprovToolsState, or at least a subset should be passed via LocalContent so it doesn't need to be threaded all over the place

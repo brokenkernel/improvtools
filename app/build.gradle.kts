@@ -221,7 +221,7 @@ dependencies {
     implementation(libs.androidx.datastore.core)
     //    implementation(libs.androidx.glance.appwidget)
     //    implementation(libs.androidx.glance.material3)
-    implementation(libs.androidx.hilt.navigation.compose)
+//    implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.androidx.ink.authoring)
     implementation(libs.androidx.ink.brush)
     implementation(libs.androidx.ink.geometry)
@@ -242,7 +242,7 @@ dependencies {
     implementation(libs.androidx.material3.adaptive.layout)
     implementation(libs.androidx.material3.adaptive.navigation)
     implementation(libs.androidx.metrics.performance)
-    implementation(libs.androidx.navigation.navigationCompose)
+//    implementation(libs.androidx.navigation.navigationCompose)
     implementation(libs.androidx.profileinstaller)
     implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.room.paging)
@@ -337,7 +337,7 @@ kotlin {
         }
     }
     compilerOptions {
-        allWarningsAsErrors = true
+//        allWarningsAsErrors = true // FIXME generated code
         extraWarnings = true
         progressiveMode = true
 //        https://kotlinlang.org/docs/whatsnew-eap.html#gradle

@@ -48,12 +48,18 @@ import com.brokenkernel.improvtools.encyclopaedia.presentation.view.LoadableSing
 import com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel.LoadableSingleWordThesaurusButtonViewModel
 import com.brokenkernel.improvtools.suggestionGenerator.data.model.IdeaCategory
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel.SuggestionScreenViewModel
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.annotation.RootGraph
+import com.ramcosta.composedestinations.annotation.parameters.CodeGenVisibility
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import sh.calvin.reorderable.ReorderableItem
 import sh.calvin.reorderable.rememberReorderableLazyListState
 
 @OptIn(ExperimentalMaterial3Api::class)
+@Destination<RootGraph>(
+    visibility = CodeGenVisibility.INTERNAL,
+)
 @Composable
 internal fun SuggestionsTab(
     viewModel: SuggestionScreenViewModel = hiltViewModel(),

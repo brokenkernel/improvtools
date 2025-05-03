@@ -33,6 +33,9 @@ import com.brokenkernel.improvtools.timer.presentation.viewmodel.CountDownTimerS
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.INITIAL_TIMER_DURATION
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.StopWatchTimerState
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.TimerListViewModel
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.annotation.RootGraph
+import com.ramcosta.composedestinations.annotation.parameters.CodeGenVisibility
 import kotlin.collections.toList
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.minutes
@@ -154,6 +157,9 @@ internal fun SimpleStopWatchTimer(viewModel: StopWatchTimerState, onRemoveTimer:
     )
 }
 
+@Destination<RootGraph>(
+    visibility = CodeGenVisibility.INTERNAL,
+)
 @Composable
 internal fun TimerTab(viewModel: TimerListViewModel = hiltViewModel(), onLaunchTitleCallback: () -> Unit) {
     // TODO: consider making a BaseScreenComposable or some such

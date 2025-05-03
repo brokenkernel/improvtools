@@ -24,6 +24,9 @@ import com.brokenkernel.improvtools.components.presentation.view.TabbedSearchabl
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GlossaryDataItem
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GlossaryDatum
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GlossaryDatumTopic
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.annotation.RootGraph
+import com.ramcosta.composedestinations.annotation.parameters.CodeGenVisibility
 
 private fun transformForSearch(str: String): String {
     return str.filterNot { it.isWhitespace() }
@@ -34,6 +37,9 @@ private fun doesMatch(search: String, item: GlossaryDataItem): Boolean {
 }
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
+@Destination<RootGraph>(
+    visibility = CodeGenVisibility.INTERNAL,
+)
 @Composable
 internal fun GlossaryTab(onLaunchTitleCallback: () -> Unit) {
     // TODO: consider making a BaseScreenComposable or some such

@@ -15,11 +15,15 @@ import com.brokenkernel.improvtools.timer.api.timerRoutes
 import com.google.firebase.Firebase
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.analytics
+import com.ramcosta.composedestinations.DestinationsNavHost
+import com.ramcosta.composedestinations.generated.NavGraphs
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
 @Composable
 internal fun ImprovToolsNavigationGraph(
     improvToolsAppState: ImprovToolsAppState,
     initialRoute: NavigableRoute,
+    destinationNavigableRoute: DestinationsNavigator,
 ) {
     val context = LocalContext.current
     DisposableEffect(improvToolsAppState.navController) {
@@ -39,6 +43,7 @@ internal fun ImprovToolsNavigationGraph(
             improvToolsAppState.navController.removeOnDestinationChangedListener(listener)
         }
     }
+    DestinationsNavHost(navGraph = NavGraphs.root)
     NavHost(
         navController = improvToolsAppState.navController,
         startDestination = initialRoute,

@@ -23,7 +23,13 @@ import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.presentation.view.verticalColumnScrollbar
 import com.brokenkernel.improvtools.components.presentation.view.SimpleZoomableImage
 import com.brokenkernel.improvtools.components.sidecar.preview.ImprovToolsAllPreviews
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.annotation.RootGraph
+import com.ramcosta.composedestinations.annotation.parameters.CodeGenVisibility
 
+@Destination<RootGraph>(
+    visibility = CodeGenVisibility.INTERNAL,
+)
 @Composable
 internal fun EmotionTab(onLaunchTitleCallback: () -> Unit) {
     // TODO: consider making a BaseScreenComposable or some such

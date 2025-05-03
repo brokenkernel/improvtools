@@ -39,6 +39,9 @@ import com.brokenkernel.improvtools.encyclopaedia.data.model.GamesDataItem
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GamesDatumTag
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GamesDatumTopic
 import com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel.GamesTabViewModel
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.annotation.RootGraph
+import com.ramcosta.composedestinations.annotation.parameters.CodeGenVisibility
 import kotlinx.coroutines.launch
 
 private fun transformForSearch(str: String): String {
@@ -49,7 +52,11 @@ private fun hasExpandableInformation(gdi: GamesDataItem): Boolean {
     return gdi.detailedInformation != null || gdi.source != null
 }
 
+// TODO: https://composedestinations.rafaelcosta.xyz/v2/defining-navgraphs#through-mermaid-graphs
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
+@Destination<RootGraph>(
+    visibility = CodeGenVisibility.INTERNAL,
+)
 @Composable
 internal fun GamesTab(
     onLaunchTitleCallback: () -> Unit,

@@ -22,9 +22,12 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.brokenkernel.improvtools.TAG
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
+import com.ramcosta.composedestinations.utils.rememberDestinationsNavigator
 
 internal class ImprovToolsAppState(
     val drawerState: DrawerState,
+    val navigator: DestinationsNavigator,
     val navController: NavHostController,
     @param:StringRes val currentTitle: MutableState<Int>, // todo: expose a non_mutable variant
     var extraMenu: MutableState<(@Composable () -> Unit)?> = mutableStateOf(null),
@@ -44,6 +47,7 @@ internal class ImprovToolsAppState(
 
     @Composable
     fun currentBackStackEntryAsState(): State<NavBackStackEntry?> {
+//        navigator.popBackStack()
         return navController.currentBackStackEntryAsState()
     }
 
@@ -74,6 +78,7 @@ internal class ImprovToolsAppState(
             Log.i(TAG, "Navigating BACK to $dest")
         }
         // popUpTo does not work for reasons I'm not sure. This seems to work for now...
+//        navigator.popBackStack(inclusive = false, route = dest)
         navController.popBackStack(inclusive = false, route = dest)
     }
 
@@ -90,7 +95,8 @@ internal class ImprovToolsAppState(
 internal fun rememberImprovToolsAppState(
     drawerState: DrawerState = rememberDrawerState(initialValue = DrawerValue.Closed),
     navController: NavHostController = rememberNavController(),
+    navigator: DestinationsNavigator = navController.rememberDestinationsNavigator(),
     @StringRes titleState: MutableState<Int>,
 ): ImprovToolsAppState = remember(drawerState, navController, titleState) {
-    ImprovToolsAppState(drawerState, navController, titleState)
+    ImprovToolsAppState(drawerState, navigator, navController, titleState)
 }

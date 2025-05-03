@@ -159,7 +159,6 @@ internal fun TipsAndAdviceScreenAsList(viewModel: TipsAndAdviceViewModel = hiltV
     }
 }
 
-
 // TODO: https://composedestinations.rafaelcosta.xyz/v2/defining-destinations#centralizing-destination-annotation-configuration
 @Destination<RootGraph>(
     start = true,

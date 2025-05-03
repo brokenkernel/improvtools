@@ -31,6 +31,9 @@ import com.brokenkernel.improvtools.components.presentation.view.TabbedSearchabl
 import com.brokenkernel.improvtools.encyclopaedia.data.model.PeopleDataItem
 import com.brokenkernel.improvtools.encyclopaedia.data.model.PeopleDatum
 import com.brokenkernel.improvtools.encyclopaedia.data.model.PeopleDatumTopic
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.annotation.RootGraph
+import com.ramcosta.composedestinations.annotation.parameters.CodeGenVisibility
 import java.text.StringCharacterIterator
 
 private fun transformForSearch(str: String): String {
@@ -56,6 +59,9 @@ private fun hasExpandableInformation(pdi: PeopleDataItem): Boolean {
     return pdi.detailedInformation != null
 }
 
+@Destination<RootGraph>(
+    visibility = CodeGenVisibility.INTERNAL,
+)
 @Composable
 internal fun PeopleTab(onLaunchTitleCallback: () -> Unit) {
     // TODO: consider making a BaseScreenComposable or some such

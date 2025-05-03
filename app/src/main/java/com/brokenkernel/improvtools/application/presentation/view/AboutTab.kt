@@ -53,8 +53,13 @@ import com.brokenkernel.improvtools.BuildConfig
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.utils.AboutTabViewModel
 import com.brokenkernel.improvtools.components.presentation.view.ExpandIcon
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.annotation.RootGraph
+import com.ramcosta.composedestinations.annotation.parameters.CodeGenVisibility
 import kotlinx.coroutines.launch
-
+@Destination<RootGraph>(
+    visibility = CodeGenVisibility.INTERNAL,
+)
 @Composable
 internal fun AboutTab(
     viewModel: AboutTabViewModel = AboutTabViewModel(),
