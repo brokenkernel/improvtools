@@ -87,7 +87,7 @@
         <error line="42" column="14" source="compose:param-order-check" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/timer/presentation/view/TimerTab.kt">
-        <error line="156" column="72" source="compose:lambda-param-in-effect" />
+        <error line="158" column="72" source="compose:lambda-param-in-effect" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/timer/presentation/viewmodel/BaseTimerState.kt">
         <error line="25" column="19" source="standard:backing-property-naming" />
