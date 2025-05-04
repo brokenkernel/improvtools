@@ -106,6 +106,6 @@
     <string name="encyclopaedia_action_synonyms"><![CDATA[<h1>Action Synonyms</h1>]]></string>
   <string name="encyclopaedia_emotion_words">Emotion Words</string>
   <string name="thesaurus_synonyms">Synonyms: %1$s</string>
-    <string name="encyclopaedia_tags_header">Tags</string>
+    <string name="encyclopaedia_tags_filter_button">Filter Tags</string>
     <string name="timer_title">Timer Title</string>
 </resources>
