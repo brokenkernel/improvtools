@@ -1,5 +1,7 @@
 package com.brokenkernel.improvtools.application.presentation.view
 
+import androidx.annotation.UiThread
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -25,6 +27,7 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ProvidableCompositionLocal
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
@@ -34,6 +37,7 @@ import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.ApplicationConstants.APPLICATION_TITLE
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.sidecar.customtabs.CustomTabUriHandler
+import kotlinx.coroutines.launch
 
 internal val LocalSnackbarHostState: ProvidableCompositionLocal<SnackbarHostState> =
     compositionLocalOf<SnackbarHostState> {
@@ -55,7 +59,19 @@ internal fun ImprovToolsScaffold(
             skipHiddenState = false,
         ),
     )
-//    val scope = rememberCoroutineScope()
+    val scope = rememberCoroutineScope()
+    // TODO: this should be navigation based, but meh, future work
+    var bottomSheetContent: @Composable ColumnScope.() -> Unit = {}
+
+    @UiThread
+    fun setAndShowBottomContent(
+        content: @Composable ColumnScope.() -> Unit = {},
+    ) {
+        scope.launch {
+            bottomSheetScaffoldState.bottomSheetState.partialExpand()
+        }
+        bottomSheetContent = content
+    }
 
     CompositionLocalProvider(
         values = arrayOf(
@@ -113,7 +129,7 @@ internal fun ImprovToolsScaffold(
             snackbarHost = {
                 SnackbarHost(hostState = LocalSnackbarHostState.current)
             },
-            sheetContent = {},
+            sheetContent = bottomSheetContent,
             scaffoldState = bottomSheetScaffoldState,
         ) { innerPadding ->
             Surface(

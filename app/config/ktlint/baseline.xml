@@ -39,7 +39,7 @@
         <error line="28" column="25" source="compose:lambda-param-in-effect" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/encyclopaedia/presentation/view/GamesTab.kt">
-        <error line="55" column="5" source="compose:lambda-param-in-effect" />
+        <error line="49" column="5" source="compose:lambda-param-in-effect" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/encyclopaedia/presentation/view/GlossaryTab.kt">
         <error line="38" column="26" source="compose:lambda-param-in-effect" />

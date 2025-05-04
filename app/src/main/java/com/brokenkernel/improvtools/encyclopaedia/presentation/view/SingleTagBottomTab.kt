@@ -14,6 +14,5 @@ internal fun SingleTagBottomTab(tag: GamesDatumTag) {
             style = MaterialTheme.typography.headlineLarge,
         )
         Text(tag.description)
-
     }
 }
