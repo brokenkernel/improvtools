@@ -86,6 +86,9 @@ internal fun GamesTab(
         bottomSheetManager({ SingleTagBottomTab(tag) })
     }
 
+    // TODO: drop down to sub portion of TabbedSearchableColumn
+    // then make a search bar a FlowRow and allow for chips.
+    // maybe this could be included in the component?
     TabbedSearchableColumn<GamesDatumTopic, GamesDataItem>(
         itemDoesMatch = ::doesMatch,
         itemList = viewModel.groupedGames,
