@@ -54,7 +54,6 @@ internal fun GamesTab(
     }
 
     val textFieldState = rememberTextFieldState()
-    var shouldShowTagEnabled by remember { mutableStateOf(false) }
     val currentTags = remember { mutableStateSetOf<GamesDatumTag>() }
 
     fun doesMatch(search: String, gameData: GamesDataItem): Boolean {
@@ -77,11 +76,6 @@ internal fun GamesTab(
         }
         currentTags.clear()
         currentTags.addAll(onlyTagsToTypedTags)
-        if (onlyTags.isNotEmpty()) {
-            shouldShowTagEnabled = true
-        } else {
-            shouldShowTagEnabled = false
-        }
     }
 
     val bottomSheetManager = LocalBottomSheetContentManager.current
@@ -102,7 +96,6 @@ internal fun GamesTab(
         trailingIcon = {
             IconButton(
                 onClick = {},
-                enabled = shouldShowTagEnabled,
             ) {
                 Icon(
                     Icons.Default.Tag,
