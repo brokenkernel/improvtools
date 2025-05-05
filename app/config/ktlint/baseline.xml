@@ -5,11 +5,13 @@
         <error line="51" column="121" source="standard:max-line-length" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/application/data/model/ImprovToolsAppState.kt">
-        <error line="90" column="14" source="compose:param-order-check" />
-        <error line="93" column="16" source="compose:mutable-state-param-check" />
+        <error line="93" column="14" source="compose:param-order-check" />
+        <error line="96" column="16" source="compose:mutable-state-param-check" />
+    </file>
+    <file name="src/main/java/com/brokenkernel/improvtools/application/presentation/api/LocalComposables.kt">
+        <error line="16" column="14" source="compose:compositionlocal-allowlist" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/application/presentation/view/AboutTab.kt">
-        <error line="59" column="14" source="compose:param-order-check" />
         <error line="61" column="5" source="compose:lambda-param-in-effect" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/application/presentation/view/LibrariesTab.kt">
@@ -39,7 +41,7 @@
         <error line="28" column="25" source="compose:lambda-param-in-effect" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/encyclopaedia/presentation/view/GamesTab.kt">
-        <error line="49" column="5" source="compose:lambda-param-in-effect" />
+        <error line="48" column="5" source="compose:lambda-param-in-effect" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/encyclopaedia/presentation/view/GlossaryTab.kt">
         <error line="38" column="26" source="compose:lambda-param-in-effect" />

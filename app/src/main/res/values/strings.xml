@@ -45,9 +45,6 @@
     <string name="navigation_encyclopaedia_category">Encyclopaedia</string>
     <string name="encyclopaedia_plutchiks_wheel_of_emotions">Plutchik\’s Wheel of Emotions</string>
     <string name="encyclopaedia_emotion_wheel">Emotion Wheel</string>
-    <string name="encyclopaedia_tab_title_emotions">Emotions</string>
-    <string name="encyclopaedia_tab_title_games">Games</string>
-    <string name="encyclopaedia_tab_title_people">People</string>
     <string name="settings_tips_and_tricks_view_mode">Tips And Tricks View Mode</string>
     <string name="timer_half_time">Half Time</string>
     <string name="timer_pause">Pause</string>
@@ -55,7 +52,6 @@
     <string name="timer_start">Start</string>
     <string name="about_contact_info">Contact Information</string>
     <string name="about_contact_code_repo">Code Repository</string>
-    <string name="encyclopaedia_tab_title_thesaurus">Thesaurus</string>
     <string name="shortcut_encyclopaedia_short_label">Encyclopaedia</string>
     <string name="shortcut_encyclopaedia_long_label">Encyclopaedia</string>
     <string name="shortcut_encyclopaedia_disabled_label">Encyclopaedia (Disabled)</string>
@@ -68,8 +64,7 @@
     <string name="navigation_thesaurus">Thesaurus</string>
     <string name="go_to_thesaurus_screen">Go to Thesaurus screen</string>
     <string name="wikipedia">Wikipedia</string>
-    <string name="slotted_timer_create_new_timer">Create New Timer</string>
-    <string name="slotted_timer_remove_timer">Remove timer</string>
+  <string name="slotted_timer_remove_timer">Remove timer</string>
     <string name="count_down_timer">Count Down Timer</string>
     <string name="privacy_notification_use">Notifications are used for timers and countdowns</string>
     <string name="navigation_privacy_information">Privacy Information</string>

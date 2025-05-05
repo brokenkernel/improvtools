@@ -332,61 +332,6 @@
     </issue>
 
     <issue
-        id="UnusedResources"
-        message="The resource `R.string.encyclopaedia_tab_title_emotions` appears to be unused"
-        errorLine1="    &lt;string name=&quot;encyclopaedia_tab_title_emotions&quot;>Emotions&lt;/string>"
-        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/values/strings.xml"
-            line="48"
-            column="13"/>
-    </issue>
-
-    <issue
-        id="UnusedResources"
-        message="The resource `R.string.encyclopaedia_tab_title_games` appears to be unused"
-        errorLine1="    &lt;string name=&quot;encyclopaedia_tab_title_games&quot;>Games&lt;/string>"
-        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/values/strings.xml"
-            line="49"
-            column="13"/>
-    </issue>
-
-    <issue
-        id="UnusedResources"
-        message="The resource `R.string.encyclopaedia_tab_title_people` appears to be unused"
-        errorLine1="    &lt;string name=&quot;encyclopaedia_tab_title_people&quot;>People&lt;/string>"
-        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/values/strings.xml"
-            line="50"
-            column="13"/>
-    </issue>
-
-    <issue
-        id="UnusedResources"
-        message="The resource `R.string.encyclopaedia_tab_title_thesaurus` appears to be unused"
-        errorLine1="    &lt;string name=&quot;encyclopaedia_tab_title_thesaurus&quot;>Thesaurus&lt;/string>"
-        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/values/strings.xml"
-            line="58"
-            column="13"/>
-    </issue>
-
-    <issue
-        id="UnusedResources"
-        message="The resource `R.string.slotted_timer_create_new_timer` appears to be unused"
-        errorLine1="    &lt;string name=&quot;slotted_timer_create_new_timer&quot;>Create New Timer&lt;/string>"
-        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/values/strings.xml"
-            line="71"
-            column="13"/>
-    </issue>
-
-    <issue
         id="IconLocation"
         message="Found bitmap drawable `res/drawable/general_emotion_wheel.webp` in densityless folder">
         <location

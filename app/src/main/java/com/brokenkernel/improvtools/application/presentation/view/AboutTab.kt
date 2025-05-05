@@ -58,8 +58,8 @@ import kotlinx.coroutines.launch
 
 @Composable
 internal fun AboutTab(
-    viewModel: AboutTabViewModel = AboutTabViewModel(),
     onLaunchCallback: () -> Unit,
+    viewModel: AboutTabViewModel = AboutTabViewModel(),
     onNavigateToPrivacyScreen: () -> Unit,
 ) {
     // TODO: consider making a BaseScreenComposable or some such
