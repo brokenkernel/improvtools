@@ -1,7 +1,6 @@
 package com.brokenkernel.improvtools.application.presentation.view
 
 import androidx.annotation.UiThread
-import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -24,25 +23,30 @@ import androidx.compose.material3.rememberStandardBottomSheetState
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.ProvidableCompositionLocal
-import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.ApplicationConstants.APPLICATION_TITLE
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
+import com.brokenkernel.improvtools.application.presentation.api.BottomSheetContent
+import com.brokenkernel.improvtools.application.presentation.api.LocalBottomSheetContentManager
+import com.brokenkernel.improvtools.application.presentation.api.LocalSnackbarHostState
 import com.brokenkernel.improvtools.sidecar.customtabs.CustomTabUriHandler
 import kotlinx.coroutines.launch
 
-internal val LocalSnackbarHostState: ProvidableCompositionLocal<SnackbarHostState> =
-    compositionLocalOf<SnackbarHostState> {
-        error("No Snackbar Host State")
-    }
+
+// this should be handled by navigation, but for now, it works
+/**
+ * Maintains a method which itself sets bottom sheet content.
+ * Useful to be a method since it can also possibly _show_ the bottom sheet.
+ */
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -59,24 +63,29 @@ internal fun ImprovToolsScaffold(
             skipHiddenState = false,
         ),
     )
+//    val windowInfo = LocalWindowInfo.current
+//    val screenHeight = windowInfo.containerSize.height.dp
+//    val peekHeight = (screenHeight / 4)
+
     val scope = rememberCoroutineScope()
     // TODO: this should be navigation based, but meh, future work
-    var bottomSheetContent: @Composable ColumnScope.() -> Unit = {}
+    val bottomSheetContent = improvToolsAppState.bottomSheetContent
 
     @UiThread
     fun setAndShowBottomContent(
-        content: @Composable ColumnScope.() -> Unit = {},
+        content: BottomSheetContent = {},
     ) {
+        improvToolsAppState.bottomSheetContent = content
         scope.launch {
             bottomSheetScaffoldState.bottomSheetState.partialExpand()
         }
-        bottomSheetContent = content
     }
 
     CompositionLocalProvider(
         values = arrayOf(
             LocalSnackbarHostState provides snackbarHostState,
             LocalUriHandler provides customTabHandler,
+            LocalBottomSheetContentManager provides ::setAndShowBottomContent,
         ),
     ) {
         // TODO: replace with [[NavigationSuiteScaffold]]
@@ -130,6 +139,7 @@ internal fun ImprovToolsScaffold(
                 SnackbarHost(hostState = LocalSnackbarHostState.current)
             },
             sheetContent = bottomSheetContent,
+//            sheetPeekHeight = peekHeight,
             scaffoldState = bottomSheetScaffoldState,
         ) { innerPadding ->
             Surface(

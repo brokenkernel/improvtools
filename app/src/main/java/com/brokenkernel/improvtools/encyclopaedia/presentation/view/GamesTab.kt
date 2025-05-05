@@ -11,10 +11,8 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.ListItem
-import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
-import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -28,6 +26,7 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.util.fastAny
 import com.brokenkernel.components.view.HtmlText
 import com.brokenkernel.improvtools.R
+import com.brokenkernel.improvtools.application.presentation.api.LocalBottomSheetContentManager
 import com.brokenkernel.improvtools.components.presentation.view.ExpandIcon
 import com.brokenkernel.improvtools.components.presentation.view.TabbedSearchableColumn
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GamesDataItem
@@ -54,13 +53,9 @@ internal fun GamesTab(
         onLaunchTitleCallback()
     }
 
-    val modalBottomSheetState = rememberModalBottomSheetState()
     val textFieldState = rememberTextFieldState()
     var shouldShowTagEnabled by remember { mutableStateOf(false) }
-    var shouldShowModalBottomSheet by remember { mutableStateOf(false) }
     val currentTags = remember { mutableStateSetOf<GamesDatumTag>() }
-    // TODO: this should really be a destination, but deal with it later
-    var currentBottomSheetTag: GamesDatumTag? by remember { mutableStateOf(null) }
 
     fun doesMatch(search: String, gameData: GamesDataItem): Boolean {
         return transformForSearch(gameData.gameName).contains(search, ignoreCase = true) or
@@ -86,14 +81,15 @@ internal fun GamesTab(
             shouldShowTagEnabled = true
         } else {
             shouldShowTagEnabled = false
-            shouldShowModalBottomSheet = false
         }
     }
 
+    val bottomSheetManager = LocalBottomSheetContentManager.current
+
     // TODO: this should really be passed in as a navigable function
     fun onNavigateToBottomTag(tag: GamesDatumTag) {
-        shouldShowModalBottomSheet = true
-        currentBottomSheetTag = tag
+        // TODO: this should really be a destination, but deal with it later
+        bottomSheetManager({ SingleTagBottomTab(tag) })
     }
 
     TabbedSearchableColumn<GamesDatumTopic, GamesDataItem>(
@@ -172,18 +168,4 @@ internal fun GamesTab(
             modifier = gdiModifier,
         )
     }
-
-    if (shouldShowModalBottomSheet) {
-        ModalBottomSheet(
-            onDismissRequest = {
-                shouldShowModalBottomSheet = false
-            },
-            sheetState = modalBottomSheetState,
-        ) {
-            currentBottomSheetTag?.let {
-                SingleTagBottomTab(it)
-            }
-        }
-    }
-    // TODO: bottom sheet should be navigated to rather than manually edited
 }

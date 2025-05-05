@@ -22,6 +22,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.brokenkernel.improvtools.TAG
+import com.brokenkernel.improvtools.application.presentation.api.BottomSheetContent
+import kotlinx.coroutines.flow.MutableStateFlow
 
 internal class ImprovToolsAppState(
     val drawerState: DrawerState,
@@ -33,6 +35,8 @@ internal class ImprovToolsAppState(
     // TODO: this is somewhat passing state down instead of bubbling events up.
     // I should, instead, be continuously passing `onDismsiss callbacks or some such. I'll try that in the fuutre
     var extraMenuExpandedState: Boolean by mutableStateOf(false)
+
+    var bottomSheetContent: BottomSheetContent by mutableStateOf<BottomSheetContent>({})
 
     fun setScaffoldData(
         @StringRes newTitle: Int,

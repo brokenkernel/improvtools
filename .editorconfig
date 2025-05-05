@@ -168,7 +168,7 @@ compose_disallow_unstable_collections = true
 compose_preview_naming_enabled = true
 compose_preview_naming_strategy = suffix
 
-compose_allowed_composition_locals = LocalSnackbarHostState
+compose_allowed_composition_locals = LocalSnackbarHostState,LocalBottomSheetContent
 
 [{*.markdown,*.md}]
 indent_size = 2
