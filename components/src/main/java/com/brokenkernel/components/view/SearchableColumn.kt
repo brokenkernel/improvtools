@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.isTraversalGroup
 import androidx.compose.ui.semantics.semantics
+import kotlinx.collections.immutable.ImmutableMap
 
 /**
  * @param I item type
@@ -16,7 +17,7 @@ import androidx.compose.ui.semantics.semantics
 @Composable
 inline fun <I> SearchableColumn(
     crossinline itemDoesMatch: (String, I) -> Boolean,
-    itemList: Map<String, List<I>>,
+    itemList: ImmutableMap<String, List<I>>,
     crossinline transformForSearch: (String) -> String,
     noinline itemToKey: (I) -> (Any),
     textFieldState: TextFieldState = rememberTextFieldState(),

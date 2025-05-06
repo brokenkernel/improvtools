@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.fastAny
 import androidx.compose.ui.util.fastFilter
 import com.brokenkernel.components.R
+import kotlinx.collections.immutable.ImmutableMap
 
 // TODO: There are too many variants of searchablecolumn. They should be made more ... composable
 
@@ -58,7 +59,7 @@ inline fun <reified T : Enum<T>, reified X : Enum<X>> rememberChippedTabbedSearc
 inline fun <reified T : Enum<T>, I, reified X : Enum<X>> ChippedTabbedSearchableColumn(
     state: ChippedTabbedSearchableColumn<T, X> = rememberChippedTabbedSearchableColumn<T, X>(),
     crossinline itemDoesMatch: (String, I) -> Boolean,
-    itemList: Map<String, List<I>>,
+    itemList: ImmutableMap<String, List<I>>,
     crossinline transformForSearch: (String) -> String,
     noinline itemToTopic: (I) -> T,
     noinline itemToKey: (I) -> (Any),

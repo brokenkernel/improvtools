@@ -32,6 +32,7 @@ import com.brokenkernel.improvtools.encyclopaedia.data.model.PeopleDataItem
 import com.brokenkernel.improvtools.encyclopaedia.data.model.PeopleDatum
 import com.brokenkernel.improvtools.encyclopaedia.data.model.PeopleDatumTopic
 import java.text.StringCharacterIterator
+import kotlinx.collections.immutable.toImmutableMap
 
 private fun transformForSearch(str: String): String {
     return str.lowercase().filterNot { it.isWhitespace() }
@@ -77,7 +78,7 @@ internal fun PeopleTab(onLaunchTitleCallback: () -> Unit) {
                 s1.personName,
                 s2.personName,
             )
-        }.groupBy { it.personName[0].uppercase() }
+        }.groupBy { it.personName[0].uppercase() }.toImmutableMap()
     }
 
     TabbedSearchableColumn<PeopleDatumTopic, PeopleDataItem>(

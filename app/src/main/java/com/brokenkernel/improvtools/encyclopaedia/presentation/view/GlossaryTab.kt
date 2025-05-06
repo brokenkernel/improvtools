@@ -24,6 +24,8 @@ import com.brokenkernel.improvtools.components.presentation.view.ExpandIcon
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GlossaryDataItem
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GlossaryDatum
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GlossaryDatumTopic
+import kotlinx.collections.immutable.ImmutableMap
+import kotlinx.collections.immutable.toImmutableMap
 
 private fun transformForSearch(str: String): String {
     return str.filterNot { it.isWhitespace() }
@@ -42,9 +44,10 @@ internal fun GlossaryTab(onLaunchTitleCallback: () -> Unit) {
     }
 
     // TODO: move into viewModel
-    val sortedGlossaryItems: Map<String, List<GlossaryDataItem>> = remember {
-        GlossaryDatum.sortedBy { it.term }.groupBy { it.term[0].uppercase() }
+    val sortedGlossaryItems: ImmutableMap<String, List<GlossaryDataItem>> = remember {
+        GlossaryDatum.sortedBy { it.term }.groupBy { it.term[0].uppercase() }.toImmutableMap()
     }
+
     TabbedSearchableColumn<GlossaryDatumTopic, GlossaryDataItem>(
         itemDoesMatch = ::doesMatch,
         itemList = sortedGlossaryItems,

@@ -4,6 +4,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import kotlinx.collections.immutable.ImmutableMap
 
 /**
  * @param I item type
@@ -12,7 +13,7 @@ import androidx.compose.runtime.Composable
 @JvmSynthetic // hides this from Java code, thus making it private again
 @PublishedApi
 internal fun <I> ItemColumnLazyList(
-    itemList: Map<String, List<I>>,
+    itemList: ImmutableMap<String, List<I>>,
     itemToKey: (I) -> (Any),
     itemDoesMatch: (I) -> Boolean,
     itemToListItem: @Composable (I) -> (Unit), // must be last one for nice UX

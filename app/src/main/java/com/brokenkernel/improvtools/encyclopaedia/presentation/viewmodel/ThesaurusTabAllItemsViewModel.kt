@@ -5,6 +5,8 @@ import com.brokenkernel.improvtools.encyclopaedia.api.ThesaurusAPI
 import com.brokenkernel.improvtools.encyclopaedia.data.repository.ThesaurusRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
+import kotlinx.collections.immutable.ImmutableMap
+import kotlinx.collections.immutable.toImmutableMap
 
 @HiltViewModel
 internal class ThesaurusTabAllItemsViewModel @Inject constructor(
@@ -12,8 +14,10 @@ internal class ThesaurusTabAllItemsViewModel @Inject constructor(
     val thesaurusAPI: ThesaurusAPI, // todo: this should be accessed through a repository
 ) : ViewModel() {
 
-    fun groupedWords(): Map<String, List<String>> {
-        return thesaurusRepository.getActionsThesaurus().keys().sorted().groupBy { k -> k[0].uppercase() }
+    fun groupedWords(): ImmutableMap<String, List<String>> {
+        return thesaurusRepository.getActionsThesaurus().keys().sorted().groupBy { k ->
+            k[0].uppercase()
+        }.toImmutableMap()
     }
 
     fun synonymsForWord(word: String): Iterable<String> {

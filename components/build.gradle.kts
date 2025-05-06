@@ -107,6 +107,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.hilt.android)
+    implementation(libs.kotlinx.collections.immutable.jvm)
     implementation(libs.material)
 
     debugRuntimeOnly(libs.androidx.ui.test.manifest)

@@ -38,13 +38,13 @@
         <error line="48" column="5" source="compose:lambda-param-in-effect" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/encyclopaedia/presentation/view/GlossaryTab.kt">
-        <error line="38" column="26" source="compose:lambda-param-in-effect" />
+        <error line="40" column="26" source="compose:lambda-param-in-effect" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/encyclopaedia/presentation/view/LoadableSingleWordThesaurusButton.kt">
         <error line="30" column="9" source="compose:vm-injection-check" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/encyclopaedia/presentation/view/PeopleTab.kt">
-        <error line="60" column="24" source="compose:lambda-param-in-effect" />
+        <error line="61" column="24" source="compose:lambda-param-in-effect" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/encyclopaedia/presentation/view/SingleWordThesaurusButton.kt">
         <error line="18" column="5" source="compose:modifier-missing-check" />

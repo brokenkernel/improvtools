@@ -1,5 +1,8 @@
 package com.brokenkernel.improvtools.encyclopaedia.data.model
 
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.persistentListOf
+
 internal enum class GlossaryDatumTopic {
     WORD,
 }
@@ -10,7 +13,7 @@ internal data class GlossaryDataItem(
     val detailedInformation: String,
 )
 
-internal val GlossaryDatum: Collection<GlossaryDataItem> = listOf(
+internal val GlossaryDatum: ImmutableList<GlossaryDataItem> = persistentListOf(
     GlossaryDataItem(
         term = "Blocking",
         topic = GlossaryDatumTopic.WORD,
