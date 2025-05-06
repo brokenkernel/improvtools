@@ -104,7 +104,6 @@ internal fun GamesTab(
         trailingIcon = {
             IconButton(
                 onClick = {
-                    // TODO: show highlight border if subset of chips are selected.
                     isChipBarVisible = !isChipBarVisible
                 },
             ) {

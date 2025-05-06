@@ -1,7 +1,5 @@
 package com.brokenkernel.components.view
 
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,6 +11,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.isTraversalGroup
 import androidx.compose.ui.semantics.semantics
@@ -68,10 +67,9 @@ inline fun <reified T : Enum<T>, I, reified X : Enum<X>> ChippedTabbedSearchable
     state: ChippedTabbedSearchableColumn<T, X> = rememberChippedTabbedSearchableColumn<T, X>(),
     noinline trailingIcon: @Composable (() -> Unit)? = null,
     textFieldState: TextFieldState = rememberTextFieldState(),
-
     noinline itemToListItem: @Composable (I) -> (Unit), // must be last one for nice UX
 ) {
-    Column {
+    Column(modifier = modifier) {
         EnumLinkedMultiChoiceSegmentedButtonRow<T>(
             isSegmentedButtonChecked = state.isSegmentedButtonChecked,
             enumToName = { it -> it.name },
@@ -82,8 +80,12 @@ inline fun <reified T : Enum<T>, I, reified X : Enum<X>> ChippedTabbedSearchable
                 .semantics { isTraversalGroup = true },
         ) {
             val isAnyChipSelected = state.isChipsChecked.fastAny { it }
+            val colorScheme = MaterialTheme.colorScheme
             val trailingIconModifier = if (isAnyChipSelected) {
-                Modifier.border(BorderStroke(1.dp, MaterialTheme.colorScheme.tertiary))
+                Modifier.drawWithContent {
+                    drawContent()
+                    drawNeonStroke(radius = 8.dp, colorScheme.tertiary)
+                }
             } else {
                 Modifier
             }
@@ -94,7 +96,9 @@ inline fun <reified T : Enum<T>, I, reified X : Enum<X>> ChippedTabbedSearchable
                     SimpleTooltipWrapper(
                         tooltip = stringResource(R.string.tags_selected, selectedCount),
                     ) {
-                        Box(modifier = trailingIconModifier) {
+                        Box(
+                            modifier = trailingIconModifier,
+                        ) {
                             trailingIcon?.invoke()
                         }
                     }
