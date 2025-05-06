@@ -35,7 +35,13 @@ internal class ImprovToolsAppState(
     // I should, instead, be continuously passing `onDismsiss callbacks or some such. I'll try that in the fuutre
     var extraMenuExpandedState: Boolean by mutableStateOf(false)
 
-    var bottomSheetContent: BottomSheetContent by mutableStateOf<BottomSheetContent>({})
+    var bottomSheetContent: BottomSheetContent? by mutableStateOf<BottomSheetContent?>(null)
+        private set
+
+    @UiThread
+    fun setBottomSheetTo(newContent: BottomSheetContent?) {
+        bottomSheetContent = newContent
+    }
 
     fun setScaffoldData(
         @StringRes newTitle: Int,

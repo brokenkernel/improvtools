@@ -1,30 +1,29 @@
 package com.brokenkernel.improvtools.application.presentation.view
 
 import androidx.annotation.UiThread
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.MoreVert
-import androidx.compose.material3.BottomSheetScaffold
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.SheetValue
+import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.rememberBottomSheetScaffoldState
-import androidx.compose.material3.rememberStandardBottomSheetState
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
@@ -37,7 +36,6 @@ import com.brokenkernel.improvtools.application.presentation.api.BottomSheetCont
 import com.brokenkernel.improvtools.application.presentation.api.LocalBottomSheetContentManager
 import com.brokenkernel.improvtools.application.presentation.api.LocalSnackbarHostState
 import com.brokenkernel.improvtools.sidecar.customtabs.CustomTabUriHandler
-import kotlinx.coroutines.launch
 
 // this should be handled by navigation, but for now, it works
 /**
@@ -54,28 +52,15 @@ internal fun ImprovToolsScaffold(
 ) {
     val snackbarHostState = remember { SnackbarHostState() }
     val customTabHandler = CustomTabUriHandler(LocalContext.current)
-    val bottomSheetScaffoldState = rememberBottomSheetScaffoldState(
-        bottomSheetState = rememberStandardBottomSheetState(
-            initialValue = SheetValue.Hidden,
-            skipHiddenState = false,
-        ),
-    )
-//    val windowInfo = LocalWindowInfo.current
-//    val screenHeight = windowInfo.containerSize.height.dp
-//    val peekHeight = (screenHeight / 4)
-
-    val scope = rememberCoroutineScope()
+    val sheetState = rememberModalBottomSheetState()
     // TODO: this should be navigation based, but meh, future work
-    val bottomSheetContent = improvToolsAppState.bottomSheetContent
+    val bottomSheetContent =  improvToolsAppState.bottomSheetContent
 
     @UiThread
     fun setAndShowBottomContent(
-        content: BottomSheetContent = {},
+        content: BottomSheetContent?,
     ) {
-        improvToolsAppState.bottomSheetContent = content
-        scope.launch {
-            bottomSheetScaffoldState.bottomSheetState.partialExpand()
-        }
+        improvToolsAppState.setBottomSheetTo(content)
     }
 
     CompositionLocalProvider(
@@ -86,7 +71,7 @@ internal fun ImprovToolsScaffold(
         ),
     ) {
         // TODO: replace with [[NavigationSuiteScaffold]]
-        BottomSheetScaffold(
+        Scaffold(
             topBar = {
                 CenterAlignedTopAppBar(
                     colors = TopAppBarDefaults.topAppBarColors(
@@ -135,9 +120,6 @@ internal fun ImprovToolsScaffold(
             snackbarHost = {
                 SnackbarHost(hostState = LocalSnackbarHostState.current)
             },
-            sheetContent = bottomSheetContent,
-//            sheetPeekHeight = peekHeight,
-            scaffoldState = bottomSheetScaffoldState,
         ) { innerPadding ->
             Surface(
                 modifier = Modifier
@@ -145,6 +127,18 @@ internal fun ImprovToolsScaffold(
                     .padding(innerPadding),
             ) {
                 content()
+                if (bottomSheetContent != null) {
+                    ModalBottomSheet(
+                        onDismissRequest = {
+                            improvToolsAppState.setBottomSheetTo(null)
+                        },
+                        sheetState = sheetState,
+                    ) {
+                        Column {
+                            bottomSheetContent()
+                        }
+                    }
+                }
             }
         }
     }
