@@ -2,4 +2,5 @@
 <resources>
   <string name="simple_search_bar_search">Search</string>
     <string name="tags_selected">%1$s tags selected</string>
+  <string name="search_placeholder">Search</string>
 </resources>

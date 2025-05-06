@@ -43,8 +43,8 @@ fun BoxScope.SimpleSearchBar(
                     searchBarExpandedState = false
                 },
                 expanded = searchBarExpandedState,
-                onExpandedChange = { searchBarExpandedState != searchBarExpandedState },
-                placeholder = { Text("Search") },
+                onExpandedChange = { searchBarExpandedState = it },
+                placeholder = { Text(stringResource(R.string.search_placeholder)) },
                 leadingIcon = {
                     Icon(
                         Icons.Default.Search,
