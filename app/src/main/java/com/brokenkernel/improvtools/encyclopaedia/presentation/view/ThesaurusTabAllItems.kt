@@ -21,11 +21,10 @@ import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.brokenkernel.components.view.TabbedSearchableColumn
+import com.brokenkernel.components.view.SearchableColumn
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.encyclopaedia.EncyclopaediaSectionNavigation
-import com.brokenkernel.improvtools.encyclopaedia.data.model.ActionThesaurusType
 import com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel.LoadableSingleWordThesaurusButtonViewModel
 import com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel.ThesaurusTabAllItemsViewModel
 import kotlinx.coroutines.launch
@@ -44,11 +43,10 @@ internal fun ThesaurusTabAllItems(
     val context = LocalContext.current
     val clipboard: Clipboard = LocalClipboard.current
     val coroutineScope = rememberCoroutineScope()
-    TabbedSearchableColumn<ActionThesaurusType, String>(
+    SearchableColumn<String>(
         itemDoesMatch = { searchText, word -> word.contains(searchText, ignoreCase = true) },
         itemList = viewModel.groupedWords(),
         transformForSearch = { s -> s },
-        itemToTopic = { _ -> ActionThesaurusType.Action },
         itemToKey = { it -> it },
     ) { word ->
         ListItem(
@@ -110,8 +108,7 @@ internal fun ThesaurusTabAllItems(
                 .testTag("word_$word")
                 .combinedClickable(
                     onClick = {},
-                    onLongClick =
-                    {
+                    onLongClick = {
                         val wordString = AnnotatedString(
                             """
                                 |$word

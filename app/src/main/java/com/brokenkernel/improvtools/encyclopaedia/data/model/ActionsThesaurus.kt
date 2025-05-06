@@ -2,10 +2,6 @@ package com.brokenkernel.improvtools.encyclopaedia.data.model
 
 import com.brokenkernel.improvtools.encyclopaedia.data.model.RawActionItemDataList.actionItemList
 
-internal enum class ActionThesaurusType {
-    Action,
-}
-
 internal object ActionsThesaurus {
     data class ActionItem(
         val word: String,
