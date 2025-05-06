@@ -5,14 +5,15 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.InputChip
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Modifier
+import kotlinx.collections.immutable.ImmutableList
 
 // TODO: don't pass state, pass events instead
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 inline fun <reified T : Enum<T>> ChipBar(
-    isChipsChecked: SnapshotStateList<Boolean>,
+    isChipsChecked: ImmutableList<Boolean>,
+    crossinline onChipClicked: (Int) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     // TODO: consider a DropdownMenu instead?
@@ -21,7 +22,7 @@ inline fun <reified T : Enum<T>> ChipBar(
             InputChip(
                 selected = isChipsChecked[tag.ordinal],
                 onClick = {
-                    isChipsChecked[tag.ordinal] = !isChipsChecked[tag.ordinal]
+                    onChipClicked(tag.ordinal)
                 },
                 label = { Text(tag.name) }, // TODO: i18n
                 enabled = true, // TODO: disable if no items match at all

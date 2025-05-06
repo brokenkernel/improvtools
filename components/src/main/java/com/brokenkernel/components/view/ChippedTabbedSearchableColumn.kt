@@ -20,6 +20,7 @@ import androidx.compose.ui.util.fastAny
 import androidx.compose.ui.util.fastFilter
 import com.brokenkernel.components.R
 import kotlinx.collections.immutable.ImmutableMap
+import kotlinx.collections.immutable.toImmutableList
 
 // TODO: There are too many variants of searchablecolumn. They should be made more ... composable
 
@@ -106,7 +107,10 @@ inline fun <reified T : Enum<T>, I, reified X : Enum<X>> ChippedTabbedSearchable
             ) {
                 if (isChipBarVisible) {
                     ChipBar<X>(
-                        isChipsChecked = state.isChipsChecked,
+                        isChipsChecked = state.isChipsChecked.toImmutableList(),
+                        onChipClicked = {
+                            state.isChipsChecked[it] = !state.isChipsChecked[it]
+                        },
                     )
                 }
                 ItemColumnLazyList<I>(
