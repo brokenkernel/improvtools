@@ -54,7 +54,7 @@ internal fun ImprovToolsScaffold(
     val customTabHandler = CustomTabUriHandler(LocalContext.current)
     val sheetState = rememberModalBottomSheetState()
     // TODO: this should be navigation based, but meh, future work
-    val bottomSheetContent =  improvToolsAppState.bottomSheetContent
+    val bottomSheetContent = improvToolsAppState.bottomSheetContent
 
     @UiThread
     fun setAndShowBottomContent(

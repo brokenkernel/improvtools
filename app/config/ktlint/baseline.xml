@@ -5,8 +5,8 @@
         <error line="51" column="121" source="standard:max-line-length" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/application/data/model/ImprovToolsAppState.kt">
-        <error line="93" column="14" source="compose:param-order-check" />
-        <error line="96" column="16" source="compose:mutable-state-param-check" />
+        <error line="99" column="14" source="compose:param-order-check" />
+        <error line="102" column="16" source="compose:mutable-state-param-check" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/application/presentation/api/LocalComposables.kt">
         <error line="16" column="14" source="compose:compositionlocal-allowlist" />
@@ -28,9 +28,6 @@
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/components/presentation/view/SimpleTooltipWrapper.kt">
         <error line="13" column="5" source="compose:modifier-missing-check" />
-    </file>
-    <file name="src/main/java/com/brokenkernel/improvtools/components/presentation/view/TabbedSearchableColumn.kt">
-        <error line="25" column="15" source="compose:unstable-collections" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/components/sidecar/preview/ImprovToolsPreview.kt">
         <error line="20" column="18" source="compose:preview-annotation-naming" />
@@ -56,9 +53,9 @@
         <error line="18" column="5" source="compose:modifier-missing-check" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/encyclopaedia/presentation/view/ThesaurusTabAllItems.kt">
-        <error line="37" column="5" source="compose:lambda-param-in-effect" />
-        <error line="89" column="21" source="compose:vm-injection-check" />
-        <error line="99" column="17" source="compose:vm-forwarding-check" />
+        <error line="36" column="5" source="compose:lambda-param-in-effect" />
+        <error line="87" column="21" source="compose:vm-injection-check" />
+        <error line="97" column="17" source="compose:vm-forwarding-check" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/encyclopaedia/presentation/view/ThesaurusTabSingleWord.kt">
         <error line="32" column="5" source="compose:lambda-param-in-effect" />

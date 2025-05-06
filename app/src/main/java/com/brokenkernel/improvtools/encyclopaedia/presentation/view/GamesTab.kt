@@ -24,8 +24,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.util.fastAny
+import com.brokenkernel.components.view.ChippedTabbedSearchableColumn
 import com.brokenkernel.components.view.HtmlText
-import com.brokenkernel.components.view.TabbedSearchableColumn
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.presentation.api.LocalBottomSheetContentManager
 import com.brokenkernel.improvtools.components.presentation.view.ExpandIcon
@@ -55,6 +55,7 @@ internal fun GamesTab(
 
     val textFieldState = rememberTextFieldState()
     val currentTags = remember { mutableStateSetOf<GamesDatumTag>() }
+    var isChipBarVisible by remember { mutableStateOf(false) }
 
     fun doesMatch(search: String, gameData: GamesDataItem): Boolean {
         return transformForSearch(gameData.gameName).contains(search, ignoreCase = true) or
@@ -89,16 +90,23 @@ internal fun GamesTab(
     // TODO: drop down to sub portion of TabbedSearchableColumn
     // then make a search bar a FlowRow and allow for chips.
     // maybe this could be included in the component?
-    TabbedSearchableColumn<GamesDatumTopic, GamesDataItem>(
+    ChippedTabbedSearchableColumn<GamesDatumTopic, GamesDataItem, GamesDatumTag>(
         itemDoesMatch = ::doesMatch,
         itemList = viewModel.groupedGames,
         transformForSearch = ::transformForSearch,
         itemToTopic = { it -> it.topic },
         itemToKey = { it -> it.gameName },
         textFieldState = textFieldState,
+        itemMatchesTag = { item, tag ->
+            item.tags.contains(tag)
+        },
+        isChipBarVisible = isChipBarVisible,
         trailingIcon = {
             IconButton(
-                onClick = {},
+                onClick = {
+                    // TODO: show highlight border if subset of chips are selected.
+                    isChipBarVisible = !isChipBarVisible
+                },
             ) {
                 Icon(
                     Icons.Default.Tag,
