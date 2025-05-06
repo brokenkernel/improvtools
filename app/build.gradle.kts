@@ -198,12 +198,12 @@ android {
 }
 
 dependencies {
-    implementation(platform(libs.androidx.compose.bom)) {
+    implementation(enforcedPlatform(libs.androidx.compose.bom)) {
         because("we are an android compose application")
     }
-    implementation(platform(libs.com.fasterxml.jackson.bom))
-    implementation(platform(libs.com.google.firebase.firebaseBom))
-    implementation(platform(libs.kotlin.bom))
+    implementation(enforcedPlatform(libs.com.fasterxml.jackson.bom))
+    implementation(enforcedPlatform(libs.com.google.firebase.firebaseBom))
+    implementation(enforcedPlatform(libs.kotlin.bom))
     implementation(project(":components"))
     implementation(libs.aboutlibraries.compose.m3)
     implementation(libs.aboutlibraries.core)
@@ -277,7 +277,6 @@ dependencies {
     testImplementation(libs.androidx.room.testing)
     testImplementation(libs.junit)
 
-    androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.activity)
     androidTestImplementation(libs.androidx.datastore)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -310,7 +309,8 @@ configurations {
     all {
         resolutionStrategy {
             // TODO
-//            TODO: failOnVersionConflict()
+            activateDependencyLocking()
+//            failOnVersionConflict() // TODO
         }
     }
     implementation {

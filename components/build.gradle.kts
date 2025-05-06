@@ -90,10 +90,10 @@ hilt {
 }
 
 dependencies {
-    implementation(platform(libs.androidx.compose.bom)) {
+    implementation(enforcedPlatform(libs.androidx.compose.bom)) {
         because("we are an android compose application")
     }
-    implementation(platform(libs.kotlin.bom))
+    implementation(enforcedPlatform(libs.kotlin.bom))
     implementation(libs.androidx.annotation)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.material.icons.core)
@@ -111,7 +111,6 @@ dependencies {
 
     testImplementation(libs.junit)
 
-    androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.ui.test.junit4)
 
