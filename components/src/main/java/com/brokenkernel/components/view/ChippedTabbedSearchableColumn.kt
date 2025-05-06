@@ -16,12 +16,41 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.isTraversalGroup
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.fastAny
+import androidx.compose.ui.util.fastFilter
+import com.brokenkernel.components.R
 
 // TODO: There are too many variants of searchablecolumn. They should be made more ... composable
+
+/**
+ * @param T tab enumeration
+ * @param X tag item type
+ */
+data class ChippedTabbedSearchableColumn<T, X>(
+    val isSegmentedButtonChecked: SnapshotStateList<Boolean>,
+    val isChipsChecked: SnapshotStateList<Boolean>,
+)
+
+/**
+ * @param T tab enumeration
+ * @param X tag item type
+ */
+@Composable
+inline fun <reified T : Enum<T>, reified X : Enum<X>> rememberChippedTabbedSearchableColumn():
+    ChippedTabbedSearchableColumn<T, X> {
+    return remember {
+        ChippedTabbedSearchableColumn<T, X>(
+            isSegmentedButtonChecked = MutableList(enumValues<T>().size, { true })
+                .toMutableStateList(),
+            isChipsChecked = MutableList(enumValues<X>().size, { false })
+                .toMutableStateList(),
+        )
+    }
+}
 
 /**
  * @param T tab enumeration
@@ -30,6 +59,7 @@ import androidx.compose.ui.util.fastAny
  */
 @Composable
 inline fun <reified T : Enum<T>, I, reified X : Enum<X>> ChippedTabbedSearchableColumn(
+    state: ChippedTabbedSearchableColumn<T, X> = rememberChippedTabbedSearchableColumn<T, X>(),
     crossinline itemDoesMatch: (String, I) -> Boolean,
     itemList: Map<String, List<I>>,
     crossinline transformForSearch: (String) -> String,
@@ -42,18 +72,8 @@ inline fun <reified T : Enum<T>, I, reified X : Enum<X>> ChippedTabbedSearchable
     crossinline itemToListItem: @Composable (I) -> (Unit), // must be last one for nice UX
 ) {
     Column {
-        // TODO: make these a remember?
-        val isSegmentedButtonChecked: SnapshotStateList<Boolean> = remember {
-            MutableList(enumValues<T>().size, { true })
-                .toMutableStateList()
-        }
-        val isChipsChecked: SnapshotStateList<Boolean> = remember {
-            MutableList(enumValues<X>().size, { false })
-                .toMutableStateList()
-        }
-
         EnumLinkedMultiChoiceSegmentedButtonRow<T>(
-            isSegmentedButtonChecked = isSegmentedButtonChecked,
+            isSegmentedButtonChecked = state.isSegmentedButtonChecked,
             enumToName = { it -> it.name },
         )
         Box(
@@ -61,7 +81,7 @@ inline fun <reified T : Enum<T>, I, reified X : Enum<X>> ChippedTabbedSearchable
                 .fillMaxSize()
                 .semantics { isTraversalGroup = true },
         ) {
-            val isAnyChipSelected = isChipsChecked.fastAny { it }
+            val isAnyChipSelected = state.isChipsChecked.fastAny { it }
             val trailingIconModifier = if (isAnyChipSelected) {
                 Modifier.border(BorderStroke(1.dp, MaterialTheme.colorScheme.tertiary))
             } else {
@@ -70,14 +90,19 @@ inline fun <reified T : Enum<T>, I, reified X : Enum<X>> ChippedTabbedSearchable
             SimpleSearchBar(
                 textFieldState = textFieldState,
                 trailingIcon = {
-                    Box(modifier = trailingIconModifier) {
-                        trailingIcon?.invoke()
+                    val selectedCount = state.isChipsChecked.fastFilter { it }.size
+                    SimpleTooltipWrapper(
+                        tooltip = stringResource(R.string.tags_selected, selectedCount),
+                    ) {
+                        Box(modifier = trailingIconModifier) {
+                            trailingIcon?.invoke()
+                        }
                     }
                 },
             ) {
                 if (isChipBarVisible) {
                     ChipBar<X>(
-                        isChipsChecked = isChipsChecked,
+                        isChipsChecked = state.isChipsChecked,
                     )
                 }
                 LazyColumn {
@@ -95,8 +120,8 @@ inline fun <reified T : Enum<T>, I, reified X : Enum<X>> ChippedTabbedSearchable
                         ) { curItem: I ->
                             // TODO: maybe the set of conditions should be injected? Or pulled out?
                             // this is a problem for making it composable
-                            if (isSegmentedButtonChecked[itemToTopic(curItem).ordinal] &&
-                                shouldShowDueToTag(isChipsChecked, itemMatchesTag, curItem) &&
+                            if (state.isSegmentedButtonChecked[itemToTopic(curItem).ordinal] &&
+                                shouldShowDueToTag(state.isChipsChecked, itemMatchesTag, curItem) &&
                                 itemDoesMatch(
                                     transformForSearch(textFieldState.text.toString()),
                                     curItem,

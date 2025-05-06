@@ -9,11 +9,26 @@ import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.isTraversalGroup
 import androidx.compose.ui.semantics.semantics
+
+data class TabbedSearchableColumnState<_T>(
+    val isSegmentedButtonChecked: SnapshotStateList<Boolean>,
+)
+
+@Composable
+inline fun <reified T : Enum<T>> rememberTabbedSearchableColumnState(): TabbedSearchableColumnState<T> {
+    return remember {
+        TabbedSearchableColumnState<T>(
+            isSegmentedButtonChecked = MutableList(enumValues<T>().size, { true })
+                .toMutableStateList(),
+        )
+    }
+}
 
 /**
  * @param T tab enumeration
@@ -21,6 +36,7 @@ import androidx.compose.ui.semantics.semantics
  */
 @Composable
 inline fun <reified T : Enum<T>, I> TabbedSearchableColumn(
+    state: TabbedSearchableColumnState<T> = rememberTabbedSearchableColumnState<T>(),
     crossinline itemDoesMatch: (String, I) -> Boolean,
     itemList: Map<String, List<I>>,
     crossinline transformForSearch: (String) -> String,
@@ -31,11 +47,8 @@ inline fun <reified T : Enum<T>, I> TabbedSearchableColumn(
     crossinline itemToListItem: @Composable (I) -> (Unit), // must be last one for nice UX
 ) {
     Column {
-        val isSegmentedButtonChecked: SnapshotStateList<Boolean> =
-            MutableList(enumValues<T>().size, { true })
-                .toMutableStateList()
         EnumLinkedMultiChoiceSegmentedButtonRow<T>(
-            isSegmentedButtonChecked = isSegmentedButtonChecked,
+            isSegmentedButtonChecked = state.isSegmentedButtonChecked,
             enumToName = { it -> it.name },
         )
         Box(
@@ -58,7 +71,7 @@ inline fun <reified T : Enum<T>, I> TabbedSearchableColumn(
                             groupList,
                             key = itemToKey,
                         ) { it: I ->
-                            if (isSegmentedButtonChecked[itemToTopic(it).ordinal] &&
+                            if (state.isSegmentedButtonChecked[itemToTopic(it).ordinal] &&
                                 itemDoesMatch(
                                     transformForSearch(textFieldState.text.toString()),
                                     it,

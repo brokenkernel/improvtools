@@ -4,9 +4,9 @@
         <error line="13" column="34" source="compose:modifier-missing-check" />
     </file>
     <file name="src/main/java/com/brokenkernel/components/view/ChippedTabbedSearchableColumn.kt">
-        <error line="32" column="58" source="compose:modifier-missing-check" />
-        <error line="32" column="58" source="compose:param-order-check" />
-        <error line="34" column="15" source="compose:unstable-collections" />
+        <error line="50" column="58" source="compose:modifier-missing-check" />
+        <error line="50" column="58" source="compose:param-order-check" />
+        <error line="53" column="15" source="compose:unstable-collections" />
     </file>
     <file name="src/main/java/com/brokenkernel/components/view/EnumLinkedMultiChoiceSegmentedButtonRow.kt">
         <error line="11" column="34" source="compose:modifier-missing-check" />
@@ -19,7 +19,8 @@
         <error line="28" column="14" source="compose:modifier-missing-check" />
     </file>
     <file name="src/main/java/com/brokenkernel/components/view/TabbedSearchableColumn.kt">
-        <error line="23" column="37" source="compose:modifier-missing-check" />
-        <error line="25" column="15" source="compose:unstable-collections" />
+        <error line="38" column="37" source="compose:modifier-missing-check" />
+        <error line="38" column="37" source="compose:param-order-check" />
+        <error line="41" column="15" source="compose:unstable-collections" />
     </file>
 </baseline>

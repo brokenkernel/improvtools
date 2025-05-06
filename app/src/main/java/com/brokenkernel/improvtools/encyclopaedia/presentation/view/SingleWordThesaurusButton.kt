@@ -10,7 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import com.brokenkernel.improvtools.R
-import com.brokenkernel.improvtools.components.presentation.view.SimpleTooltipWrapper
+import com.brokenkernel.components.view.SimpleTooltipWrapper
 import com.brokenkernel.improvtools.components.sidecar.preview.ImprovToolsAllPreviews
 import com.brokenkernel.improvtools.ui.theme.ImprovToolsTheme
 

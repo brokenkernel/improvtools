@@ -1,4 +1,4 @@
-package com.brokenkernel.improvtools.components.presentation.view
+package com.brokenkernel.components.view
 
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.PlainTooltip

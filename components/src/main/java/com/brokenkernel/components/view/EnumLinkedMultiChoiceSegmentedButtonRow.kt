@@ -9,6 +9,7 @@ import androidx.compose.runtime.snapshots.SnapshotStateList
 
 @Composable
 inline fun <reified T : Enum<T>> EnumLinkedMultiChoiceSegmentedButtonRow(
+    // TODO: don't pass state up and down. Pass events up and down.
     isSegmentedButtonChecked: SnapshotStateList<Boolean>,
     crossinline enumToName: (T) -> String,
 ) {
