@@ -7,3 +7,4 @@
 - add bottom bar navigation
 - move features out to different module from main application
 - move feature logic out out to lib which doesn't have android dependencies
+- -Xjspecify-annotations=strict, -Xtype-enhancement-improvements-strict-mod
