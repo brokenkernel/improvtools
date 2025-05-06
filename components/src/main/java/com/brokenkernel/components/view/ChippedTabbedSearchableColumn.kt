@@ -108,8 +108,13 @@ inline fun <reified T : Enum<T>, I, reified X : Enum<X>> ChippedTabbedSearchable
                 if (isChipBarVisible) {
                     ChipBar<X>(
                         isChipsChecked = state.isChipsChecked.toImmutableList(),
-                        onChipClicked = {
+                        onChipClick = {
                             state.isChipsChecked[it] = !state.isChipsChecked[it]
+                        },
+                        onClearClick = {
+                            for (i in 0 until state.isChipsChecked.size) {
+                                state.isChipsChecked[i] = false
+                            }
                         },
                     )
                 }
