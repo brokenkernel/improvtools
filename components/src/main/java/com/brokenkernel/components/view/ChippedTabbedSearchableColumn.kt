@@ -60,7 +60,7 @@ inline fun <reified T : Enum<T>, I, reified X : Enum<X>> ChippedTabbedSearchable
     crossinline itemDoesMatch: (String, I) -> Boolean,
     itemList: Map<String, List<I>>,
     crossinline transformForSearch: (String) -> String,
-    noinline itemToTopic: @Composable (I) -> T,
+    noinline itemToTopic: (I) -> T,
     noinline itemToKey: (I) -> (Any),
     noinline itemMatchesTag: (I, X) -> Boolean,
     textFieldState: TextFieldState = rememberTextFieldState(),

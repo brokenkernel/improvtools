@@ -14,14 +14,16 @@ import androidx.compose.runtime.Composable
 internal fun <I> ItemColumnLazyList(
     itemList: Map<String, List<I>>,
     itemToKey: (I) -> (Any),
-    itemDoesMatch: @Composable (I) -> Boolean,
+    itemDoesMatch: (I) -> Boolean,
     itemToListItem: @Composable (I) -> (Unit), // must be last one for nice UX
 ) {
     LazyColumn {
-        itemList.forEach { group, groupList ->
-            // TODO: consider hiding stickyheader when all items are filtered out
-            // doing so may require pushing filter outside of grouping.
-            if (itemList.size > 1) {
+        val filteredGroupedList = itemList
+            .mapValues { (_, value) ->
+                value.filter { itemDoesMatch(it) }
+            }
+        filteredGroupedList.forEach { group, groupList ->
+            if (groupList.size > 1) {
                 stickyHeader {
                     Text(group)
                 }

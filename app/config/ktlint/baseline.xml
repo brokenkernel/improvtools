@@ -26,9 +26,6 @@
     <file name="src/main/java/com/brokenkernel/improvtools/components/presentation/view/ExpandIcon.kt">
         <error line="16" column="5" source="compose:modifier-missing-check" />
     </file>
-    <file name="src/main/java/com/brokenkernel/improvtools/components/presentation/view/SimpleTooltipWrapper.kt">
-        <error line="13" column="5" source="compose:modifier-missing-check" />
-    </file>
     <file name="src/main/java/com/brokenkernel/improvtools/components/sidecar/preview/ImprovToolsPreview.kt">
         <error line="20" column="18" source="compose:preview-annotation-naming" />
         <error line="37" column="18" source="compose:preview-annotation-naming" />

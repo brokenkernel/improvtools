@@ -4,23 +4,29 @@
         <error line="13" column="34" source="compose:modifier-missing-check" />
     </file>
     <file name="src/main/java/com/brokenkernel/components/view/ChippedTabbedSearchableColumn.kt">
-        <error line="50" column="58" source="compose:modifier-missing-check" />
-        <error line="50" column="58" source="compose:param-order-check" />
-        <error line="53" column="15" source="compose:unstable-collections" />
+        <error line="58" column="58" source="compose:modifier-missing-check" />
+        <error line="58" column="58" source="compose:param-order-check" />
+        <error line="61" column="15" source="compose:unstable-collections" />
     </file>
     <file name="src/main/java/com/brokenkernel/components/view/EnumLinkedMultiChoiceSegmentedButtonRow.kt">
         <error line="11" column="34" source="compose:modifier-missing-check" />
     </file>
+    <file name="src/main/java/com/brokenkernel/components/view/ItemColumnLazyList.kt">
+        <error line="15" column="15" source="compose:unstable-collections" />
+    </file>
     <file name="src/main/java/com/brokenkernel/components/view/SearchableColumn.kt">
-        <error line="20" column="16" source="compose:modifier-missing-check" />
-        <error line="22" column="15" source="compose:unstable-collections" />
+        <error line="17" column="16" source="compose:modifier-missing-check" />
+        <error line="19" column="15" source="compose:unstable-collections" />
     </file>
     <file name="src/main/java/com/brokenkernel/components/view/SimpleSearchBar.kt">
         <error line="28" column="14" source="compose:modifier-missing-check" />
     </file>
+    <file name="src/main/java/com/brokenkernel/components/view/SimpleTooltipWrapper.kt">
+        <error line="13" column="5" source="compose:modifier-missing-check" />
+    </file>
     <file name="src/main/java/com/brokenkernel/components/view/TabbedSearchableColumn.kt">
-        <error line="38" column="37" source="compose:modifier-missing-check" />
-        <error line="38" column="37" source="compose:param-order-check" />
-        <error line="41" column="15" source="compose:unstable-collections" />
+        <error line="35" column="37" source="compose:modifier-missing-check" />
+        <error line="35" column="37" source="compose:param-order-check" />
+        <error line="38" column="15" source="compose:unstable-collections" />
     </file>
 </baseline>
