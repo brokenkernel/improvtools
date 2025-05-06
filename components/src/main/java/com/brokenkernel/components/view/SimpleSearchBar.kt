@@ -27,6 +27,7 @@ import com.brokenkernel.components.R
 @Composable
 fun BoxScope.SimpleSearchBar(
     textFieldState: TextFieldState,
+    modifier: Modifier = Modifier,
     trailingIcon: @Composable (() -> Unit)? = null,
     content: @Composable () -> Unit,
 ) {
@@ -56,7 +57,7 @@ fun BoxScope.SimpleSearchBar(
         },
         expanded = true,
         onExpandedChange = { it -> searchBarExpandedState = it },
-        modifier = Modifier
+        modifier = modifier
             .align(Alignment.TopCenter)
             .semantics { traversalIndex = 0f },
         windowInsets = WindowInsets(top = 0.dp),

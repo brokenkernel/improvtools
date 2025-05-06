@@ -56,10 +56,10 @@ import sh.calvin.reorderable.rememberReorderableLazyListState
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun SuggestionsTab(
-    viewModel: SuggestionScreenViewModel = hiltViewModel(),
     onNavigateToEmotionsInfographic: () -> Unit,
     onNavigateToWord: (String) -> Unit,
     onLaunchTitleCallback: () -> Unit,
+    viewModel: SuggestionScreenViewModel = hiltViewModel(),
 ) {
     // TODO: consider making a BaseScreenComposable or some such
     LaunchedEffect(Unit) {

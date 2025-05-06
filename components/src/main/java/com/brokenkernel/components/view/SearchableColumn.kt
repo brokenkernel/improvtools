@@ -20,13 +20,14 @@ inline fun <I> SearchableColumn(
     itemList: ImmutableMap<String, List<I>>,
     crossinline transformForSearch: (String) -> String,
     noinline itemToKey: (I) -> (Any),
+    modifier: Modifier = Modifier,
     textFieldState: TextFieldState = rememberTextFieldState(),
     noinline trailingIcon: @Composable (() -> Unit)? = null,
     noinline itemToListItem: @Composable (I) -> (Unit), // must be last one for nice UX
 ) {
-    Column {
+    Column(modifier = modifier) {
         Box(
-            modifier = Modifier
+            Modifier
                 .fillMaxSize()
                 .semantics { isTraversalGroup = true },
         ) {

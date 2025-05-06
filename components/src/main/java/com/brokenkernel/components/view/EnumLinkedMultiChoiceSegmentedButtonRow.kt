@@ -6,14 +6,16 @@ import androidx.compose.material3.SegmentedButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.snapshots.SnapshotStateList
+import androidx.compose.ui.Modifier
 
 @Composable
 inline fun <reified T : Enum<T>> EnumLinkedMultiChoiceSegmentedButtonRow(
     // TODO: don't pass state up and down. Pass events up and down.
     isSegmentedButtonChecked: SnapshotStateList<Boolean>,
     crossinline enumToName: (T) -> String,
+    modifier: Modifier = Modifier,
 ) {
-    MultiChoiceSegmentedButtonRow {
+    MultiChoiceSegmentedButtonRow(modifier = modifier) {
         enumValues<T>().forEach { topic: T ->
             SegmentedButton(
                 onCheckedChange = {

@@ -6,13 +6,17 @@ import androidx.compose.material3.InputChip
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.snapshots.SnapshotStateList
+import androidx.compose.ui.Modifier
 
 // TODO: don't pass state, pass events instead
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-inline fun <reified T : Enum<T>> ChipBar(isChipsChecked: SnapshotStateList<Boolean>) {
+inline fun <reified T : Enum<T>> ChipBar(
+    isChipsChecked: SnapshotStateList<Boolean>,
+    modifier: Modifier = Modifier,
+) {
     // TODO: consider a DropdownMenu instead?
-    FlowRow {
+    FlowRow(modifier = modifier) {
         enumValues<T>().forEach { tag ->
             InputChip(
                 selected = isChipsChecked[tag.ordinal],

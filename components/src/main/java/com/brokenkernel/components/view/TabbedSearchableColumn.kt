@@ -34,17 +34,18 @@ inline fun <reified T : Enum<T>> rememberTabbedSearchableColumnState(): TabbedSe
  */
 @Composable
 inline fun <reified T : Enum<T>, I> TabbedSearchableColumn(
-    state: TabbedSearchableColumnState<T> = rememberTabbedSearchableColumnState<T>(),
     crossinline itemDoesMatch: (String, I) -> Boolean,
     itemList: ImmutableMap<String, List<I>>,
     crossinline transformForSearch: (String) -> String,
     noinline itemToTopic: (I) -> T,
     noinline itemToKey: (I) -> (Any),
+    modifier: Modifier = Modifier,
+    state: TabbedSearchableColumnState<T> = rememberTabbedSearchableColumnState<T>(),
     textFieldState: TextFieldState = rememberTextFieldState(),
     noinline trailingIcon: @Composable (() -> Unit)? = null,
     noinline itemToListItem: @Composable (I) -> (Unit), // must be last one for nice UX
 ) {
-    Column {
+    Column(modifier = modifier) {
         EnumLinkedMultiChoiceSegmentedButtonRow<T>(
             isSegmentedButtonChecked = state.isSegmentedButtonChecked,
             enumToName = { it -> it.name },

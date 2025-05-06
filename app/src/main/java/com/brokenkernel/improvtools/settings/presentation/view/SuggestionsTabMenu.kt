@@ -21,9 +21,9 @@ import com.brokenkernel.improvtools.settings.presentation.viewmodel.SettingsScre
 
 @Composable
 internal fun SuggestionsTabMenu(
-    settingsScreenViewModel: SettingsScreenViewModel = hiltViewModel(),
     expanded: Boolean,
     onDismiss: () -> Unit,
+    settingsScreenViewModel: SettingsScreenViewModel = hiltViewModel(),
 ) {
     val uiState by settingsScreenViewModel.uiState.collectAsStateWithLifecycle()
 

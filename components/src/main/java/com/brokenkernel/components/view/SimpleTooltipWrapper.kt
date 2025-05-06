@@ -7,11 +7,13 @@ import androidx.compose.material3.TooltipBox
 import androidx.compose.material3.TooltipDefaults
 import androidx.compose.material3.rememberTooltipState
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SimpleTooltipWrapper(
     tooltip: String,
+    modifier: Modifier = Modifier,
     content: @Composable () -> Unit,
 ) {
     TooltipBox(
@@ -24,6 +26,7 @@ fun SimpleTooltipWrapper(
                 )
             }
         },
+        modifier = modifier,
         content = content,
     )
 }

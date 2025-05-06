@@ -57,16 +57,18 @@ inline fun <reified T : Enum<T>, reified X : Enum<X>> rememberChippedTabbedSearc
  */
 @Composable
 inline fun <reified T : Enum<T>, I, reified X : Enum<X>> ChippedTabbedSearchableColumn(
-    state: ChippedTabbedSearchableColumn<T, X> = rememberChippedTabbedSearchableColumn<T, X>(),
     crossinline itemDoesMatch: (String, I) -> Boolean,
     itemList: ImmutableMap<String, List<I>>,
     crossinline transformForSearch: (String) -> String,
     noinline itemToTopic: (I) -> T,
     noinline itemToKey: (I) -> (Any),
     noinline itemMatchesTag: (I, X) -> Boolean,
-    textFieldState: TextFieldState = rememberTextFieldState(),
-    noinline trailingIcon: @Composable (() -> Unit)? = null,
     isChipBarVisible: Boolean,
+    modifier: Modifier = Modifier,
+    state: ChippedTabbedSearchableColumn<T, X> = rememberChippedTabbedSearchableColumn<T, X>(),
+    noinline trailingIcon: @Composable (() -> Unit)? = null,
+    textFieldState: TextFieldState = rememberTextFieldState(),
+
     noinline itemToListItem: @Composable (I) -> (Unit), // must be last one for nice UX
 ) {
     Column {

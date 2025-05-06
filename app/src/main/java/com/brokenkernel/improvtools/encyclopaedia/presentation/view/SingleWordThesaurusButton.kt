@@ -8,6 +8,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.brokenkernel.components.view.SimpleTooltipWrapper
 import com.brokenkernel.improvtools.R
@@ -18,6 +19,7 @@ import com.brokenkernel.improvtools.ui.theme.ImprovToolsTheme
 fun SingleWordThesaurusButton(
     word: String,
     onNavigateToWord: (String) -> Unit,
+    modifier: Modifier = Modifier,
     enabled: Boolean = true,
 ) {
     SimpleTooltipWrapper(
@@ -25,6 +27,7 @@ fun SingleWordThesaurusButton(
             R.string.go_to_single_word_thesaurus_view,
             word,
         ),
+        modifier = modifier,
     ) {
         IconButton(
             onClick = {

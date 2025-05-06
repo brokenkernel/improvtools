@@ -23,9 +23,9 @@ import com.brokenkernel.improvtools.settings.utils.toTitleCase
 
 @Composable
 internal fun TipsAndAdviceTabMenu(
-    viewModel: SettingsScreenViewModel = hiltViewModel(),
     expanded: Boolean,
     onDismiss: () -> Unit,
+    viewModel: SettingsScreenViewModel = hiltViewModel(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 

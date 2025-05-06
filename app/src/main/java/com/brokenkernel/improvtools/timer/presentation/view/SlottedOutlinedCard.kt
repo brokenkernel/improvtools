@@ -43,15 +43,16 @@ internal fun SlottedTimerCardContent(
     title: String,
     currentTime: Duration,
     timerState: TimerState,
-    actions: @Composable (() -> Unit) = {},
     onRemoveTimer: () -> Unit,
-    leadingIcon: @Composable (() -> Unit) = {},
     onTitleChange: (String) -> Unit,
+    modifier: Modifier = Modifier,
+    actions: @Composable (() -> Unit) = {},
+    leadingIcon: @Composable (() -> Unit) = {},
 ) {
     var isEditTitleMode by remember { mutableStateOf(false) }
     var currentTitleTextBox by remember { mutableStateOf(title) }
 
-    Column {
+    Column(modifier = modifier) {
         Row {
             leadingIcon()
             if (isEditTitleMode) {

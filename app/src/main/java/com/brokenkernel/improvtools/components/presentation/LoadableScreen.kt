@@ -9,9 +9,9 @@ import com.brokenkernel.improvtools.components.presentation.viewmodel.LoadableSc
 @Composable
 fun LoadableScreen(
     loader: () -> Unit,
+    preloadedContent: @Composable () -> Unit,
     viewModel: LoadableScreenViewModel =
         viewModel(factory = LoadableScreenViewModel.Factory(loader)),
-    preloadedContent: @Composable () -> Unit,
     loadedContent: @Composable () -> Unit,
 ) {
     val isLoading by viewModel.isLoading.collectAsStateWithLifecycle()

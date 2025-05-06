@@ -7,22 +7,28 @@ import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.components.sidecar.preview.ImprovToolsAllPreviews
 import com.brokenkernel.improvtools.ui.theme.ImprovToolsTheme
 
 @Composable
-fun ExpandIcon(isExpanded: Boolean) {
+fun ExpandIcon(
+    isExpanded: Boolean,
+    modifier: Modifier = Modifier,
+) {
     if (isExpanded) {
         Icon(
             Icons.Default.ExpandLess,
             contentDescription = stringResource(R.string.collapse),
+            modifier = modifier,
         )
     } else {
         Icon(
             Icons.Default.ExpandMore,
             contentDescription = stringResource(R.string.expand),
+            modifier = modifier,
         )
     }
 }
