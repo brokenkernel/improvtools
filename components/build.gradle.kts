@@ -94,10 +94,7 @@ dependencies {
         because("we are an android compose application")
     }
     implementation(platform(libs.kotlin.bom))
-    implementation(libs.androidx.activity.compose)
-    implementation(libs.androidx.activity.ktx)
     implementation(libs.androidx.annotation)
-    implementation(libs.androidx.compose.material.extended)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.loader)
     implementation(libs.androidx.material3)
@@ -108,7 +105,6 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.hilt.android)
     implementation(libs.kotlinx.collections.immutable.jvm)
-    implementation(libs.material)
 
     debugRuntimeOnly(libs.androidx.ui.test.manifest)
 

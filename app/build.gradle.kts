@@ -215,7 +215,7 @@ dependencies {
     implementation(libs.androidx.appsearch)
     implementation(libs.androidx.appsearch.platform.storage)
     implementation(libs.androidx.browser)
-    implementation(libs.androidx.compose.material.extended)
+    implementation(libs.androidx.compose.material.materialIconsExtended)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.datastore)
     implementation(libs.androidx.datastore.core)
