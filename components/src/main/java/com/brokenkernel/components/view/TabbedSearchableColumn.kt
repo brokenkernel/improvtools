@@ -31,16 +31,13 @@ inline fun <reified T : Enum<T>, I> TabbedSearchableColumn(
     crossinline itemToListItem: @Composable (I) -> (Unit), // must be last one for nice UX
 ) {
     Column {
-        val isSingularTopic = enumValues<T>().size == 1
         val isSegmentedButtonChecked: SnapshotStateList<Boolean> =
             MutableList(enumValues<T>().size, { true })
                 .toMutableStateList()
-        if (!isSingularTopic) {
-            EnumLinkedMultiChoiceSegmentedButtonRow<T>(
-                isSegmentedButtonChecked = isSegmentedButtonChecked,
-                enumToName = { it -> it.name },
-            )
-        }
+        EnumLinkedMultiChoiceSegmentedButtonRow<T>(
+            isSegmentedButtonChecked = isSegmentedButtonChecked,
+            enumToName = { it -> it.name },
+        )
         Box(
             modifier = Modifier
                 .fillMaxSize()
@@ -70,13 +67,6 @@ inline fun <reified T : Enum<T>, I> TabbedSearchableColumn(
                                 itemToListItem(it)
                             }
                         }
-//                ListItem(
-//                    headlineContent = { Text("heading") },
-//                    supportingContent = { Text("supporting") },
-//                    leadingContent = { Text("leading") },
-//                    overlineContent = { Text("overline") },
-//                    trailingContent = { Text("trailing") },
-//                )
                     }
                 }
             }

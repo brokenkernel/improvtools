@@ -42,7 +42,6 @@ inline fun <reified T : Enum<T>, I, reified X : Enum<X>> ChippedTabbedSearchable
     crossinline itemToListItem: @Composable (I) -> (Unit), // must be last one for nice UX
 ) {
     Column {
-        val isSingularTopic = enumValues<T>().size == 1
         // TODO: make these a remember?
         val isSegmentedButtonChecked: SnapshotStateList<Boolean> = remember {
             MutableList(enumValues<T>().size, { true })
@@ -53,12 +52,10 @@ inline fun <reified T : Enum<T>, I, reified X : Enum<X>> ChippedTabbedSearchable
                 .toMutableStateList()
         }
 
-        if (!isSingularTopic) {
-            EnumLinkedMultiChoiceSegmentedButtonRow<T>(
-                isSegmentedButtonChecked = isSegmentedButtonChecked,
-                enumToName = { it -> it.name },
-            )
-        }
+        EnumLinkedMultiChoiceSegmentedButtonRow<T>(
+            isSegmentedButtonChecked = isSegmentedButtonChecked,
+            enumToName = { it -> it.name },
+        )
         Box(
             modifier = Modifier
                 .fillMaxSize()

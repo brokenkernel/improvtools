@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <baseline version="1.0">
     <file name="src/main/java/com/brokenkernel/components/view/ChippedSearchBar.kt">
-        <error line="18" column="34" source="compose:modifier-missing-check" />
+        <error line="13" column="34" source="compose:modifier-missing-check" />
     </file>
     <file name="src/main/java/com/brokenkernel/components/view/ChippedTabbedSearchableColumn.kt">
         <error line="32" column="58" source="compose:modifier-missing-check" />
