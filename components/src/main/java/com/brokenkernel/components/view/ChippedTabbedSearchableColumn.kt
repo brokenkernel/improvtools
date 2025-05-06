@@ -5,12 +5,9 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.snapshots.SnapshotStateList
@@ -69,7 +66,7 @@ inline fun <reified T : Enum<T>, I, reified X : Enum<X>> ChippedTabbedSearchable
     textFieldState: TextFieldState = rememberTextFieldState(),
     noinline trailingIcon: @Composable (() -> Unit)? = null,
     isChipBarVisible: Boolean,
-    crossinline itemToListItem: @Composable (I) -> (Unit), // must be last one for nice UX
+    noinline itemToListItem: @Composable (I) -> (Unit), // must be last one for nice UX
 ) {
     Column {
         EnumLinkedMultiChoiceSegmentedButtonRow<T>(
@@ -105,33 +102,21 @@ inline fun <reified T : Enum<T>, I, reified X : Enum<X>> ChippedTabbedSearchable
                         isChipsChecked = state.isChipsChecked,
                     )
                 }
-                LazyColumn {
-                    itemList.forEach { group, groupList ->
-                        if (itemList.size > 1) {
-                            // TODO: consider making sticky header go away if all items are filtered out
-                            // TODO: to do this, the grouping likely needs to happen after filtering?
-                            stickyHeader {
-                                Text(group)
-                            }
-                        }
-                        items(
-                            groupList,
-                            key = itemToKey,
-                        ) { curItem: I ->
-                            // TODO: maybe the set of conditions should be injected? Or pulled out?
-                            // this is a problem for making it composable
-                            if (state.isSegmentedButtonChecked[itemToTopic(curItem).ordinal] &&
-                                shouldShowDueToTag(state.isChipsChecked, itemMatchesTag, curItem) &&
+                ItemColumnLazyList<I>(
+                    itemList,
+                    itemToKey,
+                    { it ->
+                        (
+                            state.isSegmentedButtonChecked[itemToTopic(it).ordinal] &&
+                                shouldShowDueToTag(state.isChipsChecked, itemMatchesTag, it) &&
                                 itemDoesMatch(
                                     transformForSearch(textFieldState.text.toString()),
-                                    curItem,
+                                    it,
                                 )
-                            ) {
-                                itemToListItem(curItem)
-                            }
-                        }
-                    }
-                }
+                            )
+                    },
+                    itemToListItem = itemToListItem,
+                )
             }
         }
     }
