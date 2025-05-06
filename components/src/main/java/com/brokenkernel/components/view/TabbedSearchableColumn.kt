@@ -1,4 +1,4 @@
-package com.brokenkernel.improvtools.components.presentation.view
+package com.brokenkernel.components.view
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -20,7 +20,7 @@ import androidx.compose.ui.semantics.semantics
  * @param I item type
  */
 @Composable
-internal inline fun <reified T : Enum<T>, I> TabbedSearchableColumn(
+inline fun <reified T : Enum<T>, I> TabbedSearchableColumn(
     crossinline itemDoesMatch: (String, I) -> Boolean,
     itemList: Map<String, List<I>>,
     crossinline transformForSearch: (String) -> String,

@@ -25,10 +25,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.util.fastAny
 import com.brokenkernel.components.view.HtmlText
+import com.brokenkernel.components.view.TabbedSearchableColumn
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.presentation.api.LocalBottomSheetContentManager
 import com.brokenkernel.improvtools.components.presentation.view.ExpandIcon
-import com.brokenkernel.improvtools.components.presentation.view.TabbedSearchableColumn
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GamesDataItem
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GamesDatumTag
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GamesDatumTopic

@@ -27,11 +27,11 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.intl.Locale
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.components.presentation.view.ExpandIcon
-import com.brokenkernel.improvtools.components.presentation.view.TabbedSearchableColumn
 import com.brokenkernel.improvtools.encyclopaedia.data.model.PeopleDataItem
 import com.brokenkernel.improvtools.encyclopaedia.data.model.PeopleDatum
 import com.brokenkernel.improvtools.encyclopaedia.data.model.PeopleDatumTopic
 import java.text.StringCharacterIterator
+import com.brokenkernel.components.view.TabbedSearchableColumn
 
 private fun transformForSearch(str: String): String {
     return str.lowercase().filterNot { it.isWhitespace() }

@@ -1,4 +1,4 @@
-package com.brokenkernel.improvtools.components.presentation.view
+package com.brokenkernel.components.view
 
 import androidx.compose.material3.MultiChoiceSegmentedButtonRow
 import androidx.compose.material3.SegmentedButton
@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.snapshots.SnapshotStateList
 
 @Composable
-internal inline fun <reified T : Enum<T>> EnumLinkedMultiChoiceSegmentedButtonRow(
+inline fun <reified T : Enum<T>> EnumLinkedMultiChoiceSegmentedButtonRow(
     isSegmentedButtonChecked: SnapshotStateList<Boolean>,
     crossinline enumToName: (T) -> String,
 ) {

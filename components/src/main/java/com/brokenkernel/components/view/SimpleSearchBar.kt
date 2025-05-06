@@ -1,4 +1,4 @@
-package com.brokenkernel.improvtools.components.presentation.view
+package com.brokenkernel.components.view
 
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.WindowInsets
@@ -21,12 +21,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.traversalIndex
 import androidx.compose.ui.unit.dp
-import com.brokenkernel.improvtools.R
-import kotlinx.serialization.json.JsonNull.content
+import com.brokenkernel.components.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-internal fun BoxScope.SimpleSearchBar(
+fun BoxScope.SimpleSearchBar(
     textFieldState: TextFieldState,
     trailingIcon: @Composable (() -> Unit)? = null,
     content: @Composable () -> Unit,
@@ -49,7 +48,7 @@ internal fun BoxScope.SimpleSearchBar(
                 leadingIcon = {
                     Icon(
                         Icons.Default.Search,
-                        contentDescription = stringResource(R.string.search_bar_search),
+                        contentDescription = stringResource(R.string.simple_search_bar_search),
                     )
                 },
                 trailingIcon = trailingIcon,
