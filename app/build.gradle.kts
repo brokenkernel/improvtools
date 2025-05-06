@@ -222,13 +222,6 @@ dependencies {
     //    implementation(libs.androidx.glance.appwidget)
     //    implementation(libs.androidx.glance.material3)
     implementation(libs.androidx.hilt.navigation.compose)
-    implementation(libs.androidx.ink.authoring)
-    implementation(libs.androidx.ink.brush)
-    implementation(libs.androidx.ink.geometry)
-    implementation(libs.androidx.ink.nativeloader)
-    implementation(libs.androidx.ink.rendering)
-    implementation(libs.androidx.ink.strokes)
-    implementation(libs.androidx.input.motionprediction)
     implementation(libs.androidx.lifecycle.process)
     implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -236,7 +229,6 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewModel.compose)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.savedstate)
-    implementation(libs.androidx.loader)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.material3.adaptive)
     implementation(libs.androidx.material3.adaptive.layout)
@@ -247,7 +239,6 @@ dependencies {
     implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.room.paging)
     implementation(libs.androidx.room.runtime)
-    implementation(libs.androidx.room.rxjava3)
     implementation(libs.androidx.runtime.tracing)
     implementation(libs.androidx.startup.runtime)
     implementation(libs.androidx.ui)
@@ -316,6 +307,12 @@ dependencies {
 
 // firebase is just broken https://github.com/firebase/firebase-android-sdk/issues/6359
 configurations {
+    all {
+        resolutionStrategy {
+            // TODO
+//            TODO: failOnVersionConflict()
+        }
+    }
     implementation {
         exclude(module = "protolite-well-known-types")
     }

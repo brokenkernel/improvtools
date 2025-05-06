@@ -96,13 +96,14 @@ dependencies {
     implementation(platform(libs.kotlin.bom))
     implementation(libs.androidx.annotation)
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.loader)
+    implementation(libs.androidx.material.icons.core)
     implementation(libs.androidx.material3)
-    implementation(libs.androidx.material3.adaptive)
-    implementation(libs.androidx.material3.adaptive.layout)
     implementation(libs.androidx.ui)
+    implementation(libs.androidx.ui.geometry)
     implementation(libs.androidx.ui.graphics)
+    implementation(libs.androidx.ui.text)
     implementation(libs.androidx.ui.tooling.preview)
+    implementation(libs.androidx.ui.util)
     implementation(libs.hilt.android)
     implementation(libs.kotlinx.collections.immutable.jvm)
 
@@ -111,7 +112,6 @@ dependencies {
     testImplementation(libs.junit)
 
     androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.ui.test.junit4)
 

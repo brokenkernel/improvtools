@@ -41,15 +41,15 @@ dependencyAnalysis {
     }
     structure {
         // This should be false, and we could be more specific about what to add, but meh
-        ignoreKtx(true)
+//        ignoreKtx(true)
     }
     issues {
         all {
             // This really should only be _directly used_ transitive deps. I do care about those
             // but this test includes e.g., guava which I _don't_ directly use and thus should be excluded.
-            onUsedTransitiveDependencies {
-                severity("ignore")
-            }
+//            onUsedTransitiveDependencies {
+//                severity("ignore")
+//            }
         }
     }
 }
