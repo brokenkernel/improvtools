@@ -12,6 +12,5 @@ bundle exec fastlane update_plugins
 
 ./gradlew dependencyUpdates
 ./gradlew versionCatalogFormat
-./gradlew dependencies --write-locks
-./gradlew :app:dependencies --write-locks
-./gradlew :components:dependencies --write-locks
+./gradlew sortDependencies
+./gradlew :app:build :components:build :app:hiltJavaCompileDebugAndroidTest --write-locks
