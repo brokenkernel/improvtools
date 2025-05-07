@@ -17,7 +17,6 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
     alias(libs.plugins.ktlint)
-    alias(libs.plugins.dagger.hilt.android)
     alias(libs.plugins.sortDependencies)
     id("shared-build-conventions")
 
@@ -85,11 +84,10 @@ kotlin {
     }
 }
 
-hilt {
-    enableAggregatingTask = true
-}
-
 dependencies {
+    api(libs.androidx.runtime)
+    api(libs.kotlinx.collections.immutable.jvm)
+
     implementation(enforcedPlatform(libs.androidx.compose.bom)) {
         because("we are an android compose application")
     }
@@ -104,8 +102,13 @@ dependencies {
     implementation(libs.androidx.ui.text)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.ui.util)
-    implementation(libs.hilt.android)
-    implementation(libs.kotlinx.collections.immutable.jvm)
+    implementation(libs.androidx.runtime.saveable)
+    androidTestImplementation(libs.androidx.ui.test)
+    androidTestImplementation(libs.androidx.monitor)
+    api(libs.androidx.foundation.layout)
+    api(libs.androidx.foundation)
+    implementation(libs.androidx.ui.unit)
+
 
     debugRuntimeOnly(libs.androidx.ui.test.manifest)
 
@@ -113,8 +116,6 @@ dependencies {
 
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.ui.test.junit4)
-
-    ksp(libs.hilt.compiler)
 
     ktlintRuleset(libs.ktlintCompose)
 

@@ -1,5 +1,5 @@
 [versions]
-aboutLibraries = "12.1.1"
+aboutLibraries = "12.1.2"
 accompanistPermissions = "0.37.3"
 activityCompose = "1.10.1"
 agp = "8.10.0"
@@ -25,6 +25,7 @@ extjwnlDataWn31 = "1.2"
 firebaseBom = "33.13.0"
 firebaseCrashlyticsPlugin = "3.0.3"
 firebasePerfPlugin = "1.4.2"
+foundationLayout = "1.8.1"
 glanceAppwidget = "1.1.1"
 googleGmsGoogleServices = "4.4.2"
 guava = "33.4.8-android"
@@ -47,6 +48,7 @@ lintGradle = "1.0.0-alpha04"
 material3Adaptive = "1.1.0"
 materialIconsExtended = "1.7.8"
 metricsPerformance = "1.0.0-beta02"
+monitor = "1.7.2"
 navigationCompose = "2.8.9"
 navigationTesting = "2.8.9"
 playServicesInstantapps = "18.1.0"
@@ -57,12 +59,16 @@ protobufJavalite = "4.30.2"
 protoc = "4.30.2"
 reorderable = "2.4.3"
 room = "2.7.1"
+runtime = "1.8.1"
+runtimeSaveable = "1.8.1"
 screengrab = "2.1.1"
 slackLintChecks = "0.9.0"
 slf4jAndroid = "2.0.17-0"
 sortDependencies = "0.14"
 startupRuntime = "1.2.0"
+uiTest = "1.8.0"
 uiText = "1.8.0"
+uiUnit = "1.8.0"
 uiUtil = "1.8.0"
 versionCatalogUpdate = "1.0.0"
 versions = "0.52.0"
@@ -99,6 +105,8 @@ androidx-datastore-core = { module = "androidx.datastore:datastore-core", versio
 androidx-datastore-datastorePreferences = { module = "androidx.datastore:datastore-preferences", version.ref = "androidXdatastore" }
 androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espressoCore" }
 androidx-espresso-device = { module = "androidx.test.espresso:espresso-device", version.ref = "espressoDevice" }
+androidx-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "foundationLayout" }
+androidx-foundation-layout = { module = "androidx.compose.foundation:foundation-layout", version.ref = "foundationLayout" }
 androidx-glance-appwidget = { module = "androidx.glance:glance-appwidget", version.ref = "glanceAppwidget" }
 androidx-glance-material3 = { module = "androidx.glance:glance-material3", version.ref = "glanceAppwidget" }
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
@@ -125,6 +133,7 @@ androidx-material3-adaptive = { module = "androidx.compose.material3.adaptive:ad
 androidx-material3-adaptive-layout = { module = "androidx.compose.material3.adaptive:adaptive-layout", version.ref = "material3Adaptive" }
 androidx-material3-adaptive-navigation = { module = "androidx.compose.material3.adaptive:adaptive-navigation", version.ref = "material3Adaptive" }
 androidx-metrics-performance = { module = "androidx.metrics:metrics-performance", version.ref = "metricsPerformance" }
+androidx-monitor = { module = "androidx.test:monitor", version.ref = "monitor" }
 androidx-navigation-navigationCompose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 androidx-navigation-navigationTesting = { module = "androidx.navigation:navigation-testing", version.ref = "navigationTesting" }
 androidx-profileinstaller = { module = "androidx.profileinstaller:profileinstaller", version.ref = "profileinstaller" }
@@ -134,16 +143,20 @@ androidx-room-paging = { module = "androidx.room:room-paging", version.ref = "ro
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
 androidx-room-rxjava3 = { module = "androidx.room:room-rxjava3", version.ref = "room" }
 androidx-room-testing = { module = "androidx.room:room-testing", version.ref = "room" }
+androidx-runtime = { module = "androidx.compose.runtime:runtime", version.ref = "runtime" }
+androidx-runtime-saveable = { module = "androidx.compose.runtime:runtime-saveable", version.ref = "runtimeSaveable" }
 androidx-runtime-tracing = { module = "androidx.compose.runtime:runtime-tracing" }
 androidx-startup-runtime = { module = "androidx.startup:startup-runtime", version.ref = "startupRuntime" }
 androidx-ui = { module = "androidx.compose.ui:ui" }
 androidx-ui-geometry = { module = "androidx.compose.ui:ui-geometry", version.ref = "composeUI" }
 androidx-ui-graphics = { module = "androidx.compose.ui:ui-graphics" }
+androidx-ui-test = { module = "androidx.compose.ui:ui-test", version.ref = "uiTest" }
 androidx-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "composeUI" }
 androidx-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
 androidx-ui-text = { module = "androidx.compose.ui:ui-text", version.ref = "uiText" }
 androidx-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 androidx-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
+androidx-ui-unit = { module = "androidx.compose.ui:ui-unit", version.ref = "uiUnit" }
 androidx-ui-util = { module = "androidx.compose.ui:ui-util", version.ref = "uiUtil" }
 androidx-window = { module = "androidx.window:window", version.ref = "window" }
 androidx-work-multiprocess = { module = "androidx.work:work-multiprocess", version.ref = "workRuntimeKtx" }
