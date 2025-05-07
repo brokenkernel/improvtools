@@ -19,6 +19,7 @@ plugins {
     alias(libs.plugins.dokka)
     alias(libs.plugins.versions) apply false
     alias(libs.plugins.versionCatalogUpdate)
+    id("com.osacky.doctor") version "0.10.0"
 
     kotlin("plugin.power-assert") version "2.1.20" apply false
     alias(libs.plugins.android.library) apply false
@@ -70,5 +71,11 @@ versionCatalogUpdate {
     }
     keep {
         keepUnusedVersions = true
+    }
+}
+
+doctor {
+    javaHome {
+        ensureJavaHomeMatches = false
     }
 }
