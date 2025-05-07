@@ -2,6 +2,39 @@
 <issues format="6" by="lint 8.10.0" type="baseline" client="gradle" dependencies="true" name="AGP (8.10.0)" variant="all" version="8.10.0">
 
     <issue
+        id="AvoidUsingNotNullOperator"
+        message="Avoid using the `!!` operator"
+        errorLine1="            val indexWord = allIndexWords.getIndexWord(pos)!!"
+        errorLine2="                                                           ~~">
+        <location
+            file="src/main/java/com/brokenkernel/improvtools/encyclopaedia/api/ThesaurusAPI.kt"
+            line="57"
+            column="60"/>
+    </issue>
+
+    <issue
+        id="DeprecatedCall"
+        message="androidx.compose.foundation.layout.FlowLayoutKt.FlowRow is deprecated; consider using an alternative."
+        errorLine1="    FlowRow(modifier = modifier) {"
+        errorLine2="    ^">
+        <location
+            file="src/main/java/com/brokenkernel/components/view/ChipBar.kt"
+            line="28"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="ExceptionMessage"
+        message="Please specify a `lazyMessage` param for require"
+        errorLine1="            require(this.learnMoreLink.scheme == &quot;https&quot;)"
+        errorLine2="            ~~~~~~~">
+        <location
+            file="src/main/java/com/brokenkernel/improvtools/encyclopaedia/data/model/PeopleDatum.kt"
+            line="25"
+            column="13"/>
+    </issue>
+
+    <issue
         id="UnusedResources"
         message="The resource `R.xml.remote_config_defaults` appears to be unused"
         errorLine1="&lt;defaultsMap>"

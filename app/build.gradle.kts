@@ -302,6 +302,7 @@ dependencies {
     ktlintRuleset(libs.ktlintCompose)
 
     lintChecks(libs.androidx.lint.gradle)
+    lintChecks(libs.slack.lint.checks)
 }
 
 // firebase is just broken https://github.com/firebase/firebase-android-sdk/issues/6359
