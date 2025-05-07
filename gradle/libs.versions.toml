@@ -138,7 +138,7 @@ androidx-startup-runtime = { module = "androidx.startup:startup-runtime", versio
 androidx-ui = { module = "androidx.compose.ui:ui" }
 androidx-ui-geometry = { module = "androidx.compose.ui:ui-geometry", version.ref = "uiGeometry" }
 androidx-ui-graphics = { module = "androidx.compose.ui:ui-graphics" }
-androidx-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
+androidx-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version="1.8.0" }
 androidx-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
 androidx-ui-text = { module = "androidx.compose.ui:ui-text", version.ref = "uiText" }
 androidx-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
