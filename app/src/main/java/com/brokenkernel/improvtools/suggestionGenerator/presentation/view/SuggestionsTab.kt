@@ -44,6 +44,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.brokenkernel.components.view.SimpleIconButton
 import com.brokenkernel.components.view.SimpleTooltipWrapper
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.encyclopaedia.presentation.view.LoadableSingleWordThesaurusButton
@@ -146,49 +147,35 @@ internal fun SuggestionsTab(
                                     trailingContent = {
                                         Row(modifier = Modifier.weight(1f)) {
                                             if (ideaCategory.showLinkToEmotion) {
-                                                SimpleTooltipWrapper(
-                                                    stringResource(
+                                                SimpleIconButton(
+                                                    onClick = onNavigateToEmotionsInfographic,
+                                                    icon = Icons.Outlined.PsychologyAlt,
+                                                    contentDescription = stringResource(
                                                         R.string.go_to_emotions_reference_screen,
                                                     ),
-                                                ) {
-                                                    IconButton(
-                                                        onClick = {
-                                                            onNavigateToEmotionsInfographic()
-                                                        },
-                                                    ) {
-                                                        Icon(
-                                                            Icons.Outlined.PsychologyAlt,
-                                                            contentDescription = stringResource(
-                                                                R.string.go_to_emotions_reference_screen,
-                                                            ),
-                                                        )
-                                                    }
-                                                }
+                                                )
                                             }
                                             if (currentIdea.explanation != null) {
                                                 SimpleTooltipWrapper(
                                                     stringResource(R.string.explain_this_term),
                                                 ) {
-                                                    IconButton(
+                                                    SimpleIconButton(
                                                         onClick = {
                                                             onNavigateToExplanation(
                                                                 currentIdea.idea,
                                                                 currentIdea.explanation,
                                                             )
                                                         },
-                                                    ) {
-                                                        Icon(
-                                                            // TODO: consider icon setting based on category
-                                                            Icons.Outlined.TheaterComedy,
-                                                            contentDescription = stringResource(
-                                                                R.string.explain_this_term,
-                                                            ),
-                                                        )
-                                                    }
+                                                        icon = Icons.Outlined.TheaterComedy,
+                                                        contentDescription = stringResource(
+                                                            R.string.explain_this_term,
+                                                        ),
+                                                    )
                                                 }
                                             }
                                             // TODO: consider pop up menu instead of full screen
                                             // TODO: none of the selected words are remembered across screens
+                                            // TODO: this shouldn't be a viewModel but injected UIState. TBD
                                             val viewModel =
                                                 hiltViewModel<
                                                     LoadableSingleWordThesaurusButtonViewModel,

@@ -29,6 +29,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
+import com.brokenkernel.components.view.SimpleIconButton
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.ApplicationConstants.APPLICATION_TITLE
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
@@ -89,12 +90,11 @@ internal fun ImprovToolsScaffold(
                             rememberTopAppBarState(),
                         ),
                     navigationIcon = {
-                        IconButton(onClick = navMenuButtonPressedCallback) {
-                            Icon(
-                                imageVector = Icons.Default.Menu,
-                                contentDescription = stringResource(R.string.navigation_app_menu),
-                            )
-                        }
+                        SimpleIconButton(
+                            onClick = navMenuButtonPressedCallback,
+                            icon = Icons.Default.Menu,
+                            contentDescription = stringResource(R.string.navigation_app_menu),
+                        )
                     },
                     actions = {
                         val curMenu = improvToolsAppState.extraMenu.value

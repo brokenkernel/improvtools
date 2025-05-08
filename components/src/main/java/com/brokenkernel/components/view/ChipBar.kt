@@ -5,8 +5,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -40,14 +38,11 @@ inline fun <reified T : Enum<T>> ChipBar(
         }
 //
         // TODO: add tooltipbox wrapper. This currently causes compiler bug
-        IconButton(
+        SimpleIconButton(
             onClick = onClearClick,
+            icon = Icons.Default.Clear,
+            contentDescription = stringResource(R.string.clear_all),
             enabled = isChipsChecked.fastAny { it },
-        ) {
-            Icon(
-                Icons.Default.Clear,
-                contentDescription = stringResource(R.string.clear_all),
-            )
-        }
+        )
     }
 }

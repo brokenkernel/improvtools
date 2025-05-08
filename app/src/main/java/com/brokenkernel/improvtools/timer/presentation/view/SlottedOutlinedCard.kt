@@ -8,8 +8,6 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -24,6 +22,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.intl.Locale
+import com.brokenkernel.components.view.SimpleIconButton
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.timer.data.model.TimerState
 import kotlin.time.Duration
@@ -93,12 +92,11 @@ internal fun SlottedTimerCardContent(
                 )
             }
             Spacer(Modifier.weight(1f))
-            IconButton(onClick = onRemoveTimer) {
-                Icon(
-                    Icons.Default.Delete,
-                    contentDescription = stringResource(R.string.slotted_timer_remove_timer),
-                )
-            }
+            SimpleIconButton(
+                onClick = onRemoveTimer,
+                icon = Icons.Default.Delete,
+                contentDescription = stringResource(R.string.slotted_timer_remove_timer),
+            )
         }
         Text(currentTime.formatTime(), style = MaterialTheme.typography.displayLarge)
         Row {
