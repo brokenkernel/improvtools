@@ -7,12 +7,10 @@ import androidx.compose.material.icons.outlined.Games
 import androidx.compose.material.icons.outlined.SelfImprovement
 import androidx.compose.ui.graphics.vector.ImageVector
 
-// TODO: find way to filter based on tags
-
 internal enum class GamesDatumTag(val label: String, val description: String = "") {
     // TODO: i18n
-    DIVERGENCE("#divergence", """Excersises that help you come up with new ideas"""),
-    CONVERGENCE("#convergence", """Excersises that help the group get on the same wavelength"""),
+    DIVERGENCE("#divergence", """Exercises that help you come up with new ideas"""),
+    CONVERGENCE("#convergence", """Exercises that help the group get on the same wavelength"""),
     ENERGY("#energy"),
     NAMES("#names"),
     RANGE("#range"),

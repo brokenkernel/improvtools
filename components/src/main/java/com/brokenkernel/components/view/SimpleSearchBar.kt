@@ -26,6 +26,7 @@ import com.brokenkernel.components.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BoxScope.SimpleSearchBar(
+    // todo: don't pass state up and down
     textFieldState: TextFieldState,
     modifier: Modifier = Modifier,
     trailingIcon: @Composable (() -> Unit)? = null,

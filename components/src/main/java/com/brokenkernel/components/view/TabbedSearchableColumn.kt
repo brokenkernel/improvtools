@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.isTraversalGroup
 import androidx.compose.ui.semantics.semantics
 import kotlinx.collections.immutable.ImmutableMap
+import kotlinx.collections.immutable.toImmutableList
 
 data class TabbedSearchableColumnState<_T>(
     val isSegmentedButtonChecked: SnapshotStateList<Boolean>,
@@ -47,7 +48,10 @@ inline fun <reified T : Enum<T>, I> TabbedSearchableColumn(
 ) {
     Column(modifier = modifier) {
         EnumLinkedMultiChoiceSegmentedButtonRow<T>(
-            isSegmentedButtonChecked = state.isSegmentedButtonChecked,
+            isSegmentedButtonChecked = state.isSegmentedButtonChecked.toImmutableList(),
+            onSegmentClick = {
+                state.isSegmentedButtonChecked[it] = !state.isSegmentedButtonChecked[it]
+            },
             enumToName = { it -> it.name },
         )
         Box(

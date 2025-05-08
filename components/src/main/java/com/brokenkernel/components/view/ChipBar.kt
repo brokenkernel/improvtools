@@ -15,7 +15,6 @@ import androidx.compose.ui.util.fastAny
 import com.brokenkernel.components.R
 import kotlinx.collections.immutable.ImmutableList
 
-// TODO: don't pass state, pass events instead
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 inline fun <reified T : Enum<T>> ChipBar(

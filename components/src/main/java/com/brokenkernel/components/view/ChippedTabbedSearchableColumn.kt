@@ -72,7 +72,10 @@ inline fun <reified T : Enum<T>, I, reified X : Enum<X>> ChippedTabbedSearchable
 ) {
     Column(modifier = modifier) {
         EnumLinkedMultiChoiceSegmentedButtonRow<T>(
-            isSegmentedButtonChecked = state.isSegmentedButtonChecked,
+            isSegmentedButtonChecked = state.isSegmentedButtonChecked.toImmutableList(),
+            onSegmentClick = {
+                state.isSegmentedButtonChecked[it] = !state.isSegmentedButtonChecked[it]
+            },
             enumToName = { it -> it.name },
         )
         Box(

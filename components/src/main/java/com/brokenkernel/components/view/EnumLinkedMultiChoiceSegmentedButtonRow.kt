@@ -5,13 +5,13 @@ import androidx.compose.material3.SegmentedButton
 import androidx.compose.material3.SegmentedButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Modifier
+import kotlinx.collections.immutable.ImmutableList
 
 @Composable
 inline fun <reified T : Enum<T>> EnumLinkedMultiChoiceSegmentedButtonRow(
-    // TODO: don't pass state up and down. Pass events up and down.
-    isSegmentedButtonChecked: SnapshotStateList<Boolean>,
+    isSegmentedButtonChecked: ImmutableList<Boolean>,
+    crossinline onSegmentClick: (Int) -> Unit,
     crossinline enumToName: (T) -> String,
     modifier: Modifier = Modifier,
 ) {
@@ -19,7 +19,7 @@ inline fun <reified T : Enum<T>> EnumLinkedMultiChoiceSegmentedButtonRow(
         enumValues<T>().forEach { topic: T ->
             SegmentedButton(
                 onCheckedChange = {
-                    isSegmentedButtonChecked[topic.ordinal] = !isSegmentedButtonChecked[topic.ordinal]
+                    onSegmentClick(topic.ordinal)
                 },
                 checked = isSegmentedButtonChecked[topic.ordinal],
                 shape = SegmentedButtonDefaults.itemShape(

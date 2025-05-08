@@ -9,9 +9,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 
 internal class CountDownTimerState(
     title: MutableStateFlow<String>,
-    initialTime: Duration,
+    initialTime: Duration = INITIAL_TIMER_DURATION,
     private val countDownNotificationManager: CountDownNotificationManager,
-) : BaseTimerState(title, initialTime = INITIAL_TIMER_DURATION) {
+) : BaseTimerState(title, initialTime = initialTime) {
     private val _myTimerThread: Timer = fixedRateTimer(
         "fixed rate timer for: $title",
         daemon = true,

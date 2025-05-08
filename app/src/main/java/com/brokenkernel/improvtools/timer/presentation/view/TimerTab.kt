@@ -43,7 +43,7 @@ private const val TAG = "TimerScreen"
 // TODO control of how many timers. Add some.
 // todo: click on title, change name of timer
 // TODO central timer manager
-// TODO: title does not properly recompose. Also too dilluted of where state is stored. Need to fix the entire flow of timers
+// TODO: Too diluted of where state is stored. Need to fix the entire flow of timers
 // TODO: adding timer stops/resets existing timers. See also: state storage is broken.
 // TODO: possibly add Timer Edit Button (for future editing time, etc. Also clearer UX than clicking on title to edit title)
 
@@ -170,7 +170,6 @@ internal fun TimerTab(viewModel: TimerListViewModel = hiltViewModel(), onLaunchT
         items(allTimers.value.toList(), key = { t -> t.id }) { timer: TimerInfo ->
 
             val currentTimer by rememberUpdatedState(timer)
-            // TODO/bug: why does removing one remove all the remaining ones below?
             val onRemove = {
                 if (shouldHapticOnRemove.value) {
                     haptic.performHapticFeedback(HapticFeedbackType.ToggleOff)
