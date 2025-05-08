@@ -86,6 +86,7 @@ inline fun <reified T : Enum<T>, I, reified X : Enum<X>> ChippedTabbedSearchable
         ) {
             val isAnyChipSelected = state.isChipsChecked.fastAny { it }
             val colorScheme = MaterialTheme.colorScheme
+
             val trailingIconModifier = if (isAnyChipSelected) {
                 Modifier.drawWithContent {
                     drawContent()
@@ -94,6 +95,7 @@ inline fun <reified T : Enum<T>, I, reified X : Enum<X>> ChippedTabbedSearchable
             } else {
                 Modifier
             }
+
             SimpleSearchBar(
                 textFieldState = textFieldState,
                 trailingIcon = {
