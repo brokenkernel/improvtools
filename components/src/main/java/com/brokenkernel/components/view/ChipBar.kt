@@ -14,6 +14,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.util.fastAny
 import com.brokenkernel.components.R
 import kotlinx.collections.immutable.ImmutableList
+import kotlin.enums.enumEntries
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -25,7 +26,7 @@ inline fun <reified T : Enum<T>> ChipBar(
 ) {
     // TODO: consider a DropdownMenu instead?
     FlowRow(modifier = modifier) {
-        enumValues<T>().forEach { tag ->
+        enumEntries<T>().forEach { tag ->
             FilterChip(
                 selected = isChipsChecked[tag.ordinal],
                 onClick = {

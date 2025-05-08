@@ -7,6 +7,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import kotlinx.collections.immutable.ImmutableList
+import kotlin.enums.enumEntries
 
 @Composable
 inline fun <reified T : Enum<T>> EnumLinkedMultiChoiceSegmentedButtonRow(
@@ -16,7 +17,7 @@ inline fun <reified T : Enum<T>> EnumLinkedMultiChoiceSegmentedButtonRow(
     modifier: Modifier = Modifier,
 ) {
     MultiChoiceSegmentedButtonRow(modifier = modifier) {
-        enumValues<T>().forEach { topic: T ->
+        enumEntries<T>().forEach { topic: T ->
             SegmentedButton(
                 onCheckedChange = {
                     onSegmentClick(topic.ordinal)
@@ -24,7 +25,7 @@ inline fun <reified T : Enum<T>> EnumLinkedMultiChoiceSegmentedButtonRow(
                 checked = isSegmentedButtonChecked[topic.ordinal],
                 shape = SegmentedButtonDefaults.itemShape(
                     index = topic.ordinal,
-                    count = enumValues<T>().size,
+                    count = enumEntries<T>().size,
                 ),
                 // TODO: i18n
                 label = { Text(enumToName(topic)) },

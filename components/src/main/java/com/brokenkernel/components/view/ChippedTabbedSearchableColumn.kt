@@ -21,6 +21,7 @@ import androidx.compose.ui.util.fastAny
 import com.brokenkernel.components.R
 import kotlinx.collections.immutable.ImmutableMap
 import kotlinx.collections.immutable.toImmutableList
+import kotlin.enums.enumEntries
 
 // TODO: There are too many variants of searchablecolumn. They should be made more ... composable
 
@@ -42,9 +43,9 @@ inline fun <reified T : Enum<T>, reified X : Enum<X>> rememberChippedTabbedSearc
     ChippedTabbedSearchableColumn<T, X> {
     return remember {
         ChippedTabbedSearchableColumn<T, X>(
-            isSegmentedButtonChecked = MutableList(enumValues<T>().size, { true })
+            isSegmentedButtonChecked = MutableList(enumEntries<T>().size, { true })
                 .toMutableStateList(),
-            isChipsChecked = MutableList(enumValues<X>().size, { false })
+            isChipsChecked = MutableList(enumEntries<X>().size, { false })
                 .toMutableStateList(),
         )
     }
@@ -153,7 +154,7 @@ inline fun <I, reified X : Enum<X>> shouldShowDueToTag(
     curItem: I,
 ): Boolean {
     return isChipsChecked.all { it == false } ||
-        enumValues<X>()
+        enumEntries<X>()
             .filter { tag -> itemMatchesTag(curItem, tag) }
             .fastAny { tag ->
                 isChipsChecked[tag.ordinal]
