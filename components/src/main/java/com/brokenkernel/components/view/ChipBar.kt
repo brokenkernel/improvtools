@@ -13,8 +13,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.util.fastAny
 import com.brokenkernel.components.R
-import kotlinx.collections.immutable.ImmutableList
 import kotlin.enums.enumEntries
+import kotlinx.collections.immutable.ImmutableList
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

@@ -12,9 +12,9 @@ import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.isTraversalGroup
 import androidx.compose.ui.semantics.semantics
+import kotlin.enums.enumEntries
 import kotlinx.collections.immutable.ImmutableMap
 import kotlinx.collections.immutable.toImmutableList
-import kotlin.enums.enumEntries
 
 data class TabbedSearchableColumnState<_T>(
     val isSegmentedButtonChecked: SnapshotStateList<Boolean>,

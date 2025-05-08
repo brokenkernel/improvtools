@@ -19,9 +19,9 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.fastAny
 import com.brokenkernel.components.R
+import kotlin.enums.enumEntries
 import kotlinx.collections.immutable.ImmutableMap
 import kotlinx.collections.immutable.toImmutableList
-import kotlin.enums.enumEntries
 
 // TODO: There are too many variants of searchablecolumn. They should be made more ... composable
 

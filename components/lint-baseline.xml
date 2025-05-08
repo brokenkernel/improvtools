@@ -8,7 +8,7 @@
         errorLine2="    ^">
         <location
             file="src/main/java/com/brokenkernel/components/view/ChipBar.kt"
-            line="27"
+            line="28"
             column="5"/>
     </issue>
 
