@@ -49,7 +49,7 @@ internal fun GamesTab(
     viewModel: GamesTabViewModel = GamesTabViewModel(),
 ) {
     // TODO: consider making a BaseScreenComposable or some such
-    LaunchedEffect(Unit) {
+    LaunchedEffect(onLaunchTitleCallback) {
         onLaunchTitleCallback()
     }
 

@@ -27,7 +27,7 @@ import com.brokenkernel.improvtools.components.sidecar.preview.ImprovToolsAllPre
 @Composable
 internal fun EmotionTab(onLaunchTitleCallback: () -> Unit) {
     // TODO: consider making a BaseScreenComposable or some such
-    LaunchedEffect(Unit) {
+    LaunchedEffect(onLaunchTitleCallback) {
         onLaunchTitleCallback()
     }
 

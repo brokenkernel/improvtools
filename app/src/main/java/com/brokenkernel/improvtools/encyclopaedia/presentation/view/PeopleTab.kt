@@ -60,7 +60,7 @@ private fun hasExpandableInformation(pdi: PeopleDataItem): Boolean {
 @Composable
 internal fun PeopleTab(onLaunchTitleCallback: () -> Unit) {
     // TODO: consider making a BaseScreenComposable or some such
-    LaunchedEffect(Unit) {
+    LaunchedEffect(onLaunchTitleCallback) {
         onLaunchTitleCallback()
     }
 

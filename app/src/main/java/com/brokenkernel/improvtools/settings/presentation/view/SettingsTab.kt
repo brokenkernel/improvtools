@@ -25,7 +25,7 @@ import com.brokenkernel.improvtools.settings.utils.toTitleCase
 @Composable
 internal fun SettingsTab(viewModel: SettingsScreenViewModel = hiltViewModel(), onLaunchTitleCallback: () -> Unit) {
     // TODO: consider making a BaseScreenComposable or some such
-    LaunchedEffect(Unit) {
+    LaunchedEffect(onLaunchTitleCallback) {
         onLaunchTitleCallback()
     }
 

@@ -38,7 +38,7 @@ private fun doesMatch(search: String, item: GlossaryDataItem): Boolean {
 @Composable
 internal fun GlossaryTab(onLaunchTitleCallback: () -> Unit) {
     // TODO: consider making a BaseScreenComposable or some such
-    LaunchedEffect(Unit) {
+    LaunchedEffect(onLaunchTitleCallback) {
         onLaunchTitleCallback()
     }
 

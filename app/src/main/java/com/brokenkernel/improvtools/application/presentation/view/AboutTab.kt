@@ -58,13 +58,13 @@ import kotlinx.coroutines.launch
 
 @Composable
 internal fun AboutTab(
-    onLaunchCallback: () -> Unit,
+    onLaunchTitleCallback: () -> Unit,
     viewModel: AboutTabViewModel = AboutTabViewModel(),
     onNavigateToPrivacyScreen: () -> Unit,
 ) {
     // TODO: consider making a BaseScreenComposable or some such
-    LaunchedEffect(Unit) {
-        onLaunchCallback()
+    LaunchedEffect(onLaunchTitleCallback) {
+        onLaunchTitleCallback()
     }
     // move snackbar host state into app state. And then inject it?
     // also include more injected stuff (settings for ex) into debug datum

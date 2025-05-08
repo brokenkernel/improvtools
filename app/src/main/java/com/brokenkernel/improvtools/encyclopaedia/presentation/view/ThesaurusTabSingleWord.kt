@@ -33,7 +33,7 @@ internal fun ThesaurusTabSingleWord(
     @StringRes priorTitleResource: Int,
 ) {
     // TODO: consider making a BaseScreenComposable or some such
-    LaunchedEffect(Unit) {
+    LaunchedEffect(onLaunchTitleCallback) {
         onLaunchTitleCallback()
     }
 

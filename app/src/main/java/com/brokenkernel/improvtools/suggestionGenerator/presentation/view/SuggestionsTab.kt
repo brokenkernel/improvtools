@@ -67,7 +67,7 @@ internal fun SuggestionsTab(
     viewModel: SuggestionScreenViewModel = hiltViewModel(),
 ) {
     // TODO: consider making a BaseScreenComposable or some such
-    LaunchedEffect(Unit) {
+    LaunchedEffect(onLaunchTitleCallback) {
         onLaunchTitleCallback()
     }
 

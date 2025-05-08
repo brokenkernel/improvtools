@@ -14,7 +14,7 @@ import com.brokenkernel.improvtools.R
 @Composable
 internal fun PrivacyTab(onLaunchTitleCallback: () -> Unit) {
     // TODO: consider making a BaseScreenComposable or some such
-    LaunchedEffect(Unit) {
+    LaunchedEffect(onLaunchTitleCallback) {
         onLaunchTitleCallback()
     }
 

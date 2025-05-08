@@ -9,7 +9,7 @@ import com.mikepenz.aboutlibraries.ui.compose.m3.LibrariesContainer
 @Composable
 internal fun LibrariesTab(onLaunchTitleCallback: () -> Unit) {
     // TODO: consider making a BaseScreenComposable or some such
-    LaunchedEffect(Unit) {
+    LaunchedEffect(onLaunchTitleCallback) {
         onLaunchTitleCallback()
     }
 

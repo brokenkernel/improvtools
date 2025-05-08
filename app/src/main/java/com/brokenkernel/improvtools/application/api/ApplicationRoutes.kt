@@ -13,7 +13,7 @@ internal fun NavGraphBuilder.applicationRoutes(improvToolsAppState: ImprovToolsA
     composable<NavigableRoute.HelpAndAboutRoute> {
         AboutTab(
             onNavigateToPrivacyScreen = { improvToolsAppState.navigateTo(NavigableRoute.PrivacyRoute) },
-            onLaunchCallback = {
+            onLaunchTitleCallback = {
                 improvToolsAppState.setScaffoldData(
                     newTitle = NavigableScreens.HelpAndAboutScreen.titleResource,
                     newExtraMenu = null,
