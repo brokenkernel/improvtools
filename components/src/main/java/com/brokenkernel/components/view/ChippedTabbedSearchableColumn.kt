@@ -1,5 +1,6 @@
 package com.brokenkernel.components.view
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -108,34 +109,36 @@ inline fun <reified T : Enum<T>, I, reified X : Enum<X>> ChippedTabbedSearchable
                     }
                 },
             ) {
-                if (isChipBarVisible) {
-                    ChipBar<X>(
-                        isChipsChecked = state.isChipsChecked.toImmutableList(),
-                        onChipClick = {
-                            state.isChipsChecked[it] = !state.isChipsChecked[it]
+                Column {
+                    AnimatedVisibility(isChipBarVisible) {
+                        ChipBar<X>(
+                            isChipsChecked = state.isChipsChecked.toImmutableList(),
+                            onChipClick = {
+                                state.isChipsChecked[it] = !state.isChipsChecked[it]
+                            },
+                            onClearClick = {
+                                for (i in 0 until state.isChipsChecked.size) {
+                                    state.isChipsChecked[i] = false
+                                }
+                            },
+                        )
+                    }
+                    ItemColumnLazyList<I>(
+                        itemList,
+                        itemToKey,
+                        { it ->
+                            (
+                                state.isSegmentedButtonChecked[itemToTopic(it).ordinal] &&
+                                    shouldShowDueToTag(state.isChipsChecked, itemMatchesTag, it) &&
+                                    itemDoesMatch(
+                                        transformForSearch(textFieldState.text.toString()),
+                                        it,
+                                    )
+                                )
                         },
-                        onClearClick = {
-                            for (i in 0 until state.isChipsChecked.size) {
-                                state.isChipsChecked[i] = false
-                            }
-                        },
+                        itemToListItem = itemToListItem,
                     )
                 }
-                ItemColumnLazyList<I>(
-                    itemList,
-                    itemToKey,
-                    { it ->
-                        (
-                            state.isSegmentedButtonChecked[itemToTopic(it).ordinal] &&
-                                shouldShowDueToTag(state.isChipsChecked, itemMatchesTag, it) &&
-                                itemDoesMatch(
-                                    transformForSearch(textFieldState.text.toString()),
-                                    it,
-                                )
-                            )
-                    },
-                    itemToListItem = itemToListItem,
-                )
             }
         }
     }
