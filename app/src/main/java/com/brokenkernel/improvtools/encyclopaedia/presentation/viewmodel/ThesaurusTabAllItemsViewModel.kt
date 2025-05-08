@@ -1,7 +1,6 @@
 package com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
-import com.brokenkernel.improvtools.encyclopaedia.api.ThesaurusAPI
 import com.brokenkernel.improvtools.encyclopaedia.data.repository.ThesaurusRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -11,7 +10,6 @@ import kotlinx.collections.immutable.toImmutableMap
 @HiltViewModel
 internal class ThesaurusTabAllItemsViewModel @Inject constructor(
     val thesaurusRepository: ThesaurusRepository,
-    val thesaurusAPI: ThesaurusAPI, // todo: this should be accessed through a repository
 ) : ViewModel() {
 
     fun groupedWords(): ImmutableMap<String, List<String>> {
