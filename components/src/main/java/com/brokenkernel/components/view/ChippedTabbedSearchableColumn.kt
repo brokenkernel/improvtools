@@ -18,7 +18,6 @@ import androidx.compose.ui.semantics.isTraversalGroup
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.fastAny
-import androidx.compose.ui.util.fastFilter
 import com.brokenkernel.components.R
 import kotlinx.collections.immutable.ImmutableMap
 import kotlinx.collections.immutable.toImmutableList
@@ -99,7 +98,7 @@ inline fun <reified T : Enum<T>, I, reified X : Enum<X>> ChippedTabbedSearchable
             SimpleSearchBar(
                 textFieldState = textFieldState,
                 trailingIcon = {
-                    val selectedCount = state.isChipsChecked.fastFilter { it }.size
+                    val selectedCount = state.isChipsChecked.count { it }
                     SimpleTooltipWrapper(
                         tooltip = stringResource(R.string.tags_selected, selectedCount),
                     ) {
