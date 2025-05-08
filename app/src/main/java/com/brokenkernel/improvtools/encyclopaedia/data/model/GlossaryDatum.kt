@@ -51,4 +51,10 @@ internal val GlossaryDatum: ImmutableList<GlossaryDataItem> = persistentListOf(
             | The basics of a scene or story. The 'typical' or 'day to day' of a scene. See CROWE.
         """.trimMargin(),
     ),
+    GlossaryDataItem(
+        term = "Endowing",
+        detailedInformation = """
+            | Defining someone else in the scene with a trait.
+        """.trimMargin(),
+    ),
 )

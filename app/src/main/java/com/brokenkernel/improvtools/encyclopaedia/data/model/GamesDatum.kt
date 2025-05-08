@@ -106,6 +106,11 @@ internal val GamesDatum: Collection<GamesDataItem> = listOf(
         gameName = "Character Gauntlet",
         topic = GamesDatumTopic.EXERCISE,
         tags = setOf(GamesDatumTag.RANGE),
+        detailedInformation = """
+            |A single person is in the center. The other players takes turns endowing the center person with
+            |different characters. A brief interaction ensues (typically no more than two lines) and then another person
+            |enters with a different character. Repeat for a while and then switch the center person.
+        """.trimMargin(),
     ),
     GamesDataItem(
         gameName = "Character Circle",
