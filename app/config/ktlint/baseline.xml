@@ -20,8 +20,8 @@
         <error line="97" column="17" source="compose:vm-forwarding-check" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/suggestionGenerator/presentation/view/SuggestionsTab.kt">
-        <error line="179" column="49" source="compose:vm-injection-check" />
-        <error line="189" column="45" source="compose:vm-forwarding-check" />
+        <error line="183" column="49" source="compose:vm-injection-check" />
+        <error line="193" column="45" source="compose:vm-forwarding-check" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/suggestionGenerator/presentation/viewmodel/SuggestionScreenViewModel.kt">
         <error line="25" column="17" source="standard:backing-property-naming" />

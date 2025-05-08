@@ -10,17 +10,19 @@ import com.brokenkernel.improvtools.encyclopaedia.data.model.TipsAndAdviceUI
 import com.brokenkernel.improvtools.encyclopaedia.data.model.TipsAndAdviceViewModeUI
 import com.brokenkernel.improvtools.encyclopaedia.data.repository.TipsAndAdviceRepository
 import com.brokenkernel.improvtools.settings.data.repository.SettingsRepository
+import com.typesafe.config.ConfigFactory
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jakarta.inject.Inject
 import java.io.InputStream
+import java.io.InputStreamReader
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import kotlinx.serialization.ExperimentalSerializationApi
-import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.decodeFromStream
+import kotlinx.serialization.hocon.Hocon
+import kotlinx.serialization.hocon.decodeFromConfig
 
 @OptIn(ExperimentalSerializationApi::class)
 @HiltViewModel
@@ -44,10 +46,13 @@ internal class TipsAndAdviceViewModel @Inject constructor(
     private val tipsAndAdviceProcessed: List<TipContentUI>
 
     init {
+        // TODO: pull out  into repository
         val unprocessedTipsAndAdvice: InputStream =
             tipsAndAdviceRepository.resources.openRawResource(R.raw.tips_and_advice)
+        val irs = InputStreamReader(unprocessedTipsAndAdvice)
+        val conf = ConfigFactory.parseReader(irs)
         val tipsAndAdviceDatum: TipsAndAdviceProcessedModel =
-            Json.Default.decodeFromStream<TipsAndAdviceProcessedModel>(unprocessedTipsAndAdvice)
+            Hocon.decodeFromConfig<TipsAndAdviceProcessedModel>(conf)
 
         val rawDictTipsAndAdvice = tipsAndAdviceDatum
         tipsAndAdviceProcessed = rawDictTipsAndAdvice.advice.toList().map { (x, y) -> TipContentUI(x, y) }

@@ -57,6 +57,9 @@ import kotlinx.coroutines.launch
 import sh.calvin.reorderable.ReorderableItem
 import sh.calvin.reorderable.rememberReorderableLazyListState
 
+// TODO: add ability to enable/disable categories entirely persistently in settings. Maybe GridFlow to click on/off.
+// TODO: maybe add single suggestion screen
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun SuggestionsTab(
@@ -124,6 +127,7 @@ internal fun SuggestionsTab(
                         .fillMaxWidth(),
                 ) {
                     items(reorderedListOfSuggestions, key = IdeaCategoryODS::itemKey) { ideaCategory: IdeaCategoryODS ->
+                        // reordering doesn't work. Figure out why.
                         ReorderableItem(
                             state = reorderableLazyListState,
                             key = IdeaCategoryODS::itemKey,

@@ -7,7 +7,7 @@ import androidx.compose.material.icons.outlined.Games
 import androidx.compose.material.icons.outlined.SelfImprovement
 import androidx.compose.ui.graphics.vector.ImageVector
 
-internal enum class GamesDatumTag(val label: String, val description: String = "") {
+internal enum class GamesDatumTag(val label: String, val description: String? = null) {
     // TODO: i18n
     DIVERGENCE("#divergence", """Exercises that help you come up with new ideas"""),
     CONVERGENCE("#convergence", """Exercises that help the group get on the same wavelength"""),
@@ -15,14 +15,16 @@ internal enum class GamesDatumTag(val label: String, val description: String = "
     NAMES("#names"),
     RANGE("#range"),
     VOCAL("#vocal"),
+    STATUS("#status"),
     SHORTFORM("#shortform"),
     MEDIUMFORM("#mediumform"),
     LONGFORM("#longform"),
+    BREATH("#breath"),
     ;
 
     companion object {
         fun fromLabel(label: String): GamesDatumTag? {
-            return GamesDatumTag.entries.firstOrNull { gdt -> gdt.label == label }
+            return entries.firstOrNull { gdt -> gdt.label == label }
         }
     }
 }
@@ -184,6 +186,7 @@ internal val GamesDatum: Collection<GamesDataItem> = listOf(
         topic = GamesDatumTopic.GAME,
         source = "https://ask.metafilter.com/233371/I-Need-Some-Relationship-Suggestions",
         tags = setOf(GamesDatumTag.SHORTFORM),
+        // TODO: maybe add link to game helper that gives you two relationships?
     ),
     GamesDataItem(
         gameName = "Best of Times, Worst of Times",
@@ -195,5 +198,25 @@ internal val GamesDatum: Collection<GamesDataItem> = listOf(
             | in the second, everything ends up going the worst way you can imagine.
         """.trimMargin().replace("\n", ""),
         tags = setOf(GamesDatumTag.SHORTFORM),
+        // TODO: maybe add link to game helper that gives you a scene.
+    ),
+    GamesDataItem(
+        gameName = "Status Swap",
+        topic = GamesDatumTopic.GAME,
+        tags = setOf(GamesDatumTag.SHORTFORM, GamesDatumTag.STATUS),
+    ),
+    GamesDataItem(
+        gameName = "Deck Of Cards Status",
+        topic = GamesDatumTopic.EXERCISE,
+        tags = setOf(GamesDatumTag.STATUS),
+    ),
+    GamesDataItem(
+        gameName = "Square Breathing",
+        topic = GamesDatumTopic.EXERCISE,
+        tags = setOf(GamesDatumTag.BREATH),
+    ),
+    GamesDataItem(
+        gameName = "Get The Stick",
+        topic = GamesDatumTopic.EXERCISE,
     ),
 )

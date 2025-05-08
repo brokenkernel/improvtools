@@ -57,4 +57,22 @@ internal val GlossaryDatum: ImmutableList<GlossaryDataItem> = persistentListOf(
             | Defining someone else in the scene with a trait.
         """.trimMargin(),
     ),
+    GlossaryDataItem(
+        term = "Side Coaching",
+        detailedInformation = """
+            | Giving directions to actors while they are playing a scene.
+        """.trimMargin(),
+    ),
+    GlossaryDataItem(
+        term = "Pre Scene",
+        detailedInformation = """
+            | What happens on stage before the dialog begins.
+        """.trimMargin(),
+    ),
+//    GlossaryDataItem(
+//        term = "Four Circles",
+//        detailedInformation = """
+//            | Venn Diagram. To be drawn. TBD.
+//        """.trimMargin(),
+//    ),
 )

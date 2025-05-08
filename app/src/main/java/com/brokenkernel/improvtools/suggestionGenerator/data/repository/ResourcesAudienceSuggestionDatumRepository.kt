@@ -4,10 +4,12 @@ import android.content.res.Resources
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.suggestionGenerator.data.model.AudienceSuggestionDatumODS
 import com.brokenkernel.improvtools.suggestionGenerator.data.model.IdeaCategoryODS
+import com.typesafe.config.ConfigFactory
 import java.io.InputStream
+import java.io.InputStreamReader
 import kotlinx.serialization.ExperimentalSerializationApi
-import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.decodeFromStream
+import kotlinx.serialization.hocon.Hocon
+import kotlinx.serialization.hocon.decodeFromConfig
 
 @OptIn(ExperimentalSerializationApi::class)
 internal class ResourcesAudienceSuggestionDatumRepository(
@@ -19,8 +21,10 @@ internal class ResourcesAudienceSuggestionDatumRepository(
         val unprocessedAudienceDatum: InputStream = resources.openRawResource(
             R.raw.audience_suggestion_datum,
         )
+        val irs = InputStreamReader(unprocessedAudienceDatum)
+        val conf = ConfigFactory.parseReader(irs)
         audienceDatumParsed =
-            Json.decodeFromStream<AudienceSuggestionDatumODS>(unprocessedAudienceDatum)
+            Hocon.decodeFromConfig<AudienceSuggestionDatumODS>(conf)
     }
 
     override fun getIdeaCategories(): List<IdeaCategoryODS> {

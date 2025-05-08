@@ -157,6 +157,7 @@ internal fun GamesTab(
                                 onClick = {
                                     onNavigateToBottomTag(tag)
                                 },
+                                enabled = tag.description != null,
                             ) {
                                 Text(tag.label)
                             }
