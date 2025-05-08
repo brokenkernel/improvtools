@@ -1,7 +1,7 @@
 package com.brokenkernel.improvtools.suggestionGenerator.data.repository
 
-import com.brokenkernel.improvtools.suggestionGenerator.data.model.IdeaCategory
+import com.brokenkernel.improvtools.suggestionGenerator.data.model.IdeaCategoryODS
 
 internal interface AudienceSuggestionDatumRepository {
-    fun getIdeaCategories(): List<IdeaCategory>
+    fun getIdeaCategories(): List<IdeaCategoryODS>
 }

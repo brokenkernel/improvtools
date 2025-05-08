@@ -435,12 +435,12 @@
       "title": "Situation/Quirk",
       "ideas": [
         {"idea": "Playing a practical joke"},
-        {"idea": "Having a Babys"},
+        {"idea": "Having a Baby"},
         {"idea": "Someone tries to hide their \"invisible\" friend from the others"},
         {"idea": "Someone is convinced they are invisible (but are not really)"},
         {"idea": "Someone pretends their friend doesn't speak the native language (but they do)"},
-        {"idea": "Someone replicates another figure in the scene with a delay of 5 seconds."},
-        {"idea": "Someone thinks that all the other figures are constantly evaluating and judging him/her."}
+        {"idea": "Someone replicates another figure in the scene with a delay of 5 seconds"},
+        {"idea": "Someone thinks that all the other figures are constantly evaluating and judging him/her"}
       ]
     },
     {
@@ -465,7 +465,10 @@
         {"idea": "Espionage"},
         {"idea": "Fairy Tale"},
         {"idea": "Fantasy romance"},
-        {"idea": "Fantasy"},
+        {
+          "idea": "Fantasy",
+          "explanation": "A person of typical social standing explores a world foreign to them."
+        },
         {"idea": "Farce"},
         {"idea": "Heist"},
         {"idea": "Heroic Bloodshed (Action)"},
@@ -499,7 +502,10 @@
         {"idea": "Shenmo"},
         {"idea": "Sitcom "},
         {"idea": "Slasher"},
-        {"idea": "Space Opera"},
+        {
+          "idea": "Space Opera",
+          "explanation": "A group of people on a ship performing a mission and encounters a world outside of their own experience."
+        },
         {"idea": "Spaghetti Western"},
         {"idea": "Sports"},
         {"idea": "Spy Fiction"},
@@ -515,7 +521,10 @@
         {"idea": "Urban Fantasy"},
         {"idea": "Urban fantasy"},
         {"idea": "Weather Report"},
-        {"idea": "Western"},
+        {
+          "idea": "Western",
+          "explanation": "a community exists and cares for each other. An outsider comes in threatening the status quo. The community bands together."
+        },
         {"idea": "Wuxia"}
       ]
     },

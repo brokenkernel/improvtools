@@ -14,7 +14,8 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ChangeCircle
-import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.outlined.PsychologyAlt
+import androidx.compose.material.icons.outlined.TheaterComedy
 import androidx.compose.material.icons.rounded.DragHandle
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilledTonalButton
@@ -43,10 +44,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.brokenkernel.components.view.SimpleTooltipWrapper
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.encyclopaedia.presentation.view.LoadableSingleWordThesaurusButton
 import com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel.LoadableSingleWordThesaurusButtonViewModel
-import com.brokenkernel.improvtools.suggestionGenerator.data.model.IdeaCategory
+import com.brokenkernel.improvtools.suggestionGenerator.data.model.IdeaCategoryODS
+import com.brokenkernel.improvtools.suggestionGenerator.data.model.IdeaUIState
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel.SuggestionScreenViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -59,6 +62,7 @@ internal fun SuggestionsTab(
     onNavigateToEmotionsInfographic: () -> Unit,
     onNavigateToWord: (String) -> Unit,
     onLaunchTitleCallback: () -> Unit,
+    onNavigateToExplanation: (String, String) -> Unit,
     viewModel: SuggestionScreenViewModel = hiltViewModel(),
 ) {
     // TODO: consider making a BaseScreenComposable or some such
@@ -97,7 +101,7 @@ internal fun SuggestionsTab(
             ) {
                 // TODO: maybe this should live in viewModel instead of in composable
                 // TODO: should also be saved across edits and persisted?
-                var reorderedListOfSuggestions: List<IdeaCategory> by remember {
+                var reorderedListOfSuggestions: List<IdeaCategoryODS> by remember {
                     mutableStateOf(viewModel.internalCategoryDatum)
                 }
                 val lazyListState = rememberLazyListState()
@@ -118,71 +122,105 @@ internal fun SuggestionsTab(
                     modifier = Modifier
                         .fillMaxWidth(),
                 ) {
-                    items(reorderedListOfSuggestions, key = IdeaCategory::itemKey) { ideaCategory ->
-                        ReorderableItem(state = reorderableLazyListState, key = IdeaCategory::itemKey) { isDragging ->
+                    items(reorderedListOfSuggestions, key = IdeaCategoryODS::itemKey) { ideaCategory: IdeaCategoryODS ->
+                        ReorderableItem(
+                            state = reorderableLazyListState,
+                            key = IdeaCategoryODS::itemKey,
+                        ) { isDragging ->
                             val elevation by animateDpAsState(if (isDragging) 4.dp else 0.dp)
 
-                            val itemSuggestionState: State<String>? =
+                            val itemSuggestionState: State<IdeaUIState>? =
                                 viewModel.categoryDatumToSuggestion[ideaCategory]?.collectAsStateWithLifecycle()
-                            val currentWord = itemSuggestionState?.value.orEmpty()
-                            ListItem(
-                                shadowElevation = elevation,
-                                overlineContent = { Text(ideaCategory.titleWithCount()) },
-                                headlineContent = { Text(currentWord) },
-                                modifier = Modifier.clickable(
-                                    onClick = {
-                                        viewModel.updateSuggestionXFor(ideaCategory)
-                                    },
-                                ),
-                                trailingContent = {
-                                    Row(modifier = Modifier.weight(1f)) {
-                                        if (ideaCategory.showLinkToEmotion) {
-                                            IconButton(
-                                                onClick = {
-                                                    onNavigateToEmotionsInfographic()
-                                                },
-                                            ) {
-                                                Icon(
-                                                    Icons.Default.Info,
-                                                    contentDescription = stringResource(
+                            val currentIdea: IdeaUIState? = itemSuggestionState?.value
+                            // TODO: figure out a way to avoid the null entirely here
+                            if (currentIdea != null) {
+                                ListItem(
+                                    shadowElevation = elevation,
+                                    overlineContent = { Text(ideaCategory.titleWithCount()) },
+                                    headlineContent = { Text(currentIdea.idea) },
+                                    modifier = Modifier.clickable(
+                                        onClick = {
+                                            viewModel.updateSuggestionXFor(ideaCategory)
+                                        },
+                                    ),
+                                    trailingContent = {
+                                        Row(modifier = Modifier.weight(1f)) {
+                                            if (ideaCategory.showLinkToEmotion) {
+                                                SimpleTooltipWrapper(
+                                                    stringResource(
                                                         R.string.go_to_emotions_reference_screen,
                                                     ),
+                                                ) {
+                                                    IconButton(
+                                                        onClick = {
+                                                            onNavigateToEmotionsInfographic()
+                                                        },
+                                                    ) {
+                                                        Icon(
+                                                            Icons.Outlined.PsychologyAlt,
+                                                            contentDescription = stringResource(
+                                                                R.string.go_to_emotions_reference_screen,
+                                                            ),
+                                                        )
+                                                    }
+                                                }
+                                            }
+                                            if (currentIdea.explanation != null) {
+                                                SimpleTooltipWrapper(
+                                                    stringResource(R.string.explain_this_term),
+                                                ) {
+                                                    IconButton(
+                                                        onClick = {
+                                                            onNavigateToExplanation(
+                                                                currentIdea.idea,
+                                                                currentIdea.explanation,
+                                                            )
+                                                        },
+                                                    ) {
+                                                        Icon(
+                                                            // TODO: consider icon setting based on category
+                                                            Icons.Outlined.TheaterComedy,
+                                                            contentDescription = stringResource(
+                                                                R.string.explain_this_term,
+                                                            ),
+                                                        )
+                                                    }
+                                                }
+                                            }
+                                            // TODO: consider pop up menu instead of full screen
+                                            // TODO: none of the selected words are remembered across screens
+                                            val viewModel =
+                                                hiltViewModel<
+                                                    LoadableSingleWordThesaurusButtonViewModel,
+                                                    LoadableSingleWordThesaurusButtonViewModel.Factory,
+                                                    >(
+                                                    key = currentIdea.idea,
+                                                    creationCallback = { factory ->
+                                                        factory.create(currentIdea.idea)
+                                                    },
                                                 )
+                                            LoadableSingleWordThesaurusButton(
+                                                viewModel = viewModel,
+                                                onNavigateToWord = onNavigateToWord,
+                                                whenDisabledFullyHidden = true,
+                                            )
+                                            IconButton(
+                                                modifier = Modifier.longPressDraggableHandle(
+                                                    onDragStarted = {
+                                                        haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+                                                    },
+                                                    onDragStopped = {
+                                                        haptic.performHapticFeedback(HapticFeedbackType.GestureEnd)
+                                                    },
+                                                ),
+                                                onClick = {},
+                                            ) {
+                                                Icon(Icons.Rounded.DragHandle, contentDescription = "Reorder")
                                             }
                                         }
-                                        // TODO: consider pop up menu instead of full screen
-                                        // TODO: none of the selected words are remembered across screens
-                                        val viewModel =
-                                            hiltViewModel<
-                                                LoadableSingleWordThesaurusButtonViewModel,
-                                                LoadableSingleWordThesaurusButtonViewModel.Factory,
-                                                >(
-                                                key = currentWord,
-                                                creationCallback = { factory ->
-                                                    factory.create(currentWord)
-                                                },
-                                            )
-                                        LoadableSingleWordThesaurusButton(
-                                            viewModel = viewModel,
-                                            onNavigateToWord = onNavigateToWord,
-                                            whenDisabledFullyHidden = true,
-                                        )
-                                        IconButton(
-                                            modifier = Modifier.longPressDraggableHandle(
-                                                onDragStarted = {
-                                                    haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                                                },
-                                                onDragStopped = {
-                                                    haptic.performHapticFeedback(HapticFeedbackType.GestureEnd)
-                                                },
-                                            ),
-                                            onClick = {},
-                                        ) {
-                                            Icon(Icons.Rounded.DragHandle, contentDescription = "Reorder")
-                                        }
-                                    }
-                                },
-                            )
+                                    },
+                                )
+                            }
                         }
                     }
                 }

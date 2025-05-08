@@ -1,6 +1,6 @@
 package com.brokenkernel.improvtools.suggestionGenerator.data.repository
 
-import com.brokenkernel.improvtools.suggestionGenerator.data.model.IdeaCategory
+import com.brokenkernel.improvtools.suggestionGenerator.data.model.IdeaCategoryODS
 import javax.inject.Inject
 
 // TODO: settings, enable/disable specific sources
@@ -9,7 +9,7 @@ internal class MergedAudienceSuggestionDatumRepository @Inject constructor(
     private val resourcesAudienceSuggestionDatumRepository: ResourcesAudienceSuggestionDatumRepository,
     private val wordNetSuggestionDatumRepository: WordNetSuggestionDatumRepository,
 ) : AudienceSuggestionDatumRepository {
-    override fun getIdeaCategories(): List<IdeaCategory> {
+    override fun getIdeaCategories(): List<IdeaCategoryODS> {
         return wordNetSuggestionDatumRepository.getIdeaCategories() +
             resourcesAudienceSuggestionDatumRepository.getIdeaCategories() +
             thesaurusAudienceSuggestionDatumRepository.getIdeaCategories()

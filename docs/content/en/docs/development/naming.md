@@ -25,7 +25,7 @@ For data which needs to be serialised:
 1. `__DatumOnDiskStructure` — the data structure closest to that which will be read.
 1. `__DatumParsed` — the data in the form most useful for internal processing
 1. `___DatumTransformed` - the data in middle or final format
-1. `___DatumUI` — the data as presented to the UI. Should not be further transformed.
+1. `___DatumUIState` — the data as presented to the UI. Should not be further transformed.
 
 ## Naming Convention
 

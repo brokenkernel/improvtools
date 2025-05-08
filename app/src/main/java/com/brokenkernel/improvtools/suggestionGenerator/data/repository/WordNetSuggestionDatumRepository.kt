@@ -3,8 +3,8 @@ package com.brokenkernel.improvtools.suggestionGenerator.data.repository
 import android.content.Context
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.encyclopaedia.data.repository.ThesaurusRepository
-import com.brokenkernel.improvtools.suggestionGenerator.data.model.IdeaCategory
-import com.brokenkernel.improvtools.suggestionGenerator.data.model.IdeaItem
+import com.brokenkernel.improvtools.suggestionGenerator.data.model.IdeaCategoryODS
+import com.brokenkernel.improvtools.suggestionGenerator.data.model.IdeaItemODS
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import net.sf.extjwnl.data.IndexWord
@@ -15,7 +15,7 @@ internal class WordNetSuggestionDatumRepository @Inject constructor(
     @param:ApplicationContext private val context: Context,
     val thesaurusRepository: ThesaurusRepository,
 ) : AudienceSuggestionDatumRepository {
-    override fun getIdeaCategories(): List<IdeaCategory> {
+    override fun getIdeaCategories(): List<IdeaCategoryODS> {
         //
         val d: Dictionary? = thesaurusRepository.getEXTJWNLDictionary()
         if (d == null) {
@@ -26,28 +26,28 @@ internal class WordNetSuggestionDatumRepository @Inject constructor(
         val adjectiveList: List<IndexWord?> = d.getIndexWordIterator(POS.ADJECTIVE).asSequence().toList()
         val adverbList: List<IndexWord?> = d.getIndexWordIterator(POS.ADVERB).asSequence().toList()
         return listOf(
-            IdeaCategory(
+            IdeaCategoryODS(
                 title = context.getString(R.string.suggestions_noun),
                 showLinkToEmotion = false,
-                ideas = nounList.map { word -> IdeaItem(idea = word?.lemma.toString()) }.toSet(),
+                ideas = nounList.map { word -> IdeaItemODS(idea = word?.lemma.toString()) }.toSet(),
             ),
 
-            IdeaCategory(
+            IdeaCategoryODS(
                 title = context.getString(R.string.suggestions_verb),
                 showLinkToEmotion = false,
-                ideas = verbList.map { word -> IdeaItem(idea = word?.lemma.toString()) }.toSet(),
+                ideas = verbList.map { word -> IdeaItemODS(idea = word?.lemma.toString()) }.toSet(),
             ),
 
-            IdeaCategory(
+            IdeaCategoryODS(
                 title = context.getString(R.string.suggestions_adjective),
                 showLinkToEmotion = false,
-                ideas = adjectiveList.map { word -> IdeaItem(idea = word?.lemma.toString()) }.toSet(),
+                ideas = adjectiveList.map { word -> IdeaItemODS(idea = word?.lemma.toString()) }.toSet(),
             ),
 
-            IdeaCategory(
+            IdeaCategoryODS(
                 title = context.getString(R.string.suggestions_adverb),
                 showLinkToEmotion = false,
-                ideas = adverbList.map { word -> IdeaItem(idea = word?.lemma.toString()) }.toSet(),
+                ideas = adverbList.map { word -> IdeaItemODS(idea = word?.lemma.toString()) }.toSet(),
             ),
         )
     }

@@ -2,9 +2,10 @@ package com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.brokenkernel.improvtools.encyclopaedia.api.ThesaurusAPI
 import com.brokenkernel.improvtools.settings.data.repository.SettingsRepository
-import com.brokenkernel.improvtools.suggestionGenerator.data.model.IdeaCategory
+import com.brokenkernel.improvtools.suggestionGenerator.data.model.IdeaCategoryODS
+import com.brokenkernel.improvtools.suggestionGenerator.data.model.IdeaItemODS
+import com.brokenkernel.improvtools.suggestionGenerator.data.model.IdeaUIState
 import com.brokenkernel.improvtools.suggestionGenerator.data.repository.MergedAudienceSuggestionDatumRepository
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.uistate.SuggestionScreenUIState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -19,7 +20,6 @@ import kotlinx.coroutines.launch
 internal class SuggestionScreenViewModel @Inject constructor(
     suggestionDatumRepository: MergedAudienceSuggestionDatumRepository,
     private val settingsRepository: SettingsRepository,
-    thesaurusAPI: ThesaurusAPI,
 ) :
     ViewModel() {
     private val _uiState = MutableStateFlow(SuggestionScreenUIState.default())
@@ -27,10 +27,10 @@ internal class SuggestionScreenViewModel @Inject constructor(
     // TODO: figure out a nicer way to get suggestions from other places. I don't need everything in json, but some should be, and perhaps in the future local GenAI (hey: real use for it :-)
     // in the meantime, whatever. Also tests!
 
-    val internalCategoryDatum: List<IdeaCategory> = suggestionDatumRepository.getIdeaCategories()
-    val _categoryDatumToSuggestion: MutableMap<IdeaCategory, MutableStateFlow<String>> =
-        HashMap<IdeaCategory, MutableStateFlow<String>>()
-    val categoryDatumToSuggestion: Map<IdeaCategory, StateFlow<String>>
+    val internalCategoryDatum: List<IdeaCategoryODS> = suggestionDatumRepository.getIdeaCategories()
+    val _categoryDatumToSuggestion: MutableMap<IdeaCategoryODS, MutableStateFlow<IdeaUIState>> =
+        HashMap<IdeaCategoryODS, MutableStateFlow<IdeaUIState>>()
+    val categoryDatumToSuggestion: Map<IdeaCategoryODS, StateFlow<IdeaUIState>>
 
     init {
         viewModelScope.launch {
@@ -40,31 +40,28 @@ internal class SuggestionScreenViewModel @Inject constructor(
             }
         }
         internalCategoryDatum.forEach { item ->
-            _categoryDatumToSuggestion[item] = MutableStateFlow(item.ideas.random().idea)
+            val newIdea = item.ideas.random()
+            _categoryDatumToSuggestion[item] = MutableStateFlow(
+                IdeaUIState.fromStoredModel(newIdea),
+            )
         }
 
         categoryDatumToSuggestion = _categoryDatumToSuggestion.mapValues { x -> x.value.asStateFlow() }
     }
 
-    internal fun updateSuggestionXFor(ic: IdeaCategory) {
-        val legalNewWords: Set<String> = if (_uiState.value.shouldReuseSuggestions) {
-            ic.ideas.map { x -> x.idea }.toSet()
+    internal fun updateSuggestionXFor(ic: IdeaCategoryODS) {
+        val legalNewWords: Set<IdeaItemODS> = if (_uiState.value.shouldReuseSuggestions) {
+            ic.ideas.toSet()
         } else {
-            ic.ideas.map { x -> x.idea }.toSet() - _categoryDatumToSuggestion[ic]?.value.orEmpty()
+            ic.ideas.filter { it != _categoryDatumToSuggestion[ic]?.value }.toSet()
         }
 
-        _categoryDatumToSuggestion[ic]?.value = legalNewWords.random()
+        _categoryDatumToSuggestion[ic]?.value = IdeaUIState.fromStoredModel(legalNewWords.random())
     }
 
     internal fun resetAllCategories() {
         _categoryDatumToSuggestion.keys.forEach { k ->
             this.updateSuggestionXFor(k)
         }
-    }
-
-    private val possibleThesaurusWords = thesaurusAPI.getActionWords()
-
-    internal fun isWordInThesaurus(word: String): Boolean {
-        return possibleThesaurusWords.contains(word)
     }
 }
