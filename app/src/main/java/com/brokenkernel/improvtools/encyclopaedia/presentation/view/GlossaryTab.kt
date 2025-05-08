@@ -18,12 +18,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import com.brokenkernel.components.view.HtmlText
-import com.brokenkernel.components.view.TabbedSearchableColumn
+import com.brokenkernel.components.view.SearchableColumn
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.components.presentation.view.ExpandIcon
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GlossaryDataItem
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GlossaryDatum
-import com.brokenkernel.improvtools.encyclopaedia.data.model.GlossaryDatumTopic
 import kotlinx.collections.immutable.ImmutableMap
 import kotlinx.collections.immutable.toImmutableMap
 
@@ -43,16 +42,15 @@ internal fun GlossaryTab(onLaunchTitleCallback: () -> Unit) {
         onLaunchTitleCallback()
     }
 
-    // TODO: move into viewModel
+    // TODO: move into viewModel (or at least the repository)
     val sortedGlossaryItems: ImmutableMap<String, List<GlossaryDataItem>> = remember {
         GlossaryDatum.sortedBy { it.term }.groupBy { it.term[0].uppercase() }.toImmutableMap()
     }
 
-    TabbedSearchableColumn<GlossaryDatumTopic, GlossaryDataItem>(
+    SearchableColumn<GlossaryDataItem>(
         itemDoesMatch = ::doesMatch,
         itemList = sortedGlossaryItems,
         transformForSearch = ::transformForSearch,
-        itemToTopic = { it -> it.topic },
         itemToKey = { it -> it.term },
     ) { it: GlossaryDataItem ->
         var isListItemInformationExpanded: Boolean by remember {

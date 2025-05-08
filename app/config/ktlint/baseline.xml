@@ -32,7 +32,7 @@
         <error line="48" column="5" source="compose:lambda-param-in-effect" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/encyclopaedia/presentation/view/GlossaryTab.kt">
-        <error line="40" column="26" source="compose:lambda-param-in-effect" />
+        <error line="39" column="26" source="compose:lambda-param-in-effect" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/encyclopaedia/presentation/view/LoadableSingleWordThesaurusButton.kt">
         <error line="30" column="9" source="compose:vm-injection-check" />
@@ -59,8 +59,8 @@
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/suggestionGenerator/presentation/view/SuggestionsTab.kt">
         <error line="65" column="5" source="compose:lambda-param-in-effect" />
-        <error line="178" column="49" source="compose:vm-injection-check" />
-        <error line="188" column="45" source="compose:vm-forwarding-check" />
+        <error line="179" column="49" source="compose:vm-injection-check" />
+        <error line="189" column="45" source="compose:vm-forwarding-check" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/suggestionGenerator/presentation/viewmodel/SuggestionScreenViewModel.kt">
         <error line="25" column="17" source="standard:backing-property-naming" />
