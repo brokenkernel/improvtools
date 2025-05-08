@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <baseline version="1.0">
-    <file name="src/main/java/com/brokenkernel/improvtools/MainActivity.kt">
-        <error line="50" column="121" source="standard:max-line-length" />
-        <error line="51" column="121" source="standard:max-line-length" />
-    </file>
     <file name="src/main/java/com/brokenkernel/improvtools/application/data/model/ImprovToolsAppState.kt">
         <error line="99" column="14" source="compose:param-order-check" />
         <error line="102" column="16" source="compose:mutable-state-param-check" />
@@ -39,8 +35,5 @@
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/timer/presentation/viewmodel/StopWatchTimerState.kt">
         <error line="16" column="17" source="standard:backing-property-naming" />
-    </file>
-    <file name="src/main/java/com/brokenkernel/improvtools/timer/presentation/viewmodel/TimerListViewModel.kt">
-        <error line="68" column="120" source="standard:max-line-length" />
     </file>
 </baseline>

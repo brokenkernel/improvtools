@@ -47,8 +47,9 @@ class MainActivity : ComponentActivity() {
                     ShowTimerIntent -> NavigableScreens.TimerScreen
                     ShowEncyclopaediaIntent -> NavigableScreens.EmotionsPageScreen
                     Intent.ACTION_APPLICATION_PREFERENCES -> NavigableScreens.SettingsScreen
-                    Intent.ACTION_VIEW_PERMISSION_USAGE -> NavigableScreens.PrivacyScreen // consider a separate privacy page eventualyl
-                    Intent.ACTION_VIEW_PERMISSION_USAGE_FOR_PERIOD -> NavigableScreens.PrivacyScreen // consider a separate privacy page eventually
+                    // TODO: consider a separate privacy page
+                    Intent.ACTION_VIEW_PERMISSION_USAGE -> NavigableScreens.PrivacyScreen
+                    Intent.ACTION_VIEW_PERMISSION_USAGE_FOR_PERIOD -> NavigableScreens.PrivacyScreen
 //                    ShowNotificationPreferencesIntent -> NavigableRoute.SettingsRoute
                     else -> NavigableScreens.SuggestionGeneratorScreen
                 }

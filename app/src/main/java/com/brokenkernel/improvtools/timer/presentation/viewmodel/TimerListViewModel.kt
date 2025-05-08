@@ -65,7 +65,10 @@ internal class TimerListViewModel @Inject constructor(
         return StopWatchTimerState(initialTitle, stopWatchNotificationManager)
     }
 
-    fun createCountdownNotificationManager(initialTitle: MutableStateFlow<String>, initialTime: Duration): CountDownTimerState {
+    fun createCountdownNotificationManager(
+        initialTitle: MutableStateFlow<String>,
+        initialTime: Duration,
+    ): CountDownTimerState {
         return CountDownTimerState(
             initialTitle,
             initialTime,

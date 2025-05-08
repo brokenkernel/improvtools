@@ -22,7 +22,7 @@ internal data class PeopleDataItem(
     init {
         // sanity check/validation
         if (this.learnMoreLink != null) {
-            require(this.learnMoreLink.scheme == "https")
+            require(this.learnMoreLink.scheme == "https", { "require secure links for PeopleDataItem" })
         }
     }
 
