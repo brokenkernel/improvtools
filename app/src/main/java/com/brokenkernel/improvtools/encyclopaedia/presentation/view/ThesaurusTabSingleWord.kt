@@ -15,7 +15,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -29,14 +28,8 @@ import com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel.Thesaur
 internal fun ThesaurusTabSingleWord(
     viewModel: ThesaurusSingleItemViewModel,
     onNavigateBack: () -> Unit,
-    onLaunchTitleCallback: () -> Unit,
     @StringRes priorTitleResource: Int,
 ) {
-    // TODO: consider making a BaseScreenComposable or some such
-    LaunchedEffect(onLaunchTitleCallback) {
-        onLaunchTitleCallback()
-    }
-
     val scrollState: ScrollState = rememberScrollState()
 
     SelectionContainer {

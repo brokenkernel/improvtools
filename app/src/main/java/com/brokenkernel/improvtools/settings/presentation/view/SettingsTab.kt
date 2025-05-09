@@ -10,7 +10,6 @@ import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -23,12 +22,7 @@ import com.brokenkernel.improvtools.settings.presentation.viewmodel.SettingsScre
 import com.brokenkernel.improvtools.settings.utils.toTitleCase
 
 @Composable
-internal fun SettingsTab(viewModel: SettingsScreenViewModel = hiltViewModel(), onLaunchTitleCallback: () -> Unit) {
-    // TODO: consider making a BaseScreenComposable or some such
-    LaunchedEffect(onLaunchTitleCallback) {
-        onLaunchTitleCallback()
-    }
-
+internal fun SettingsTab(viewModel: SettingsScreenViewModel = hiltViewModel()) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     Column {

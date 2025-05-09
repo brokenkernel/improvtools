@@ -11,7 +11,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -25,12 +24,7 @@ import com.brokenkernel.improvtools.components.presentation.view.SimpleZoomableI
 import com.brokenkernel.improvtools.components.sidecar.preview.ImprovToolsAllPreviews
 
 @Composable
-internal fun EmotionTab(onLaunchTitleCallback: () -> Unit) {
-    // TODO: consider making a BaseScreenComposable or some such
-    LaunchedEffect(onLaunchTitleCallback) {
-        onLaunchTitleCallback()
-    }
-
+internal fun EmotionTab() {
     val columnScrollState = rememberScrollState()
 
     Column(
@@ -122,7 +116,5 @@ internal fun EmotionTab(onLaunchTitleCallback: () -> Unit) {
 @ImprovToolsAllPreviews
 @Composable
 internal fun EmotionTabPreview() {
-    EmotionTab(
-        onLaunchTitleCallback = { },
-    )
+    EmotionTab()
 }

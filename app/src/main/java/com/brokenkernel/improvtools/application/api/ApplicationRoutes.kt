@@ -6,41 +6,49 @@ import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import com.brokenkernel.improvtools.application.presentation.view.AboutTab
+import com.brokenkernel.improvtools.application.presentation.view.LaunchWrapper
 import com.brokenkernel.improvtools.application.presentation.view.LibrariesTab
 import com.brokenkernel.improvtools.application.presentation.view.PrivacyTab
 
 internal fun NavGraphBuilder.applicationRoutes(improvToolsAppState: ImprovToolsAppState) {
     composable<NavigableRoute.HelpAndAboutRoute> {
-        AboutTab(
-            onNavigateToPrivacyScreen = { improvToolsAppState.navigateTo(NavigableRoute.PrivacyRoute) },
-            onLaunchTitleCallback = {
+        LaunchWrapper(
+            onLaunchCallback = {
                 improvToolsAppState.setScaffoldData(
                     newTitle = NavigableScreens.HelpAndAboutScreen.titleResource,
                     newExtraMenu = null,
                 )
             },
-        )
+        ) {
+            AboutTab(
+                onNavigateToPrivacyScreen = { improvToolsAppState.navigateTo(NavigableRoute.PrivacyRoute) },
+            )
+        }
     }
 
     composable<NavigableRoute.PrivacyRoute> {
-        PrivacyTab(
-            onLaunchTitleCallback = {
+        LaunchWrapper(
+            onLaunchCallback = {
                 improvToolsAppState.setScaffoldData(
                     NavigableScreens.PrivacyScreen.titleResource,
                     newExtraMenu = null,
                 )
             },
-        )
+        ) {
+            PrivacyTab()
+        }
     }
 
     composable<NavigableRoute.LibrariesRoute> {
-        LibrariesTab(
-            onLaunchTitleCallback = {
+        LaunchWrapper(
+            onLaunchCallback = {
                 improvToolsAppState.setScaffoldData(
                     NavigableScreens.LibrariesScreen.titleResource,
                     newExtraMenu = null,
                 )
             },
-        )
+        ) {
+            LibrariesTab()
+        }
     }
 }

@@ -28,9 +28,7 @@ class PeopleTabTest {
     fun setupAppNavHost() {
         hiltRule.inject()
         composeTestRule.setContent {
-            PeopleTab(
-                onLaunchTitleCallback = { },
-            )
+            PeopleTab()
         }
     }
 

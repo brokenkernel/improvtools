@@ -30,7 +30,6 @@ import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.rememberCoroutineScope
@@ -58,14 +57,9 @@ import kotlinx.coroutines.launch
 
 @Composable
 internal fun AboutTab(
-    onLaunchTitleCallback: () -> Unit,
     viewModel: AboutTabViewModel = AboutTabViewModel(),
     onNavigateToPrivacyScreen: () -> Unit,
 ) {
-    // TODO: consider making a BaseScreenComposable or some such
-    LaunchedEffect(onLaunchTitleCallback) {
-        onLaunchTitleCallback()
-    }
     // move snackbar host state into app state. And then inject it?
     // also include more injected stuff (settings for ex) into debug datum
     val snackbarHostState = LocalSnackbarHostState.current

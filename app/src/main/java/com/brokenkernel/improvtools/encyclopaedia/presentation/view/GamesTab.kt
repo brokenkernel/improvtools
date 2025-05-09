@@ -45,14 +45,8 @@ private fun hasExpandableInformation(gdi: GamesDataItem): Boolean {
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 internal fun GamesTab(
-    onLaunchTitleCallback: () -> Unit,
     viewModel: GamesTabViewModel = GamesTabViewModel(),
 ) {
-    // TODO: consider making a BaseScreenComposable or some such
-    LaunchedEffect(onLaunchTitleCallback) {
-        onLaunchTitleCallback()
-    }
-
     val textFieldState = rememberTextFieldState()
     val currentTags = remember { mutableStateSetOf<GamesDatumTag>() }
     var isChipBarVisible by remember { mutableStateOf(false) }

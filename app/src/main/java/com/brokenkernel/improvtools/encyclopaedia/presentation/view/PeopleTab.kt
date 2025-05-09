@@ -14,7 +14,6 @@ import androidx.compose.material3.ListItem
 import androidx.compose.material3.OutlinedIconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -58,12 +57,7 @@ private fun hasExpandableInformation(pdi: PeopleDataItem): Boolean {
 }
 
 @Composable
-internal fun PeopleTab(onLaunchTitleCallback: () -> Unit) {
-    // TODO: consider making a BaseScreenComposable or some such
-    LaunchedEffect(onLaunchTitleCallback) {
-        onLaunchTitleCallback()
-    }
-
+internal fun PeopleTab() {
     val languageTag = Locale.current.toLanguageTag()
     val fullCollationTag = "$languageTag@collation=phonebook"
     val ulocale = ULocale(fullCollationTag)

@@ -28,9 +28,7 @@ class EmotionTabTest {
     fun setupAppNavHost() {
         hiltRule.inject()
         composeTestRule.setContent {
-            EmotionTab(
-                onLaunchTitleCallback = { },
-            )
+            EmotionTab()
         }
     }
 

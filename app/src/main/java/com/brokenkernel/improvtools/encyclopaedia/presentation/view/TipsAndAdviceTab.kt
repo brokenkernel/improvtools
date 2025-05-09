@@ -25,7 +25,6 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -159,13 +158,7 @@ internal fun TipsAndAdviceScreenAsList(viewModel: TipsAndAdviceViewModel = hiltV
 @Composable
 internal fun TipsAndAdviceTab(
     viewModel: TipsAndAdviceViewModel = hiltViewModel(),
-    onLaunchTitleCallback: () -> Unit,
 ) {
-    // TODO: consider making a BaseScreenComposable or some such
-    LaunchedEffect(onLaunchTitleCallback) {
-        onLaunchTitleCallback()
-    }
-
     val taaViewMode by viewModel.taaViewMode.collectAsStateWithLifecycle()
     when (taaViewMode) {
         TipsAndAdviceViewModeUI.SWIPEABLE -> TipsAndAdviceScreenAsSwipable()

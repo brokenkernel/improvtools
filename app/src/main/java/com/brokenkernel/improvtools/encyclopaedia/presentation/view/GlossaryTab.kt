@@ -9,7 +9,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -36,12 +35,7 @@ private fun doesMatch(search: String, item: GlossaryDataItem): Boolean {
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
-internal fun GlossaryTab(onLaunchTitleCallback: () -> Unit) {
-    // TODO: consider making a BaseScreenComposable or some such
-    LaunchedEffect(onLaunchTitleCallback) {
-        onLaunchTitleCallback()
-    }
-
+internal fun GlossaryTab() {
     // TODO: move into viewModel (or at least the repository)
     val sortedGlossaryItems: ImmutableMap<String, List<GlossaryDataItem>> = remember {
         GlossaryDatum.sortedBy { it.term }.groupBy { it.term[0].uppercase() }.toImmutableMap()

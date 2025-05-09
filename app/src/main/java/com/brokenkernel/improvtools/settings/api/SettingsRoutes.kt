@@ -5,17 +5,20 @@ import androidx.navigation.compose.composable
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
+import com.brokenkernel.improvtools.application.presentation.view.LaunchWrapper
 import com.brokenkernel.improvtools.settings.presentation.view.SettingsTab
 
 internal fun NavGraphBuilder.settingsRoutes(improvToolsAppState: ImprovToolsAppState) {
     composable<NavigableRoute.SettingsRoute> {
-        SettingsTab(
-            onLaunchTitleCallback = {
+        LaunchWrapper(
+            onLaunchCallback = {
                 improvToolsAppState.setScaffoldData(
                     newTitle = NavigableScreens.SettingsScreen.titleResource,
                     newExtraMenu = null,
                 )
             },
-        )
+        ) {
+            SettingsTab()
+        }
     }
 }

@@ -28,9 +28,7 @@ class PrivacyTabTest {
     fun setupAppNavHost() {
         hiltRule.inject()
         composeTestRule.setContent {
-            PrivacyTab(
-                onLaunchTitleCallback = { },
-            )
+            PrivacyTab()
         }
     }
 

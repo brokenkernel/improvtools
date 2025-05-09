@@ -8,7 +8,6 @@ import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.Clipboard
@@ -33,13 +32,7 @@ import kotlinx.coroutines.launch
 internal fun ThesaurusTabAllItems(
     improvToolsAppState: ImprovToolsAppState,
     viewModel: ThesaurusTabAllItemsViewModel = hiltViewModel(),
-    onLaunchTitleCallback: () -> Unit,
 ) {
-    // TODO: consider making a BaseScreenComposable or some such
-    LaunchedEffect(onLaunchTitleCallback) {
-        onLaunchTitleCallback()
-    }
-
     val context = LocalContext.current
     val clipboard: Clipboard = LocalClipboard.current
     val coroutineScope = rememberCoroutineScope()

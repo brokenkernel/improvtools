@@ -16,12 +16,12 @@
         <error line="30" column="9" source="compose:vm-injection-check" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/encyclopaedia/presentation/view/ThesaurusTabAllItems.kt">
-        <error line="87" column="21" source="compose:vm-injection-check" />
-        <error line="97" column="17" source="compose:vm-forwarding-check" />
+        <error line="80" column="21" source="compose:vm-injection-check" />
+        <error line="90" column="17" source="compose:vm-forwarding-check" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/suggestionGenerator/presentation/view/SuggestionsTab.kt">
-        <error line="183" column="49" source="compose:vm-injection-check" />
-        <error line="193" column="45" source="compose:vm-forwarding-check" />
+        <error line="176" column="49" source="compose:vm-injection-check" />
+        <error line="186" column="45" source="compose:vm-forwarding-check" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/suggestionGenerator/presentation/viewmodel/SuggestionScreenViewModel.kt">
         <error line="25" column="17" source="standard:backing-property-naming" />

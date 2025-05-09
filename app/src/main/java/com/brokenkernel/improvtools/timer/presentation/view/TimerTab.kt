@@ -15,7 +15,6 @@ import androidx.compose.material3.LargeFloatingActionButton
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberUpdatedState
@@ -155,12 +154,7 @@ internal fun SimpleStopWatchTimer(viewModel: StopWatchTimerState, onRemoveTimer:
 }
 
 @Composable
-internal fun TimerTab(viewModel: TimerListViewModel = hiltViewModel(), onLaunchTitleCallback: () -> Unit) {
-    // TODO: consider making a BaseScreenComposable or some such
-    LaunchedEffect(onLaunchTitleCallback) {
-        onLaunchTitleCallback()
-    }
-
+internal fun TimerTab(viewModel: TimerListViewModel = hiltViewModel()) {
     val haptic = LocalHapticFeedback.current
     val shouldHapticOnRemove = viewModel.shouldHaptic.collectAsStateWithLifecycle()
     val allTimers: State<MutableList<TimerInfo>> = viewModel.allTimers.collectAsStateWithLifecycle()

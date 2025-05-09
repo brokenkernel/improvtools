@@ -28,9 +28,7 @@ class GlossaryTabTest {
     fun setupAppNavHost() {
         hiltRule.inject()
         composeTestRule.setContent {
-            GlossaryTab(
-                onLaunchTitleCallback = { },
-            )
+            GlossaryTab()
         }
     }
 

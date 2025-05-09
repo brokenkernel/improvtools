@@ -9,6 +9,7 @@ import androidx.navigation.toRoute
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
+import com.brokenkernel.improvtools.application.presentation.view.LaunchWrapper
 import com.brokenkernel.improvtools.encyclopaedia.presentation.view.EmotionTab
 import com.brokenkernel.improvtools.encyclopaedia.presentation.view.GamesTab
 import com.brokenkernel.improvtools.encyclopaedia.presentation.view.GlossaryTab
@@ -21,8 +22,8 @@ import com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel.Thesaur
 
 internal fun NavGraphBuilder.encyclopaediaPageDestinations(improvToolsAppState: ImprovToolsAppState) {
     composable<NavigableRoute.TipsAndAdviceRoute> {
-        TipsAndAdviceTab(
-            onLaunchTitleCallback = {
+        LaunchWrapper(
+            onLaunchCallback = {
                 improvToolsAppState.setScaffoldData(
                     NavigableScreens.TipsAndAdviceScreen.titleResource,
                     newExtraMenu = null,
@@ -36,62 +37,75 @@ internal fun NavGraphBuilder.encyclopaediaPageDestinations(improvToolsAppState: 
                     )
                 }
             },
-        )
+        ) {
+            TipsAndAdviceTab()
+        }
     }
     composable<NavigableRoute.GamesPageRoute> {
-        GamesTab(
-            onLaunchTitleCallback = {
+        LaunchWrapper(
+            onLaunchCallback = {
                 improvToolsAppState.setScaffoldData(
                     NavigableScreens.GamesPageScreen.titleResource,
                     newExtraMenu = null,
                 )
             },
-        )
+        ) {
+            GamesTab()
+        }
     }
 
     composable<NavigableRoute.PeoplePageRoute> {
-        PeopleTab(
-            onLaunchTitleCallback = {
+        LaunchWrapper(
+            onLaunchCallback = {
                 improvToolsAppState.setScaffoldData(
                     NavigableScreens.PeoplePageScreen.titleResource,
                     newExtraMenu = null,
                 )
             },
-        )
+        ) {
+            PeopleTab()
+        }
     }
 
     composable<NavigableRoute.EmotionPageRoute> {
-        EmotionTab(
-            onLaunchTitleCallback = {
+        LaunchWrapper(
+            onLaunchCallback = {
                 improvToolsAppState.setScaffoldData(
                     NavigableScreens.EmotionsPageScreen.titleResource,
                     newExtraMenu = null,
                 )
             },
-        )
+        ) {
+            EmotionTab()
+        }
     }
 
     composable<NavigableRoute.GlossaryRoute> {
-        GlossaryTab(
-            onLaunchTitleCallback = {
+        LaunchWrapper(
+            onLaunchCallback = {
                 improvToolsAppState.setScaffoldData(
                     NavigableScreens.GlossaryPageScreen.titleResource,
                     newExtraMenu = null,
                 )
             },
-        )
+        ) {
+            GlossaryTab()
+        }
     }
 
     composable<NavigableRoute.ThesaurusPageRoute> {
-        ThesaurusTabAllItems(
-            improvToolsAppState = improvToolsAppState,
-            onLaunchTitleCallback = {
+        LaunchWrapper(
+            onLaunchCallback = {
                 improvToolsAppState.setScaffoldData(
                     NavigableScreens.ThesaurusPageScreen.titleResource,
                     newExtraMenu = null,
                 )
             },
-        )
+        ) {
+            ThesaurusTabAllItems(
+                improvToolsAppState = improvToolsAppState,
+            )
+        }
     }
 
     composable<NavigableRoute.ThesaurusWordRoute> { backStackEntry ->
@@ -105,16 +119,19 @@ internal fun NavGraphBuilder.encyclopaediaPageDestinations(improvToolsAppState: 
             },
         )
 
-        ThesaurusTabSingleWord(
-            viewModel = viewModel,
-            onNavigateBack = { improvToolsAppState.navigateBack() },
-            onLaunchTitleCallback = {
+        LaunchWrapper(
+            onLaunchCallback = {
                 improvToolsAppState.setScaffoldData(
                     NavigableScreens.ThesaurusPageScreen.titleResource,
                     newExtraMenu = null,
                 )
             },
-            priorTitleResource = priorTitleResource,
-        )
+        ) {
+            ThesaurusTabSingleWord(
+                viewModel = viewModel,
+                onNavigateBack = { improvToolsAppState.navigateBack() },
+                priorTitleResource = priorTitleResource,
+            )
+        }
     }
 }

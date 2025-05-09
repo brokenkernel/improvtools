@@ -26,7 +26,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -65,15 +64,9 @@ import sh.calvin.reorderable.rememberReorderableLazyListState
 internal fun SuggestionsTab(
     onNavigateToEmotionsInfographic: () -> Unit,
     onNavigateToWord: (String) -> Unit,
-    onLaunchTitleCallback: () -> Unit,
     onNavigateToExplanation: (String, String) -> Unit,
     viewModel: SuggestionScreenViewModel = hiltViewModel(),
 ) {
-    // TODO: consider making a BaseScreenComposable or some such
-    LaunchedEffect(onLaunchTitleCallback) {
-        onLaunchTitleCallback()
-    }
-
     val state = rememberPullToRefreshState()
     var isRefreshing by rememberSaveable { mutableStateOf(false) }
     val coroutineScope = rememberCoroutineScope()

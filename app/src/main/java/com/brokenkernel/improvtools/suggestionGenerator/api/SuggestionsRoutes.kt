@@ -5,6 +5,7 @@ import androidx.navigation.compose.composable
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.application.data.model.NavigableRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
+import com.brokenkernel.improvtools.application.presentation.view.LaunchWrapper
 import com.brokenkernel.improvtools.encyclopaedia.EncyclopaediaSectionNavigation
 import com.brokenkernel.improvtools.settings.presentation.view.SuggestionsTabMenu
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.view.ExplanationBottomSheetTab
@@ -12,14 +13,8 @@ import com.brokenkernel.improvtools.suggestionGenerator.presentation.view.Sugges
 
 internal fun NavGraphBuilder.suggestionsRoutes(improvToolsAppState: ImprovToolsAppState) {
     composable<NavigableRoute.SuggestionGeneratorRoute> {
-        SuggestionsTab(
-            onNavigateToEmotionsInfographic = {
-                improvToolsAppState.navigateTo(NavigableRoute.EmotionPageRoute)
-            },
-            onNavigateToWord = {
-                EncyclopaediaSectionNavigation.navigateToThesaurusWord(improvToolsAppState, it)
-            },
-            onLaunchTitleCallback = {
+        LaunchWrapper(
+            onLaunchCallback = {
                 improvToolsAppState.setScaffoldData(
                     newTitle = NavigableScreens.SuggestionGeneratorScreen.titleResource,
                     newExtraMenu = {
@@ -33,11 +28,20 @@ internal fun NavGraphBuilder.suggestionsRoutes(improvToolsAppState: ImprovToolsA
                     },
                 )
             },
-            onNavigateToExplanation = { word: String, explanation: String ->
-                improvToolsAppState.setBottomSheetTo {
-                    ExplanationBottomSheetTab(word, explanation)
-                }
-            },
-        )
+        ) {
+            SuggestionsTab(
+                onNavigateToEmotionsInfographic = {
+                    improvToolsAppState.navigateTo(NavigableRoute.EmotionPageRoute)
+                },
+                onNavigateToWord = {
+                    EncyclopaediaSectionNavigation.navigateToThesaurusWord(improvToolsAppState, it)
+                },
+                onNavigateToExplanation = { word: String, explanation: String ->
+                    improvToolsAppState.setBottomSheetTo {
+                        ExplanationBottomSheetTab(word, explanation)
+                    }
+                },
+            )
+        }
     }
 }

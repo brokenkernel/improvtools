@@ -28,9 +28,7 @@ class LibrariesTabTest {
     fun setupAppNavHost() {
         hiltRule.inject()
         composeTestRule.setContent {
-            LibrariesTab(
-                onLaunchTitleCallback = { },
-            )
+            LibrariesTab()
         }
     }
 
