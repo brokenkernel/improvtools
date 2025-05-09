@@ -15,6 +15,7 @@ appsearchCompiler = "1.1.0-beta01"
 appsearchLocalStorage = "1.1.0-beta01"
 browser = "1.8.0"
 composeBom = "2025.05.00"
+composeDestinations = "2.2.0"
 composeUI = "1.8.1"
 config = "1.4.1"
 core = "1.6.1"
@@ -201,6 +202,9 @@ hamcrest-library = { module = "org.hamcrest:hamcrest-library", version.ref = "ha
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt-android-testing = { module = "com.google.dagger:hilt-android-testing", version.ref = "hilt" }
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
+io-github-raamcosta-composeDestinations-bottomSheet = { module = "io.github.raamcosta.compose-destinations:bottom-sheet", version.ref = "composeDestinations" }
+io-github-raamcosta-composeDestinations-core = { module = "io.github.raamcosta.compose-destinations:core", version.ref = "composeDestinations" }
+io-github-raamcosta-composeDestinations-ksp = { module = "io.github.raamcosta.compose-destinations:ksp", version.ref = "composeDestinations" }
 jakarta-inject-api = { module = "jakarta.inject:jakarta.inject-api", version.ref = "jakartaInjectApi" }
 javax-inject = { module = "javax.inject:javax.inject", version.ref = "javaxInject" }
 junit = { module = "junit:junit", version.ref = "junit" }

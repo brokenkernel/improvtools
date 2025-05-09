@@ -21,9 +21,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
-import com.brokenkernel.improvtools.application.data.model.ImprovToolsNavigationGraph
-import com.brokenkernel.improvtools.application.data.model.NavigableRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
+import com.ramcosta.composedestinations.DestinationsNavHost
+import com.ramcosta.composedestinations.generated.navgraphs.ImprovToolsNavigationNavGraph
+import com.ramcosta.composedestinations.navigation.dependency
+import com.ramcosta.composedestinations.spec.DirectionDestinationSpec
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -53,7 +55,7 @@ private fun NavigableScreenNavigationDrawerItem(
 internal fun ImprovToolsNavigationDrawer(
     improvToolsAppState: ImprovToolsAppState,
     drawerState: DrawerState,
-    initialRoute: NavigableRoute,
+    initialRoute: DirectionDestinationSpec,
 ) {
     val scope: CoroutineScope = rememberCoroutineScope()
 
@@ -155,7 +157,7 @@ internal fun ImprovToolsNavigationDrawer(
                     )
                     NavigableScreenNavigationDrawerItem(
                         improvToolsAppState,
-                        NavigableScreens.HelpAndAboutScreen,
+                        NavigableScreens.AboutScreen,
                         ::closeNavMenu,
                     )
                     Spacer(Modifier.height(12.dp))
@@ -185,10 +187,13 @@ internal fun ImprovToolsNavigationDrawer(
                 invertNavMenuState()
             },
         ) {
-            // TODO: replace with event system instead of passing controller??
-            ImprovToolsNavigationGraph(
-                improvToolsAppState,
-                initialRoute = initialRoute,
+            DestinationsNavHost(
+                navGraph = ImprovToolsNavigationNavGraph,
+                navController = improvToolsAppState.navController,
+                dependenciesContainerBuilder = {
+                    dependency(improvToolsAppState)
+                },
+                start = initialRoute,
             )
         }
     }

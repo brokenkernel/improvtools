@@ -51,14 +51,19 @@ import com.brokenkernel.components.view.HtmlText
 import com.brokenkernel.improvtools.BuildConfig
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.presentation.api.LocalSnackbarHostState
-import com.brokenkernel.improvtools.application.utils.AboutTabViewModel
 import com.brokenkernel.improvtools.components.presentation.view.ExpandIcon
+import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.generated.destinations.PrivacyTabDestination
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kotlinx.coroutines.launch
 
+@Destination<ImprovToolsNavigationGraph>(
+    wrappers = [ SetScaffoldStateWrapper::class ],
+)
 @Composable
 internal fun AboutTab(
-    viewModel: AboutTabViewModel = AboutTabViewModel(),
-    onNavigateToPrivacyScreen: () -> Unit,
+    navigator: DestinationsNavigator,
 ) {
     // move snackbar host state into app state. And then inject it?
     // also include more injected stuff (settings for ex) into debug datum
@@ -248,7 +253,9 @@ internal fun AboutTab(
                         }
                     }
                     TextButton(
-                        onClick = onNavigateToPrivacyScreen,
+                        onClick = {
+                            navigator.navigate(PrivacyTabDestination)
+                        },
                     ) {
                         Text(stringResource(R.string.about_show_privacy_screen))
                     }

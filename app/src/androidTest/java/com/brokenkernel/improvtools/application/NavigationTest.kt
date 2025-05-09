@@ -12,12 +12,14 @@ import androidx.navigation.compose.ComposeNavigator
 import androidx.navigation.testing.TestNavHostController
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import com.brokenkernel.improvtools.R
-import com.brokenkernel.improvtools.application.data.model.ImprovToolsNavigationGraph
-import com.brokenkernel.improvtools.application.data.model.NavigableRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import com.brokenkernel.improvtools.application.data.model.rememberImprovToolsAppState
+import com.brokenkernel.improvtools.application.presentation.view.OuterContentForMasterScreen
 import com.brokenkernel.improvtools.infrastructure.HiltComponentActitivity
 import com.brokenkernel.improvtools.infrastructure.onNodeWithStringId
+import com.ramcosta.composedestinations.DestinationsNavHost
+import com.ramcosta.composedestinations.generated.destinations.SuggestionsTabDestination
+import com.ramcosta.composedestinations.generated.navgraphs.ImprovToolsNavigationNavGraph
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Before
@@ -45,16 +47,16 @@ class NavigationTest {
                 navigatorProvider.addNavigator(ComposeNavigator())
             }
             val titleState = remember { mutableStateOf(NavigableScreens.SuggestionGeneratorScreen.titleResource) }
-            ImprovToolsNavigationGraph(
-                improvToolsAppState = rememberImprovToolsAppState(titleState = titleState),
-                initialRoute = NavigableRoute.SuggestionGeneratorRoute, // TODO - deal with app state
+            val improvToolsState = rememberImprovToolsAppState(titleState = titleState)
+            OuterContentForMasterScreen(
+                improvToolsState = improvToolsState,
+                initialRoute = SuggestionsTabDestination
             )
         }
     }
 
     @Test
     fun testStartScreenIsSuggestions() {
-//        navController.assertCurrentNavigableRoute(NavigableRoute.SuggestionGeneratorRoute)
         composeTestRule.onNodeWithTag("OutermostContentForSuggestionsScreen").assertIsDisplayed()
     }
 
@@ -71,8 +73,4 @@ class NavigationTest {
             .onNodeWithStringId(R.string.suggestions_reset_all)
             .assertIsDisplayed()
     }
-
-    // todo: test drawer is closed??
-    // todo: perform gesture swipe. Drawer
-    // TODO: back button,up button, drawer moving? Consider what I actually want my high level navigation to be
 }

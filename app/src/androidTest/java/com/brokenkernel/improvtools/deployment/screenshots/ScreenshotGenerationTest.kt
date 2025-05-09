@@ -9,11 +9,11 @@ import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.performClick
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
 import com.brokenkernel.improvtools.R
-import com.brokenkernel.improvtools.application.data.model.NavigableRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import com.brokenkernel.improvtools.application.data.model.rememberImprovToolsAppState
 import com.brokenkernel.improvtools.application.presentation.view.OuterContentForMasterScreen
 import com.brokenkernel.improvtools.infrastructure.HiltComponentActitivity
+import com.ramcosta.composedestinations.generated.destinations.SuggestionsTabDestination
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.AfterClass
@@ -48,7 +48,7 @@ sealed class BaseScreenshotGenerationTest {
         composeTestRule.setContent {
             val titleState = remember { mutableStateOf(NavigableScreens.SuggestionGeneratorScreen.titleResource) }
             val improvToolsState = rememberImprovToolsAppState(titleState = titleState)
-            OuterContentForMasterScreen(improvToolsState, NavigableRoute.SuggestionGeneratorRoute)
+            OuterContentForMasterScreen(improvToolsState, SuggestionsTabDestination)
         }
         composeTestRule.waitForIdle()
     }

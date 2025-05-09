@@ -26,10 +26,13 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.intl.Locale
 import com.brokenkernel.components.view.TabbedSearchableColumn
 import com.brokenkernel.improvtools.R
+import com.brokenkernel.improvtools.application.presentation.view.SetScaffoldStateWrapper
 import com.brokenkernel.improvtools.components.presentation.view.ExpandIcon
+import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
 import com.brokenkernel.improvtools.encyclopaedia.data.model.PeopleDataItem
 import com.brokenkernel.improvtools.encyclopaedia.data.model.PeopleDatum
 import com.brokenkernel.improvtools.encyclopaedia.data.model.PeopleDatumTopic
+import com.ramcosta.composedestinations.annotation.Destination
 import java.text.StringCharacterIterator
 import kotlinx.collections.immutable.toImmutableMap
 
@@ -56,6 +59,9 @@ private fun hasExpandableInformation(pdi: PeopleDataItem): Boolean {
     return pdi.detailedInformation != null
 }
 
+@Destination<ImprovToolsNavigationGraph>(
+    wrappers = [ SetScaffoldStateWrapper::class ],
+)
 @Composable
 internal fun PeopleTab() {
     val languageTag = Locale.current.toLanguageTag()

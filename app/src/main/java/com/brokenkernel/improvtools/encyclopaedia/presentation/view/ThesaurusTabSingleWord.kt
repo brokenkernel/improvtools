@@ -19,15 +19,24 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.brokenkernel.components.view.HtmlText
 import com.brokenkernel.improvtools.R
+import com.brokenkernel.improvtools.application.presentation.view.SetScaffoldStateWrapper
 import com.brokenkernel.improvtools.application.presentation.view.verticalColumnScrollbar
+import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
 import com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel.ThesaurusSingleItemViewModel
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
+@Destination<ImprovToolsNavigationGraph>(
+    wrappers = [ SetScaffoldStateWrapper::class ],
+)
 @Composable
 internal fun ThesaurusTabSingleWord(
-    viewModel: ThesaurusSingleItemViewModel,
-    onNavigateBack: () -> Unit,
+    word: String,
+    viewModel: ThesaurusSingleItemViewModel = hiltViewModel(),
+    navigator: DestinationsNavigator,
     @StringRes priorTitleResource: Int,
 ) {
     val scrollState: ScrollState = rememberScrollState()
@@ -43,27 +52,25 @@ internal fun ThesaurusTabSingleWord(
                 modifier = Modifier.fillMaxWidth(),
             ) {
                 Text(
-                    viewModel.word,
+                    word,
                     style = MaterialTheme.typography.titleLarge,
                     textAlign = TextAlign.Center,
                 )
             }
-            if (viewModel.shouldShowActionSynonyms()) {
+            if (viewModel.shouldShowActionSynonyms(word)) {
                 HtmlText(stringResource(R.string.encyclopaedia_action_synonyms))
-                HtmlText(viewModel.renderedActionSynonyms())
+                HtmlText(viewModel.renderedActionSynonyms(word))
             }
-            val wordSenseRenderedString = viewModel.renderedWordSenses()
+            val wordSenseRenderedString = viewModel.renderedWordSenses(word)
             if (wordSenseRenderedString != null) {
                 HtmlText(stringResource(R.string.encyclopaedia_word_senses))
                 HtmlText(wordSenseRenderedString)
             }
             ExtendedFloatingActionButton(
-                onClick = {
-                    onNavigateBack()
-                },
+                onClick = navigator::popBackStack,
             ) {
-                val backtoText =
-                    stringResource(R.string.navigation_back_to_thesaurus, stringResource(priorTitleResource))
+                val backtoText = "TEMP back to"
+//                    stringResource(R.string.navigation_back_to_thesaurus, stringResource(priorTitleResource))
                 Icon(
                     Icons.AutoMirrored.Default.ArrowBack,
                     contentDescription = backtoText,

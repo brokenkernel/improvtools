@@ -17,10 +17,16 @@ import androidx.compose.ui.semantics.Role
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.brokenkernel.improvtools.R
+import com.brokenkernel.improvtools.application.presentation.view.SetScaffoldStateWrapper
+import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
 import com.brokenkernel.improvtools.encyclopaedia.data.model.TipsAndAdviceViewModeUI
 import com.brokenkernel.improvtools.settings.presentation.viewmodel.SettingsScreenViewModel
 import com.brokenkernel.improvtools.settings.utils.toTitleCase
+import com.ramcosta.composedestinations.annotation.Destination
 
+@Destination<ImprovToolsNavigationGraph>(
+    wrappers = [SetScaffoldStateWrapper::class],
+)
 @Composable
 internal fun SettingsTab(viewModel: SettingsScreenViewModel = hiltViewModel()) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()

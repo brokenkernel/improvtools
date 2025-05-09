@@ -23,11 +23,17 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.brokenkernel.components.view.SearchableColumn
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
+import com.brokenkernel.improvtools.application.presentation.view.SetScaffoldStateWrapper
+import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
 import com.brokenkernel.improvtools.encyclopaedia.EncyclopaediaSectionNavigation
 import com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel.LoadableSingleWordThesaurusButtonViewModel
 import com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel.ThesaurusTabAllItemsViewModel
+import com.ramcosta.composedestinations.annotation.Destination
 import kotlinx.coroutines.launch
 
+@Destination<ImprovToolsNavigationGraph>(
+    wrappers = [ SetScaffoldStateWrapper::class ],
+)
 @Composable
 internal fun ThesaurusTabAllItems(
     improvToolsAppState: ImprovToolsAppState,

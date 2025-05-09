@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <baseline version="1.0">
     <file name="src/main/java/com/brokenkernel/improvtools/application/data/model/ImprovToolsAppState.kt">
-        <error line="99" column="14" source="compose:param-order-check" />
-        <error line="102" column="16" source="compose:mutable-state-param-check" />
+        <error line="75" column="14" source="compose:param-order-check" />
+        <error line="78" column="16" source="compose:mutable-state-param-check" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/application/presentation/api/LocalComposables.kt">
         <error line="16" column="14" source="compose:compositionlocal-allowlist" />
@@ -16,12 +16,15 @@
         <error line="30" column="9" source="compose:vm-injection-check" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/encyclopaedia/presentation/view/ThesaurusTabAllItems.kt">
-        <error line="80" column="21" source="compose:vm-injection-check" />
-        <error line="90" column="17" source="compose:vm-forwarding-check" />
+        <error line="86" column="21" source="compose:vm-injection-check" />
+        <error line="96" column="17" source="compose:vm-forwarding-check" />
+    </file>
+    <file name="src/main/java/com/brokenkernel/improvtools/encyclopaedia/presentation/view/ThesaurusTabSingleWord.kt">
+        <error line="35" column="14" source="compose:param-order-check" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/suggestionGenerator/presentation/view/SuggestionsTab.kt">
-        <error line="176" column="49" source="compose:vm-injection-check" />
-        <error line="186" column="45" source="compose:vm-forwarding-check" />
+        <error line="188" column="49" source="compose:vm-injection-check" />
+        <error line="198" column="45" source="compose:vm-forwarding-check" />
     </file>
     <file name="src/main/java/com/brokenkernel/improvtools/suggestionGenerator/presentation/viewmodel/SuggestionScreenViewModel.kt">
         <error line="25" column="17" source="standard:backing-property-naming" />

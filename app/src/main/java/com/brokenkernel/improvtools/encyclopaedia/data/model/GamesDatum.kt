@@ -7,7 +7,7 @@ import androidx.compose.material.icons.outlined.Games
 import androidx.compose.material.icons.outlined.SelfImprovement
 import androidx.compose.ui.graphics.vector.ImageVector
 
-internal enum class GamesDatumTag(val label: String, val description: String? = null) {
+enum class GamesDatumTag(val label: String, val description: String? = null) {
     // TODO: i18n
     DIVERGENCE("#divergence", """Exercises that help you come up with new ideas"""),
     CONVERGENCE("#convergence", """Exercises that help the group get on the same wavelength"""),

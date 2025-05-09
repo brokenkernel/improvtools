@@ -46,11 +46,18 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.brokenkernel.components.view.SimpleIconButton
 import com.brokenkernel.components.view.SimpleTooltipWrapper
 import com.brokenkernel.improvtools.R
+import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
+import com.brokenkernel.improvtools.application.presentation.view.SetScaffoldStateWrapper
+import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
 import com.brokenkernel.improvtools.encyclopaedia.presentation.view.LoadableSingleWordThesaurusButton
 import com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel.LoadableSingleWordThesaurusButtonViewModel
 import com.brokenkernel.improvtools.suggestionGenerator.data.model.IdeaCategoryODS
 import com.brokenkernel.improvtools.suggestionGenerator.data.model.IdeaUIState
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel.SuggestionScreenViewModel
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.generated.destinations.EmotionTabDestination
+import com.ramcosta.composedestinations.generated.destinations.ThesaurusTabSingleWordDestination
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import sh.calvin.reorderable.ReorderableItem
@@ -60,13 +67,17 @@ import sh.calvin.reorderable.rememberReorderableLazyListState
 // TODO: maybe add single suggestion screen
 
 @OptIn(ExperimentalMaterial3Api::class)
+@Destination<ImprovToolsNavigationGraph>(
+    start = true,
+    wrappers = [SetScaffoldStateWrapper::class],
+)
 @Composable
 internal fun SuggestionsTab(
-    onNavigateToEmotionsInfographic: () -> Unit,
-    onNavigateToWord: (String) -> Unit,
-    onNavigateToExplanation: (String, String) -> Unit,
+    navigator: DestinationsNavigator,
+    improvToolsAppState: ImprovToolsAppState,
     viewModel: SuggestionScreenViewModel = hiltViewModel(),
 ) {
+    val onNavigateToExplanation: (String, String) -> Unit = { a, b -> }
     val state = rememberPullToRefreshState()
     var isRefreshing by rememberSaveable { mutableStateOf(false) }
     val coroutineScope = rememberCoroutineScope()
@@ -145,7 +156,9 @@ internal fun SuggestionsTab(
                                         Row(modifier = Modifier.weight(1f)) {
                                             if (ideaCategory.showLinkToEmotion) {
                                                 SimpleIconButton(
-                                                    onClick = onNavigateToEmotionsInfographic,
+                                                    onClick = {
+                                                        navigator.navigate(EmotionTabDestination)
+                                                    },
                                                     icon = Icons.Outlined.PsychologyAlt,
                                                     contentDescription = stringResource(
                                                         R.string.go_to_emotions_reference_screen,
@@ -158,6 +171,7 @@ internal fun SuggestionsTab(
                                                 ) {
                                                     SimpleIconButton(
                                                         onClick = {
+                                                            // TODO: broken after migration to destination compose
                                                             onNavigateToExplanation(
                                                                 currentIdea.idea,
                                                                 currentIdea.explanation,
@@ -185,7 +199,11 @@ internal fun SuggestionsTab(
                                                 )
                                             LoadableSingleWordThesaurusButton(
                                                 viewModel = viewModel,
-                                                onNavigateToWord = onNavigateToWord,
+                                                onNavigateToWord = {
+                                                    navigator.navigate(
+                                                        ThesaurusTabSingleWordDestination(currentIdea.idea, improvToolsAppState.currentTitle.value),
+                                                    )
+                                                },
                                                 whenDisabledFullyHidden = true,
                                             )
                                             IconButton(

@@ -19,10 +19,16 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.brokenkernel.components.view.HtmlText
 import com.brokenkernel.improvtools.R
+import com.brokenkernel.improvtools.application.presentation.view.SetScaffoldStateWrapper
 import com.brokenkernel.improvtools.application.presentation.view.verticalColumnScrollbar
 import com.brokenkernel.improvtools.components.presentation.view.SimpleZoomableImage
+import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
 import com.brokenkernel.improvtools.components.sidecar.preview.ImprovToolsAllPreviews
+import com.ramcosta.composedestinations.annotation.Destination
 
+@Destination<ImprovToolsNavigationGraph>(
+    wrappers = [ SetScaffoldStateWrapper::class ],
+)
 @Composable
 internal fun EmotionTab() {
     val columnScrollState = rememberScrollState()

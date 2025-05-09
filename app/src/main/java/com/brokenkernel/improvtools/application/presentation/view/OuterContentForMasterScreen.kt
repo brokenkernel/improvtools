@@ -3,13 +3,13 @@ package com.brokenkernel.improvtools.application.presentation.view
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
-import com.brokenkernel.improvtools.application.data.model.NavigableRoute
 import com.brokenkernel.improvtools.ui.theme.ImprovToolsTheme
+import com.ramcosta.composedestinations.spec.DirectionDestinationSpec
 
 @Composable
 internal fun OuterContentForMasterScreen(
     improvToolsState: ImprovToolsAppState,
-    initialRoute: NavigableRoute,
+    initialRoute: DirectionDestinationSpec,
 ) {
     ImprovToolsTheme {
         Surface {

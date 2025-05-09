@@ -270,6 +270,8 @@ dependencies {
     implementation(libs.google.dagger)
     implementation(libs.guava)
     implementation(libs.hilt.android)
+    implementation(libs.io.github.raamcosta.composeDestinations.bottomSheet)
+    implementation(libs.io.github.raamcosta.composeDestinations.core)
     implementation(libs.jakarta.inject.api)
     implementation(libs.javax.inject)
     implementation(libs.kotlin.stdlib)
@@ -333,6 +335,7 @@ dependencies {
     // See Add the KSP plugin to your project
     ksp(libs.androidx.room.compiler)
     ksp(libs.hilt.compiler)
+    ksp(libs.io.github.raamcosta.composeDestinations.ksp)
 
     ktlintRuleset(libs.ktlintCompose)
 
@@ -362,7 +365,7 @@ kotlin {
         }
     }
     compilerOptions {
-        allWarningsAsErrors = true
+//        allWarningsAsErrors = true // TODO: disabled because of compose destinations
         extraWarnings = true
         progressiveMode = true
 //        https://kotlinlang.org/docs/whatsnew-eap.html#gradle
@@ -481,6 +484,8 @@ ksp {
     arg("dagger.experimentalDaggerErrorMessages", "enabled")
     arg("dagger.warnIfInjectionFactoryNotGeneratedUpstream", "enabled")
     arg("dagger.fullBindingGraphValidation", "error")
+
+    arg("compose-destinations.mermaidGraph", "$rootDir/docs/static/")
 }
 
 fun isStable(version: String): Boolean {

@@ -25,13 +25,16 @@ import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.brokenkernel.improvtools.R
+import com.brokenkernel.improvtools.application.presentation.view.SetScaffoldStateWrapper
 import com.brokenkernel.improvtools.components.presentation.view.OneWayDismissableContent
+import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
 import com.brokenkernel.improvtools.timer.data.model.TimerInfo
 import com.brokenkernel.improvtools.timer.data.model.TimerState
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.CountDownTimerState
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.INITIAL_TIMER_DURATION
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.StopWatchTimerState
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.TimerListViewModel
+import com.ramcosta.composedestinations.annotation.Destination
 import kotlin.collections.toList
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.minutes
@@ -46,6 +49,7 @@ private const val TAG = "TimerScreen"
 // TODO: adding timer stops/resets existing timers. See also: state storage is broken.
 // TODO: possibly add Timer Edit Button (for future editing time, etc. Also clearer UX than clicking on title to edit title)
 
+// TODO: title: https://composedestinations.rafaelcosta.xyz/v2/destination-wrappers
 @Composable
 internal fun SimpleCountDownTimer(
     viewModel: CountDownTimerState,
@@ -153,6 +157,9 @@ internal fun SimpleStopWatchTimer(viewModel: StopWatchTimerState, onRemoveTimer:
     )
 }
 
+@Destination<ImprovToolsNavigationGraph>(
+    wrappers = [ SetScaffoldStateWrapper::class ],
+)
 @Composable
 internal fun TimerTab(viewModel: TimerListViewModel = hiltViewModel()) {
     val haptic = LocalHapticFeedback.current

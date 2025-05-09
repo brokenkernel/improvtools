@@ -11,11 +11,12 @@ import androidx.compose.ui.test.onNodeWithTag
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
-import com.brokenkernel.improvtools.application.data.model.NavigableRoute
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import com.brokenkernel.improvtools.application.data.model.rememberImprovToolsAppState
 import com.brokenkernel.improvtools.application.presentation.view.OuterContentForMasterScreen
 import com.brokenkernel.improvtools.infrastructure.HiltComponentActitivity
+import com.ramcosta.composedestinations.generated.destinations.GamesTabDestination
+import com.ramcosta.composedestinations.generated.destinations.SuggestionsTabDestination
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Before
@@ -32,7 +33,6 @@ class ApplicationTitleTest {
     val composeTestRule:
         AndroidComposeTestRule<ActivityScenarioRule<HiltComponentActitivity>, HiltComponentActitivity> =
         createAndroidComposeRule<HiltComponentActitivity>()
-
     private lateinit var improvToolsState: ImprovToolsAppState
 
     @Before
@@ -42,7 +42,7 @@ class ApplicationTitleTest {
             val titleState = remember { mutableStateOf(NavigableScreens.SuggestionGeneratorScreen.titleResource) }
 
             improvToolsState = rememberImprovToolsAppState(titleState = titleState)
-            OuterContentForMasterScreen(improvToolsState, NavigableRoute.SuggestionGeneratorRoute)
+            OuterContentForMasterScreen(improvToolsState, SuggestionsTabDestination)
         }
     }
 
@@ -55,7 +55,7 @@ class ApplicationTitleTest {
 
         // TODO: expose proper navigation functions
         getInstrumentation().runOnMainSync {
-            improvToolsState.navigateTo(NavigableRoute.GamesPageRoute)
+            improvToolsState.navigator.navigate(GamesTabDestination)
         }
 
         composeTestRule.onNodeWithTag(ApplicationConstants.APPLICATION_TITLE)
@@ -77,5 +77,3 @@ class ApplicationTitleTest {
         return getInstrumentation().targetContext.getString(id)
     }
 }
-
-// TODO: rename everything in acc' with high level naming guidance

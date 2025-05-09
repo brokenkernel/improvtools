@@ -3,38 +3,35 @@ package com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel
 import androidx.lifecycle.ViewModel
 import com.brokenkernel.improvtools.encyclopaedia.api.ThesaurusAPI
 import com.brokenkernel.improvtools.encyclopaedia.data.repository.ThesaurusRepository
-import dagger.assisted.Assisted
-import dagger.assisted.AssistedFactory
-import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-@HiltViewModel(assistedFactory = ThesaurusSingleItemViewModel.Factory::class)
-internal class ThesaurusSingleItemViewModel @AssistedInject constructor(
-    @Assisted("word") val word: String,
+@HiltViewModel
+internal class ThesaurusSingleItemViewModel @Inject constructor(
     val thesaurusRepository: ThesaurusRepository,
     val thesaurusAPI: ThesaurusAPI, // todo: this should be accessed through a repository
 ) : ViewModel() {
 
-    fun shouldShowActionSynonyms(): Boolean {
+    fun shouldShowActionSynonyms(word: String): Boolean {
         return thesaurusRepository.getActionsThesaurus().synonymsForWord(word).isNotEmpty()
     }
 
-    fun synonyms(): Iterable<String> {
+    fun synonyms(word: String): Iterable<String> {
         return thesaurusRepository.getActionsThesaurus().synonymsForWord(word).sorted()
     }
 
     // TODO: consider using Room in general for caching?
-    fun renderedActionSynonyms(): String {
+    fun renderedActionSynonyms(word: String): String {
         return buildString {
             append("<ul>")
-            synonyms().forEach { synonym ->
+            synonyms(word).forEach { synonym ->
                 append("<li>$synonym</li>")
             }
             append("</ul>")
         }
     }
 
-    fun renderedWordSenses(): String? {
+    fun renderedWordSenses(word: String): String? {
         val allSenseDatum = thesaurusAPI.getSenseDatum(word)
         if (allSenseDatum == null) {
             return null
@@ -60,12 +57,5 @@ internal class ThesaurusSingleItemViewModel @AssistedInject constructor(
         }
 
         return senseString
-    }
-
-    @AssistedFactory
-    interface Factory {
-        fun create(
-            @Assisted("word") word: String,
-        ): ThesaurusSingleItemViewModel
     }
 }

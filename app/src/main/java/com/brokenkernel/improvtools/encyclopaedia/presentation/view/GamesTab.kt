@@ -28,11 +28,14 @@ import com.brokenkernel.components.view.ChippedTabbedSearchableColumn
 import com.brokenkernel.components.view.HtmlText
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.presentation.api.LocalBottomSheetContentManager
+import com.brokenkernel.improvtools.application.presentation.view.SetScaffoldStateWrapper
 import com.brokenkernel.improvtools.components.presentation.view.ExpandIcon
+import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GamesDataItem
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GamesDatumTag
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GamesDatumTopic
 import com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel.GamesTabViewModel
+import com.ramcosta.composedestinations.annotation.Destination
 
 private fun transformForSearch(str: String): String {
     return str.filterNot { it.isWhitespace() }
@@ -43,6 +46,9 @@ private fun hasExpandableInformation(gdi: GamesDataItem): Boolean {
 }
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
+@Destination<ImprovToolsNavigationGraph>(
+    wrappers = [ SetScaffoldStateWrapper::class ],
+)
 @Composable
 internal fun GamesTab(
     viewModel: GamesTabViewModel = GamesTabViewModel(),
