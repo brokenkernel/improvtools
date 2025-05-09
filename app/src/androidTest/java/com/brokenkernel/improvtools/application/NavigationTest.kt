@@ -17,9 +17,7 @@ import com.brokenkernel.improvtools.application.data.model.rememberImprovToolsAp
 import com.brokenkernel.improvtools.application.presentation.view.OuterContentForMasterScreen
 import com.brokenkernel.improvtools.infrastructure.HiltComponentActitivity
 import com.brokenkernel.improvtools.infrastructure.onNodeWithStringId
-import com.ramcosta.composedestinations.DestinationsNavHost
 import com.ramcosta.composedestinations.generated.destinations.SuggestionsTabDestination
-import com.ramcosta.composedestinations.generated.navgraphs.ImprovToolsNavigationNavGraph
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Before

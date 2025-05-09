@@ -270,7 +270,6 @@ dependencies {
     implementation(libs.google.dagger)
     implementation(libs.guava)
     implementation(libs.hilt.android)
-    implementation(libs.io.github.raamcosta.composeDestinations.bottomSheet)
     implementation(libs.io.github.raamcosta.composeDestinations.core)
     implementation(libs.jakarta.inject.api)
     implementation(libs.javax.inject)
