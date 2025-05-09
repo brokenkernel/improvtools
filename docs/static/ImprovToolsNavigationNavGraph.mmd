@@ -1,0 +1,24 @@
+---
+title: ImprovToolsNavigation Navigation Graph
+---
+%%{init: {'theme':'base', 'themeVariables': { 'primaryTextColor': '#fff' }}%%
+graph TD
+improv_tools_navigation(["ImprovToolsNavigationGraph"]) -- "start" --- suggestions_tab("SuggestionsTab")
+improv_tools_navigation(["ImprovToolsNavigationGraph"]) --- about_tab("AboutTab")
+improv_tools_navigation(["ImprovToolsNavigationGraph"]) --- emotion_tab("EmotionTab")
+improv_tools_navigation(["ImprovToolsNavigationGraph"]) --- games_tab("GamesTab")
+improv_tools_navigation(["ImprovToolsNavigationGraph"]) --- glossary_tab("GlossaryTab")
+improv_tools_navigation(["ImprovToolsNavigationGraph"]) --- libraries_tab("LibrariesTab")
+improv_tools_navigation(["ImprovToolsNavigationGraph"]) --- people_tab("PeopleTab")
+improv_tools_navigation(["ImprovToolsNavigationGraph"]) --- privacy_tab("PrivacyTab")
+improv_tools_navigation(["ImprovToolsNavigationGraph"]) --- settings_tab("SettingsTab")
+improv_tools_navigation(["ImprovToolsNavigationGraph"]) --- thesaurus_tab_all_items("ThesaurusTabAllItems")
+improv_tools_navigation(["ImprovToolsNavigationGraph"]) --- thesaurus_tab_single_word("ThesaurusTabSingleWord")
+improv_tools_navigation(["ImprovToolsNavigationGraph"]) --- timer_tab("TimerTab")
+improv_tools_navigation(["ImprovToolsNavigationGraph"]) --- tips_and_advice_tab("TipsAndAdviceTab")
+
+
+classDef destination fill:#5383EC,stroke:#ffffff;
+class about_tab,emotion_tab,games_tab,glossary_tab,libraries_tab,people_tab,privacy_tab,settings_tab,suggestions_tab,thesaurus_tab_all_items,thesaurus_tab_single_word,timer_tab,tips_and_advice_tab destination;
+classDef navgraph fill:#63BC76,stroke:#ffffff;
+class improv_tools_navigation navgraph;
