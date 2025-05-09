@@ -137,7 +137,6 @@ internal fun SuggestionsTab(
                             state = reorderableLazyListState,
                             key = IdeaCategoryODS::itemKey,
                         ) { isDragging ->
-                            val interactionSource = remember { MutableInteractionSource() }
                             val elevation by animateDpAsState(if (isDragging) 4.dp else 0.dp)
 
                             val itemSuggestionState: State<IdeaUIState>? =
@@ -150,8 +149,6 @@ internal fun SuggestionsTab(
                                     overlineContent = { Text(ideaCategory.titleWithCount()) },
                                     headlineContent = { Text(currentIdea.idea) },
                                     modifier = Modifier.clickable(
-                                        interactionSource = interactionSource,
-                                        indication = null,
                                         onClick = {
                                             viewModel.updateSuggestionXFor(ideaCategory)
                                         },
@@ -211,7 +208,6 @@ internal fun SuggestionsTab(
                                             )
                                             IconButton(
                                                 modifier = Modifier.longPressDraggableHandle(
-                                                    interactionSource = interactionSource,
                                                     onDragStarted = {
                                                         haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove)
                                                     },

@@ -70,7 +70,7 @@ internal enum class NavigableScreens(
         icon = Icons.Outlined.Settings,
         matchingRoute = SettingsTabDestination,
 
-    ),
+        ),
 
     TimerScreen(
         titleResource = R.string.timer_activity_title,
@@ -78,7 +78,7 @@ internal enum class NavigableScreens(
         icon = Icons.Outlined.Timer,
         matchingRoute = TimerTabDestination,
 
-    ),
+        ),
 
     AboutScreen(
         titleResource = R.string.navigation_help_and_feedback,
@@ -86,7 +86,7 @@ internal enum class NavigableScreens(
         icon = Icons.Outlined.Info,
         matchingRoute = AboutTabDestination,
 
-    ),
+        ),
 
     TipsAndAdviceScreen(
         titleResource = R.string.navigation_tips_and_advice,
@@ -111,7 +111,7 @@ internal enum class NavigableScreens(
         icon = Icons.Outlined.Games,
         matchingRoute = GamesTabDestination,
 
-    ),
+        ),
 
     PeoplePageScreen(
         titleResource = R.string.navigation_people,
@@ -119,7 +119,7 @@ internal enum class NavigableScreens(
         icon = Icons.Outlined.People,
         matchingRoute = PeopleTabDestination,
 
-    ),
+        ),
 
     GlossaryPageScreen(
         titleResource = R.string.navigation_glossary,
@@ -128,7 +128,7 @@ internal enum class NavigableScreens(
         icon = Icons.Filled.Book,
         matchingRoute = GlossaryTabDestination,
 
-    ),
+        ),
 
     EmotionsPageScreen(
         titleResource = R.string.navigation_emotions_reference,
@@ -136,7 +136,7 @@ internal enum class NavigableScreens(
         icon = Icons.Outlined.EmojiEmotions,
         matchingRoute = EmotionTabDestination,
 
-    ),
+        ),
 
     ThesaurusPageScreen(
         titleResource = R.string.navigation_thesaurus,
@@ -151,7 +151,7 @@ internal enum class NavigableScreens(
         icon = Icons.Filled.PrivacyTip,
         matchingRoute = PrivacyTabDestination,
 
-    ),
+        ),
 
     LibrariesScreen(
         titleResource = R.string.navigation_libraries_information,
@@ -159,12 +159,15 @@ internal enum class NavigableScreens(
         icon = Icons.Default.Copyright,
         matchingRoute = LibrariesTabDestination,
 
-    ),
+        ),
 
     ;
 
     internal val navigationCallback: (itas: ImprovToolsAppState) -> Unit = { itas ->
-        itas.navigator.navigate(matchingRoute)
+        itas.navigator.navigate(matchingRoute) {
+            launchSingleTop = true
+            restoreState = true
+        }
     }
 
     companion object {
