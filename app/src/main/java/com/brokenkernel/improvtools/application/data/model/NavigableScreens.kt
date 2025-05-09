@@ -164,7 +164,10 @@ internal enum class NavigableScreens(
     ;
 
     internal val navigationCallback: (itas: ImprovToolsAppState) -> Unit = { itas ->
-        itas.navigator.navigate(matchingRoute)
+        itas.navigator.navigate(matchingRoute) {
+            launchSingleTop = true
+            restoreState = true
+        }
     }
 
     companion object {
