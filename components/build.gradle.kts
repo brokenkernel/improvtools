@@ -94,6 +94,7 @@ dependencies {
         because("we are an android compose application")
     }
     implementation(enforcedPlatform(libs.kotlin.bom))
+    implementation(libs.androidx.animation)
     implementation(libs.androidx.annotation)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.material.icons.core)

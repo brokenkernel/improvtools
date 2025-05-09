@@ -5,4 +5,6 @@
     <issue id="ComposableLambdaParameterPosition" severity="error" />
     <issue id="MissingTranslation" severity="ignore" />
     <issue id="VectorPath" severity="ignore" />
+    <!-- Slack Specific Lints -->
+    <issue id="RawDispatchersUse" severity="ignore" />
 </lint>
