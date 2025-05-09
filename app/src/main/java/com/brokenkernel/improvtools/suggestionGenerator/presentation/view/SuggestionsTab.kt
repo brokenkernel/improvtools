@@ -77,7 +77,11 @@ internal fun SuggestionsTab(
     improvToolsAppState: ImprovToolsAppState,
     viewModel: SuggestionScreenViewModel = hiltViewModel(),
 ) {
-    val onNavigateToExplanation: (String, String) -> Unit = { a, b -> }
+    val onNavigateToExplanation: (String, String) -> Unit = { word: String, explanation: String ->
+        improvToolsAppState.setBottomSheetTo {
+            ExplanationBottomSheetTab(word, explanation)
+        }
+    }
     val state = rememberPullToRefreshState()
     var isRefreshing by rememberSaveable { mutableStateOf(false) }
     val coroutineScope = rememberCoroutineScope()
