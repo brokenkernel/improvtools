@@ -175,7 +175,6 @@ internal fun SuggestionsTab(
                                                 ) {
                                                     SimpleIconButton(
                                                         onClick = {
-                                                            // TODO: broken after migration to destination compose
                                                             onNavigateToExplanation(
                                                                 currentIdea.idea,
                                                                 currentIdea.explanation,
@@ -188,7 +187,6 @@ internal fun SuggestionsTab(
                                                     )
                                                 }
                                             }
-                                            // TODO: consider pop up menu instead of full screen
                                             // TODO: none of the selected words are remembered across screens
                                             // TODO: this shouldn't be a viewModel but injected UIState. TBD
                                             val viewModel =
