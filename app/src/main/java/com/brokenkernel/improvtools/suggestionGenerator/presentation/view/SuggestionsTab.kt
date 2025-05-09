@@ -2,6 +2,7 @@ package com.brokenkernel.improvtools.suggestionGenerator.presentation.view
 
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -119,10 +120,6 @@ internal fun SuggestionsTab(
                 val lazyListState = rememberLazyListState()
                 val reorderableLazyListState = rememberReorderableLazyListState(lazyListState) { from, to ->
                     reorderedListOfSuggestions = reorderedListOfSuggestions.toMutableList().apply {
-                        val fromIndex = indexOfFirst { it.itemKey() == from.key }
-                        val toIndex = indexOfFirst { it.itemKey() == to.key }
-
-                        add(toIndex, removeAt(fromIndex))
                         add(to.index, removeAt(from.index))
                     }
                     haptic.performHapticFeedback(HapticFeedbackType.SegmentFrequentTick)
@@ -140,6 +137,7 @@ internal fun SuggestionsTab(
                             state = reorderableLazyListState,
                             key = IdeaCategoryODS::itemKey,
                         ) { isDragging ->
+                            val interactionSource = remember { MutableInteractionSource() }
                             val elevation by animateDpAsState(if (isDragging) 4.dp else 0.dp)
 
                             val itemSuggestionState: State<IdeaUIState>? =
@@ -152,9 +150,12 @@ internal fun SuggestionsTab(
                                     overlineContent = { Text(ideaCategory.titleWithCount()) },
                                     headlineContent = { Text(currentIdea.idea) },
                                     modifier = Modifier.clickable(
+                                        interactionSource = interactionSource,
+                                        indication = null,
                                         onClick = {
                                             viewModel.updateSuggestionXFor(ideaCategory)
                                         },
+                                        onClickLabel = stringResource(R.string.update_suggestion),
                                     ),
                                     trailingContent = {
                                         Row(modifier = Modifier.weight(1f)) {
@@ -210,6 +211,7 @@ internal fun SuggestionsTab(
                                             )
                                             IconButton(
                                                 modifier = Modifier.longPressDraggableHandle(
+                                                    interactionSource = interactionSource,
                                                     onDragStarted = {
                                                         haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove)
                                                     },
@@ -219,7 +221,10 @@ internal fun SuggestionsTab(
                                                 ),
                                                 onClick = {},
                                             ) {
-                                                Icon(Icons.Rounded.DragHandle, contentDescription = "Reorder")
+                                                Icon(
+                                                    Icons.Rounded.DragHandle,
+                                                    contentDescription = stringResource(R.string.reorder)
+                                                )
                                             }
                                         }
                                     },

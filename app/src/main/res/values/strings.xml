@@ -103,4 +103,6 @@
     <string name="encyclopaedia_tags_filter_button">Filter Tags</string>
     <string name="timer_title">Timer Title</string>
     <string name="explain_this_term">Explain This Term</string>
+    <string name="update_suggestion">Update Suggestion</string>
+  <string name="reorder">Reorder</string>
 </resources>
