@@ -24,6 +24,7 @@ fun configureRemoteConfig() {
     val configSettings = remoteConfigSettings {
         minimumFetchIntervalInSeconds = 1.hours.inWholeSeconds
     }
+    remoteConfig.setDefaultsAsync(R.xml.remote_config_defaults)
     remoteConfig.setConfigSettingsAsync(configSettings)
 
     remoteConfig.addOnConfigUpdateListener(

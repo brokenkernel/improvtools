@@ -50,7 +50,6 @@ internal class SuggestionScreenViewModel @Inject constructor(
     }
 
     internal fun updateSuggestionXFor(ic: IdeaCategoryODS) {
-
         val legalNewWords: Set<IdeaItemODS> = if (_uiState.value.shouldReuseSuggestions) {
             ic.ideas
         } else {
@@ -60,7 +59,6 @@ internal class SuggestionScreenViewModel @Inject constructor(
 
         _categoryDatumToSuggestion[ic]?.value = IdeaUIState.fromStoredModel(legalNewWords.random())
     }
-
 
     internal fun resetAllCategories() {
         _categoryDatumToSuggestion.keys.forEach { k ->

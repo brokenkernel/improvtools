@@ -6,6 +6,8 @@ import com.ramcosta.composedestinations.generated.destinations.ThesaurusTabSingl
 // TODO: consider some base class that every section implements?
 internal object EncyclopaediaSectionNavigation {
     fun navigateToThesaurusWord(improvToolsAppState: ImprovToolsAppState, word: String) {
-        improvToolsAppState.navigator.navigate(ThesaurusTabSingleWordDestination(word, improvToolsAppState.currentTitle.value))
+        improvToolsAppState.navigator.navigate(
+            ThesaurusTabSingleWordDestination(word, improvToolsAppState.currentTitle.value),
+        )
     }
 }

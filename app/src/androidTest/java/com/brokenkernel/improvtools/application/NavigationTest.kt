@@ -48,7 +48,7 @@ class NavigationTest {
             val improvToolsState = rememberImprovToolsAppState(titleState = titleState)
             OuterContentForMasterScreen(
                 improvToolsState = improvToolsState,
-                initialRoute = SuggestionsTabDestination
+                initialRoute = SuggestionsTabDestination,
             )
         }
     }

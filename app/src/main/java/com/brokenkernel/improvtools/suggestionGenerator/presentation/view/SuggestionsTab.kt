@@ -166,19 +166,18 @@ internal fun SuggestionsTab(
                                                 )
                                             }
                                             if (currentIdea.explanation != null) {
-
-                                                    SimpleIconButton(
-                                                        onClick = {
-                                                            onNavigateToExplanation(
-                                                                currentIdea.idea,
-                                                                currentIdea.explanation,
-                                                            )
-                                                        },
-                                                        icon = Icons.Outlined.TheaterComedy,
-                                                        contentDescription = stringResource(
-                                                            R.string.explain_this_term,
-                                                        ),
-                                                    )
+                                                SimpleIconButton(
+                                                    onClick = {
+                                                        onNavigateToExplanation(
+                                                            currentIdea.idea,
+                                                            currentIdea.explanation,
+                                                        )
+                                                    },
+                                                    icon = Icons.Outlined.TheaterComedy,
+                                                    contentDescription = stringResource(
+                                                        R.string.explain_this_term,
+                                                    ),
+                                                )
                                             }
                                             // TODO: none of the selected words are remembered across screens
                                             // TODO: this shouldn't be a viewModel but injected UIState. TBD
@@ -196,7 +195,10 @@ internal fun SuggestionsTab(
                                                 viewModel = viewModel,
                                                 onNavigateToWord = {
                                                     navigator.navigate(
-                                                        ThesaurusTabSingleWordDestination(currentIdea.idea, improvToolsAppState.currentTitle.value),
+                                                        ThesaurusTabSingleWordDestination(
+                                                            currentIdea.idea,
+                                                            improvToolsAppState.currentTitle.value,
+                                                        ),
                                                     )
                                                 },
                                                 whenDisabledFullyHidden = true,
@@ -214,7 +216,7 @@ internal fun SuggestionsTab(
                                             ) {
                                                 Icon(
                                                     Icons.Rounded.DragHandle,
-                                                    contentDescription = stringResource(R.string.reorder)
+                                                    contentDescription = stringResource(R.string.reorder),
                                                 )
                                             }
                                         }

@@ -9,6 +9,7 @@ import com.ramcosta.composedestinations.scope.DestinationScope
 import com.ramcosta.composedestinations.wrapper.DestinationWrapper
 
 object SetScaffoldStateWrapper : DestinationWrapper {
+    @SuppressWarnings("ComposableLambdaParameterNaming")
     @Composable
     override fun <T> DestinationScope<T>.Wrap(screenContent: @Composable (() -> Unit)) {
         val navigableScreen: NavigableScreens = NavigableScreens.byRoute(destination)
