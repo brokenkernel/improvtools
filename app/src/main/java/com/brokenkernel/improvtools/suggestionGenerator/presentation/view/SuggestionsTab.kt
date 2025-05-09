@@ -2,7 +2,6 @@ package com.brokenkernel.improvtools.suggestionGenerator.presentation.view
 
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -45,7 +44,6 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.brokenkernel.components.view.SimpleIconButton
-import com.brokenkernel.components.view.SimpleTooltipWrapper
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.application.presentation.view.SetScaffoldStateWrapper
@@ -168,9 +166,7 @@ internal fun SuggestionsTab(
                                                 )
                                             }
                                             if (currentIdea.explanation != null) {
-                                                SimpleTooltipWrapper(
-                                                    stringResource(R.string.explain_this_term),
-                                                ) {
+
                                                     SimpleIconButton(
                                                         onClick = {
                                                             onNavigateToExplanation(
@@ -183,7 +179,6 @@ internal fun SuggestionsTab(
                                                             R.string.explain_this_term,
                                                         ),
                                                     )
-                                                }
                                             }
                                             // TODO: none of the selected words are remembered across screens
                                             // TODO: this shouldn't be a viewModel but injected UIState. TBD
