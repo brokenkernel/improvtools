@@ -268,20 +268,23 @@
     {
       "title": "Occupation",
       "ideas": [
+        {"idea": "Architect"}
         {"idea": "Carpenter"},
         {"idea": "Doctor"},
+        {"idea": "Gynecologist"},
+        {"idea": "Hairdressor"},
         {"idea": "Landscape Architect"},
         {"idea": "Lawyer"},
         {"idea": "Librarian"},
-        {"idea": "Gynecologist"},
+        {"idea": "Mortition"},
         {"idea": "Pathologist"},
         {"idea": "Seamen"},
+        {"idea": "Tailor"},
         {"idea": "Translator"},
         {"idea": "Utility Meter Reader"},
         {"idea": "Veterinarian"},
         {"idea": "Weather Observer"},
-        {"idea": "Zoologist"}
-      ]
+        {"idea": "Zoologist"}      ]
     },
     {
       "title": "Relation",
@@ -588,15 +591,6 @@
         {"idea": "If you could invent a new human organ, what would it be?"},
         {"idea": "Something you do as a part of your daily routine"},
         {"idea": "A Hobby"}
-      ]
-    },
-    {
-      "title": "Occupation",
-      "ideas": [
-        {"idea": "Tailor"},
-        {"idea": "Hairdressor"},
-        {"idea": "Mortition"},
-        {"idea": "Architect"}
       ]
     },
     {

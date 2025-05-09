@@ -30,7 +30,7 @@ import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
 @Destination<ImprovToolsNavigationGraph>(
-    wrappers = [ SetScaffoldStateWrapper::class ],
+    wrappers = [SetScaffoldStateWrapper::class],
 )
 @Composable
 internal fun ThesaurusTabSingleWord(
@@ -69,8 +69,8 @@ internal fun ThesaurusTabSingleWord(
             ExtendedFloatingActionButton(
                 onClick = navigator::popBackStack,
             ) {
-                val backtoText = "TEMP back to"
-//                    stringResource(R.string.navigation_back_to_thesaurus, stringResource(priorTitleResource))
+                val backtoText =
+                    stringResource(R.string.navigation_back_to_thesaurus, stringResource(priorTitleResource))
                 Icon(
                     Icons.AutoMirrored.Default.ArrowBack,
                     contentDescription = backtoText,
