@@ -2,6 +2,7 @@ package com.brokenkernel.improvtools.application.presentation.view
 
 import androidx.annotation.UiThread
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -120,7 +121,8 @@ internal fun ImprovToolsScaffold(
             Surface(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(innerPadding),
+                    .padding(innerPadding)
+                    .consumeWindowInsets(innerPadding),
             ) {
                 content()
                 // this should be handled by navigation, but for now, it works
