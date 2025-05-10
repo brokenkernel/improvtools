@@ -14,18 +14,15 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.brokenkernel.components.view.EnumerationRadioSelection
 import com.brokenkernel.improvtools.R
-import com.brokenkernel.improvtools.application.presentation.view.SetScaffoldStateWrapper
+import com.brokenkernel.improvtools.application.navigation.ImprovToolsDestination
 import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
 import com.brokenkernel.improvtools.datastore.UserSettings.TimerHapticsMode
 import com.brokenkernel.improvtools.datastore.UserSettings.TipsAndTricksViewMode
 import com.brokenkernel.improvtools.encyclopaedia.data.model.TipsAndAdviceViewModeUI
 import com.brokenkernel.improvtools.settings.presentation.viewmodel.SettingsScreenViewModel
 import com.brokenkernel.improvtools.timer.data.model.TimerHapticsModeUI
-import com.ramcosta.composedestinations.annotation.Destination
 
-@Destination<ImprovToolsNavigationGraph>(
-    wrappers = [SetScaffoldStateWrapper::class],
-)
+@ImprovToolsDestination<ImprovToolsNavigationGraph>
 @Composable
 internal fun SettingsTab(viewModel: SettingsScreenViewModel = hiltViewModel()) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()

@@ -9,6 +9,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.core.net.toUri
 import com.brokenkernel.improvtools.R
+import com.brokenkernel.improvtools.application.navigation.SetScaffoldStateWrapper
 import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
 import com.ramcosta.composedestinations.annotation.Destination
 

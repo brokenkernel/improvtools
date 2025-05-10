@@ -50,17 +50,15 @@ import androidx.core.net.toUri
 import com.brokenkernel.components.view.HtmlText
 import com.brokenkernel.improvtools.BuildConfig
 import com.brokenkernel.improvtools.R
+import com.brokenkernel.improvtools.application.navigation.ImprovToolsDestination
 import com.brokenkernel.improvtools.application.presentation.api.LocalSnackbarHostState
 import com.brokenkernel.improvtools.components.presentation.view.ExpandIcon
 import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
-import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.generated.destinations.PrivacyTabDestination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kotlinx.coroutines.launch
 
-@Destination<ImprovToolsNavigationGraph>(
-    wrappers = [ SetScaffoldStateWrapper::class ],
-)
+@ImprovToolsDestination<ImprovToolsNavigationGraph>
 @Composable
 internal fun AboutTab(
     navigator: DestinationsNavigator,

@@ -25,7 +25,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.brokenkernel.improvtools.R
-import com.brokenkernel.improvtools.application.presentation.view.SetScaffoldStateWrapper
+import com.brokenkernel.improvtools.application.navigation.ImprovToolsDestination
 import com.brokenkernel.improvtools.components.presentation.view.OneWayDismissableContent
 import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
 import com.brokenkernel.improvtools.timer.data.model.TimerInfo
@@ -34,7 +34,6 @@ import com.brokenkernel.improvtools.timer.presentation.viewmodel.CountDownTimerS
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.INITIAL_TIMER_DURATION
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.StopWatchTimerState
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.TimerListViewModel
-import com.ramcosta.composedestinations.annotation.Destination
 import kotlin.collections.toList
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.minutes
@@ -157,9 +156,7 @@ internal fun SimpleStopWatchTimer(viewModel: StopWatchTimerState, onRemoveTimer:
     )
 }
 
-@Destination<ImprovToolsNavigationGraph>(
-    wrappers = [ SetScaffoldStateWrapper::class ],
-)
+@ImprovToolsDestination<ImprovToolsNavigationGraph>
 @Composable
 internal fun TimerTab(viewModel: TimerListViewModel = hiltViewModel()) {
     val haptic = LocalHapticFeedback.current

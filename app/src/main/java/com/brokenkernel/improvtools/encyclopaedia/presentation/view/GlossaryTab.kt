@@ -19,12 +19,11 @@ import androidx.compose.ui.semantics.Role
 import com.brokenkernel.components.view.HtmlText
 import com.brokenkernel.components.view.SearchableColumn
 import com.brokenkernel.improvtools.R
-import com.brokenkernel.improvtools.application.presentation.view.SetScaffoldStateWrapper
+import com.brokenkernel.improvtools.application.navigation.ImprovToolsDestination
 import com.brokenkernel.improvtools.components.presentation.view.ExpandIcon
 import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GlossaryDataItem
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GlossaryDatum
-import com.ramcosta.composedestinations.annotation.Destination
 import kotlinx.collections.immutable.ImmutableMap
 import kotlinx.collections.immutable.toImmutableMap
 
@@ -37,9 +36,7 @@ private fun doesMatch(search: String, item: GlossaryDataItem): Boolean {
 }
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
-@Destination<ImprovToolsNavigationGraph>(
-    wrappers = [ SetScaffoldStateWrapper::class ],
-)
+@ImprovToolsDestination<ImprovToolsNavigationGraph>
 @Composable
 internal fun GlossaryTab() {
     // TODO: move into viewModel (or at least the repository)

@@ -1,8 +1,7 @@
-package com.brokenkernel.improvtools.application.presentation.view
+package com.brokenkernel.improvtools.application.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.ui.Modifier
 
 /**
  * Allows the caller to specify that some specific lambda should occur on each recompose
@@ -10,7 +9,6 @@ import androidx.compose.ui.Modifier
 @Composable
 fun LaunchWrapper(
     onLaunchCallback: () -> Unit,
-    modifier: Modifier = Modifier,
     content: @Composable () -> Unit,
 ) {
     LaunchedEffect(onLaunchCallback) {

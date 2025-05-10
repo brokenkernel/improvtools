@@ -1,4 +1,4 @@
-package com.brokenkernel.improvtools.application.presentation.view
+package com.brokenkernel.improvtools.application.navigation
 
 import androidx.compose.runtime.Composable
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
@@ -8,11 +8,11 @@ import com.ramcosta.composedestinations.navigation.require
 import com.ramcosta.composedestinations.scope.DestinationScope
 import com.ramcosta.composedestinations.wrapper.DestinationWrapper
 
-object SetScaffoldStateWrapper : DestinationWrapper {
+internal object SetScaffoldStateWrapper : DestinationWrapper {
     @SuppressWarnings("ComposableLambdaParameterNaming")
     @Composable
     override fun <T> DestinationScope<T>.Wrap(screenContent: @Composable (() -> Unit)) {
-        val navigableScreen: NavigableScreens = NavigableScreens.byRoute(destination)
+        val navigableScreen: NavigableScreens = NavigableScreens.Companion.byRoute(destination)
         val depContainer: DestinationDependenciesContainer = buildDependencies()
         val improvToolsAppState: ImprovToolsAppState = depContainer.require()
 
