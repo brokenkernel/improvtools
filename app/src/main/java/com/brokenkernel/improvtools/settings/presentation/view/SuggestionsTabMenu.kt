@@ -1,6 +1,5 @@
 package com.brokenkernel.improvtools.settings.presentation.view
 
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.selection.toggleable
 import androidx.compose.material3.DropdownMenu
@@ -23,6 +22,7 @@ import com.brokenkernel.improvtools.settings.presentation.viewmodel.SettingsScre
 internal fun SuggestionsTabMenu(
     expanded: Boolean,
     onDismiss: () -> Unit,
+    modifier: Modifier = Modifier,
     settingsScreenViewModel: SettingsScreenViewModel = hiltViewModel(),
 ) {
     val uiState by settingsScreenViewModel.uiState.collectAsStateWithLifecycle()
@@ -30,6 +30,7 @@ internal fun SuggestionsTabMenu(
     DropdownMenu(
         expanded = expanded,
         onDismissRequest = onDismiss,
+        modifier = modifier,
     ) {
         Row(
             modifier = Modifier.semantics(
@@ -47,25 +48,24 @@ internal fun SuggestionsTabMenu(
                     },
                 ),
         ) {
-            // todo: figure out way to make this .8 reusable, and generic for name-and-checkbox
-            Box(modifier = Modifier.weight(.8f)) {
-                DropdownMenuItem(
-                    text = { Text(stringResource(R.string.settings_allow_reuse)) },
-                    onClick = {
-                        settingsScreenViewModel.onClickUpdateShouldReuseSuggestions(
-                            !uiState.shouldReuseSuggestions,
-                        )
-                    },
-                )
-            }
-            Box {
-                Switch(
-                    checked = uiState.shouldReuseSuggestions,
-                    onCheckedChange = { it ->
-                        settingsScreenViewModel.onClickUpdateShouldReuseSuggestions(it)
-                    },
-                )
-            }
+            DropdownMenuItem(
+                text = { Text(stringResource(R.string.settings_allow_reuse)) },
+                trailingIcon = {
+                    Switch(
+                        checked = uiState.shouldReuseSuggestions,
+                        onCheckedChange = {
+                            settingsScreenViewModel.onClickUpdateShouldReuseSuggestions(
+                                !uiState.shouldReuseSuggestions,
+                            )
+                        },
+                    )
+                },
+                onClick = {
+                    settingsScreenViewModel.onClickUpdateShouldReuseSuggestions(
+                        !uiState.shouldReuseSuggestions,
+                    )
+                },
+            )
         }
     }
 }
