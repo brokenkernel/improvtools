@@ -35,9 +35,9 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 @Composable
 internal fun ThesaurusTabSingleWord(
     word: String,
-    viewModel: ThesaurusSingleItemViewModel = hiltViewModel(),
     navigator: DestinationsNavigator,
     @StringRes priorTitleResource: Int,
+    viewModel: ThesaurusSingleItemViewModel = hiltViewModel(),
 ) {
     val scrollState: ScrollState = rememberScrollState()
 

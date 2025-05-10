@@ -5,38 +5,39 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.brokenkernel.improvtools.TAG
 import com.brokenkernel.improvtools.encyclopaedia.api.ThesaurusAPI
-import dagger.assisted.Assisted
-import dagger.assisted.AssistedFactory
-import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-@HiltViewModel(assistedFactory = LoadableSingleWordThesaurusButtonViewModel.Factory::class)
-class LoadableSingleWordThesaurusButtonViewModel @AssistedInject constructor(
-    @Assisted("word") val word: String,
+@HiltViewModel
+class LoadableSingleWordThesaurusButtonViewModel @Inject constructor(
     val thesaurusAPI: ThesaurusAPI, // todo: this should be accessed through a repository
 ) : ViewModel() {
 
-    private val _doesHaveDictionaryDetails: MutableStateFlow<Boolean> = MutableStateFlow(false)
-    val doesHaveDictionaryDetails: StateFlow<Boolean> = _doesHaveDictionaryDetails
+    // TODO: expose a way to have a disposeEffect to cleanup. Otherwise there is a memory leak to some extent
+    // (though it may also be a pre-cache 'optimisation')
+    private val doesHaveDictionaryDetails: MutableMap<String, MutableStateFlow<Boolean>> = mutableMapOf()
+    private val doesHaveDictionaryDetailsStateFlow: MutableMap<String, StateFlow<Boolean>> = mutableMapOf()
 
-    init {
+    fun doesHaveDictionaryDetails(word: String): StateFlow<Boolean> {
+        val msf = doesHaveDictionaryDetails.computeIfAbsent(word, { MutableStateFlow<Boolean>(false) })
+        val sf = doesHaveDictionaryDetailsStateFlow.computeIfAbsent(word, { k: String -> msf.asStateFlow() })
+        val result = sf
+        asyncInitWord(word)
+        return result
+    }
+
+    private fun asyncInitWord(word: String) {
         viewModelScope.launch(Dispatchers.IO) {
             val result = thesaurusAPI.hasWordDetails(word)
-            _doesHaveDictionaryDetails.value = result
+            doesHaveDictionaryDetails.getValue(word).value = result
             if (Log.isLoggable(TAG, Log.DEBUG)) {
                 Log.d(TAG, "Thesaurus result for dictionary details for $word is $result")
             }
         }
-    }
-
-    @AssistedFactory
-    interface Factory {
-        fun create(
-            @Assisted("word") word: String,
-        ): LoadableSingleWordThesaurusButtonViewModel
     }
 }

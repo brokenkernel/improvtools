@@ -23,17 +23,13 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.brokenkernel.components.view.SearchableColumn
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
-import com.brokenkernel.improvtools.application.navigation.SetScaffoldStateWrapper
+import com.brokenkernel.improvtools.application.navigation.ImprovToolsDestination
 import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
 import com.brokenkernel.improvtools.encyclopaedia.EncyclopaediaSectionNavigation
-import com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel.LoadableSingleWordThesaurusButtonViewModel
 import com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel.ThesaurusTabAllItemsViewModel
-import com.ramcosta.composedestinations.annotation.Destination
 import kotlinx.coroutines.launch
 
-@Destination<ImprovToolsNavigationGraph>(
-    wrappers = [ SetScaffoldStateWrapper::class ],
-)
+@ImprovToolsDestination<ImprovToolsNavigationGraph>
 @Composable
 internal fun ThesaurusTabAllItems(
     improvToolsAppState: ImprovToolsAppState,
@@ -83,18 +79,8 @@ internal fun ThesaurusTabAllItems(
                 }
             },
             trailingContent = {
-                val viewModel =
-                    hiltViewModel<
-                        LoadableSingleWordThesaurusButtonViewModel,
-                        LoadableSingleWordThesaurusButtonViewModel.Factory,
-                        >(
-                        key = word,
-                        creationCallback = { factory ->
-                            factory.create(word)
-                        },
-                    )
                 LoadableSingleWordThesaurusButton(
-                    viewModel = viewModel,
+                    word = word,
                     onNavigateToWord = {
                         EncyclopaediaSectionNavigation.navigateToThesaurusWord(
                             improvToolsAppState,

@@ -2,6 +2,7 @@ package com.brokenkernel.improvtools.encyclopaedia.presentation.view
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.brokenkernel.improvtools.components.sidecar.preview.ImprovToolsAllPreviews
@@ -9,17 +10,21 @@ import com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel.Loadabl
 
 @Composable
 fun LoadableSingleWordThesaurusButton(
-    viewModel: LoadableSingleWordThesaurusButtonViewModel,
+    word: String,
     onNavigateToWord: (String) -> Unit,
+    modifier: Modifier = Modifier,
     whenDisabledFullyHidden: Boolean = false,
+    viewModel: LoadableSingleWordThesaurusButtonViewModel = hiltViewModel(),
 ) {
-    val doesHaveDictionaryDetails by viewModel.doesHaveDictionaryDetails.collectAsStateWithLifecycle()
+    val doesHaveDictionaryDetails: Boolean by viewModel.doesHaveDictionaryDetails(word)
+        .collectAsStateWithLifecycle()
 
     if (doesHaveDictionaryDetails || !whenDisabledFullyHidden) {
         SingleWordThesaurusButton(
-            word = viewModel.word,
+            word = word,
             onNavigateToWord = onNavigateToWord,
             enabled = doesHaveDictionaryDetails,
+            modifier = modifier,
         )
     }
 }
@@ -27,18 +32,8 @@ fun LoadableSingleWordThesaurusButton(
 @ImprovToolsAllPreviews
 @Composable
 private fun ExampleLoadableSingleWordThesaurusButtonPreview() {
-    val viewModel =
-        hiltViewModel<
-            LoadableSingleWordThesaurusButtonViewModel,
-            LoadableSingleWordThesaurusButtonViewModel.Factory,
-            >(
-            key = "access",
-            creationCallback = { factory ->
-                factory.create("access")
-            },
-        )
     LoadableSingleWordThesaurusButton(
-        viewModel = viewModel,
+        word = "access",
         onNavigateToWord = {},
     )
 }

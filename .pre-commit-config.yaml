@@ -37,3 +37,6 @@ repos:
   rev: v1.32.0
   hooks:
     - id: typos
+
+# currently. Maybe be more specific about what to ignore
+exclude: 'docs/static/.*'

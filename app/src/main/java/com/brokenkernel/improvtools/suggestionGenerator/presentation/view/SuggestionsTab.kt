@@ -49,7 +49,6 @@ import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.application.navigation.ImprovToolsDestination
 import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
 import com.brokenkernel.improvtools.encyclopaedia.presentation.view.LoadableSingleWordThesaurusButton
-import com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel.LoadableSingleWordThesaurusButtonViewModel
 import com.brokenkernel.improvtools.suggestionGenerator.data.model.IdeaCategoryODS
 import com.brokenkernel.improvtools.suggestionGenerator.data.model.IdeaUIState
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel.SuggestionScreenViewModel
@@ -177,18 +176,9 @@ internal fun SuggestionsTab(
                                             }
                                             // TODO: none of the selected words are remembered across screens
                                             // TODO: this shouldn't be a viewModel but injected UIState. TBD
-                                            val viewModel =
-                                                hiltViewModel<
-                                                    LoadableSingleWordThesaurusButtonViewModel,
-                                                    LoadableSingleWordThesaurusButtonViewModel.Factory,
-                                                    >(
-                                                    key = currentIdea.idea,
-                                                    creationCallback = { factory ->
-                                                        factory.create(currentIdea.idea)
-                                                    },
-                                                )
+
                                             LoadableSingleWordThesaurusButton(
-                                                viewModel = viewModel,
+                                                word = currentIdea.idea,
                                                 onNavigateToWord = {
                                                     navigator.navigate(
                                                         ThesaurusTabSingleWordDestination(
