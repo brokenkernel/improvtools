@@ -13,7 +13,7 @@ internal class StopWatchTimerState(
     title: MutableStateFlow<String>, // todo: pass TimerInfo?
     private val stopWatchNotificationManager: StopWatchNotificationManager,
 ) : BaseTimerState(title, initialTime = Duration.ZERO) {
-    private val _myTimerThread: Timer = fixedRateTimer(
+    private val myTimerThread: Timer = fixedRateTimer(
         "fixed rate timer for: $title", // TODO: use TimerID
         daemon = true,
         initialDelay = 0L,

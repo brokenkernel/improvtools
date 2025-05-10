@@ -12,7 +12,7 @@ internal class CountDownTimerState(
     initialTime: Duration = INITIAL_TIMER_DURATION,
     private val countDownNotificationManager: CountDownNotificationManager,
 ) : BaseTimerState(title, initialTime = initialTime) {
-    private val _myTimerThread: Timer = fixedRateTimer(
+    private val myTimerThread: Timer = fixedRateTimer(
         "fixed rate timer for: $title",
         daemon = true,
         initialDelay = 0L,
