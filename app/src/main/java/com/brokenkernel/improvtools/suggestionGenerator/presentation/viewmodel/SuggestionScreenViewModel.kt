@@ -28,7 +28,7 @@ internal class SuggestionScreenViewModel @Inject constructor(
     // in the meantime, whatever. Also tests!
 
     val internalCategoryDatum: List<IdeaCategoryODS> = suggestionDatumRepository.getIdeaCategories()
-    val _categoryDatumToSuggestion: MutableMap<IdeaCategoryODS, MutableStateFlow<IdeaUIState>> =
+    private val _categoryDatumToSuggestion: MutableMap<IdeaCategoryODS, MutableStateFlow<IdeaUIState>> =
         HashMap<IdeaCategoryODS, MutableStateFlow<IdeaUIState>>()
     val categoryDatumToSuggestion: Map<IdeaCategoryODS, StateFlow<IdeaUIState>>
 
