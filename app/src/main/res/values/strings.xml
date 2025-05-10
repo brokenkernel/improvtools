@@ -105,4 +105,6 @@
     <string name="explain_this_term">Explain This Term</string>
     <string name="update_suggestion">Update Suggestion</string>
   <string name="reorder">Reorder</string>
+  <string name="timer_notifciation_mode">Timer Notifciation Mode</string>
+  <string name="timer_settings_header">Timer</string>
 </resources>

@@ -22,6 +22,7 @@ import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNav
 import com.brokenkernel.improvtools.encyclopaedia.data.model.TipsAndAdviceViewModeUI
 import com.brokenkernel.improvtools.settings.presentation.viewmodel.SettingsScreenViewModel
 import com.brokenkernel.improvtools.settings.utils.toTitleCase
+import com.brokenkernel.improvtools.timer.data.model.TimerHapticModeUI
 import com.ramcosta.composedestinations.annotation.Destination
 
 @Destination<ImprovToolsNavigationGraph>(
@@ -76,6 +77,7 @@ internal fun SettingsTab(viewModel: SettingsScreenViewModel = hiltViewModel()) {
             style = MaterialTheme.typography.titleLarge,
         )
 
+        // TODO: EnumSelectionMode component
         Row {
             Box(modifier = Modifier.weight(.8f)) {
                 Text(
@@ -100,6 +102,46 @@ internal fun SettingsTab(viewModel: SettingsScreenViewModel = hiltViewModel()) {
                             selected = (
                                 opt.internalEnumsMatching.contains(
                                     uiState.tipsAndTricksViewMode,
+                                )
+                                ),
+                            onClick = null,
+                        )
+                        Text(
+                            text = opt.name.toTitleCase("_", " "),
+                            style = MaterialTheme.typography.bodyLarge,
+                        )
+                    }
+                }
+            }
+        }
+        Text(
+            stringResource(R.string.timer_settings_header),
+            style = MaterialTheme.typography.titleLarge,
+        )
+        Row {
+            Box(modifier = Modifier.weight(.8f)) {
+                Text(
+                    stringResource(R.string.timer_notifciation_mode),
+                )
+            }
+            Column(modifier = Modifier.selectableGroup()) {
+                TimerHapticModeUI.entries.forEach { opt ->
+                    Row(
+                        Modifier
+                            .selectable(
+                                selected = (
+                                    opt.internalEnumsMatching.contains(
+                                        uiState.timerHapticsMode,
+                                    )
+                                    ),
+                                onClick = { viewModel.onClickUpdateTimerHapticsMode(opt) },
+                                role = Role.RadioButton,
+                            ),
+                    ) {
+                        RadioButton(
+                            selected = (
+                                opt.internalEnumsMatching.contains(
+                                    uiState.timerHapticsMode,
                                 )
                                 ),
                             onClick = null,
