@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.brokenkernel.components.view.SimpleIconButton
 import com.brokenkernel.improvtools.R
-import com.brokenkernel.improvtools.components.sidecar.preview.ImprovToolsAllPreviews
+import com.brokenkernel.improvtools.components.sidecar.preview.PreviewsImprovToolsAll
 import com.brokenkernel.improvtools.ui.theme.ImprovToolsTheme
 
 @Composable
@@ -34,7 +34,7 @@ fun SingleWordThesaurusButton(
     )
 }
 
-@ImprovToolsAllPreviews
+@PreviewsImprovToolsAll
 @Composable
 private fun ExampleSingleWordThesaurusButtonPreview() {
     ImprovToolsTheme {

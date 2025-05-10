@@ -3,11 +3,6 @@
     <file name="src/main/java/com/brokenkernel/improvtools/application/presentation/api/LocalComposables.kt">
         <error line="16" column="14" source="compose:compositionlocal-allowlist" />
     </file>
-    <file name="src/main/java/com/brokenkernel/improvtools/components/sidecar/preview/ImprovToolsAllPreviews.kt">
-        <error line="20" column="18" source="compose:preview-annotation-naming" />
-        <error line="37" column="18" source="compose:preview-annotation-naming" />
-        <error line="44" column="18" source="compose:preview-annotation-naming" />
-    </file>
     <file name="src/main/java/com/brokenkernel/improvtools/suggestionGenerator/presentation/viewmodel/SuggestionScreenViewModel.kt">
         <error line="25" column="17" source="standard:backing-property-naming" />
         <error line="31" column="9" source="standard:backing-property-naming" />

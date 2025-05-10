@@ -23,7 +23,7 @@ import com.brokenkernel.improvtools.application.navigation.ImprovToolsDestinatio
 import com.brokenkernel.improvtools.application.presentation.view.verticalColumnScrollbar
 import com.brokenkernel.improvtools.components.presentation.view.SimpleZoomableImage
 import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
-import com.brokenkernel.improvtools.components.sidecar.preview.ImprovToolsAllPreviews
+import com.brokenkernel.improvtools.components.sidecar.preview.PreviewsImprovToolsAll
 
 @ImprovToolsDestination<ImprovToolsNavigationGraph>
 @Composable
@@ -116,7 +116,7 @@ internal fun EmotionTab() {
     }
 }
 
-@ImprovToolsAllPreviews
+@PreviewsImprovToolsAll
 @Composable
 internal fun EmotionTabPreview() {
     EmotionTab()

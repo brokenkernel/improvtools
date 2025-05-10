@@ -5,7 +5,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.brokenkernel.improvtools.components.sidecar.preview.ImprovToolsAllPreviews
+import com.brokenkernel.improvtools.components.sidecar.preview.PreviewsImprovToolsAll
 import com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel.LoadableSingleWordThesaurusButtonViewModel
 
 @Composable
@@ -29,7 +29,7 @@ fun LoadableSingleWordThesaurusButton(
     }
 }
 
-@ImprovToolsAllPreviews
+@PreviewsImprovToolsAll
 @Composable
 private fun ExampleLoadableSingleWordThesaurusButtonPreview() {
     LoadableSingleWordThesaurusButton(
