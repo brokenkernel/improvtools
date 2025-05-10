@@ -159,13 +159,6 @@ internal enum class NavigableScreens(
 
     ;
 
-    internal val navigationCallback: (itas: ImprovToolsAppState) -> Unit = { itas ->
-        itas.navigator.navigate(matchingRoute) {
-            launchSingleTop = true
-            restoreState = true
-        }
-    }
-
     companion object {
         fun byRoute(route: TypedDestinationSpec<*>): NavigableScreens {
             // todo: deal with invalid route, for now force non-null for $reasons

@@ -45,7 +45,10 @@ private fun NavigableScreenNavigationDrawerItem(
         },
         onClick = {
             closeNavMenuCallback()
-            screen.navigationCallback(improvToolsAppState)
+            improvToolsAppState.navigator.navigate(screen.matchingRoute) {
+                launchSingleTop = true
+                restoreState = true
+            }
         },
         selected = improvToolsAppState.amIOnScreen(screen),
     )
