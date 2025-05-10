@@ -116,6 +116,7 @@ dependencies {
     androidTestImplementation(libs.androidx.monitor)
     androidTestImplementation(libs.androidx.ui.test)
     androidTestImplementation(libs.androidx.ui.test.junit4)
+    androidTestImplementation(libs.junit)
 
     ktlintRuleset(libs.ktlintCompose)
 

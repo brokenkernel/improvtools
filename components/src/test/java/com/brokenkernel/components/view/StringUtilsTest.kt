@@ -1,6 +1,5 @@
-package com.brokenkernel.improvtools
+package com.brokenkernel.components.view
 
-import com.brokenkernel.improvtools.settings.utils.toTitleCase
 import org.junit.Test
 
 class StringUtilsTest {

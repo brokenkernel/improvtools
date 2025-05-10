@@ -1,6 +1,5 @@
 package com.brokenkernel.improvtools.encyclopaedia.data.model
 
-import androidx.annotation.Size
 import com.brokenkernel.improvtools.datastore.UserSettings.TipsAndTricksViewMode
 
 internal data class TipContentUI(
@@ -9,20 +8,15 @@ internal data class TipContentUI(
 )
 
 enum class TipsAndAdviceViewModeUI(
-    @param:Size(
-        min = 1,
-    ) @field:Size(min = 1) val internalEnumsMatching: List<TipsAndTricksViewMode>,
+    val internalEnumMatching: TipsAndTricksViewMode,
 ) {
     SWIPEABLE(
-        internalEnumsMatching = listOf(
-            TipsAndTricksViewMode.VIEW_MODE_SWIPE,
-        ),
+        internalEnumMatching =
+        TipsAndTricksViewMode.VIEW_MODE_SWIPE,
     ),
     LIST(
-        internalEnumsMatching = listOf(
-            TipsAndTricksViewMode.VIEW_MODE_LIST,
-            TipsAndTricksViewMode.VIEW_MODE_DEFAULT,
-        ),
+        internalEnumMatching =
+        TipsAndTricksViewMode.VIEW_MODE_LIST,
     ),
     ;
 

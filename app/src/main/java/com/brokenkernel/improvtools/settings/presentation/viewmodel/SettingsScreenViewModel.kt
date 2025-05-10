@@ -7,14 +7,14 @@ import com.brokenkernel.improvtools.encyclopaedia.data.model.TipsAndAdviceViewMo
 import com.brokenkernel.improvtools.infrastructure.ConsentManagement
 import com.brokenkernel.improvtools.settings.data.repository.SettingsRepository
 import com.brokenkernel.improvtools.settings.presentation.uistate.SettingsScreenUIState
-import com.brokenkernel.improvtools.timer.data.model.TimerHapticModeUI
+import com.brokenkernel.improvtools.timer.data.model.TimerHapticsModeUI
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @HiltViewModel
 internal class SettingsScreenViewModel @Inject constructor(
@@ -48,7 +48,7 @@ internal class SettingsScreenViewModel @Inject constructor(
     }
 
     fun onClickUpdateTipsAndTricksViewMode(newState: TipsAndAdviceViewModeUI) {
-        val internalNewState: UserSettings.TipsAndTricksViewMode = newState.internalEnumsMatching.first()
+        val internalNewState: UserSettings.TipsAndTricksViewMode = newState.internalEnumMatching
         viewModelScope.launch {
             settingsRepository.updateTipsAndTricksViewMode(internalNewState)
         }
@@ -66,8 +66,8 @@ internal class SettingsScreenViewModel @Inject constructor(
         ConsentManagement.configureConsentForFirebase(newState)
     }
 
-    fun onClickUpdateTimerHapticsMode(newState: TimerHapticModeUI) {
-        val internalNewState = newState.internalEnumsMatching.first()
+    fun onClickUpdateTimerHapticsMode(newState: TimerHapticsModeUI) {
+        val internalNewState = newState.internalEnumMatching
         viewModelScope.launch {
             settingsRepository.updateTimerHapticsMode(internalNewState)
         }

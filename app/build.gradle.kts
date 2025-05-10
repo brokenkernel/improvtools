@@ -485,6 +485,7 @@ ksp {
     arg("dagger.fullBindingGraphValidation", "error")
 
     arg("compose-destinations.mermaidGraph", "$rootDir/docs/static/")
+    arg("compose-destinations.htmlMermaidGraph", "$rootDir/docs/static/")
 }
 
 fun isStable(version: String): Boolean {

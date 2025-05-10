@@ -7,10 +7,9 @@ This is aspirational as I've tried a few different ways of doing this and not ev
 ## Navigation
 
 1. `Route` — This is a thing that can be visited via the navigation structure.
+1. `Destination` - a Route as viewed by Compose Destinations.
 1. `Screen` — This is a user-visible description of a route. Contains things like "title" or menus
 1. `Tab` — A top level Composable for the application. Typically stand alone.
-1. `Section` - A high level grouping of `Screen`, `Route`, `Section`
-1. `SectionNavigation` — Each high level component of the
 
 ## Injectables
 

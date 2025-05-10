@@ -3,26 +3,24 @@ package com.brokenkernel.improvtools.settings.presentation.view
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.selection.selectable
-import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.semantics.Role
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.brokenkernel.components.view.EnumerationRadioSelection
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.presentation.view.SetScaffoldStateWrapper
 import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
+import com.brokenkernel.improvtools.datastore.UserSettings.TimerHapticsMode
+import com.brokenkernel.improvtools.datastore.UserSettings.TipsAndTricksViewMode
 import com.brokenkernel.improvtools.encyclopaedia.data.model.TipsAndAdviceViewModeUI
 import com.brokenkernel.improvtools.settings.presentation.viewmodel.SettingsScreenViewModel
-import com.brokenkernel.improvtools.settings.utils.toTitleCase
-import com.brokenkernel.improvtools.timer.data.model.TimerHapticModeUI
+import com.brokenkernel.improvtools.timer.data.model.TimerHapticsModeUI
 import com.ramcosta.composedestinations.annotation.Destination
 
 @Destination<ImprovToolsNavigationGraph>(
@@ -56,7 +54,6 @@ internal fun SettingsTab(viewModel: SettingsScreenViewModel = hiltViewModel()) {
             stringResource(R.string.privacy_settings_category),
             style = MaterialTheme.typography.titleLarge,
         )
-
         Row {
             Box(modifier = Modifier.weight(.8f)) {
                 Text(
@@ -77,42 +74,19 @@ internal fun SettingsTab(viewModel: SettingsScreenViewModel = hiltViewModel()) {
             style = MaterialTheme.typography.titleLarge,
         )
 
-        // TODO: EnumSelectionMode component
         Row {
             Box(modifier = Modifier.weight(.8f)) {
                 Text(
                     stringResource(R.string.settings_tips_and_tricks_view_mode),
                 )
             }
-            Column(modifier = Modifier.selectableGroup()) {
-                TipsAndAdviceViewModeUI.entries.forEach { opt ->
-                    Row(
-                        Modifier
-                            .selectable(
-                                selected = (
-                                    opt.internalEnumsMatching.contains(
-                                        uiState.tipsAndTricksViewMode,
-                                    )
-                                    ),
-                                onClick = { viewModel.onClickUpdateTipsAndTricksViewMode(opt) },
-                                role = Role.RadioButton,
-                            ),
-                    ) {
-                        RadioButton(
-                            selected = (
-                                opt.internalEnumsMatching.contains(
-                                    uiState.tipsAndTricksViewMode,
-                                )
-                                ),
-                            onClick = null,
-                        )
-                        Text(
-                            text = opt.name.toTitleCase("_", " "),
-                            style = MaterialTheme.typography.bodyLarge,
-                        )
-                    }
-                }
-            }
+            EnumerationRadioSelection<TipsAndAdviceViewModeUI, TipsAndTricksViewMode>(
+                onEnumerationSelection = { opt ->
+                    viewModel.onClickUpdateTipsAndTricksViewMode(opt)
+                },
+                currentlySelected = uiState.tipsAndTricksViewMode,
+                uiToInternalMapping = { opt -> opt.internalEnumMatching },
+            )
         }
         Text(
             stringResource(R.string.timer_settings_header),
@@ -124,35 +98,13 @@ internal fun SettingsTab(viewModel: SettingsScreenViewModel = hiltViewModel()) {
                     stringResource(R.string.timer_notifciation_mode),
                 )
             }
-            Column(modifier = Modifier.selectableGroup()) {
-                TimerHapticModeUI.entries.forEach { opt ->
-                    Row(
-                        Modifier
-                            .selectable(
-                                selected = (
-                                    opt.internalEnumsMatching.contains(
-                                        uiState.timerHapticsMode,
-                                    )
-                                    ),
-                                onClick = { viewModel.onClickUpdateTimerHapticsMode(opt) },
-                                role = Role.RadioButton,
-                            ),
-                    ) {
-                        RadioButton(
-                            selected = (
-                                opt.internalEnumsMatching.contains(
-                                    uiState.timerHapticsMode,
-                                )
-                                ),
-                            onClick = null,
-                        )
-                        Text(
-                            text = opt.name.toTitleCase("_", " "),
-                            style = MaterialTheme.typography.bodyLarge,
-                        )
-                    }
-                }
-            }
+            EnumerationRadioSelection<TimerHapticsModeUI, TimerHapticsMode>(
+                onEnumerationSelection = { opt ->
+                    viewModel.onClickUpdateTimerHapticsMode(opt)
+                },
+                uiToInternalMapping = { opt -> opt.internalEnumMatching },
+                currentlySelected = uiState.timerHapticsMode,
+            )
         }
     }
 }
