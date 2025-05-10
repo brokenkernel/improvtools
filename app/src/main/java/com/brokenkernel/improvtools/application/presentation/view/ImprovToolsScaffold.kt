@@ -29,6 +29,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.brokenkernel.components.view.SimpleIconButton
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.ApplicationConstants.APPLICATION_TITLE
@@ -37,12 +38,6 @@ import com.brokenkernel.improvtools.application.presentation.api.BottomSheetCont
 import com.brokenkernel.improvtools.application.presentation.api.LocalBottomSheetContentManager
 import com.brokenkernel.improvtools.application.presentation.api.LocalSnackbarHostState
 import com.brokenkernel.improvtools.sidecar.customtabs.CustomTabUriHandler
-
-// this should be handled by navigation, but for now, it works
-/**
- * Maintains a method which itself sets bottom sheet content.
- * Useful to be a method since it can also possibly _show_ the bottom sheet.
- */
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -54,8 +49,6 @@ internal fun ImprovToolsScaffold(
     val snackbarHostState = remember { SnackbarHostState() }
     val customTabHandler = CustomTabUriHandler(LocalContext.current)
     val sheetState = rememberModalBottomSheetState()
-    // TODO: this should be navigation based, but meh, future work
-    val bottomSheetContent = improvToolsAppState.bottomSheetContent
 
     @UiThread
     fun setAndShowBottomContent(
@@ -71,6 +64,10 @@ internal fun ImprovToolsScaffold(
             LocalBottomSheetContentManager provides ::setAndShowBottomContent,
         ),
     ) {
+        // TODO: this should be navigation based, but meh, future work
+        val bottomSheetContent = improvToolsAppState.bottomSheetContent.collectAsStateWithLifecycle()
+        val extraMenu = improvToolsAppState.extraMenu.collectAsStateWithLifecycle()
+        val currentTitle = improvToolsAppState.currentTitle.collectAsStateWithLifecycle()
         // TODO: replace with [[NavigationSuiteScaffold]]
         Scaffold(
             topBar = {
@@ -81,7 +78,7 @@ internal fun ImprovToolsScaffold(
                     ),
                     title = {
                         Text(
-                            stringResource(improvToolsAppState.currentTitle.value),
+                            stringResource(currentTitle.value),
                             modifier = Modifier.testTag(APPLICATION_TITLE),
                         )
                     },
@@ -97,8 +94,7 @@ internal fun ImprovToolsScaffold(
                         )
                     },
                     actions = {
-                        val curMenu = improvToolsAppState.extraMenu.value
-                        if (curMenu != null) {
+                        if (extraMenu.value != null) {
                             IconButton(
                                 onClick = {
                                     improvToolsAppState.extraMenuExpandedState =
@@ -111,7 +107,7 @@ internal fun ImprovToolsScaffold(
                                         R.string.navigation_open_screen_specific_menu,
                                     ),
                                 )
-                                curMenu()
+                                extraMenu.value?.invoke()
                             }
                         }
                     },
@@ -127,7 +123,8 @@ internal fun ImprovToolsScaffold(
                     .padding(innerPadding),
             ) {
                 content()
-                if (bottomSheetContent != null) {
+                // this should be handled by navigation, but for now, it works
+                if (bottomSheetContent.value != null) {
                     ModalBottomSheet(
                         onDismissRequest = {
                             improvToolsAppState.setBottomSheetTo(null)
@@ -135,7 +132,7 @@ internal fun ImprovToolsScaffold(
                         sheetState = sheetState,
                     ) {
                         Column {
-                            bottomSheetContent()
+                            bottomSheetContent.value?.invoke(this)
                         }
                     }
                 }

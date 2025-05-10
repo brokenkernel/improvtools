@@ -8,7 +8,6 @@ import androidx.compose.material3.DrawerState
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -23,34 +22,42 @@ import com.ramcosta.composedestinations.spec.DestinationSpec
 import com.ramcosta.composedestinations.utils.currentDestinationAsState
 import com.ramcosta.composedestinations.utils.rememberDestinationsNavigator
 import com.ramcosta.composedestinations.utils.startDestination
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 
 internal class ImprovToolsAppState(
+    @StringRes initialTitle: Int,
     val drawerState: DrawerState,
     val navController: NavHostController,
-    @param:StringRes val currentTitle: MutableState<Int>, // todo: expose a non_mutable variant
     val navigator: DestinationsNavigator,
-    var extraMenu: MutableState<(@Composable () -> Unit)?> = mutableStateOf(null),
 ) {
 
-    // TODO: this is somewhat passing state down instead of bubbling events up.
-    // I should, instead, be continuously passing `onDismsiss callbacks or some such. I'll try that in the fuutre
+    @StringRes
+    private val _currentTitle: MutableStateFlow<Int> = MutableStateFlow(initialTitle)
+    val currentTitle: StateFlow<Int> = _currentTitle.asStateFlow()
+
+    private val _extraMenu: MutableStateFlow<(@Composable () -> Unit)?> = MutableStateFlow(null)
+    val extraMenu: StateFlow<@Composable (() -> Unit)?> = _extraMenu.asStateFlow()
+
+    // TODO: this is passing state down instead of bubbling events up.
+    // I should, instead, be continuously passing `onDismiss callbacks or some such. I'll try that in the future
     var extraMenuExpandedState: Boolean by mutableStateOf(false)
 
-    var bottomSheetContent: BottomSheetContent? by mutableStateOf<BottomSheetContent?>(null)
-        private set
+    private val _bottomSheetContent: MutableStateFlow<BottomSheetContent?> = MutableStateFlow<BottomSheetContent?>(null)
+    var bottomSheetContent: StateFlow<BottomSheetContent?> = _bottomSheetContent.asStateFlow()
 
     @UiThread
     fun setBottomSheetTo(newContent: BottomSheetContent?) {
-        bottomSheetContent = newContent
+        _bottomSheetContent.value = newContent
     }
 
-    // TODO: wrapper
     fun setScaffoldData(
         @StringRes newTitle: Int,
         newExtraMenu: (@Composable () -> Unit)?,
     ) {
-        this.currentTitle.value = newTitle
-        extraMenu.value = newExtraMenu
+        this._currentTitle.value = newTitle
+        _extraMenu.value = newExtraMenu
     }
 
     // TODO: consider moving this out to the screen rather than app state??
@@ -73,10 +80,10 @@ internal class ImprovToolsAppState(
 
 @Composable
 internal fun rememberImprovToolsAppState(
+    @StringRes initialTitle: Int,
     drawerState: DrawerState = rememberDrawerState(initialValue = DrawerValue.Closed),
     navController: NavHostController = rememberNavController(),
-    @StringRes titleState: MutableState<Int>,
     navigator: DestinationsNavigator = navController.rememberDestinationsNavigator(),
-): ImprovToolsAppState = remember(drawerState, navController, titleState, navigator) {
-    ImprovToolsAppState(drawerState, navController, titleState, navigator)
+): ImprovToolsAppState = remember(drawerState, navController, initialTitle, navigator) {
+    ImprovToolsAppState(initialTitle, drawerState, navController, navigator)
 }

@@ -1,8 +1,6 @@
 package com.brokenkernel.improvtools.deployment.screenshots
 
 import androidx.annotation.StringRes
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.test.hasContentDescription
 import androidx.compose.ui.test.junit4.ComposeContentTestRule
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
@@ -46,8 +44,8 @@ sealed class BaseScreenshotGenerationTest {
         Screengrab.setDefaultScreenshotStrategy(UiAutomatorScreenshotStrategy())
 
         composeTestRule.setContent {
-            val titleState = remember { mutableStateOf(NavigableScreens.SuggestionGeneratorScreen.titleResource) }
-            val improvToolsState = rememberImprovToolsAppState(titleState = titleState)
+            val improvToolsState =
+                rememberImprovToolsAppState(initialTitle = NavigableScreens.SuggestionGeneratorScreen.titleResource)
             OuterContentForMasterScreen(improvToolsState, SuggestionsTabDestination)
         }
         composeTestRule.waitForIdle()

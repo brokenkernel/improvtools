@@ -44,23 +44,21 @@ internal enum class NavigableScreens(
     @param:StringRes @field:StringRes internal val contentDescription: Int,
     internal val icon: ImageVector,
     internal val matchingRoute: DirectionDestinationSpec,
-    val setExtraMenu: (@Composable (ImprovToolsAppState) -> Unit)? = null,
+    val extraMenu: (@Composable (ImprovToolsAppState) -> Unit)? = null,
 ) {
     SuggestionGeneratorScreen(
         titleResource = R.string.suggestions_activity_title,
         contentDescription = R.string.go_to_suggestion_generator,
         icon = Icons.Outlined.Lightbulb,
         matchingRoute = SuggestionsTabDestination,
-        setExtraMenu = { improvToolsAppState ->
-            improvToolsAppState.extraMenu.value = {
-                SuggestionsTabMenu(
-                    expanded = improvToolsAppState.extraMenuExpandedState,
-                    onDismiss = {
-                        improvToolsAppState.extraMenuExpandedState =
-                            !improvToolsAppState.extraMenuExpandedState
-                    },
-                )
-            }
+        extraMenu = { improvToolsAppState ->
+            SuggestionsTabMenu(
+                expanded = improvToolsAppState.extraMenuExpandedState,
+                onDismiss = {
+                    improvToolsAppState.extraMenuExpandedState =
+                        !improvToolsAppState.extraMenuExpandedState
+                },
+            )
         },
     ),
 
@@ -93,15 +91,13 @@ internal enum class NavigableScreens(
         contentDescription = R.string.go_to_tips_and_advice_screen,
         icon = Icons.Outlined.TipsAndUpdates,
         matchingRoute = TipsAndAdviceTabDestination,
-        setExtraMenu = { improvToolsAppState ->
-            improvToolsAppState.extraMenu.value = {
-                TipsAndAdviceTabMenu(
-                    expanded = improvToolsAppState.extraMenuExpandedState,
-                    onDismiss = {
-                        improvToolsAppState.extraMenuExpandedState = !improvToolsAppState.extraMenuExpandedState
-                    },
-                )
-            }
+        extraMenu = { improvToolsAppState ->
+            TipsAndAdviceTabMenu(
+                expanded = improvToolsAppState.extraMenuExpandedState,
+                onDismiss = {
+                    improvToolsAppState.extraMenuExpandedState = !improvToolsAppState.extraMenuExpandedState
+                },
+            )
         },
     ),
 

@@ -1,7 +1,5 @@
 package com.brokenkernel.improvtools.application
 
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.AndroidComposeTestRule
@@ -44,8 +42,8 @@ class NavigationTest {
             navController = TestNavHostController(LocalContext.current).apply {
                 navigatorProvider.addNavigator(ComposeNavigator())
             }
-            val titleState = remember { mutableStateOf(NavigableScreens.SuggestionGeneratorScreen.titleResource) }
-            val improvToolsState = rememberImprovToolsAppState(titleState = titleState)
+            val improvToolsState =
+                rememberImprovToolsAppState(initialTitle = NavigableScreens.SuggestionGeneratorScreen.titleResource)
             OuterContentForMasterScreen(
                 improvToolsState = improvToolsState,
                 initialRoute = SuggestionsTabDestination,

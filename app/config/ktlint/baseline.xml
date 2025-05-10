@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <baseline version="1.0">
-    <file name="src/main/java/com/brokenkernel/improvtools/application/data/model/ImprovToolsAppState.kt">
-        <error line="75" column="14" source="compose:param-order-check" />
-        <error line="78" column="16" source="compose:mutable-state-param-check" />
-    </file>
     <file name="src/main/java/com/brokenkernel/improvtools/application/presentation/api/LocalComposables.kt">
         <error line="16" column="14" source="compose:compositionlocal-allowlist" />
     </file>

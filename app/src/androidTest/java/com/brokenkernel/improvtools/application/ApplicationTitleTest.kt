@@ -1,8 +1,6 @@
 package com.brokenkernel.improvtools.application
 
 import androidx.annotation.StringRes
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.junit4.AndroidComposeTestRule
@@ -39,9 +37,9 @@ class ApplicationTitleTest {
     fun setupAppNavHost() {
         hiltRule.inject()
         composeTestRule.setContent {
-            val titleState = remember { mutableStateOf(NavigableScreens.SuggestionGeneratorScreen.titleResource) }
-
-            improvToolsState = rememberImprovToolsAppState(titleState = titleState)
+            improvToolsState = rememberImprovToolsAppState(
+                initialTitle = NavigableScreens.SuggestionGeneratorScreen.titleResource,
+            )
             OuterContentForMasterScreen(improvToolsState, SuggestionsTabDestination)
         }
     }

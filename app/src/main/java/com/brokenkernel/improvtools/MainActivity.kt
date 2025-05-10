@@ -5,8 +5,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import com.brokenkernel.improvtools.application.data.model.rememberImprovToolsAppState
@@ -60,9 +58,8 @@ class MainActivity : ComponentActivity() {
                 NavigableScreens.SuggestionGeneratorScreen
             }
 
-            val titleState = rememberSaveable { mutableIntStateOf(initialScreen.titleResource) }
             val improvToolsState: ImprovToolsAppState = rememberImprovToolsAppState(
-                titleState = titleState,
+                initialTitle = initialScreen.titleResource,
             )
 
             // maybe ImprovToolsState, or at least a subset should be passed via LocalContent so it doesn't need to be threaded all over the place

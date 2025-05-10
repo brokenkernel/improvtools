@@ -18,15 +18,12 @@ internal object SetScaffoldStateWrapper : DestinationWrapper {
 
         LaunchWrapper(
             onLaunchCallback = {
-                improvToolsAppState.currentTitle.value = navigableScreen.titleResource
+                improvToolsAppState.setScaffoldData(
+                    navigableScreen.titleResource,
+                    { navigableScreen.extraMenu?.invoke(improvToolsAppState) },
+                )
             },
         ) {
-            if (navigableScreen.setExtraMenu != null) {
-                // todo: expose a dependency setScaffoldData callback or some such and not expose core improvToolsState.
-                navigableScreen.setExtraMenu.invoke(improvToolsAppState)
-            } else {
-                improvToolsAppState.extraMenu.value = null
-            }
             screenContent()
         }
     }
