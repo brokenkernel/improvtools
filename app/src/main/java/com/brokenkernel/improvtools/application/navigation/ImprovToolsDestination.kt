@@ -7,6 +7,7 @@ import com.ramcosta.composedestinations.spec.DestinationStyle
 import com.ramcosta.composedestinations.wrapper.DestinationWrapper
 import kotlin.reflect.KClass
 
+@MustBeDocumented
 @Repeatable
 @Destination<Nothing>(
     visibility = CodeGenVisibility.INTERNAL,

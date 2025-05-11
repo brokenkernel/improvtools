@@ -2,6 +2,7 @@ package com.brokenkernel.improvtools.components.sidecar.preview
 
 import androidx.compose.ui.tooling.preview.Preview
 
+@MustBeDocumented
 @Preview(
     name = "small font",
     group = "font scales",
@@ -19,6 +20,7 @@ import androidx.compose.ui.tooling.preview.Preview
 )
 annotation class PreviewsFontScale
 
+@MustBeDocumented
 @Preview(
     name = "english",
     group = "locale",
@@ -36,6 +38,7 @@ annotation class PreviewsFontScale
 )
 annotation class PreviewsLocales()
 
+@MustBeDocumented
 @PreviewsFontScale
 @PreviewsLocales
 @Preview(name = "Show Background", showBackground = true)
