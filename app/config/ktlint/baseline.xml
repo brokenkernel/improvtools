@@ -6,7 +6,4 @@
     <file name="src/main/java/com/brokenkernel/improvtools/suggestionGenerator/presentation/viewmodel/SuggestionScreenViewModel.kt">
         <error line="25" column="17" source="standard:backing-property-naming" />
     </file>
-    <file name="src/main/java/com/brokenkernel/improvtools/timer/presentation/viewmodel/BaseTimerState.kt">
-        <error line="25" column="19" source="standard:backing-property-naming" />
-    </file>
 </baseline>

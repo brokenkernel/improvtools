@@ -1,6 +1,8 @@
 package com.brokenkernel.improvtools.timer.presentation.viewmodel
 
 import com.brokenkernel.improvtools.timer.data.model.TimerState
+import java.util.Timer
+import kotlin.concurrent.fixedRateTimer
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.seconds
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -19,13 +21,20 @@ internal sealed class BaseTimerState(
     private val _timerState: MutableStateFlow<TimerState> = MutableStateFlow(TimerState.STOPPED)
     internal val timerState: StateFlow<TimerState> = _timerState.asStateFlow()
 
+    private val myTimerThread: Timer = fixedRateTimer(
+        "fixed rate timer for: $_title", // TODO: use TimerID
+        daemon = true,
+        initialDelay = 0L,
+        period = 1.seconds.inWholeMilliseconds,
+    ) {
+        tick()
+    }
+
     val title = _title.asStateFlow()
 
-    // TODO: handle initial time originally?
-    protected val _timeLeft: MutableStateFlow<Duration> = MutableStateFlow(initialTime)
+    private val _timeLeft: MutableStateFlow<Duration> = MutableStateFlow(initialTime)
     internal val timeLeft: StateFlow<Duration> = _timeLeft.asStateFlow()
 
-    // TODO: consider three different funs instead of generic setter?
     fun setTimerState(state: TimerState) {
         _timerState.value = state
     }
@@ -37,4 +46,6 @@ internal sealed class BaseTimerState(
     fun setTitle(newTitle: String) {
         _title.value = newTitle
     }
+
+    protected abstract fun tick()
 }

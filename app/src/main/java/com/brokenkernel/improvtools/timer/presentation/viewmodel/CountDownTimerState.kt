@@ -1,8 +1,6 @@
 package com.brokenkernel.improvtools.timer.presentation.viewmodel
 
 import com.brokenkernel.improvtools.timer.sidecar.notifications.CountDownNotificationManager
-import java.util.Timer
-import kotlin.concurrent.fixedRateTimer
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.seconds
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -12,14 +10,10 @@ internal class CountDownTimerState(
     initialTime: Duration = INITIAL_TIMER_DURATION,
     private val countDownNotificationManager: CountDownNotificationManager,
 ) : BaseTimerState(title, initialTime = initialTime) {
-    private val myTimerThread: Timer = fixedRateTimer(
-        "fixed rate timer for: $title",
-        daemon = true,
-        initialDelay = 0L,
-        period = 1.seconds.inWholeMilliseconds,
-    ) {
-        if (_timeLeft.value.isPositive() && timerState.value.isStarted()) {
-            _timeLeft.value -= 1.seconds
+    override fun tick() {
+        val timeleft = timeLeft.value
+        if (timeleft.isPositive() && timerState.value.isStarted()) {
+            setTimeLeft(timeleft - 1.seconds)
         }
     }
 }
