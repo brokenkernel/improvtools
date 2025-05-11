@@ -5,5 +5,5 @@ import net.sf.extjwnl.dictionary.Dictionary
 
 internal interface ThesaurusRepository {
     fun getActionsThesaurus(): ActionsThesaurus
-    fun getEXTJWNLDictionary(): Dictionary?
+    fun getEXTJWNLDictionary(): Dictionary
 }

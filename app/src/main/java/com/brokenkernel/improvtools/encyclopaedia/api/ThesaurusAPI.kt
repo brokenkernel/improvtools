@@ -14,7 +14,7 @@ import net.sf.extjwnl.dictionary.Dictionary
  * This is the portion of the Thesaurus exposed to other components.
  */
 class ThesaurusAPI @Inject internal constructor(private val thesaurusRepository: ThesaurusRepository) {
-    val dictionary: Dictionary? = thesaurusRepository.getEXTJWNLDictionary()
+    val dictionary: Dictionary = thesaurusRepository.getEXTJWNLDictionary()
 
     /**
      * Get the set of words for which there is an entry. If the word is here,
@@ -34,7 +34,7 @@ class ThesaurusAPI @Inject internal constructor(private val thesaurusRepository:
     // TODO: check for exact match and/or stemmed match
     fun hasWordDetails(word: String): Boolean {
         val preppedWord = word.trim().lowercase()
-        val allIndexWords: IndexWordSet? = dictionary?.lookupAllIndexWords(preppedWord)
+        val allIndexWords: IndexWordSet? = dictionary.lookupAllIndexWords(preppedWord)
         if (Log.isLoggable(TAG, Log.VERBOSE)) {
             Log.v(TAG, "$preppedWord: hasWordDetails: ${allIndexWords?.toString()}")
         }
@@ -49,12 +49,9 @@ class ThesaurusAPI @Inject internal constructor(private val thesaurusRepository:
     }
 
     fun getSenseDatum(word: String): Map<String, List<SenseDatumUI>>? {
-        val allIndexWords: IndexWordSet? = dictionary?.lookupAllIndexWords(word)
-        if (allIndexWords == null) {
-            return null
-        }
+        val allIndexWords: IndexWordSet = dictionary.lookupAllIndexWords(word)
         val resultMap: Map<String, List<SenseDatumUI>> = allIndexWords.validPOSSet.associate { pos ->
-            val indexWord = allIndexWords.getIndexWord(pos)!!
+            val indexWord = allIndexWords.getIndexWord(pos)
             indexWord.sortSenses()
             val senses: List<Synset> = indexWord.senses.orEmpty()
 
