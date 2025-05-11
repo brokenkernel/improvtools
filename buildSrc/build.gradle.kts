@@ -7,5 +7,5 @@ repositories {
 }
 
 kotlin {
-    version = "2.1.20"
+    version = libs.versions.kotlin.get()
 }

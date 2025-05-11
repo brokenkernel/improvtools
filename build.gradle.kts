@@ -21,7 +21,7 @@ plugins {
     alias(libs.plugins.versionCatalogUpdate)
     id("com.osacky.doctor") version "0.10.0"
 
-    kotlin("plugin.power-assert") version "2.1.20" apply false
+    kotlin("plugin.power-assert") version "2.2.0-Beta2" apply false
     alias(libs.plugins.android.library) apply false
 }
 

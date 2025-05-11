@@ -11,7 +11,6 @@ import java.io.IOException
 import java.util.Properties
 import org.gradle.kotlin.dsl.implementation
 import org.jetbrains.dokka.gradle.engine.parameters.VisibilityModifier
-import org.jetbrains.kotlin.compose.compiler.gradle.ComposeFeatureFlag
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 
@@ -34,7 +33,7 @@ plugins {
     alias(libs.plugins.sortDependencies)
     id("shared-build-conventions")
 
-    kotlin("plugin.power-assert") version "2.1.20"
+    kotlin("plugin.power-assert") version libs.versions.kotlin.get()
 }
 
 val keystoreProperties: Properties = Properties()
@@ -119,11 +118,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-    kotlinOptions {
-        jvmTarget = "17"
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
     buildFeatures {
         compose = true
@@ -132,10 +128,7 @@ android {
     composeCompiler {
         includeSourceInformation = true
         includeTraceMarkers = true
-        featureFlags = setOf(
-            ComposeFeatureFlag.OptimizeNonSkippingGroups,
-            ComposeFeatureFlag.PausableComposition,
-        )
+        featureFlags = setOf()
     }
     testOptions {
         managedDevices {
@@ -358,7 +351,7 @@ configurations {
 }
 
 kotlin {
-    version = "2.1.20"
+    version = libs.versions.kotlin.get()
     sourceSets {
         all {
             languageSettings.progressiveMode = true
@@ -374,6 +367,7 @@ kotlin {
 //        https://kotlinlang.org/docs/whatsnew-eap.html#gradle
 //        jvmDefault = JvmDefaultMode.NO_COMPATIBILITY
     }
+    jvmToolchain(21)
 }
 
 hilt {

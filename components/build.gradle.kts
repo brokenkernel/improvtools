@@ -4,8 +4,8 @@ import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import com.google.devtools.ksp.KspExperimental
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.dokka.gradle.engine.parameters.VisibilityModifier
-import org.jetbrains.kotlin.compose.compiler.gradle.ComposeFeatureFlag
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 
 // TODO: move of this out to shared-build-conventions
 
@@ -21,7 +21,7 @@ plugins {
     alias(libs.plugins.versions)
     id("shared-build-conventions")
 
-    kotlin("plugin.power-assert") version "2.1.20"
+    kotlin("plugin.power-assert") version libs.versions.kotlin.get()
 }
 
 android {
@@ -42,11 +42,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-    kotlinOptions {
-        jvmTarget = "17"
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
     buildFeatures {
         compose = true
@@ -62,27 +59,28 @@ android {
     composeCompiler {
         includeSourceInformation = true
         includeTraceMarkers = true
-        featureFlags = setOf(
-            ComposeFeatureFlag.OptimizeNonSkippingGroups,
-            ComposeFeatureFlag.PausableComposition,
-        )
+        featureFlags = setOf()
     }
 }
 
 kotlin {
-    version = "2.1.20"
+    version = "2.2.0"
     sourceSets {
         all {
             languageSettings.progressiveMode = true
         }
     }
     compilerOptions {
+        languageVersion = KotlinVersion.KOTLIN_2_2
+        apiVersion = KotlinVersion.KOTLIN_2_2
+
         allWarningsAsErrors = true
         extraWarnings = true
         progressiveMode = true
 //        https://kotlinlang.org/docs/whatsnew-eap.html#gradle
 //        jvmDefault = JvmDefaultMode.NO_COMPATIBILITY
     }
+    jvmToolchain(21)
 }
 
 dependencies {
