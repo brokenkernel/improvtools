@@ -19,15 +19,18 @@ internal object LogFirebaseScreenViewWrapper : DestinationWrapper {
         val context = LocalContext.current
 
         val params = Bundle()
-        params.putString(FirebaseAnalytics.Param.SCREEN_NAME, context.resources.getString(navigableScreen.titleResource))
+        params.putString(
+            FirebaseAnalytics.Param.SCREEN_NAME,
+            context.resources.getString(navigableScreen.titleResource),
+        )
         params.putString(FirebaseAnalytics.Param.SCREEN_CLASS, destination.label?.toString())
         LaunchWrapper(
             onLaunchCallback = {
                 Firebase.analytics.logEvent(
                     FirebaseAnalytics.Event.SCREEN_VIEW,
-                    params
+                    params,
                 )
-            }
+            },
         ) {
             screenContent()
         }

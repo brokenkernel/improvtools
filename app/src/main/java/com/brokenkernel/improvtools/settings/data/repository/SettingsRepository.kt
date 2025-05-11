@@ -11,5 +11,6 @@ interface SettingsRepository {
     suspend fun updateTipsAndTricksViewMode(
         tipsAndTricksViewMode: UserSettings.TipsAndTricksViewMode,
     )
+
     suspend fun updateTimerHapticsMode(timerHapticsMode: UserSettings.TimerHapticsMode)
 }

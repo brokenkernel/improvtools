@@ -7,7 +7,6 @@ import com.brokenkernel.improvtools.suggestionGenerator.data.model.IdeaCategoryO
 import com.brokenkernel.improvtools.suggestionGenerator.data.model.IdeaItemODS
 import com.brokenkernel.improvtools.suggestionGenerator.data.model.IdeaUIState
 import com.brokenkernel.improvtools.suggestionGenerator.data.repository.MergedAudienceSuggestionDatumRepository
-import com.brokenkernel.improvtools.suggestionGenerator.presentation.uistate.SuggestionScreenUIState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jakarta.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -22,10 +21,7 @@ internal class SuggestionScreenViewModel @Inject constructor(
     private val settingsRepository: SettingsRepository,
 ) :
     ViewModel() {
-    private val _uiState = MutableStateFlow(SuggestionScreenUIState.default())
-
-    // TODO: figure out a nicer way to get suggestions from other places. I don't need everything in json, but some should be, and perhaps in the future local GenAI (hey: real use for it :-)
-    // in the meantime, whatever. Also tests!
+    private var shouldReuseSuggestions = MutableStateFlow(false)
 
     val internalCategoryDatum: List<IdeaCategoryODS> = suggestionDatumRepository.getIdeaCategories()
     private val _categoryDatumToSuggestion: MutableMap<IdeaCategoryODS, MutableStateFlow<IdeaUIState>> =
@@ -35,8 +31,7 @@ internal class SuggestionScreenViewModel @Inject constructor(
     init {
         viewModelScope.launch {
             settingsRepository.userSettingsFlow.collectLatest { it ->
-                _uiState.value =
-                    _uiState.value.copy(shouldReuseSuggestions = it.allowSuggestionsReuse)
+                shouldReuseSuggestions.value = it.allowSuggestionsReuse
             }
         }
         internalCategoryDatum.forEach { item ->
@@ -50,7 +45,7 @@ internal class SuggestionScreenViewModel @Inject constructor(
     }
 
     internal fun updateSuggestionXFor(ic: IdeaCategoryODS) {
-        val legalNewWords: Set<IdeaItemODS> = if (_uiState.value.shouldReuseSuggestions) {
+        val legalNewWords: Set<IdeaItemODS> = if (shouldReuseSuggestions.value) {
             ic.ideas
         } else {
             val ui: IdeaUIState = _categoryDatumToSuggestion.getValue(ic).value

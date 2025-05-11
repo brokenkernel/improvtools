@@ -3,7 +3,4 @@
     <file name="src/main/java/com/brokenkernel/improvtools/application/presentation/api/LocalComposables.kt">
         <error line="16" column="14" source="compose:compositionlocal-allowlist" />
     </file>
-    <file name="src/main/java/com/brokenkernel/improvtools/suggestionGenerator/presentation/viewmodel/SuggestionScreenViewModel.kt">
-        <error line="25" column="17" source="standard:backing-property-naming" />
-    </file>
 </baseline>
