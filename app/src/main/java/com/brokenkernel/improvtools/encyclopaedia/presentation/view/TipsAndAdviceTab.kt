@@ -1,19 +1,20 @@
 package com.brokenkernel.improvtools.encyclopaedia.presentation.view
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.rememberScrollState
@@ -22,6 +23,8 @@ import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ListItem
+import androidx.compose.material3.ListItemDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -37,7 +40,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.brokenkernel.components.view.HtmlText
 import com.brokenkernel.improvtools.application.navigation.ImprovToolsDestination
-import com.brokenkernel.improvtools.application.presentation.view.verticalColumnScrollbar
 import com.brokenkernel.improvtools.components.presentation.view.ExpandIcon
 import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
 import com.brokenkernel.improvtools.encyclopaedia.data.model.TipContentUI
@@ -103,15 +105,11 @@ internal fun TipsAndAdviceScreenAsSwipable(viewModel: TipsAndAdviceViewModel = h
 @Composable
 internal fun TipsAndAdviceScreenAsList(viewModel: TipsAndAdviceViewModel = hiltViewModel()) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-    val columnScrollState: ScrollState = rememberScrollState()
-    Column(
-        modifier = Modifier
-            .verticalColumnScrollbar(
-                columnScrollState,
-            )
-            .verticalScroll(columnScrollState),
+    LazyColumn(
+        modifier = Modifier,
+        verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
-        uiState.tipsAndAdvice.forEach { it: TipContentUI ->
+        items(uiState.tipsAndAdvice) { it: TipContentUI ->
             var isExpanded by rememberSaveable { mutableStateOf(false) }
             Card(
                 modifier = Modifier.fillMaxWidth(),
@@ -122,37 +120,25 @@ internal fun TipsAndAdviceScreenAsList(viewModel: TipsAndAdviceViewModel = hiltV
                     isExpanded = !isExpanded
                 },
             ) {
-                Row {
-                    Box(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(vertical = 8.dp), // TODO: from resource?
-                    ) {
-                        Row {
+                ListItem(
+                    headlineContent = {
+                        Text(
+                            text = it.title,
+                        )
+                    },
+                    supportingContent = {
+                        AnimatedVisibility(isExpanded) {
                             SelectionContainer {
-                                Text(
-                                    text = it.title,
-                                )
+                                HtmlText(it.content)
                             }
-                            // force arrow to the end
-                            Spacer(
-                                Modifier
-                                    .weight(1f)
-                                    .height(0.dp),
-                            )
-                            ExpandIcon(isExpanded)
                         }
-                    }
-                }
-                if (isExpanded) {
-                    Row {
-                        SelectionContainer {
-                            HtmlText(it.content)
-                        }
-                    }
-                }
+                    },
+                    trailingContent = { ExpandIcon(isExpanded) },
+                    colors = ListItemDefaults.colors(
+                        containerColor = MaterialTheme.colorScheme.surfaceVariant,
+                    ),
+                )
             }
-            Spacer(Modifier.size(1.dp)) // TODO: move to resources?
         }
     }
 }
