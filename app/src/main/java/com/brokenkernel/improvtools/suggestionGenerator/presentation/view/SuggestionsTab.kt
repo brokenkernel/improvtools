@@ -3,6 +3,7 @@ package com.brokenkernel.improvtools.suggestionGenerator.presentation.view
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -100,7 +101,7 @@ internal fun SuggestionsTab(
             modifier = Modifier
                 .fillMaxSize(),
         ) {
-            Row(
+            Box(
                 modifier = Modifier
                     .fillMaxWidth()
                     .weight(11f),
@@ -125,10 +126,9 @@ internal fun SuggestionsTab(
                         .fillMaxWidth(),
                 ) {
                     items(reorderedListOfSuggestions, key = IdeaCategoryODS::itemKey) { ideaCategory: IdeaCategoryODS ->
-                        // reordering doesn't work. Figure out why.
                         ReorderableItem(
                             state = reorderableLazyListState,
-                            key = IdeaCategoryODS::itemKey,
+                            key = ideaCategory.itemKey(),
                         ) { isDragging ->
                             val elevation by animateDpAsState(if (isDragging) 4.dp else 0.dp)
 
@@ -148,7 +148,7 @@ internal fun SuggestionsTab(
                                         onClickLabel = stringResource(R.string.update_suggestion),
                                     ),
                                     trailingContent = {
-                                        Row(modifier = Modifier.weight(1f)) {
+                                        Row {
                                             if (ideaCategory.showLinkToEmotion) {
                                                 SimpleIconButton(
                                                     onClick = {
