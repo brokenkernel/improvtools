@@ -10,8 +10,6 @@ import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Scaffold
@@ -96,21 +94,18 @@ internal fun ImprovToolsScaffold(
                     },
                     actions = {
                         if (extraMenu.value != null) {
-                            IconButton(
+                            SimpleIconButton(
                                 onClick = {
                                     improvToolsAppState.extraMenuExpandedState =
                                         !improvToolsAppState.extraMenuExpandedState
                                 },
-                            ) {
-                                Icon(
-                                    imageVector = Icons.Filled.MoreVert,
-                                    contentDescription = stringResource(
-                                        R.string.navigation_open_screen_specific_menu,
-                                    ),
-                                )
-                                extraMenu.value?.invoke()
-                            }
+                                icon = Icons.Filled.MoreVert,
+                                contentDescription = stringResource(
+                                    R.string.navigation_open_screen_specific_menu,
+                                ),
+                            )
                         }
+                        extraMenu.value?.invoke(improvToolsAppState)
                     },
                 )
             },

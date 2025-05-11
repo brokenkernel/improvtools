@@ -34,8 +34,8 @@ internal class ImprovToolsAppState(
     private val _currentTitle: MutableStateFlow<Int> = MutableStateFlow(initialTitle)
     val currentTitle: StateFlow<Int> = _currentTitle.asStateFlow()
 
-    private val _extraMenu: MutableStateFlow<(@Composable () -> Unit)?> = MutableStateFlow(null)
-    val extraMenu: StateFlow<@Composable (() -> Unit)?> = _extraMenu.asStateFlow()
+    private val _extraMenu: MutableStateFlow<@Composable ((ImprovToolsAppState) -> Unit)?> = MutableStateFlow(null)
+    val extraMenu: StateFlow<@Composable ((ImprovToolsAppState) -> Unit)?> = _extraMenu.asStateFlow()
 
     // TODO: this is passing state down instead of bubbling events up.
     // I should, instead, be continuously passing `onDismiss callbacks or some such. I'll try that in the future
@@ -51,7 +51,7 @@ internal class ImprovToolsAppState(
 
     fun setScaffoldData(
         @StringRes newTitle: Int,
-        newExtraMenu: (@Composable () -> Unit)?,
+        newExtraMenu: @Composable ((ImprovToolsAppState) -> Unit)?,
     ) {
         this._currentTitle.value = newTitle
         _extraMenu.value = newExtraMenu

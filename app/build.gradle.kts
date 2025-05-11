@@ -13,6 +13,8 @@ import org.gradle.kotlin.dsl.implementation
 import org.jetbrains.dokka.gradle.engine.parameters.VisibilityModifier
 import org.jetbrains.kotlin.compose.compiler.gradle.ComposeFeatureFlag
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
+import org.jetbrains.kotlin.gradle.internal.config.JvmDefaultMode
 
 plugins {
     alias(libs.plugins.aboutLibraries)
@@ -364,6 +366,9 @@ kotlin {
         }
     }
     compilerOptions {
+        languageVersion = KotlinVersion.KOTLIN_2_2
+        apiVersion = KotlinVersion.KOTLIN_2_2
+
 //        allWarningsAsErrors = true // TODO: disabled because of compose destinations
         extraWarnings = true
         progressiveMode = true

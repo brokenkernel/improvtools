@@ -20,7 +20,7 @@ internal object SetScaffoldStateWrapper : DestinationWrapper {
             onLaunchCallback = {
                 improvToolsAppState.setScaffoldData(
                     navigableScreen.titleResource,
-                    { navigableScreen.extraMenu?.invoke(improvToolsAppState) },
+                    navigableScreen.extraMenu,
                 )
             },
         ) {

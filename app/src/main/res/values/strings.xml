@@ -31,7 +31,7 @@
     <string name="settings_allow_reuse">Allow Reuse</string>
     <string name="about_improvtools_feature_request" translatable="false">ImprovTools Feature Request</string>
     <string name="about_contact_email_address" translatable="false">lists@eitanadler.com</string>
-    <string name="navigation_open_screen_specific_menu">Open Screen Specific Menu</string>
+    <string name="navigation_open_screen_specific_menu">Open Menu</string>
     <string name="navigation_tips_and_advice">Tips And Advice</string>
     <string name="go_to_tips_and_advice_screen">Go to Tips And Advice</string>
     <string name="error_no_email_application_available">No email application available</string>
