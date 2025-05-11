@@ -1,7 +1,5 @@
 package com.brokenkernel.improvtools.application.data.model
 
-import android.util.Log
-import android.util.Log.INFO
 import androidx.annotation.StringRes
 import androidx.annotation.UiThread
 import androidx.compose.material3.DrawerState
@@ -14,7 +12,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.brokenkernel.improvtools.TAG
 import com.brokenkernel.improvtools.application.presentation.api.BottomSheetContent
 import com.ramcosta.composedestinations.generated.navgraphs.ImprovToolsNavigationNavGraph
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
@@ -66,15 +63,6 @@ internal class ImprovToolsAppState(
         val currentDestination: DestinationSpec = navController.currentDestinationAsState().value
             ?: ImprovToolsNavigationNavGraph.startDestination
         return currentDestination == screen.matchingRoute
-    }
-
-    @UiThread
-    fun navigateBack() {
-        if (Log.isLoggable(TAG, INFO)) {
-            Log.i(TAG, "Navigating BACK")
-        }
-
-        navigator.popBackStack()
     }
 }
 

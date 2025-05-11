@@ -62,7 +62,7 @@ class ApplicationTitleTest {
             .assertTextEquals(getString(NavigableScreens.GamesPageScreen.titleResource))
 
         getInstrumentation().runOnMainSync {
-            improvToolsState.navigateBack()
+            improvToolsState.navigator.popBackStack()
         }
 
         composeTestRule.onNodeWithTag(ApplicationConstants.APPLICATION_TITLE)

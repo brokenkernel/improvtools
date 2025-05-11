@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import com.brokenkernel.improvtools.application.data.model.rememberImprovToolsAppState
@@ -36,6 +37,9 @@ class MainActivity : ComponentActivity() {
         // Its better, but not yet perfect.
 
         setContent {
+            val viewModel: MainActivityViewModel = hiltViewModel<MainActivityViewModel>()
+
+
 //            intent.categories
             // CATEGORY_LEANBACK_SETTINGS, CATEGORY_COMMUNAL_MODE, CATEGORY_PREFERENCE, CATEGORY_LEANBACK_LAUNCHER
             val initialScreen: NavigableScreens = if (intent.action != null) {
