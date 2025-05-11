@@ -6,6 +6,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
+import com.brokenkernel.components.view.HtmlText
 
 @Composable
 fun ExplanationBottomSheetTab(
@@ -19,6 +20,6 @@ fun ExplanationBottomSheetTab(
             style = MaterialTheme.typography.titleLarge,
             textAlign = TextAlign.Center,
         )
-        Text(explanation)
+        HtmlText(explanation)
     }
 }

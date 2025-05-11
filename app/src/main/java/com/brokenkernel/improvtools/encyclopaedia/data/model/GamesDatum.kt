@@ -12,13 +12,18 @@ enum class GamesDatumTag(val label: String, val description: String? = null) {
     DIVERGENCE("#divergence", """Exercises that help you come up with new ideas"""),
     CONVERGENCE("#convergence", """Exercises that help the group get on the same wavelength"""),
     ENERGY("#energy"),
-    NAMES("#names"),
-    RANGE("#range"),
+    NAMES("#names", """Help actors learn the names of people in the group"""),
+    RANGE("#range", """Help expand the range of characters or situations one can play"""),
     VOCAL("#vocal"),
     STATUS("#status"),
-    SHORTFORM("#shortform"),
-    MEDIUMFORM("#mediumform"),
-    LONGFORM("#longform"),
+    SHORTFORM("#shortform", """A singular game performed"""),
+    MEDIUMFORM(
+        "#mediumform",
+        """A collection of scenes with a semi-coherent theme along a defined form or structure.
+            | Sometimes also called <i>longform</i>
+        """.trimMargin(),
+    ),
+    LONGFORM("#longform", """A full length performance intended to have a coherent and singular 'plot'"""),
     BREATH("#breath"),
     ;
 
@@ -36,8 +41,9 @@ internal enum class GamesDatumTopic(val icon: ImageVector) {
     FORMAT(icon = Icons.Outlined.SelfImprovement),
 }
 
+// TODO: see also?
 /**
- * @param unpublishedMatches This is a set of strings which will match but are not shown to the user Useful for "3" -> "Three" or similar
+ * @param unpublishedMatches Strings which will match but are not shown to the user Useful for "3" -> "Three" or similar
  */
 internal data class GamesDataItem(
     val gameName: String,
@@ -175,6 +181,21 @@ internal val GamesDatum: Collection<GamesDataItem> = listOf(
         gameName = "Lines From a Hat",
         topic = GamesDatumTopic.GAME,
         tags = setOf(GamesDatumTag.SHORTFORM),
+        detailedInformation = """|
+            |The audience is asked for line suggestions. A normal scene ensues.
+            |Each actor will occasionally read a line from the suggestions.
+            |It should avoided to reference that this line is a quote (e.g., avoid "as my Mom used to say ...")
+        """.trimMargin(),
+    ),
+    GamesDataItem(
+        gameName = "Lines From a Phone",
+        topic = GamesDatumTopic.GAME,
+        tags = setOf(GamesDatumTag.SHORTFORM),
+        detailedInformation = """|
+            |The audience is asked for a source of text. It may be a text message thread for example.
+            |A normal scene ensues.
+            |One actor must read ALL of their lines from the source of text.
+        """.trimMargin(),
     ),
     GamesDataItem(
         gameName = "Dysfunctional Relationships",
@@ -196,7 +217,7 @@ internal val GamesDatum: Collection<GamesDataItem> = listOf(
             |This scene is then replayed twice. The first time every choice
             | works out with the best possible result,
             | in the second, everything ends up going the worst way you can imagine.
-        """.trimMargin().replace("\n", ""),
+        """.trimMargin(),
         tags = setOf(GamesDatumTag.SHORTFORM),
         // TODO: maybe add link to game helper that gives you a scene.
     ),
