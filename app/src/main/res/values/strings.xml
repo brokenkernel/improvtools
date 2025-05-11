@@ -4,7 +4,7 @@
     <string name="suggestions_activity_title">Suggestion Generator</string>
 <!--    <string name="suggestions_title_category">Category</string>-->
 <!--    <string name="suggestions_audience_idea">Audience Idea</string>-->
-    <string name="suggestions_reset_all">Reset All</string>
+    <string name="suggestions_reset_all">Change All</string>
     <string name="navigation_app_menu">Menu</string>
     <string name="navigation_settings_category">Settings</string>
     <string name="navigation_help_and_feedback">Help and feedback</string>

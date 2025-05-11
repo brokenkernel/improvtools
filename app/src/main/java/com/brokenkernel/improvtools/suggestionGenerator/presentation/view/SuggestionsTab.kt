@@ -132,83 +132,81 @@ internal fun SuggestionsTab(
                         ) { isDragging ->
                             val elevation by animateDpAsState(if (isDragging) 4.dp else 0.dp)
 
-                            val itemSuggestionState: State<IdeaUIState>? =
-                                viewModel.categoryDatumToSuggestion[ideaCategory]?.collectAsStateWithLifecycle()
-                            val currentIdea: IdeaUIState? = itemSuggestionState?.value
-                            // TODO: figure out a way to avoid the null entirely here
-                            if (currentIdea != null) {
-                                ListItem(
-                                    shadowElevation = elevation,
-                                    overlineContent = { Text(ideaCategory.titleWithCount()) },
-                                    headlineContent = { Text(currentIdea.idea) },
-                                    modifier = Modifier.clickable(
-                                        onClick = {
-                                            viewModel.updateSuggestionXFor(ideaCategory)
-                                        },
-                                        onClickLabel = stringResource(R.string.update_suggestion),
-                                    ),
-                                    trailingContent = {
-                                        Row {
-                                            if (ideaCategory.showLinkToEmotion) {
-                                                SimpleIconButton(
-                                                    onClick = {
-                                                        navigator.navigate(EmotionTabDestination)
-                                                    },
-                                                    icon = Icons.Outlined.PsychologyAlt,
-                                                    contentDescription = stringResource(
-                                                        R.string.go_to_emotions_reference_screen,
-                                                    ),
-                                                )
-                                            }
-                                            if (currentIdea.explanation != null) {
-                                                SimpleIconButton(
-                                                    onClick = {
-                                                        onNavigateToExplanation(
-                                                            currentIdea.idea,
-                                                            currentIdea.explanation,
-                                                        )
-                                                    },
-                                                    icon = Icons.Outlined.TheaterComedy,
-                                                    contentDescription = stringResource(
-                                                        R.string.explain_this_term,
-                                                    ),
-                                                )
-                                            }
-                                            // TODO: none of the selected words are remembered across screens
-                                            // TODO: this shouldn't be a viewModel but injected UIState. TBD
-
-                                            LoadableSingleWordThesaurusButton(
-                                                word = currentIdea.idea,
-                                                onNavigateToWord = {
-                                                    navigator.navigate(
-                                                        ThesaurusTabSingleWordDestination(
-                                                            currentIdea.idea,
-                                                            improvToolsAppState.currentTitle.value,
-                                                        ),
+                            val itemSuggestionState: State<IdeaUIState> =
+                                viewModel.categoryDatumToSuggestion.getValue(ideaCategory).collectAsStateWithLifecycle()
+                            val currentIdea: IdeaUIState = itemSuggestionState.value
+                            ListItem(
+                                shadowElevation = elevation,
+                                overlineContent = { Text(ideaCategory.titleWithCount()) },
+                                headlineContent = { Text(currentIdea.idea) },
+                                modifier = Modifier.clickable(
+                                    onClick = {
+                                        viewModel.updateSuggestionXFor(ideaCategory)
+                                    },
+                                    onClickLabel = stringResource(R.string.update_suggestion),
+                                ),
+                                trailingContent = {
+                                    Row {
+                                        if (ideaCategory.showLinkToEmotion) {
+                                            SimpleIconButton(
+                                                onClick = {
+                                                    navigator.navigate(EmotionTabDestination)
+                                                },
+                                                icon = Icons.Outlined.PsychologyAlt,
+                                                contentDescription = stringResource(
+                                                    R.string.go_to_emotions_reference_screen,
+                                                ),
+                                            )
+                                        }
+                                        if (currentIdea.explanation != null) {
+                                            SimpleIconButton(
+                                                onClick = {
+                                                    onNavigateToExplanation(
+                                                        currentIdea.idea,
+                                                        currentIdea.explanation,
                                                     )
                                                 },
-                                                whenDisabledFullyHidden = true,
-                                            )
-                                            IconButton(
-                                                modifier = Modifier.longPressDraggableHandle(
-                                                    onDragStarted = {
-                                                        haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                                                    },
-                                                    onDragStopped = {
-                                                        haptic.performHapticFeedback(HapticFeedbackType.GestureEnd)
-                                                    },
+                                                icon = Icons.Outlined.TheaterComedy,
+                                                contentDescription = stringResource(
+                                                    R.string.explain_this_term,
                                                 ),
-                                                onClick = {},
-                                            ) {
-                                                Icon(
-                                                    Icons.Rounded.DragHandle,
-                                                    contentDescription = stringResource(R.string.reorder),
-                                                )
-                                            }
+                                            )
                                         }
-                                    },
-                                )
-                            }
+                                        // TODO: none of the selected words are remembered across screens
+                                        // TODO: this shouldn't be a viewModel but injected UIState. TBD
+
+                                        LoadableSingleWordThesaurusButton(
+                                            word = currentIdea.idea,
+                                            onNavigateToWord = {
+                                                navigator.navigate(
+                                                    ThesaurusTabSingleWordDestination(
+                                                        currentIdea.idea,
+                                                        improvToolsAppState.currentTitle.value,
+                                                    ),
+                                                )
+                                            },
+                                            whenDisabledFullyHidden = true,
+                                        )
+                                        IconButton(
+                                            modifier = Modifier.longPressDraggableHandle(
+                                                onDragStarted = {
+                                                    haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+                                                },
+                                                onDragStopped = {
+                                                    haptic.performHapticFeedback(HapticFeedbackType.GestureEnd)
+                                                },
+                                            ),
+                                            onClick = {},
+                                        ) {
+                                            Icon(
+                                                Icons.Rounded.DragHandle,
+                                                contentDescription = stringResource(R.string.reorder),
+                                            )
+                                        }
+                                    }
+                                },
+                            )
+
                         }
                     }
                 }
