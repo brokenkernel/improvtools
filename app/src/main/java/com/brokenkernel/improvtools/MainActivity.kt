@@ -39,7 +39,6 @@ class MainActivity : ComponentActivity() {
         setContent {
             val viewModel: MainActivityViewModel = hiltViewModel<MainActivityViewModel>()
 
-
 //            intent.categories
             // CATEGORY_LEANBACK_SETTINGS, CATEGORY_COMMUNAL_MODE, CATEGORY_PREFERENCE, CATEGORY_LEANBACK_LAUNCHER
             val initialScreen: NavigableScreens = if (intent.action != null) {

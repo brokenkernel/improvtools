@@ -11,6 +11,7 @@ import kotlin.reflect.KClass
 @Destination<Nothing>(
     visibility = CodeGenVisibility.INTERNAL,
     wrappers = [
+        LogFirebaseScreenViewWrapper::class,
         SetScaffoldStateWrapper::class,
     ],
 )
