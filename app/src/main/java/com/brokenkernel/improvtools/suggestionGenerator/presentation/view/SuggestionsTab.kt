@@ -206,7 +206,6 @@ internal fun SuggestionsTab(
                                     }
                                 },
                             )
-
                         }
                     }
                 }

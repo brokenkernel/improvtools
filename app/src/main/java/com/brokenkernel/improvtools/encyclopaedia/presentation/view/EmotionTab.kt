@@ -55,7 +55,13 @@ internal fun EmotionTab() {
                 ),
             )
         }
-        OutlinedCard {
+        OutlinedCard(
+            modifier = Modifier.fillMaxWidth(),
+            border = BorderStroke(1.dp, Color.Black),
+            colors = CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.surface,
+            ),
+        ) {
             Text(
                 stringResource(R.string.encyclopaedia_emotion_wheel),
                 style = MaterialTheme.typography.titleLarge,
@@ -90,7 +96,6 @@ internal fun EmotionTab() {
                     |<li>Supporting</li>
                     |</ul>
                     |</li>
-                    |
                     |<li>
                     |<h2>Using</h2>
                     |<ul>
@@ -99,7 +104,6 @@ internal fun EmotionTab() {
                     |<li>Deceiving</li>
                     |</ul>
                     |</li>
-                    |
                     |<li>
                     |<h2>Damaging</h2>
                     |<ul>
@@ -107,9 +111,8 @@ internal fun EmotionTab() {
                     |<li>Harming</li>
                     |<li>Destroying</li>
                     |</ul>
-                    |</ul>
                     |</li>
-                    |
+                    |</ul>
                 """.trimMargin(),
             )
         }

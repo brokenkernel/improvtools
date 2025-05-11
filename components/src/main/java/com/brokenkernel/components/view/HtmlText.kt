@@ -17,9 +17,10 @@ import androidx.compose.ui.text.style.LineBreak
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import org.intellij.lang.annotations.Language
 
 @Composable
-fun HtmlText(html: String, modifier: Modifier = Modifier) {
+fun HtmlText(@Language("html") html: String, modifier: Modifier = Modifier) {
     val uriHandler = LocalUriHandler.current
 
     val text: AnnotatedString = AnnotatedString.fromHtml(
