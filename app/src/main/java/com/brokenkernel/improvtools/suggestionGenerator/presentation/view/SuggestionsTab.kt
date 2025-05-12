@@ -21,7 +21,6 @@ import androidx.compose.material.icons.rounded.DragHandle
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.Text
 import androidx.compose.material3.pulltorefresh.PullToRefreshBox
@@ -187,7 +186,7 @@ internal fun SuggestionsTab(
                                             },
                                             whenDisabledFullyHidden = true,
                                         )
-                                        IconButton(
+                                        SimpleIconButton(
                                             modifier = Modifier.longPressDraggableHandle(
                                                 onDragStarted = {
                                                     haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove)
@@ -197,12 +196,9 @@ internal fun SuggestionsTab(
                                                 },
                                             ),
                                             onClick = {},
-                                        ) {
-                                            Icon(
-                                                Icons.Rounded.DragHandle,
-                                                contentDescription = stringResource(R.string.reorder),
-                                            )
-                                        }
+                                            icon = Icons.Rounded.DragHandle,
+                                            contentDescription = stringResource(R.string.reorder),
+                                        )
                                     }
                                 },
                             )
@@ -217,7 +213,6 @@ internal fun SuggestionsTab(
                     .fillMaxWidth()
                     .weight(1f),
             ) {
-                // maybe floating action button?
                 FilledTonalButton(
                     onClick = { viewModel.resetAllCategories() },
                 ) {
