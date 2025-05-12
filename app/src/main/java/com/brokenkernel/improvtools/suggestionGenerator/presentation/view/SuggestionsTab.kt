@@ -108,12 +108,12 @@ internal fun SuggestionsTab(
             ) {
                 // TODO: maybe this should live in viewModel instead of in composable
                 // TODO: should also be saved across edits and persisted?
-                var reorderedListOfSuggestions: List<IdeaCategoryODS> by remember {
-                    mutableStateOf(viewModel.internalCategoryDatum)
+                val reorderedListOfSuggestions: List<IdeaCategoryODS> = remember {
+                    viewModel.internalCategoryDatum
                 }
                 val lazyListState = rememberLazyListState()
                 val reorderableLazyListState = rememberReorderableLazyListState(lazyListState) { from, to ->
-                    reorderedListOfSuggestions = reorderedListOfSuggestions.toMutableList().apply {
+                    viewModel.internalCategoryDatum.apply {
                         add(to.index, removeAt(from.index))
                     }
                     haptic.performHapticFeedback(HapticFeedbackType.SegmentFrequentTick)

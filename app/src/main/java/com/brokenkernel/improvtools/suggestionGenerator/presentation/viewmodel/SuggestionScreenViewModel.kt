@@ -1,5 +1,8 @@
 package com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel
 
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.snapshots.SnapshotStateList
+import androidx.compose.runtime.toMutableStateList
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.brokenkernel.improvtools.settings.data.repository.SettingsRepository
@@ -23,7 +26,10 @@ internal class SuggestionScreenViewModel @Inject constructor(
     ViewModel() {
     private var shouldReuseSuggestions = MutableStateFlow(false)
 
-    val internalCategoryDatum: List<IdeaCategoryODS> = suggestionDatumRepository.getIdeaCategories()
+    // TODO: don't expose ODS to UI ...
+    val internalCategoryDatum: SnapshotStateList<IdeaCategoryODS> =
+        suggestionDatumRepository.getIdeaCategories().toMutableStateList()
+
     private val _categoryDatumToSuggestion: MutableMap<IdeaCategoryODS, MutableStateFlow<IdeaUIState>> =
         HashMap<IdeaCategoryODS, MutableStateFlow<IdeaUIState>>()
     val categoryDatumToSuggestion: Map<IdeaCategoryODS, StateFlow<IdeaUIState>>
