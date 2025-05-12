@@ -13,12 +13,10 @@ import androidx.compose.runtime.setValue
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.brokenkernel.improvtools.application.presentation.api.BottomSheetContent
-import com.ramcosta.composedestinations.generated.navgraphs.ImprovToolsNavigationNavGraph
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
-import com.ramcosta.composedestinations.spec.DestinationSpec
+import com.ramcosta.composedestinations.spec.DirectionDestinationSpec
 import com.ramcosta.composedestinations.utils.currentDestinationAsState
 import com.ramcosta.composedestinations.utils.rememberDestinationsNavigator
-import com.ramcosta.composedestinations.utils.startDestination
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -57,12 +55,9 @@ internal class ImprovToolsAppState(
         _extraMenu.value = newExtraMenu
     }
 
-    // TODO: consider moving this out to the screen rather than app state??
     @Composable
-    fun amIOnScreen(screen: NavigableScreens): Boolean {
-        val currentDestination: DestinationSpec = navController.currentDestinationAsState().value
-            ?: ImprovToolsNavigationNavGraph.startDestination
-        return currentDestination == screen.matchingRoute
+    fun amIOnRoute(route: DirectionDestinationSpec): Boolean {
+        return navController.currentDestinationAsState().value == route
     }
 }
 

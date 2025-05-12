@@ -50,7 +50,7 @@ private fun NavigableScreenNavigationDrawerItem(
                 restoreState = true
             }
         },
-        selected = improvToolsAppState.amIOnScreen(screen),
+        selected = improvToolsAppState.amIOnRoute(screen.matchingRoute),
     )
 }
 
