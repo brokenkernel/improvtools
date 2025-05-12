@@ -9,3 +9,7 @@
 - move feature logic out out to lib which doesn't have android dependencies
 - -Xjspecify-annotations=strict, -Xtype-enhancement-improvements-strict-mod
 - redo entire timer 'tick' code to be calculated based on time.  _possibly_ think about timezone/config changes, but really might not matter. Just focus on "When should this end" and put 'tick' in the UI (and flashing ':' )
+
+- replace most if not all of the data sources with a Room based impl. This should allow for i18n, customisation, persistence of settings, editing, etc.
+- add dictionary in addition to thesaurus
+- update thesaurus data file. Add setting for which one (or both?)
