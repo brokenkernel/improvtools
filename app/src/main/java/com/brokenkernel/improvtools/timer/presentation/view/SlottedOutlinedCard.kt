@@ -22,12 +22,16 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.intl.Locale
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.brokenkernel.components.view.SimpleIconButton
 import com.brokenkernel.improvtools.R
-import com.brokenkernel.improvtools.timer.data.model.TimerState
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.hours
 import kotlin.time.Duration.Companion.minutes
+import kotlin.time.Duration.Companion.seconds
+import kotlin.time.ExperimentalTime
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.flow
 
 private fun Duration.formatTime(): String {
     val hours = this.inWholeHours
@@ -37,12 +41,25 @@ private fun Duration.formatTime(): String {
     return String.format(Locale.current.platformLocale, "%02d:%02d:%02d", hours, minutes, seconds)
 }
 
+@OptIn(ExperimentalTime::class)
+@Composable
+private fun CurrentTimerTime(currentTime: () -> Duration, isStarted: Boolean) {
+    val currentTimeFlow = flow<_> {
+        if (isStarted) {
+            delay(1.seconds)
+            emit(currentTime())
+        }
+    }
+    val currentTime by currentTimeFlow.collectAsStateWithLifecycle(initialValue = currentTime())
+    Text(currentTime.formatTime(), style = MaterialTheme.typography.displayLarge)
+}
+
 @Composable
 internal fun SlottedTimerCardContent(
     title: String,
-    currentTime: Duration,
-    timerState: TimerState,
+    currentTime: () -> Duration,
     onRemoveTimer: () -> Unit,
+    isStarted: Boolean,
     onTitleChange: (String) -> Unit,
     modifier: Modifier = Modifier,
     actions: @Composable (() -> Unit) = {},
@@ -98,7 +115,7 @@ internal fun SlottedTimerCardContent(
                 contentDescription = stringResource(R.string.slotted_timer_remove_timer),
             )
         }
-        Text(currentTime.formatTime(), style = MaterialTheme.typography.displayLarge)
+        CurrentTimerTime(currentTime, isStarted)
         Row {
             actions()
         }

@@ -9,9 +9,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
-internal fun TimerBorderOutlineCard(content: @Composable (() -> Unit) = {}) {
+internal fun TimerBorderOutlineCard(
+    modifier: Modifier = Modifier,
+    content: @Composable (() -> Unit) = {},
+) {
     OutlinedCard(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = modifier.fillMaxWidth(),
         border = BorderStroke(1.dp, Color.Black),
     ) {
         content()

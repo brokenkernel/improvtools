@@ -107,4 +107,5 @@
   <string name="reorder">Reorder</string>
   <string name="timer_notifciation_mode">Timer Notifciation Mode</string>
   <string name="timer_settings_header">Timer</string>
+  <string name="stop_watch">Stop Watch</string>
 </resources>

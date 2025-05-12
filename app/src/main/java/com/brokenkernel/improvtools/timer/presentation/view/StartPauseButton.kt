@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import com.brokenkernel.improvtools.R
-import com.brokenkernel.improvtools.timer.data.model.TimerState
+import com.brokenkernel.improvtools.timer.presentation.viewmodel.TimerState
 
 @Composable
 internal fun StartPauseButton(
@@ -18,21 +18,23 @@ internal fun StartPauseButton(
     onStart: (() -> Unit),
     onPause: (() -> Unit),
 ) {
-    Button(onClick = {
-        if (timerState == TimerState.STARTED) {
-            onPause()
-        } else {
-            onStart()
-        }
-    }) {
+    Button(
+        onClick = {
+            if (timerState.isStarted()) {
+                onPause()
+            } else {
+                onStart()
+            }
+        },
+    ) {
         val curButtonText: String =
-            if (timerState == TimerState.STARTED) {
+            if (timerState.isStarted()) {
                 stringResource(R.string.timer_pause)
             } else {
                 stringResource(R.string.timer_start)
             }
         val curButtonIcon: ImageVector =
-            if (timerState == TimerState.STARTED) {
+            if (timerState.isStarted()) {
                 Icons.Default.Pause
             } else {
                 Icons.Default.PlayArrow

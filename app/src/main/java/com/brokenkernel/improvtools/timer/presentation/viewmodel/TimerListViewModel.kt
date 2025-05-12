@@ -1,11 +1,11 @@
 package com.brokenkernel.improvtools.timer.presentation.viewmodel
 
 import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.brokenkernel.improvtools.datastore.UserSettings
 import com.brokenkernel.improvtools.settings.data.repository.SettingsRepository
-import com.brokenkernel.improvtools.timer.data.model.TimerInfo
 import com.brokenkernel.improvtools.timer.data.repository.TimerManager
 import com.brokenkernel.improvtools.timer.sidecar.notifications.CountDownNotificationManager
 import com.brokenkernel.improvtools.timer.sidecar.notifications.StopWatchNotificationManager
@@ -33,46 +33,61 @@ internal class TimerListViewModel @Inject constructor(
         }
     }
 
-    enum class TimerType {
-        STOPWATCH,
-        COUNTDOWN,
-    }
-
     private val _shouldHaptic = MutableStateFlow(true)
     val shouldHaptic = _shouldHaptic.asStateFlow()
 
     // hide the mutable ability from the UI
-    private val _allTimers: MutableStateFlow<MutableList<TimerInfo>> =
-        MutableStateFlow<MutableList<TimerInfo>>(
-            mutableStateListOf(
-                TimerInfo(MutableStateFlow("Stopwatch One"), TimerType.STOPWATCH, timerManager.getNextID()),
-                TimerInfo(MutableStateFlow("Stopwatch Two"), TimerType.STOPWATCH, timerManager.getNextID()),
-                TimerInfo(MutableStateFlow("Countdown Three"), TimerType.COUNTDOWN, timerManager.getNextID()),
-                TimerInfo(MutableStateFlow("Countdown Four"), TimerType.COUNTDOWN, timerManager.getNextID()),
-            ),
+    private val _allTimers: SnapshotStateList<TimerState> =
+        mutableStateListOf(
+            PausedCountUpTimerState(Duration.ZERO, "Stopwatch One", timerManager.getNextID()),
+            PausedCountUpTimerState(Duration.ZERO, "Stopwatch Two", timerManager.getNextID()),
+            PausedCountDownTimerState(INITIAL_COUNT_DOWN_TIMER_DURATION, "Countdown Three", timerManager.getNextID()),
+            PausedCountDownTimerState(INITIAL_COUNT_DOWN_TIMER_DURATION, "Countdown Four", timerManager.getNextID()),
         )
-    val allTimers = _allTimers.asStateFlow()
+    val allTimers: List<TimerState> = _allTimers
 
-    fun removeTimer(timerInfo: TimerInfo) {
-        _allTimers.value.remove(timerInfo)
+    fun removeTimer(timer: TimerState) {
+        _allTimers.remove(timer)
     }
 
-    fun addTimer(initialTitle: String, timerType: TimerType) {
-        _allTimers.value.add(TimerInfo(MutableStateFlow(initialTitle), timerType, timerManager.getNextID()))
+    private fun startTimer(timer: PausedTimerState) {
+        val index = _allTimers.indexOf(timer)
+        _allTimers.set(index, timer.asStartedTimer())
     }
 
-    fun createStopWatchTimerState(initialTitle: MutableStateFlow<String>): StopWatchTimerState {
-        return StopWatchTimerState(initialTitle, stopWatchNotificationManager)
+    private fun pauseTimer(timer: StartedTimerState) {
+        val index = _allTimers.indexOf(timer)
+        _allTimers.set(index, timer.asPausedTimer())
     }
 
-    fun createCountdownNotificationManager(
-        initialTitle: MutableStateFlow<String>,
-        initialTime: Duration,
-    ): CountDownTimerState {
-        return CountDownTimerState(
-            initialTitle,
-            initialTime,
-            countDownNotificationManager,
-        )
+    fun invertTimerState(timer: TimerState) {
+        when (timer) {
+            is PausedTimerState -> startTimer(timer)
+            is StartedTimerState -> pauseTimer(timer)
+        }
+    }
+
+    fun resetTimer(timer: TimerState) {
+        val index = _allTimers.indexOf(timer)
+        _allTimers.set(index, timer.asResetTimer())
+    }
+
+    fun halfTimer(timer: CountDownTimerState) {
+        val index = _allTimers.indexOf(timer)
+        _allTimers.set(index, timer.asHalfTime())
+    }
+
+    fun addCountUpTimer(title: String) {
+        val timer = PausedCountUpTimerState(Duration.ZERO, title, timerManager.getNextID())
+        _allTimers.add(timer)
+    }
+
+    fun addCountDownTimer(title: String) {
+        val timer = PausedCountDownTimerState(INITIAL_COUNT_DOWN_TIMER_DURATION, title, timerManager.getNextID())
+        _allTimers.add(timer)
+    }
+
+    fun replaceTitle(timer: TimerState, title: String) {
+        // TODO
     }
 }

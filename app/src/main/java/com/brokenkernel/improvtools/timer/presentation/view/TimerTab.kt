@@ -15,11 +15,10 @@ import androidx.compose.material3.LargeFloatingActionButton
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberUpdatedState
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -28,131 +27,119 @@ import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.navigation.ImprovToolsDestination
 import com.brokenkernel.improvtools.components.presentation.view.OneWayDismissableContent
 import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
-import com.brokenkernel.improvtools.timer.data.model.TimerInfo
-import com.brokenkernel.improvtools.timer.data.model.TimerState
-import com.brokenkernel.improvtools.timer.presentation.viewmodel.CountDownTimerState
-import com.brokenkernel.improvtools.timer.presentation.viewmodel.INITIAL_TIMER_DURATION
-import com.brokenkernel.improvtools.timer.presentation.viewmodel.StopWatchTimerState
+import com.brokenkernel.improvtools.timer.presentation.viewmodel.PausedCountDownTimerState
+import com.brokenkernel.improvtools.timer.presentation.viewmodel.PausedCountUpTimerState
+import com.brokenkernel.improvtools.timer.presentation.viewmodel.StartedCountDownTimerState
+import com.brokenkernel.improvtools.timer.presentation.viewmodel.StartedCountUpTimerState
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.TimerListViewModel
-import kotlin.collections.toList
-import kotlin.time.Duration
-import kotlin.time.Duration.Companion.minutes
+import com.brokenkernel.improvtools.timer.presentation.viewmodel.TimerState
 
 private const val TAG = "TimerScreen"
 
 // TODO: allow for optional starting time setting
 // TODO control of how many timers. Add some.
 // todo: click on title, change name of timer
-// TODO central timer manager
-// TODO: Too diluted of where state is stored. Need to fix the entire flow of timers
 // TODO: adding timer stops/resets existing timers. See also: state storage is broken.
 // TODO: possibly add Timer Edit Button (for future editing time, etc. Also clearer UX than clicking on title to edit title)
+// TODO: handle countdown timer when it is done. (a) stop/pause it (b) notification handler
+// TODO: reorderable timers
 
-// TODO: title: https://composedestinations.rafaelcosta.xyz/v2/destination-wrappers
 @Composable
-internal fun SimpleCountDownTimer(
-    viewModel: CountDownTimerState,
+private fun CommonTimer(
+    timerState: TimerState,
     onRemoveTimer: () -> Unit,
+    onTitleChange: (String) -> Unit,
+    iconStarted: ImageVector,
+    iconPaused: ImageVector,
+    iconDescription: String,
+    content: @Composable () -> Unit,
 ) {
-    val timeLeft by viewModel.timeLeft.collectAsStateWithLifecycle()
-    val timerState by viewModel.timerState.collectAsStateWithLifecycle()
-    val currentTitle = viewModel.title.collectAsStateWithLifecycle()
-
     SlottedTimerCardContent(
-        title = currentTitle.value,
-        currentTime = timeLeft,
-        timerState = timerState,
-        actions = {
-            StartPauseButton(
-                timerState,
-                onPause = {
-                    viewModel.setTimerState(TimerState.PAUSED)
-                },
-                onStart = {
-                    viewModel.setTimerState(TimerState.STARTED)
-                },
-            )
-            OutlinedButton(
-                onClick = {
-                    viewModel.setTimeLeft(timeLeft / 2)
-                },
-            ) {
-                Text(stringResource(R.string.timer_half_time))
-            }
-            OutlinedButton(
-                onClick = {
-                    viewModel.setTimerState(TimerState.STOPPED)
-                    viewModel.setTimeLeft(INITIAL_TIMER_DURATION)
-                },
-            ) {
-                Text(stringResource(R.string.timer_reset))
-            }
-        },
+        title = timerState.title,
+        currentTime = timerState::showTime,
+        actions = content,
+        isStarted = timerState.isStarted(),
         onRemoveTimer = onRemoveTimer,
         leadingIcon = {
             Icon(
                 if (timerState.isStarted()) {
-                    Icons.Default.Timer
+                    iconStarted
                 } else {
-                    Icons.Default.TimerOff
+                    iconPaused
                 },
-                contentDescription = stringResource(R.string.count_down_timer),
+                contentDescription = iconDescription,
             )
         },
-        onTitleChange = {
-            if (Log.isLoggable(TAG, Log.DEBUG)) {
-                Log.d(TAG, "SimpleCountDownTimer: Timer title changed to $it")
-            }
-            viewModel.setTitle(it)
-        },
+        onTitleChange = onTitleChange,
     )
 }
 
 @Composable
-internal fun SimpleStopWatchTimer(viewModel: StopWatchTimerState, onRemoveTimer: () -> Unit) {
-    val timeLeft by viewModel.timeLeft.collectAsStateWithLifecycle()
-    val timerState by viewModel.timerState.collectAsStateWithLifecycle()
-    val context = LocalContext.current
-    val currentTitle = viewModel.title.collectAsStateWithLifecycle()
-
-    SlottedTimerCardContent(
-        title = currentTitle.value,
-        currentTime = timeLeft,
+internal fun CountDownTimer(
+    timerState: TimerState,
+    onStartTimer: () -> Unit,
+    onPauseTimer: () -> Unit,
+    onRemoveTimer: () -> Unit,
+    onHalfTimeTimer: () -> Unit,
+    onResetTimer: () -> Unit,
+    onTitleChange: (String) -> Unit,
+) {
+    CommonTimer(
         timerState = timerState,
-        onRemoveTimer = onRemoveTimer,
-        actions = {
+        content = {
             StartPauseButton(
-                timerState = timerState,
-                onStart = {
-                    viewModel.sendNotification(context)
-                    viewModel.setTimerState(TimerState.STARTED)
-                },
-                onPause = {
-                    viewModel.setTimerState(TimerState.PAUSED)
-                },
+                timerState,
+                onPause = onPauseTimer,
+                onStart = onStartTimer,
             )
             OutlinedButton(
-                onClick = {
-                    viewModel.setTimerState(TimerState.STOPPED)
-                    viewModel.setTimeLeft(Duration.ZERO)
-                },
+                onClick = onHalfTimeTimer,
+            ) {
+                Text(stringResource(R.string.timer_half_time))
+            }
+            OutlinedButton(
+                onClick = onResetTimer,
             ) {
                 Text(stringResource(R.string.timer_reset))
             }
         },
-        leadingIcon = {
-            Icon(
-                if (timerState.isStarted()) {
-                    Icons.Default.AlarmOn
-                } else {
-                    Icons.Default.AlarmOff
-                },
-                contentDescription = stringResource(R.string.count_down_timer),
+        onRemoveTimer = onRemoveTimer,
+        iconPaused = Icons.Default.AlarmOff,
+        iconStarted = Icons.Default.AlarmOn,
+        iconDescription = stringResource(R.string.count_down_timer),
+        onTitleChange = onTitleChange,
+    )
+}
+
+@Composable
+internal fun CountUpTimer(
+    timerState: TimerState,
+    onStartTimer: () -> Unit,
+    onPauseTimer: () -> Unit,
+    onRemoveTimer: () -> Unit,
+    onResetTimer: () -> Unit,
+    onTitleChange: (String) -> Unit,
+) {
+    CommonTimer(
+        timerState = timerState,
+        content = {
+            StartPauseButton(
+                timerState,
+                onPause = onPauseTimer,
+                onStart = onStartTimer,
             )
+            OutlinedButton(
+                onClick = onResetTimer,
+            ) {
+                Text(stringResource(R.string.timer_reset))
+            }
         },
-        onTitleChange = {
-            viewModel.setTitle(it)
-        },
+        iconPaused = Icons.Default.TimerOff,
+        iconStarted = Icons.Default.Timer,
+        iconDescription = stringResource(R.string.stop_watch),
+
+        onRemoveTimer = onRemoveTimer,
+        onTitleChange = onTitleChange,
     )
 }
 
@@ -161,11 +148,11 @@ internal fun SimpleStopWatchTimer(viewModel: StopWatchTimerState, onRemoveTimer:
 internal fun TimerTab(viewModel: TimerListViewModel = hiltViewModel()) {
     val haptic = LocalHapticFeedback.current
     val shouldHapticOnRemove = viewModel.shouldHaptic.collectAsStateWithLifecycle()
-    val allTimers: State<MutableList<TimerInfo>> = viewModel.allTimers.collectAsStateWithLifecycle()
+    val allTimers = viewModel.allTimers
 
     LazyColumn {
         // toList to copy to avoid ConcurrentModificationException. Maybe a better way exists to handle?
-        items(allTimers.value.toList(), key = { t -> t.id }) { timer: TimerInfo ->
+        items(allTimers.toList(), key = { t -> t.timerID }) { timer: TimerState ->
 
             val currentTimer by rememberUpdatedState(timer)
             val onRemove = {
@@ -176,24 +163,57 @@ internal fun TimerTab(viewModel: TimerListViewModel = hiltViewModel()) {
                 Log.w(TAG, "removing timer $timer")
                 Unit
             }
-            OneWayDismissableContent(onRemove = onRemove) {
-                when (timer.timerType) {
-                    TimerListViewModel.TimerType.STOPWATCH -> {
-                        TimerBorderOutlineCard {
-                            val simpleStopWatchState = viewModel.createStopWatchTimerState(
-                                timer.title,
-                            )
-                            SimpleStopWatchTimer(simpleStopWatchState, onRemove)
-                        }
-                    }
 
-                    TimerListViewModel.TimerType.COUNTDOWN -> {
-                        TimerBorderOutlineCard {
-                            val simpleCountDownTimerState = viewModel.createCountdownNotificationManager(
-                                timer.title,
-                                initialTime = 1.minutes,
+            // TODO: half time doesn't immediately recompose ...
+            //  ... since currentTime lambda doesn't change (or nothing triggers recompose)
+
+            OneWayDismissableContent(onRemove = onRemove) {
+                TimerBorderOutlineCard {
+                    when (timer) {
+                        is PausedCountDownTimerState -> {
+                            CountDownTimer(
+                                onPauseTimer = { viewModel.invertTimerState(timer) },
+                                onRemoveTimer = onRemove,
+                                onHalfTimeTimer = { viewModel.halfTimer(timer) },
+                                onResetTimer = { viewModel.resetTimer(timer) },
+                                onTitleChange = { viewModel.replaceTitle(timer, it) },
+                                timerState = timer,
+                                onStartTimer = { viewModel.invertTimerState(timer) },
                             )
-                            SimpleCountDownTimer(simpleCountDownTimerState, onRemove)
+                        }
+
+                        is StartedCountDownTimerState -> {
+                            CountDownTimer(
+                                onPauseTimer = { viewModel.invertTimerState(timer) },
+                                onRemoveTimer = onRemove,
+                                onHalfTimeTimer = { viewModel.halfTimer(timer) },
+                                onResetTimer = { viewModel.resetTimer(timer) },
+                                onTitleChange = { viewModel.replaceTitle(timer, it) },
+                                timerState = timer,
+                                onStartTimer = { viewModel.invertTimerState(timer) },
+                            )
+                        }
+
+                        is PausedCountUpTimerState -> {
+                            CountUpTimer(
+                                onPauseTimer = { viewModel.invertTimerState(timer) },
+                                onRemoveTimer = onRemove,
+                                onResetTimer = { viewModel.resetTimer(timer) },
+                                onTitleChange = { viewModel.replaceTitle(timer, it) },
+                                timerState = timer,
+                                onStartTimer = { viewModel.invertTimerState(timer) },
+                            )
+                        }
+
+                        is StartedCountUpTimerState -> {
+                            CountUpTimer(
+                                onPauseTimer = { viewModel.invertTimerState(timer) },
+                                onRemoveTimer = onRemove,
+                                onResetTimer = { viewModel.resetTimer(timer) },
+                                onTitleChange = { viewModel.replaceTitle(timer, it) },
+                                timerState = timer,
+                                onStartTimer = { viewModel.invertTimerState(timer) },
+                            )
                         }
                     }
                 }
@@ -205,14 +225,14 @@ internal fun TimerTab(viewModel: TimerListViewModel = hiltViewModel()) {
                 val newCountdownString = stringResource(R.string.new_countdown_timer)
                 LargeFloatingActionButton(
                     onClick = {
-                        viewModel.addTimer(newStopwatchString, TimerListViewModel.TimerType.STOPWATCH)
+                        viewModel.addCountUpTimer(newStopwatchString)
                     },
                 ) {
                     Icon(Icons.Filled.Timer, newStopwatchString)
                 }
                 LargeFloatingActionButton(
                     onClick = {
-                        viewModel.addTimer(newCountdownString, TimerListViewModel.TimerType.COUNTDOWN)
+                        viewModel.addCountDownTimer(newStopwatchString)
                     },
                 ) {
                     Icon(Icons.Filled.AlarmAdd, newCountdownString)
