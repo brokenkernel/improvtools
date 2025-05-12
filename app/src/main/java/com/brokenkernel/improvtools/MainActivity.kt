@@ -29,13 +29,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        // TODO: I just generally dislike how screen and rotues interact. I badly need to decouple
-        // - place I might go
-        // - how to get there
-        // what to show about it
-        // composables for that info
-        // Its better, but not yet perfect.
-
         setContent {
             val viewModel: MainActivityViewModel = hiltViewModel<MainActivityViewModel>()
 

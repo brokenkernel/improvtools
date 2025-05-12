@@ -119,7 +119,6 @@ internal class ScreenshotGeneralPerNavigableScreenTest(
             .performClick()
         composeTestRule.waitForIdle()
 
-        // TODO: This is wrong, but will change this when I change how navigation works
         Screengrab.screenshot(navigableScreen.matchingRoute::class.simpleName + "_screen_baseline")
     }
 }
