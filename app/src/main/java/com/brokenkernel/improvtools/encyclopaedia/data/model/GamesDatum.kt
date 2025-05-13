@@ -144,8 +144,12 @@ internal val GamesDatum: Collection<GamesDataItem> = listOf(
         topic = GamesDatumTopic.GAME,
     ),
     GamesDataItem(
-        gameName = "Genre Replay",
+        gameName = "Director's Cut",
         topic = GamesDatumTopic.GAME,
+    ),
+    GamesDataItem(
+        gameName = "Interview Me",
+        topic = GamesDatumTopic.EXERCISE,
     ),
     GamesDataItem(
         gameName = "One For All",
