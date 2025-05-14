@@ -336,15 +336,13 @@ dependencies {
     lintChecks(libs.slack.lint.checks)
 }
 
-// firebase is just broken https://github.com/firebase/firebase-android-sdk/issues/6359
 configurations {
     all {
         resolutionStrategy {
-            // TODO
-            activateDependencyLocking()
-//            failOnVersionConflict() // TODO
+            failOnNonReproducibleResolution()
         }
     }
+    // firebase is just broken https://github.com/firebase/firebase-android-sdk/issues/6359
     implementation {
         exclude(module = "protolite-well-known-types")
     }
