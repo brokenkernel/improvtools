@@ -1,5 +1,8 @@
 package com.brokenkernel.improvtools.timer.presentation.viewmodel
 
+import android.Manifest
+import android.content.Context
+import androidx.annotation.RequiresPermission
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.lifecycle.ViewModel
@@ -18,6 +21,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+@OptIn(ExperimentalTime::class)
 @HiltViewModel
 internal class TimerListViewModel @Inject constructor(
     val settingsRepository: SettingsRepository,
@@ -56,12 +60,29 @@ internal class TimerListViewModel @Inject constructor(
         _allTimers[index] = timer.asStartedTimer()
     }
 
+    @RequiresPermission(Manifest.permission.POST_NOTIFICATIONS)
+    fun tryToSendNotificationForTimer(timer: TimerState, context: Context) {
+        when (timer) {
+            is CountUpTimerState -> {
+                val notification =
+                    stopWatchNotificationManager.getStopWatchNotification(context, timer)
+                stopWatchNotificationManager.send(notification)
+            }
+
+            is CountDownTimerState -> {
+                val notification =
+                    countDownNotificationManager.getCountDownNotification(context, timer)
+                countDownNotificationManager.send(notification)
+            }
+        }
+    }
+
     private fun pauseTimer(timer: StartedTimerState) {
         val index = _allTimers.indexOf(timer)
         _allTimers[index] = timer.asPausedTimer()
     }
 
-    fun invertTimerState(timer: TimerState) {
+    fun invertTimerState(timer: TimerState, context: Context) {
         when (timer) {
             is PausedTimerState -> startTimer(timer)
             is StartedTimerState -> pauseTimer(timer)

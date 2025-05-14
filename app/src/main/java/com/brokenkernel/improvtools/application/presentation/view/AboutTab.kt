@@ -1,7 +1,9 @@
 package com.brokenkernel.improvtools.application.presentation.view
 
+import android.app.NotificationManager
 import android.content.ActivityNotFoundException
 import android.content.ClipData
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager.PackageInfoFlags
@@ -50,6 +52,7 @@ import androidx.core.net.toUri
 import com.brokenkernel.components.view.HtmlText
 import com.brokenkernel.improvtools.BuildConfig
 import com.brokenkernel.improvtools.R
+import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.application.navigation.ImprovToolsDestination
 import com.brokenkernel.improvtools.application.presentation.api.LocalSnackbarHostState
 import com.brokenkernel.improvtools.components.presentation.view.ExpandIcon
@@ -62,6 +65,7 @@ import kotlinx.coroutines.launch
 @Composable
 internal fun AboutTab(
     navigator: DestinationsNavigator,
+    improvToolsAppState: ImprovToolsAppState,
 ) {
     // move snackbar host state into app state. And then inject it?
     // also include more injected stuff (settings for ex) into debug datum
@@ -69,11 +73,13 @@ internal fun AboutTab(
     val crScope = rememberCoroutineScope()
     val resources = LocalContext.current.resources
     val packageManager = LocalContext.current.packageManager
+    val context = LocalContext.current
+    val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
     // TODO: figure out how to do content generation off of UI. Maybe bring back viewmodel?
     val packageInfo: PackageInfo? =
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            packageManager.getPackageInfo(LocalContext.current.packageName, PackageInfoFlags.of(0))
+            packageManager.getPackageInfo(context.packageName, PackageInfoFlags.of(0))
         } else {
             null
         }
@@ -86,7 +92,6 @@ internal fun AboutTab(
     }
     val localConfig = LocalConfiguration.current
 
-    val context = LocalContext.current
     val clipboard: Clipboard = LocalClipboard.current
 
     fun generateGeneralInformationText(): String {
@@ -165,26 +170,43 @@ internal fun AboutTab(
             |smallestScreenWidthDp=${localConfig.smallestScreenWidthDp}
             |layoutDirection=${localConfig.layoutDirection}
             |layoutDirection=${localConfig.layoutDirection}
+            |<br>
         """.trimMargin().replace("\n", "<br/>")
 
         // Technically this skips some information for 33,34, but not that important.
         val additionalDataForSDK35Plus = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
             """
-                |<big> Additional Build Datum </big>
+                |<br><big> Additional Build Datum </big>
                 |ODM_SKU=${Build.ODM_SKU}
                 |SKU=${Build.SKU}
                 |SOC_MANUFACTURER=${Build.SOC_MANUFACTURER}
                 |SOC_MODEL=${Build.SOC_MODEL}
                 |
-                |<big>Additional LocalConfig Datum</big>
+                |<br><big>Additional LocalConfig Datum</big>
                 |NightMode=${localConfig.isNightModeActive}
                 |grammaticalGender=${localConfig.grammaticalGender}
+                |<big>Notification Debug Datum</big>
+                |Notifications Are Paused: ${notificationManager.areNotificationsPaused()}
+                |Notifications Are Enabled: ${notificationManager.areNotificationsEnabled()}
+                |Bubble Preference: ${notificationManager.bubblePreference}
+                |Importance: ${notificationManager.importance}
+                |Policy Access Granted: ${notificationManager.isNotificationPolicyAccessGranted}
+                |Full Screen: ${notificationManager.canUseFullScreenIntent()}
+                |
             """.trimMargin().replace("\n", "<br/>")
         } else {
             ""
         }
 
-        val result = basicResult + additionalDataForSDK35Plus
+        val additionalDataForSDK36Plus = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.BAKLAVA) {
+            """|<br><big>API 36 Notification
+            |Bubbles Allowed: ${notificationManager.canPostPromotedNotifications()}
+            """.trimMargin()
+        } else {
+            ""
+        }
+
+        val result = basicResult + additionalDataForSDK35Plus + additionalDataForSDK36Plus
 
         // further debug information for the future
 //    Build.getFingerprintedPartitions()

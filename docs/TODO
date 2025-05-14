@@ -9,3 +9,4 @@
 - replace most if not all of the data sources with a Room based impl. This should allow for i18n, customisation, persistence of settings, editing, etc.
 - add dictionary in addition to thesaurus
 - update thesaurus data file. Add setting for which one (or both?)
+- add notification group for stopwatches/timers, etc.

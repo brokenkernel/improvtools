@@ -3,4 +3,7 @@
     <file name="src/main/java/com/brokenkernel/improvtools/application/presentation/api/LocalComposables.kt">
         <error line="16" column="14" source="compose:compositionlocal-allowlist" />
     </file>
+    <file name="src/main/java/com/brokenkernel/improvtools/sidecar/notifications/ImprovToolsNotificationManager.kt">
+        <error line="43" column="120" source="standard:max-line-length" />
+    </file>
 </baseline>

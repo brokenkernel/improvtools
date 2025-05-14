@@ -9,12 +9,14 @@ import android.os.Build
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.sidecar.notifications.ImprovToolsNotification
 import com.brokenkernel.improvtools.sidecar.notifications.ImprovToolsNotificationManager
+import com.brokenkernel.improvtools.timer.presentation.viewmodel.TimerState
 import javax.inject.Inject
-import kotlin.time.Duration
+import kotlin.time.ExperimentalTime
 
-internal class StopWatchNotification(id: Int, notification: Notification) :
-    ImprovToolsNotification(id, notification)
+internal data class StopWatchNotification(override val id: Int, override val underlying: Notification) :
+    ImprovToolsNotification
 
+@OptIn(ExperimentalTime::class)
 internal class StopWatchNotificationManager @Inject constructor(
     notificationManager: NotificationManager,
     resources: Resources,
@@ -31,25 +33,17 @@ internal class StopWatchNotificationManager @Inject constructor(
 
     internal fun getStopWatchNotification(
         context: Context,
-        timeSince: Duration,
+        timer: TimerState,
     ): StopWatchNotification {
-        val builder: Notification.Builder = Notification.Builder(
-            context,
-            stopWatchNotificationChannel.id,
-        )
-            .setSmallIcon(R.drawable.ic_launcher_foreground) // TODO: is this right?
-            .setWhen(timeSince.inWholeSeconds)
-            .setOngoing(true)
-            .setShowWhen(true)
-            .setUsesChronometer(true)
-            .setChronometerCountDown(false)
+        val builder = getPartiallyBuiltNotification(context, stopWatchNotificationChannel.id, timer)
+            .setChronometerCountDown(true)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             builder.setCategory(Notification.CATEGORY_STOPWATCH)
         }
         val built = builder.build()
         return StopWatchNotification(
             id = nextNotificationId(),
-            notification = built,
+            underlying = built,
         )
     }
 }

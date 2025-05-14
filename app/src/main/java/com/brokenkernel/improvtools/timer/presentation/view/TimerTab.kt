@@ -1,5 +1,6 @@
 package com.brokenkernel.improvtools.timer.presentation.view
 
+import android.os.Build
 import android.util.Log
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.layout.Row
@@ -17,12 +18,14 @@ import androidx.compose.material3.LargeFloatingActionButton
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -36,6 +39,9 @@ import com.brokenkernel.improvtools.timer.presentation.viewmodel.CountDownTimerS
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.CountUpTimerState
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.TimerListViewModel
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.TimerState
+import com.google.accompanist.permissions.ExperimentalPermissionsApi
+import com.google.accompanist.permissions.MultiplePermissionsState
+import com.google.accompanist.permissions.rememberMultiplePermissionsState
 import sh.calvin.reorderable.ReorderableCollectionItemScope
 import sh.calvin.reorderable.ReorderableItem
 import sh.calvin.reorderable.rememberReorderableLazyListState
@@ -153,6 +159,7 @@ private fun CountUpTimer(
     )
 }
 
+@OptIn(ExperimentalPermissionsApi::class)
 @ImprovToolsDestination<ImprovToolsNavigationGraph>
 @Composable
 internal fun TimerTab(viewModel: TimerListViewModel = hiltViewModel()) {
@@ -160,11 +167,28 @@ internal fun TimerTab(viewModel: TimerListViewModel = hiltViewModel()) {
     val shouldHapticOnRemove = viewModel.shouldHaptic.collectAsStateWithLifecycle()
     val allTimers = viewModel.allTimers
     val lazyListState = rememberLazyListState()
+    val notificationPermissionState: MultiplePermissionsState =
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            rememberMultiplePermissionsState(
+                listOf(
+                    android.Manifest.permission.POST_NOTIFICATIONS,
+                ),
+            )
+        } else {
+            rememberMultiplePermissionsState(listOf())
+        }
     val reorderableLazyListState = rememberReorderableLazyListState(
         lazyListState = lazyListState,
     ) { from, to ->
         viewModel.swapTimer(from.index, to.index)
         haptic.performHapticFeedback(HapticFeedbackType.SegmentFrequentTick)
+    }
+
+    if (!notificationPermissionState.allPermissionsGranted) {
+        LaunchedEffect(Unit) {
+            // TODO
+            notificationPermissionState.launchMultiplePermissionRequest()
+        }
     }
 
     LazyColumn(state = lazyListState) {
@@ -188,28 +212,44 @@ internal fun TimerTab(viewModel: TimerListViewModel = hiltViewModel()) {
                     TimerBorderOutlineCard(
                         modifier = Modifier.shadow(elevation),
                     ) {
+                        val context = LocalContext.current
                         when (timer) {
                             is CountDownTimerState -> {
                                 CountDownTimer(
-                                    onPauseTimer = { viewModel.invertTimerState(timer) },
+                                    onPauseTimer = { viewModel.invertTimerState(timer, context) },
                                     onRemoveTimer = onRemove,
                                     onHalfTimeTimer = { viewModel.halfTimer(timer) },
                                     onResetTimer = { viewModel.resetTimer(timer) },
                                     onTitleChange = { viewModel.replaceTitle(timer, it) },
                                     timerState = timer,
-                                    onStartTimer = { viewModel.invertTimerState(timer) },
+                                    onStartTimer = {
+                                        viewModel.invertTimerState(timer, context)
+                                        if (notificationPermissionState.allPermissionsGranted) {
+                                            viewModel.tryToSendNotificationForTimer(timer, context)
+                                        } else if (notificationPermissionState.shouldShowRationale) {
+                                            // TODO: show dialog.
+                                            notificationPermissionState.launchMultiplePermissionRequest()
+                                        } else {
+                                            notificationPermissionState.launchMultiplePermissionRequest()
+                                        }
+                                    },
                                     scope = this,
                                 )
                             }
 
                             is CountUpTimerState -> {
                                 CountUpTimer(
-                                    onPauseTimer = { viewModel.invertTimerState(timer) },
+                                    onPauseTimer = { viewModel.invertTimerState(timer, context) },
                                     onRemoveTimer = onRemove,
                                     onResetTimer = { viewModel.resetTimer(timer) },
                                     onTitleChange = { viewModel.replaceTitle(timer, it) },
                                     timerState = timer,
-                                    onStartTimer = { viewModel.invertTimerState(timer) },
+                                    onStartTimer = {
+                                        viewModel.invertTimerState(timer, context)
+                                        if (notificationPermissionState.allPermissionsGranted) {
+                                            viewModel.tryToSendNotificationForTimer(timer, context)
+                                        }
+                                    },
                                     scope = this,
                                 )
                             }

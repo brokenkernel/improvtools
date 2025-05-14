@@ -9,16 +9,19 @@ import android.os.Build
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.sidecar.notifications.ImprovToolsNotification
 import com.brokenkernel.improvtools.sidecar.notifications.ImprovToolsNotificationManager
+import com.brokenkernel.improvtools.timer.presentation.viewmodel.TimerState
 import javax.inject.Inject
-import kotlin.time.Duration
 
-internal class CountDownhNotification(id: Int, notification: Notification) :
-    ImprovToolsNotification(id, notification)
+internal class CountDownhNotification(
+    override val id: Int,
+    override val underlying: Notification,
+) :
+    ImprovToolsNotification
 
 internal class CountDownNotificationManager @Inject constructor(
     notificationManager: NotificationManager,
     resources: Resources,
-) : ImprovToolsNotificationManager<StopWatchNotification>(notificationManager) {
+) : ImprovToolsNotificationManager<CountDownhNotification>(notificationManager) {
     private val countDownNotificationChannel: NotificationChannel = NotificationChannel(
         this::class.toString(),
         resources.getString(R.string.notification_countdown),
@@ -31,17 +34,9 @@ internal class CountDownNotificationManager @Inject constructor(
 
     internal fun getCountDownNotification(
         context: Context,
-        timeSince: Duration,
+        timer: TimerState,
     ): CountDownhNotification {
-        val builder: Notification.Builder = Notification.Builder(
-            context,
-            countDownNotificationChannel.id,
-        )
-            .setSmallIcon(R.drawable.ic_launcher_foreground) // TODO: is this right?
-            .setWhen(timeSince.inWholeSeconds)
-            .setOngoing(true)
-            .setShowWhen(true)
-            .setUsesChronometer(true)
+        val builder = getPartiallyBuiltNotification(context, countDownNotificationChannel.id, timer)
             .setChronometerCountDown(true)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             builder.setCategory(Notification.CATEGORY_STOPWATCH)
@@ -49,7 +44,7 @@ internal class CountDownNotificationManager @Inject constructor(
         val built = builder.build()
         return CountDownhNotification(
             id = nextNotificationId(),
-            notification = built,
+            underlying = built,
         )
     }
 }
