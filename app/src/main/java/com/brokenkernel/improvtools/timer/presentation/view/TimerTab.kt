@@ -50,16 +50,16 @@ private const val TAG = "TimerScreen"
 // TODO: handle countdown timer when it is done. (a) stop/pause it (b) notification handler
 
 @Composable
-private fun ReorderableCollectionItemScope.CommonTimer(
+private fun CommonTimer(
     timerState: TimerState,
     onRemoveTimer: () -> Unit,
     onTitleChange: (String) -> Unit,
     iconStarted: ImageVector,
     iconPaused: ImageVector,
     iconDescription: String,
+    scope: ReorderableCollectionItemScope,
     content: @Composable () -> Unit,
 ) {
-    // TODO val elevation by animateDpAsState(if (isDragging) 4.dp else 0.dp)
     SlottedTimerCardContent(
         title = timerState.title,
         currentTime = timerState::showTime,
@@ -77,11 +77,12 @@ private fun ReorderableCollectionItemScope.CommonTimer(
             )
         },
         onTitleChange = onTitleChange,
+        scope = scope,
     )
 }
 
 @Composable
-internal fun ReorderableCollectionItemScope.CountDownTimer(
+private fun CountDownTimer(
     timerState: TimerState,
     onStartTimer: () -> Unit,
     onPauseTimer: () -> Unit,
@@ -89,6 +90,7 @@ internal fun ReorderableCollectionItemScope.CountDownTimer(
     onHalfTimeTimer: () -> Unit,
     onResetTimer: () -> Unit,
     onTitleChange: (String) -> Unit,
+    scope: ReorderableCollectionItemScope,
 ) {
     CommonTimer(
         timerState = timerState,
@@ -114,17 +116,19 @@ internal fun ReorderableCollectionItemScope.CountDownTimer(
         iconStarted = Icons.Default.AlarmOn,
         iconDescription = stringResource(R.string.count_down_timer),
         onTitleChange = onTitleChange,
+        scope = scope,
     )
 }
 
 @Composable
-internal fun ReorderableCollectionItemScope.CountUpTimer(
+private fun CountUpTimer(
     timerState: TimerState,
     onStartTimer: () -> Unit,
     onPauseTimer: () -> Unit,
     onRemoveTimer: () -> Unit,
     onResetTimer: () -> Unit,
     onTitleChange: (String) -> Unit,
+    scope: ReorderableCollectionItemScope,
 ) {
     CommonTimer(
         timerState = timerState,
@@ -143,9 +147,9 @@ internal fun ReorderableCollectionItemScope.CountUpTimer(
         iconPaused = Icons.Default.TimerOff,
         iconStarted = Icons.Default.Timer,
         iconDescription = stringResource(R.string.stop_watch),
-
         onRemoveTimer = onRemoveTimer,
         onTitleChange = onTitleChange,
+        scope = scope,
     )
 }
 
@@ -165,7 +169,7 @@ internal fun TimerTab(viewModel: TimerListViewModel = hiltViewModel()) {
 
     LazyColumn(state = lazyListState) {
         items(allTimers, key = { t -> t.timerID }) { timer: TimerState ->
-            ReorderableItem(state=reorderableLazyListState, key = timer.timerID) { isDragging ->
+            ReorderableItem(state = reorderableLazyListState, key = timer.timerID) { isDragging ->
                 val elevation by animateDpAsState(if (isDragging) 8.dp else 0.dp)
                 val currentTimer by rememberUpdatedState(timer)
                 val onRemove = {
@@ -194,6 +198,7 @@ internal fun TimerTab(viewModel: TimerListViewModel = hiltViewModel()) {
                                     onTitleChange = { viewModel.replaceTitle(timer, it) },
                                     timerState = timer,
                                     onStartTimer = { viewModel.invertTimerState(timer) },
+                                    scope = this,
                                 )
                             }
 
@@ -205,6 +210,7 @@ internal fun TimerTab(viewModel: TimerListViewModel = hiltViewModel()) {
                                     onTitleChange = { viewModel.replaceTitle(timer, it) },
                                     timerState = timer,
                                     onStartTimer = { viewModel.invertTimerState(timer) },
+                                    scope = this,
                                 )
                             }
                         }

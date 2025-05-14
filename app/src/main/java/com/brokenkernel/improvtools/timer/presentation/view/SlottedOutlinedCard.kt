@@ -8,7 +8,6 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.rounded.DragHandle
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -18,8 +17,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.hapticfeedback.HapticFeedbackType
-import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
@@ -28,6 +25,7 @@ import androidx.compose.ui.text.intl.Locale
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.brokenkernel.components.view.SimpleIconButton
 import com.brokenkernel.improvtools.R
+import com.brokenkernel.improvtools.components.presentation.view.DragIconButton
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.hours
 import kotlin.time.Duration.Companion.minutes
@@ -59,12 +57,13 @@ private fun CurrentTimerTime(currentTime: () -> Duration, isStarted: Boolean) {
 }
 
 @Composable
-internal fun ReorderableCollectionItemScope.SlottedTimerCardContent(
+internal fun SlottedTimerCardContent(
     title: String,
     currentTime: () -> Duration,
     onRemoveTimer: () -> Unit,
     isStarted: Boolean,
     onTitleChange: (String) -> Unit,
+    scope: ReorderableCollectionItemScope,
     modifier: Modifier = Modifier,
     actions: @Composable (() -> Unit) = {},
     leadingIcon: @Composable (() -> Unit) = {},
@@ -74,7 +73,6 @@ internal fun ReorderableCollectionItemScope.SlottedTimerCardContent(
 
     Column(modifier = modifier) {
         Row {
-            val haptic = LocalHapticFeedback.current
             leadingIcon()
             if (isEditTitleMode) {
                 OutlinedTextField(
@@ -119,19 +117,7 @@ internal fun ReorderableCollectionItemScope.SlottedTimerCardContent(
                 icon = Icons.Default.Delete,
                 contentDescription = stringResource(R.string.slotted_timer_remove_timer),
             )
-            SimpleIconButton(
-                modifier = Modifier.longPressDraggableHandle(
-                    onDragStarted = {
-                        haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                    },
-                    onDragStopped = {
-                        haptic.performHapticFeedback(HapticFeedbackType.GestureEnd)
-                    },
-                ),
-                onClick = {},
-                icon = Icons.Rounded.DragHandle,
-                contentDescription = stringResource(R.string.reorder),
-            )
+            DragIconButton(scope)
         }
         CurrentTimerTime(currentTime, isStarted)
         Row {

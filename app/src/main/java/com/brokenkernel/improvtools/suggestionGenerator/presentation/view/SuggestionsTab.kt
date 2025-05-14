@@ -17,7 +17,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ChangeCircle
 import androidx.compose.material.icons.outlined.PsychologyAlt
 import androidx.compose.material.icons.outlined.TheaterComedy
-import androidx.compose.material.icons.rounded.DragHandle
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Icon
@@ -47,6 +46,7 @@ import com.brokenkernel.components.view.SimpleIconButton
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.application.navigation.ImprovToolsDestination
+import com.brokenkernel.improvtools.components.presentation.view.DragIconButton
 import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
 import com.brokenkernel.improvtools.encyclopaedia.presentation.view.LoadableSingleWordThesaurusButton
 import com.brokenkernel.improvtools.suggestionGenerator.data.model.IdeaCategoryODS
@@ -57,6 +57,7 @@ import com.ramcosta.composedestinations.generated.destinations.ThesaurusTabSingl
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import sh.calvin.reorderable.ReorderableCollectionItemScope
 import sh.calvin.reorderable.ReorderableItem
 import sh.calvin.reorderable.rememberReorderableLazyListState
 
@@ -129,6 +130,7 @@ internal fun SuggestionsTab(
                             state = reorderableLazyListState,
                             key = ideaCategory.itemKey(),
                         ) { isDragging ->
+                            val dragScope: ReorderableCollectionItemScope = this
                             val elevation by animateDpAsState(if (isDragging) 4.dp else 0.dp)
 
                             val itemSuggestionState: State<IdeaUIState> =
@@ -186,19 +188,7 @@ internal fun SuggestionsTab(
                                             },
                                             whenDisabledFullyHidden = true,
                                         )
-                                        SimpleIconButton(
-                                            modifier = Modifier.longPressDraggableHandle(
-                                                onDragStarted = {
-                                                    haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                                                },
-                                                onDragStopped = {
-                                                    haptic.performHapticFeedback(HapticFeedbackType.GestureEnd)
-                                                },
-                                            ),
-                                            onClick = {},
-                                            icon = Icons.Rounded.DragHandle,
-                                            contentDescription = stringResource(R.string.reorder),
-                                        )
+                                        DragIconButton(dragScope)
                                     }
                                 },
                             )
