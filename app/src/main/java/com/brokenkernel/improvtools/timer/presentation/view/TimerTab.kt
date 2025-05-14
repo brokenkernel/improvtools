@@ -1,9 +1,11 @@
 package com.brokenkernel.improvtools.timer.presentation.view
 
 import android.util.Log
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AlarmAdd
 import androidx.compose.material.icons.filled.AlarmOff
@@ -17,10 +19,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberUpdatedState
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.brokenkernel.improvtools.R
@@ -31,6 +36,9 @@ import com.brokenkernel.improvtools.timer.presentation.viewmodel.CountDownTimerS
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.CountUpTimerState
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.TimerListViewModel
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.TimerState
+import sh.calvin.reorderable.ReorderableCollectionItemScope
+import sh.calvin.reorderable.ReorderableItem
+import sh.calvin.reorderable.rememberReorderableLazyListState
 
 private const val TAG = "TimerScreen"
 
@@ -40,10 +48,9 @@ private const val TAG = "TimerScreen"
 // TODO: adding timer stops/resets existing timers. See also: state storage is broken.
 // TODO: possibly add Timer Edit Button (for future editing time, etc. Also clearer UX than clicking on title to edit title)
 // TODO: handle countdown timer when it is done. (a) stop/pause it (b) notification handler
-// TODO: reorderable timers
 
 @Composable
-private fun CommonTimer(
+private fun ReorderableCollectionItemScope.CommonTimer(
     timerState: TimerState,
     onRemoveTimer: () -> Unit,
     onTitleChange: (String) -> Unit,
@@ -52,6 +59,7 @@ private fun CommonTimer(
     iconDescription: String,
     content: @Composable () -> Unit,
 ) {
+    // TODO val elevation by animateDpAsState(if (isDragging) 4.dp else 0.dp)
     SlottedTimerCardContent(
         title = timerState.title,
         currentTime = timerState::showTime,
@@ -73,7 +81,7 @@ private fun CommonTimer(
 }
 
 @Composable
-internal fun CountDownTimer(
+internal fun ReorderableCollectionItemScope.CountDownTimer(
     timerState: TimerState,
     onStartTimer: () -> Unit,
     onPauseTimer: () -> Unit,
@@ -110,7 +118,7 @@ internal fun CountDownTimer(
 }
 
 @Composable
-internal fun CountUpTimer(
+internal fun ReorderableCollectionItemScope.CountUpTimer(
     timerState: TimerState,
     onStartTimer: () -> Unit,
     onPauseTimer: () -> Unit,
@@ -147,48 +155,58 @@ internal fun TimerTab(viewModel: TimerListViewModel = hiltViewModel()) {
     val haptic = LocalHapticFeedback.current
     val shouldHapticOnRemove = viewModel.shouldHaptic.collectAsStateWithLifecycle()
     val allTimers = viewModel.allTimers
+    val lazyListState = rememberLazyListState()
+    val reorderableLazyListState = rememberReorderableLazyListState(
+        lazyListState = lazyListState,
+    ) { from, to ->
+        viewModel.swapTimer(from.index, to.index)
+        haptic.performHapticFeedback(HapticFeedbackType.SegmentFrequentTick)
+    }
 
-    LazyColumn {
-        // toList to copy to avoid ConcurrentModificationException. Maybe a better way exists to handle?
-        items(allTimers.toList(), key = { t -> t.timerID }) { timer: TimerState ->
-
-            val currentTimer by rememberUpdatedState(timer)
-            val onRemove = {
-                if (shouldHapticOnRemove.value) {
-                    haptic.performHapticFeedback(HapticFeedbackType.ToggleOff)
+    LazyColumn(state = lazyListState) {
+        items(allTimers, key = { t -> t.timerID }) { timer: TimerState ->
+            ReorderableItem(state=reorderableLazyListState, key = timer.timerID) { isDragging ->
+                val elevation by animateDpAsState(if (isDragging) 8.dp else 0.dp)
+                val currentTimer by rememberUpdatedState(timer)
+                val onRemove = {
+                    if (shouldHapticOnRemove.value) {
+                        haptic.performHapticFeedback(HapticFeedbackType.ToggleOff)
+                    }
+                    viewModel.removeTimer(currentTimer)
+                    Log.w(TAG, "removing timer $timer")
+                    Unit
                 }
-                viewModel.removeTimer(currentTimer)
-                Log.w(TAG, "removing timer $timer")
-                Unit
-            }
 
-            // TODO: half time doesn't immediately recompose ...
-            //  ... since currentTime lambda doesn't change (or nothing triggers recompose)
+                // TODO: half time doesn't immediately recompose ...
+                //  ... since currentTime lambda doesn't change (or nothing triggers recompose)
 
-            OneWayDismissableContent(onRemove = onRemove) {
-                TimerBorderOutlineCard {
-                    when (timer) {
-                        is CountDownTimerState -> {
-                            CountDownTimer(
-                                onPauseTimer = { viewModel.invertTimerState(timer) },
-                                onRemoveTimer = onRemove,
-                                onHalfTimeTimer = { viewModel.halfTimer(timer) },
-                                onResetTimer = { viewModel.resetTimer(timer) },
-                                onTitleChange = { viewModel.replaceTitle(timer, it) },
-                                timerState = timer,
-                                onStartTimer = { viewModel.invertTimerState(timer) },
-                            )
-                        }
+                OneWayDismissableContent(onRemove = onRemove) {
+                    TimerBorderOutlineCard(
+                        modifier = Modifier.shadow(elevation),
+                    ) {
+                        when (timer) {
+                            is CountDownTimerState -> {
+                                CountDownTimer(
+                                    onPauseTimer = { viewModel.invertTimerState(timer) },
+                                    onRemoveTimer = onRemove,
+                                    onHalfTimeTimer = { viewModel.halfTimer(timer) },
+                                    onResetTimer = { viewModel.resetTimer(timer) },
+                                    onTitleChange = { viewModel.replaceTitle(timer, it) },
+                                    timerState = timer,
+                                    onStartTimer = { viewModel.invertTimerState(timer) },
+                                )
+                            }
 
-                        is CountUpTimerState -> {
-                            CountUpTimer(
-                                onPauseTimer = { viewModel.invertTimerState(timer) },
-                                onRemoveTimer = onRemove,
-                                onResetTimer = { viewModel.resetTimer(timer) },
-                                onTitleChange = { viewModel.replaceTitle(timer, it) },
-                                timerState = timer,
-                                onStartTimer = { viewModel.invertTimerState(timer) },
-                            )
+                            is CountUpTimerState -> {
+                                CountUpTimer(
+                                    onPauseTimer = { viewModel.invertTimerState(timer) },
+                                    onRemoveTimer = onRemove,
+                                    onResetTimer = { viewModel.resetTimer(timer) },
+                                    onTitleChange = { viewModel.replaceTitle(timer, it) },
+                                    timerState = timer,
+                                    onStartTimer = { viewModel.invertTimerState(timer) },
+                                )
+                            }
                         }
                     }
                 }

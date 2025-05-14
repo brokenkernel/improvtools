@@ -12,11 +12,11 @@ import com.brokenkernel.improvtools.timer.sidecar.notifications.StopWatchNotific
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlin.time.Duration
+import kotlin.time.ExperimentalTime
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import kotlin.time.ExperimentalTime
 
 @HiltViewModel
 internal class TimerListViewModel @Inject constructor(
@@ -104,6 +104,12 @@ internal class TimerListViewModel @Inject constructor(
 
             is StartedCountUpTimerState ->
                 _allTimers[index] = priorTimer.copy(title = newTitle)
+        }
+    }
+
+    fun swapTimer(from: Int, to: Int) {
+        _allTimers.apply {
+            add(to, removeAt(from))
         }
     }
 }
