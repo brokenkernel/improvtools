@@ -281,12 +281,15 @@ dependencies {
     implementation(libs.play.services.oss.licenses)
     implementation(libs.reorderable)
 
+    releaseImplementation(libs.leakcanary.android.release)
+    releaseImplementation(libs.leakcanary.object1.watcher.android)
+
     debugImplementation(libs.androidx.ui.tooling)
+    // TODO: add profilable build
+    // TODO: https://square.github.io/leakcanary/ui-tests/
+    debugImplementation(libs.leakcanary.android)
     debugImplementation(libs.reorderable.android.debug)
 
-    // TODO: add profilable build
-    // TODO: add leakCanary build
-    //    debugImplementation(libs.leakcanary.android)
     runtimeOnly(libs.extjwnl.data.wn31)
     runtimeOnly(libs.slf4j.android)
 
@@ -316,6 +319,7 @@ dependencies {
     androidTestImplementation(libs.hilt.android.testing)
     androidTestImplementation(libs.junit)
     androidTestImplementation(libs.kotlinx.coroutines.core)
+    androidTestImplementation(libs.leakcanary.android.instrumentation)
     androidTestImplementation(libs.navigation.runtime)
     androidTestImplementation(libs.tools.fastlane.screengrab)
 
