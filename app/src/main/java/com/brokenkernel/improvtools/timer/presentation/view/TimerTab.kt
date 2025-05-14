@@ -27,10 +27,8 @@ import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.navigation.ImprovToolsDestination
 import com.brokenkernel.improvtools.components.presentation.view.OneWayDismissableContent
 import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
-import com.brokenkernel.improvtools.timer.presentation.viewmodel.PausedCountDownTimerState
-import com.brokenkernel.improvtools.timer.presentation.viewmodel.PausedCountUpTimerState
-import com.brokenkernel.improvtools.timer.presentation.viewmodel.StartedCountDownTimerState
-import com.brokenkernel.improvtools.timer.presentation.viewmodel.StartedCountUpTimerState
+import com.brokenkernel.improvtools.timer.presentation.viewmodel.CountDownTimerState
+import com.brokenkernel.improvtools.timer.presentation.viewmodel.CountUpTimerState
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.TimerListViewModel
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.TimerState
 
@@ -170,7 +168,7 @@ internal fun TimerTab(viewModel: TimerListViewModel = hiltViewModel()) {
             OneWayDismissableContent(onRemove = onRemove) {
                 TimerBorderOutlineCard {
                     when (timer) {
-                        is PausedCountDownTimerState -> {
+                        is CountDownTimerState -> {
                             CountDownTimer(
                                 onPauseTimer = { viewModel.invertTimerState(timer) },
                                 onRemoveTimer = onRemove,
@@ -182,30 +180,7 @@ internal fun TimerTab(viewModel: TimerListViewModel = hiltViewModel()) {
                             )
                         }
 
-                        is StartedCountDownTimerState -> {
-                            CountDownTimer(
-                                onPauseTimer = { viewModel.invertTimerState(timer) },
-                                onRemoveTimer = onRemove,
-                                onHalfTimeTimer = { viewModel.halfTimer(timer) },
-                                onResetTimer = { viewModel.resetTimer(timer) },
-                                onTitleChange = { viewModel.replaceTitle(timer, it) },
-                                timerState = timer,
-                                onStartTimer = { viewModel.invertTimerState(timer) },
-                            )
-                        }
-
-                        is PausedCountUpTimerState -> {
-                            CountUpTimer(
-                                onPauseTimer = { viewModel.invertTimerState(timer) },
-                                onRemoveTimer = onRemove,
-                                onResetTimer = { viewModel.resetTimer(timer) },
-                                onTitleChange = { viewModel.replaceTitle(timer, it) },
-                                timerState = timer,
-                                onStartTimer = { viewModel.invertTimerState(timer) },
-                            )
-                        }
-
-                        is StartedCountUpTimerState -> {
+                        is CountUpTimerState -> {
                             CountUpTimer(
                                 onPauseTimer = { viewModel.invertTimerState(timer) },
                                 onRemoveTimer = onRemove,

@@ -45,7 +45,7 @@ internal sealed interface CountUpTimerState : TimerState {
 }
 
 @OptIn(ExperimentalTime::class)
-internal class StartedCountUpTimerState(
+internal data class StartedCountUpTimerState(
     private val priorElapsedTime: Duration,
     private val startedTime: Instant,
     override val title: String,
@@ -75,7 +75,7 @@ internal class StartedCountUpTimerState(
 }
 
 @OptIn(ExperimentalTime::class)
-internal class StartedCountDownTimerState(
+internal data class StartedCountDownTimerState(
     private val priorRemainingTime: Duration,
     private val startedTime: Instant,
     override val title: String,
@@ -112,7 +112,7 @@ internal class StartedCountDownTimerState(
 // TODO: secondary constructor for initial creation ?
 
 @OptIn(ExperimentalTime::class)
-internal class PausedCountUpTimerState(
+internal data class PausedCountUpTimerState(
     private val elapsedTime: Duration,
     override val title: String,
     override val timerID: Int,
@@ -132,7 +132,7 @@ internal class PausedCountUpTimerState(
 }
 
 @OptIn(ExperimentalTime::class)
-internal class PausedCountDownTimerState(
+internal data class PausedCountDownTimerState(
     private val remainingTime: Duration,
     override val title: String,
     override val timerID: Int,

@@ -16,6 +16,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import kotlin.time.ExperimentalTime
 
 @HiltViewModel
 internal class TimerListViewModel @Inject constructor(
@@ -52,12 +53,12 @@ internal class TimerListViewModel @Inject constructor(
 
     private fun startTimer(timer: PausedTimerState) {
         val index = _allTimers.indexOf(timer)
-        _allTimers.set(index, timer.asStartedTimer())
+        _allTimers[index] = timer.asStartedTimer()
     }
 
     private fun pauseTimer(timer: StartedTimerState) {
         val index = _allTimers.indexOf(timer)
-        _allTimers.set(index, timer.asPausedTimer())
+        _allTimers[index] = timer.asPausedTimer()
     }
 
     fun invertTimerState(timer: TimerState) {
@@ -69,12 +70,12 @@ internal class TimerListViewModel @Inject constructor(
 
     fun resetTimer(timer: TimerState) {
         val index = _allTimers.indexOf(timer)
-        _allTimers.set(index, timer.asResetTimer())
+        _allTimers[index] = timer.asResetTimer()
     }
 
     fun halfTimer(timer: CountDownTimerState) {
         val index = _allTimers.indexOf(timer)
-        _allTimers.set(index, timer.asHalfTime())
+        _allTimers[index] = timer.asHalfTime()
     }
 
     fun addCountUpTimer(title: String) {
@@ -87,7 +88,22 @@ internal class TimerListViewModel @Inject constructor(
         _allTimers.add(timer)
     }
 
-    fun replaceTitle(timer: TimerState, title: String) {
-        // TODO
+    @OptIn(ExperimentalTime::class)
+    fun replaceTitle(timer: TimerState, newTitle: String) {
+        val index = _allTimers.indexOf(timer)
+        val priorTimer = _allTimers[index]
+        when (priorTimer) {
+            is PausedCountDownTimerState ->
+                _allTimers[index] = priorTimer.copy(title = newTitle)
+
+            is StartedCountDownTimerState ->
+                _allTimers[index] = priorTimer.copy(title = newTitle)
+
+            is PausedCountUpTimerState ->
+                _allTimers[index] = priorTimer.copy(title = newTitle)
+
+            is StartedCountUpTimerState ->
+                _allTimers[index] = priorTimer.copy(title = newTitle)
+        }
     }
 }
