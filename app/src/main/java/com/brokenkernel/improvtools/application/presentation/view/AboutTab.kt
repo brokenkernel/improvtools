@@ -199,7 +199,7 @@ internal fun AboutTab(
         }
 
         val additionalDataForSDK36Plus = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.BAKLAVA) {
-            """|<br><big>API 36 Notification
+            """|<br><big>API 36 Notification</big>
             |Bubbles Allowed: ${notificationManager.canPostPromotedNotifications()}
             """.trimMargin()
         } else {
