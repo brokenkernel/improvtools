@@ -1,5 +1,10 @@
 package com.brokenkernel.improvtools.timer.presentation.view
 
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -17,43 +22,67 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.intl.Locale
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.brokenkernel.components.view.SimpleIconButton
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.components.presentation.view.DragIconButton
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.flow
+import sh.calvin.reorderable.ReorderableCollectionItemScope
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.hours
 import kotlin.time.Duration.Companion.minutes
 import kotlin.time.Duration.Companion.seconds
 import kotlin.time.ExperimentalTime
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.flow
-import sh.calvin.reorderable.ReorderableCollectionItemScope
+import androidx.compose.ui.text.intl.Locale
 
-private fun Duration.formatTime(): String {
-    val hours = this.inWholeHours
-    val minutes = (this - hours.hours).inWholeMinutes
-    val seconds = (this - hours.hours - minutes.minutes).inWholeSeconds
-    // TODO: consider making `:` blink when started
-    return String.format(Locale.current.platformLocale, "%02d:%02d:%02d", hours, minutes, seconds)
+private fun Long.formatTimeMoment(): String {
+    return String.format(Locale.current.platformLocale, "%02d", this)
 }
 
 @OptIn(ExperimentalTime::class)
 @Composable
 private fun CurrentTimerTime(currentTime: () -> Duration, isStarted: Boolean) {
+    val style: TextStyle = MaterialTheme.typography.displayLarge
+    var showColon by remember { mutableStateOf(true) }
+
     val currentTimeFlow = flow<_> {
         if (isStarted) {
-            delay(1.seconds)
+            delay(.5.seconds)
+            showColon = !showColon
             emit(currentTime())
         }
     }
-    val currentTime by currentTimeFlow.collectAsStateWithLifecycle(initialValue = currentTime())
-    Text(currentTime.formatTime(), style = MaterialTheme.typography.displayLarge)
+
+    val ctime by currentTimeFlow.collectAsStateWithLifecycle(initialValue = currentTime())
+
+    // TODO: derivedStateOf
+    // TODO: currentTime as method call seems weird and likely broken
+    val hours = ctime.inWholeHours
+    val minutes = (ctime - hours.hours).inWholeMinutes
+    val seconds = (ctime - hours.hours - minutes.minutes).inWholeSeconds
+
+    Row {
+        Text(hours.formatTimeMoment(), style = style)
+        if (showColon) {
+            Text(":", style = style)
+        } else {
+            Text(" ", style = style)
+        }
+        Text(minutes.formatTimeMoment(), style = style)
+        if (showColon) {
+            Text(":", style = style)
+        } else {
+            Text(" ", style = style)
+        }
+        Text(seconds.formatTimeMoment(), style = style)
+    }
 }
 
 @Composable
