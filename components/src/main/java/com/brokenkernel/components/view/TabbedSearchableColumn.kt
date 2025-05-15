@@ -16,12 +16,12 @@ import kotlin.enums.enumEntries
 import kotlinx.collections.immutable.ImmutableMap
 import kotlinx.collections.immutable.toImmutableList
 
-data class TabbedSearchableColumnState<_T>(
+public data class TabbedSearchableColumnState<_T>(
     val isSegmentedButtonChecked: SnapshotStateList<Boolean>,
 )
 
 @Composable
-inline fun <reified T : Enum<T>> rememberTabbedSearchableColumnState(): TabbedSearchableColumnState<T> {
+public inline fun <reified T : Enum<T>> rememberTabbedSearchableColumnState(): TabbedSearchableColumnState<T> {
     return remember {
         TabbedSearchableColumnState<T>(
             isSegmentedButtonChecked = MutableList(enumEntries<T>().size, { true })
@@ -35,7 +35,7 @@ inline fun <reified T : Enum<T>> rememberTabbedSearchableColumnState(): TabbedSe
  * @param I item type
  */
 @Composable
-inline fun <reified T : Enum<T>, I> TabbedSearchableColumn(
+public inline fun <reified T : Enum<T>, I> TabbedSearchableColumn(
     crossinline itemDoesMatch: (String, I) -> Boolean,
     itemList: ImmutableMap<String, List<I>>,
     crossinline transformForSearch: (String) -> String,

@@ -23,13 +23,11 @@ import kotlin.enums.enumEntries
 import kotlinx.collections.immutable.ImmutableMap
 import kotlinx.collections.immutable.toImmutableList
 
-// TODO: There are too many variants of searchablecolumn. They should be made more ... composable
-
 /**
  * @param T tab enumeration
  * @param X tag item type
  */
-data class ChippedTabbedSearchableColumn<T, X>(
+public data class ChippedTabbedSearchableColumn<T, X>(
     val isSegmentedButtonChecked: SnapshotStateList<Boolean>,
     val isChipsChecked: SnapshotStateList<Boolean>,
 )
@@ -39,7 +37,7 @@ data class ChippedTabbedSearchableColumn<T, X>(
  * @param X tag item type
  */
 @Composable
-inline fun <reified T : Enum<T>, reified X : Enum<X>> rememberChippedTabbedSearchableColumn():
+public inline fun <reified T : Enum<T>, reified X : Enum<X>> rememberChippedTabbedSearchableColumn():
     ChippedTabbedSearchableColumn<T, X> {
     return remember {
         ChippedTabbedSearchableColumn<T, X>(
@@ -57,7 +55,7 @@ inline fun <reified T : Enum<T>, reified X : Enum<X>> rememberChippedTabbedSearc
  * @param X tag item type
  */
 @Composable
-inline fun <reified T : Enum<T>, I, reified X : Enum<X>> ChippedTabbedSearchableColumn(
+public inline fun <reified T : Enum<T>, I, reified X : Enum<X>> ChippedTabbedSearchableColumn(
     crossinline itemDoesMatch: (String, I) -> Boolean,
     itemList: ImmutableMap<String, List<I>>,
     crossinline transformForSearch: (String) -> String,
@@ -148,7 +146,9 @@ inline fun <reified T : Enum<T>, I, reified X : Enum<X>> ChippedTabbedSearchable
 
 // TODO: this should be private, but kotlin is annoying about that
 // TODO: also should be moved to inline function really since its just a way to simplify the if condition
-inline fun <I, reified X : Enum<X>> shouldShowDueToTag(
+@PublishedApi
+@JvmSynthetic
+internal inline fun <I, reified X : Enum<X>> shouldShowDueToTag(
     isChipsChecked: List<Boolean>,
     itemMatchesTag: (I, X) -> Boolean,
     curItem: I,

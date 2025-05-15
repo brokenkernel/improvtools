@@ -12,7 +12,9 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 // https://stackoverflow.com/a/77383253/87280
-fun ContentDrawScope.drawNeonStroke(radius: Dp, color: Color) {
+@JvmSynthetic
+@PublishedApi
+internal fun ContentDrawScope.drawNeonStroke(radius: Dp, color: Color) {
     this.drawIntoCanvas {
         val paint =
             Paint().apply {

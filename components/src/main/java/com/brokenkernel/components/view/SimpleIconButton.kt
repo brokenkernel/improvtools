@@ -8,7 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 
 @Composable
-fun SimpleIconButton(
+public fun SimpleIconButton(
     onClick: () -> Unit,
     icon: ImageVector,
     contentDescription: String,

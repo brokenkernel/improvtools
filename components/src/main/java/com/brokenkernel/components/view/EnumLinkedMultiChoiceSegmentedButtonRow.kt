@@ -10,7 +10,7 @@ import kotlin.enums.enumEntries
 import kotlinx.collections.immutable.ImmutableList
 
 @Composable
-inline fun <reified T : Enum<T>> EnumLinkedMultiChoiceSegmentedButtonRow(
+public inline fun <reified T : Enum<T>> EnumLinkedMultiChoiceSegmentedButtonRow(
     isSegmentedButtonChecked: ImmutableList<Boolean>,
     crossinline onSegmentClick: (Int) -> Unit,
     crossinline enumToName: (T) -> String,

@@ -14,7 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.brokenkernel.components.R
 
 @Composable
-fun ExpandIcon(
+public fun ExpandIcon(
     isExpanded: Boolean,
     modifier: Modifier = Modifier,
 ) {

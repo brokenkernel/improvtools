@@ -15,7 +15,7 @@ import kotlinx.collections.immutable.ImmutableMap
  * @param I item type
  */
 @Composable
-inline fun <I> SearchableColumn(
+public inline fun <I> SearchableColumn(
     crossinline itemDoesMatch: (String, I) -> Boolean,
     itemList: ImmutableMap<String, List<I>>,
     crossinline transformForSearch: (String) -> String,

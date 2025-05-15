@@ -57,7 +57,7 @@ kotlin {
             languageSettings.progressiveMode = true
         }
     }
-//    explicitApi()
+    explicitApi()
 }
 
 dependencies {

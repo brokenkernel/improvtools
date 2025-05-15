@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SimpleTooltipWrapper(
+public fun SimpleTooltipWrapper(
     tooltip: String,
     modifier: Modifier = Modifier,
     content: @Composable () -> Unit,

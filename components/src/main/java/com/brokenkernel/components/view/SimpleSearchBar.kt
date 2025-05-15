@@ -23,9 +23,11 @@ import androidx.compose.ui.semantics.traversalIndex
 import androidx.compose.ui.unit.dp
 import com.brokenkernel.components.R
 
+@JvmSynthetic
+@PublishedApi
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun BoxScope.SimpleSearchBar(
+internal fun BoxScope.SimpleSearchBar(
     // todo: don't pass state up and down
     textFieldState: TextFieldState,
     modifier: Modifier = Modifier,

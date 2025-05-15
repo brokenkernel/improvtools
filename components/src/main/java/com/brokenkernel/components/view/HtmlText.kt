@@ -20,7 +20,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import org.intellij.lang.annotations.Language
 
 @Composable
-fun HtmlText(@Language("html") html: String, modifier: Modifier = Modifier) {
+public fun HtmlText(@Language("html") html: String, modifier: Modifier = Modifier) {
     val uriHandler = LocalUriHandler.current
 
     val text: AnnotatedString = AnnotatedString.fromHtml(

@@ -22,7 +22,7 @@ internal fun String.toTitleCase(splitDelimiter: String = " ", joinDelimiter: Str
 }
 
 @Composable
-inline fun <reified T : Enum<T>, reified V : Enum<V>> EnumerationRadioSelection(
+public inline fun <reified T : Enum<T>, reified V : Enum<V>> EnumerationRadioSelection(
     crossinline onEnumerationSelection: (T) -> Unit,
     currentlySelected: V,
     uiToInternalMapping: (T) -> V,

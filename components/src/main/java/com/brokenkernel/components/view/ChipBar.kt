@@ -16,7 +16,7 @@ import kotlinx.collections.immutable.ImmutableList
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-inline fun <reified T : Enum<T>> ChipBar(
+public inline fun <reified T : Enum<T>> ChipBar(
     isChipsChecked: ImmutableList<Boolean>,
     crossinline onChipClick: (Int) -> Unit,
     noinline onClearClick: () -> Unit,
