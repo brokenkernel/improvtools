@@ -136,62 +136,63 @@ internal fun AboutTab(
             |${resources.getString(R.string.about_is_safe_mode, packageManager.isSafeMode)}
             |
             |<big>Build Constants</big>
-            |BOARD=${Build.BOARD}
-            |BOOTLOADER=${Build.BOOTLOADER}
-            |BRAND=${Build.BRAND}
-            |DEVICE=${Build.DEVICE}
-            |DISPLAY=${Build.DISPLAY}
-            |FINGERPRINT=${Build.FINGERPRINT}
-            |HARDWARE=${Build.HARDWARE}
-            |HOST=${Build.HOST}
-            |ID=${Build.ID}
-            |MANUFACTURER=${Build.MANUFACTURER}
-            |MODEL=${Build.MODEL}
-            |PRODUCT=${Build.PRODUCT}
-            |SUPPORTED_ABIS=${Build.SUPPORTED_ABIS.contentToString()}
-            |TAGS=${Build.TAGS}
-            |TIME=${Build.TIME}
-            |TYPE=${Build.TYPE}
-            |USER=${Build.USER}
+            |<b>BOARD=</b>${Build.BOARD}
+            |<b>BOOTLOADER=</b>${Build.BOOTLOADER}
+            |<b>BRAND=</b>${Build.BRAND}
+            |<b>DEVICE=</b>${Build.DEVICE}
+            |<b>DISPLAY=</b>${Build.DISPLAY}
+            |<b>FINGERPRINT=</b>${Build.FINGERPRINT}
+            |<b>HARDWARE=</b>${Build.HARDWARE}
+            |<b>HOST=</b>${Build.HOST}
+            |<b>ID=</b>${Build.ID}
+            |<b>MANUFACTURER=</b>${Build.MANUFACTURER}
+            |<b>MODEL=</b>${Build.MODEL}
+            |<b>PRODUCT=</b>${Build.PRODUCT}
+            |SUPPORTED_<b>ABIS=</b>${Build.SUPPORTED_ABIS.contentToString()}
+            |<b>TAGS=</b>${Build.TAGS}
+            |<b>TIME=</b>${Build.TIME}
+            |<b>TYPE=</b>${Build.TYPE}
+            |<b>USER=</b>${Build.USER}
             |
             |<big>LocalConfig</big>
-            |Locales=${localConfig.locales}
-            |NavigationType=${localConfig.navigation}
-            |ColorMode=${localConfig.colorMode}
-            |DensityDPI=${localConfig.densityDpi}
-            |NavigationHidden=${localConfig.navigationHidden}
-            |Orientation=${localConfig.orientation}
-            |ScreenLayout=${localConfig.screenLayout}
-            |ScreenHDR=${localConfig.isScreenHdr}
-            |WideColorGamut=${localConfig.isScreenWideColorGamut}
-            |ScreenRound=${localConfig.isScreenRound}
-            |uiMode=${localConfig.uiMode}
-            |Touchscreen=${localConfig.touchscreen}
-            |smallestScreenWidthDp=${localConfig.smallestScreenWidthDp}
-            |layoutDirection=${localConfig.layoutDirection}
-            |layoutDirection=${localConfig.layoutDirection}
+            |<b>Locales=</b>${localConfig.locales}
+            |<b>NavigationType=</b>${localConfig.navigation}
+            |<b>ColorMode=</b>${localConfig.colorMode}
+            |<b>DensityDPI=</b>${localConfig.densityDpi}
+            |<b>NavigationHidden=</b>${localConfig.navigationHidden}
+            |<b>Orientation=</b>${localConfig.orientation}
+            |<b>ScreenLayout=</b>${localConfig.screenLayout}
+            |<b>ScreenHDR=</b>${localConfig.isScreenHdr}
+            |<b>WideColorGamut=</b>${localConfig.isScreenWideColorGamut}
+            |<b>ScreenRound=</b>${localConfig.isScreenRound}
+            |<b>uiMode=</b>${localConfig.uiMode}
+            |<b>Touchscreen=</b>${localConfig.touchscreen}
+            |<b>smallestScreenWidthDp=</b>${localConfig.smallestScreenWidthDp}
+            |<b>layoutDirection=</b>${localConfig.layoutDirection}
+            |<b>layoutDirection=</b>${localConfig.layoutDirection}
             |<br>
         """.trimMargin().replace("\n", "<br/>")
 
         // Technically this skips some information for 33,34, but not that important.
         val additionalDataForSDK35Plus = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
             """
-                |<br><big> Additional Build Datum </big>
-                |ODM_SKU=${Build.ODM_SKU}
-                |SKU=${Build.SKU}
-                |SOC_MANUFACTURER=${Build.SOC_MANUFACTURER}
-                |SOC_MODEL=${Build.SOC_MODEL}
+                |<br><big>API 36 Build</big>
+                |<b>ODM_SKU=</b>${Build.ODM_SKU}
+                |<b>SKU=</b>${Build.SKU}
+                |<b>SOC_MANUFACTURER=</b>${Build.SOC_MANUFACTURER}
+                |<b>SOC_MODEL=</b>${Build.SOC_MODEL}
                 |
-                |<br><big>Additional LocalConfig Datum</big>
-                |NightMode=${localConfig.isNightModeActive}
-                |grammaticalGender=${localConfig.grammaticalGender}
-                |<big>Notification Debug Datum</big>
-                |Notifications Are Paused: ${notificationManager.areNotificationsPaused()}
-                |Notifications Are Enabled: ${notificationManager.areNotificationsEnabled()}
-                |Bubble Preference: ${notificationManager.bubblePreference}
-                |Importance: ${notificationManager.importance}
-                |Policy Access Granted: ${notificationManager.isNotificationPolicyAccessGranted}
-                |Full Screen: ${notificationManager.canUseFullScreenIntent()}
+                |<br><big>Additional LocalConfig</big>
+                |<b>NightMode=</b>${localConfig.isNightModeActive}
+                |<b>grammaticalGender=</b>${localConfig.grammaticalGender}
+                |<br>
+                |<big>Notification Debug</big>
+                |<b>Notifications Are Paused:</b> ${notificationManager.areNotificationsPaused()}
+                |<b>Notifications Are Enabled:</b> ${notificationManager.areNotificationsEnabled()}
+                |<b>Bubble Preference:</b> ${notificationManager.bubblePreference}
+                |<b>Importance:</b> ${notificationManager.importance}
+                |<b>Policy Access Granted:</b> ${notificationManager.isNotificationPolicyAccessGranted}
+                |<b>Full Screen:</b> ${notificationManager.canUseFullScreenIntent()}
                 |
             """.trimMargin().replace("\n", "<br/>")
         } else {
@@ -199,8 +200,8 @@ internal fun AboutTab(
         }
 
         val additionalDataForSDK36Plus = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.BAKLAVA) {
-            """|<br><big>API 36 Notification</big>
-            |Bubbles Allowed: ${notificationManager.canPostPromotedNotifications()}
+            """|<br><big>API 36 Notification</big><br>
+                |<b>Bubbles Allowed:</b> ${notificationManager.canPostPromotedNotifications()}
             """.trimMargin()
         } else {
             ""
