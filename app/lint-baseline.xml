@@ -2,6 +2,369 @@
 <issues format="6" by="lint 8.10.0" type="baseline" client="gradle" dependencies="true" name="AGP (8.10.0)" variant="all" version="8.10.0">
 
     <issue
+        id="CannotEnableHidden"
+        message="Issue `DefaultEncoding` was configured with severity `error` in app, but was not enabled (or was disabled) in library debug"
+        errorLine1="    &lt;issue id=&quot;DefaultEncoding&quot; severity=&quot;error&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="lint.xml"
+            line="8"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="CannotEnableHidden"
+        message="Issue `DefaultEncoding` was configured with severity `error` in app, but was not enabled (or was disabled) in library debug"
+        errorLine1="    &lt;issue id=&quot;DefaultEncoding&quot; severity=&quot;error&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="lint.xml"
+            line="8"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="CannotEnableHidden"
+        message="Issue `DefaultEncoding` was configured with severity `error` in app, but was not enabled (or was disabled) in library debug"
+        errorLine1="    &lt;issue id=&quot;DefaultEncoding&quot; severity=&quot;error&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="lint.xml"
+            line="8"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="CannotEnableHidden"
+        message="Issue `ExpensiveAssertion` was configured with severity `error` in app, but was not enabled (or was disabled) in library debug"
+        errorLine1="    &lt;issue id=&quot;ExpensiveAssertion&quot; severity=&quot;error&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="lint.xml"
+            line="10"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="CannotEnableHidden"
+        message="Issue `ExpensiveAssertion` was configured with severity `error` in app, but was not enabled (or was disabled) in library debug"
+        errorLine1="    &lt;issue id=&quot;ExpensiveAssertion&quot; severity=&quot;error&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="lint.xml"
+            line="10"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="CannotEnableHidden"
+        message="Issue `ExpensiveAssertion` was configured with severity `error` in app, but was not enabled (or was disabled) in library debug"
+        errorLine1="    &lt;issue id=&quot;ExpensiveAssertion&quot; severity=&quot;error&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="lint.xml"
+            line="10"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="CannotEnableHidden"
+        message="Issue `IconExpectedSize` was configured with severity `error` in app, but was not enabled (or was disabled) in library debug"
+        errorLine1="    &lt;issue id=&quot;IconExpectedSize&quot; severity=&quot;error&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="lint.xml"
+            line="11"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="CannotEnableHidden"
+        message="Issue `IconExpectedSize` was configured with severity `error` in app, but was not enabled (or was disabled) in library debug"
+        errorLine1="    &lt;issue id=&quot;IconExpectedSize&quot; severity=&quot;error&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="lint.xml"
+            line="11"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="CannotEnableHidden"
+        message="Issue `IconExpectedSize` was configured with severity `error` in app, but was not enabled (or was disabled) in library debug"
+        errorLine1="    &lt;issue id=&quot;IconExpectedSize&quot; severity=&quot;error&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="lint.xml"
+            line="11"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="CannotEnableHidden"
+        message="Issue `KotlinPropertyAccess` was configured with severity `error` in app, but was not enabled (or was disabled) in library debug"
+        errorLine1="    &lt;issue id=&quot;KotlinPropertyAccess&quot; severity=&quot;error&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="lint.xml"
+            line="12"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="CannotEnableHidden"
+        message="Issue `KotlinPropertyAccess` was configured with severity `error` in app, but was not enabled (or was disabled) in library debug"
+        errorLine1="    &lt;issue id=&quot;KotlinPropertyAccess&quot; severity=&quot;error&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="lint.xml"
+            line="12"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="CannotEnableHidden"
+        message="Issue `KotlinPropertyAccess` was configured with severity `error` in app, but was not enabled (or was disabled) in library debug"
+        errorLine1="    &lt;issue id=&quot;KotlinPropertyAccess&quot; severity=&quot;error&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="lint.xml"
+            line="12"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="CannotEnableHidden"
+        message="Issue `KotlincFE10` was configured with severity `error` in app, but was not enabled (or was disabled) in library debug"
+        errorLine1="    &lt;issue id=&quot;KotlincFE10&quot; severity=&quot;error&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="lint.xml"
+            line="13"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="CannotEnableHidden"
+        message="Issue `KotlincFE10` was configured with severity `error` in app, but was not enabled (or was disabled) in library debug"
+        errorLine1="    &lt;issue id=&quot;KotlincFE10&quot; severity=&quot;error&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="lint.xml"
+            line="13"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="CannotEnableHidden"
+        message="Issue `KotlincFE10` was configured with severity `error` in app, but was not enabled (or was disabled) in library debug"
+        errorLine1="    &lt;issue id=&quot;KotlincFE10&quot; severity=&quot;error&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="lint.xml"
+            line="13"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="CannotEnableHidden"
+        message="Issue `NoHardKeywords` was configured with severity `error` in app, but was not enabled (or was disabled) in library debug"
+        errorLine1="    &lt;issue id=&quot;NoHardKeywords&quot; severity=&quot;error&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="lint.xml"
+            line="14"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="CannotEnableHidden"
+        message="Issue `NoHardKeywords` was configured with severity `error` in app, but was not enabled (or was disabled) in library debug"
+        errorLine1="    &lt;issue id=&quot;NoHardKeywords&quot; severity=&quot;error&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="lint.xml"
+            line="14"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="CannotEnableHidden"
+        message="Issue `NoHardKeywords` was configured with severity `error` in app, but was not enabled (or was disabled) in library debug"
+        errorLine1="    &lt;issue id=&quot;NoHardKeywords&quot; severity=&quot;error&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="lint.xml"
+            line="14"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="CannotEnableHidden"
+        message="Issue `PermissionNamingConvention` was configured with severity `error` in app, but was not enabled (or was disabled) in library debug"
+        errorLine1="    &lt;issue id=&quot;PermissionNamingConvention&quot; severity=&quot;error&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="lint.xml"
+            line="15"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="CannotEnableHidden"
+        message="Issue `PermissionNamingConvention` was configured with severity `error` in app, but was not enabled (or was disabled) in library debug"
+        errorLine1="    &lt;issue id=&quot;PermissionNamingConvention&quot; severity=&quot;error&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="lint.xml"
+            line="15"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="CannotEnableHidden"
+        message="Issue `PermissionNamingConvention` was configured with severity `error` in app, but was not enabled (or was disabled) in library debug"
+        errorLine1="    &lt;issue id=&quot;PermissionNamingConvention&quot; severity=&quot;error&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="lint.xml"
+            line="15"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="CannotEnableHidden"
+        message="Issue `TypographyQuotes` was configured with severity `error` in app, but was not enabled (or was disabled) in library debug"
+        errorLine1="    &lt;issue id=&quot;TypographyQuotes&quot; severity=&quot;error&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="lint.xml"
+            line="16"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="CannotEnableHidden"
+        message="Issue `TypographyQuotes` was configured with severity `error` in app, but was not enabled (or was disabled) in library debug"
+        errorLine1="    &lt;issue id=&quot;TypographyQuotes&quot; severity=&quot;error&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="lint.xml"
+            line="16"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="CannotEnableHidden"
+        message="Issue `TypographyQuotes` was configured with severity `error` in app, but was not enabled (or was disabled) in library debug"
+        errorLine1="    &lt;issue id=&quot;TypographyQuotes&quot; severity=&quot;error&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="lint.xml"
+            line="16"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="CannotEnableHidden"
+        message="Issue `UnknownNullness` was configured with severity `error` in app, but was not enabled (or was disabled) in library debug"
+        errorLine1="    &lt;issue id=&quot;UnknownNullness&quot; severity=&quot;error&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="lint.xml"
+            line="17"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="CannotEnableHidden"
+        message="Issue `UnknownNullness` was configured with severity `error` in app, but was not enabled (or was disabled) in library debug"
+        errorLine1="    &lt;issue id=&quot;UnknownNullness&quot; severity=&quot;error&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="lint.xml"
+            line="17"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="CannotEnableHidden"
+        message="Issue `UnknownNullness` was configured with severity `error` in app, but was not enabled (or was disabled) in library debug"
+        errorLine1="    &lt;issue id=&quot;UnknownNullness&quot; severity=&quot;error&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="lint.xml"
+            line="17"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="CannotEnableHidden"
+        message="Issue `WrongThreadInterprocedural` was configured with severity `error` in app, but was not enabled (or was disabled) in library debug"
+        errorLine1="    &lt;issue id=&quot;WrongThreadInterprocedural&quot; severity=&quot;error&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="lint.xml"
+            line="18"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="CannotEnableHidden"
+        message="Issue `WrongThreadInterprocedural` was configured with severity `error` in app, but was not enabled (or was disabled) in library debug"
+        errorLine1="    &lt;issue id=&quot;WrongThreadInterprocedural&quot; severity=&quot;error&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="lint.xml"
+            line="18"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="CannotEnableHidden"
+        message="Issue `WrongThreadInterprocedural` was configured with severity `error` in app, but was not enabled (or was disabled) in library debug"
+        errorLine1="    &lt;issue id=&quot;WrongThreadInterprocedural&quot; severity=&quot;error&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="lint.xml"
+            line="18"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="CannotEnableHidden"
+        message="Issue `PrivacySandboxBlockedCall` was configured with severity `error` in app, but was not enabled (or was disabled) in library debug"
+        errorLine1="    &lt;issue id=&quot;PrivacySandboxBlockedCall&quot; severity=&quot;error&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="lint.xml"
+            line="20"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="CannotEnableHidden"
+        message="Issue `PrivacySandboxBlockedCall` was configured with severity `error` in app, but was not enabled (or was disabled) in library debug"
+        errorLine1="    &lt;issue id=&quot;PrivacySandboxBlockedCall&quot; severity=&quot;error&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="lint.xml"
+            line="20"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="CannotEnableHidden"
+        message="Issue `PrivacySandboxBlockedCall` was configured with severity `error` in app, but was not enabled (or was disabled) in library debug"
+        errorLine1="    &lt;issue id=&quot;PrivacySandboxBlockedCall&quot; severity=&quot;error&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="lint.xml"
+            line="20"
+            column="5"/>
+    </issue>
+
+    <issue
         id="IconLocation"
         message="Found bitmap drawable `res/drawable/general_emotion_wheel.webp` in densityless folder">
         <location

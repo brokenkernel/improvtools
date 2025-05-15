@@ -1,0 +1,169 @@
+import org.jetbrains.dokka.gradle.engine.parameters.VisibilityModifier
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
+
+plugins {
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.ksp)
+    id("com.brokenkernel.improvtools.sharedbuildlogic.common-library-plugin")
+
+    kotlin("plugin.power-assert") version libs.versions.kotlin.get()
+}
+
+android {
+    namespace = "com.brokenkernel.improvtools.debugscreen"
+    compileSdk = 36
+
+    defaultConfig {
+        minSdk = 26
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
+    }
+
+    buildTypes {
+        release {
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro",
+            )
+        }
+    }
+
+    buildFeatures {
+        compose = true
+        buildConfig = true
+    }
+    buildToolsVersion = "35.0.0"
+    lint {
+        lintConfig = file("lint.xml")
+        baseline = file("lint-baseline.xml")
+        checkDependencies = true
+        warningsAsErrors = true
+    }
+    composeCompiler {
+        includeSourceInformation = true
+        includeTraceMarkers = true
+        featureFlags = setOf()
+    }
+}
+
+kotlin {
+    version = "2.2.0"
+    sourceSets {
+        all {
+            languageSettings.progressiveMode = true
+        }
+    }
+    compilerOptions {
+        languageVersion = org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_2_2
+        apiVersion = KotlinVersion.KOTLIN_2_2
+
+        allWarningsAsErrors = true
+        extraWarnings = true
+        progressiveMode = true
+//        https://kotlinlang.org/docs/whatsnew-eap.html#gradle
+//        jvmDefault = JvmDefaultMode.NO_COMPATIBILITY
+    }
+    jvmToolchain(21)
+}
+
+dokka {
+    moduleName = "debug"
+    dokkaSourceSets {
+        main {
+            enableAndroidDocumentationLink = true
+            enableJdkDocumentationLink = true
+            enableKotlinStdLibDocumentationLink = true
+            documentedVisibilities =
+                setOf(
+                    VisibilityModifier.Public,
+                    VisibilityModifier.Internal,
+                    VisibilityModifier.Package,
+                    VisibilityModifier.Protected,
+                )
+            sourceLink {
+                localDirectory = (file("src/main/java"))
+                remoteUrl("https://github.com/brokenkernel/improvtools")
+                remoteLineSuffix = ("#L")
+            }
+        }
+    }
+    dokkaPublications {
+        html {
+            enabled = true
+//            failOnWarning = true
+        }
+    }
+    pluginsConfiguration {
+        html {
+            homepageLink = "https://improvtools.brokenkernel.com"
+        }
+        versioning {
+        }
+    }
+}
+
+dependencies {
+    api(libs.androidx.foundation)
+    api(libs.androidx.foundation.layout)
+    api(libs.androidx.runtime)
+    api(libs.kotlinx.collections.immutable.jvm)
+
+    implementation(enforcedPlatform(libs.androidx.compose.bom)) {
+        because("we are an android compose application")
+    }
+    implementation(enforcedPlatform(libs.kotlin.bom))
+    implementation(libs.androidx.animation)
+    implementation(libs.androidx.annotation)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.material.icons.core)
+    implementation(libs.androidx.material3)
+    implementation(libs.androidx.runtime.saveable)
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.ui.geometry)
+    implementation(libs.androidx.ui.graphics)
+    implementation(libs.androidx.ui.text)
+    implementation(libs.androidx.ui.tooling.preview)
+    implementation(libs.androidx.ui.unit)
+    implementation(libs.androidx.ui.util)
+
+    debugRuntimeOnly(libs.androidx.ui.test.manifest)
+
+    testImplementation(libs.junit)
+
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.monitor)
+    androidTestImplementation(libs.androidx.ui.test)
+    androidTestImplementation(libs.androidx.ui.test.junit4)
+    androidTestImplementation(libs.junit)
+
+    ktlintRuleset(libs.ktlintCompose)
+
+    lintChecks(libs.androidx.lint.gradle)
+    lintChecks(libs.slack.lint.checks)
+}
+
+@OptIn(ExperimentalKotlinGradlePluginApi::class)
+powerAssert {
+    functions =
+        listOf(
+            "kotlin.assert",
+            "kotlin.test.assertEquals",
+            "kotlin.test.assertTrue",
+            "kotlin.test.assertNull",
+            "kotlin.require",
+            "kotlin.util.assert",
+        )
+    // have to list them all, since "detect all" doesn't work with android
+    includedSourceSets = listOf(
+        "debug",
+        "debugAndroidTest",
+        "debugUnitTest",
+        "release",
+        "releaseUnitTest",
+    )
+}
