@@ -205,7 +205,7 @@ internal fun TimerTab(viewModel: TimerListViewModel = hiltViewModel()) {
                     ) {
                         val context = LocalContext.current
                         val onTimerStart = {
-                            viewModel.invertTimerState(timer, context)
+                            viewModel.invertTimerState(timer)
                             if (notificationPermissionState.allPermissionsGranted) {
                                 viewModel.tryToSendNotificationForTimer(timer, context)
                             } else if (notificationPermissionState.shouldShowRationale) {
@@ -218,7 +218,7 @@ internal fun TimerTab(viewModel: TimerListViewModel = hiltViewModel()) {
                         when (timer) {
                             is CountDownTimerState -> {
                                 CountDownTimer(
-                                    onPauseTimer = { viewModel.invertTimerState(timer, context) },
+                                    onPauseTimer = { viewModel.invertTimerState(timer) },
                                     onRemoveTimer = onRemove,
                                     onHalfTimeTimer = { viewModel.halfTimer(timer) },
                                     onResetTimer = { viewModel.resetTimer(timer) },
@@ -231,7 +231,7 @@ internal fun TimerTab(viewModel: TimerListViewModel = hiltViewModel()) {
 
                             is CountUpTimerState -> {
                                 CountUpTimer(
-                                    onPauseTimer = { viewModel.invertTimerState(timer, context) },
+                                    onPauseTimer = { viewModel.invertTimerState(timer) },
                                     onRemoveTimer = onRemove,
                                     onResetTimer = { viewModel.resetTimer(timer) },
                                     onTitleChange = { viewModel.replaceTitle(timer, it) },

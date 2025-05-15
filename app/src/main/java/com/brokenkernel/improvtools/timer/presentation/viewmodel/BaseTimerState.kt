@@ -22,6 +22,10 @@ internal sealed interface TimerState {
     val title: String
     val timerID: Int
     fun isStarted(): Boolean
+
+    fun asEdited(
+        title: String = this.title,
+    ): TimerState
 }
 
 internal sealed interface StartedTimerState : TimerState {
@@ -45,7 +49,7 @@ internal sealed interface CountUpTimerState : TimerState {
 }
 
 @OptIn(ExperimentalTime::class)
-internal data class StartedCountUpTimerState(
+internal class StartedCountUpTimerState(
     private val priorElapsedTime: Duration,
     private val startedTime: Instant,
     override val title: String,
@@ -72,10 +76,21 @@ internal data class StartedCountUpTimerState(
     override fun asResetTimer(): TimerState {
         return PausedCountUpTimerState(Duration.ZERO, title, timerID)
     }
+
+    override fun asEdited(
+        title: String,
+    ): TimerState {
+        return StartedCountUpTimerState(
+            priorElapsedTime = this.priorElapsedTime,
+            startedTime = this.startedTime,
+            title = title,
+            timerID = timerID,
+        )
+    }
 }
 
 @OptIn(ExperimentalTime::class)
-internal data class StartedCountDownTimerState(
+internal class StartedCountDownTimerState(
     private val priorRemainingTime: Duration,
     private val startedTime: Instant,
     override val title: String,
@@ -107,12 +122,23 @@ internal data class StartedCountDownTimerState(
         val now = Clock.System.now()
         return StartedCountDownTimerState(totalRemainingTime() / 2, now, title, timerID)
     }
+
+    override fun asEdited(
+        title: String,
+    ): TimerState {
+        return StartedCountDownTimerState(
+            priorRemainingTime = this.priorRemainingTime,
+            startedTime = this.startedTime,
+            title = title,
+            timerID = timerID,
+        )
+    }
 }
 
 // TODO: secondary constructor for initial creation ?
 
 @OptIn(ExperimentalTime::class)
-internal data class PausedCountUpTimerState(
+internal class PausedCountUpTimerState(
     private val elapsedTime: Duration,
     override val title: String,
     override val timerID: Int,
@@ -129,10 +155,20 @@ internal data class PausedCountUpTimerState(
     override fun asResetTimer(): TimerState {
         return PausedCountUpTimerState(Duration.ZERO, title, timerID)
     }
+
+    override fun asEdited(
+        title: String,
+    ): TimerState {
+        return PausedCountUpTimerState(
+            elapsedTime = this.elapsedTime,
+            title = title,
+            timerID = timerID,
+        )
+    }
 }
 
 @OptIn(ExperimentalTime::class)
-internal data class PausedCountDownTimerState(
+internal class PausedCountDownTimerState(
     private val remainingTime: Duration,
     override val title: String,
     override val timerID: Int,
@@ -152,5 +188,15 @@ internal data class PausedCountDownTimerState(
 
     override fun asHalfTime(): CountDownTimerState {
         return PausedCountDownTimerState(remainingTime / 2, title, timerID)
+    }
+
+    override fun asEdited(
+        title: String,
+    ): TimerState {
+        return PausedCountDownTimerState(
+            remainingTime = remainingTime,
+            title = title,
+            timerID = timerID,
+        )
     }
 }

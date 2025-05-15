@@ -82,7 +82,7 @@ internal class TimerListViewModel @Inject constructor(
         _allTimers[index] = timer.asPausedTimer()
     }
 
-    fun invertTimerState(timer: TimerState, context: Context) {
+    fun invertTimerState(timer: TimerState) {
         when (timer) {
             is PausedTimerState -> startTimer(timer)
             is StartedTimerState -> pauseTimer(timer)
@@ -113,19 +113,7 @@ internal class TimerListViewModel @Inject constructor(
     fun replaceTitle(timer: TimerState, newTitle: String) {
         val index = _allTimers.indexOf(timer)
         val priorTimer = _allTimers[index]
-        when (priorTimer) {
-            is PausedCountDownTimerState ->
-                _allTimers[index] = priorTimer.copy(title = newTitle)
-
-            is StartedCountDownTimerState ->
-                _allTimers[index] = priorTimer.copy(title = newTitle)
-
-            is PausedCountUpTimerState ->
-                _allTimers[index] = priorTimer.copy(title = newTitle)
-
-            is StartedCountUpTimerState ->
-                _allTimers[index] = priorTimer.copy(title = newTitle)
-        }
+        _allTimers[index] = priorTimer.asEdited(title = newTitle)
     }
 
     fun swapTimer(from: Int, to: Int) {
