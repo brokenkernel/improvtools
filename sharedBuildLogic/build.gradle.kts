@@ -3,6 +3,7 @@ plugins {
     `java-gradle-plugin`
     alias(libs.plugins.sortDependencies)
     alias(libs.plugins.ktlint)
+    kotlin("plugin.power-assert") version libs.versions.kotlin.get()
 }
 
 group = "com.brokenkernel.improvtools.commonBuildLogic"

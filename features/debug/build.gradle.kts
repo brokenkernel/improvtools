@@ -8,8 +8,6 @@ plugins {
     alias(libs.plugins.ksp)
     id("com.brokenkernel.improvtools.sharedbuildlogic.common-general-plugin")
     id("com.brokenkernel.improvtools.sharedbuildlogic.common-library-plugin")
-
-    kotlin("plugin.power-assert") version libs.versions.kotlin.get()
 }
 
 android {
