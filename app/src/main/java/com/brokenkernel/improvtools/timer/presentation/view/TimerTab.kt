@@ -1,5 +1,6 @@
 package com.brokenkernel.improvtools.timer.presentation.view
 
+import android.annotation.SuppressLint
 import android.os.Build
 import android.util.Log
 import androidx.compose.animation.core.animateDpAsState
@@ -18,7 +19,6 @@ import androidx.compose.material3.LargeFloatingActionButton
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Modifier
@@ -49,9 +49,6 @@ import sh.calvin.reorderable.rememberReorderableLazyListState
 private const val TAG = "TimerScreen"
 
 // TODO: allow for optional starting time setting
-// TODO control of how many timers. Add some.
-// todo: click on title, change name of timer
-// TODO: adding timer stops/resets existing timers. See also: state storage is broken.
 // TODO: possibly add Timer Edit Button (for future editing time, etc. Also clearer UX than clicking on title to edit title)
 // TODO: handle countdown timer when it is done. (a) stop/pause it (b) notification handler
 
@@ -159,6 +156,7 @@ private fun CountUpTimer(
     )
 }
 
+@SuppressLint("MissingPermission")
 @OptIn(ExperimentalPermissionsApi::class)
 @ImprovToolsDestination<ImprovToolsNavigationGraph>
 @Composable
@@ -184,13 +182,6 @@ internal fun TimerTab(viewModel: TimerListViewModel = hiltViewModel()) {
         haptic.performHapticFeedback(HapticFeedbackType.SegmentFrequentTick)
     }
 
-    if (!notificationPermissionState.allPermissionsGranted) {
-        LaunchedEffect(Unit) {
-            // TODO
-            notificationPermissionState.launchMultiplePermissionRequest()
-        }
-    }
-
     LazyColumn(state = lazyListState) {
         items(allTimers, key = { t -> t.timerID }) { timer: TimerState ->
             ReorderableItem(state = reorderableLazyListState, key = timer.timerID) { isDragging ->
@@ -213,6 +204,17 @@ internal fun TimerTab(viewModel: TimerListViewModel = hiltViewModel()) {
                         modifier = Modifier.shadow(elevation),
                     ) {
                         val context = LocalContext.current
+                        val onTimerStart = {
+                            viewModel.invertTimerState(timer, context)
+                            if (notificationPermissionState.allPermissionsGranted) {
+                                viewModel.tryToSendNotificationForTimer(timer, context)
+                            } else if (notificationPermissionState.shouldShowRationale) {
+                                // TODO: show dialog.
+                                notificationPermissionState.launchMultiplePermissionRequest()
+                            } else {
+                                notificationPermissionState.launchMultiplePermissionRequest()
+                            }
+                        }
                         when (timer) {
                             is CountDownTimerState -> {
                                 CountDownTimer(
@@ -222,17 +224,7 @@ internal fun TimerTab(viewModel: TimerListViewModel = hiltViewModel()) {
                                     onResetTimer = { viewModel.resetTimer(timer) },
                                     onTitleChange = { viewModel.replaceTitle(timer, it) },
                                     timerState = timer,
-                                    onStartTimer = {
-                                        viewModel.invertTimerState(timer, context)
-                                        if (notificationPermissionState.allPermissionsGranted) {
-                                            viewModel.tryToSendNotificationForTimer(timer, context)
-                                        } else if (notificationPermissionState.shouldShowRationale) {
-                                            // TODO: show dialog.
-                                            notificationPermissionState.launchMultiplePermissionRequest()
-                                        } else {
-                                            notificationPermissionState.launchMultiplePermissionRequest()
-                                        }
-                                    },
+                                    onStartTimer = onTimerStart,
                                     scope = this,
                                 )
                             }
@@ -244,17 +236,7 @@ internal fun TimerTab(viewModel: TimerListViewModel = hiltViewModel()) {
                                     onResetTimer = { viewModel.resetTimer(timer) },
                                     onTitleChange = { viewModel.replaceTitle(timer, it) },
                                     timerState = timer,
-                                    onStartTimer = {
-                                        viewModel.invertTimerState(timer, context)
-                                        if (notificationPermissionState.allPermissionsGranted) {
-                                            viewModel.tryToSendNotificationForTimer(timer, context)
-                                        } else if (notificationPermissionState.shouldShowRationale) {
-                                            // TODO: show dialog.
-                                            notificationPermissionState.launchMultiplePermissionRequest()
-                                        } else {
-                                            notificationPermissionState.launchMultiplePermissionRequest()
-                                        }
-                                    },
+                                    onStartTimer = onTimerStart,
                                     scope = this,
                                 )
                             }
