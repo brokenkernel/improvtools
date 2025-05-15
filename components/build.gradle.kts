@@ -11,6 +11,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
+    id("com.brokenkernel.improvtools.sharedbuildlogic.common-general-plugin")
     id("com.brokenkernel.improvtools.sharedbuildlogic.common-library-plugin")
 
     kotlin("plugin.power-assert") version libs.versions.kotlin.get()
@@ -50,6 +51,9 @@ android {
 }
 
 kotlin {
+    compilerOptions {
+        allWarningsAsErrors = true
+    }
     sourceSets {
         all {
             languageSettings.progressiveMode = true
@@ -135,15 +139,6 @@ dokka {
 
 @OptIn(ExperimentalKotlinGradlePluginApi::class)
 powerAssert {
-    functions =
-        listOf(
-            "kotlin.assert",
-            "kotlin.test.assertEquals",
-            "kotlin.test.assertTrue",
-            "kotlin.test.assertNull",
-            "kotlin.require",
-            "kotlin.util.assert",
-        )
     // have to list them all, since "detect all" doesn't work with android
     includedSourceSets = listOf(
         "debug",

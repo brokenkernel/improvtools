@@ -11,27 +11,20 @@ import java.util.Properties
 import org.gradle.kotlin.dsl.implementation
 import org.jetbrains.dokka.gradle.engine.parameters.VisibilityModifier
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
-import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 
 plugins {
     alias(libs.plugins.aboutLibraries)
     alias(libs.plugins.android.application)
     alias(libs.plugins.dagger.hilt.android)
-    alias(libs.plugins.dependencyAnalysis)
-    alias(libs.plugins.dokka)
     alias(libs.plugins.firebaseCrashlyticsPlugin)
     alias(libs.plugins.google.gms.google.services)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.ksp)
-    alias(libs.plugins.ktlint)
     alias(libs.plugins.protobuf)
-    alias(libs.plugins.versions)
     alias(libs.plugins.firebasePerfPlugin)
-    alias(libs.plugins.sortDependencies)
-
-    kotlin("plugin.power-assert") version libs.versions.kotlin.get()
+    id("com.brokenkernel.improvtools.sharedbuildlogic.common-general-plugin")
 }
 
 val keystoreProperties: Properties = Properties()
@@ -179,14 +172,6 @@ android {
     androidResources {
         generateLocaleConfig = true
     }
-
-    // https://kotlinlang.org/docs/whatsnew-eap.html#leave-feedback
-//    kotlinOptions {
-//        freeCompilerArgs += listOf(
-//            "-Werror",
-//            "-Wextra",
-//        )
-//    }
 }
 
 dependencies {
@@ -352,23 +337,11 @@ configurations {
 }
 
 kotlin {
-    version = libs.versions.kotlin.get()
     sourceSets {
         all {
             languageSettings.progressiveMode = true
         }
     }
-    compilerOptions {
-        languageVersion = KotlinVersion.KOTLIN_2_2
-        apiVersion = KotlinVersion.KOTLIN_2_2
-
-//        allWarningsAsErrors = true // TODO: disabled because of compose destinations
-        extraWarnings = true
-        progressiveMode = true
-//        https://kotlinlang.org/docs/whatsnew-eap.html#gradle
-//        jvmDefault = JvmDefaultMode.NO_COMPATIBILITY
-    }
-    jvmToolchain(21)
 }
 
 hilt {
@@ -419,11 +392,9 @@ dokka {
     moduleName = "app"
     dokkaSourceSets {
         main {
-            suppressGeneratedFiles = true
             enableAndroidDocumentationLink = true
             enableJdkDocumentationLink = true
             enableKotlinStdLibDocumentationLink = true
-            reportUndocumented = true
             documentedVisibilities =
                 setOf(
                     VisibilityModifier.Public,
@@ -455,15 +426,6 @@ dokka {
 
 @OptIn(ExperimentalKotlinGradlePluginApi::class)
 powerAssert {
-    functions =
-        listOf(
-            "kotlin.assert",
-            "kotlin.test.assertEquals",
-            "kotlin.test.assertTrue",
-            "kotlin.test.assertNull",
-            "kotlin.require",
-            "kotlin.util.assert",
-        )
     // have to list them all, since "detect all" doesn't work with android
     includedSourceSets = listOf(
         "debug",
@@ -475,21 +437,6 @@ powerAssert {
 }
 
 ksp {
-    allWarningsAsErrors = true
-    useKsp2 = true
-    arg("dagger.useBindingGraphFix", "enabled")
-    arg("dagger.ignoreProvisionKeyWildcards", "enabled")
-    arg("dagger.experimentalDaggerErrorMessages", "enabled")
-    arg("dagger.warnIfInjectionFactoryNotGeneratedUpstream", "enabled")
-    arg("dagger.fullBindingGraphValidation", "error")
-
     arg("compose-destinations.mermaidGraph", "$rootDir/docs/static/")
     arg("compose-destinations.htmlMermaidGraph", "$rootDir/docs/static/")
-}
-
-fun isStable(version: String): Boolean {
-    val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { version.uppercase().contains(it) }
-    val regex = "^[0-9,.v-]+(-r)?$".toRegex()
-    val isStable = stableKeyword || regex.matches(version)
-    return isStable
 }

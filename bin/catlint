@@ -1,2 +1,2 @@
 #!/usr/bin/env zsh
-cat ./app/lint-baseline.xml ./app/config/ktlint/baseline.xml ./components/lint-baseline.xml ./components/config/ktlint/baseline.xml
+cat ./*/lint-baseline.xml ./*/config/ktlint/baseline.xml

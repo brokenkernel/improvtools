@@ -205,6 +205,7 @@ gradlePlugins-gradleVersions = { module = "com.github.ben-manes:gradle-versions-
 gradlePlugins-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 gradlePlugins-ksp = { module = "com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
 gradlePlugins-ktlint = { module = "org.jlleitschuh.gradle.ktlint:org.jlleitschuh.gradle.ktlint.gradle.plugin", version.ref = "ktlint" }
+gradlePlugins-powerAssert = { module = "org.jetbrains.kotlin:kotlin-power-assert", version.ref = "kotlin" }
 gradlePlugins-sortDependencies = { module = "com.squareup:sort-dependencies-gradle-plugin", version.ref = "sortDependencies" }
 guava = { module = "com.google.guava:guava", version.ref = "guava" }
 hamcrest-core = { module = "org.hamcrest:hamcrest-core", version.ref = "hamcrestCore" }

@@ -1,6 +1,6 @@
-package com.brokenkernel.improvtools.debugscreen
+package com.brokenkernel.improvtools.features.debug
 
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 import org.junit.Test
 
 /**

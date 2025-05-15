@@ -1,0 +1,109 @@
+package com.brokenkernel.improvtools.sharedbuildlogic
+
+import com.autonomousapps.DependencyAnalysisPlugin
+import com.github.benmanes.gradle.versions.VersionsPlugin
+import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
+import com.google.devtools.ksp.gradle.KspExtension
+import com.squareup.sort.SortDependenciesPlugin
+import libs
+import org.gradle.api.Plugin
+import org.gradle.api.Project
+import org.gradle.kotlin.dsl.withType
+import org.jetbrains.dokka.gradle.DokkaPlugin
+import org.jetbrains.dokka.gradle.DokkaTask
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+import org.jetbrains.kotlin.gradle.dsl.JvmDefaultMode
+import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
+import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
+import org.jetbrains.kotlin.powerassert.gradle.PowerAssertGradleExtension
+import org.jetbrains.kotlin.powerassert.gradle.PowerAssertGradlePlugin
+import org.jlleitschuh.gradle.ktlint.KtlintExtension
+import org.jlleitschuh.gradle.ktlint.KtlintPlugin
+
+@OptIn(ExperimentalKotlinGradlePluginApi::class)
+public class CommonGeneralPlugin : Plugin<Project> {
+    override fun apply(target: Project) {
+        with(target) {
+            with(pluginManager) {
+                apply(VersionsPlugin::class.java)
+                apply(DependencyAnalysisPlugin::class.java)
+                apply(SortDependenciesPlugin::class.java)
+                apply(DokkaPlugin::class.java)
+                apply(KtlintPlugin::class.java)
+                apply(PowerAssertGradlePlugin::class.java)
+            }
+
+            tasks.withType<DependencyUpdatesTask>().configureEach {
+                checkConstraints = true
+                checkBuildEnvironmentConstraints = true
+                checkForGradleUpdate = true
+            }
+            tasks.withType<DokkaTask>().configureEach {
+                dokkaSourceSets.configureEach {
+                    suppressGeneratedFiles.set(true)
+                    reportUndocumented.set(true)
+                }
+            }
+            extensions.configure(
+                KspExtension::class.java,
+            ) {
+                useKsp2.set(true)
+                allWarningsAsErrors = true
+                arg("dagger.useBindingGraphFix", "enabled")
+                arg("dagger.ignoreProvisionKeyWildcards", "enabled")
+                arg("dagger.experimentalDaggerErrorMessages", "enabled")
+                arg("dagger.warnIfInjectionFactoryNotGeneratedUpstream", "enabled")
+                arg("dagger.fullBindingGraphValidation", "error")
+            }
+            extensions.configure(
+                KtlintExtension::class.java,
+                {
+                    android.set(true)
+                    coloredOutput.set(true)
+                    version.set("1.5.0")
+                },
+            )
+
+            extensions.configure(
+                KotlinAndroidProjectExtension::class.java,
+                {
+                    version = libs.versions.kotlin.get()
+                    compilerOptions {
+                        languageVersion.set(KotlinVersion.KOTLIN_2_2)
+                        apiVersion.set(KotlinVersion.KOTLIN_2_2)
+//                        allWarningsAsErrors.set(true) // TODO!!
+                        extraWarnings.set(true)
+                        progressiveMode.set(true)
+                        jvmDefault.set(JvmDefaultMode.NO_COMPATIBILITY)
+                    }
+                    jvmToolchain(21)
+                },
+            )
+
+            extensions.configure(
+                PowerAssertGradleExtension::class.java,
+                {
+                    functions.set(
+                        listOf(
+                            "kotlin.assert",
+                            "kotlin.test.assertEquals",
+                            "kotlin.test.assertTrue",
+                            "kotlin.test.assertNull",
+                            "kotlin.require",
+                            "kotlin.util.assert",
+                        ),
+                    )
+                },
+            )
+        }
+    }
+}
+
+private fun isStable(version: String): Boolean {
+    val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { version.uppercase().contains(it) }
+    val regex = "^[0-9,.v-]+(-r)?$".toRegex()
+    val isStable = stableKeyword || regex.matches(version)
+    return isStable
+}
+
+

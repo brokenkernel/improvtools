@@ -14,9 +14,13 @@ kotlin {
 
 gradlePlugin {
     plugins {
-        register("androidLibrary") {
+        register("commonLibraryPlugin") {
             id = "com.brokenkernel.improvtools.sharedbuildlogic.common-library-plugin"
             implementationClass = "com.brokenkernel.improvtools.sharedbuildlogic.CommonLibraryPlugin"
+        }
+        register("commonGeneralPlugin") {
+            id = "com.brokenkernel.improvtools.sharedbuildlogic.common-general-plugin"
+            implementationClass = "com.brokenkernel.improvtools.sharedbuildlogic.CommonGeneralPlugin"
         }
     }
 }
@@ -30,4 +34,5 @@ dependencies {
     compileOnly(libs.gradlePlugins.kotlin)
     compileOnly(libs.gradlePlugins.sortDependencies)
     compileOnly(libs.gradlePlugins.ktlint)
+    compileOnly(libs.gradlePlugins.powerAssert)
 }
