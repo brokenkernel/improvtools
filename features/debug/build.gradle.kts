@@ -1,6 +1,5 @@
 import org.jetbrains.dokka.gradle.engine.parameters.VisibilityModifier
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
-import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 
 plugins {
     alias(libs.plugins.android.library)
@@ -14,8 +13,6 @@ plugins {
 
 android {
     namespace = "com.brokenkernel.improvtools.debugscreen"
-    compileSdk = 36
-
     defaultConfig {
         minSdk = 26
 
@@ -33,17 +30,6 @@ android {
         }
     }
 
-    buildFeatures {
-        compose = true
-        buildConfig = true
-    }
-    buildToolsVersion = "35.0.0"
-    lint {
-        lintConfig = file("lint.xml")
-        baseline = file("lint-baseline.xml")
-        checkDependencies = true
-        warningsAsErrors = true
-    }
     composeCompiler {
         includeSourceInformation = true
         includeTraceMarkers = true
@@ -52,23 +38,11 @@ android {
 }
 
 kotlin {
-    version = "2.2.0"
     sourceSets {
         all {
             languageSettings.progressiveMode = true
         }
     }
-    compilerOptions {
-        languageVersion = org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_2_2
-        apiVersion = KotlinVersion.KOTLIN_2_2
-
-        allWarningsAsErrors = true
-        extraWarnings = true
-        progressiveMode = true
-//        https://kotlinlang.org/docs/whatsnew-eap.html#gradle
-//        jvmDefault = JvmDefaultMode.NO_COMPATIBILITY
-    }
-    jvmToolchain(21)
 }
 
 dokka {

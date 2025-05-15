@@ -3,7 +3,6 @@
 import com.google.devtools.ksp.KspExperimental
 import org.jetbrains.dokka.gradle.engine.parameters.VisibilityModifier
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
-import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 
 // TODO: move of this out to shared-build-conventions
 
@@ -42,13 +41,7 @@ android {
         compose = true
         buildConfig = true
     }
-    buildToolsVersion = "35.0.0"
-    lint {
-        lintConfig = file("lint.xml")
-        baseline = file("lint-baseline.xml")
-        checkDependencies = true
-        warningsAsErrors = true
-    }
+
     composeCompiler {
         includeSourceInformation = true
         includeTraceMarkers = true
@@ -57,23 +50,11 @@ android {
 }
 
 kotlin {
-    version = "2.2.0"
     sourceSets {
         all {
             languageSettings.progressiveMode = true
         }
     }
-    compilerOptions {
-        languageVersion = KotlinVersion.KOTLIN_2_2
-        apiVersion = KotlinVersion.KOTLIN_2_2
-
-        allWarningsAsErrors = true
-        extraWarnings = true
-        progressiveMode = true
-//        https://kotlinlang.org/docs/whatsnew-eap.html#gradle
-//        jvmDefault = JvmDefaultMode.NO_COMPATIBILITY
-    }
-    jvmToolchain(21)
 }
 
 dependencies {

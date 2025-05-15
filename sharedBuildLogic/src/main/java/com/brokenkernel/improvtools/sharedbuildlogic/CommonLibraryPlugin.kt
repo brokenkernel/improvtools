@@ -1,5 +1,6 @@
 package com.brokenkernel.improvtools.sharedbuildlogic
 
+import com.android.build.gradle.LibraryExtension
 import com.autonomousapps.DependencyAnalysisPlugin
 import com.github.benmanes.gradle.versions.VersionsPlugin
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
@@ -10,6 +11,9 @@ import org.gradle.api.Project
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.dokka.gradle.DokkaPlugin
 import org.jetbrains.dokka.gradle.DokkaTask
+import org.jetbrains.kotlin.gradle.dsl.JvmDefaultMode
+import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
+import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 import org.jlleitschuh.gradle.ktlint.KtlintExtension
 import org.jlleitschuh.gradle.ktlint.KtlintPlugin
 import org.jlleitschuh.gradle.ktlint.tasks.KtLintCheckTask
@@ -54,6 +58,37 @@ public class CommonLibraryPlugin : Plugin<Project> {
                     coloredOutput.set(true)
                     version.set("1.5.0")
                 },
+            )
+            extensions.configure(
+                LibraryExtension::class.java,
+                {
+                    compileSdk = 36
+                    buildToolsVersion = "35.0.0"
+
+                    lint {
+                        lintConfig = file("lint.xml")
+                        baseline = file("lint-baseline.xml")
+                        checkDependencies = true
+                        warningsAsErrors = true
+                    }
+                }
+            )
+
+            extensions.configure(
+                KotlinAndroidProjectExtension::class.java,
+                {
+                    version = "2.2.0"
+                    compilerOptions {
+                        languageVersion.set(KotlinVersion.KOTLIN_2_2)
+                        apiVersion.set(KotlinVersion.KOTLIN_2_2)
+
+                        allWarningsAsErrors.set(true)
+                        extraWarnings.set(true)
+                        progressiveMode.set(true)
+                        jvmDefault.set(JvmDefaultMode.NO_COMPATIBILITY)
+                    }
+                    jvmToolchain(21)
+                }
             )
         }
     }
