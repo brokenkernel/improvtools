@@ -1,8 +1,6 @@
 @file:OptIn(KspExperimental::class)
 
-import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import com.google.devtools.ksp.KspExperimental
-import org.gradle.kotlin.dsl.withType
 import org.jetbrains.dokka.gradle.engine.parameters.VisibilityModifier
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
@@ -12,13 +10,9 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.dependencyAnalysis)
-    alias(libs.plugins.dokka)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
-    alias(libs.plugins.ktlint)
-    alias(libs.plugins.sortDependencies)
-    alias(libs.plugins.versions)
+    id("com.brokenkernel.improvtools.sharedbuildlogic.common-library-plugin")
 
     kotlin("plugin.power-assert") version libs.versions.kotlin.get()
 }
@@ -122,21 +116,13 @@ dependencies {
     lintChecks(libs.slack.lint.checks)
 }
 
-ktlint {
-    android = true
-    coloredOutput = true
-    version = "1.5.0"
-}
-
 dokka {
     moduleName = "components"
     dokkaSourceSets {
         main {
-            suppressGeneratedFiles = true
             enableAndroidDocumentationLink = true
             enableJdkDocumentationLink = true
             enableKotlinStdLibDocumentationLink = true
-            reportUndocumented = true
             documentedVisibilities =
                 setOf(
                     VisibilityModifier.Public,
@@ -185,42 +171,4 @@ powerAssert {
         "release",
         "releaseUnitTest",
     )
-}
-
-ksp {
-    allWarningsAsErrors = true
-    useKsp2 = true
-    arg("dagger.useBindingGraphFix", "enabled")
-    arg("dagger.ignoreProvisionKeyWildcards", "enabled")
-    arg("dagger.experimentalDaggerErrorMessages", "enabled")
-    arg("dagger.warnIfInjectionFactoryNotGeneratedUpstream", "enabled")
-    arg("dagger.fullBindingGraphValidation", "error")
-}
-
-fun isStable(version: String): Boolean {
-    val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { version.uppercase().contains(it) }
-    val regex = "^[0-9,.v-]+(-r)?$".toRegex()
-    val isStable = stableKeyword || regex.matches(version)
-    return isStable
-}
-
-tasks.withType<DependencyUpdatesTask> {
-    checkConstraints = true
-    checkBuildEnvironmentConstraints = true
-    checkForGradleUpdate = true
-    rejectVersionIf {
-        when {
-            // ideally allow non-stable updates of currently non-stable versions, but only if they match major versions
-            !isStable(currentVersion) -> false
-            !isStable(candidate.version) -> return@rejectVersionIf true
-            (
-                candidate.moduleIdentifier.toString() == "com.google.guava:guava" &&
-                    !candidate.version.endsWith(
-                        "android",
-                    )
-                ) -> return@rejectVersionIf true
-
-            else -> return@rejectVersionIf false
-        }
-    }
 }

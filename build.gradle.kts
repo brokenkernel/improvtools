@@ -23,6 +23,7 @@ plugins {
 
     kotlin("plugin.power-assert") version "2.2.0-Beta2" apply false
     alias(libs.plugins.android.library) apply false
+    alias(libs.plugins.jetbrains.kotlin.jvm) apply false
 }
 
 dependencies {

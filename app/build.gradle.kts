@@ -1,7 +1,6 @@
 @file:OptIn(KspExperimental::class)
 
 import com.android.build.api.dsl.VariantDimension
-import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import com.google.devtools.ksp.KspExperimental
 import com.google.firebase.crashlytics.buildtools.gradle.CrashlyticsExtension
 import com.mikepenz.aboutlibraries.plugin.DuplicateMode
@@ -492,25 +491,4 @@ fun isStable(version: String): Boolean {
     val regex = "^[0-9,.v-]+(-r)?$".toRegex()
     val isStable = stableKeyword || regex.matches(version)
     return isStable
-}
-
-tasks.withType<DependencyUpdatesTask> {
-    checkConstraints = true
-    checkBuildEnvironmentConstraints = true
-    checkForGradleUpdate = true
-    rejectVersionIf {
-        when {
-            // ideally allow non-stable updates of currently non-stable versions, but only if they match major versions
-            !isStable(currentVersion) -> false
-            !isStable(candidate.version) -> return@rejectVersionIf true
-            (
-                candidate.moduleIdentifier.toString() == "com.google.guava:guava" &&
-                    !candidate.version.endsWith(
-                        "android",
-                    )
-                ) -> return@rejectVersionIf true
-
-            else -> return@rejectVersionIf false
-        }
-    }
 }

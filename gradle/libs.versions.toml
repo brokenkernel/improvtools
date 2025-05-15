@@ -44,6 +44,7 @@ inkNativeloader = "1.0.0-alpha04"
 jackson = "2.19.0"
 jakartaInjectApi = "2.0.1"
 javaxInject = "1"
+jetbrainsKotlinJvm = "2.2.0-Beta2"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 kotlin = "2.2.0-Beta2"
@@ -196,6 +197,14 @@ extjwnl-data-wn31 = { module = "net.sf.extjwnl:extjwnl-data-wn31", version.ref =
 firebase-config = { module = "com.google.firebase:firebase-config" }
 fragment = { module = "androidx.fragment:fragment", version.ref = "fragmentVersion" }
 google-dagger = { module = "com.google.dagger:dagger", version.ref = "daggerVersion" }
+gradlePlugins-android = { module = "com.android.tools.build:gradle", version.ref = "agp" }
+gradlePlugins-dependencyAnalysis = { module = "com.autonomousapps:dependency-analysis-gradle-plugin", version.ref = "dependencyAnalysis" }
+gradlePlugins-dokka = { module = "org.jetbrains.dokka:dokka-gradle-plugin", version.ref = "dokka" }
+gradlePlugins-gradleVersions = { module = "com.github.ben-manes:gradle-versions-plugin", version.ref = "versions" }
+gradlePlugins-ksp = { module = "com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
+gradlePlugins-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+gradlePlugins-sortDependencies = { module = "com.squareup:sort-dependencies-gradle-plugin", version.ref = "sortDependencies" }
+gradlePlugins-ktlint = { module = "org.jlleitschuh.gradle.ktlint:org.jlleitschuh.gradle.ktlint.gradle.plugin", version.ref = "ktlint" }
 guava = { module = "com.google.guava:guava", version.ref = "guava" }
 hamcrest-core = { module = "org.hamcrest:hamcrest-core", version.ref = "hamcrestCore" }
 hamcrest-library = { module = "org.hamcrest:hamcrest-library", version.ref = "hamcrestLibrary" }
@@ -256,6 +265,7 @@ dokka-javadoc = { id = "org.jetbrains.dokka-javadoc", version.ref = "dokka" }
 firebaseCrashlyticsPlugin = { id = "com.google.firebase.crashlytics", version.ref = "firebaseCrashlyticsPlugin" }
 firebasePerfPlugin = { id = "com.google.firebase.firebase-perf", version.ref = "firebasePerfPlugin" }
 google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }
+jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
