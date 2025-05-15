@@ -95,8 +95,8 @@
   <string name="suggestions_adjective">Adjective</string>
   <string name="suggestions_adverb">Adverb</string>
     <string name="encyclopaedia_word_senses"><![CDATA[<h1>Word Senses</h1>]]></string>
-  <string name="expand">Expand</string>
-  <string name="collapse">Collapse</string>
+  <string name="button_expand">Expand</string>
+  <string name="button_collapse">Collapse</string>
     <string name="encyclopaedia_action_synonyms"><![CDATA[<h1>Action Synonyms</h1>]]></string>
   <string name="encyclopaedia_emotion_words">Emotion Words</string>
   <string name="thesaurus_synonyms">Synonyms: %1$s</string>

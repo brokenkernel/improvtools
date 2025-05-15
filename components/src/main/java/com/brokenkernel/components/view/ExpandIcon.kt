@@ -1,17 +1,17 @@
-package com.brokenkernel.improvtools.components.presentation.view
+package com.brokenkernel.components.view
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ExpandLess
 import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import com.brokenkernel.improvtools.R
-import com.brokenkernel.improvtools.components.sidecar.preview.PreviewsImprovToolsAll
-import com.brokenkernel.improvtools.ui.theme.ImprovToolsTheme
+import androidx.compose.ui.tooling.preview.Preview
+import com.brokenkernel.components.R
 
 @Composable
 fun ExpandIcon(
@@ -21,22 +21,22 @@ fun ExpandIcon(
     if (isExpanded) {
         Icon(
             Icons.Default.ExpandLess,
-            contentDescription = stringResource(R.string.collapse),
+            contentDescription = stringResource(R.string.button_collapse),
             modifier = modifier,
         )
     } else {
         Icon(
             Icons.Default.ExpandMore,
-            contentDescription = stringResource(R.string.expand),
+            contentDescription = stringResource(R.string.button_expand),
             modifier = modifier,
         )
     }
 }
 
-@PreviewsImprovToolsAll
+@Preview
 @Composable
 private fun ExpandIconPreview() {
-    ImprovToolsTheme {
+    MaterialTheme {
         Surface {
             Column {
                 ExpandIcon(isExpanded = true)

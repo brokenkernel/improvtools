@@ -71,6 +71,7 @@ dependencies {
     implementation(enforcedPlatform(libs.kotlin.bom))
     implementation(libs.androidx.animation)
     implementation(libs.androidx.annotation)
+    implementation(libs.androidx.compose.material.materialIconsExtended)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.material.icons.core)
     implementation(libs.androidx.material3)
