@@ -248,6 +248,11 @@ internal fun TimerTab(viewModel: TimerListViewModel = hiltViewModel()) {
                                         viewModel.invertTimerState(timer, context)
                                         if (notificationPermissionState.allPermissionsGranted) {
                                             viewModel.tryToSendNotificationForTimer(timer, context)
+                                        } else if (notificationPermissionState.shouldShowRationale) {
+                                            // TODO: show dialog.
+                                            notificationPermissionState.launchMultiplePermissionRequest()
+                                        } else {
+                                            notificationPermissionState.launchMultiplePermissionRequest()
                                         }
                                     },
                                     scope = this,
