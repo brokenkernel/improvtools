@@ -31,7 +31,6 @@ plugins {
     alias(libs.plugins.versions)
     alias(libs.plugins.firebasePerfPlugin)
     alias(libs.plugins.sortDependencies)
-    id("shared-build-conventions")
 
     kotlin("plugin.power-assert") version libs.versions.kotlin.get()
 }

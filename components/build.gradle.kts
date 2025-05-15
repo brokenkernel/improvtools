@@ -19,7 +19,6 @@ plugins {
     alias(libs.plugins.ktlint)
     alias(libs.plugins.sortDependencies)
     alias(libs.plugins.versions)
-    id("shared-build-conventions")
 
     kotlin("plugin.power-assert") version libs.versions.kotlin.get()
 }
