@@ -1,6 +1,7 @@
 package com.brokenkernel.improvtools.sharedbuildlogic
 
 import com.android.build.gradle.LibraryExtension
+import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 
@@ -23,6 +24,11 @@ public class CommonLibraryPlugin : Plugin<Project> {
                     defaultConfig {
                         minSdk = 26
                         consumerProguardFiles("consumer-rules.pro")
+                    }
+
+                    compileOptions {
+                        sourceCompatibility = JavaVersion.VERSION_21
+                        targetCompatibility = JavaVersion.VERSION_21
                     }
                 },
             )
