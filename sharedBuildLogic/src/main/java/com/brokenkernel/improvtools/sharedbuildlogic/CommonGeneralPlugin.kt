@@ -37,6 +37,21 @@ public class CommonGeneralPlugin : Plugin<Project> {
                 checkConstraints = true
                 checkBuildEnvironmentConstraints = true
                 checkForGradleUpdate = true
+                rejectVersionIf {
+                    when {
+                        !isStable(currentVersion) -> false
+                        !isStable(candidate.version) -> return@rejectVersionIf true
+                        (
+                            candidate.moduleIdentifier.equals("com.google.guava:guava") &&
+                                candidate.version.endsWith("jre")
+                            ) -> {
+                            return@rejectVersionIf true
+                        }
+
+                        else -> return@rejectVersionIf false
+                    }
+
+                }
             }
             tasks.withType<DokkaTask>().configureEach {
                 dokkaSourceSets.configureEach {
@@ -69,8 +84,8 @@ public class CommonGeneralPlugin : Plugin<Project> {
                 {
                     version = libs.versions.kotlin.get()
                     compilerOptions {
-                        languageVersion.set(KotlinVersion.KOTLIN_2_2)
-                        apiVersion.set(KotlinVersion.KOTLIN_2_2)
+                        languageVersion.set(KotlinVersion.KOTLIN_2_2) // TODO: 2_3
+                        apiVersion.set(KotlinVersion.KOTLIN_2_2) // TODO 2_3
 //                        allWarningsAsErrors.set(true) // TODO!!
                         extraWarnings.set(true)
                         progressiveMode.set(true)

@@ -1,14 +1,27 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmDefaultMode
+import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
+
 plugins {
     `kotlin-dsl`
     `java-gradle-plugin`
     alias(libs.plugins.sortDependencies)
     alias(libs.plugins.ktlint)
+    alias(libs.plugins.versions)
     kotlin("plugin.power-assert") version libs.versions.kotlin.get()
 }
 
 group = "com.brokenkernel.improvtools.commonBuildLogic"
 
 kotlin {
+    version = "2.2.0-alpha2"
+    compilerOptions {
+        languageVersion.set(KotlinVersion.KOTLIN_2_3)
+        apiVersion.set(KotlinVersion.KOTLIN_2_3)
+        extraWarnings.set(true)
+        progressiveMode.set(true)
+        jvmDefault.set(JvmDefaultMode.NO_COMPATIBILITY)
+    }
+    jvmToolchain(21)
     // TODO: explicitAPI for _all_ builds (convention!)
     explicitApi()
 }
