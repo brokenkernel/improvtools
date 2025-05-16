@@ -382,12 +382,6 @@ aboutLibraries {
     }
 }
 
-ktlint {
-    android = true
-    coloredOutput = true
-    version = "1.5.0"
-}
-
 dokka {
     moduleName = "app"
     dokkaSourceSets {
