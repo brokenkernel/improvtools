@@ -58,7 +58,6 @@ ktlintComposeVersion = "0.4.22"
 leakcanaryAndroid = "2.14"
 lifecycleVersion = "2.9.0"
 lintGradle = "1.0.0-alpha04"
-material = "1.12.0"
 material3Adaptive = "1.1.0"
 materialIconsExtended = "1.7.8"
 metricsPerformance = "1.0.0-beta02"
@@ -232,7 +231,6 @@ leakcanary-android = { module = "com.squareup.leakcanary:leakcanary-android", ve
 leakcanary-android-instrumentation = { module = "com.squareup.leakcanary:leakcanary-android-instrumentation", version.ref = "leakcanaryAndroid" }
 leakcanary-android-release = { module = "com.squareup.leakcanary:leakcanary-android-release", version.ref = "leakcanaryAndroid" }
 leakcanary-object1-watcher-android = { module = "com.squareup.leakcanary:leakcanary-object-watcher-android", version.ref = "leakcanaryAndroid" }
-material = { module = "com.google.android.material:material", version.ref = "material" }
 mathjax-plugin = { module = "org.jetbrains.dokka:mathjax-plugin", version.ref = "androidDocumentationPlugin" }
 mikepenz-aboutlibraries-compose-core = { module = "com.mikepenz:aboutlibraries-compose-core", version.ref = "aboutLibraries" }
 navigation-runtime = { module = "androidx.navigation:navigation-runtime", version.ref = "navigationRuntimeVersion" }
