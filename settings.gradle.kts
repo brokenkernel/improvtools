@@ -10,7 +10,6 @@ pluginManagement {
         mavenCentral()
         gradlePluginPortal()
     }
-    includeBuild("sharedBuildLogic")
 }
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
@@ -20,12 +19,20 @@ dependencyResolutionManagement {
     }
 }
 
+plugins {
+    id("org.jetbrains.kotlinx.kover.aggregation") version "0.9.1"
+}
+
 rootProject.name = "ImprovTools"
 
 enableFeaturePreview("STABLE_CONFIGURATION_CACHE")
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
-//includeBuild("sharedBuildLogic")
+includeBuild("sharedBuildLogic")
 include(":app")
 include(":components")
 include(":features:debug")
+
+kover {
+    enableCoverage()
+}
