@@ -244,4 +244,8 @@ internal val GamesDatum: Collection<GamesDataItem> = listOf(
         gameName = "Get The Stick",
         topic = GamesDatumTopic.EXERCISE,
     ),
+    GamesDataItem(
+        gameName = "Why are you late? / The boss",
+        topic = GamesDatumTopic.EXERCISE,
+    ),
 )
