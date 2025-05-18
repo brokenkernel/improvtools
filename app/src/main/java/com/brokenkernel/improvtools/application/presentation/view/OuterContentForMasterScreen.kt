@@ -1,6 +1,5 @@
 package com.brokenkernel.improvtools.application.presentation.view
 
-import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.ui.theme.ImprovToolsTheme
@@ -12,12 +11,10 @@ internal fun OuterContentForMasterScreen(
     initialRoute: DirectionDestinationSpec,
 ) {
     ImprovToolsTheme {
-        Surface {
-            ImprovToolsNavigationDrawer(
-                improvToolsState,
-                drawerState = improvToolsState.drawerState,
-                initialRoute = initialRoute,
-            )
-        }
+        ImprovToolsNavigationDrawer(
+            improvToolsState,
+            drawerState = improvToolsState.drawerState,
+            initialRoute = initialRoute,
+        )
     }
 }
