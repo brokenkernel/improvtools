@@ -29,11 +29,6 @@ android {
         }
     }
 
-    buildFeatures {
-        compose = true
-        buildConfig = true
-    }
-
     composeCompiler {
         includeSourceInformation = true
         includeTraceMarkers = true

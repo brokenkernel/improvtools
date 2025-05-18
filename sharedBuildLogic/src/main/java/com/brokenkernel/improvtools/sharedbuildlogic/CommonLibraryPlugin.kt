@@ -26,6 +26,12 @@ public class CommonLibraryPlugin : Plugin<Project> {
                         consumerProguardFiles("consumer-rules.pro")
                     }
 
+                    buildFeatures {
+                        compose = true
+                        buildConfig = true
+                    }
+
+
                     compileOptions {
                         sourceCompatibility = JavaVersion.VERSION_21
                         targetCompatibility = JavaVersion.VERSION_21
