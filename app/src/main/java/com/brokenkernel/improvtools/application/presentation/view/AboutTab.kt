@@ -53,11 +53,9 @@ import com.brokenkernel.components.view.ExpandIcon
 import com.brokenkernel.components.view.HtmlText
 import com.brokenkernel.improvtools.BuildConfig
 import com.brokenkernel.improvtools.R
-import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.application.navigation.ImprovToolsDestination
 import com.brokenkernel.improvtools.application.presentation.api.LocalSnackbarHostState
 import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
-import com.brokenkernel.improvtools.features.debug.DebugCollector
 import com.ramcosta.composedestinations.generated.destinations.PrivacyTabDestination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kotlinx.coroutines.launch
@@ -66,9 +64,7 @@ import kotlinx.coroutines.launch
 @Composable
 internal fun AboutTab(
     navigator: DestinationsNavigator,
-    improvToolsAppState: ImprovToolsAppState,
 ) {
-    val abc = DebugCollector()
     // move snackbar host state into app state. And then inject it?
     // also include more injected stuff (settings for ex) into debug datum
     val snackbarHostState = LocalSnackbarHostState.current
