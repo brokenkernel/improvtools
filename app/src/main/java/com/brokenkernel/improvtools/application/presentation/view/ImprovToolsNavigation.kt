@@ -194,6 +194,9 @@ internal fun ImprovToolsNavigationDrawer(
                 navGraph = ImprovToolsNavigationNavGraph,
                 navController = improvToolsAppState.navController,
                 dependenciesContainerBuilder = {
+                    // TODO: replace with per-module navigation functions
+                    // https://composedestinations.rafaelcosta.xyz/v2/multi-module-setup#receive-navhost-parameters
+                    // TODO: pull encyclopedia out to different module
                     dependency(improvToolsAppState)
                 },
                 start = initialRoute,

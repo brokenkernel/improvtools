@@ -146,7 +146,6 @@ internal enum class NavigableScreens(
         contentDescription = R.string.go_to_privacy_information,
         icon = Icons.Filled.PrivacyTip,
         matchingRoute = PrivacyTabDestination,
-
     ),
 
     LibrariesScreen(
