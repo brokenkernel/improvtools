@@ -16,7 +16,7 @@ import kotlin.enums.enumEntries
 import kotlinx.collections.immutable.ImmutableMap
 import kotlinx.collections.immutable.toImmutableList
 
-public data class TabbedSearchableColumnState<_T>(
+public data class TabbedSearchableColumnState<T : Enum<T>>(
     val isSegmentedButtonChecked: SnapshotStateList<Boolean>,
 )
 
@@ -42,7 +42,7 @@ public inline fun <reified T : Enum<T>, I> TabbedSearchableColumn(
     noinline itemToTopic: (I) -> T,
     noinline itemToKey: (I) -> (Any),
     modifier: Modifier = Modifier,
-    state: TabbedSearchableColumnState<T> = rememberTabbedSearchableColumnState<T>(),
+    state: TabbedSearchableColumnState<T> = rememberTabbedSearchableColumnState(),
     textFieldState: TextFieldState = rememberTextFieldState(),
     noinline trailingIcon: @Composable (() -> Unit)? = null,
     noinline itemToListItem: @Composable (I) -> (Unit), // must be last one for nice UX
