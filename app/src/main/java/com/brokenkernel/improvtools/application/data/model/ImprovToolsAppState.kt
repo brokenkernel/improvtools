@@ -6,6 +6,7 @@ import androidx.compose.material3.DrawerState
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -14,7 +15,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.brokenkernel.improvtools.application.presentation.api.BottomSheetContent
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
-import com.ramcosta.composedestinations.spec.DirectionDestinationSpec
+import com.ramcosta.composedestinations.spec.DestinationSpec
 import com.ramcosta.composedestinations.utils.currentDestinationAsState
 import com.ramcosta.composedestinations.utils.rememberDestinationsNavigator
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -56,8 +57,8 @@ internal class ImprovToolsAppState(
     }
 
     @Composable
-    fun amIOnRoute(route: DirectionDestinationSpec): Boolean {
-        return navController.currentDestinationAsState().value == route
+    fun currentDestinationAsState(): State<DestinationSpec?> {
+        return navController.currentDestinationAsState()
     }
 }
 

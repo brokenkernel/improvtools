@@ -35,6 +35,8 @@ private fun NavigableScreenNavigationDrawerItem(
     screen: NavigableScreens,
     closeNavMenuCallback: () -> Unit,
 ) {
+    val currentDestinationAsState = improvToolsAppState.currentDestinationAsState()
+
     NavigationDrawerItem(
         label = { Text(stringResource(screen.titleResource)) },
         icon = {
@@ -50,7 +52,7 @@ private fun NavigableScreenNavigationDrawerItem(
                 restoreState = true
             }
         },
-        selected = improvToolsAppState.amIOnRoute(screen.matchingRoute),
+        selected = currentDestinationAsState.value == screen.matchingRoute,
     )
 }
 
