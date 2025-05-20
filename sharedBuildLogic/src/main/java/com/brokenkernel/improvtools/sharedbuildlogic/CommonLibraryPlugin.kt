@@ -5,6 +5,9 @@ import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 
+/**
+ * For any android library (but not app)
+ */
 public class CommonLibraryPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {

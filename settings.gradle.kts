@@ -28,11 +28,14 @@ rootProject.name = "ImprovTools"
 enableFeaturePreview("STABLE_CONFIGURATION_CACHE")
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
+kover {
+    enableCoverage()
+}
+
+
 includeBuild("sharedBuildLogic")
 include(":app")
 include(":components")
 include(":features:debug")
-
-kover {
-    enableCoverage()
-}
+include(":features:encyclopaedia:data")
+include(":features:encyclopaedia:android")

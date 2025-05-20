@@ -183,6 +183,7 @@ dependencies {
     implementation(enforcedPlatform(libs.kotlin.bom))
     implementation(project(":components"))
     implementation(project(":features:debug"))
+    implementation(project(":features:encyclopaedia:android"))
     implementation(libs.aboutlibraries.compose.m3)
     implementation(libs.accompanist.permissions)
     implementation(libs.androidbrowserhelper)

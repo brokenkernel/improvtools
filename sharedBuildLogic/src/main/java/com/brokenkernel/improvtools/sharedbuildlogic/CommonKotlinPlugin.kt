@@ -5,23 +5,22 @@ import com.github.benmanes.gradle.versions.VersionsPlugin
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import com.google.devtools.ksp.gradle.KspExtension
 import com.squareup.sort.SortDependenciesPlugin
-import libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.dokka.gradle.DokkaPlugin
 import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
-import org.jetbrains.kotlin.gradle.dsl.JvmDefaultMode
-import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
-import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 import org.jetbrains.kotlin.powerassert.gradle.PowerAssertGradleExtension
 import org.jetbrains.kotlin.powerassert.gradle.PowerAssertGradlePlugin
 import org.jlleitschuh.gradle.ktlint.KtlintExtension
 import org.jlleitschuh.gradle.ktlint.KtlintPlugin
 
+/**
+ * For any non-android-library specific code.
+ */
 @OptIn(ExperimentalKotlinGradlePluginApi::class)
-public class CommonGeneralPlugin : Plugin<Project> {
+public class CommonKotlinPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             with(pluginManager) {
@@ -80,22 +79,6 @@ public class CommonGeneralPlugin : Plugin<Project> {
             )
 
             extensions.configure(
-                KotlinAndroidProjectExtension::class.java,
-                {
-                    version = libs.versions.kotlin.get()
-                    compilerOptions {
-                        languageVersion.set(KotlinVersion.KOTLIN_2_2)
-                        apiVersion.set(KotlinVersion.KOTLIN_2_2)
-//                        allWarningsAsErrors.set(true) // TODO!!
-                        extraWarnings.set(true)
-                        progressiveMode.set(true)
-                        jvmDefault.set(JvmDefaultMode.NO_COMPATIBILITY)
-                    }
-                    jvmToolchain(21)
-                },
-            )
-
-            extensions.configure(
                 PowerAssertGradleExtension::class.java,
                 {
                     functions.set(
@@ -120,5 +103,4 @@ private fun isStable(version: String): Boolean {
     val isStable = stableKeyword || regex.matches(version)
     return isStable
 }
-
 
