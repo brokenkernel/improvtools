@@ -77,7 +77,7 @@ internal fun SettingsTab(viewModel: SettingsScreenViewModel = hiltViewModel()) {
             style = MaterialTheme.typography.titleLarge,
         )
         ListItem(
-            headlineContent = { Text(stringResource(R.string.timer_notifciation_mode)) },
+            headlineContent = { Text(stringResource(R.string.timer_haptics_mode)) },
             trailingContent = {
                 EnumerationRadioSelection<TimerHapticsModeUI, TimerHapticsMode>(
                     onEnumerationSelection = { opt ->
