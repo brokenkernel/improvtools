@@ -84,8 +84,8 @@ public class CommonGeneralPlugin : Plugin<Project> {
                 {
                     version = libs.versions.kotlin.get()
                     compilerOptions {
-                        languageVersion.set(KotlinVersion.KOTLIN_2_2) // TODO: 2_3
-                        apiVersion.set(KotlinVersion.KOTLIN_2_2) // TODO 2_3
+                        languageVersion.set(KotlinVersion.KOTLIN_2_2)
+                        apiVersion.set(KotlinVersion.KOTLIN_2_2)
 //                        allWarningsAsErrors.set(true) // TODO!!
                         extraWarnings.set(true)
                         progressiveMode.set(true)
