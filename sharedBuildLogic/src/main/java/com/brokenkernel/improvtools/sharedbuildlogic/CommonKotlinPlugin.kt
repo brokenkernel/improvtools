@@ -5,12 +5,16 @@ import com.github.benmanes.gradle.versions.VersionsPlugin
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import com.google.devtools.ksp.gradle.KspExtension
 import com.squareup.sort.SortDependenciesPlugin
+import libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.dokka.gradle.DokkaPlugin
 import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+import org.jetbrains.kotlin.gradle.dsl.JvmDefaultMode
+import org.jetbrains.kotlin.gradle.dsl.KotlinJvmExtension
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.jetbrains.kotlin.powerassert.gradle.PowerAssertGradleExtension
 import org.jetbrains.kotlin.powerassert.gradle.PowerAssertGradlePlugin
 import org.jlleitschuh.gradle.ktlint.KtlintExtension
@@ -41,9 +45,9 @@ public class CommonKotlinPlugin : Plugin<Project> {
                         !isStable(currentVersion) -> false
                         !isStable(candidate.version) -> return@rejectVersionIf true
                         (
-                            candidate.moduleIdentifier.equals("com.google.guava:guava") &&
-                                candidate.version.endsWith("jre")
-                            ) -> {
+                                candidate.moduleIdentifier.equals("com.google.guava:guava") &&
+                                        candidate.version.endsWith("jre")
+                                ) -> {
                             return@rejectVersionIf true
                         }
 
@@ -93,6 +97,17 @@ public class CommonKotlinPlugin : Plugin<Project> {
                     )
                 },
             )
+
+            tasks.withType<KotlinCompile> {
+                version = libs.versions.kotlin.get()
+                compilerOptions {
+                    languageVersion.set(org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_2_2)
+                    apiVersion.set(org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_2_2)
+                    progressiveMode.set(true)
+//                    allWarningsAsErrors.set(true) // TODO
+                    jvmDefault.set(JvmDefaultMode.NO_COMPATIBILITY)
+                }
+            }
         }
     }
 }

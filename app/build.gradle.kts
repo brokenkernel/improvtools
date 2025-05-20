@@ -24,6 +24,7 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.protobuf)
     alias(libs.plugins.firebasePerfPlugin)
+    id("com.brokenkernel.improvtools.sharedbuildlogic.common-kotlin-plugin")
     id("com.brokenkernel.improvtools.sharedbuildlogic.common-general-plugin")
 }
 
@@ -334,14 +335,6 @@ configurations {
     // firebase is just broken https://github.com/firebase/firebase-android-sdk/issues/6359
     implementation {
         exclude(module = "protolite-well-known-types")
-    }
-}
-
-kotlin {
-    sourceSets {
-        all {
-            languageSettings.progressiveMode = true
-        }
     }
 }
 

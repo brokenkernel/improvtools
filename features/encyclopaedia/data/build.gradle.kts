@@ -9,9 +9,4 @@ kotlin {
     compilerOptions {
         allWarningsAsErrors = true
     }
-    sourceSets {
-        all {
-            languageSettings.progressiveMode = true
-        }
-    }
 }
