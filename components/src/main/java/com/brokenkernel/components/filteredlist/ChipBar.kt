@@ -12,6 +12,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.util.fastAny
 import com.brokenkernel.components.R
 import com.brokenkernel.components.view.SimpleIconButton
+import com.brokenkernel.components.view.SimpleTooltipWrapper
 import kotlin.enums.enumEntries
 import kotlinx.collections.immutable.ImmutableList
 
@@ -23,7 +24,6 @@ public inline fun <reified T : Enum<T>> ChipBar(
     noinline onClearClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    // TODO: consider a DropdownMenu instead?
     FlowRow(modifier = modifier) {
         enumEntries<T>().forEach { tag ->
             FilterChip(
@@ -37,13 +37,13 @@ public inline fun <reified T : Enum<T>> ChipBar(
 //                trailingIcon = TODO: from Enum?
             )
         }
-//
-        // TODO: add tooltipbox wrapper. This currently causes compiler bug
-        SimpleIconButton(
-            onClick = onClearClick,
-            icon = Icons.Default.Clear,
-            contentDescription = stringResource(R.string.clear_all),
-            enabled = isChipsChecked.fastAny { it },
-        )
+        SimpleTooltipWrapper(tooltip = stringResource(R.string.clear_all)) {
+            SimpleIconButton(
+                onClick = onClearClick,
+                icon = Icons.Default.Clear,
+                contentDescription = stringResource(R.string.clear_all),
+                enabled = isChipsChecked.fastAny { it },
+            )
+        }
     }
 }
