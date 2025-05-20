@@ -98,7 +98,7 @@ public inline fun <reified T : Enum<T>, I, reified X : Enum<X>> ChippedTabbedSea
             }
 
             SimpleSearchBar(
-                textFieldState = textFieldState,
+                text = textFieldState.text.toString(),
                 trailingIcon = {
                     val selectedCount = state.isChipsChecked.count { it }
                     SimpleTooltipWrapper(
@@ -110,6 +110,9 @@ public inline fun <reified T : Enum<T>, I, reified X : Enum<X>> ChippedTabbedSea
                             trailingIcon?.invoke()
                         }
                     }
+                },
+                onQueryChange = { it ->
+                    textFieldState.edit { replace(0, length, it) }
                 },
             ) {
                 Column {

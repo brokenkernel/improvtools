@@ -2,7 +2,6 @@ package com.brokenkernel.components.view
 
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -28,8 +27,8 @@ import com.brokenkernel.components.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun BoxScope.SimpleSearchBar(
-    // todo: don't pass state up and down
-    textFieldState: TextFieldState,
+    text: String,
+    onQueryChange: (String) -> Unit,
     modifier: Modifier = Modifier,
     trailingIcon: @Composable (() -> Unit)? = null,
     content: @Composable () -> Unit,
@@ -39,10 +38,8 @@ internal fun BoxScope.SimpleSearchBar(
     SearchBar(
         inputField = {
             SearchBarDefaults.InputField(
-                query = textFieldState.text.toString(),
-                onQueryChange = { it ->
-                    textFieldState.edit { replace(0, length, it) }
-                },
+                query = text,
+                onQueryChange = onQueryChange,
                 onSearch = {
                     searchBarExpandedState = false
                 },

@@ -62,7 +62,10 @@ public inline fun <reified T : Enum<T>, I> TabbedSearchableColumn(
                 .semantics { isTraversalGroup = true },
         ) {
             SimpleSearchBar(
-                textFieldState = textFieldState,
+                text = textFieldState.text.toString(),
+                onQueryChange = {
+                    textFieldState.edit { replace(0, length, it) }
+                },
                 trailingIcon = trailingIcon,
             ) {
                 ItemColumnLazyList<I>(

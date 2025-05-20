@@ -22,10 +22,10 @@ public inline fun <I> SearchableColumn(
     crossinline transformForSearch: (String) -> String,
     noinline itemToKey: (I) -> (Any),
     modifier: Modifier = Modifier,
-    textFieldState: TextFieldState = rememberTextFieldState(),
     noinline trailingIcon: @Composable (() -> Unit)? = null,
     noinline itemToListItem: @Composable (I) -> (Unit), // must be last one for nice UX
 ) {
+    val textFieldState: TextFieldState = rememberTextFieldState()
     Column(modifier = modifier) {
         Box(
             Modifier
@@ -33,7 +33,10 @@ public inline fun <I> SearchableColumn(
                 .semantics { isTraversalGroup = true },
         ) {
             SimpleSearchBar(
-                textFieldState = textFieldState,
+                text = textFieldState.text.toString(),
+                onQueryChange = {
+                    textFieldState.edit { replace(0, length, it) }
+                },
                 trailingIcon = trailingIcon,
             ) {
                 ItemColumnLazyList<I>(

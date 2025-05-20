@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 @Composable
 public fun OneWayDismissableContent(
     onRemove: () -> Unit,
+    modifier: Modifier = Modifier,
     content: @Composable (() -> Unit) = {},
 ) {
     val contentSTDState = rememberSwipeToDismissBoxState(
@@ -51,6 +52,7 @@ public fun OneWayDismissableContent(
         enableDismissFromStartToEnd = false,
         enableDismissFromEndToStart = true,
         gesturesEnabled = true,
+        modifier = modifier,
     ) {
         content()
     }
