@@ -37,7 +37,6 @@ internal class SettingsScreenViewModel @Inject constructor(
                 )
             }
         }
-        viewModelScope
     }
 
     fun onClickUpdateShouldReuseSuggestions(newState: Boolean) {
