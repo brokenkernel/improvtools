@@ -1,4 +1,4 @@
-package com.brokenkernel.components.view
+package com.brokenkernel.components.filteredlist
 
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items

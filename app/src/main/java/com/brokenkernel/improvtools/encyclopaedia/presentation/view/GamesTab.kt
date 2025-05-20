@@ -24,7 +24,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.util.fastAny
-import com.brokenkernel.components.view.ChippedTabbedSearchableColumn
+import com.brokenkernel.components.filteredlist.ChippedTabbedSearchableColumn
 import com.brokenkernel.components.view.ExpandIcon
 import com.brokenkernel.components.view.HtmlText
 import com.brokenkernel.improvtools.R

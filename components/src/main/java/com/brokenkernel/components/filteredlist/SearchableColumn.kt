@@ -1,4 +1,4 @@
-package com.brokenkernel.components.view
+package com.brokenkernel.components.filteredlist
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.isTraversalGroup
 import androidx.compose.ui.semantics.semantics
+import com.brokenkernel.components.view.SimpleSearchBar
 import kotlinx.collections.immutable.ImmutableMap
 
 /**

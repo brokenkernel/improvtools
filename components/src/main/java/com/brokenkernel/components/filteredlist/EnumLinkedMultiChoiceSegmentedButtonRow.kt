@@ -1,4 +1,4 @@
-package com.brokenkernel.components.view
+package com.brokenkernel.components.filteredlist
 
 import androidx.compose.material3.MultiChoiceSegmentedButtonRow
 import androidx.compose.material3.SegmentedButton

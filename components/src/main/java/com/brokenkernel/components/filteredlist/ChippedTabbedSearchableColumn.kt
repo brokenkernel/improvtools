@@ -1,4 +1,4 @@
-package com.brokenkernel.components.view
+package com.brokenkernel.components.filteredlist
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Box
@@ -19,6 +19,9 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.fastAny
 import com.brokenkernel.components.R
+import com.brokenkernel.components.view.SimpleSearchBar
+import com.brokenkernel.components.view.SimpleTooltipWrapper
+import com.brokenkernel.components.view.drawNeonStroke
 import kotlin.enums.enumEntries
 import kotlinx.collections.immutable.ImmutableMap
 import kotlinx.collections.immutable.toImmutableList
@@ -129,7 +132,11 @@ public inline fun <reified T : Enum<T>, I, reified X : Enum<X>> ChippedTabbedSea
                         { it ->
                             (
                                 state.isSegmentedButtonChecked[itemToTopic(it).ordinal] &&
-                                    shouldShowDueToTag(state.isChipsChecked, itemMatchesTag, it) &&
+                                    shouldShowDueToTag(
+                                        state.isChipsChecked,
+                                        itemMatchesTag,
+                                        it,
+                                    ) &&
                                     itemDoesMatch(
                                         transformForSearch(textFieldState.text.toString()),
                                         it,

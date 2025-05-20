@@ -1,4 +1,4 @@
-package com.brokenkernel.components.view
+package com.brokenkernel.components.filteredlist
 
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.material.icons.Icons
@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.util.fastAny
 import com.brokenkernel.components.R
+import com.brokenkernel.components.view.SimpleIconButton
 import kotlin.enums.enumEntries
 import kotlinx.collections.immutable.ImmutableList
 
