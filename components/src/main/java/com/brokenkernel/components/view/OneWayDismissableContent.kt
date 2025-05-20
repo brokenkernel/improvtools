@@ -1,4 +1,4 @@
-package com.brokenkernel.improvtools.components.presentation.view
+package com.brokenkernel.components.view
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.background
@@ -11,10 +11,9 @@ import androidx.compose.material3.rememberSwipeToDismissBoxState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 
 @Composable
-internal fun OneWayDismissableContent(
+public fun OneWayDismissableContent(
     onRemove: () -> Unit,
     content: @Composable (() -> Unit) = {},
 ) {
@@ -36,13 +35,13 @@ internal fun OneWayDismissableContent(
         state = contentSTDState,
         backgroundContent = {
             val color by
-            animateColorAsState(
-                when (contentSTDState.dismissDirection) {
-                    SwipeToDismissBoxValue.Settled -> MaterialTheme.colorScheme.surfaceContainer
-                    SwipeToDismissBoxValue.StartToEnd -> MaterialTheme.colorScheme.errorContainer
-                    SwipeToDismissBoxValue.EndToStart -> MaterialTheme.colorScheme.errorContainer
-                },
-            )
+                animateColorAsState(
+                    when (contentSTDState.dismissDirection) {
+                        SwipeToDismissBoxValue.Settled -> MaterialTheme.colorScheme.surfaceContainer
+                        SwipeToDismissBoxValue.StartToEnd -> MaterialTheme.colorScheme.errorContainer
+                        SwipeToDismissBoxValue.EndToStart -> MaterialTheme.colorScheme.errorContainer
+                    },
+                )
             Box(
                 Modifier
                     .fillMaxSize()
