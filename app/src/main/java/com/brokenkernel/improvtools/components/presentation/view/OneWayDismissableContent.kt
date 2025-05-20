@@ -4,6 +4,7 @@ import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SwipeToDismissBox
 import androidx.compose.material3.SwipeToDismissBoxValue
 import androidx.compose.material3.rememberSwipeToDismissBoxState
@@ -26,20 +27,22 @@ internal fun OneWayDismissableContent(
                 false
             }
         },
+        positionalThreshold = {
+            it * .75f
+        },
     )
 
     SwipeToDismissBox(
         state = contentSTDState,
         backgroundContent = {
             val color by
-                animateColorAsState(
-                    when (contentSTDState.dismissDirection) {
-                        // TODO: from theme?
-                        SwipeToDismissBoxValue.Settled -> Color.LightGray
-                        SwipeToDismissBoxValue.StartToEnd -> Color.Red
-                        SwipeToDismissBoxValue.EndToStart -> Color.Red
-                    },
-                )
+            animateColorAsState(
+                when (contentSTDState.dismissDirection) {
+                    SwipeToDismissBoxValue.Settled -> MaterialTheme.colorScheme.surfaceContainer
+                    SwipeToDismissBoxValue.StartToEnd -> MaterialTheme.colorScheme.errorContainer
+                    SwipeToDismissBoxValue.EndToStart -> MaterialTheme.colorScheme.errorContainer
+                },
+            )
             Box(
                 Modifier
                     .fillMaxSize()
