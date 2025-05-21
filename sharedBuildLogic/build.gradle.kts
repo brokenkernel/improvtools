@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmDefaultMode
 import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 
 plugins {
-    `kotlin-dsl`
+    `kotlin-dsl` version "6.1.2"
     `java-gradle-plugin`
     alias(libs.plugins.sortDependencies)
     alias(libs.plugins.ktlint)
@@ -15,11 +15,11 @@ group = "com.brokenkernel.improvtools.commonBuildLogic"
 kotlin {
     version = "2.2.0-rc"
     compilerOptions {
-        languageVersion.set(KotlinVersion.KOTLIN_2_3)
-        apiVersion.set(KotlinVersion.KOTLIN_2_3)
-        extraWarnings.set(true)
-        progressiveMode.set(true)
-        jvmDefault.set(JvmDefaultMode.NO_COMPATIBILITY)
+        languageVersion = KotlinVersion.KOTLIN_2_2
+        apiVersion = KotlinVersion.KOTLIN_2_2
+        allWarningsAsErrors = true
+        extraWarnings = true
+        jvmDefault = JvmDefaultMode.NO_COMPATIBILITY
     }
     jvmToolchain(21)
     // TODO: explicitAPI for _all_ builds (convention!)
