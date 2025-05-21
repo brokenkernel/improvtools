@@ -10,3 +10,9 @@ kotlin {
         allWarningsAsErrors = true
     }
 }
+
+dependencies {
+    implementation(libs.extjwnl)
+
+    runtimeOnly(libs.extjwnl.data.wn31)
+}
