@@ -1,20 +1,19 @@
 package com.brokenkernel.improvtools.encyclopaedia.api
 
-import android.util.Log
-import com.brokenkernel.improvtools.TAG
+import com.brokenkernel.improvtools.encyclopaedia.data.DictionaryInfo
+import com.brokenkernel.improvtools.encyclopaedia.data.WordInfo
 import com.brokenkernel.improvtools.encyclopaedia.data.model.SenseDatumUI
 import com.brokenkernel.improvtools.encyclopaedia.data.repository.ThesaurusRepository
 import com.brokenkernel.improvtools.encyclopaedia.presentation.view.ThesaurusTabSingleWord
 import javax.inject.Inject
-import net.sf.extjwnl.data.IndexWordSet
-import net.sf.extjwnl.data.Synset
-import net.sf.extjwnl.dictionary.Dictionary
+import kotlinx.collections.immutable.toImmutableList
 
 /**
  * This is the portion of the Thesaurus exposed to other components.
  */
 class ThesaurusAPI @Inject internal constructor(private val thesaurusRepository: ThesaurusRepository) {
-    val dictionary: Dictionary = thesaurusRepository.getEXTJWNLDictionary()
+    val dictionary: DictionaryInfo = thesaurusRepository
+        .getMergedDictionaryInfo()
 
     /**
      * Get the set of words for which there is an entry. If the word is here,
@@ -34,41 +33,24 @@ class ThesaurusAPI @Inject internal constructor(private val thesaurusRepository:
     // TODO: check for exact match and/or stemmed match
     fun hasWordDetails(word: String): Boolean {
         val preppedWord = word.trim().lowercase()
-        val allIndexWords: IndexWordSet? = dictionary.lookupAllIndexWords(preppedWord)
-        if (Log.isLoggable(TAG, Log.VERBOSE)) {
-            Log.v(TAG, "$preppedWord: hasWordDetails: ${allIndexWords?.toString()}")
-        }
-
-        // TODO: deal with stemming
-        if (allIndexWords?.size() == 0) {
-            return false
-        }
-        return allIndexWords?.indexWordCollection.orEmpty().any {
-            it.lemma == preppedWord
-        }
+        return dictionary
+            .hasWordInfo(preppedWord)
     }
 
-    fun getSenseDatum(word: String): Map<String, List<SenseDatumUI>>? {
-        val allIndexWords: IndexWordSet = dictionary.lookupAllIndexWords(word)
-        val resultMap: Map<String, List<SenseDatumUI>> = allIndexWords.validPOSSet.associate { pos ->
-            val indexWord = allIndexWords.getIndexWord(pos)
-            indexWord.sortSenses()
-            val senses: List<Synset> = indexWord.senses.orEmpty()
-
-            val subSenses = senses.map { sense: Synset ->
-                val glossSplit = sense.gloss.split(";", limit = 2)
-                val glossPrimary = glossSplit.getOrElse(0, { "" })
-                val glossSecondary = glossSplit.getOrElse(1, { "" })
-
+    fun getSenseDatum(word: String): Map<String, List<SenseDatumUI>> {
+        val preppedWord = word.trim().lowercase()
+        val wordInfoMap: Map<String, List<WordInfo>> = dictionary
+            .getSynonyms(preppedWord)
+        val uxWordInfoMap: Map<String, List<SenseDatumUI>> = wordInfoMap.mapValues { (_, v) ->
+            v.map { i ->
                 SenseDatumUI(
-                    lemma = indexWord.lemma,
-                    description = glossPrimary,
-                    example = glossSecondary,
-                    synonyms = sense.words.map { w -> w.lemma },
+                    lemma = i.lemma,
+                    description = i.description,
+                    example = i.example,
+                    synonyms = i.synonyms.toImmutableList(),
                 )
             }
-            pos.label to subSenses
         }
-        return resultMap
+        return uxWordInfoMap
     }
 }

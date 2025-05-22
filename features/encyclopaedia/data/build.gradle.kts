@@ -9,10 +9,13 @@ kotlin {
     compilerOptions {
         allWarningsAsErrors = true
     }
+    explicitApi()
 }
 
 dependencies {
+    implementation(libs.androidx.collection.jvm)
     implementation(libs.extjwnl)
+    implementation(libs.kotlinx.collections.immutable.jvm)
 
     runtimeOnly(libs.extjwnl.data.wn31)
 }

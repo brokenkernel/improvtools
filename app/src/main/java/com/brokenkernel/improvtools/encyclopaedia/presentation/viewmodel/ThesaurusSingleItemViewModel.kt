@@ -31,11 +31,8 @@ internal class ThesaurusSingleItemViewModel @Inject constructor(
         }
     }
 
-    fun renderedWordSenses(word: String): String? {
+    fun renderedWordSenses(word: String): String {
         val allSenseDatum = thesaurusAPI.getSenseDatum(word)
-        if (allSenseDatum == null) {
-            return null
-        }
 
         val senseString: String = buildString {
             allSenseDatum.forEach { pos, senseDatum ->

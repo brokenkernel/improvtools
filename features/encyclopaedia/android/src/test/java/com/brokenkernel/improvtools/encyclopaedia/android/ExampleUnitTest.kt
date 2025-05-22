@@ -1,4 +1,4 @@
-package com.brokenkernel.improvtools.encyclopedia.android
+package com.brokenkernel.improvtools.encyclopaedia.android
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

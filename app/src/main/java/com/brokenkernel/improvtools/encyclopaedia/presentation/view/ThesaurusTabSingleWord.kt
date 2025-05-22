@@ -59,10 +59,8 @@ internal fun ThesaurusTabSingleWord(
                 HtmlText(viewModel.renderedActionSynonyms(word))
             }
             val wordSenseRenderedString = viewModel.renderedWordSenses(word)
-            if (wordSenseRenderedString != null) {
-                HtmlText(stringResource(R.string.encyclopaedia_word_senses))
-                HtmlText(wordSenseRenderedString)
-            }
+            HtmlText(stringResource(R.string.encyclopaedia_word_senses))
+            HtmlText(wordSenseRenderedString)
             ExtendedFloatingActionButton(
                 onClick = navigator::popBackStack,
             ) {

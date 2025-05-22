@@ -1,4 +1,4 @@
-package com.brokenkernel.improvtools.encyclopedia.android
+package com.brokenkernel.improvtools.encyclopaedia.android
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
