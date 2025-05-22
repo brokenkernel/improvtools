@@ -77,8 +77,6 @@ reorderable = "2.4.3"
 reorderableAndroidDebug = "2.4.3"
 room = "2.7.1"
 runner = "1.6.2"
-runtime = "1.8.2"
-runtimeSaveable = "1.8.2"
 screengrab = "2.1.1"
 slackLintChecks = "0.9.0"
 slf4jAndroid = "2.0.17-0"
@@ -103,8 +101,8 @@ androidbrowserhelper = { module = "com.google.androidbrowserhelper:androidbrowse
 androidx-activity = { module = "androidx.activity:activity", version.ref = "activityCompose" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
 androidx-activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "activityCompose" }
-androidx-animation = { module = "androidx.compose.animation:animation", version.ref = "animation" }
-androidx-animation-core = { module = "androidx.compose.animation:animation-core", version.ref = "animation" }
+androidx-animation = { module = "androidx.compose.animation:animation" }
+androidx-animation-core = { module = "androidx.compose.animation:animation-core" }
 androidx-annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
 androidx-appsearch = { module = "androidx.appsearch:appsearch", version.ref = "appsearch" }
@@ -164,8 +162,8 @@ androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "
 androidx-room-rxjava3 = { module = "androidx.room:room-rxjava3", version.ref = "room" }
 androidx-room-testing = { module = "androidx.room:room-testing", version.ref = "room" }
 androidx-runner = { module = "androidx.test:runner", version.ref = "runner" }
-androidx-runtime = { module = "androidx.compose.runtime:runtime", version.ref = "runtime" }
-androidx-runtime-saveable = { module = "androidx.compose.runtime:runtime-saveable", version.ref = "runtimeSaveable" }
+androidx-runtime = { module = "androidx.compose.runtime:runtime" }
+androidx-runtime-saveable = { module = "androidx.compose.runtime:runtime-saveable" }
 androidx-runtime-tracing = { module = "androidx.compose.runtime:runtime-tracing" }
 androidx-startup-runtime = { module = "androidx.startup:startup-runtime", version.ref = "startupRuntime" }
 androidx-ui = { module = "androidx.compose.ui:ui" }
