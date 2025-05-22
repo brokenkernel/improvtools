@@ -12,7 +12,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.Clipboard
 import androidx.compose.ui.platform.LocalClipboard
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.platform.toClipEntry
 import androidx.compose.ui.res.stringResource
@@ -35,7 +35,7 @@ internal fun ThesaurusTabAllItems(
     improvToolsAppState: ImprovToolsAppState,
     viewModel: ThesaurusTabAllItemsViewModel = hiltViewModel(),
 ) {
-    val context = LocalContext.current
+    val resources = LocalResources.current
     val clipboard: Clipboard = LocalClipboard.current
     val coroutineScope = rememberCoroutineScope()
     SearchableColumn<String>(
@@ -97,11 +97,11 @@ internal fun ThesaurusTabAllItems(
                         val wordString = AnnotatedString(
                             """
                                 |$word
-                                |${context.getString(R.string.thesaurus_synonyms, viewModel.synonymsForWord(word))}
+                                |${resources.getString(R.string.thesaurus_synonyms, viewModel.synonymsForWord(word))}
                             """.trimMargin(),
                         )
                         val clipData = ClipData.newPlainText(
-                            context.getString(R.string.thesaurus_word_and_synonyms),
+                            resources.getString(R.string.thesaurus_word_and_synonyms),
                             wordString,
                         )
                         val clipEntry = clipData.toClipEntry()

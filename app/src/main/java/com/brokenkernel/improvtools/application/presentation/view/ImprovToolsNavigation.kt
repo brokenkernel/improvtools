@@ -59,6 +59,7 @@ private fun NavigableScreenNavigationDrawerItem(
 @Composable
 internal fun ImprovToolsNavigationDrawer(
     improvToolsAppState: ImprovToolsAppState,
+    // TODO avoid passing down state
     drawerState: DrawerState,
     initialRoute: DirectionDestinationSpec,
 ) {

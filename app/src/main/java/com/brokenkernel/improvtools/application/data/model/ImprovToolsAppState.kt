@@ -24,6 +24,7 @@ import kotlinx.coroutines.flow.asStateFlow
 
 internal class ImprovToolsAppState(
     @StringRes initialTitle: Int,
+    // TODO avoid passing down state
     val drawerState: DrawerState,
     val navController: NavHostController,
     val navigator: DestinationsNavigator,

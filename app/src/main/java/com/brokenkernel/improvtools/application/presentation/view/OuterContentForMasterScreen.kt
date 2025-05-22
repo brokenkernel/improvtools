@@ -13,6 +13,7 @@ internal fun OuterContentForMasterScreen(
     ImprovToolsTheme {
         ImprovToolsNavigationDrawer(
             improvToolsState,
+            // TODO avoid passing down state
             drawerState = improvToolsState.drawerState,
             initialRoute = initialRoute,
         )

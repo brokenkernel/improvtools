@@ -43,6 +43,7 @@ import androidx.compose.ui.platform.Clipboard
 import androidx.compose.ui.platform.LocalClipboard
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.platform.toClipEntry
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
@@ -69,7 +70,7 @@ internal fun AboutTab(
     // also include more injected stuff (settings for ex) into debug datum
     val snackbarHostState = LocalSnackbarHostState.current
     val crScope = rememberCoroutineScope()
-    val resources = LocalContext.current.resources
+    val resources = LocalResources.current
     val packageManager = LocalContext.current.packageManager
     val context = LocalContext.current
     val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager

@@ -16,7 +16,7 @@ appsearchLocalStorage = "1.1.0-rc01"
 browser = "1.9.0-alpha04"
 composeBom = "2025.05.01"
 composeDestinations = "2.2.0"
-composeUI = "1.8.2"
+composeUI = "1.9.0-alpha03"
 config = "1.4.3"
 core = "1.6.1"
 coreKtx = "1.16.0"
@@ -113,7 +113,7 @@ androidx-appsearch-local-storage = { module = "androidx.appsearch:appsearch-loca
 androidx-appsearch-platform-storage = { module = "androidx.appsearch:appsearch-platform-storage", version.ref = "appsearch" }
 androidx-appsearch-play-services-storage = { module = "androidx.appsearch:appsearch-play-services-storage", version.ref = "appsearch" }
 androidx-browser = { module = "androidx.browser:browser", version.ref = "browser" }
-androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
+androidx-compose-bom = { module = "androidx.compose:compose-bom-alpha", version.ref = "composeBom" }
 androidx-compose-material-materialIconsExtended = { module = "androidx.compose.material:material-icons-extended", version.ref = "materialIconsExtended" }
 androidx-core = { module = "androidx.test:core", version.ref = "core" }
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }

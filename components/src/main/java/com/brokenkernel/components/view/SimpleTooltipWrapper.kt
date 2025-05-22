@@ -17,7 +17,7 @@ public fun SimpleTooltipWrapper(
     content: @Composable () -> Unit,
 ) {
     TooltipBox(
-        positionProvider = TooltipDefaults.rememberPlainTooltipPositionProvider(),
+        positionProvider = TooltipDefaults.rememberTooltipPositionProvider(),
         state = rememberTooltipState(),
         tooltip = {
             PlainTooltip {

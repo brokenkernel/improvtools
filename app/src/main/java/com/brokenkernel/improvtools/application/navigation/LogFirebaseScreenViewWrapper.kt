@@ -2,7 +2,7 @@ package com.brokenkernel.improvtools.application.navigation
 
 import android.os.Bundle
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalResources
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.ktx.analytics
@@ -16,12 +16,12 @@ internal object LogFirebaseScreenViewWrapper : DestinationWrapper {
     @Composable
     override fun <T> DestinationScope<T>.Wrap(screenContent: @Composable (() -> Unit)) {
         val navigableScreen: NavigableScreens = NavigableScreens.Companion.byRoute(destination)
-        val context = LocalContext.current
+        val resources = LocalResources.current
 
         val params = Bundle()
         params.putString(
             FirebaseAnalytics.Param.SCREEN_NAME,
-            context.resources.getString(navigableScreen.titleResource),
+            resources.getString(navigableScreen.titleResource),
         )
         params.putString(FirebaseAnalytics.Param.SCREEN_CLASS, destination.label?.toString())
         LaunchWrapper(
