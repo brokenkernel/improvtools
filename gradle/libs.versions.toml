@@ -31,7 +31,6 @@ extjwnlDataWn31 = "1.2"
 firebaseBom = "33.14.0"
 firebaseCrashlyticsPlugin = "3.0.3"
 firebasePerfPlugin = "1.4.2"
-foundationLayout = "1.8.2"
 fragmentVersion = "1.8.7"
 glanceAppwidget = "1.1.1"
 googleGmsGoogleServices = "4.4.2"
@@ -122,8 +121,8 @@ androidx-datastore-core = { module = "androidx.datastore:datastore-core", versio
 androidx-datastore-datastorePreferences = { module = "androidx.datastore:datastore-preferences", version.ref = "androidXdatastore" }
 androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espressoCore" }
 androidx-espresso-device = { module = "androidx.test.espresso:espresso-device", version.ref = "espressoDevice" }
-androidx-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "foundationLayout" }
-androidx-foundation-layout = { module = "androidx.compose.foundation:foundation-layout", version.ref = "foundationLayout" }
+androidx-foundation = { module = "androidx.compose.foundation:foundation" }
+androidx-foundation-layout = { module = "androidx.compose.foundation:foundation-layout" }
 androidx-glance-appwidget = { module = "androidx.glance:glance-appwidget", version.ref = "glanceAppwidget" }
 androidx-glance-material3 = { module = "androidx.glance:glance-material3", version.ref = "glanceAppwidget" }
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
