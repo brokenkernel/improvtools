@@ -246,7 +246,6 @@ dependencies {
     implementation(libs.com.google.protobuf.protobufJavalite)
     implementation(libs.config)
     implementation(libs.dagger.hilt.core)
-    implementation(libs.extjwnl)
     implementation(libs.fragment)
     implementation(libs.google.dagger)
     implementation(libs.guava)
@@ -277,7 +276,6 @@ dependencies {
     debugImplementation(libs.leakcanary.android)
     debugImplementation(libs.reorderable.android.debug)
 
-    runtimeOnly(libs.extjwnl.data.wn31)
     runtimeOnly(libs.slf4j.android)
 
     debugRuntimeOnly(libs.androidx.ui.test.manifest)

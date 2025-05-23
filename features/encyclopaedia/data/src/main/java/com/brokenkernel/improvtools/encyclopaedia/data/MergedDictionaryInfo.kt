@@ -1,5 +1,7 @@
 package com.brokenkernel.improvtools.encyclopaedia.data
 
+import kotlinx.collections.immutable.ImmutableSet
+
 public class MergedDictionaryInfo internal constructor(
     private val extJwnlDictionaryInfo: ExtJwnlDictionaryInfo,
 ) : DictionaryInfo {
@@ -9,6 +11,10 @@ public class MergedDictionaryInfo internal constructor(
 
     override fun getSynonyms(word: String): Map<String, List<WordInfo>> {
         return extJwnlDictionaryInfo.getSynonyms(word)
+    }
+
+    override fun getWordsByType(wordtype: WordType): ImmutableSet<String> {
+        return extJwnlDictionaryInfo.getWordsByType(wordtype)
     }
 
     public companion object {

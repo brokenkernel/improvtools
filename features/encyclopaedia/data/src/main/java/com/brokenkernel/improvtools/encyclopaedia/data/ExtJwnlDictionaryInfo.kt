@@ -1,6 +1,7 @@
 package com.brokenkernel.improvtools.encyclopaedia.data
 
 import androidx.collection.LruCache
+import kotlinx.collections.immutable.ImmutableSet
 import kotlinx.collections.immutable.toImmutableSet
 import net.sf.extjwnl.data.IndexWordSet
 import net.sf.extjwnl.data.Synset
@@ -57,5 +58,13 @@ internal class ExtJwnlDictionaryInfo : DictionaryInfo {
             pos.label to subSenses
         }
         return resultMap
+    }
+
+    override fun getWordsByType(wordtype: WordType): ImmutableSet<String> {
+        return dictionary
+            .getIndexWordIterator(wordtype.internalPOS)
+            .asSequence()
+            .map { it.lemma }
+            .toImmutableSet()
     }
 }
