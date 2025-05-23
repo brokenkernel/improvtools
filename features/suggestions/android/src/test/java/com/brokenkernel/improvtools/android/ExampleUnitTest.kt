@@ -1,6 +1,6 @@
-package com.brokenkernel.improvtools.suggestions
+package com.brokenkernel.improvtools.android
 
-import org.junit.Assert.assertEquals
+import org.junit.Assert.*
 import org.junit.Test
 
 /**
