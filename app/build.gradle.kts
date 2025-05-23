@@ -186,6 +186,7 @@ dependencies {
     implementation(project(":features:debug"))
     implementation(project(":features:encyclopaedia:android"))
     implementation(project(":features:encyclopaedia:data"))
+    implementation(project(":features:timer"))
     implementation(libs.aboutlibraries.compose.m3)
     implementation(libs.accompanist.permissions)
     implementation(libs.androidbrowserhelper)
