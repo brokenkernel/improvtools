@@ -45,9 +45,11 @@ dependencies {
         because("we are an android compose application")
     }
     implementation(enforcedPlatform(libs.kotlin.bom))
+    implementation(project(":components"))
     implementation(project(":features:encyclopaedia:data"))
     implementation(libs.androidx.animation)
     implementation(libs.androidx.annotation)
+    implementation(libs.androidx.compose.material.materialIconsExtended)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.material.icons.core)
     implementation(libs.androidx.material3)
@@ -69,6 +71,10 @@ dependencies {
 
     lintChecks(libs.androidx.lint.gradle)
     lintChecks(libs.slack.lint.checks)
+}
+
+kotlin {
+    explicitApi()
 }
 
 @OptIn(ExperimentalKotlinGradlePluginApi::class)
