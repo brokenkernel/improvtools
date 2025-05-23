@@ -6,9 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
-import com.brokenkernel.improvtools.application.data.model.rememberImprovToolsAppState
 import com.brokenkernel.improvtools.application.presentation.view.OuterContentForMasterScreen
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -54,14 +52,9 @@ class MainActivity : ComponentActivity() {
                 NavigableScreens.SuggestionGeneratorScreen
             }
 
-            val improvToolsState: ImprovToolsAppState = rememberImprovToolsAppState(
-                initialTitle = initialScreen.titleResource,
-            )
-
             // maybe ImprovToolsState, or at least a subset should be passed via LocalContent so it doesn't need to be threaded all over the place
             OuterContentForMasterScreen(
-                improvToolsState = improvToolsState,
-                initialRoute = initialScreen.matchingRoute,
+                initialScreen = initialScreen,
             )
         }
     }

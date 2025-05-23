@@ -1,21 +1,16 @@
 package com.brokenkernel.improvtools.application
 
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.AndroidComposeTestRule
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onRoot
-import androidx.navigation.compose.ComposeNavigator
-import androidx.navigation.testing.TestNavHostController
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
-import com.brokenkernel.improvtools.application.data.model.rememberImprovToolsAppState
 import com.brokenkernel.improvtools.application.presentation.view.OuterContentForMasterScreen
 import com.brokenkernel.improvtools.infrastructure.HiltComponentActitivity
 import com.brokenkernel.improvtools.infrastructure.onNodeWithStringId
-import com.ramcosta.composedestinations.generated.destinations.SuggestionsTabDestination
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Before
@@ -33,23 +28,12 @@ class NavigationTest {
         AndroidComposeTestRule<ActivityScenarioRule<HiltComponentActitivity>, HiltComponentActitivity> =
         createAndroidComposeRule<HiltComponentActitivity>()
 
-    lateinit var navController: TestNavHostController
-
     @Before
     fun setupAppNavHost() {
         hiltRule.inject()
         composeTestRule.setContent {
-            navController = TestNavHostController(LocalContext.current).apply {
-                navigatorProvider.addNavigator(ComposeNavigator())
-            }
-            val improvToolsState =
-                rememberImprovToolsAppState(
-                    initialTitle = NavigableScreens.SuggestionGeneratorScreen.titleResource,
-                    navController = navController,
-                )
             OuterContentForMasterScreen(
-                improvToolsState = improvToolsState,
-                initialRoute = SuggestionsTabDestination,
+                NavigableScreens.SuggestionGeneratorScreen,
             )
         }
     }

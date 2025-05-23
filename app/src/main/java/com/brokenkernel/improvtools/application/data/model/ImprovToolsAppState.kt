@@ -2,9 +2,6 @@ package com.brokenkernel.improvtools.application.data.model
 
 import androidx.annotation.StringRes
 import androidx.annotation.UiThread
-import androidx.compose.material3.DrawerState
-import androidx.compose.material3.DrawerValue
-import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
@@ -17,18 +14,17 @@ import com.brokenkernel.improvtools.application.presentation.api.BottomSheetCont
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import com.ramcosta.composedestinations.spec.DestinationSpec
 import com.ramcosta.composedestinations.utils.currentDestinationAsState
-import com.ramcosta.composedestinations.utils.rememberDestinationsNavigator
+import com.ramcosta.composedestinations.utils.toDestinationsNavigator
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 internal class ImprovToolsAppState(
-    @StringRes initialTitle: Int,
-    // TODO avoid passing down state
-    val drawerState: DrawerState,
+    @param:StringRes private val initialTitle: Int,
     val navController: NavHostController,
-    val navigator: DestinationsNavigator,
 ) {
+
+    val navigator: DestinationsNavigator = navController.toDestinationsNavigator()
 
     @StringRes
     private val _currentTitle: MutableStateFlow<Int> = MutableStateFlow(initialTitle)
@@ -66,9 +62,7 @@ internal class ImprovToolsAppState(
 @Composable
 internal fun rememberImprovToolsAppState(
     @StringRes initialTitle: Int,
-    drawerState: DrawerState = rememberDrawerState(initialValue = DrawerValue.Closed),
     navController: NavHostController = rememberNavController(),
-    navigator: DestinationsNavigator = navController.rememberDestinationsNavigator(),
-): ImprovToolsAppState = remember(drawerState, navController, initialTitle, navigator) {
-    ImprovToolsAppState(initialTitle, drawerState, navController, navigator)
+): ImprovToolsAppState = remember(navController, initialTitle) {
+    ImprovToolsAppState(initialTitle, navController)
 }
