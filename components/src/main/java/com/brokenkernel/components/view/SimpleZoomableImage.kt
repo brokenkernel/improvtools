@@ -1,4 +1,4 @@
-package com.brokenkernel.improvtools.components.presentation.view
+package com.brokenkernel.components.view
 
 import androidx.compose.foundation.Image
 import androidx.compose.runtime.Composable
@@ -9,7 +9,7 @@ import net.engawapg.lib.zoomable.rememberZoomState
 import net.engawapg.lib.zoomable.zoomable
 
 @Composable
-internal fun SimpleZoomableImage(
+public fun SimpleZoomableImage(
     painter: Painter,
     contentDescription: String,
     modifier: Modifier = Modifier,

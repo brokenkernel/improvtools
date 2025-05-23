@@ -1,4 +1,4 @@
-package com.brokenkernel.improvtools.components.presentation.view
+package com.brokenkernel.components.view
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.DragHandle
@@ -7,18 +7,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.res.stringResource
-import com.brokenkernel.components.view.SimpleIconButton
-import com.brokenkernel.improvtools.R
+import com.brokenkernel.components.R
 import sh.calvin.reorderable.ReorderableCollectionItemScope
 
 @Composable
-fun DragIconButton(
+public fun DragIconButton(
     scope: ReorderableCollectionItemScope,
     modifier: Modifier = Modifier,
 ) {
     val haptic = LocalHapticFeedback.current
     val longPressModifier: Modifier = with(scope) {
-        Modifier.longPressDraggableHandle(
+        Modifier.Companion.longPressDraggableHandle(
             onDragStarted = {
                 haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove)
             },

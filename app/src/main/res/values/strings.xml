@@ -104,7 +104,6 @@
     <string name="timer_title">Timer Title</string>
     <string name="explain_this_term">Explain This Term</string>
     <string name="update_suggestion">Update Suggestion</string>
-  <string name="reorder">Reorder</string>
   <string name="timer_haptics_mode">Timer Haptics Mode</string>
   <string name="timer_settings_header">Timer</string>
   <string name="stop_watch">Stop Watch</string>

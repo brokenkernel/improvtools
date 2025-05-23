@@ -24,9 +24,9 @@ import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.intl.Locale
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.brokenkernel.components.view.DragIconButton
 import com.brokenkernel.components.view.SimpleIconButton
 import com.brokenkernel.improvtools.R
-import com.brokenkernel.improvtools.components.presentation.view.DragIconButton
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.hours
 import kotlin.time.Duration.Companion.minutes

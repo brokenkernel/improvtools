@@ -67,6 +67,8 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.ui.unit)
     implementation(libs.androidx.ui.util)
+    implementation(libs.net.engawapg.lib.zoomable)
+    implementation(libs.reorderable)
 
     debugRuntimeOnly(libs.androidx.ui.test.manifest)
 

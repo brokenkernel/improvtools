@@ -6,4 +6,5 @@
     <string name="clear_all">clear all</string>
     <string name="button_collapse">Collapse</string>
   <string name="button_expand">Expand</string>
+    <string name="reorder">Reorder</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.brokenkernel.improvtools.components.presentation
+package com.brokenkernel.improvtools.components.presentation.view
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
