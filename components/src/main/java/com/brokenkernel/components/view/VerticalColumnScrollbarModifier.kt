@@ -1,4 +1,4 @@
-package com.brokenkernel.improvtools.application.presentation.view
+package com.brokenkernel.components.view
 
 import androidx.compose.foundation.ScrollState
 import androidx.compose.material3.MaterialTheme
@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 
 // https://medium.com/@mittalkshitij20/adding-a-custom-scrollbar-to-a-column-in-jetpack-compose-9996c26f498f
 @Composable
-internal fun Modifier.verticalColumnScrollbar(
+public fun Modifier.verticalColumnScrollbar(
     scrollState: ScrollState,
     width: Dp = 4.dp,
     showScrollBarTrack: Boolean = true,

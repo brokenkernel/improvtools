@@ -23,7 +23,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.brokenkernel.components.view.HtmlText
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.navigation.ImprovToolsDestination
-import com.brokenkernel.improvtools.application.presentation.view.verticalColumnScrollbar
+import com.brokenkernel.components.view.verticalColumnScrollbar
 import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
 import com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel.ThesaurusSingleItemViewModel
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
