@@ -4,7 +4,6 @@ import com.brokenkernel.improvtools.encyclopaedia.data.model.RawActionItemDataLi
 
 internal object ActionsThesaurus {
 
-
     private val aiAsMap: Map<String, Set<String>> = actionItemList.associate { (k, v) ->
         (k to v)
     }
