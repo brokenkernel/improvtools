@@ -14,6 +14,7 @@ kotlin {
 
 dependencies {
     implementation(libs.androidx.collection.jvm)
+    implementation(libs.androidx.compose.material.materialIconsExtended)
     implementation(libs.extjwnl)
     implementation(libs.kotlinx.collections.immutable.jvm)
 

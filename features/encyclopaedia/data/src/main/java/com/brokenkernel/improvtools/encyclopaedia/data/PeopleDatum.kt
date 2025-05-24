@@ -1,22 +1,22 @@
-package com.brokenkernel.improvtools.encyclopaedia.data.model
+package com.brokenkernel.improvtools.encyclopaedia.data
 
-import android.net.Uri
-import androidx.core.net.toUri
+import java.net.URI
 
 // TODO: add link to wikipedia for others
 // TODO: localise wikipedia link
 // TODO: figure out how to open a specific item at start, or deep link, or similar. For example filter to 'BATS' or some such
+// TODO: make things internal again possible
 
-internal enum class PeopleDatumTopic {
+public enum class PeopleDatumTopic {
     PERSON,
     TROOP,
 }
 
-internal data class PeopleDataItem(
+public data class PeopleDataItem(
     val personName: String,
     val topic: PeopleDatumTopic,
     val knownFor: String,
-    val learnMoreLink: Uri? = null,
+    val learnMoreLink: URI? = null,
     val detailedInformation: String? = null,
 ) {
     init {
@@ -30,7 +30,11 @@ internal data class PeopleDataItem(
         this.learnMoreLink?.host == "en.wikipedia.org"
 }
 
-internal val PeopleDatum: Collection<PeopleDataItem> = listOf(
+private fun String.toUri(): URI {
+    return URI.create(this)
+}
+
+public val PeopleDatum: Collection<PeopleDataItem> = listOf(
     PeopleDataItem(
         "Viola Spolin",
         PeopleDatumTopic.PERSON,

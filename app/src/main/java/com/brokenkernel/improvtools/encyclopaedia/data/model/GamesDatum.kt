@@ -7,7 +7,9 @@ import androidx.compose.material.icons.outlined.Games
 import androidx.compose.material.icons.outlined.SelfImprovement
 import androidx.compose.ui.graphics.vector.ImageVector
 
-enum class GamesDatumTag(val label: String, val description: String? = null) {
+// TODO: make things internal once things are modularised
+
+public enum class GamesDatumTag(public val label: String, public val description: String? = null) {
     // TODO: i18n
     DIVERGENCE("#divergence", """Exercises that help you come up with new ideas"""),
     CONVERGENCE("#convergence", """Exercises that help the group get on the same wavelength"""),
@@ -27,8 +29,8 @@ enum class GamesDatumTag(val label: String, val description: String? = null) {
     BREATH("#breath"),
     ;
 
-    companion object {
-        fun fromLabel(label: String): GamesDatumTag? {
+    public companion object {
+        public fun fromLabel(label: String): GamesDatumTag? {
             return entries.firstOrNull { gdt -> gdt.label == label }
         }
     }

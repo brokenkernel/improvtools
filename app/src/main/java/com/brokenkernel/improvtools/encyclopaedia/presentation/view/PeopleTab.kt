@@ -29,9 +29,9 @@ import com.brokenkernel.components.view.ExpandIcon
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.navigation.ImprovToolsDestination
 import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
-import com.brokenkernel.improvtools.encyclopaedia.data.model.PeopleDataItem
-import com.brokenkernel.improvtools.encyclopaedia.data.model.PeopleDatum
-import com.brokenkernel.improvtools.encyclopaedia.data.model.PeopleDatumTopic
+import com.brokenkernel.improvtools.encyclopaedia.data.PeopleDataItem
+import com.brokenkernel.improvtools.encyclopaedia.data.PeopleDatum
+import com.brokenkernel.improvtools.encyclopaedia.data.PeopleDatumTopic
 import java.text.StringCharacterIterator
 import kotlinx.collections.immutable.toImmutableMap
 
@@ -143,8 +143,9 @@ internal fun PeopleTab() {
             },
             supportingContent = {
                 if (isListItemInformationExpanded) {
-                    if (it.detailedInformation != null) {
-                        Text(it.detailedInformation)
+                    val detailedInformation = it.detailedInformation
+                    if (detailedInformation != null) {
+                        Text(detailedInformation)
                     }
                 }
             },

@@ -22,8 +22,8 @@ import com.brokenkernel.components.view.HtmlText
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.navigation.ImprovToolsDestination
 import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
-import com.brokenkernel.improvtools.encyclopaedia.data.model.GlossaryDataItem
-import com.brokenkernel.improvtools.encyclopaedia.data.model.GlossaryDatum
+import com.brokenkernel.improvtools.encyclopaedia.data.GlossaryDataItem
+import com.brokenkernel.improvtools.encyclopaedia.data.GlossaryDatum
 import kotlinx.collections.immutable.ImmutableMap
 import kotlinx.collections.immutable.toImmutableMap
 

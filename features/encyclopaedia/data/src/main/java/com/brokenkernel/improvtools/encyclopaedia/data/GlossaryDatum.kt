@@ -1,14 +1,16 @@
-package com.brokenkernel.improvtools.encyclopaedia.data.model
+package com.brokenkernel.improvtools.encyclopaedia.data
 
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
 
-internal data class GlossaryDataItem(
+// make things internal eventually once everything moves
+
+public data class GlossaryDataItem(
     val term: String,
     val detailedInformation: String,
 )
 
-internal val GlossaryDatum: ImmutableList<GlossaryDataItem> = persistentListOf(
+public val GlossaryDatum: ImmutableList<GlossaryDataItem> = persistentListOf(
     GlossaryDataItem(
         term = "Blocking",
         detailedInformation = """
