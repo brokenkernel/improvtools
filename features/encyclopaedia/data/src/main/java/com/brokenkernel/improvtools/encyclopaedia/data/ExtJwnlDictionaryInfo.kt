@@ -35,7 +35,7 @@ internal class ExtJwnlDictionaryInfo : DictionaryInfo {
         }
     }
 
-    override fun getSynonyms(word: String): Map<String, List<WordInfo>> {
+    override fun getSynonymsPOSMap(word: String): Map<String, List<WordInfo>> {
         val preppedWord = word.trim().lowercase()
         val allIndexWords: IndexWordSet = lookupWordCached(preppedWord)
         val resultMap: Map<String, List<WordInfo>> = allIndexWords.validPOSSet.associate { pos ->

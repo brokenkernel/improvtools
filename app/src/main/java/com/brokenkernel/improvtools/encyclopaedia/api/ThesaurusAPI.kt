@@ -40,7 +40,7 @@ class ThesaurusAPI @Inject internal constructor(private val thesaurusRepository:
     fun getSenseDatum(word: String): Map<String, List<SenseDatumUI>> {
         val preppedWord = word.trim().lowercase()
         val wordInfoMap: Map<String, List<WordInfo>> = dictionary
-            .getSynonyms(preppedWord)
+            .getSynonymsPOSMap(preppedWord)
         val uxWordInfoMap: Map<String, List<SenseDatumUI>> = wordInfoMap.mapValues { (_, v) ->
             v.map { i ->
                 SenseDatumUI(

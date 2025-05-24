@@ -9,8 +9,13 @@ public class MergedDictionaryInfo internal constructor(
         return extJwnlDictionaryInfo.hasWordInfo(word)
     }
 
-    override fun getSynonyms(word: String): Map<String, List<WordInfo>> {
-        return extJwnlDictionaryInfo.getSynonyms(word)
+    /**
+     * This really shouldn't exist and only exists since callers are weird.
+     * It makes it hard to get more general getSynonyms usefully.
+     * Leave for now until API can be properly fixed
+     */
+    override fun getSynonymsPOSMap(word: String): Map<String, List<WordInfo>> {
+        return extJwnlDictionaryInfo.getSynonymsPOSMap(word)
     }
 
     override fun getWordsByType(wordtype: WordType): ImmutableSet<String> {
