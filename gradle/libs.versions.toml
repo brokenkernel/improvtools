@@ -83,6 +83,7 @@ slackLintChecks = "0.9.0"
 slf4jAndroid = "2.0.17-0"
 sortDependencies = "0.14"
 startupRuntime = "1.2.0"
+uiToolingPreview = "1.9.0-alpha03"
 versionCatalogUpdate = "1.0.0"
 versions = "0.52.0"
 viewModelCompose = "2.9.0"
@@ -176,7 +177,7 @@ androidx-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4", versi
 androidx-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
 androidx-ui-text = { module = "androidx.compose.ui:ui-text", version.ref = "composeUI" }
 androidx-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
-androidx-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
+androidx-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "uiToolingPreview" }
 androidx-ui-unit = { module = "androidx.compose.ui:ui-unit", version.ref = "composeUI" }
 androidx-ui-util = { module = "androidx.compose.ui:ui-util", version.ref = "composeUI" }
 androidx-window = { module = "androidx.window:window", version.ref = "window" }
