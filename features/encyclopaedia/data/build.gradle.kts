@@ -2,6 +2,7 @@ plugins {
     id("java-library")
     alias(libs.plugins.jetbrains.kotlin.jvm)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.kotlin.serialization)
     id("com.brokenkernel.improvtools.sharedbuildlogic.common-kotlin-plugin")
 }
 
