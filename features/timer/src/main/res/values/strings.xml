@@ -2,4 +2,6 @@
 <resources>
   <string name="pause">Pause</string>
   <string name="start">Start</string>
+    <string name="timer_title">Timer Title</string>
+  <string name="remove_timer">Remove timer</string>
 </resources>

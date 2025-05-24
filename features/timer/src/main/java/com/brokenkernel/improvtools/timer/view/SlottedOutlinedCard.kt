@@ -1,4 +1,4 @@
-package com.brokenkernel.improvtools.timer.presentation.view
+package com.brokenkernel.improvtools.timer.view
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -26,7 +26,7 @@ import androidx.compose.ui.text.intl.Locale
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.brokenkernel.components.view.DragIconButton
 import com.brokenkernel.components.view.SimpleIconButton
-import com.brokenkernel.improvtools.R
+import com.brokenkernel.improvtools.timer.R
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.hours
 import kotlin.time.Duration.Companion.minutes
@@ -79,8 +79,9 @@ private fun CurrentTimerTime(currentTime: () -> Duration, isStarted: Boolean) {
     }
 }
 
+// TODO: make internal
 @Composable
-internal fun SlottedTimerCardContent(
+public fun SlottedTimerCardContent(
     title: String,
     currentTime: () -> Duration,
     onRemoveTimer: () -> Unit,
@@ -138,7 +139,7 @@ internal fun SlottedTimerCardContent(
             SimpleIconButton(
                 onClick = onRemoveTimer,
                 icon = Icons.Default.Delete,
-                contentDescription = stringResource(R.string.slotted_timer_remove_timer),
+                contentDescription = stringResource(R.string.remove_timer),
             )
             DragIconButton(scope)
         }

@@ -39,7 +39,9 @@ import com.brokenkernel.improvtools.timer.model.CountDownTimerState
 import com.brokenkernel.improvtools.timer.model.CountUpTimerState
 import com.brokenkernel.improvtools.timer.model.TimerState
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.TimerListViewModel
+import com.brokenkernel.improvtools.timer.view.SlottedTimerCardContent
 import com.brokenkernel.improvtools.timer.view.StartPauseButton
+import com.brokenkernel.improvtools.timer.view.TimerBorderOutlineCard
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.MultiplePermissionsState
 import com.google.accompanist.permissions.rememberMultiplePermissionsState

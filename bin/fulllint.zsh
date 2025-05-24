@@ -5,3 +5,4 @@
 ./gradlew ktlintFormat
 ./gradlew ktlintGenerateBaseline
 ./gradlew updateLintBaseline
+./gradlew lint

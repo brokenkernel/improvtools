@@ -1,4 +1,4 @@
-package com.brokenkernel.improvtools.timer.presentation.view
+package com.brokenkernel.improvtools.timer.view
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -8,8 +8,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
+// TODO: make internal
 @Composable
-internal fun TimerBorderOutlineCard(
+public fun TimerBorderOutlineCard(
     modifier: Modifier = Modifier,
     content: @Composable (() -> Unit) = {},
 ) {
