@@ -5,8 +5,7 @@ import kotlinx.collections.immutable.ImmutableSet
 import kotlinx.collections.immutable.persistentSetOf
 import kotlinx.collections.immutable.toImmutableMap
 
-// TODO: make internal
-public object RawActionItemDataList {
+internal object RawActionItemDataList {
     // TODO: i18n
     private val actionItemList = persistentSetOf(
         ActionItem("abandon"),
@@ -1703,7 +1702,6 @@ public object RawActionItemDataList {
         ActionItem("yoke"),
     )
 
-    // TODO: make internal
     internal val asSynonymMap: ImmutableMap<String, ImmutableSet<String>> =
         actionItemList.associate { (k, v) ->
             (k to v)
