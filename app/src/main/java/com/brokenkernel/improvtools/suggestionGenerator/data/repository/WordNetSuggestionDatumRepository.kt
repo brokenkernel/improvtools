@@ -16,7 +16,7 @@ internal class WordNetSuggestionDatumRepository @Inject constructor(
 ) : AudienceSuggestionDatumRepository {
     override fun getIdeaCategories(): List<IdeaCategoryODS> {
         //
-        val d = thesaurusRepository.getMergedDictionaryInfo()
+        val d = thesaurusRepository.getDictionaryInfo()
         val nounList: ImmutableSet<String> = d.getWordsByType(WordType.NOUN)
         val verbList: ImmutableSet<String> = d.getWordsByType(WordType.VERB)
         val adjectiveList: ImmutableSet<String> = d.getWordsByType(WordType.ADJECTIVE)

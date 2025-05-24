@@ -4,27 +4,15 @@ import com.brokenkernel.improvtools.encyclopaedia.data.DictionaryInfo
 import com.brokenkernel.improvtools.encyclopaedia.data.WordInfo
 import com.brokenkernel.improvtools.encyclopaedia.data.model.SenseDatumUI
 import com.brokenkernel.improvtools.encyclopaedia.data.repository.ThesaurusRepository
-import com.brokenkernel.improvtools.encyclopaedia.presentation.view.ThesaurusTabSingleWord
 import javax.inject.Inject
 import kotlinx.collections.immutable.toImmutableList
 
 /**
  * This is the portion of the Thesaurus exposed to other components.
  */
-class ThesaurusAPI @Inject internal constructor(private val thesaurusRepository: ThesaurusRepository) {
+class ThesaurusAPI @Inject internal constructor(thesaurusRepository: ThesaurusRepository) {
     val dictionary: DictionaryInfo = thesaurusRepository
-        .getMergedDictionaryInfo()
-
-    /**
-     * Get the set of words for which there is an entry. If the word is here,
-     * navigating to [[ThesaurusTabSingleWord]] is expected to succeed.
-     * @return all legal words for the Thesaurus
-     */
-    fun getActionWords(): Set<String> {
-        return thesaurusRepository.getActionsThesaurus().keys()
-    }
-
-    // TODO: lookupAllIndexWords cache and similar - https://developer.android.com/reference/android/util/LruCache
+        .getDictionaryInfo()
 
     /**
      * Checks if a specific word has any information in the extjwnl (or other databases)

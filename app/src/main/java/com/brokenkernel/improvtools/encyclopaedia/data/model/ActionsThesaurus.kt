@@ -1,18 +1,9 @@
 package com.brokenkernel.improvtools.encyclopaedia.data.model
 
-import com.brokenkernel.improvtools.encyclopaedia.data.model.RawActionItemDataList.actionItemList
+import com.brokenkernel.improvtools.encyclopaedia.data.DictionaryInfo
 
-internal object ActionsThesaurus {
-
-    private val aiAsMap: Map<String, Set<String>> = actionItemList.associate { (k, v) ->
-        (k to v)
-    }
-
-    fun keys(): Set<String> {
-        return aiAsMap.keys
-    }
-
+internal class ActionsThesaurus(val mergedDictionaryInfo: DictionaryInfo) {
     fun synonymsForWord(word: String): Set<String> {
-        return aiAsMap[word].orEmpty()
+        return mergedDictionaryInfo.synonymsForWord(word)
     }
 }

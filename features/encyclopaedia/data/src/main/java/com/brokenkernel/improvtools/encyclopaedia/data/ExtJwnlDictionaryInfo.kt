@@ -2,6 +2,7 @@ package com.brokenkernel.improvtools.encyclopaedia.data
 
 import androidx.collection.LruCache
 import kotlinx.collections.immutable.ImmutableSet
+import kotlinx.collections.immutable.persistentSetOf
 import kotlinx.collections.immutable.toImmutableSet
 import net.sf.extjwnl.data.IndexWordSet
 import net.sf.extjwnl.data.Synset
@@ -35,6 +36,11 @@ internal class ExtJwnlDictionaryInfo : DictionaryInfo {
         }
     }
 
+    override fun synonymsForWord(word: String): ImmutableSet<String> {
+        // TODO: THIS IS BROKEN
+        return persistentSetOf()
+    }
+
     override fun getSynonymsPOSMap(word: String): Map<String, List<WordInfo>> {
         val preppedWord = word.trim().lowercase()
         val allIndexWords: IndexWordSet = lookupWordCached(preppedWord)
@@ -61,6 +67,9 @@ internal class ExtJwnlDictionaryInfo : DictionaryInfo {
     }
 
     override fun getWordsByType(wordtype: WordType): ImmutableSet<String> {
+        if (wordtype.internalPOS == null) {
+            return persistentSetOf()
+        }
         return dictionary
             .getIndexWordIterator(wordtype.internalPOS)
             .asSequence()

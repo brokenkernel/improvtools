@@ -8,16 +8,17 @@ import javax.inject.Inject
 
 @HiltViewModel
 internal class ThesaurusSingleItemViewModel @Inject constructor(
-    val thesaurusRepository: ThesaurusRepository,
+    thesaurusRepository: ThesaurusRepository,
     val thesaurusAPI: ThesaurusAPI, // todo: this should be accessed through a repository
 ) : ViewModel() {
+    val dictionaryInfo = thesaurusRepository.getDictionaryInfo()
 
     fun shouldShowActionSynonyms(word: String): Boolean {
-        return thesaurusRepository.getActionsThesaurus().synonymsForWord(word).isNotEmpty()
+        return dictionaryInfo.synonymsForWord(word).isNotEmpty()
     }
 
     fun synonyms(word: String): Iterable<String> {
-        return thesaurusRepository.getActionsThesaurus().synonymsForWord(word).sorted()
+        return dictionaryInfo.synonymsForWord(word).sorted()
     }
 
     // TODO: consider using Room in general for caching?

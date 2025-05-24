@@ -1,14 +1,18 @@
-package com.brokenkernel.improvtools.encyclopaedia.data.model
+package com.brokenkernel.improvtools.encyclopaedia.data
 
-import com.brokenkernel.improvtools.encyclopaedia.data.model.ActionsThesaurus.ActionItem
+import kotlinx.collections.immutable.ImmutableMap
+import kotlinx.collections.immutable.ImmutableSet
+import kotlinx.collections.immutable.persistentSetOf
+import kotlinx.collections.immutable.toImmutableMap
 
-internal object RawActionItemDataList {
+// TODO: make internal
+public object RawActionItemDataList {
     // TODO: i18n
-    val actionItemList = setOf(
+    private val actionItemList = persistentSetOf(
         ActionItem("abandon"),
         ActionItem("abduct"),
         ActionItem("abet"),
-        ActionItem("abide", setOf("bear", "tolerate")),
+        ActionItem("abide", persistentSetOf("bear", "tolerate")),
         ActionItem("abjure"),
         ActionItem("abolish"),
         ActionItem("abridge"),
@@ -17,21 +21,21 @@ internal object RawActionItemDataList {
         ActionItem("abuse"),
         ActionItem("accelerate"),
         ActionItem("accept"),
-        ActionItem("access", setOf("reach", "enter")),
+        ActionItem("access", persistentSetOf("reach", "enter")),
         ActionItem("acclaim"),
         ActionItem("acclimatise"),
         ActionItem("accommodate"),
         ActionItem("accompany"),
-        ActionItem("accost", setOf("attack", "confront")),
+        ActionItem("accost", persistentSetOf("attack", "confront")),
         ActionItem("accuse"),
         ActionItem("accustom"),
         ActionItem("acknowledge"),
         ActionItem("acquaint"),
-        ActionItem("acquire", setOf("attain", "obtain")),
+        ActionItem("acquire", persistentSetOf("attain", "obtain")),
         ActionItem("acquit"),
         ActionItem("activate"),
         ActionItem("adapt"),
-        ActionItem("addle", setOf("agitate", "befuddle", "confuse", "distact", "dizzy")),
+        ActionItem("addle", persistentSetOf("agitate", "befuddle", "confuse", "distact", "dizzy")),
         ActionItem("address"),
         ActionItem("adjudicate"),
         ActionItem("adjure"),
@@ -91,7 +95,7 @@ internal object RawActionItemDataList {
         ActionItem("approach"),
         ActionItem("appropriate"),
         ActionItem("approve"),
-        ActionItem("aprehend", setOf("arrest", "stop")),
+        ActionItem("aprehend", persistentSetOf("arrest", "stop")),
         ActionItem("arbitrate"),
         ActionItem("arouse"),
         ActionItem("arraign"),
@@ -109,13 +113,13 @@ internal object RawActionItemDataList {
         ActionItem("attack"),
         ActionItem("attain"),
         ActionItem("attend"),
-        ActionItem("attire", setOf("cloth", "dress")),
+        ActionItem("attire", persistentSetOf("cloth", "dress")),
         ActionItem("attract"),
         ActionItem("auction"),
         ActionItem("audition"),
         ActionItem("augment"),
         ActionItem("authorise"),
-        ActionItem("avenge", setOf("punish")),
+        ActionItem("avenge", persistentSetOf("punish")),
         ActionItem("aver"),
         ActionItem("avert"),
         ActionItem("avoid"),
@@ -136,7 +140,7 @@ internal object RawActionItemDataList {
         ActionItem("bathe"),
         ActionItem("batter"),
         ActionItem("battle"),
-        ActionItem("bear", setOf("stomach")),
+        ActionItem("bear", persistentSetOf("stomach")),
         ActionItem("beat"),
         ActionItem("beautify"),
         ActionItem("beckon"),
@@ -145,7 +149,7 @@ internal object RawActionItemDataList {
         ActionItem("befoul"),
         ActionItem("befriend"),
         ActionItem("befuddle"),
-        ActionItem("beg", setOf("solicit")),
+        ActionItem("beg", persistentSetOf("solicit")),
         ActionItem("beget"),
         ActionItem("beguile"),
         ActionItem("behold"),
@@ -462,7 +466,7 @@ internal object RawActionItemDataList {
         ActionItem("despise"),
         ActionItem("despoil"),
         ActionItem("destabilise"),
-        ActionItem("destroy", setOf("hit", "kill")),
+        ActionItem("destroy", persistentSetOf("hit", "kill")),
         ActionItem("detach"),
         ActionItem("detain"),
         ActionItem("detect"),
@@ -569,7 +573,7 @@ internal object RawActionItemDataList {
         ActionItem("echo"),
         ActionItem("eclipse"),
         ActionItem("edify"),
-        ActionItem("edit", setOf("modify")),
+        ActionItem("edit", persistentSetOf("modify")),
         ActionItem("educate"),
         ActionItem("efface"),
         ActionItem("eject"),
@@ -1175,7 +1179,7 @@ internal object RawActionItemDataList {
         ActionItem("plug"),
         ActionItem("plunder"),
         ActionItem("plunge"),
-        ActionItem("poison", setOf("pollute")),
+        ActionItem("poison", persistentSetOf("pollute")),
         ActionItem("poke"),
         ActionItem("police"),
         ActionItem("polish"),
@@ -1572,7 +1576,7 @@ internal object RawActionItemDataList {
         ActionItem("titillate"),
         ActionItem("titivate"),
         ActionItem("toast"),
-        ActionItem("tolerate", setOf("bear", "indulge")),
+        ActionItem("tolerate", persistentSetOf("bear", "indulge")),
         ActionItem("topple"),
         ActionItem("torment"),
         ActionItem("torture"),
@@ -1698,4 +1702,10 @@ internal object RawActionItemDataList {
         ActionItem("yield"),
         ActionItem("yoke"),
     )
+
+    // TODO: make internal
+    internal val asSynonymMap: ImmutableMap<String, ImmutableSet<String>> =
+        actionItemList.associate { (k, v) ->
+            (k to v)
+        }.toImmutableMap()
 }

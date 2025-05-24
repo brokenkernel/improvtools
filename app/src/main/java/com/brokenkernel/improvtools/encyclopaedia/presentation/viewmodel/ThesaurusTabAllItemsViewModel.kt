@@ -1,6 +1,7 @@
 package com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
+import com.brokenkernel.improvtools.encyclopaedia.data.WordType
 import com.brokenkernel.improvtools.encyclopaedia.data.repository.ThesaurusRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -9,17 +10,18 @@ import kotlinx.collections.immutable.toImmutableMap
 
 @HiltViewModel
 internal class ThesaurusTabAllItemsViewModel @Inject constructor(
-    val thesaurusRepository: ThesaurusRepository,
+    thesaurusRepository: ThesaurusRepository,
 ) : ViewModel() {
+    val dictionary = thesaurusRepository.getDictionaryInfo()
 
     fun groupedWords(): ImmutableMap<String, List<String>> {
-        return thesaurusRepository.getActionsThesaurus().keys().sorted().groupBy { k ->
+        return dictionary.getWordsByType(WordType.ACTION).sorted().groupBy { k ->
             k[0].uppercase()
         }.toImmutableMap()
     }
 
     fun synonymsForWord(word: String): Iterable<String> {
-        return thesaurusRepository.getActionsThesaurus().synonymsForWord(word).sorted()
+        return dictionary.synonymsForWord(word).sorted()
     }
 
     // TODO: this entire section badly needs tests
@@ -31,8 +33,8 @@ internal class ThesaurusTabAllItemsViewModel @Inject constructor(
      * @param newWord the word you're considering showing
      */
     fun hasUniqueSynonymsFrom(word: String, newWord: String): Boolean {
-        val currentSynonyms = thesaurusRepository.getActionsThesaurus().synonymsForWord(word)
-        val newSynonyms = thesaurusRepository.getActionsThesaurus().synonymsForWord(newWord)
+        val currentSynonyms = dictionary.synonymsForWord(word)
+        val newSynonyms = dictionary.synonymsForWord(newWord)
         val nonInterestingNewSynomums = newSynonyms - currentSynonyms - word
         return nonInterestingNewSynomums.isNotEmpty()
     }
