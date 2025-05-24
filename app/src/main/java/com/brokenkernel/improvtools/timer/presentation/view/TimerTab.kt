@@ -35,10 +35,11 @@ import com.brokenkernel.components.view.OneWayDismissableContent
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.navigation.ImprovToolsDestination
 import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
-import com.brokenkernel.improvtools.timer.presentation.viewmodel.CountDownTimerState
-import com.brokenkernel.improvtools.timer.presentation.viewmodel.CountUpTimerState
+import com.brokenkernel.improvtools.timer.model.CountDownTimerState
+import com.brokenkernel.improvtools.timer.model.CountUpTimerState
+import com.brokenkernel.improvtools.timer.model.TimerState
 import com.brokenkernel.improvtools.timer.presentation.viewmodel.TimerListViewModel
-import com.brokenkernel.improvtools.timer.presentation.viewmodel.TimerState
+import com.brokenkernel.improvtools.timer.view.StartPauseButton
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.MultiplePermissionsState
 import com.google.accompanist.permissions.rememberMultiplePermissionsState

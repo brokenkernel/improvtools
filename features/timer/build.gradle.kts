@@ -43,6 +43,7 @@ kotlin {
 
 dependencies {
     implementation(project(":components"))
+    implementation(libs.androidx.compose.material.materialIconsExtended)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.runtime.saveable)

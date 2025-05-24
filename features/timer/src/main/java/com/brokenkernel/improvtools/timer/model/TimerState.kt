@@ -1,4 +1,4 @@
-package com.brokenkernel.improvtools.timer.presentation.viewmodel
+package com.brokenkernel.improvtools.timer.model
 
 import kotlin.time.Clock
 import kotlin.time.Duration
@@ -7,49 +7,50 @@ import kotlin.time.ExperimentalTime
 import kotlin.time.Instant
 
 private const val INITIAL_TIMER_SECONDS: Long = 60L // as seconds
-val INITIAL_COUNT_DOWN_TIMER_DURATION: Duration = INITIAL_TIMER_SECONDS.seconds
+public val INITIAL_COUNT_DOWN_TIMER_DURATION: Duration = INITIAL_TIMER_SECONDS.seconds
 
 // TODO: inExact/exact alarm at end
 // TODO all sorts of tests.
 // TODO: timezones and friends. Also tests
+// TODO: make things internal/private as needed. Currently public while code is being modularised
 
-internal sealed interface TimerState {
+public sealed interface TimerState {
     /**
      * This is the time to show on on the screen.
      */
-    fun showTime(): Duration
-    fun asResetTimer(): TimerState // really irksome there are no true traits.
-    val title: String
-    val timerID: Int
-    fun isStarted(): Boolean
+    public fun showTime(): Duration
+    public fun asResetTimer(): TimerState // really irksome there are no true traits.
+    public val title: String
+    public val timerID: Int
+    public fun isStarted(): Boolean
 
-    fun asEdited(
+    public fun asEdited(
         title: String = this.title,
     ): TimerState
 }
 
-internal sealed interface StartedTimerState : TimerState {
-    fun asPausedTimer(): PausedTimerState
-    override fun isStarted() = true
+public sealed interface StartedTimerState : TimerState {
+    public fun asPausedTimer(): PausedTimerState
+    override fun isStarted(): Boolean = true
 }
 
-internal sealed interface PausedTimerState : TimerState {
-    fun asStartedTimer(): StartedTimerState
-    override fun isStarted() = false
+public sealed interface PausedTimerState : TimerState {
+    public fun asStartedTimer(): StartedTimerState
+    override fun isStarted(): Boolean = false
 }
 
-internal sealed interface CountDownTimerState : TimerState {
-    fun asHalfTime(): CountDownTimerState
+public sealed interface CountDownTimerState : TimerState {
+    public fun asHalfTime(): CountDownTimerState
 
-    companion object
+    public companion object
 }
 
-internal sealed interface CountUpTimerState : TimerState {
-    companion object
+public sealed interface CountUpTimerState : TimerState {
+    public companion object
 }
 
 @OptIn(ExperimentalTime::class)
-internal class StartedCountUpTimerState(
+public class StartedCountUpTimerState(
     private val priorElapsedTime: Duration,
     private val startedTime: Instant,
     override val title: String,
@@ -90,7 +91,7 @@ internal class StartedCountUpTimerState(
 }
 
 @OptIn(ExperimentalTime::class)
-internal class StartedCountDownTimerState(
+public class StartedCountDownTimerState(
     private val priorRemainingTime: Duration,
     private val startedTime: Instant,
     override val title: String,
@@ -138,7 +139,7 @@ internal class StartedCountDownTimerState(
 // TODO: secondary constructor for initial creation ?
 
 @OptIn(ExperimentalTime::class)
-internal class PausedCountUpTimerState(
+public class PausedCountUpTimerState(
     private val elapsedTime: Duration,
     override val title: String,
     override val timerID: Int,
@@ -168,7 +169,7 @@ internal class PausedCountUpTimerState(
 }
 
 @OptIn(ExperimentalTime::class)
-internal class PausedCountDownTimerState(
+public class PausedCountDownTimerState(
     private val remainingTime: Duration,
     override val title: String,
     override val timerID: Int,

@@ -10,6 +10,14 @@ import androidx.lifecycle.viewModelScope
 import com.brokenkernel.improvtools.datastore.UserSettings
 import com.brokenkernel.improvtools.settings.data.repository.SettingsRepository
 import com.brokenkernel.improvtools.timer.data.repository.TimerManager
+import com.brokenkernel.improvtools.timer.model.CountDownTimerState
+import com.brokenkernel.improvtools.timer.model.CountUpTimerState
+import com.brokenkernel.improvtools.timer.model.INITIAL_COUNT_DOWN_TIMER_DURATION
+import com.brokenkernel.improvtools.timer.model.PausedCountDownTimerState
+import com.brokenkernel.improvtools.timer.model.PausedCountUpTimerState
+import com.brokenkernel.improvtools.timer.model.PausedTimerState
+import com.brokenkernel.improvtools.timer.model.StartedTimerState
+import com.brokenkernel.improvtools.timer.model.TimerState
 import com.brokenkernel.improvtools.timer.sidecar.notifications.CountDownNotificationManager
 import com.brokenkernel.improvtools.timer.sidecar.notifications.StopWatchNotificationManager
 import dagger.hilt.android.lifecycle.HiltViewModel

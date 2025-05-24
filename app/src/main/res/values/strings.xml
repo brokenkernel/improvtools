@@ -47,9 +47,7 @@
     <string name="encyclopaedia_emotion_wheel">Emotion Wheel</string>
     <string name="settings_tips_and_tricks_view_mode">Tips And Tricks View Mode</string>
     <string name="timer_half_time">Half Time</string>
-    <string name="timer_pause">Pause</string>
     <string name="timer_reset">Reset</string>
-    <string name="timer_start">Start</string>
     <string name="about_contact_info">Contact Information</string>
     <string name="about_contact_code_repo">Code Repository</string>
     <string name="shortcut_encyclopaedia_short_label">Encyclopaedia</string>

@@ -1,4 +1,4 @@
-package com.brokenkernel.improvtools.timer.presentation.view
+package com.brokenkernel.improvtools.timer.view
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Pause
@@ -9,11 +9,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
-import com.brokenkernel.improvtools.R
-import com.brokenkernel.improvtools.timer.presentation.viewmodel.TimerState
+import com.brokenkernel.improvtools.timer.R
+import com.brokenkernel.improvtools.timer.model.TimerState
+
+// TODO: make internal
 
 @Composable
-internal fun StartPauseButton(
+public fun StartPauseButton(
     timerState: TimerState,
     onStart: (() -> Unit),
     onPause: (() -> Unit),
@@ -29,9 +31,9 @@ internal fun StartPauseButton(
     ) {
         val curButtonText: String =
             if (timerState.isStarted()) {
-                stringResource(R.string.timer_pause)
+                stringResource(R.string.pause)
             } else {
-                stringResource(R.string.timer_start)
+                stringResource(R.string.start)
             }
         val curButtonIcon: ImageVector =
             if (timerState.isStarted()) {

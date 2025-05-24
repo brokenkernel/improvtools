@@ -9,7 +9,7 @@ import android.os.Build
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.sidecar.notifications.ImprovToolsNotification
 import com.brokenkernel.improvtools.sidecar.notifications.ImprovToolsNotificationManager
-import com.brokenkernel.improvtools.timer.presentation.viewmodel.TimerState
+import com.brokenkernel.improvtools.timer.model.TimerState
 import javax.inject.Inject
 
 internal class CountDownhNotification(
