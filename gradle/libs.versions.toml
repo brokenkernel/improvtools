@@ -59,6 +59,7 @@ ktlintComposeVersion = "0.4.22"
 leakcanaryAndroid = "2.14"
 lifecycleVersion = "2.9.0"
 lintGradle = "1.0.0-alpha05"
+material3 = "1.4.0-alpha15"
 material3Adaptive = "1.1.0"
 materialIconsExtended = "1.7.8"
 metricsPerformance = "1.0.0-beta02"
@@ -148,7 +149,7 @@ androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-view
 androidx-lifecycle-viewmodel-savedstate = { module = "androidx.lifecycle:lifecycle-viewmodel-savedstate", version.ref = "lifecycleVersion" }
 androidx-lint-gradle = { module = "androidx.lint:lint-gradle", version.ref = "lintGradle" }
 androidx-material-icons-core = { module = "androidx.compose.material:material-icons-core", version.ref = "materialIconsExtended" }
-androidx-material3 = { module = "androidx.compose.material3:material3" }
+androidx-material3 = { module = "androidx.compose.material3:material3", version.ref = "material3" }
 androidx-material3-adaptive = { module = "androidx.compose.material3.adaptive:adaptive", version.ref = "material3Adaptive" }
 androidx-material3-adaptive-layout = { module = "androidx.compose.material3.adaptive:adaptive-layout", version.ref = "material3Adaptive" }
 androidx-material3-adaptive-navigation = { module = "androidx.compose.material3.adaptive:adaptive-navigation", version.ref = "material3Adaptive" }
