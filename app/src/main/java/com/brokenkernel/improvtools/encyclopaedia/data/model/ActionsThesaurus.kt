@@ -3,10 +3,7 @@ package com.brokenkernel.improvtools.encyclopaedia.data.model
 import com.brokenkernel.improvtools.encyclopaedia.data.model.RawActionItemDataList.actionItemList
 
 internal object ActionsThesaurus {
-    data class ActionItem(
-        val word: String,
-        val synonyms: Set<String> = setOf(),
-    )
+
 
     private val aiAsMap: Map<String, Set<String>> = actionItemList.associate { (k, v) ->
         (k to v)
