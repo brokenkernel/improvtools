@@ -4,8 +4,8 @@ import android.content.Context
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.encyclopaedia.data.WordType
 import com.brokenkernel.improvtools.encyclopaedia.data.repository.ThesaurusRepository
-import com.brokenkernel.improvtools.suggestionGenerator.data.model.IdeaCategoryODS
-import com.brokenkernel.improvtools.suggestionGenerator.data.model.IdeaItemODS
+import com.brokenkernel.improvtools.suggestions.data.storage.IdeaCategoryODS
+import com.brokenkernel.improvtools.suggestions.data.storage.IdeaItemODS
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import kotlinx.collections.immutable.ImmutableSet

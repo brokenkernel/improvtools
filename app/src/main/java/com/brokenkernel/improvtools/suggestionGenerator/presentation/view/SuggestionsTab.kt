@@ -49,9 +49,9 @@ import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.application.navigation.ImprovToolsDestination
 import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
 import com.brokenkernel.improvtools.encyclopaedia.presentation.view.LoadableSingleWordThesaurusButton
-import com.brokenkernel.improvtools.suggestionGenerator.data.model.IdeaCategoryODS
-import com.brokenkernel.improvtools.suggestionGenerator.data.model.IdeaUIState
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel.SuggestionScreenViewModel
+import com.brokenkernel.improvtools.suggestions.data.storage.IdeaCategoryODS
+import com.brokenkernel.improvtools.suggestions.data.storage.IdeaUIState
 import com.ramcosta.composedestinations.generated.destinations.EmotionTabDestination
 import com.ramcosta.composedestinations.generated.destinations.ThesaurusTabSingleWordDestination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
@@ -159,12 +159,13 @@ internal fun SuggestionsTab(
                                                 ),
                                             )
                                         }
-                                        if (currentIdea.explanation != null) {
+                                        val currentExplanation = currentIdea.explanation
+                                        if (currentExplanation != null) {
                                             SimpleIconButton(
                                                 onClick = {
                                                     onNavigateToExplanation(
                                                         currentIdea.idea,
-                                                        currentIdea.explanation,
+                                                        currentExplanation,
                                                     )
                                                 },
                                                 icon = Icons.Outlined.TheaterComedy,

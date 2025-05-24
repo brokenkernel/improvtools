@@ -5,10 +5,10 @@ import androidx.compose.runtime.toMutableStateList
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.brokenkernel.improvtools.settings.data.repository.SettingsRepository
-import com.brokenkernel.improvtools.suggestionGenerator.data.model.IdeaCategoryODS
-import com.brokenkernel.improvtools.suggestionGenerator.data.model.IdeaItemODS
-import com.brokenkernel.improvtools.suggestionGenerator.data.model.IdeaUIState
 import com.brokenkernel.improvtools.suggestionGenerator.data.repository.MergedAudienceSuggestionDatumRepository
+import com.brokenkernel.improvtools.suggestions.data.storage.IdeaCategoryODS
+import com.brokenkernel.improvtools.suggestions.data.storage.IdeaItemODS
+import com.brokenkernel.improvtools.suggestions.data.storage.IdeaUIState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jakarta.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow

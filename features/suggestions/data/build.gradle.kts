@@ -15,4 +15,7 @@ kotlin {
 dependencies {
     implementation(libs.androidx.collection.jvm)
     implementation(libs.kotlinx.collections.immutable.jvm)
+    implementation(libs.kotlinx.serialization.core)
+    implementation(libs.kotlinx.serialization.hocon)
+    implementation(libs.kotlinx.serialization.json)
 }

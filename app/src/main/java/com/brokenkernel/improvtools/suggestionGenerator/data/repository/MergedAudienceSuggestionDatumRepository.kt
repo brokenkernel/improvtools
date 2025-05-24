@@ -1,6 +1,6 @@
 package com.brokenkernel.improvtools.suggestionGenerator.data.repository
 
-import com.brokenkernel.improvtools.suggestionGenerator.data.model.IdeaCategoryODS
+import com.brokenkernel.improvtools.suggestions.data.storage.IdeaCategoryODS
 import javax.inject.Inject
 
 // TODO: settings, enable/disable specific sources
