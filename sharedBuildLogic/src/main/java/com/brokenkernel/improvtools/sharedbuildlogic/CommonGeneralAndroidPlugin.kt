@@ -1,5 +1,6 @@
 package com.brokenkernel.improvtools.sharedbuildlogic
 
+import com.google.devtools.ksp.gradle.KspExtension
 import libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -36,6 +37,13 @@ public class CommonGeneralAndroidPlugin : Plugin<Project> {
                 },
             )
 
+            extensions.configure(
+                KspExtension::class.java,
+                {
+                    arg("compose-destinations.mermaidGraph", "$rootDir/docs/static/")
+                    arg("compose-destinations.htmlMermaidGraph", "$rootDir/docs/static/")
+                }
+            )
         }
     }
 }

@@ -426,8 +426,3 @@ powerAssert {
         "releaseUnitTest",
     )
 }
-
-ksp {
-    arg("compose-destinations.mermaidGraph", "$rootDir/docs/static/")
-    arg("compose-destinations.htmlMermaidGraph", "$rootDir/docs/static/")
-}
