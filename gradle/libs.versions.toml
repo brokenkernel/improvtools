@@ -7,6 +7,7 @@ aicore = "0.0.1-exp02"
 androidDocumentationPlugin = "2.0.0"
 androidXdatastore = "1.1.7"
 androidbrowserhelper = "2.6.1"
+animation = "1.8.2"
 annotation = "1.9.1"
 appsearch = "1.1.0-rc01"
 appsearchCompiler = "1.1.0-rc01"
@@ -71,6 +72,7 @@ playServicesOssLicenses = "17.1.0"
 profileinstaller = "1.4.1"
 protobuf = "0.9.5"
 protobufJavalite = "4.31.1"
+protoc = "4.31.1"
 reorderable = "2.4.3"
 reorderableAndroidDebug = "2.4.3"
 room = "2.7.1"
@@ -188,6 +190,7 @@ com-google-firebase-crashlytics = { module = "com.google.firebase:firebase-crash
 com-google-firebase-firebaseBom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
 com-google-firebase-firebasePerf = { module = "com.google.firebase:firebase-perf" }
 com-google-protobuf-protobufJavalite = { module = "com.google.protobuf:protobuf-javalite", version.ref = "protobufJavalite" }
+com-google-protobuf-protoc = { module = "com.google.protobuf:protoc", version.ref = "protoc" }
 config = { module = "com.typesafe:config", version.ref = "config" }
 dagger-hilt-core = { module = "com.google.dagger:hilt-core", version.ref = "hiltCoreVersion" }
 extjwnl = { module = "net.sf.extjwnl:extjwnl", version.ref = "extjwnl" }
