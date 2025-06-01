@@ -3,7 +3,7 @@ package com.brokenkernel.improvtools.encyclopaedia.data
 import kotlinx.collections.immutable.ImmutableSet
 import kotlinx.collections.immutable.toImmutableSet
 
-public class MergedDictionaryInfo internal constructor(
+private class MergedDictionaryInfo(
     private val extJwnlDictionaryInfo: ExtJwnlDictionaryInfo,
     private val actionWordsDictionaryInfo: ActionWordsDictionaryInfo,
 ) : DictionaryInfo {
@@ -31,13 +31,11 @@ public class MergedDictionaryInfo internal constructor(
             actionWordsDictionaryInfo.getWordsByType(wordtype)
         return r.toImmutableSet()
     }
+}
 
-    public companion object {
-        public fun create(): MergedDictionaryInfo {
-            return MergedDictionaryInfo(
-                ExtJwnlDictionaryInfo(),
-                ActionWordsDictionaryInfo(),
-            )
-        }
-    }
+public fun createDictionaryInfo(): DictionaryInfo {
+    return MergedDictionaryInfo(
+        ExtJwnlDictionaryInfo(),
+        ActionWordsDictionaryInfo(),
+    )
 }

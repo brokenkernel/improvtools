@@ -1,7 +1,7 @@
 package com.brokenkernel.improvtools.encyclopaedia.sidecar
 
 import com.brokenkernel.improvtools.encyclopaedia.data.DictionaryInfo
-import com.brokenkernel.improvtools.encyclopaedia.data.MergedDictionaryInfo
+import com.brokenkernel.improvtools.encyclopaedia.data.createDictionaryInfo
 import com.brokenkernel.improvtools.encyclopaedia.data.repository.DefaultThesaurusRepository
 import com.brokenkernel.improvtools.encyclopaedia.data.repository.ThesaurusRepository
 import dagger.Module
@@ -23,6 +23,6 @@ internal class ThesaurusModule {
     @Provides
     @Singleton
     fun providesDictionaryInfo(): DictionaryInfo {
-        return MergedDictionaryInfo.create()
+        return createDictionaryInfo()
     }
 }
