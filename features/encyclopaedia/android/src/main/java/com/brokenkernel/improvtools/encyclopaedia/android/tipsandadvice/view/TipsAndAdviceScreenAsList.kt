@@ -1,4 +1,4 @@
-package com.brokenkernel.improvtools.encyclopaedia.android.tipsandadvice
+package com.brokenkernel.improvtools.encyclopaedia.android.tipsandadvice.view
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Arrangement
@@ -14,6 +14,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -35,7 +36,7 @@ public fun TipsAndAdviceScreenAsList(
     ) {
         items(uiState.tipsAndAdvice) { it: TipContentUI ->
             var isExpanded by rememberSaveable {
-                androidx.compose.runtime.mutableStateOf(
+                mutableStateOf(
                     false,
                 )
             }

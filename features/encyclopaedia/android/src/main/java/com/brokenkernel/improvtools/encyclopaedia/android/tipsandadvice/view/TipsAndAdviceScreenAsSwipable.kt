@@ -1,4 +1,4 @@
-package com.brokenkernel.improvtools.encyclopaedia.android.tipsandadvice
+package com.brokenkernel.improvtools.encyclopaedia.android.tipsandadvice.view
 
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.background

@@ -4,8 +4,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.datastore.UserSettings
+import com.brokenkernel.improvtools.encyclopaedia.android.tipsandadvice.model.TipsAndAdviceViewModeUI
 import com.brokenkernel.improvtools.encyclopaedia.data.model.TipsAndAdviceProcessedModel
-import com.brokenkernel.improvtools.encyclopaedia.data.model.TipsAndAdviceViewModeUI
+import com.brokenkernel.improvtools.encyclopaedia.data.model.tipsAndAdviceViewModeUIbyInternalEnumValue
 import com.brokenkernel.improvtools.encyclopaedia.data.repository.TipsAndAdviceRepository
 import com.brokenkernel.improvtools.encyclopaedia.data.tipsandadvice.TipContentUI
 import com.brokenkernel.improvtools.encyclopaedia.data.tipsandadvice.TipsAndAdviceUIState
@@ -37,7 +38,8 @@ internal class TipsAndAdviceViewModel @Inject constructor(
     val uiState: StateFlow<TipsAndAdviceUIState>
 
     private val _taaViewMode: MutableStateFlow<TipsAndAdviceViewModeUI> = MutableStateFlow(
-        TipsAndAdviceViewModeUI.Companion.byInternalEnumValue(
+
+        tipsAndAdviceViewModeUIbyInternalEnumValue(
             UserSettings.TipsAndTricksViewMode.VIEW_MODE_DEFAULT,
         ),
     )
@@ -60,7 +62,7 @@ internal class TipsAndAdviceViewModel @Inject constructor(
         uiState = _uiState.asStateFlow()
         viewModelScope.launch {
             settingsRepository.userSettingsFlow.collectLatest { it ->
-                _taaViewMode.value = TipsAndAdviceViewModeUI.Companion.byInternalEnumValue(it.tipsAndTricksViewMode)
+                _taaViewMode.value = tipsAndAdviceViewModeUIbyInternalEnumValue(it.tipsAndTricksViewMode)
             }
         }
     }

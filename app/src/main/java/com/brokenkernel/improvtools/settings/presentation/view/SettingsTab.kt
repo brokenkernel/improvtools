@@ -16,7 +16,8 @@ import com.brokenkernel.improvtools.application.navigation.ImprovToolsDestinatio
 import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
 import com.brokenkernel.improvtools.datastore.UserSettings.TimerHapticsMode
 import com.brokenkernel.improvtools.datastore.UserSettings.TipsAndTricksViewMode
-import com.brokenkernel.improvtools.encyclopaedia.data.model.TipsAndAdviceViewModeUI
+import com.brokenkernel.improvtools.encyclopaedia.android.tipsandadvice.model.TipsAndAdviceViewModeUI
+import com.brokenkernel.improvtools.encyclopaedia.data.model.internalEnumValuebyTipsAndAdviceViewModeUI
 import com.brokenkernel.improvtools.settings.presentation.viewmodel.SettingsScreenViewModel
 import com.brokenkernel.improvtools.timer.data.model.TimerHapticsModeUI
 
@@ -68,7 +69,7 @@ internal fun SettingsTab(viewModel: SettingsScreenViewModel = hiltViewModel()) {
                         viewModel.onClickUpdateTipsAndTricksViewMode(opt)
                     },
                     currentlySelected = uiState.tipsAndTricksViewMode,
-                    uiToInternalMapping = { opt -> opt.internalEnumMatching },
+                    uiToInternalMapping = { opt -> internalEnumValuebyTipsAndAdviceViewModeUI(opt) },
                 )
             },
         )

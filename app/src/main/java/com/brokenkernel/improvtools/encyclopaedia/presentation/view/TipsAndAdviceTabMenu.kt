@@ -13,7 +13,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.brokenkernel.components.view.EnumerationRadioSelection
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.datastore.UserSettings.TipsAndTricksViewMode
-import com.brokenkernel.improvtools.encyclopaedia.data.model.TipsAndAdviceViewModeUI
+import com.brokenkernel.improvtools.encyclopaedia.android.tipsandadvice.model.TipsAndAdviceViewModeUI
+import com.brokenkernel.improvtools.encyclopaedia.data.model.internalEnumValuebyTipsAndAdviceViewModeUI
 import com.brokenkernel.improvtools.settings.presentation.viewmodel.SettingsScreenViewModel
 
 @Composable
@@ -38,7 +39,7 @@ internal fun TipsAndAdviceTabMenu(
                 onEnumerationSelection = { opt ->
                     viewModel.onClickUpdateTipsAndTricksViewMode(opt)
                 },
-                uiToInternalMapping = { opt -> opt.internalEnumMatching },
+                uiToInternalMapping = { opt -> internalEnumValuebyTipsAndAdviceViewModeUI(opt) },
                 currentlySelected = uiState.tipsAndTricksViewMode,
             )
         }

@@ -3,7 +3,8 @@ package com.brokenkernel.improvtools.settings.presentation.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.brokenkernel.improvtools.datastore.UserSettings
-import com.brokenkernel.improvtools.encyclopaedia.data.model.TipsAndAdviceViewModeUI
+import com.brokenkernel.improvtools.encyclopaedia.android.tipsandadvice.model.TipsAndAdviceViewModeUI
+import com.brokenkernel.improvtools.encyclopaedia.data.model.internalEnumValuebyTipsAndAdviceViewModeUI
 import com.brokenkernel.improvtools.infrastructure.ConsentManagement
 import com.brokenkernel.improvtools.settings.data.repository.SettingsRepository
 import com.brokenkernel.improvtools.settings.presentation.uistate.SettingsScreenUIState
@@ -47,7 +48,7 @@ internal class SettingsScreenViewModel @Inject constructor(
     }
 
     fun onClickUpdateTipsAndTricksViewMode(newState: TipsAndAdviceViewModeUI) {
-        val internalNewState: UserSettings.TipsAndTricksViewMode = newState.internalEnumMatching
+        val internalNewState: UserSettings.TipsAndTricksViewMode = internalEnumValuebyTipsAndAdviceViewModeUI(newState)
         viewModelScope.launch {
             settingsRepository.updateTipsAndTricksViewMode(internalNewState)
         }
