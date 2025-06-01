@@ -4,11 +4,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.datastore.UserSettings
-import com.brokenkernel.improvtools.encyclopaedia.data.model.TipContentUI
 import com.brokenkernel.improvtools.encyclopaedia.data.model.TipsAndAdviceProcessedModel
-import com.brokenkernel.improvtools.encyclopaedia.data.model.TipsAndAdviceUI
 import com.brokenkernel.improvtools.encyclopaedia.data.model.TipsAndAdviceViewModeUI
 import com.brokenkernel.improvtools.encyclopaedia.data.repository.TipsAndAdviceRepository
+import com.brokenkernel.improvtools.encyclopaedia.data.tipsandadvice.TipContentUI
+import com.brokenkernel.improvtools.encyclopaedia.data.tipsandadvice.TipsAndAdviceUIState
 import com.brokenkernel.improvtools.settings.data.repository.SettingsRepository
 import com.typesafe.config.ConfigFactory
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -33,8 +33,8 @@ internal class TipsAndAdviceViewModel @Inject constructor(
     ViewModel() {
 
     // must happen inside of init block since we don't want blank default
-    private val _uiState: MutableStateFlow<TipsAndAdviceUI>
-    val uiState: StateFlow<TipsAndAdviceUI>
+    private val _uiState: MutableStateFlow<TipsAndAdviceUIState>
+    val uiState: StateFlow<TipsAndAdviceUIState>
 
     private val _taaViewMode: MutableStateFlow<TipsAndAdviceViewModeUI> = MutableStateFlow(
         TipsAndAdviceViewModeUI.Companion.byInternalEnumValue(
@@ -56,7 +56,7 @@ internal class TipsAndAdviceViewModel @Inject constructor(
 
         val rawDictTipsAndAdvice = tipsAndAdviceDatum
         tipsAndAdviceProcessed = rawDictTipsAndAdvice.advice.toList().map { (x, y) -> TipContentUI(x, y) }
-        _uiState = MutableStateFlow(TipsAndAdviceUI(tipsAndAdviceProcessed))
+        _uiState = MutableStateFlow(TipsAndAdviceUIState(tipsAndAdviceProcessed))
         uiState = _uiState.asStateFlow()
         viewModelScope.launch {
             settingsRepository.userSettingsFlow.collectLatest { it ->
