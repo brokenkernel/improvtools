@@ -1,61 +1,8 @@
 package com.brokenkernel.improvtools.encyclopaedia.data.model
 
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Fireplace
-import androidx.compose.material.icons.outlined.FormatQuote
-import androidx.compose.material.icons.outlined.Games
-import androidx.compose.material.icons.outlined.SelfImprovement
-import androidx.compose.ui.graphics.vector.ImageVector
-
 // TODO: make things internal once things are modularised
 
-public enum class GamesDatumTag(public val label: String, public val description: String? = null) {
-    // TODO: i18n
-    DIVERGENCE("#divergence", """Exercises that help you come up with new ideas"""),
-    CONVERGENCE("#convergence", """Exercises that help the group get on the same wavelength"""),
-    ENERGY("#energy"),
-    NAMES("#names", """Help actors learn the names of people in the group"""),
-    RANGE("#range", """Help expand the range of characters or situations one can play"""),
-    VOCAL("#vocal"),
-    STATUS("#status"),
-    SHORTFORM("#shortform", """A singular game performed"""),
-    MEDIUMFORM(
-        "#mediumform",
-        """A collection of scenes with a semi-coherent theme along a defined form or structure.
-            | Sometimes also called <i>longform</i>
-        """.trimMargin(),
-    ),
-    LONGFORM("#longform", """A full length performance intended to have a coherent and singular 'plot'"""),
-    BREATH("#breath"),
-    ;
-
-    public companion object {
-        public fun fromLabel(label: String): GamesDatumTag? {
-            return entries.firstOrNull { gdt -> gdt.label == label }
-        }
-    }
-}
-
-internal enum class GamesDatumTopic(val icon: ImageVector) {
-    GAME(icon = Icons.Outlined.Games),
-    WARMUP(icon = Icons.Outlined.Fireplace),
-    EXERCISE(icon = Icons.Outlined.FormatQuote),
-    FORMAT(icon = Icons.Outlined.SelfImprovement),
-}
-
 // TODO: see also?
-
-/**
- * @param unpublishedMatches Strings which will match but are not shown to the user Useful for "3" -> "Three" or similar
- */
-internal data class GamesDataItem(
-    val gameName: String,
-    val topic: GamesDatumTopic,
-    val detailedInformation: String? = null,
-    val unpublishedMatches: Set<String> = emptySet<String>(),
-    val source: String? = null,
-    val tags: Set<GamesDatumTag> = setOf(),
-)
 
 internal val GamesDatum: Collection<GamesDataItem> = listOf(
     GamesDataItem(
