@@ -62,6 +62,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.ui.unit)
     implementation(libs.androidx.ui.util)
+    implementation(libs.io.github.raamcosta.composeDestinations.core)
 
     testImplementation(libs.junit)
 

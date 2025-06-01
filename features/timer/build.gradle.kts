@@ -48,6 +48,7 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.runtime.saveable)
     implementation(libs.androidx.ui.tooling.preview)
+    implementation(libs.io.github.raamcosta.composeDestinations.core)
     implementation(libs.reorderable)
 
     testImplementation(libs.junit)
