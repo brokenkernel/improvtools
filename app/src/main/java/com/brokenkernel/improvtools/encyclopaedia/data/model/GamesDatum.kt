@@ -1,5 +1,8 @@
 package com.brokenkernel.improvtools.encyclopaedia.data.model
 
+import com.brokenkernel.improvtools.encyclopaedia.data.GamesDatumTag
+import com.brokenkernel.improvtools.encyclopaedia.data.GamesDatumTopic
+
 // TODO: make things internal once things are modularised
 
 // TODO: see also?
@@ -187,15 +190,15 @@ internal val GamesDatum: Collection<GamesDataItem> = listOf(
     ),
     GamesDataItem(
         gameName = "Square Breathing",
-        topic = GamesDatumTopic.EXERCISE,
+        topic = com.brokenkernel.improvtools.encyclopaedia.data.GamesDatumTopic.EXERCISE,
         tags = setOf(GamesDatumTag.BREATH),
     ),
     GamesDataItem(
         gameName = "Get The Stick",
-        topic = GamesDatumTopic.EXERCISE,
+        topic = com.brokenkernel.improvtools.encyclopaedia.data.GamesDatumTopic.EXERCISE,
     ),
     GamesDataItem(
         gameName = "Why are you late? / The boss",
-        topic = GamesDatumTopic.EXERCISE,
+        topic = com.brokenkernel.improvtools.encyclopaedia.data.GamesDatumTopic.EXERCISE,
     ),
 )

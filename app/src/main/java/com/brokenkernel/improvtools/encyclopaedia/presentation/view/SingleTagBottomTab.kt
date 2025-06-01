@@ -6,7 +6,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.brokenkernel.improvtools.encyclopaedia.data.model.GamesDatumTag
+import com.brokenkernel.improvtools.encyclopaedia.data.GamesDatumTag
 
 @Composable
 internal fun SingleTagBottomTab(tag: GamesDatumTag) {
@@ -15,8 +15,9 @@ internal fun SingleTagBottomTab(tag: GamesDatumTag) {
             tag.label,
             style = MaterialTheme.typography.headlineLarge,
         )
-        if (tag.description != null) {
-            Text(tag.description)
+        val description = tag.description
+        if (description != null) {
+            Text(description)
         }
     }
 }

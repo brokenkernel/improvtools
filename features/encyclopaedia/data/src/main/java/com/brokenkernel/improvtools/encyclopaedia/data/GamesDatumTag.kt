@@ -1,5 +1,6 @@
-package com.brokenkernel.improvtools.encyclopaedia.data.model
+package com.brokenkernel.improvtools.encyclopaedia.data
 
+// TODO: This should be internal, bu
 public enum class GamesDatumTag(public val label: String, public val description: String? = null) {
     // TODO: i18n
     DIVERGENCE("#divergence", """Exercises that help you come up with new ideas"""),

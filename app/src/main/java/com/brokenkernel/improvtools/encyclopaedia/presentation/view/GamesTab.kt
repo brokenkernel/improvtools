@@ -31,9 +31,9 @@ import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.navigation.ImprovToolsDestination
 import com.brokenkernel.improvtools.application.presentation.api.LocalBottomSheetContentManager
 import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
+import com.brokenkernel.improvtools.encyclopaedia.data.GamesDatumTag
+import com.brokenkernel.improvtools.encyclopaedia.data.GamesDatumTopic
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GamesDataItem
-import com.brokenkernel.improvtools.encyclopaedia.data.model.GamesDatumTag
-import com.brokenkernel.improvtools.encyclopaedia.data.model.GamesDatumTopic
 import com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel.GamesTabViewModel
 
 private fun transformForSearch(str: String): String {
