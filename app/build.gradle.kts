@@ -266,7 +266,6 @@ dependencies {
     implementation(libs.kotlinx.serialization.protobuf)
     implementation(libs.mikepenz.aboutlibraries.compose.core)
     implementation(libs.navigation.runtime)
-    implementation(libs.net.engawapg.lib.zoomable)
     implementation(libs.play.services.instantapps)
     implementation(libs.play.services.oss.licenses)
     implementation(libs.reorderable)
