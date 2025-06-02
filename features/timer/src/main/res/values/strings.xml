@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <public />
   <string name="pause">Pause</string>
   <string name="start">Start</string>
     <string name="timer_title">Timer Title</string>

@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <public />
   <string name="see_word_details_for">See word details for ‘%1$s’</string>
+  <string name="plutchiks_wheel_of_emotions">Plutchik’s Wheel of Emotions</string>
+  <string name="emotion_wheel">Emotion Wheel</string>
+  <string name="emotion_words">Emotion Words</string>
 </resources>

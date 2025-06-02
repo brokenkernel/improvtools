@@ -43,8 +43,6 @@
     <string name="shortcut_timer_disabled_label">Timer (disabled)</string>
     <string name="settings_allow_analytics_cookie_storage">Allow Analytics Cookie Storage</string>
     <string name="navigation_encyclopaedia_category">Encyclopaedia</string>
-    <string name="encyclopaedia_plutchiks_wheel_of_emotions">Plutchik\’s Wheel of Emotions</string>
-    <string name="encyclopaedia_emotion_wheel">Emotion Wheel</string>
     <string name="settings_tips_and_tricks_view_mode">Tips And Tricks View Mode</string>
     <string name="timer_half_time">Half Time</string>
     <string name="timer_reset">Reset</string>
@@ -92,10 +90,7 @@
   <string name="suggestions_adjective">Adjective</string>
   <string name="suggestions_adverb">Adverb</string>
     <string name="encyclopaedia_word_senses"><![CDATA[<h1>Word Senses</h1>]]></string>
-  <string name="button_expand">Expand</string>
-  <string name="button_collapse">Collapse</string>
     <string name="encyclopaedia_action_synonyms"><![CDATA[<h1>Action Synonyms</h1>]]></string>
-  <string name="encyclopaedia_emotion_words">Emotion Words</string>
   <string name="thesaurus_synonyms">Synonyms: %1$s</string>
     <string name="encyclopaedia_tags_filter_button">Filter Tags</string>
     <string name="explain_this_term">Explain This Term</string>
