@@ -89,7 +89,7 @@ versions = "0.52.0"
 viewModelCompose = "2.9.0"
 window = "1.5.0-alpha02"
 workRuntimeKtx = "2.10.1"
-zoomable = "2.7.0"
+zoomable = "2.8.0"
 zoomableImageCoil3 = "0.16.0"
 
 [libraries]
