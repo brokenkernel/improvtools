@@ -49,9 +49,7 @@ dependencies {
     api(libs.androidx.runtime)
     api(libs.kotlinx.collections.immutable.jvm)
 
-    implementation(enforcedPlatform(libs.androidx.compose.bom)) {
-        because("we are an android compose application")
-    }
+    implementation(enforcedPlatform(libs.androidx.compose.bom))
     implementation(enforcedPlatform(libs.kotlin.bom))
     implementation(libs.androidx.animation)
     implementation(libs.androidx.annotation)

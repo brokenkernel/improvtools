@@ -42,9 +42,7 @@ kotlin {
 }
 
 dependencies {
-    implementation(enforcedPlatform(libs.androidx.compose.bom)) {
-        because("we are an android compose application")
-    }
+    implementation(enforcedPlatform(libs.androidx.compose.bom))
     implementation(enforcedPlatform(libs.kotlin.bom))
     implementation(project(":components"))
     implementation(project(":features:encyclopaedia:data"))

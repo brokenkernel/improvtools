@@ -176,9 +176,7 @@ android {
 }
 
 dependencies {
-    implementation(enforcedPlatform(libs.androidx.compose.bom)) {
-        because("we are an android compose application")
-    }
+    implementation(enforcedPlatform(libs.androidx.compose.bom))
     implementation(enforcedPlatform(libs.com.google.firebase.firebaseBom))
     implementation(enforcedPlatform(libs.kotlin.bom))
     implementation(project(":components"))
