@@ -71,8 +71,7 @@ profileinstaller = "1.4.1"
 protobuf = "0.9.5"
 protobufJavalite = "4.31.1"
 protoc = "4.31.1"
-reorderable = "2.4.3"
-reorderableAndroidDebug = "2.4.3"
+reorderable = "2.5.0"
 room = "2.7.1"
 runner = "1.7.0-alpha03"
 runtime = "1.9.0-alpha04"
@@ -232,7 +231,7 @@ net-engawapg-lib-zoomable = { module = "net.engawapg.lib:zoomable", version.ref 
 play-services-instantapps = { module = "com.google.android.gms:play-services-instantapps", version.ref = "playServicesInstantapps" }
 play-services-oss-licenses = { module = "com.google.android.gms:play-services-oss-licenses", version.ref = "playServicesOssLicenses" }
 reorderable = { module = "sh.calvin.reorderable:reorderable", version.ref = "reorderable" }
-reorderable-android-debug = { module = "sh.calvin.reorderable:reorderable-android-debug", version.ref = "reorderableAndroidDebug" }
+reorderable-android-debug = { module = "sh.calvin.reorderable:reorderable-android-debug", version.ref = "reorderable" }
 slack-lint-checks = { module = "com.slack.lint:slack-lint-checks", version.ref = "slackLintChecks" }
 slf4j-android = { module = "uk.uuid.slf4j:slf4j-android", version.ref = "slf4jAndroid" }
 tools-fastlane-screengrab = { module = "tools.fastlane:screengrab", version.ref = "screengrab" }
