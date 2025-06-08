@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<issues format="6" by="lint 8.10.1" type="baseline" client="gradle" dependencies="true" name="AGP (8.10.1)" variant="all" version="8.10.1">
+<issues format="6" by="lint 8.11.0-rc01" type="baseline" client="gradle" dependencies="true" name="AGP (8.11.0-rc01)" variant="all" version="8.11.0-rc01">
 
     <issue
         id="CannotEnableHidden"
@@ -65,6 +65,72 @@
             file="lint.xml"
             line="20"
             column="5"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of com.google.firebase:firebase-bom than 33.14.0 is available: 33.15.0"
+        errorLine1="firebaseBom = &quot;33.14.0&quot;"
+        errorLine2="              ~~~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="29"
+            column="15"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of com.google.firebase.crashlytics than 3.0.3 is available: 3.0.4"
+        errorLine1="firebaseCrashlyticsPlugin = &quot;3.0.3&quot;"
+        errorLine2="                            ~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="30"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of com.mikepenz.aboutlibraries.plugin than 12.2.0 is available: 12.2.1"
+        errorLine1="aboutLibraries = &quot;12.2.0&quot;"
+        errorLine2="                 ~~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="2"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of com.mikepenz:aboutlibraries-compose-core than 12.2.0 is available: 12.2.1"
+        errorLine1="aboutLibraries = &quot;12.2.0&quot;"
+        errorLine2="                 ~~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="2"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of com.mikepenz:aboutlibraries-compose-m3 than 12.2.0 is available: 12.2.1"
+        errorLine1="aboutLibraries = &quot;12.2.0&quot;"
+        errorLine2="                 ~~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="2"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of com.mikepenz:aboutlibraries-core than 12.2.0 is available: 12.2.1"
+        errorLine1="aboutLibraries = &quot;12.2.0&quot;"
+        errorLine2="                 ~~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="2"
+            column="18"/>
     </issue>
 
     <issue
