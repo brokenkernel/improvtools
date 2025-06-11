@@ -68,50 +68,6 @@
     </issue>
 
     <issue
-        id="NewerVersionAvailable"
-        message="A newer version of com.mikepenz.aboutlibraries.plugin than 12.2.0 is available: 12.2.1"
-        errorLine1="aboutLibraries = &quot;12.2.0&quot;"
-        errorLine2="                 ~~~~~~~~">
-        <location
-            file="../gradle/libs.versions.toml"
-            line="2"
-            column="18"/>
-    </issue>
-
-    <issue
-        id="NewerVersionAvailable"
-        message="A newer version of com.mikepenz:aboutlibraries-compose-core than 12.2.0 is available: 12.2.1"
-        errorLine1="aboutLibraries = &quot;12.2.0&quot;"
-        errorLine2="                 ~~~~~~~~">
-        <location
-            file="../gradle/libs.versions.toml"
-            line="2"
-            column="18"/>
-    </issue>
-
-    <issue
-        id="NewerVersionAvailable"
-        message="A newer version of com.mikepenz:aboutlibraries-compose-m3 than 12.2.0 is available: 12.2.1"
-        errorLine1="aboutLibraries = &quot;12.2.0&quot;"
-        errorLine2="                 ~~~~~~~~">
-        <location
-            file="../gradle/libs.versions.toml"
-            line="2"
-            column="18"/>
-    </issue>
-
-    <issue
-        id="NewerVersionAvailable"
-        message="A newer version of com.mikepenz:aboutlibraries-core than 12.2.0 is available: 12.2.1"
-        errorLine1="aboutLibraries = &quot;12.2.0&quot;"
-        errorLine2="                 ~~~~~~~~">
-        <location
-            file="../gradle/libs.versions.toml"
-            line="2"
-            column="18"/>
-    </issue>
-
-    <issue
         id="IconLocation"
         message="Found bitmap drawable `res/drawable/general_emotion_wheel.webp` in densityless folder">
         <location
