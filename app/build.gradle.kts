@@ -265,7 +265,6 @@ dependencies {
 
     testImplementation(kotlin("test"))
 
-    androidTestImplementation("org.hamcrest:hamcrest:3.0")
     androidTestImplementation(libs.androidx.core)
     androidTestImplementation(libs.androidx.datastore)
     androidTestImplementation(libs.androidx.espresso.device)
@@ -276,6 +275,7 @@ dependencies {
     androidTestImplementation(libs.androidx.runtime)
     androidTestImplementation(libs.androidx.ui.test)
     androidTestImplementation(libs.androidx.ui.test.junit4)
+    androidTestImplementation(libs.hamcrest)
     androidTestImplementation(libs.hilt.android.testing)
     androidTestImplementation(libs.junit)
     androidTestImplementation(libs.kotlinx.coroutines.core)
