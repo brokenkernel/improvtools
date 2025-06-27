@@ -42,19 +42,30 @@ kotlin {
 }
 
 dependencies {
+    api(libs.androidx.runtime)
+    api(libs.androidx.ui)
+
+    debugApi(libs.reorderable.android.debug)
+
     implementation(project(":components"))
     implementation(libs.androidx.compose.material.materialIconsExtended)
-    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.foundation)
+    implementation(libs.androidx.foundation.layout)
+    implementation(libs.androidx.lifecycle.common)
+    implementation(libs.androidx.lifecycle.runtime.compose)
+    implementation(libs.androidx.material.icons.core)
     implementation(libs.androidx.material3)
-    implementation(libs.androidx.runtime.saveable)
-    implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.io.github.raamcosta.composeDestinations.core)
+    implementation(libs.androidx.ui.graphics)
+    implementation(libs.androidx.ui.text)
+    implementation(libs.androidx.ui.unit)
+    implementation(libs.kotlinx.coroutines.core)
     implementation(libs.reorderable)
 
     testImplementation(libs.junit)
 
-    androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.monitor)
+    androidTestImplementation(libs.junit)
 
     ktlintRuleset(libs.ktlintCompose)
 

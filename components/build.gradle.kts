@@ -49,12 +49,13 @@ dependencies {
     api(libs.androidx.runtime)
     api(libs.kotlinx.collections.immutable.jvm)
 
+    debugApi(libs.reorderable.android.debug)
+
     implementation(enforcedPlatform(libs.androidx.compose.bom))
     implementation(enforcedPlatform(libs.kotlin.bom))
     implementation(libs.androidx.animation)
-    implementation(libs.androidx.annotation)
+    implementation(libs.androidx.animation.core)
     implementation(libs.androidx.compose.material.materialIconsExtended)
-    implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.material.icons.core)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.runtime.saveable)
