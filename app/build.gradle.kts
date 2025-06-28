@@ -243,7 +243,10 @@ dependencies {
     implementation(libs.play.services.oss.licenses)
     implementation(libs.reorderable)
 
+    releaseImplementation(libs.leakcanary.android.release)
+
     debugImplementation(libs.androidx.ui.tooling)
+    debugImplementation(libs.leakcanary.android)
     debugImplementation(libs.reorderable.android.debug)
 
     runtimeOnly(libs.androidx.appsearch)

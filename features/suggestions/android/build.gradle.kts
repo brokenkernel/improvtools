@@ -44,6 +44,8 @@ dependencies {
     implementation(enforcedPlatform(libs.androidx.compose.bom))
     implementation(enforcedPlatform(libs.kotlin.bom))
 
+    implementation(libs.androidx.material3)
+
     testImplementation(libs.junit)
 
     androidTestImplementation(libs.androidx.junit)
