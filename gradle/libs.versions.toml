@@ -6,6 +6,7 @@ agp = "8.11.0"
 aicore = "0.0.1-exp02"
 androidDocumentationPlugin = "2.0.0"
 androidXdatastore = "1.2.0-alpha02"
+androidxFoundation = "1.8.3"
 androidbrowserhelper = "2.6.2"
 annotation = "1.9.1"
 appsearch = "1.1.0-rc01"
@@ -115,7 +116,7 @@ androidx-datastore = { module = "androidx.datastore:datastore", version.ref = "a
 androidx-datastore-core = { module = "androidx.datastore:datastore-core", version.ref = "androidXdatastore" }
 androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espressoCore" }
 androidx-espresso-device = { module = "androidx.test.espresso:espresso-device", version.ref = "espressoDevice" }
-androidx-foundation = { module = "androidx.compose.foundation:foundation" }
+androidx-foundation = { module = "androidx.compose.foundation:foundation", version.ref="androidxFoundation" }
 androidx-foundation-layout = { module = "androidx.compose.foundation:foundation-layout" }
 androidx-glance-appwidget = { module = "androidx.glance:glance-appwidget", version.ref = "glanceAppwidget" }
 androidx-glance-material3 = { module = "androidx.glance:glance-material3", version.ref = "glanceAppwidget" }
