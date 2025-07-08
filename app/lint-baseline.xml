@@ -2,61 +2,6 @@
 <issues format="6" by="lint 8.11.0" type="baseline" client="gradle" dependencies="true" name="AGP (8.11.0)" variant="all" version="8.11.0">
 
     <issue
-        id="GradleDependency"
-        message="A newer version of androidx.test:runner than 1.7.0-alpha03 is available: 1.7.0-beta01"
-        errorLine1="runner = &quot;1.7.0-alpha03&quot;"
-        errorLine2="         ~~~~~~~~~~~~~~~">
-        <location
-            file="../gradle/libs.versions.toml"
-            line="75"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="GradleDependency"
-        message="A newer version of androidx.compose.runtime:runtime than 1.9.0-beta01 is available: 1.9.0-beta02"
-        errorLine1="runtime = &quot;1.9.0-beta01&quot;"
-        errorLine2="          ~~~~~~~~~~~~~~">
-        <location
-            file="../gradle/libs.versions.toml"
-            line="76"
-            column="11"/>
-    </issue>
-
-    <issue
-        id="GradleDependency"
-        message="A newer version of androidx.compose.runtime:runtime-saveable than 1.9.0-beta01 is available: 1.9.0-beta02"
-        errorLine1="runtime = &quot;1.9.0-beta01&quot;"
-        errorLine2="          ~~~~~~~~~~~~~~">
-        <location
-            file="../gradle/libs.versions.toml"
-            line="76"
-            column="11"/>
-    </issue>
-
-    <issue
-        id="GradleDependency"
-        message="A newer version of androidx.compose.ui:ui-tooling-preview than 1.9.0-beta01 is available: 1.9.0-beta02"
-        errorLine1="uiToolingPreview = &quot;1.9.0-beta01&quot;"
-        errorLine2="                   ~~~~~~~~~~~~~~">
-        <location
-            file="../gradle/libs.versions.toml"
-            line="82"
-            column="20"/>
-    </issue>
-
-    <issue
-        id="GradleDependency"
-        message="A newer version of androidx.window:window than 1.5.0-alpha02 is available: 1.5.0-beta01"
-        errorLine1="window = &quot;1.5.0-alpha02&quot;"
-        errorLine2="         ~~~~~~~~~~~~~~~">
-        <location
-            file="../gradle/libs.versions.toml"
-            line="86"
-            column="10"/>
-    </issue>
-
-    <issue
         id="UnusedResources"
         message="The resource `R.raw.audience_suggestion_datum` appears to be unused">
         <location
