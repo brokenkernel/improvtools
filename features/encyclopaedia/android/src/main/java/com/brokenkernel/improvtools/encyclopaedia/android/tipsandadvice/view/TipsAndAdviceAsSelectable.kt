@@ -1,8 +1,8 @@
+package com.brokenkernel.improvtools.encyclopaedia.android.tipsandadvice.view
+
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.brokenkernel.improvtools.encyclopaedia.android.tipsandadvice.model.TipsAndAdviceViewModeUI
-import com.brokenkernel.improvtools.encyclopaedia.android.tipsandadvice.view.TipsAndAdviceScreenAsList
-import com.brokenkernel.improvtools.encyclopaedia.android.tipsandadvice.view.TipsAndAdviceScreenAsSwipable
 import com.brokenkernel.improvtools.encyclopaedia.data.tipsandadvice.TipsAndAdviceUIState
 
 @Composable

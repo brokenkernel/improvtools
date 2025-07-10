@@ -1,6 +1,6 @@
 package com.brokenkernel.improvtools.encyclopaedia.presentation.view
 
-import TipsAndAdviceAsSelectable
+import com.brokenkernel.improvtools.encyclopaedia.android.tipsandadvice.view.TipsAndAdviceAsSelectable
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
