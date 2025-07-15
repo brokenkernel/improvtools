@@ -2,28 +2,6 @@
 <issues format="6" by="lint 8.11.1" type="baseline" client="gradle" dependencies="true" name="AGP (8.11.1)" variant="all" version="8.11.1">
 
     <issue
-        id="GradleDependency"
-        message="A newer version of androidx.test:monitor than 1.8.0-beta01 is available: 1.8.0-rc01"
-        errorLine1="monitor = &quot;1.8.0-beta01&quot;"
-        errorLine2="          ~~~~~~~~~~~~~~">
-        <location
-            file="../gradle/libs.versions.toml"
-            line="62"
-            column="11"/>
-    </issue>
-
-    <issue
-        id="GradleDependency"
-        message="A newer version of com.google.android.gms:play-services-oss-licenses than 17.2.0 is available: 17.2.1"
-        errorLine1="playServicesOssLicenses = &quot;17.2.0&quot;"
-        errorLine2="                          ~~~~~~~~">
-        <location
-            file="../gradle/libs.versions.toml"
-            line="68"
-            column="27"/>
-    </issue>
-
-    <issue
         id="UnusedResources"
         message="The resource `R.raw.audience_suggestion_datum` appears to be unused">
         <location
