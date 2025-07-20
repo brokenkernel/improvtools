@@ -64,7 +64,6 @@ navigationCommon = "2.9.2"
 navigationCompose = "2.9.2"
 navigationRuntimeVersion = "2.9.2"
 navigationTesting = "2.9.2"
-playServicesInstantapps = "18.1.0"
 playServicesOssLicenses = "17.2.1"
 profileinstaller = "1.4.1"
 protobuf = "0.9.5"
@@ -228,7 +227,6 @@ mathjax-plugin = { module = "org.jetbrains.dokka:mathjax-plugin", version.ref = 
 mikepenz-aboutlibraries-compose-core = { module = "com.mikepenz:aboutlibraries-compose-core", version.ref = "aboutLibraries" }
 navigation-runtime = { module = "androidx.navigation:navigation-runtime", version.ref = "navigationRuntimeVersion" }
 net-engawapg-lib-zoomable = { module = "net.engawapg.lib:zoomable", version.ref = "zoomable" }
-play-services-instantapps = { module = "com.google.android.gms:play-services-instantapps", version.ref = "playServicesInstantapps" }
 play-services-oss-licenses = { module = "com.google.android.gms:play-services-oss-licenses", version.ref = "playServicesOssLicenses" }
 reorderable = { module = "sh.calvin.reorderable:reorderable", version.ref = "reorderable" }
 reorderable-android-debug = { module = "sh.calvin.reorderable:reorderable-android-debug", version.ref = "reorderable" }

@@ -239,7 +239,6 @@ dependencies {
     implementation(libs.kotlinx.serialization.hocon)
     implementation(libs.mikepenz.aboutlibraries.compose.core)
     implementation(libs.navigation.runtime)
-    implementation(libs.play.services.instantapps)
     implementation(libs.play.services.oss.licenses)
     implementation(libs.reorderable)
 
