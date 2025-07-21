@@ -2,6 +2,39 @@
 <issues format="6" by="lint 8.11.1" type="baseline" client="gradle" dependencies="true" name="AGP (8.11.1)" variant="all" version="8.11.1">
 
     <issue
+        id="GradleDependency"
+        message="A newer version of com.google.firebase:firebase-bom than 33.16.0 is available: 34.0.0"
+        errorLine1="firebaseBom = &quot;33.16.0&quot;"
+        errorLine2="              ~~~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="30"
+            column="15"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of com.google.firebase.crashlytics than 3.0.4 is available: 3.0.5"
+        errorLine1="firebaseCrashlyticsPlugin = &quot;3.0.4&quot;"
+        errorLine2="                            ~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="31"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of com.google.firebase.firebase-perf than 1.4.2 is available: 2.0.0"
+        errorLine1="firebasePerfPlugin = &quot;1.4.2&quot;"
+        errorLine2="                     ~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="32"
+            column="22"/>
+    </issue>
+
+    <issue
         id="IconLocation"
         message="Found bitmap drawable `res/drawable/general_emotion_wheel.webp` in densityless folder">
         <location
