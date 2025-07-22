@@ -79,7 +79,7 @@ public class CommonKotlinPlugin : Plugin<Project> {
                 {
                     android.set(true)
                     coloredOutput.set(true)
-                    version.set("1.6.0")
+                    version.set("1.7.1")
                 },
             )
 
