@@ -99,7 +99,7 @@ public class CommonKotlinPlugin : Plugin<Project> {
                 },
             )
 
-            tasks.withType<KotlinCompile> {
+            tasks.withType<KotlinCompile>().configureEach {
                 version = libs.versions.kotlin.get()
                 compilerOptions {
                     languageVersion.set(org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_2_2)
@@ -121,7 +121,7 @@ public class CommonKotlinPlugin : Plugin<Project> {
 
 private fun isStable(version: String): Boolean {
     val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { version.uppercase().contains(it) }
-    val regex = "^[0-9,.v-]+(-r)?$".toRegex()
+    val regex = "^[0-9,.v-]+(?:-r)?$".toRegex()
     val isStable = stableKeyword || regex.matches(version)
     return isStable
 }
