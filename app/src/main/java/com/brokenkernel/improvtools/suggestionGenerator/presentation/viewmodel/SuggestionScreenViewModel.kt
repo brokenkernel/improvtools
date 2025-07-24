@@ -30,7 +30,7 @@ internal class SuggestionScreenViewModel @Inject constructor(
         suggestionDatumRepository.getIdeaCategories().toMutableStateList()
 
     private val _categoryDatumToSuggestion: MutableMap<IdeaCategoryODS, MutableStateFlow<IdeaUIState>> =
-        HashMap<IdeaCategoryODS, MutableStateFlow<IdeaUIState>>()
+        HashMap()
     val categoryDatumToSuggestion: Map<IdeaCategoryODS, StateFlow<IdeaUIState>>
 
     init {

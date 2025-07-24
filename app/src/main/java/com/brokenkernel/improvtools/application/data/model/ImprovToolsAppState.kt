@@ -37,7 +37,7 @@ internal class ImprovToolsAppState(
     // I should, instead, be continuously passing `onDismiss callbacks or some such. I'll try that in the future
     var extraMenuExpandedState: Boolean by mutableStateOf(false)
 
-    private val _bottomSheetContent: MutableStateFlow<BottomSheetContent?> = MutableStateFlow<BottomSheetContent?>(null)
+    private val _bottomSheetContent: MutableStateFlow<BottomSheetContent?> = MutableStateFlow(null)
     var bottomSheetContent: StateFlow<BottomSheetContent?> = _bottomSheetContent.asStateFlow()
 
     @UiThread

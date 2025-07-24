@@ -163,7 +163,7 @@ internal inline fun <I, reified X : Enum<X>> shouldShowDueToTag(
     itemMatchesTag: (I, X) -> Boolean,
     curItem: I,
 ): Boolean {
-    return isChipsChecked.all { it == false } ||
+    return isChipsChecked.all { !it } ||
         enumEntries<X>()
             .filter { tag -> itemMatchesTag(curItem, tag) }
             .fastAny { tag ->

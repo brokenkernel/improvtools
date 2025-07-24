@@ -190,15 +190,15 @@ internal val GamesDatum: Collection<GamesDataItem> = listOf(
     ),
     GamesDataItem(
         gameName = "Square Breathing",
-        topic = com.brokenkernel.improvtools.encyclopaedia.data.GamesDatumTopic.EXERCISE,
+        topic = GamesDatumTopic.EXERCISE,
         tags = setOf(GamesDatumTag.BREATH),
     ),
     GamesDataItem(
         gameName = "Get The Stick",
-        topic = com.brokenkernel.improvtools.encyclopaedia.data.GamesDatumTopic.EXERCISE,
+        topic = GamesDatumTopic.EXERCISE,
     ),
     GamesDataItem(
         gameName = "Why are you late? / The boss",
-        topic = com.brokenkernel.improvtools.encyclopaedia.data.GamesDatumTopic.EXERCISE,
+        topic = GamesDatumTopic.EXERCISE,
     ),
 )

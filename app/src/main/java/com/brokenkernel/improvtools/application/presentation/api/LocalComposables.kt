@@ -9,11 +9,11 @@ import androidx.compose.runtime.compositionLocalOf
 internal typealias BottomSheetContent = @Composable (ColumnScope.() -> Unit)
 
 internal val LocalSnackbarHostState: ProvidableCompositionLocal<SnackbarHostState> =
-    compositionLocalOf<SnackbarHostState> {
+    compositionLocalOf {
         error("No Snackbar Host State")
     }
 
 internal val LocalBottomSheetContentManager: ProvidableCompositionLocal<(BottomSheetContent) -> Unit> =
-    compositionLocalOf<(BottomSheetContent) -> Unit> {
+    compositionLocalOf {
         error("No Snackbar Host State")
     }
