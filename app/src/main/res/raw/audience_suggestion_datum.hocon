@@ -483,7 +483,7 @@
         {"idea": "Shenmo"},
         {"idea": "Sitcom "},
         {"idea": "Slasher"},
-        {  "idea": "Space Opera",
+        {"idea": "Space Opera",
           "explanation": "A group of people on a ship performing a mission and encounters a world outside of their own experience."
         },
         {"idea": "Spaghetti Western"},
@@ -555,7 +555,9 @@
       "title": "Name",
       "ideas": [
         {"idea": "Sara"},
+        {"idea": "Betty"},
         {"idea": "Bob"},
+        {"idea": "Peter"},
       ]
     },
     {
@@ -573,13 +575,21 @@
         "title": "Tongue Twister"
         "ideas": [
           {"idea": "Peter Piper picked a peck of pickled peppers A peck of pickled peppers Peter Piper picked If Peter Piper picked a peck of pickled peppers Where’s the peck of pickled peppers Peter Piper picked?"},
-          {"idea": "She sells seashells by the seashore, The seashells she sells, are seashells I’m sure."},
+          {
+            "idea": "Sally sells seashells by the seashore, The seashells she sells, are seashells I’m sure.",
+            "explanation": "digraphs of sh and ch",
+          },
           {"idea": "How much wood would a woodchuck chuck if a woodchuck could chuck wood? He would chuck, he would, as much as he could, and chuck as much wood as a woodchuck would if a woodchuck could chuck wood."},
           {"idea": "Which wristwatch is a Swiss wristwatch? Which wristwatch is an Irish wristwatch?"},
           {"idea": "How can a clam cram in a clean cream can?"},
           {"idea": "The thirty-three thieves thought that they thrilled the throne throughout Thursday."},
           {"idea": "As one black bug, bled blue, black blood. The other black bug bled blue."},
-        ]
+          {"idea": "The thirty-three thieves thought that they thrilled the throne throughout Thursday."},
+          {"idea": "Fuzzy Wuzzy was a bear. A Fuzzy bear was Wuzzy. Fuzzy Wuzzy had no hair. Fuzzy Wuzzy wasn’t very fuzzy, was he?"},
+          {"idea": "If you must cross a course cross cow across a crowded cow crossing, cross the cross coarse cow across the crowded cow crossing carefully."},
+          {"idea": "Betty bought a bit of butter.\n But the bit of butter Betty bought was bitter.\nIf I put it in my batter, it will make my batter bitter\nBut a bit of better butter will make my batter better\nSo, Betty bought a better bit of butter.",},
+          {"idea": "To sit in solemn silence in a dull, dark dock,\nIn a pestilential prison, with a life-long lock,\nAwaiting the sensation of a short, sharp shock,\nFrom a cheap and chippy chopper on a big black block!"},
+      ]
     }
   ]
 }
