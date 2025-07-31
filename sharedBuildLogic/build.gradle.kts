@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmDefaultMode
 import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 
 plugins {
-    `kotlin-dsl` version "6.1.2"
+    `kotlin-dsl` version "6.2.0"
     `java-gradle-plugin`
     alias(libs.plugins.sortDependencies)
     alias(libs.plugins.ktlint)
