@@ -19,14 +19,6 @@ public fun OneWayDismissableContent(
     content: @Composable (() -> Unit) = {},
 ) {
     val contentSTDState = rememberSwipeToDismissBoxState(
-        confirmValueChange = { newValue ->
-            if (newValue == SwipeToDismissBoxValue.EndToStart) {
-                onRemove()
-                true
-            } else {
-                false
-            }
-        },
         positionalThreshold = {
             it * .75f
         },
@@ -53,6 +45,9 @@ public fun OneWayDismissableContent(
         enableDismissFromEndToStart = true,
         gesturesEnabled = true,
         modifier = modifier,
+        onDismiss = {
+            onRemove()
+        },
     ) {
         content()
     }

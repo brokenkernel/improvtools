@@ -3,17 +3,6 @@
 
     <issue
         id="GradleDependency"
-        message="A newer version of androidx.compose:compose-bom-beta than 2025.07.00 is available: 2025.07.01"
-        errorLine1="composeBom = &quot;2025.07.00&quot;"
-        errorLine2="             ~~~~~~~~~~~~">
-        <location
-            file="../gradle/libs.versions.toml"
-            line="18"
-            column="14"/>
-    </issue>
-
-    <issue
-        id="GradleDependency"
         message="A newer version of androidx.compose.ui:ui-geometry than 1.9.0-beta03 is available: 1.9.0-rc01"
         errorLine1="composeUI = &quot;1.9.0-beta03&quot;"
         errorLine2="            ~~~~~~~~~~~~~~">
@@ -98,17 +87,6 @@
             file="../gradle/libs.versions.toml"
             line="77"
             column="11"/>
-    </issue>
-
-    <issue
-        id="GradleDependency"
-        message="A newer version of androidx.compose.ui:ui-tooling-preview than 1.9.0-beta03 is available: 1.9.0-rc01"
-        errorLine1="uiToolingPreview = &quot;1.9.0-beta03&quot;"
-        errorLine2="                   ~~~~~~~~~~~~~~">
-        <location
-            file="../gradle/libs.versions.toml"
-            line="83"
-            column="20"/>
     </issue>
 
     <issue
