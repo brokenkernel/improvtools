@@ -200,6 +200,7 @@ dependencies {
     implementation(libs.androidx.datastore.core)
     implementation(libs.androidx.foundation)
     implementation(libs.androidx.foundation.layout)
+    implementation(libs.androidx.hilt.lifecycle.viewmodel.compose)
     //    implementation(libs.androidx.glance.appwidget)
     //    implementation(libs.androidx.glance.material3)
     implementation(libs.androidx.hilt.navigation.compose)
