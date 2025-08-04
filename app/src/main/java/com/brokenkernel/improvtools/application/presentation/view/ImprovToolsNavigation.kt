@@ -42,7 +42,7 @@ private fun NavigableScreenNavigationDrawerItem(
         label = { Text(stringResource(screen.titleResource)) },
         icon = {
             Icon(
-                screen.icon,
+                screen.icon(),
                 contentDescription = stringResource(screen.contentDescription),
             )
         },
@@ -150,6 +150,11 @@ internal fun ImprovToolsNavigationDrawer(
                     NavigableScreenNavigationDrawerItem(
                         improvToolsAppState,
                         NavigableScreens.TipsAndAdviceScreen,
+                        ::closeNavMenu,
+                    )
+                    NavigableScreenNavigationDrawerItem(
+                        improvToolsAppState,
+                        NavigableScreens.TongueTwisterScreen,
                         ::closeNavMenu,
                     )
 

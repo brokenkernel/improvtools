@@ -7,6 +7,7 @@ import com.ramcosta.composedestinations.spec.DestinationStyle
 import com.ramcosta.composedestinations.wrapper.DestinationWrapper
 import kotlin.reflect.KClass
 
+// TODO: move to some common infra module like 'components' except for IT specific things.
 @MustBeDocumented
 @Repeatable
 @Destination<Nothing>(

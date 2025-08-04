@@ -185,6 +185,7 @@ dependencies {
     // TODO: remove the `:data` entry of suggestions
     implementation(project(":features:suggestions:data"))
     implementation(project(":features:timer"))
+    implementation(project(":features:tonguetwister"))
     implementation(libs.aboutlibraries.compose.m3)
     implementation(libs.aboutlibraries.core)
     implementation(libs.accompanist.permissions)

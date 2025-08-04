@@ -98,4 +98,6 @@
   <string name="timer_haptics_mode">Timer Haptics Mode</string>
   <string name="timer_settings_header">Timer</string>
   <string name="stop_watch">Stop Watch</string>
+    <string name="tongue_twisters">Tongue Twisters</string>
+  <string name="go_to_tongue_twisters">Go To Tongue Twisters</string>
 </resources>

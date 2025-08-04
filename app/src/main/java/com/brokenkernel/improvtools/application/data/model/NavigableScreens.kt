@@ -1,9 +1,11 @@
 package com.brokenkernel.improvtools.application.data.model
 
+import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Book
 import androidx.compose.material.icons.filled.Copyright
+import androidx.compose.material.icons.filled.DeviceUnknown
 import androidx.compose.material.icons.filled.PrivacyTip
 import androidx.compose.material.icons.outlined.Book
 import androidx.compose.material.icons.outlined.EmojiEmotions
@@ -16,6 +18,7 @@ import androidx.compose.material.icons.outlined.Timer
 import androidx.compose.material.icons.outlined.TipsAndUpdates
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.vectorResource
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.encyclopaedia.presentation.view.TipsAndAdviceTabMenu
 import com.brokenkernel.improvtools.settings.presentation.view.SuggestionsTabMenu
@@ -32,6 +35,8 @@ import com.ramcosta.composedestinations.generated.destinations.ThesaurusTabAllIt
 import com.ramcosta.composedestinations.generated.destinations.ThesaurusTabSingleWordDestination
 import com.ramcosta.composedestinations.generated.destinations.TimerTabDestination
 import com.ramcosta.composedestinations.generated.destinations.TipsAndAdviceTabDestination
+import com.ramcosta.composedestinations.generated.destinations.TongueTwisterTabDestination
+import com.ramcosta.composedestinations.spec.Direction
 import com.ramcosta.composedestinations.spec.DirectionDestinationSpec
 import com.ramcosta.composedestinations.spec.TypedDestinationSpec
 
@@ -42,14 +47,16 @@ import com.ramcosta.composedestinations.spec.TypedDestinationSpec
 internal enum class NavigableScreens(
     @param:StringRes @field:StringRes internal val titleResource: Int,
     @param:StringRes @field:StringRes internal val contentDescription: Int,
-    internal val icon: ImageVector,
-    internal val matchingRoute: DirectionDestinationSpec,
-    val extraMenu: (@Composable (ImprovToolsAppState) -> Unit)? = null,
+    // there must be a better way to handle what is effectively a union type ...
+    private val iconVector: ImageVector? = null,
+    @param:DrawableRes @field:DrawableRes private val iconDrawable: Int? = null,
+    internal val matchingRoute: Direction,
+    val extraMenu: @Composable ((ImprovToolsAppState) -> Unit)? = null,
 ) {
     SuggestionGeneratorScreen(
         titleResource = R.string.suggestions_activity_title,
         contentDescription = R.string.go_to_suggestion_generator,
-        icon = Icons.Outlined.Lightbulb,
+        iconVector = Icons.Outlined.Lightbulb,
         matchingRoute = SuggestionsTabDestination,
         extraMenu = { improvToolsAppState ->
             SuggestionsTabMenu(
@@ -65,7 +72,7 @@ internal enum class NavigableScreens(
     SettingsScreen(
         titleResource = R.string.settings_activity_title,
         contentDescription = R.string.go_to_settings_screen,
-        icon = Icons.Outlined.Settings,
+        iconVector = Icons.Outlined.Settings,
         matchingRoute = SettingsTabDestination,
 
     ),
@@ -73,7 +80,7 @@ internal enum class NavigableScreens(
     TimerScreen(
         titleResource = R.string.timer_activity_title,
         contentDescription = R.string.go_to_timer_screen,
-        icon = Icons.Outlined.Timer,
+        iconVector = Icons.Outlined.Timer,
         matchingRoute = TimerTabDestination,
 
     ),
@@ -81,7 +88,7 @@ internal enum class NavigableScreens(
     AboutScreen(
         titleResource = R.string.navigation_help_and_feedback,
         contentDescription = R.string.go_to_help_and_feedback_screen,
-        icon = Icons.Outlined.Info,
+        iconVector = Icons.Outlined.Info,
         matchingRoute = AboutTabDestination,
 
     ),
@@ -89,7 +96,7 @@ internal enum class NavigableScreens(
     TipsAndAdviceScreen(
         titleResource = R.string.navigation_tips_and_advice,
         contentDescription = R.string.go_to_tips_and_advice_screen,
-        icon = Icons.Outlined.TipsAndUpdates,
+        iconVector = Icons.Outlined.TipsAndUpdates,
         matchingRoute = TipsAndAdviceTabDestination,
         extraMenu = { improvToolsAppState ->
             TipsAndAdviceTabMenu(
@@ -104,7 +111,7 @@ internal enum class NavigableScreens(
     GamesPageScreen(
         titleResource = R.string.navigation_games,
         contentDescription = R.string.go_to_games_screen,
-        icon = Icons.Outlined.Games,
+        iconVector = Icons.Outlined.Games,
         matchingRoute = GamesTabDestination,
 
     ),
@@ -112,7 +119,7 @@ internal enum class NavigableScreens(
     PeoplePageScreen(
         titleResource = R.string.navigation_people,
         contentDescription = R.string.go_to_navigation_people_screen,
-        icon = Icons.Outlined.People,
+        iconVector = Icons.Outlined.People,
         matchingRoute = PeopleTabDestination,
 
     ),
@@ -121,7 +128,7 @@ internal enum class NavigableScreens(
         titleResource = R.string.navigation_glossary,
         contentDescription = R.string.go_to_glossary,
         // TODO: figure out better icon (esp since both Glossary and Thesaurus. Consider supporting Drawable)
-        icon = Icons.Filled.Book,
+        iconVector = Icons.Filled.Book,
         matchingRoute = GlossaryTabDestination,
 
     ),
@@ -129,7 +136,7 @@ internal enum class NavigableScreens(
     EmotionsPageScreen(
         titleResource = R.string.navigation_emotions_reference,
         contentDescription = R.string.go_to_emotions_reference_screen,
-        icon = Icons.Outlined.EmojiEmotions,
+        iconVector = Icons.Outlined.EmojiEmotions,
         matchingRoute = EmotionTabDestination,
 
     ),
@@ -137,25 +144,44 @@ internal enum class NavigableScreens(
     ThesaurusPageScreen(
         titleResource = R.string.navigation_thesaurus,
         contentDescription = R.string.go_to_thesaurus_screen,
-        icon = Icons.Outlined.Book,
+        iconVector = Icons.Outlined.Book,
         matchingRoute = ThesaurusTabAllItemsDestination,
     ),
 
     PrivacyScreen(
         titleResource = R.string.navigation_privacy_information,
         contentDescription = R.string.go_to_privacy_information,
-        icon = Icons.Filled.PrivacyTip,
+        iconVector = Icons.Filled.PrivacyTip,
         matchingRoute = PrivacyTabDestination,
     ),
 
     LibrariesScreen(
         titleResource = R.string.navigation_libraries_information,
         contentDescription = R.string.go_to_libraries_information,
-        icon = Icons.Default.Copyright,
+        iconVector = Icons.Default.Copyright,
         matchingRoute = LibrariesTabDestination,
     ),
 
+    TongueTwisterScreen(
+        titleResource = R.string.tongue_twisters,
+        contentDescription = R.string.go_to_tongue_twisters,
+        iconDrawable = R.drawable.ent_24px,
+        matchingRoute = TongueTwisterTabDestination,
+    ),
     ;
+
+    @Composable
+    internal fun icon(): ImageVector {
+        // there must be a better way to handle what is effectively a union type ...
+        if (iconVector != null) {
+            return iconVector
+        } else if (iconDrawable != null) {
+            return ImageVector.vectorResource(iconDrawable)
+        } else {
+            // meh, likely a better way to handle this
+            return Icons.Default.DeviceUnknown
+        }
+    }
 
     companion object {
         fun byRoute(route: TypedDestinationSpec<*>): NavigableScreens {

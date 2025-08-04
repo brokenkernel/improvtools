@@ -37,7 +37,8 @@ android {
 
 kotlin {
     compilerOptions {
-        allWarningsAsErrors = true
+        // compose destinations
+//        allWarningsAsErrors = true
     }
     explicitApi()
 }
@@ -65,6 +66,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.ui.unit)
     implementation(libs.androidx.ui.util)
+    implementation(libs.io.github.raamcosta.composeDestinations.core)
     implementation(libs.net.engawapg.lib.zoomable)
     implementation(libs.reorderable)
 
@@ -77,6 +79,8 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test)
     androidTestImplementation(libs.androidx.ui.test.junit4)
     androidTestImplementation(libs.junit)
+
+    ksp(libs.io.github.raamcosta.composeDestinations.ksp)
 
     ktlintRuleset(libs.ktlintCompose)
 
