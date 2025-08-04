@@ -51,7 +51,16 @@ internal val TongueTwisterDatum: ImmutableList<TongueTwisterItem> = persistentLi
             From a cheap and chippy chopper on a big black block!
         """.replace("\n", "<br>").trimMargin(),
     ),
-    TongueTwisterItem("The sixth sick sheik's sixth sheep's sick."),
+    TongueTwisterItem("""The sixth sick sheik's sixth sheep's sick."""),
+    TongueTwisterItem("""A proper cup of coffee in a copper coffee pot."""),
+    TongueTwisterItem("""The big black bug bit the big black bear and the big black bear bled blue black blood."""),
+    TongueTwisterItem(
+        """One smart fellow, he felt smart.
+        Two smart fellows, they felt smart.
+        Three smart fellows, they all felt smart."""
+            .replace("\n", "<br>")
+            .trimMargin(),
+    ),
     TongueTwisterItem(
         """I am a mother pheasant plucker.
            I pluck mother pheasants.
@@ -60,7 +69,11 @@ internal val TongueTwisterDatum: ImmutableList<TongueTwisterItem> = persistentLi
        """.replace("\n", "<br>").trimMargin(),
     ),
     TongueTwisterItem(
-        "Sally sells seashells by the seashore, The seashells she sells, are seashells I’m sure.",
+        """I'm not the fig plucker but the fig plucker's son and I'll pluck figs till the fig plucker comes.
+       """.replace("\n", "<br>").trimMargin(),
+    ),
+    TongueTwisterItem(
+        """Sally sells seashells by the seashore, The seashells she sells, are seashells I’m sure.""",
         "digraphs of sh and ch",
     ),
 )
