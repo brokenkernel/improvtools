@@ -48,6 +48,9 @@
         <intent>
             <action android:name="android.support.customtabs.action.CustomTabsService" />
         </intent>
+        <intent>
+            <action android:name="android.intent.action.TTS_SERVICE" />
+        </intent>
     </queries>
 
     <!-- TODO: SDK 36 android:intentMatchingFlags="enforceIntentFilter -->

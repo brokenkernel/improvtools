@@ -14,6 +14,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -27,27 +28,29 @@ import com.ramcosta.composedestinations.annotation.parameters.CodeGenVisibility
 import kotlinx.collections.immutable.ImmutableList
 
 @Composable
-internal fun SingleTongueTwisterCard(
+private fun SingleTongueTwisterCard(
     ttitem: TongueTwisterItem,
+    modifier: Modifier = Modifier,
 ) {
     Card(
-        modifier = Modifier
+        modifier = modifier
             .wrapContentHeight()
-            .fillMaxSize(),
+            .fillMaxSize()
     ) {
-        Row(
-            modifier = Modifier.padding(8.dp),
-        ) {
-            SelectionContainer {
-                HtmlText(ttitem.text)
-            }
-        }
-        val explanation = ttitem.explanation
-        if (explanation != null) {
-            val scrollState: ScrollState = rememberScrollState()
-            Row(modifier = Modifier.verticalScroll(scrollState)) {
+        Column(modifier = Modifier.padding(8.dp)) {
+            Row {
                 SelectionContainer {
-                    HtmlText(ttitem.explanation)
+                    HtmlText("<big>" + ttitem.text + "</big>")
+                }
+            }
+            val explanation = ttitem.explanation
+            if (explanation != null) {
+                HorizontalDivider()
+                val scrollState: ScrollState = rememberScrollState()
+                Row(modifier = Modifier.verticalScroll(scrollState)) {
+                    SelectionContainer {
+                        HtmlText(ttitem.explanation)
+                    }
                 }
             }
         }

@@ -23,7 +23,12 @@ internal val TongueTwisterDatum: ImmutableList<TongueTwisterItem> = persistentLi
     ),
     TongueTwisterItem("How can a clam cram in a clean cream can?"),
     TongueTwisterItem("The thirty-three thieves thought that they thrilled the throne throughout Thursday."),
-    TongueTwisterItem("As one black bug, bled blue, black blood. The other black bug bled blue."),
+    TongueTwisterItem(
+        """As one black bug, bled blue, black blood.
+        The other black bug bled blue."""
+            .replace("\n", "<br>")
+            .trimMargin(),
+    ),
     TongueTwisterItem("The thirty-three thieves thought that they thrilled the throne throughout Thursday."),
     TongueTwisterItem(
         "Fuzzy Wuzzy was a bear. A Fuzzy bear was Wuzzy. Fuzzy Wuzzy had no hair. Fuzzy Wuzzy wasn’t very fuzzy, was he?",
