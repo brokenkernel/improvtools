@@ -28,9 +28,8 @@ import androidx.compose.ui.unit.dp
 import com.brokenkernel.components.view.HtmlText
 import com.brokenkernel.improvtools.encyclopaedia.data.tipsandadvice.TipsAndAdviceUIState
 
-// TODO: make internal
 @Composable
-public fun TipsAndAdviceScreenAsSwipable(
+internal fun TipsAndAdviceScreenAsSwipable(
     uiState: TipsAndAdviceUIState,
     modifier: Modifier = Modifier,
 ) {
