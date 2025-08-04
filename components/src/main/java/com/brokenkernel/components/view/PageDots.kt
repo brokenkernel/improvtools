@@ -9,10 +9,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -29,9 +29,12 @@ public fun PageDots(
         horizontalArrangement = Arrangement.Center,
     ) {
         repeat(pageCount) { iteration ->
-            // TODO: handle themes.
-            // TODO: use a scrollbar component ?
-            val color = if (currentPage == iteration) Color.DarkGray else Color.LightGray
+            val color =
+                if (currentPage == iteration) {
+                    MaterialTheme.colorScheme.surfaceContainerHighest
+                } else {
+                    MaterialTheme.colorScheme.secondaryContainer
+                }
             Box(
                 modifier = Modifier
                     .padding(2.dp)
