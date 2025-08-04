@@ -4,8 +4,6 @@ import com.google.devtools.ksp.KspExperimental
 import org.jetbrains.dokka.gradle.engine.parameters.VisibilityModifier
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 
-// TODO: move of this out to shared-build-conventions
-
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
