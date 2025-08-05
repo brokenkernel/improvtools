@@ -30,6 +30,8 @@ internal val TongueTwisterDatum: ImmutableList<TongueTwisterItem> = persistentLi
             .trimMargin(),
     ),
     TongueTwisterItem("The thirty-three thieves thought that they thrilled the throne throughout Thursday."),
+    TongueTwisterItem("You know New York, you need New York. You know you need unique New York."),
+    TongueTwisterItem("The bloke on the bike's back brake block broke."),
     TongueTwisterItem(
         "Fuzzy Wuzzy was a bear. A Fuzzy bear was Wuzzy. Fuzzy Wuzzy had no hair. Fuzzy Wuzzy wasn’t very fuzzy, was he?",
     ),
