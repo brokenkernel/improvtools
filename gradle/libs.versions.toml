@@ -82,7 +82,7 @@ uiToolingPreview = "1.9.0-rc01"
 versionCatalogUpdate = "1.0.0"
 versions = "0.52.0"
 viewModelCompose = "2.9.2"
-window = "1.5.0-beta01"
+window = "1.4.0"
 workRuntimeKtx = "2.10.3"
 zoomable = "2.8.1"
 
