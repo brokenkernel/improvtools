@@ -3,7 +3,6 @@ aboutLibraries = "12.2.4"
 accompanistPermissions = "0.37.3"
 activityCompose = "1.10.1"
 agp = "8.12.0"
-aicore = "0.0.1-exp02"
 androidDocumentationPlugin = "2.0.0"
 androidXdatastore = "1.1.7"
 androidbrowserhelper = "2.6.2"
@@ -91,7 +90,6 @@ zoomable = "2.8.1"
 aboutlibraries-compose-m3 = { module = "com.mikepenz:aboutlibraries-compose-m3", version.ref = "aboutLibraries" }
 aboutlibraries-core = { module = "com.mikepenz:aboutlibraries-core", version.ref = "aboutLibraries" }
 accompanist-permissions = { module = "com.google.accompanist:accompanist-permissions", version.ref = "accompanistPermissions" }
-aicore = { module = "com.google.ai.edge.aicore:aicore", version.ref = "aicore" }
 android-documentation-plugin = { module = "org.jetbrains.dokka:android-documentation-plugin", version.ref = "androidDocumentationPlugin" }
 androidbrowserhelper = { module = "com.google.androidbrowserhelper:androidbrowserhelper", version.ref = "androidbrowserhelper" }
 androidx-activity = { module = "androidx.activity:activity", version.ref = "activityCompose" }
