@@ -35,7 +35,7 @@ private fun SingleTongueTwisterCard(
     Card(
         modifier = modifier
             .wrapContentHeight()
-            .fillMaxSize()
+            .fillMaxSize(),
     ) {
         Column(modifier = Modifier.padding(8.dp)) {
             Row {
