@@ -214,7 +214,6 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.navigation.common)
     implementation(libs.androidx.navigation.navigationCompose)
-    implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.runtime)
     implementation(libs.androidx.runtime.saveable)
     implementation(libs.androidx.ui)
@@ -293,9 +292,6 @@ dependencies {
 
     ksp(libs.androidx.appsearch.compiler)
     ksp(libs.androidx.lifecycle.compiler)
-    // If this project uses any Kotlin source, use Kotlin Symbol Processing (KSP)
-    // See Add the KSP plugin to your project
-    ksp(libs.androidx.room.compiler)
     ksp(libs.hilt.compiler)
     ksp(libs.io.github.raamcosta.composeDestinations.ksp)
 

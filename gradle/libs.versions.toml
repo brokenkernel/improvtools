@@ -70,7 +70,6 @@ protobuf = "0.9.5"
 protobufJavalite = "4.31.1"
 protoc = "4.31.1"
 reorderable = "2.5.1"
-room = "2.7.2"
 runner = "1.7.0"
 runtime = "1.9.0-rc01"
 screengrab = "2.1.1"
@@ -143,11 +142,6 @@ androidx-navigation-common = { module = "androidx.navigation:navigation-common",
 androidx-navigation-navigationCompose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 androidx-navigation-navigationTesting = { module = "androidx.navigation:navigation-testing", version.ref = "navigationTesting" }
 androidx-profileinstaller = { module = "androidx.profileinstaller:profileinstaller", version.ref = "profileinstaller" }
-androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
-androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
-androidx-room-paging = { module = "androidx.room:room-paging", version.ref = "room" }
-androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
-androidx-room-testing = { module = "androidx.room:room-testing", version.ref = "room" }
 androidx-runner = { module = "androidx.test:runner", version.ref = "runner" }
 androidx-runtime = { module = "androidx.compose.runtime:runtime", version.ref = "runtime" }
 androidx-runtime-saveable = { module = "androidx.compose.runtime:runtime-saveable", version.ref = "runtime" }
