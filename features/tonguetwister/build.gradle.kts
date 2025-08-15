@@ -44,6 +44,11 @@ kotlin {
 }
 
 dependencies {
+    api(libs.androidx.lifecycle.viewmodel.savedstate)
+    api(libs.androidx.material.icons.core)
+    api(libs.androidx.navigation.common)
+    api(libs.io.github.raamcosta.composeDestinations.core)
+
     debugApi(libs.reorderable.android.debug)
 
     implementation(enforcedPlatform(libs.androidx.compose.bom))
@@ -54,7 +59,6 @@ dependencies {
     implementation(libs.androidx.compose.material.materialIconsExtended)
     implementation(libs.androidx.foundation)
     implementation(libs.androidx.foundation.layout)
-    implementation(libs.androidx.material.icons.core)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.runtime)
     implementation(libs.androidx.runtime.saveable)
@@ -65,7 +69,6 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.ui.unit)
     implementation(libs.androidx.ui.util)
-    implementation(libs.io.github.raamcosta.composeDestinations.core)
     implementation(libs.kotlinx.collections.immutable.jvm)
     implementation(libs.net.engawapg.lib.zoomable)
     implementation(libs.reorderable)
