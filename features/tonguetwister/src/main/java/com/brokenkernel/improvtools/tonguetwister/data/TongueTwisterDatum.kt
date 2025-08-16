@@ -29,7 +29,6 @@ internal val TongueTwisterDatum: ImmutableList<TongueTwisterItem> = persistentLi
             .replace("\n", "<br>")
             .trimMargin(),
     ),
-    TongueTwisterItem("The thirty-three thieves thought that they thrilled the throne throughout Thursday."),
     TongueTwisterItem("You know New York, you need New York. You know you need unique New York."),
     TongueTwisterItem("The bloke on the bike's back brake block broke."),
     TongueTwisterItem(
@@ -77,5 +76,13 @@ internal val TongueTwisterDatum: ImmutableList<TongueTwisterItem> = persistentLi
     TongueTwisterItem(
         """Sally sells seashells by the seashore, The seashells she sells, are seashells I’m sure.""",
         "digraphs of sh and ch",
+    ),
+    TongueTwisterItem(
+        """The rain in Spain stays mainly in the plain.
+           In Hertford, Hereford, and Hampshire, hurricanes hardly ever happen.
+        """
+            .replace("\n", "<br>")
+            .trimMargin(),
+        "From My Fair Lady",
     ),
 )
