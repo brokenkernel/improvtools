@@ -47,6 +47,9 @@ dependencyAnalysis {
     }
     issues {
         all {
+            onAny {
+//                severity("fail")
+            }
             // This really should only be _directly used_ transitive deps. I do care about those
             // but this test includes e.g., guava which I _don't_ directly use and thus should be excluded.
 //            onUsedTransitiveDependencies {
