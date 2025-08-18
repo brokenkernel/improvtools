@@ -41,7 +41,7 @@ private fun SingleTongueTwisterCard(
         Column(modifier = Modifier.padding(8.dp)) {
             Row {
                 SelectionContainer {
-                    HtmlText("<big>" + ttitem.text + "</big>")
+                    HtmlText("<big>" + ttitem.asHtmlText() + "</big>")
                 }
             }
             val explanation = ttitem.explanation

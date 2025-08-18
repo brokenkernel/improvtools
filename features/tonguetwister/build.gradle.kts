@@ -55,6 +55,7 @@ dependencies {
     implementation(project(":components"))
     implementation(libs.androidx.foundation)
     implementation(libs.androidx.foundation.layout)
+    implementation(libs.androidx.glance.appwidget)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.runtime)
     implementation(libs.androidx.ui)
@@ -62,6 +63,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.ui.unit)
     implementation(libs.kotlinx.collections.immutable.jvm)
+
     debugImplementation(libs.ui.tooling)
 
     debugRuntimeOnly(libs.androidx.ui.test.manifest)
