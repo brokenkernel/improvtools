@@ -17,6 +17,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.brokenkernel.components.view.HtmlText
 import com.brokenkernel.components.view.PageDots
@@ -89,6 +90,16 @@ internal fun OuterTongueTwisterOutline(
 )
 @Composable
 internal fun TongueTwisterTab() {
+    // consider some way to save state for which item we're up to.
+    // same concern as TipsAndTricks...
+    OuterTongueTwisterOutline(
+        TongueTwisterDatum,
+    )
+}
+
+@Preview
+@Composable
+internal fun PreviewTongueTwisterTabPreview() {
     // consider some way to save state for which item we're up to.
     // same concern as TipsAndTricks...
     OuterTongueTwisterOutline(

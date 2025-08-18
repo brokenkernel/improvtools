@@ -76,6 +76,7 @@ slackLintChecks = "0.11.0"
 slf4jAndroid = "2.0.17-0"
 sortDependencies = "0.14"
 startupRuntime = "1.2.0"
+uiTooling = "1.9.0"
 uiToolingPreview = "1.9.0"
 versionCatalogUpdate = "1.0.0"
 versions = "0.52.0"
@@ -219,6 +220,7 @@ reorderable-android-debug = { module = "sh.calvin.reorderable:reorderable-androi
 slack-lint-checks = { module = "com.slack.lint:slack-lint-checks", version.ref = "slackLintChecks" }
 slf4j-android = { module = "uk.uuid.slf4j:slf4j-android", version.ref = "slf4jAndroid" }
 tools-fastlane-screengrab = { module = "tools.fastlane:screengrab", version.ref = "screengrab" }
+ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "uiTooling" }
 
 [bundles]
 # perf disabled because of

@@ -62,6 +62,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.ui.unit)
     implementation(libs.kotlinx.collections.immutable.jvm)
+    debugImplementation(libs.ui.tooling)
 
     debugRuntimeOnly(libs.androidx.ui.test.manifest)
 
@@ -69,8 +70,6 @@ dependencies {
 
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.monitor)
-    androidTestImplementation(libs.androidx.ui.test)
-    androidTestImplementation(libs.androidx.ui.test.junit4)
     androidTestImplementation(libs.junit)
 
     ksp(libs.io.github.raamcosta.composeDestinations.ksp)
