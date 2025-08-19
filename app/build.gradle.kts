@@ -180,6 +180,7 @@ dependencies {
     implementation(enforcedPlatform(libs.com.google.firebase.firebaseBom))
     implementation(enforcedPlatform(libs.kotlin.bom))
     implementation(project(":components"))
+    implementation(project(":coreinfra"))
     implementation(project(":features:encyclopaedia:android"))
     implementation(project(":features:encyclopaedia:data"))
     // TODO: remove the `:data` entry of suggestions
