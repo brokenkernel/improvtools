@@ -34,7 +34,7 @@ repos:
 #            ".markdownlint.jsonc",
 #          ]
 - repo: https://github.com/crate-ci/typos
-  rev: v1.33.1
+  rev: v1.35.5
   hooks:
     - id: typos
 
