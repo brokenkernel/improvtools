@@ -1,13 +1,13 @@
-package com.brokenkernel.improvtools.components.presentation.view
+package com.brokenkernel.components.view
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.brokenkernel.improvtools.components.presentation.viewmodel.LoadableScreenViewModel
+import com.brokenkernel.components.viewmodel.LoadableScreenViewModel
 
 @Composable
-fun LoadableScreen(
+public fun LoadableScreen(
     loader: () -> Unit,
     preloadedContent: @Composable () -> Unit,
     viewModel: LoadableScreenViewModel =

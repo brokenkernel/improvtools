@@ -1,4 +1,4 @@
-package com.brokenkernel.improvtools.components.presentation.viewmodel
+package com.brokenkernel.components.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -11,11 +11,11 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
 
-class LoadableScreenViewModel(private val loader: () -> Unit) :
+public class LoadableScreenViewModel(private val loader: () -> Unit) :
     ViewModel() {
 
     private val _isLoading = MutableStateFlow(false)
-    val isLoading: StateFlow<Boolean> = _isLoading
+    internal val isLoading: StateFlow<Boolean> = _isLoading
         .onStart {
             doLoad()
             emit(_isLoading.value)
@@ -26,15 +26,15 @@ class LoadableScreenViewModel(private val loader: () -> Unit) :
             initialValue = false,
         )
 
-    fun doLoad() {
+    internal fun doLoad() {
         _isLoading.value = true
         loader()
 
         _isLoading.value = false
     }
 
-    companion object {
-        fun Factory(loader: () -> Unit): ViewModelProvider.Factory {
+    public companion object {
+        public fun Factory(loader: () -> Unit): ViewModelProvider.Factory {
             return viewModelFactory {
                 initializer {
                     LoadableScreenViewModel(loader)
