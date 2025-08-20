@@ -93,7 +93,6 @@ android-documentation-plugin = { module = "org.jetbrains.dokka:android-documenta
 androidbrowserhelper = { module = "com.google.androidbrowserhelper:androidbrowserhelper", version.ref = "androidbrowserhelper" }
 androidx-activity = { module = "androidx.activity:activity", version.ref = "activityCompose" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
-androidx-activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "activityCompose" }
 androidx-animation = { module = "androidx.compose.animation:animation" }
 androidx-animation-core = { module = "androidx.compose.animation:animation-core" }
 androidx-annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
