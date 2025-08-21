@@ -57,7 +57,7 @@ jobs:
           cache-dependency-path: 'docs/package-lock.json'
 
       - name: Set up JDK (for dokka)
-        uses: actions/setup-java@v4.7.1
+        uses: actions/setup-java@v5
         with:
           java-version: '${{ steps.env.outputs.JVM_VERSION }}'
           distribution: 'adopt'
