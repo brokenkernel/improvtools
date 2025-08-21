@@ -29,7 +29,7 @@ jobs:
           echo "JVM_VERSION=${JVM_VERSION}" >> "${GITHUB_OUTPUT}"
 
       - name: Setup Java
-        uses: actions/setup-java@v4.7.1
+        uses: actions/setup-java@v5
         with:
           distribution: 'adopt'
           java-version: '${{ steps.env.outputs.JVM_VERSION }}'
