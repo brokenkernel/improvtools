@@ -1,3 +1,5 @@
+name: "Trufflehog Audit"
+
 on:
   push:
     branches:
