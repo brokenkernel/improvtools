@@ -1,5 +1,9 @@
 name: "Trufflehog Audit"
 
+permissions:
+  contents: read
+  pull-requests: read
+
 on:
   push:
     branches:
