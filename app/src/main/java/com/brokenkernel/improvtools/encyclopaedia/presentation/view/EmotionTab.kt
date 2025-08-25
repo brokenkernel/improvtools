@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.brokenkernel.improvtools.application.navigation.ImprovToolsDestination
 import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
+import com.brokenkernel.improvtools.coreinfra.preview.PreviewsImprovToolsAll
 import com.brokenkernel.improvtools.encyclopaedia.android.emotions.EmotionsTabInternal
 
 @ImprovToolsDestination<ImprovToolsNavigationGraph>
@@ -12,7 +13,7 @@ internal fun EmotionTab() {
     EmotionsTabInternal()
 }
 
-@Preview
+@PreviewsImprovToolsAll
 @Composable
 internal fun EmotionTabPreview() {
     EmotionTab()
