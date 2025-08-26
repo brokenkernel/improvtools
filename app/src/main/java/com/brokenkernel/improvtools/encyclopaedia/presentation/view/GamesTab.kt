@@ -141,8 +141,10 @@ internal fun GamesTab(
             supportingContent = {
                 Column {
                     if (isListItemInformationExpanded) {
-                        if (it.detailedInformation != null) {
-                            HtmlText(it.detailedInformation)
+                        // TODO: move into `detailedInformation` into if statement once this is part of proper module
+                        val detailedInformation = it.detailedInformation
+                        if (detailedInformation != null) {
+                            HtmlText(detailedInformation)
                         }
                         if (it.source != null) {
                             HtmlText("""<i><a href="${it.source}">source</a></i>""")

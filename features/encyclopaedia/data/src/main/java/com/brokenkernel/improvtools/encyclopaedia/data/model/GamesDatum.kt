@@ -7,7 +7,7 @@ import com.brokenkernel.improvtools.encyclopaedia.data.GamesDatumTopic
 
 // TODO: see also?
 
-internal val GamesDatum: Collection<GamesDataItem> = listOf(
+public val GamesDatum: Collection<GamesDataItem> = listOf(
     GamesDataItem(
         gameName = "Three Things",
         topic = GamesDatumTopic.GAME,
