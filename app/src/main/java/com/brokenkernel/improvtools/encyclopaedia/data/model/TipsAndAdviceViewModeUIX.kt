@@ -5,14 +5,14 @@ import com.brokenkernel.improvtools.encyclopaedia.android.tipsandadvice.model.Ti
 import com.brokenkernel.improvtools.encyclopaedia.android.tipsandadvice.model.TipsAndAdviceViewModeUI.LIST
 import com.brokenkernel.improvtools.encyclopaedia.android.tipsandadvice.model.TipsAndAdviceViewModeUI.SWIPEABLE
 
-fun internalEnumValuebyTipsAndAdviceViewModeUI(taaViewModeUI: TipsAndAdviceViewModeUI): UserSettings.TipsAndTricksViewMode {
+public fun internalEnumValuebyTipsAndAdviceViewModeUI(taaViewModeUI: TipsAndAdviceViewModeUI): UserSettings.TipsAndTricksViewMode {
     return when (taaViewModeUI) {
         SWIPEABLE -> UserSettings.TipsAndTricksViewMode.VIEW_MODE_SWIPE
         LIST -> UserSettings.TipsAndTricksViewMode.VIEW_MODE_LIST
     }
 }
 
-fun tipsAndAdviceViewModeUIbyInternalEnumValue(taaViewMode: UserSettings.TipsAndTricksViewMode): TipsAndAdviceViewModeUI {
+public fun tipsAndAdviceViewModeUIbyInternalEnumValue(taaViewMode: UserSettings.TipsAndTricksViewMode): TipsAndAdviceViewModeUI {
     return when (taaViewMode) {
         UserSettings.TipsAndTricksViewMode.VIEW_MODE_DEFAULT -> LIST
         UserSettings.TipsAndTricksViewMode.VIEW_MODE_LIST -> LIST
