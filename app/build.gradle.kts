@@ -280,8 +280,6 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test)
     androidTestImplementation(libs.androidx.ui.test.junit4)
     androidTestImplementation(libs.hamcrest)
-    androidTestImplementation(libs.hamcrest.core)
-    androidTestImplementation(libs.hamcrest.library)
     androidTestImplementation(libs.hilt.android.testing)
     androidTestImplementation(libs.junit)
     androidTestImplementation(libs.kotlinx.coroutines.core)

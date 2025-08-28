@@ -45,6 +45,7 @@ kotlin {
 
 dependencies {
     api(libs.androidx.compose.material.materialIconsExtended)
+    api(libs.androidx.glance.appwidget)
     api(libs.androidx.lifecycle.viewmodel.savedstate)
     api(libs.androidx.material.icons.core)
     api(libs.androidx.navigation.common)
@@ -55,7 +56,6 @@ dependencies {
     implementation(project(":components"))
     implementation(libs.androidx.foundation)
     implementation(libs.androidx.foundation.layout)
-    implementation(libs.androidx.glance.appwidget)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.runtime)
     implementation(libs.androidx.ui)
