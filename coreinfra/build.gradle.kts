@@ -43,30 +43,23 @@ kotlin {
 }
 
 dependencies {
+    api(libs.androidx.compose.material.materialIconsExtended)
     api(libs.androidx.foundation)
     api(libs.androidx.foundation.layout)
     api(libs.androidx.runtime)
     api(libs.kotlinx.collections.immutable.jvm)
 
-    debugApi(libs.reorderable.android.debug)
-
     implementation(enforcedPlatform(libs.androidx.compose.bom))
     implementation(enforcedPlatform(libs.kotlin.bom))
-    implementation(libs.androidx.animation)
-    implementation(libs.androidx.animation.core)
-    implementation(libs.androidx.compose.material.materialIconsExtended)
     implementation(libs.androidx.material.icons.core)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.runtime.saveable)
     implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.geometry)
-    implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.text)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.ui.unit)
     implementation(libs.androidx.ui.util)
-    implementation(libs.net.engawapg.lib.zoomable)
-    implementation(libs.reorderable)
+    implementation(libs.kotlinx.coroutines.core)
 
     debugRuntimeOnly(libs.androidx.ui.test.manifest)
 

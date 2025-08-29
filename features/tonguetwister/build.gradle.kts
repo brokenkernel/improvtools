@@ -56,6 +56,7 @@ dependencies {
     implementation(project(":components"))
     implementation(libs.androidx.foundation)
     implementation(libs.androidx.foundation.layout)
+    implementation(libs.androidx.glance)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.runtime)
     implementation(libs.androidx.ui)

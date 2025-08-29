@@ -55,7 +55,6 @@ dependencies {
     implementation(libs.androidx.glance)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.runtime)
-    implementation(libs.kotlinx.collections.immutable.jvm)
 
     debugImplementation(libs.ui.tooling)
 
