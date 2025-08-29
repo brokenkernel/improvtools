@@ -52,18 +52,13 @@ dependencies {
     implementation(enforcedPlatform(libs.kotlin.bom))
     implementation(project(":components"))
     implementation(project(":coreinfra"))
-    implementation(libs.androidx.foundation)
-    implementation(libs.androidx.foundation.layout)
-    implementation(libs.androidx.glance.appwidget)
+    implementation(libs.androidx.glance)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.runtime)
-    implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.graphics)
-    implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.ui.unit)
-    implementation(libs.kotlinx.collections.immutable.jvm)
 
     debugImplementation(libs.ui.tooling)
+
+    runtimeOnly(libs.androidx.glance.appwidget)
 
     debugRuntimeOnly(libs.androidx.ui.test.manifest)
 

@@ -58,7 +58,22 @@ internal val TongueTwisterDatum: ImmutableList<TongueTwisterItem> = persistentLi
             From a cheap and chippy chopper on a big black block!
         """.trimMargin(),
     ),
+    TongueTwisterItem("""If a dog chews shoes, whose shoes does he choose?"""),
+    TongueTwisterItem("""No need to light a night-light on a light night like tonight."""),
+    TongueTwisterItem("""Six sick hicks nick six slick bricks with picks and sticks."""),
+    TongueTwisterItem(
+        """Brisk brave brigadiers brandished broad bright blades, blunderbusses, and bludgeons—balancing them badly.""",
+    ),
     TongueTwisterItem("""The sixth sick sheik's sixth sheep's sick."""),
+    TongueTwisterItem(
+        """If practice makes perfect and perfect needs practice, I’m perfectly practised and practically perfect.""",
+    ),
+    TongueTwisterItem(
+        """If you must cross a course cross cow across a crowded cow crossing, cross the cross coarse cow across the crowded cow crossing carefully.""",
+    ),
+    TongueTwisterItem(
+        """I thought a thought. But the thought I thought wasn’t the thought I thought I thought. If the thought I thought I thought had been the thought I thought, I wouldn’t have thought I thought.""",
+    ),
     TongueTwisterItem("""A proper cup of coffee in a copper coffee pot."""),
     TongueTwisterItem("""The big black bug bit the big black bear and the big black bear bled blue black blood."""),
     TongueTwisterItem(

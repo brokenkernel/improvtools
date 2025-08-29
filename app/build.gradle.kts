@@ -59,7 +59,7 @@ android {
         applicationId = "com.brokenkernel.improvtools"
         minSdk = 26
         targetSdk = 36
-        versionCode = 223
+        versionCode = 227
         versionName = "0.0.$versionCode"
 
         testInstrumentationRunner = "com.brokenkernel.improvtools.infrastructure.ImprovToolsTestRunner"
@@ -203,8 +203,6 @@ dependencies {
     implementation(libs.androidx.foundation)
     implementation(libs.androidx.foundation.layout)
     implementation(libs.androidx.hilt.lifecycle.viewmodel.compose)
-    //    implementation(libs.androidx.glance.appwidget)
-    //    implementation(libs.androidx.glance.material3)
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.androidx.lifecycle.common)
     implementation(libs.androidx.lifecycle.runtime.compose)
