@@ -19,7 +19,7 @@ plugins {
     alias(libs.plugins.dokka)
     alias(libs.plugins.versions) apply false
     alias(libs.plugins.versionCatalogUpdate)
-    id("com.osacky.doctor") version "0.12.0"
+    id("com.osacky.doctor") version "0.12.1"
 
     kotlin("plugin.power-assert") version "2.2.10" apply false
     alias(libs.plugins.android.library) apply false
