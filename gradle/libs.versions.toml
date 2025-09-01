@@ -27,8 +27,12 @@ espressoCore = "3.7.0"
 espressoDevice = "1.1.0"
 extjwnl = "2.0.5"
 extjwnlDataWn31 = "1.2"
+firebaseAnalytics = "23.0.0"
 firebaseBom = "34.2.0"
+firebaseConfig = "23.0.0"
+firebaseCrashlytics = "20.0.1"
 firebaseCrashlyticsPlugin = "3.0.6"
+firebasePerf = "23.0.0"
 firebasePerfPlugin = "2.0.1"
 fragmentVersion = "1.8.9"
 glance = "1.1.1"
@@ -45,6 +49,7 @@ jetbrainsKotlinJvm = "2.2.10"
 junit = "4.13.2"
 junitVersion = "1.3.0"
 kotlin = "2.2.10"
+kotlinTest = "2.2.10"
 kotlinxCollectionsImmutableJvm = "0.4.0"
 kotlinxCoroutinesCore = "1.10.2"
 kotlinxSerialization = "1.9.0"
@@ -162,17 +167,17 @@ androidx-window = { module = "androidx.window:window", version.ref = "window" }
 androidx-work-multiprocess = { module = "androidx.work:work-multiprocess", version.ref = "workRuntimeKtx" }
 androidx-work-runtime-ktx = { module = "androidx.work:work-runtime-ktx", version.ref = "workRuntimeKtx" }
 androidx-work-testing = { module = "androidx.work:work-testing", version.ref = "workRuntimeKtx" }
-com-google-firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
-com-google-firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics" }
+com-google-firebase-analytics = { module = "com.google.firebase:firebase-analytics", version.ref = "firebaseAnalytics" }
+com-google-firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics", version.ref = "firebaseCrashlytics" }
 com-google-firebase-firebaseBom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
-com-google-firebase-firebasePerf = { module = "com.google.firebase:firebase-perf" }
+com-google-firebase-firebasePerf = { module = "com.google.firebase:firebase-perf", version.ref = "firebasePerf" }
 com-google-protobuf-protobufJavalite = { module = "com.google.protobuf:protobuf-javalite", version.ref = "protobufJavalite" }
 com-google-protobuf-protoc = { module = "com.google.protobuf:protoc", version.ref = "protoc" }
 config = { module = "com.typesafe:config", version.ref = "config" }
 dagger-hilt-core = { module = "com.google.dagger:hilt-core", version.ref = "hilt" }
 extjwnl = { module = "net.sf.extjwnl:extjwnl", version.ref = "extjwnl" }
 extjwnl-data-wn31 = { module = "net.sf.extjwnl:extjwnl-data-wn31", version.ref = "extjwnlDataWn31" }
-firebase-config = { module = "com.google.firebase:firebase-config" }
+firebase-config = { module = "com.google.firebase:firebase-config", version.ref = "firebaseConfig" }
 fragment = { module = "androidx.fragment:fragment", version.ref = "fragmentVersion" }
 google-dagger = { module = "com.google.dagger:dagger", version.ref = "daggerVersion" }
 gradlePlugins-android = { module = "com.android.tools.build:gradle", version.ref = "agp" }
@@ -199,6 +204,7 @@ junit = { module = "junit:junit", version.ref = "junit" }
 kotlin-as1-java-plugin = { module = "org.jetbrains.dokka:kotlin-as-java-plugin", version.ref = "androidDocumentationPlugin" }
 kotlin-bom = { module = "org.jetbrains.kotlin:kotlin-bom", version.ref = "kotlin" }
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
+kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlinTest" }
 kotlinx-collections-immutable-jvm = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable-jvm", version.ref = "kotlinxCollectionsImmutableJvm" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCore" }
 kotlinx-serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version.ref = "kotlinxSerialization" }

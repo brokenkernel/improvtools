@@ -265,7 +265,7 @@ dependencies {
 
     androidTestRuntimeOnly(libs.leakcanary.android.instrumentation)
 
-    testImplementation(kotlin("test"))
+    testImplementation(libs.kotlin.test)
 
     androidTestImplementation(libs.androidx.core)
     androidTestImplementation(libs.androidx.datastore)
