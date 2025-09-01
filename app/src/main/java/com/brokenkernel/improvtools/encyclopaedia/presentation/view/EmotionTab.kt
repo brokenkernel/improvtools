@@ -1,7 +1,6 @@
 package com.brokenkernel.improvtools.encyclopaedia.presentation.view
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
 import com.brokenkernel.improvtools.application.navigation.ImprovToolsDestination
 import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
 import com.brokenkernel.improvtools.coreinfra.preview.PreviewsImprovToolsAll

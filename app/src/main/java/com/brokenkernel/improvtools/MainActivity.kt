@@ -15,10 +15,10 @@ private const val ShowTimerIntent: String = "com.brokenkernel.improvtools.intent
 private const val ShowEncyclopaediaIntent: String = "com.brokenkernel.improvtools.intents.ShowEncyclopaedia"
 
 // private const val ShowNotificationPreferencesIntent: String = "android.intent.action.NOTIFICATION_PREFERENCES"
-// TODO: NotficiationPreferences
+// TODO: NotificationPreferences
 
 // TODO features of relationships
-// power dynamics. Competitive, thearenative, enabled, scared, love, grudge, trusting suspicion
+// power dynamics. Competitive, therepative, enabled, scared, love, grudge, trusting suspicion
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
