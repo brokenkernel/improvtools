@@ -104,4 +104,7 @@ internal val TongueTwisterDatum: ImmutableList<TongueTwisterItem> = persistentLi
             .trimMargin(),
         "From My Fair Lady",
     ),
+    TongueTwisterItem(
+        """It was easier to know it than to explain why I know it. If you were asked to prove that two and two made four, you might find some difficulty, and yet you are quite sure of the fact.""",
+    ),
 )
