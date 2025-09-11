@@ -37,7 +37,8 @@ android {
 kotlin {
     explicitApi()
     compilerOptions {
-        allWarningsAsErrors = true
+//        false warnings  Assigned value is never read.
+//        allWarningsAsErrors = true
     }
 }
 

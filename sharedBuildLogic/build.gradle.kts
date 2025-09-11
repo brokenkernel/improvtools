@@ -13,7 +13,7 @@ plugins {
 group = "com.brokenkernel.improvtools.commonBuildLogic"
 
 kotlin {
-    version = "2.2.10"
+    version = "2.2.20"
     compilerOptions {
         languageVersion = KotlinVersion.KOTLIN_2_2
         apiVersion = KotlinVersion.KOTLIN_2_2

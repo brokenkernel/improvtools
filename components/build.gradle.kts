@@ -36,7 +36,8 @@ android {
 
 kotlin {
     compilerOptions {
-        allWarningsAsErrors = true
+        // false warning in compose for unused var
+//        allWarningsAsErrors = true
     }
     explicitApi()
 }
