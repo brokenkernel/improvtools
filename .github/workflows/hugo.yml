@@ -64,7 +64,7 @@ jobs:
           cache: 'gradle'
 
       - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v4
+        uses: gradle/actions/setup-gradle@v5
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3.0.0
