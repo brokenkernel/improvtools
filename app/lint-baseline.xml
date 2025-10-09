@@ -2,17 +2,6 @@
 <issues format="6" by="lint 8.13.0" type="baseline" client="gradle" dependencies="true" name="AGP (8.13.0)" variant="all" version="8.13.0">
 
     <issue
-        id="GradleDependency"
-        message="A newer version of com.google.devtools.ksp than 2.2.20-2.0.2 is available: 2.2.20-2.0.3"
-        errorLine1="ksp = &quot;2.2.20-2.0.2&quot;"
-        errorLine2="      ~~~~~~~~~~~~~~">
-        <location
-            file="../gradle/libs.versions.toml"
-            line="57"
-            column="7"/>
-    </issue>
-
-    <issue
         id="IconLocation"
         message="Found bitmap drawable `res/drawable/general_emotion_wheel.webp` in densityless folder">
         <location
