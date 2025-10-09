@@ -6,7 +6,7 @@ agp = "8.13.0"
 androidDocumentationPlugin = "2.0.0"
 androidXdatastore = "1.1.7"
 androidbrowserhelper = "2.6.2"
-androidxFoundation = "1.9.2"
+androidxFoundation = "1.9.3"
 annotation = "1.9.1"
 appcompat = "1.7.1"
 appsearch = "1.1.0"
@@ -14,9 +14,9 @@ appsearchCompiler = "1.1.0"
 appsearchLocalStorage = "1.1.0"
 browser = "1.9.0"
 collectionJvm = "1.5.0"
-composeBom = "2025.09.01"
+composeBom = "2025.10.00"
 composeDestinations = "2.2.0"
-composeUI = "1.9.2"
+composeUI = "1.9.3"
 config = "1.4.5"
 core = "1.7.0"
 coreKtx = "1.17.0"
@@ -75,14 +75,14 @@ protobufJavalite = "4.32.1"
 protoc = "4.32.1"
 reorderable = "3.0.0"
 runner = "1.7.0"
-runtime = "1.9.2"
+runtime = "1.9.3"
 screengrab = "2.1.1"
 slackLintChecks = "0.11.0"
 slf4jAndroid = "2.0.17-0"
 sortDependencies = "0.15"
 startupRuntime = "1.2.0"
-uiTooling = "1.9.2"
-uiToolingPreview = "1.9.2"
+uiTooling = "1.9.3"
+uiToolingPreview = "1.9.3"
 versionCatalogUpdate = "1.0.1"
 versions = "0.53.0"
 viewModelCompose = "2.9.4"
@@ -109,7 +109,7 @@ androidx-appsearch-platform-storage = { module = "androidx.appsearch:appsearch-p
 androidx-appsearch-play-services-storage = { module = "androidx.appsearch:appsearch-play-services-storage", version.ref = "appsearch" }
 androidx-browser = { module = "androidx.browser:browser", version.ref = "browser" }
 androidx-collection-jvm = { module = "androidx.collection:collection-jvm", version.ref = "collectionJvm" }
-androidx-compose-bom = { module = "androidx.compose:compose-bom-beta", version.ref = "composeBom" }
+androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
 androidx-compose-material-materialIconsExtended = { module = "androidx.compose.material:material-icons-extended", version.ref = "materialIconsExtended" }
 androidx-core = { module = "androidx.test:core", version.ref = "core" }
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
