@@ -2,6 +2,7 @@ import org.gradle.kotlin.dsl.dokkaPublications
 
 plugins {
     alias(libs.plugins.aboutLibraries)
+    alias(libs.plugins.aboutLibrariesAndroid)
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.android.lint) apply false
     alias(libs.plugins.dagger.hilt.android) apply false
