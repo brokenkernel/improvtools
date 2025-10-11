@@ -14,6 +14,7 @@ import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 
 plugins {
     alias(libs.plugins.aboutLibraries)
+    alias(libs.plugins.aboutLibrariesAndroid)
     alias(libs.plugins.android.application)
     alias(libs.plugins.dagger.hilt.android)
     alias(libs.plugins.firebaseCrashlyticsPlugin)
