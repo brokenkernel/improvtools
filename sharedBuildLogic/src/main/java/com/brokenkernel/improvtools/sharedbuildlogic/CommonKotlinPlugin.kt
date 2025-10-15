@@ -11,11 +11,11 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.plugins.JavaPluginExtension
 import org.gradle.kotlin.dsl.withType
+import org.jetbrains.dokka.gradle.DokkaExtension
 import org.jetbrains.dokka.gradle.DokkaPlugin
-import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
-import org.jetbrains.kotlin.gradle.dsl.JvmDefaultMode
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+//import org.jetbrains.kotlin.gradle.dsl.JvmDefaultMode
+//import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.jetbrains.kotlin.powerassert.gradle.PowerAssertGradleExtension
 import org.jetbrains.kotlin.powerassert.gradle.PowerAssertGradlePlugin
 import org.jlleitschuh.gradle.ktlint.KtlintExtension
@@ -32,7 +32,7 @@ public class CommonKotlinPlugin : Plugin<Project> {
                 apply(VersionsPlugin::class.java)
                 apply(DependencyAnalysisPlugin::class.java)
                 apply(SortDependenciesPlugin::class.java)
-                apply(DokkaPlugin::class.java)
+                apply("org.jetbrains.dokka")
                 apply(KtlintPlugin::class.java)
                 apply(PowerAssertGradlePlugin::class.java)
             }
@@ -46,9 +46,9 @@ public class CommonKotlinPlugin : Plugin<Project> {
                         !isStable(currentVersion) -> false
                         !isStable(candidate.version) -> return@rejectVersionIf true
                         (
-                                candidate.moduleIdentifier.equals("com.google.guava:guava") &&
-                                        candidate.version.endsWith("jre")
-                                ) -> {
+                            candidate.moduleIdentifier.equals("com.google.guava:guava") &&
+                                candidate.version.endsWith("jre")
+                            ) -> {
                             return@rejectVersionIf true
                         }
 
@@ -57,12 +57,15 @@ public class CommonKotlinPlugin : Plugin<Project> {
 
                 }
             }
-            tasks.withType<DokkaTask>().configureEach {
-                dokkaSourceSets.configureEach {
-                    suppressGeneratedFiles.set(true)
-                    reportUndocumented.set(true)
-                }
-            }
+
+//            extensions.configure(DokkaExtension::class.java) { dokka ->
+//            }
+//            tasks.withType<DokkaTask>().configureEach {
+//                dokkaSourceSets.configureEach {
+//                    suppressGeneratedFiles.set(true)
+//                    reportUndocumented.set(true)
+//                }
+//            }
             extensions.configure(
                 KspExtension::class.java,
             ) {
@@ -99,16 +102,18 @@ public class CommonKotlinPlugin : Plugin<Project> {
                 },
             )
 
-            tasks.withType<KotlinCompile>().configureEach {
-                version = libs.versions.kotlin.get()
-                compilerOptions {
-                    languageVersion.set(org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_2_2)
-                    apiVersion.set(org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_2_2)
-                    progressiveMode.set(true)
-//                    allWarningsAsErrors.set(true) // TODO
-                    jvmDefault.set(JvmDefaultMode.NO_COMPATIBILITY)
-                }
-            }
+//            dokka {
+//                version = libs.versions.kotlin.get()
+//                compilerOptions {
+//                    languageVersion.set(org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_2_2)
+//                    apiVersion.set(org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_2_2)
+//                    progressiveMode.set(true)
+////                    allWarningsAsErrors.set(true) // TODO
+//                    jvmDefault.set(JvmDefaultMode.NO_COMPATIBILITY)
+//                }
+//            }
+//        }
+
 
             extensions.configure(JavaPluginExtension::class.java) {
                 sourceCompatibility = JavaVersion.VERSION_21
