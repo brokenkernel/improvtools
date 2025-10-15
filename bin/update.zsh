@@ -10,6 +10,6 @@ bundle exec fastlane update_plugins
   npm upgrade
 )
 
-./gradlew dependencyUpdates
+./gradlew dependencyUpdates --no-parallel
 ./gradlew versionCatalogFormat
 ./gradlew sortDependencies
