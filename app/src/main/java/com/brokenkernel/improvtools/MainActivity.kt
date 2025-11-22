@@ -36,13 +36,20 @@ class MainActivity : ComponentActivity() {
                 // TODO: this will have to change when I change how navigation works
                 val whichRoute = when (intent.action) {
                     ShowSuggestionsIntent -> NavigableScreens.SuggestionGeneratorScreen
+
                     ShowTimerIntent -> NavigableScreens.TimerScreen
+
                     ShowEncyclopaediaIntent -> NavigableScreens.EmotionsPageScreen
+
                     Intent.ACTION_APPLICATION_PREFERENCES -> NavigableScreens.SettingsScreen
+
                     // TODO: consider a separate privacy page
                     Intent.ACTION_VIEW_PERMISSION_USAGE -> NavigableScreens.PrivacyScreen
+
                     Intent.ACTION_VIEW_PERMISSION_USAGE_FOR_PERIOD -> NavigableScreens.PrivacyScreen
+
 //                    ShowNotificationPreferencesIntent -> NavigableRoute.SettingsRoute
+
                     else -> NavigableScreens.SuggestionGeneratorScreen
                 }
                 setResult(RESULT_OK)

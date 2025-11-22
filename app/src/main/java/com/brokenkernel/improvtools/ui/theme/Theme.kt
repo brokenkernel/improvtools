@@ -50,6 +50,7 @@ fun ImprovToolsTheme(
         }
 
         darkTheme -> DarkColorScheme
+
         else -> LightColorScheme
     }
 
