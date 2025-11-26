@@ -98,6 +98,18 @@ internal val TongueTwisterDatum: ImmutableList<TongueTwisterItem> = persistentLi
         "digraphs of sh and ch",
     ),
     TongueTwisterItem(
+        """Scissors sizzle, thistles sizzle.""",
+    ),
+    TongueTwisterItem(
+        """Seven slick slimey snakes slowly sliding southward.""",
+    ),
+    TongueTwisterItem(
+        """She saw Sheriff’s shoes on the sofa. But was she so sure she saw Sheriff’s shoes on the sofa?""",
+    ),
+    TongueTwisterItem(
+        """Susie works in a shoeshine shop. Where she shines she sits, and where she sits she shines""",
+    ),
+    TongueTwisterItem(
         """The rain in Spain stays mainly in the plain.
            In Hertford, Hereford, and Hampshire, hurricanes hardly ever happen.
         """
