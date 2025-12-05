@@ -73,6 +73,7 @@ internal fun AboutTab(
     val resources = LocalResources.current
     val packageManager = LocalContext.current.packageManager
     val context = LocalContext.current
+    val stringDebugData = stringResource(R.string.about_debugging_data)
     val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
     // TODO: figure out how to do content generation off of UI. Maybe bring back viewmodel?
@@ -218,7 +219,7 @@ internal fun AboutTab(
     fun copyAboutText() {
         val wordString = AnnotatedString.fromHtml(generateDebugInformationText())
         val clipData = ClipData.newHtmlText(
-            context.getString(R.string.about_debugging_data),
+            stringDebugData,
             wordString.text,
             wordString.toString(),
         )
