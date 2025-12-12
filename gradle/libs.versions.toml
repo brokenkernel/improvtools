@@ -2,7 +2,7 @@
 aboutLibraries = "13.1.0"
 accompanistPermissions = "0.37.3"
 activityCompose = "1.12.1"
-agp = "8.13.1"
+agp = "8.13.2"
 androidDocumentationPlugin = "2.1.0"
 androidXdatastore = "1.2.0"
 androidbrowserhelper = "2.6.2"
