@@ -30,7 +30,6 @@ public class CommonGeneralAndroidPlugin : Plugin<Project> {
                         apiVersion.set(KotlinVersion.KOTLIN_2_2)
 //                        allWarningsAsErrors.set(true) // TODO!!
                         extraWarnings.set(true)
-                        progressiveMode.set(true)
                         jvmDefault.set(JvmDefaultMode.NO_COMPATIBILITY)
                     }
                     jvmToolchain(21)
