@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-bundle update
+bundle update --all
 bundle install
 bundle exec fastlane run update_fastlane
 bundle exec fastlane update_plugins
