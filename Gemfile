@@ -4,6 +4,8 @@ gem "abbrev"
 gem "fastlane"
 gem "ostruct"
 gem "rspec"
+gem "rdoc"
+gem "nkf"
 
 
 plugins_path = File.join(File.dirname(__FILE__), 'fastlane', 'Pluginfile')
