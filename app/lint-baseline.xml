@@ -1,5 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<issues format="6" by="lint 8.13.1" type="baseline" client="gradle" dependencies="true" name="AGP (8.13.1)" variant="all" version="8.13.1">
+<issues format="6" by="lint 8.13.2" type="baseline" client="gradle" dependencies="true" name="AGP (8.13.2)" variant="all" version="8.13.2">
+
+    <issue
+        id="AndroidGradlePluginVersion"
+        message="A newer version of com.android.application than 8.13.2 is available: 9.0.0"
+        errorLine1="agp = &quot;8.13.2&quot;"
+        errorLine2="      ~~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="5"
+            column="7"/>
+    </issue>
+
+    <issue
+        id="AndroidGradlePluginVersion"
+        message="A newer version of com.android.library than 8.13.2 is available: 9.0.0"
+        errorLine1="agp = &quot;8.13.2&quot;"
+        errorLine2="      ~~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="5"
+            column="7"/>
+    </issue>
+
+    <issue
+        id="AndroidGradlePluginVersion"
+        message="A newer version of com.android.lint than 8.13.2 is available: 9.0.0"
+        errorLine1="agp = &quot;8.13.2&quot;"
+        errorLine2="      ~~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="5"
+            column="7"/>
+    </issue>
+
+    <issue
+        id="AndroidGradlePluginVersion"
+        message="A newer version of com.android.tools.build:gradle than 8.13.2 is available: 9.0.0"
+        errorLine1="agp = &quot;8.13.2&quot;"
+        errorLine2="      ~~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="5"
+            column="7"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of com.google.dagger.hilt.android than 2.58 is available: 2.59"
+        errorLine1="hilt = &quot;2.58&quot;"
+        errorLine2="       ~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="43"
+            column="8"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of com.google.dagger:hilt-android than 2.58 is available: 2.59"
+        errorLine1="hilt = &quot;2.58&quot;"
+        errorLine2="       ~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="43"
+            column="8"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of com.google.dagger:hilt-android-testing than 2.58 is available: 2.59"
+        errorLine1="hilt = &quot;2.58&quot;"
+        errorLine2="       ~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="43"
+            column="8"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of com.google.dagger:hilt-compiler than 2.58 is available: 2.59"
+        errorLine1="hilt = &quot;2.58&quot;"
+        errorLine2="       ~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="43"
+            column="8"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of com.google.dagger:hilt-core than 2.58 is available: 2.59"
+        errorLine1="hilt = &quot;2.58&quot;"
+        errorLine2="       ~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="43"
+            column="8"/>
+    </issue>
 
     <issue
         id="IconLocation"
