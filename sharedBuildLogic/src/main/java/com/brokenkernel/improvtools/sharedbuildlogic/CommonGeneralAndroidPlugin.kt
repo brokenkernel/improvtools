@@ -21,20 +21,20 @@ public class CommonGeneralAndroidPlugin : Plugin<Project> {
             }
 
 
-            extensions.configure(
-                KotlinAndroidProjectExtension::class.java,
-                {
-                    version = libs.versions.kotlin.get()
-                    compilerOptions {
-                        languageVersion.set(KotlinVersion.KOTLIN_2_2)
-                        apiVersion.set(KotlinVersion.KOTLIN_2_2)
-//                        allWarningsAsErrors.set(true) // TODO!!
-                        extraWarnings.set(true)
-                        jvmDefault.set(JvmDefaultMode.NO_COMPATIBILITY)
-                    }
-                    jvmToolchain(21)
-                },
-            )
+//            extensions.configure(
+//                KotlinAndroidProjectExtension::class.java,
+//                {
+//                    version = libs.versions.kotlin.get()
+//                    compilerOptions {
+//                        languageVersion.set(KotlinVersion.KOTLIN_2_2)
+//                        apiVersion.set(KotlinVersion.KOTLIN_2_2)
+////                        allWarningsAsErrors.set(true) // TODO!!
+//                        extraWarnings.set(true)
+//                        jvmDefault.set(JvmDefaultMode.NO_COMPATIBILITY)
+//                    }
+//                    jvmToolchain(21)
+//                },
+//            )
 
             extensions.configure(
                 KspExtension::class.java,

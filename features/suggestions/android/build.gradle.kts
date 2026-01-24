@@ -2,7 +2,6 @@ import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
     id("com.brokenkernel.improvtools.sharedbuildlogic.common-general-plugin")
@@ -32,13 +31,13 @@ android {
         featureFlags = setOf()
     }
 }
-
-kotlin {
-    explicitApi()
-    compilerOptions {
-        allWarningsAsErrors = true
-    }
-}
+//
+// kotlin {
+//    explicitApi()
+//    compilerOptions {
+//        allWarningsAsErrors = true
+//    }
+// }
 
 dependencies {
     implementation(enforcedPlatform(libs.androidx.compose.bom))

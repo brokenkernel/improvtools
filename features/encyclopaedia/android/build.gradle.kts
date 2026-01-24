@@ -2,7 +2,6 @@ import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
     id("com.brokenkernel.improvtools.sharedbuildlogic.common-general-plugin")
@@ -34,13 +33,13 @@ android {
     }
 }
 
-kotlin {
-    explicitApi()
-    compilerOptions {
-//        false warnings  Assigned value is never read.
-//        allWarningsAsErrors = true
-    }
-}
+// kotlin {
+//    explicitApi()
+//    compilerOptions {
+// //        false warnings  Assigned value is never read.
+// //        allWarningsAsErrors = true
+//    }
+// }
 
 dependencies {
     api(project(":features:encyclopaedia:data"))

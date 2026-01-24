@@ -3,7 +3,6 @@ import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
     id("com.brokenkernel.improvtools.sharedbuildlogic.common-general-plugin")
@@ -33,47 +32,47 @@ android {
     }
 }
 
-kotlin {
-    compilerOptions {
-        allWarningsAsErrors = true
-    }
-}
+// kotlin {
+//    compilerOptions {
+//        allWarningsAsErrors = true
+//    }
+// }
 
-dokka {
-    moduleName = "debug"
-    dokkaSourceSets {
-        main {
-            enableAndroidDocumentationLink = true
-            enableJdkDocumentationLink = true
-            enableKotlinStdLibDocumentationLink = true
-            documentedVisibilities =
-                setOf(
-                    VisibilityModifier.Public,
-                    VisibilityModifier.Internal,
-                    VisibilityModifier.Package,
-                    VisibilityModifier.Protected,
-                )
-            sourceLink {
-                localDirectory = (file("src/main/java"))
-                remoteUrl("https://github.com/brokenkernel/improvtools")
-                remoteLineSuffix = ("#L")
-            }
-        }
-    }
-    dokkaPublications {
-        html {
-            enabled = true
-//            failOnWarning = true
-        }
-    }
-    pluginsConfiguration {
-        html {
-            homepageLink = "https://improvtools.brokenkernel.com"
-        }
-        versioning {
-        }
-    }
-}
+// dokka {
+//    moduleName = "debug"
+//    dokkaSourceSets {
+//        main {
+//            enableAndroidDocumentationLink = true
+//            enableJdkDocumentationLink = true
+//            enableKotlinStdLibDocumentationLink = true
+//            documentedVisibilities =
+//                setOf(
+//                    VisibilityModifier.Public,
+//                    VisibilityModifier.Internal,
+//                    VisibilityModifier.Package,
+//                    VisibilityModifier.Protected,
+//                )
+//            sourceLink {
+//                localDirectory = (file("src/main/java"))
+//                remoteUrl("https://github.com/brokenkernel/improvtools")
+//                remoteLineSuffix = ("#L")
+//            }
+//        }
+//    }
+//    dokkaPublications {
+//        html {
+//            enabled = true
+// //            failOnWarning = true
+//        }
+//    }
+//    pluginsConfiguration {
+//        html {
+//            homepageLink = "https://improvtools.brokenkernel.com"
+//        }
+//        versioning {
+//        }
+//    }
+// }
 
 dependencies {
     api(libs.androidx.runtime)

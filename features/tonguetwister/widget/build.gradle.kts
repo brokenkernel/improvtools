@@ -2,7 +2,6 @@ import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
     id("com.brokenkernel.improvtools.sharedbuildlogic.common-general-plugin")
@@ -34,12 +33,13 @@ android {
     }
 }
 
-kotlin {
-    compilerOptions {
-        allWarningsAsErrors = true
-    }
-    explicitApi()
-}
+
+// kotlin {
+//    compilerOptions {
+//        allWarningsAsErrors = true
+//    }
+//    explicitApi()
+// }
 
 dependencies {
     api(libs.androidx.compose.material.materialIconsExtended)

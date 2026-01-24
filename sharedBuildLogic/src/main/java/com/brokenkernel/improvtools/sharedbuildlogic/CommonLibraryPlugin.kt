@@ -1,6 +1,6 @@
 package com.brokenkernel.improvtools.sharedbuildlogic
 
-import com.android.build.gradle.LibraryExtension
+import com.android.build.api.dsl.LibraryExtension
 import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -15,7 +15,6 @@ public class CommonLibraryPlugin : Plugin<Project> {
                 LibraryExtension::class.java,
                 {
                     compileSdk = 36
-                    buildToolsVersion = "35.0.0"
 
                     lint {
                         lintConfig = file("lint.xml")

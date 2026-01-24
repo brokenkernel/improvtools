@@ -19,7 +19,6 @@ plugins {
     alias(libs.plugins.dagger.hilt.android)
     alias(libs.plugins.firebaseCrashlyticsPlugin)
     alias(libs.plugins.google.gms.google.services)
-    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.ksp)
@@ -151,7 +150,6 @@ android {
             enable = true
         }
     }
-    buildToolsVersion = "35.0.0"
     dependenciesInfo {
         includeInApk = true
         includeInBundle = true
@@ -351,41 +349,41 @@ aboutLibraries {
     }
 }
 
-dokka {
-    moduleName = "app"
-    dokkaSourceSets {
-        main {
-            enableAndroidDocumentationLink = true
-            enableJdkDocumentationLink = true
-            enableKotlinStdLibDocumentationLink = true
-            documentedVisibilities =
-                setOf(
-                    VisibilityModifier.Public,
-                    VisibilityModifier.Internal,
-                    VisibilityModifier.Package,
-                    VisibilityModifier.Protected,
-                )
-            sourceLink {
-                localDirectory = (file("src/main/java"))
-                remoteUrl("https://github.com/brokenkernel/improvtools")
-                remoteLineSuffix = ("#L")
-            }
-        }
-    }
-    dokkaPublications {
-        html {
-            enabled = true
-//            failOnWarning = true
-        }
-    }
-    pluginsConfiguration {
-        html {
-            homepageLink = "https://improvtools.brokenkernel.com"
-        }
-        versioning {
-        }
-    }
-}
+// dokka {
+//    moduleName = "app"
+//    dokkaSourceSets {
+//        main {
+//            enableAndroidDocumentationLink = true
+//            enableJdkDocumentationLink = true
+//            enableKotlinStdLibDocumentationLink = true
+//            documentedVisibilities =
+//                setOf(
+//                    VisibilityModifier.Public,
+//                    VisibilityModifier.Internal,
+//                    VisibilityModifier.Package,
+//                    VisibilityModifier.Protected,
+//                )
+//            sourceLink {
+//                localDirectory = (file("src/main/java"))
+//                remoteUrl("https://github.com/brokenkernel/improvtools")
+//                remoteLineSuffix = ("#L")
+//            }
+//        }
+//    }
+//    dokkaPublications {
+//        html {
+//            enabled = true
+// //            failOnWarning = true
+//        }
+//    }
+//    pluginsConfiguration {
+//        html {
+//            homepageLink = "https://improvtools.brokenkernel.com"
+//        }
+//        versioning {
+//        }
+//    }
+// }
 
 @OptIn(ExperimentalKotlinGradlePluginApi::class)
 powerAssert {
