@@ -2,28 +2,6 @@
 <issues format="6" by="lint 9.0.0" type="baseline" client="gradle" dependencies="true" name="AGP (9.0.0)" variant="all" version="9.0.0">
 
     <issue
-        id="NewerVersionAvailable"
-        message="A newer version of com.google.protobuf:protobuf-javalite than 4.33.4 is available: 4.33.5"
-        errorLine1="protobufJavalite = &quot;4.33.4&quot;"
-        errorLine2="                   ~~~~~~~~">
-        <location
-            file="../gradle/libs.versions.toml"
-            line="74"
-            column="20"/>
-    </issue>
-
-    <issue
-        id="NewerVersionAvailable"
-        message="A newer version of com.google.protobuf:protoc than 4.33.4 is available: 4.33.5"
-        errorLine1="protoc = &quot;4.33.4&quot;"
-        errorLine2="         ~~~~~~~~">
-        <location
-            file="../gradle/libs.versions.toml"
-            line="75"
-            column="10"/>
-    </issue>
-
-    <issue
         id="IconLocation"
         message="Found bitmap drawable `res/drawable/general_emotion_wheel.webp` in densityless folder">
         <location
