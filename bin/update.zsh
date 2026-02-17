@@ -3,6 +3,7 @@
 bundle update --all
 bundle install
 bundle exec gem install fastlane
+bundle update fastlane
 bundle exec fastlane run update_fastlane
 bundle exec fastlane update_plugins
 (
