@@ -34,13 +34,13 @@ android {
     }
 }
 
-// kotlin {
-//    compilerOptions {
-//        // compose destinations
-// //        allWarningsAsErrors = true
-//    }
-//    explicitApi()
-// }
+kotlin {
+    compilerOptions {
+        // compose destinations
+        //        allWarningsAsErrors = true
+    }
+    explicitApi()
+}
 
 dependencies {
     api(libs.androidx.compose.material.materialIconsExtended)

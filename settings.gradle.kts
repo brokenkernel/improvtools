@@ -20,7 +20,7 @@ dependencyResolutionManagement {
 }
 
 plugins {
-    id("org.jetbrains.kotlinx.kover.aggregation") version "0.9.7"
+//    id("org.jetbrains.kotlinx.kover.aggregation") version "0.9.7"
 }
 
 rootProject.name = "ImprovTools"
@@ -28,9 +28,9 @@ rootProject.name = "ImprovTools"
 enableFeaturePreview("STABLE_CONFIGURATION_CACHE")
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
-kover {
-    enableCoverage()
-}
+//kover {
+//    enableCoverage()
+//}
 
 
 includeBuild("sharedBuildLogic")
