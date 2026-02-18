@@ -21,6 +21,7 @@ dependencyResolutionManagement {
 
 plugins {
 //    id("org.jetbrains.kotlinx.kover.aggregation") version "0.9.7"
+    id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
 }
 
 rootProject.name = "ImprovTools"
