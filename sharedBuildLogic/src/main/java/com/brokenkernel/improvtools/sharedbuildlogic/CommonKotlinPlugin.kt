@@ -30,7 +30,6 @@ public class CommonKotlinPlugin : Plugin<Project> {
         with(target) {
             with(pluginManager) {
                 apply("org.jetbrains.dokka")
-                apply(KtlintPlugin::class.java)
                 apply(PowerAssertGradlePlugin::class.java)
             }
 

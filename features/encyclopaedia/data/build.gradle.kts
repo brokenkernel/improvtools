@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.versions)
     alias(libs.plugins.sortDependencies)
     alias(libs.plugins.dependencyAnalysis)
+    alias(libs.plugins.ktlint)
     id("com.brokenkernel.improvtools.sharedbuildlogic.common-kotlin-plugin")
 }
 
