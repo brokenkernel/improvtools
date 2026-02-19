@@ -29,7 +29,6 @@ plugins {
     alias(libs.plugins.dependencyAnalysis)
     alias(libs.plugins.ktlint)
     id("com.brokenkernel.improvtools.sharedbuildlogic.common-kotlin-plugin")
-    id("com.brokenkernel.improvtools.sharedbuildlogic.common-general-plugin")
 }
 
 val keystoreProperties: Properties = Properties()
@@ -399,4 +398,9 @@ powerAssert {
         "release",
         "releaseUnitTest",
     )
+}
+
+ksp {
+    arg("compose-destinations.mermaidGraph", "$rootDir/docs/static/")
+    arg("compose-destinations.htmlMermaidGraph", "$rootDir/docs/static/")
 }

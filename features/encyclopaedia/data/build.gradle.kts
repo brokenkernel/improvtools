@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.sortDependencies)
     alias(libs.plugins.dependencyAnalysis)
     alias(libs.plugins.ktlint)
+    kotlin("plugin.power-assert") version "2.3.10"
     id("com.brokenkernel.improvtools.sharedbuildlogic.common-kotlin-plugin")
 }
 

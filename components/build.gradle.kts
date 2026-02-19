@@ -1,7 +1,6 @@
 @file:OptIn(KspExperimental::class)
 
 import com.google.devtools.ksp.KspExperimental
-import org.jetbrains.dokka.gradle.engine.parameters.VisibilityModifier
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 
 plugins {
@@ -12,7 +11,7 @@ plugins {
     alias(libs.plugins.sortDependencies)
     alias(libs.plugins.dependencyAnalysis)
     alias(libs.plugins.ktlint)
-    id("com.brokenkernel.improvtools.sharedbuildlogic.common-general-plugin")
+    kotlin("plugin.power-assert") version "2.3.10"
     id("com.brokenkernel.improvtools.sharedbuildlogic.common-library-plugin")
 }
 
@@ -138,4 +137,9 @@ powerAssert {
         "release",
         "releaseUnitTest",
     )
+}
+
+ksp {
+    arg("compose-destinations.mermaidGraph", "$rootDir/docs/static/")
+    arg("compose-destinations.htmlMermaidGraph", "$rootDir/docs/static/")
 }

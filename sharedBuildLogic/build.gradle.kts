@@ -33,10 +33,6 @@ gradlePlugin {
             id = "com.brokenkernel.improvtools.sharedbuildlogic.common-library-plugin"
             implementationClass = "com.brokenkernel.improvtools.sharedbuildlogic.CommonLibraryPlugin"
         }
-        register("commonGeneralAndroidPlugin") {
-            id = "com.brokenkernel.improvtools.sharedbuildlogic.common-general-plugin"
-            implementationClass = "com.brokenkernel.improvtools.sharedbuildlogic.CommonGeneralAndroidPlugin"
-        }
         register("commonKotlinPlugin") {
             id = "com.brokenkernel.improvtools.sharedbuildlogic.common-kotlin-plugin"
             implementationClass = "com.brokenkernel.improvtools.sharedbuildlogic.CommonKotlinPlugin"
