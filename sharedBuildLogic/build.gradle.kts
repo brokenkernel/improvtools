@@ -29,10 +29,6 @@ kotlin {
 
 gradlePlugin {
     plugins {
-        register("commonLibraryPlugin") {
-            id = "com.brokenkernel.improvtools.sharedbuildlogic.common-library-plugin"
-            implementationClass = "com.brokenkernel.improvtools.sharedbuildlogic.CommonLibraryPlugin"
-        }
         register("commonKotlinPlugin") {
             id = "com.brokenkernel.improvtools.sharedbuildlogic.common-kotlin-plugin"
             implementationClass = "com.brokenkernel.improvtools.sharedbuildlogic.CommonKotlinPlugin"

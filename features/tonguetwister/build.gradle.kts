@@ -9,7 +9,6 @@ plugins {
     alias(libs.plugins.dependencyAnalysis)
     alias(libs.plugins.ktlint)
     kotlin("plugin.power-assert") version "2.3.10"
-    id("com.brokenkernel.improvtools.sharedbuildlogic.common-library-plugin")
 }
 
 android {
@@ -32,6 +31,28 @@ android {
             )
         }
     }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
+    }
+
+    lint {
+        lintConfig = file("lint.xml")
+        baseline = file("lint-baseline.xml")
+        checkDependencies = true
+        warningsAsErrors = true
+    }
+
+    defaultConfig {
+        minSdk = 26
+        consumerProguardFiles("consumer-rules.pro")
+    }
+
+    buildFeatures {
+        compose = true
+        buildConfig = true
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_21
         targetCompatibility = JavaVersion.VERSION_21

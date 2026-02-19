@@ -1,6 +1,7 @@
 @file:OptIn(KspExperimental::class)
 
 import com.google.devtools.ksp.KspExperimental
+import org.gradle.kotlin.dsl.lint
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 
 plugins {
@@ -12,11 +13,12 @@ plugins {
     alias(libs.plugins.dependencyAnalysis)
     alias(libs.plugins.ktlint)
     kotlin("plugin.power-assert") version "2.3.10"
-    id("com.brokenkernel.improvtools.sharedbuildlogic.common-library-plugin")
 }
 
 android {
     namespace = "com.brokenkernel.components"
+
+    compileSdk = 36
 
     defaultConfig {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -33,6 +35,28 @@ android {
         includeSourceInformation = true
         includeTraceMarkers = true
         featureFlags = setOf()
+    }
+
+    lint {
+        lintConfig = file("lint.xml")
+        baseline = file("lint-baseline.xml")
+        checkDependencies = true
+        warningsAsErrors = true
+    }
+
+    defaultConfig {
+        minSdk = 26
+        consumerProguardFiles("consumer-rules.pro")
+    }
+
+    buildFeatures {
+        compose = true
+        buildConfig = true
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
 }
 //
