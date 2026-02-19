@@ -24,6 +24,9 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.protobuf)
     alias(libs.plugins.firebasePerfPlugin)
+    alias(libs.plugins.versions)
+    alias(libs.plugins.sortDependencies)
+    alias(libs.plugins.dependencyAnalysis)
     id("com.brokenkernel.improvtools.sharedbuildlogic.common-kotlin-plugin")
     id("com.brokenkernel.improvtools.sharedbuildlogic.common-general-plugin")
 }

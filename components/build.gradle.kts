@@ -8,6 +8,9 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.versions)
+    alias(libs.plugins.sortDependencies)
+    alias(libs.plugins.dependencyAnalysis)
     id("com.brokenkernel.improvtools.sharedbuildlogic.common-general-plugin")
     id("com.brokenkernel.improvtools.sharedbuildlogic.common-library-plugin")
 }

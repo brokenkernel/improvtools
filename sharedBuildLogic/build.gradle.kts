@@ -4,6 +4,7 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 plugins {
     `kotlin-dsl`
     `java-gradle-plugin`
+    alias(libs.plugins.dependencyAnalysis)
     alias(libs.plugins.sortDependencies)
     alias(libs.plugins.ktlint)
     alias(libs.plugins.versions)

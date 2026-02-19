@@ -29,9 +29,6 @@ public class CommonKotlinPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             with(pluginManager) {
-                apply(VersionsPlugin::class.java)
-                apply(DependencyAnalysisPlugin::class.java)
-                apply(SortDependenciesPlugin::class.java)
                 apply("org.jetbrains.dokka")
                 apply(KtlintPlugin::class.java)
                 apply(PowerAssertGradlePlugin::class.java)
