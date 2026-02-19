@@ -52,6 +52,20 @@ internal val TongueTwisterDatum: ImmutableList<TongueTwisterItem> = persistentLi
         """.trimMargin(),
     ),
     TongueTwisterItem(
+        """Bobby Bippy bought a bat.
+            Bobby Bippy bought a ball.
+            With his bat Bob banged the ball
+            Banged it bump against the wall
+            But so boldly Bobby banged it
+            That he burst his rubber ball
+            "Boo!" cried Bobby
+            Bad luck ball
+            Bad luck Bobby, bad luck ball
+            Now to drown his many troubles
+            Bobby Bippy's blowing bubbles.
+        """.trimMargin(),
+    ),
+    TongueTwisterItem(
         """To sit in solemn silence in a dull, dark dock,
             In a pestilential prison, with a life-long lock,
             Awaiting the sensation of a short, sharp shock,
@@ -118,5 +132,10 @@ internal val TongueTwisterDatum: ImmutableList<TongueTwisterItem> = persistentLi
     ),
     TongueTwisterItem(
         """It was easier to know it than to explain why I know it. If you were asked to prove that two and two made four, you might find some difficulty, and yet you are quite sure of the fact.""",
+    ),
+    TongueTwisterItem(
+        """How many wenches could a witch's wench wrench wrench if a witch's wench wrench could wrench wenches.
+            As many wenches as a witch's wench wrench could, if a witch's wench wrench could wrench wenches."""
+            .trimMargin(),
     ),
 )
