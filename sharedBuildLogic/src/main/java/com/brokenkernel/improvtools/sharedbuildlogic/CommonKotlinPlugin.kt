@@ -1,25 +1,18 @@
 package com.brokenkernel.improvtools.sharedbuildlogic
 
-import com.autonomousapps.DependencyAnalysisPlugin
-import com.github.benmanes.gradle.versions.VersionsPlugin
+//import org.jetbrains.kotlin.gradle.dsl.JvmDefaultMode
+//import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import com.google.devtools.ksp.gradle.KspExtension
-import com.squareup.sort.SortDependenciesPlugin
-import libs
 import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.plugins.JavaPluginExtension
 import org.gradle.kotlin.dsl.withType
-import org.jetbrains.dokka.gradle.DokkaExtension
-import org.jetbrains.dokka.gradle.DokkaPlugin
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
-//import org.jetbrains.kotlin.gradle.dsl.JvmDefaultMode
-//import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.jetbrains.kotlin.powerassert.gradle.PowerAssertGradleExtension
 import org.jetbrains.kotlin.powerassert.gradle.PowerAssertGradlePlugin
 import org.jlleitschuh.gradle.ktlint.KtlintExtension
-import org.jlleitschuh.gradle.ktlint.KtlintPlugin
 
 /**
  * For any non-android-library specific code.
