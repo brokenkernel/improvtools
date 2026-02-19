@@ -65,7 +65,6 @@ public class CommonKotlinPlugin : Plugin<Project> {
             extensions.configure(
                 KspExtension::class.java,
             ) {
-                useKsp2.set(true)
                 allWarningsAsErrors = true
                 arg("dagger.useBindingGraphFix", "enabled")
                 arg("dagger.ignoreProvisionKeyWildcards", "enabled")
