@@ -28,3 +28,9 @@ dependencies {
 
     runtimeOnly(libs.extjwnl.data.wn31)
 }
+
+ktlint {
+    android.set(true)
+    coloredOutput.set(true)
+    version.set("1.8.0")
+}

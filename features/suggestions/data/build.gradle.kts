@@ -20,3 +20,18 @@ kotlin {
 dependencies {
     implementation(libs.kotlinx.serialization.core)
 }
+
+ksp {
+    allWarningsAsErrors = true
+    arg("dagger.useBindingGraphFix", "enabled")
+    arg("dagger.ignoreProvisionKeyWildcards", "enabled")
+    arg("dagger.experimentalDaggerErrorMessages", "enabled")
+    arg("dagger.warnIfInjectionFactoryNotGeneratedUpstream", "enabled")
+    arg("dagger.fullBindingGraphValidation", "error")
+}
+
+ktlint {
+    android.set(true)
+    coloredOutput.set(true)
+    version.set("1.8.0")
+}

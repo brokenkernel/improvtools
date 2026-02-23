@@ -42,9 +42,13 @@ dependencies {
     compileOnly(libs.gradlePlugins.dependencyAnalysis)
     compileOnly(libs.gradlePlugins.dokka)
     compileOnly(libs.gradlePlugins.gradleVersions)
-    compileOnly(libs.gradlePlugins.ksp)
     compileOnly(libs.gradlePlugins.kotlin)
     compileOnly(libs.gradlePlugins.sortDependencies)
-    compileOnly(libs.gradlePlugins.ktlint)
     compileOnly(libs.gradlePlugins.powerAssert)
+}
+
+ktlint {
+    android.set(true)
+    coloredOutput.set(true)
+    version.set("1.8.0")
 }

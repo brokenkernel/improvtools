@@ -9,7 +9,6 @@ import com.mikepenz.aboutlibraries.plugin.StrictMode
 import java.io.IOException
 import java.util.Properties
 import org.gradle.kotlin.dsl.implementation
-import org.jetbrains.dokka.gradle.engine.parameters.VisibilityModifier
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 
 plugins {

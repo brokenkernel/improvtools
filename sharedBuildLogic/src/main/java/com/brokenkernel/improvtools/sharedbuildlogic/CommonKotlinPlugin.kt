@@ -3,7 +3,6 @@ package com.brokenkernel.improvtools.sharedbuildlogic
 //import org.jetbrains.kotlin.gradle.dsl.JvmDefaultMode
 //import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
-import com.google.devtools.ksp.gradle.KspExtension
 import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -12,7 +11,6 @@ import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.powerassert.gradle.PowerAssertGradleExtension
 import org.jetbrains.kotlin.powerassert.gradle.PowerAssertGradlePlugin
-import org.jlleitschuh.gradle.ktlint.KtlintExtension
 
 /**
  * For any non-android-library specific code.
@@ -55,24 +53,6 @@ public class CommonKotlinPlugin : Plugin<Project> {
 //                    reportUndocumented.set(true)
 //                }
 //            }
-            extensions.configure(
-                KspExtension::class.java,
-            ) {
-                allWarningsAsErrors = true
-                arg("dagger.useBindingGraphFix", "enabled")
-                arg("dagger.ignoreProvisionKeyWildcards", "enabled")
-                arg("dagger.experimentalDaggerErrorMessages", "enabled")
-                arg("dagger.warnIfInjectionFactoryNotGeneratedUpstream", "enabled")
-                arg("dagger.fullBindingGraphValidation", "error")
-            }
-            extensions.configure(
-                KtlintExtension::class.java,
-                {
-                    android.set(true)
-                    coloredOutput.set(true)
-                    version.set("1.8.0")
-                },
-            )
 
             extensions.configure(
                 PowerAssertGradleExtension::class.java,
