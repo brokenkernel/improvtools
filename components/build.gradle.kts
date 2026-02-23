@@ -1,5 +1,6 @@
 @file:OptIn(KspExperimental::class)
 
+import com.android.build.api.dsl.LibraryExtension
 import com.google.devtools.ksp.KspExperimental
 import org.gradle.kotlin.dsl.lint
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
@@ -15,7 +16,7 @@ plugins {
     kotlin("plugin.power-assert") version libs.versions.kotlin.get()
 }
 
-android {
+configure<LibraryExtension> {
     namespace = "com.brokenkernel.components"
 
     compileSdk = 36

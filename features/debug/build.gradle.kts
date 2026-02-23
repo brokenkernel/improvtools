@@ -1,3 +1,4 @@
+import com.android.build.api.dsl.LibraryExtension
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 
 plugins {
@@ -11,7 +12,7 @@ plugins {
     kotlin("plugin.power-assert") version libs.versions.kotlin.get()
 }
 
-android {
+configure<LibraryExtension> {
     namespace = "com.brokenkernel.improvtools.features.debug"
 
     compileSdk = 36

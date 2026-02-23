@@ -1,5 +1,6 @@
 @file:OptIn(KspExperimental::class)
 
+import com.android.build.api.dsl.ApplicationExtension
 import com.android.build.api.dsl.VariantDimension
 import com.google.devtools.ksp.KspExperimental
 import com.google.firebase.crashlytics.buildtools.gradle.CrashlyticsExtension
@@ -54,7 +55,7 @@ private inline fun <reified ValueT> VariantDimension.buildConfigField(name: Stri
     buildConfigField(ValueT::class.java.simpleName, name, resolvedValue)
 }
 
-android {
+configure<ApplicationExtension> {
     namespace = "com.brokenkernel.improvtools"
     compileSdk = 36
 
