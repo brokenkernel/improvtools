@@ -88,7 +88,7 @@ versions = "0.53.0"
 viewModelCompose = "2.10.0"
 window = "1.5.1"
 workRuntimeKtx = "2.11.1"
-zoomable = "2.11.0"
+zoomable = "2.11.1"
 
 [libraries]
 aboutlibraries-compose-m3 = { module = "com.mikepenz:aboutlibraries-compose-m3", version.ref = "aboutLibraries" }
