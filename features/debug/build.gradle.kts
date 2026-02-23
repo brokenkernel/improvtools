@@ -60,11 +60,12 @@ composeCompiler {
     featureFlags = setOf()
 }
 
-// kotlin {
-//    compilerOptions {
-//        allWarningsAsErrors = true
-//    }
-// }
+kotlin {
+    explicitApi()
+    compilerOptions {
+        allWarningsAsErrors = true
+    }
+}
 
 // dokka {
 //    moduleName = "debug"

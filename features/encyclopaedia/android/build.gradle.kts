@@ -61,13 +61,13 @@ composeCompiler {
     featureFlags = setOf()
 }
 
-// kotlin {
-//    explicitApi()
-//    compilerOptions {
-// //        false warnings  Assigned value is never read.
-// //        allWarningsAsErrors = true
-//    }
-// }
+kotlin {
+    explicitApi()
+    compilerOptions {
+//        false warnings  Assigned value is never read.
+//        allWarningsAsErrors = true
+    }
+}
 
 dependencies {
     api(project(":features:encyclopaedia:data"))

@@ -60,13 +60,12 @@ composeCompiler {
     featureFlags = setOf()
 }
 
-//
-// kotlin {
-//    explicitApi()
-//    compilerOptions {
-//        allWarningsAsErrors = true
-//    }
-// }
+kotlin {
+    explicitApi()
+    compilerOptions {
+        allWarningsAsErrors = true
+    }
+}
 
 dependencies {
     implementation(enforcedPlatform(libs.androidx.compose.bom))

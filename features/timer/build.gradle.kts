@@ -61,14 +61,12 @@ composeCompiler {
     featureFlags = setOf()
 }
 
-//
-// kotlin {
-//    explicitApi()
-//    compilerOptions {
-//        allWarningsAsErrors = true
-//    }
-// }
-
+kotlin {
+    explicitApi()
+    compilerOptions {
+        allWarningsAsErrors = true
+    }
+}
 dependencies {
     api(libs.androidx.runtime)
     api(libs.androidx.ui)

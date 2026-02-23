@@ -31,6 +31,13 @@ ksp {
     arg("dagger.fullBindingGraphValidation", "error")
 }
 
+kotlin {
+    explicitApi()
+    compilerOptions {
+        allWarningsAsErrors = true
+    }
+}
+
 ktlint {
     android.set(true)
     coloredOutput.set(true)

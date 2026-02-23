@@ -23,7 +23,6 @@ kotlin {
         jvmDefault = JvmDefaultMode.NO_COMPATIBILITY
     }
     jvmToolchain(21)
-    // TODO: explicitAPI for _all_ builds (convention!)
     explicitApi()
 }
 

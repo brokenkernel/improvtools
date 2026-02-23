@@ -59,12 +59,12 @@ composeCompiler {
     featureFlags = setOf()
 }
 
-// kotlin {
-//    compilerOptions {
-//        allWarningsAsErrors = true
-//    }
-//    explicitApi()
-// }
+kotlin {
+    compilerOptions {
+        allWarningsAsErrors = true
+    }
+    explicitApi()
+}
 
 dependencies {
     api(libs.androidx.compose.material.materialIconsExtended)
