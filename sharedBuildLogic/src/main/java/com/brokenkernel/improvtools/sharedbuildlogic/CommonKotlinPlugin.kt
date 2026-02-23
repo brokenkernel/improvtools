@@ -10,7 +10,6 @@ import org.gradle.api.plugins.JavaPluginExtension
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.powerassert.gradle.PowerAssertGradleExtension
-import org.jetbrains.kotlin.powerassert.gradle.PowerAssertGradlePlugin
 
 /**
  * For any non-android-library specific code.
@@ -21,7 +20,6 @@ public class CommonKotlinPlugin : Plugin<Project> {
         with(target) {
             with(pluginManager) {
                 apply("org.jetbrains.dokka")
-                apply(PowerAssertGradlePlugin::class.java)
             }
 
             tasks.withType<DependencyUpdatesTask>().configureEach {
