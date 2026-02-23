@@ -14,7 +14,6 @@ plugins {
 group = "com.brokenkernel.improvtools.commonBuildLogic"
 
 kotlin {
-    version = "2.3.0"
     compilerOptions {
         languageVersion = KotlinVersion.KOTLIN_2_3
         apiVersion = KotlinVersion.KOTLIN_2_3
@@ -42,7 +41,6 @@ dependencies {
     compileOnly(libs.gradlePlugins.dokka)
     compileOnly(libs.gradlePlugins.gradleVersions)
     compileOnly(libs.gradlePlugins.kotlin)
-    compileOnly(libs.gradlePlugins.sortDependencies)
     compileOnly(libs.gradlePlugins.powerAssert)
 }
 
