@@ -2,7 +2,6 @@
 
 import com.android.build.api.dsl.LibraryExtension
 import com.google.devtools.ksp.KspExperimental
-import org.gradle.kotlin.dsl.lint
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 
 plugins {
@@ -14,6 +13,12 @@ plugins {
     alias(libs.plugins.dependencyAnalysis)
     alias(libs.plugins.ktlint)
     kotlin("plugin.power-assert") version libs.versions.kotlin.get()
+}
+
+composeCompiler {
+    includeSourceInformation = true
+    includeTraceMarkers = true
+    featureFlags = setOf()
 }
 
 configure<LibraryExtension> {
@@ -30,12 +35,6 @@ configure<LibraryExtension> {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
-    }
-
-    composeCompiler {
-        includeSourceInformation = true
-        includeTraceMarkers = true
-        featureFlags = setOf()
     }
 
     lint {

@@ -121,11 +121,7 @@ configure<ApplicationExtension> {
         compose = true
         buildConfig = true
     }
-    composeCompiler {
-        includeSourceInformation = true
-        includeTraceMarkers = true
-        featureFlags = setOf()
-    }
+
     testOptions {
         managedDevices {
             localDevices {
@@ -176,6 +172,12 @@ configure<ApplicationExtension> {
     androidResources {
         generateLocaleConfig = true
     }
+}
+
+composeCompiler {
+    includeSourceInformation = true
+    includeTraceMarkers = true
+    featureFlags = setOf()
 }
 
 dependencies {

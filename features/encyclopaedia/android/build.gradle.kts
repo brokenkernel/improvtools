@@ -32,12 +32,6 @@ configure<LibraryExtension> {
         }
     }
 
-    composeCompiler {
-        includeSourceInformation = true
-        includeTraceMarkers = true
-        featureFlags = setOf()
-    }
-
     lint {
         lintConfig = file("lint.xml")
         baseline = file("lint-baseline.xml")
@@ -59,6 +53,12 @@ configure<LibraryExtension> {
         sourceCompatibility = JavaVersion.VERSION_21
         targetCompatibility = JavaVersion.VERSION_21
     }
+}
+
+composeCompiler {
+    includeSourceInformation = true
+    includeTraceMarkers = true
+    featureFlags = setOf()
 }
 
 // kotlin {
