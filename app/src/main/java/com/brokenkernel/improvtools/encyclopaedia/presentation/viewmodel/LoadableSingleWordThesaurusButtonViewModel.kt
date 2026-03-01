@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 
 @HiltViewModel
 class LoadableSingleWordThesaurusButtonViewModel @Inject constructor(
-    val thesaurusAPI: ThesaurusAPI, // todo: this should be accessed through a repository
+    private val thesaurusAPI: ThesaurusAPI, // todo: this should be accessed through a repository
 ) : ViewModel() {
 
     // TODO: expose a way to have a disposeEffect to cleanup. Otherwise there is a memory leak to some extent

@@ -16,7 +16,7 @@ internal object LogFirebaseScreenViewWrapper : DestinationWrapper {
     @SuppressWarnings("ComposableLambdaParameterNaming")
     @Composable
     override fun <T> DestinationScope<T>.Wrap(screenContent: @Composable (() -> Unit)) {
-        val navigableScreen: NavigableScreens = NavigableScreens.Companion.byRoute(destination)
+        val navigableScreen: NavigableScreens = NavigableScreens.byRoute(destination)
         val resources = LocalResources.current
 
         val params = Bundle()

@@ -11,7 +11,7 @@ import kotlinx.collections.immutable.toImmutableList
  * This is the portion of the Thesaurus exposed to other components.
  */
 class ThesaurusAPI @Inject internal constructor(thesaurusRepository: ThesaurusRepository) {
-    val dictionary: DictionaryInfo = thesaurusRepository
+    private val dictionary: DictionaryInfo = thesaurusRepository
         .getDictionaryInfo()
 
     /**

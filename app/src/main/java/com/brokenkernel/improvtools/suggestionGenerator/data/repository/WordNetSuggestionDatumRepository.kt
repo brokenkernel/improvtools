@@ -12,7 +12,7 @@ import kotlinx.collections.immutable.ImmutableSet
 
 internal class WordNetSuggestionDatumRepository @Inject constructor(
     @param:ApplicationContext private val context: Context,
-    val thesaurusRepository: ThesaurusRepository,
+    private val thesaurusRepository: ThesaurusRepository,
 ) : AudienceSuggestionDatumRepository {
     override fun getIdeaCategories(): List<IdeaCategoryODS> {
         //

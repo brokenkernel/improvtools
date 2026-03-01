@@ -12,14 +12,14 @@ object ConsentManagement {
             EnumMap<ConsentType?, ConsentStatus?>(ConsentType::class.java)
 
         if (analyticsStorageConsent) {
-            consentMap.put(ConsentType.ANALYTICS_STORAGE, ConsentStatus.GRANTED)
+            consentMap[ConsentType.ANALYTICS_STORAGE] = ConsentStatus.GRANTED
         } else {
-            consentMap.put(ConsentType.ANALYTICS_STORAGE, ConsentStatus.DENIED)
+            consentMap[ConsentType.ANALYTICS_STORAGE] = ConsentStatus.DENIED
         }
 
-        consentMap.put(ConsentType.AD_STORAGE, ConsentStatus.DENIED)
-        consentMap.put(ConsentType.AD_USER_DATA, ConsentStatus.DENIED)
-        consentMap.put(ConsentType.AD_PERSONALIZATION, ConsentStatus.DENIED)
+        consentMap[ConsentType.AD_STORAGE] = ConsentStatus.DENIED
+        consentMap[ConsentType.AD_USER_DATA] = ConsentStatus.DENIED
+        consentMap[ConsentType.AD_PERSONALIZATION] = ConsentStatus.DENIED
         Firebase.analytics.setConsent(consentMap)
     }
 }

@@ -39,7 +39,7 @@ class SuggestionsRotationTest {
 
     @Test
     fun assertRootStillDisplayedAfterRotation() {
-        EspressoDevice.Companion.onDevice().setScreenOrientation(ScreenOrientation.LANDSCAPE)
+        EspressoDevice.onDevice().setScreenOrientation(ScreenOrientation.LANDSCAPE)
         composeTestRule
             .onRoot()
             .assertIsDisplayed()

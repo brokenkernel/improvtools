@@ -12,7 +12,7 @@ import kotlinx.collections.immutable.toImmutableMap
 internal class ThesaurusTabAllItemsViewModel @Inject constructor(
     thesaurusRepository: ThesaurusRepository,
 ) : ViewModel() {
-    val dictionary = thesaurusRepository.getDictionaryInfo()
+    private val dictionary = thesaurusRepository.getDictionaryInfo()
 
     fun groupedWords(): ImmutableMap<String, List<String>> {
         return dictionary.getWordsByType(WordType.ACTION).sorted().groupBy { k ->

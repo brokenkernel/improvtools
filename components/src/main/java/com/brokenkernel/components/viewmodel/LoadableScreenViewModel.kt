@@ -22,7 +22,7 @@ public class LoadableScreenViewModel(private val loader: () -> Unit) :
         }
         .stateIn(
             scope = viewModelScope,
-            started = SharingStarted.Companion.Eagerly,
+            started = SharingStarted.Eagerly,
             initialValue = false,
         )
 

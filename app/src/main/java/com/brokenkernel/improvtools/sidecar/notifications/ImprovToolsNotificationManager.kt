@@ -21,7 +21,7 @@ internal interface ImprovToolsNotification {
 
 @OptIn(ExperimentalTime::class)
 internal abstract class ImprovToolsNotificationManager<T>(
-    val notificationManager: NotificationManager,
+    private val notificationManager: NotificationManager,
 )
     where T : ImprovToolsNotification {
     private var currentNotificationId: Int = 1

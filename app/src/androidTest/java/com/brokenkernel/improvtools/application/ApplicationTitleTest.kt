@@ -26,7 +26,7 @@ class ApplicationTitleTest {
 
     @get:Rule(order = 1)
     val composeTestRule:
-        AndroidComposeTestRule<ActivityScenarioRule<HiltComponentActitivity>, HiltComponentActitivity> =
+            AndroidComposeTestRule<ActivityScenarioRule<HiltComponentActitivity>, HiltComponentActitivity> =
         createAndroidComposeRule<HiltComponentActitivity>()
     private lateinit var improvToolsState: ImprovToolsAppState
 

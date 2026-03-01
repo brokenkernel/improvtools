@@ -89,7 +89,7 @@ internal class ScreenshotGeneralPerNavigableScreenTest(
 
     companion object {
         @JvmStatic
-        @Parameterized.Parameters()
+        @Parameterized.Parameters
         fun data(): Iterable<Array<Any>> {
             return arrayListOf(
                 arrayOf(NavigableScreens.SuggestionGeneratorScreen),

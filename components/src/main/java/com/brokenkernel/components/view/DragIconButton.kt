@@ -17,7 +17,7 @@ public fun DragIconButton(
 ) {
     val haptic = LocalHapticFeedback.current
     val longPressModifier: Modifier = with(scope) {
-        Modifier.Companion.longPressDraggableHandle(
+        Modifier.longPressDraggableHandle(
             onDragStarted = {
                 haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove)
             },

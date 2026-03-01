@@ -17,7 +17,7 @@ internal class ThesaurusSingleItemViewModel @Inject constructor(
         return dictionaryInfo.synonymsForWord(word).isNotEmpty()
     }
 
-    fun synonyms(word: String): Iterable<String> {
+    private fun synonyms(word: String): Iterable<String> {
         return dictionaryInfo.synonymsForWord(word).sorted()
     }
 
@@ -36,7 +36,7 @@ internal class ThesaurusSingleItemViewModel @Inject constructor(
         val allSenseDatum = thesaurusAPI.getSenseDatum(word)
 
         val senseString: String = buildString {
-            allSenseDatum.forEach { pos, senseDatum ->
+            allSenseDatum.forEach { (pos, senseDatum) ->
                 append("<h2>$pos</h2>")
                 append("<ul>")
                 senseDatum.forEach { sense ->

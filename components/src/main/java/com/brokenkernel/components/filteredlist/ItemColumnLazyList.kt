@@ -25,7 +25,7 @@ internal fun <I> ItemColumnLazyList(
             .mapValues { (_, value) ->
                 value.filter { itemDoesMatch(it) }
             }
-        filteredGroupedList.forEach { group, groupList ->
+        filteredGroupedList.forEach { (group, groupList) ->
             if (groupList.size > 1) {
                 stickyHeader {
                     Text(group)

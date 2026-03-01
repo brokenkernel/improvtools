@@ -32,8 +32,8 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalTime::class)
 @HiltViewModel
 internal class TimerListViewModel @Inject constructor(
-    val settingsRepository: SettingsRepository,
-    val timerManager: TimerManager,
+    private val settingsRepository: SettingsRepository,
+    private val timerManager: TimerManager,
     private val stopWatchNotificationManager: StopWatchNotificationManager,
     private val countDownNotificationManager: CountDownNotificationManager,
 ) : ViewModel() {

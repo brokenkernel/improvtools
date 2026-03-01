@@ -36,7 +36,7 @@ public annotation class PreviewsFontScale
     group = "locale",
     locale = "de-DE",
 )
-public annotation class PreviewsLocales()
+public annotation class PreviewsLocales
 
 @MustBeDocumented
 @PreviewsFontScale
@@ -44,4 +44,4 @@ public annotation class PreviewsLocales()
 @Preview(name = "Show Background", showBackground = true)
 // @Preview(name = "Show System UI", showSystemUi = true)
 @Preview
-public annotation class PreviewsImprovToolsAll()
+public annotation class PreviewsImprovToolsAll

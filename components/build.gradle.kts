@@ -59,14 +59,14 @@ configure<LibraryExtension> {
         targetCompatibility = JavaVersion.VERSION_21
     }
 }
-//
-// kotlin {
-//    compilerOptions {
-//        // false warning in compose for unused var
-// //        allWarningsAsErrors = true
-//    }
-//    explicitApi()
-// }
+
+kotlin {
+    compilerOptions {
+        // false warning in compose for unused var
+        // allWarningsAsErrors = true
+    }
+    explicitApi()
+}
 
 dependencies {
     api(libs.androidx.foundation)
