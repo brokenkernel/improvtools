@@ -84,7 +84,6 @@ startupRuntime = "1.2.0"
 uiTooling = "1.10.4"
 uiToolingPreview = "1.10.4"
 versionCatalogUpdate = "1.1.0"
-versions = "0.53.0"
 viewModelCompose = "2.10.0"
 window = "1.5.1"
 workRuntimeKtx = "2.11.1"
@@ -183,7 +182,6 @@ google-dagger = { module = "com.google.dagger:dagger", version.ref = "daggerVers
 gradlePlugins-android = { module = "com.android.tools.build:gradle", version.ref = "agp" }
 gradlePlugins-dependencyAnalysis = { module = "com.autonomousapps:dependency-analysis-gradle-plugin", version.ref = "dependencyAnalysis" }
 gradlePlugins-dokka = { module = "org.jetbrains.dokka:dokka-gradle-plugin", version.ref = "dokka" }
-gradlePlugins-gradleVersions = { module = "com.github.ben-manes:gradle-versions-plugin", version.ref = "versions" }
 gradlePlugins-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 gradlePlugins-powerAssert = { module = "org.jetbrains.kotlin:kotlin-power-assert", version.ref = "kotlin" }
 guava = { module = "com.google.guava:guava", version.ref = "guava" }
@@ -257,4 +255,3 @@ ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }
 protobuf = { id = "com.google.protobuf", version.ref = "protobuf" }
 sortDependencies = { id = "com.squareup.sort-dependencies", version.ref = "sortDependencies" }
 versionCatalogUpdate = { id = "nl.littlerobots.version-catalog-update", version.ref = "versionCatalogUpdate" }
-versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }

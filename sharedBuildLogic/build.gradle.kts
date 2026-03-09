@@ -7,7 +7,6 @@ plugins {
     alias(libs.plugins.dependencyAnalysis)
     alias(libs.plugins.sortDependencies)
     alias(libs.plugins.ktlint)
-    alias(libs.plugins.versions)
     kotlin("plugin.power-assert") version libs.versions.kotlin.get()
 }
 
@@ -39,7 +38,6 @@ dependencies {
     compileOnly(libs.gradlePlugins.android)
     compileOnly(libs.gradlePlugins.dependencyAnalysis)
     compileOnly(libs.gradlePlugins.dokka)
-    compileOnly(libs.gradlePlugins.gradleVersions)
     compileOnly(libs.gradlePlugins.kotlin)
     compileOnly(libs.gradlePlugins.powerAssert)
 }

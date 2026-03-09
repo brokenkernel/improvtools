@@ -2,12 +2,10 @@ package com.brokenkernel.improvtools.sharedbuildlogic
 
 //import org.jetbrains.kotlin.gradle.dsl.JvmDefaultMode
 //import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.plugins.JavaPluginExtension
-import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.powerassert.gradle.PowerAssertGradleExtension
 
@@ -22,26 +20,6 @@ public class CommonKotlinPlugin : Plugin<Project> {
                 apply("org.jetbrains.dokka")
             }
 
-            tasks.withType<DependencyUpdatesTask>().configureEach {
-                checkConstraints = true
-                checkBuildEnvironmentConstraints = true
-                checkForGradleUpdate = true
-                rejectVersionIf {
-                    when {
-                        !isStable(currentVersion) -> false
-                        !isStable(candidate.version) -> return@rejectVersionIf true
-                        (
-                            candidate.moduleIdentifier.equals("com.google.guava:guava") &&
-                                candidate.version.endsWith("jre")
-                            ) -> {
-                            return@rejectVersionIf true
-                        }
-
-                        else -> return@rejectVersionIf false
-                    }
-
-                }
-            }
 
 //            extensions.configure(DokkaExtension::class.java) { dokka ->
 //            }
@@ -89,11 +67,3 @@ public class CommonKotlinPlugin : Plugin<Project> {
         }
     }
 }
-
-private fun isStable(version: String): Boolean {
-    val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { version.uppercase().contains(it) }
-    val regex = "^[0-9,.v-]+(?:-r)?$".toRegex()
-    val isStable = stableKeyword || regex.matches(version)
-    return isStable
-}
-

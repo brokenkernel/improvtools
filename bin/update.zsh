@@ -12,6 +12,5 @@ bundle exec fastlane update_plugins
   npm upgrade
 )
 
-./gradlew dependencyUpdates --no-parallel -Dorg.gradle.configuration-cache=false
 ./gradlew versionCatalogFormat
 ./gradlew sortDependencies
