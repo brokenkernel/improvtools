@@ -11,6 +11,6 @@ bundle exec fastlane update_plugins
   hugo mod get -u
   npm upgrade
 )
-
+./gradlew -Dorg.gradle.configuration-cache=false versionCatalogUpdate --check
 ./gradlew versionCatalogFormat
 ./gradlew sortDependencies
