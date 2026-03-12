@@ -1,5 +1,4 @@
-import nl.littlerobots.vcu.plugin.versionSelector
-import org.gradle.kotlin.dsl.dokkaPublications
+import nl.littlerobots.vcu.plugin.resolver.VersionSelectors
 
 plugins {
     alias(libs.plugins.aboutLibraries)
@@ -77,20 +76,11 @@ versionCatalogUpdate {
     keep {
         keepUnusedVersions = true
     }
-    versionSelector {
-        isStable(it.candidate.version)
-    }
+    versionSelector(VersionSelectors.PREFER_STABLE)
 }
 
 doctor {
     javaHome {
         ensureJavaHomeMatches = false
     }
-}
-
-private fun isStable(version: String): Boolean {
-    val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { version.uppercase().contains(it) }
-    val regex = "^[0-9,.v-]+(?:-r)?$".toRegex()
-    val isStable = stableKeyword || regex.matches(version)
-    return isStable
 }
