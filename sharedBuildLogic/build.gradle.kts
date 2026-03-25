@@ -36,7 +36,6 @@ gradlePlugin {
 
 dependencies {
     compileOnly(libs.gradlePlugins.android)
-    compileOnly(libs.gradlePlugins.dependencyAnalysis)
     compileOnly(libs.gradlePlugins.dokka)
     compileOnly(libs.gradlePlugins.kotlin)
     compileOnly(libs.gradlePlugins.powerAssert)

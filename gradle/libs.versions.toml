@@ -180,7 +180,6 @@ firebase-config = { module = "com.google.firebase:firebase-config", version.ref 
 fragment = { module = "androidx.fragment:fragment", version.ref = "fragmentVersion" }
 google-dagger = { module = "com.google.dagger:dagger", version.ref = "daggerVersion" }
 gradlePlugins-android = { module = "com.android.tools.build:gradle", version.ref = "agp" }
-gradlePlugins-dependencyAnalysis = { module = "com.autonomousapps:dependency-analysis-gradle-plugin", version.ref = "dependencyAnalysis" }
 gradlePlugins-dokka = { module = "org.jetbrains.dokka:dokka-gradle-plugin", version.ref = "dokka" }
 gradlePlugins-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 gradlePlugins-powerAssert = { module = "org.jetbrains.kotlin:kotlin-power-assert", version.ref = "kotlin" }
