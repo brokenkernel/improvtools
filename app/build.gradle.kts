@@ -235,7 +235,6 @@ dependencies {
     implementation(libs.hilt.android)
     implementation(libs.io.github.raamcosta.composeDestinations.core)
     implementation(libs.jakarta.inject.api)
-    implementation(libs.javax.inject)
     implementation(libs.kotlin.stdlib)
     implementation(libs.kotlinx.collections.immutable.jvm)
     implementation(libs.kotlinx.coroutines.core)
