@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="glance_another_tt">another</string>
+    <string name="tts_listen">Listen</string>
+    <string name="tts_pause">pause</string>
 </resources>
