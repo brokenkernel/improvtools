@@ -13,6 +13,7 @@ plugins {
 kotlin {
     compilerOptions {
         allWarningsAsErrors = true
+        extraWarnings = true
     }
     explicitApi()
 }
