@@ -107,7 +107,7 @@ androidx-appsearch-platform-storage = { module = "androidx.appsearch:appsearch-p
 androidx-appsearch-play-services-storage = { module = "androidx.appsearch:appsearch-play-services-storage", version.ref = "appsearch" }
 androidx-browser = { module = "androidx.browser:browser", version.ref = "browser" }
 androidx-collection-jvm = { module = "androidx.collection:collection-jvm", version.ref = "collectionJvm" }
-    androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
+androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
 androidx-compose-material-materialIconsExtended = { module = "androidx.compose.material:material-icons-extended", version.ref = "materialIconsExtended" }
 androidx-core = { module = "androidx.test:core", version.ref = "core" }
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
