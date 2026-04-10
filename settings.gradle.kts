@@ -34,7 +34,6 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 //}
 
 
-includeBuild("sharedBuildLogic")
 include(":app")
 include(":components")
 include(":features:debug")

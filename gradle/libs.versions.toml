@@ -178,10 +178,6 @@ extjwnl-data-wn31 = { module = "net.sf.extjwnl:extjwnl-data-wn31", version.ref =
 firebase-config = { module = "com.google.firebase:firebase-config", version.ref = "firebaseConfig" }
 fragment = { module = "androidx.fragment:fragment", version.ref = "fragmentVersion" }
 google-dagger = { module = "com.google.dagger:dagger", version.ref = "daggerVersion" }
-gradlePlugins-android = { module = "com.android.tools.build:gradle", version.ref = "agp" }
-gradlePlugins-dokka = { module = "org.jetbrains.dokka:dokka-gradle-plugin", version.ref = "dokka" }
-gradlePlugins-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
-gradlePlugins-powerAssert = { module = "org.jetbrains.kotlin:kotlin-power-assert", version.ref = "kotlin" }
 guava = { module = "com.google.guava:guava", version.ref = "guava" }
 hamcrest = { module = "org.hamcrest:hamcrest", version.ref = "hamcrest" }
 hamcrest-core = { module = "org.hamcrest:hamcrest-core", version.ref = "hamcrest" }
