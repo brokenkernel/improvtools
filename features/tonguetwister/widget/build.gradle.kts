@@ -66,18 +66,9 @@ kotlin {
 }
 
 dependencies {
-    api(libs.androidx.compose.material.materialIconsExtended)
-    api(libs.androidx.lifecycle.viewmodel.savedstate)
-    api(libs.androidx.material.icons.core)
-    api(libs.androidx.navigation.common)
-    api(libs.io.github.raamcosta.composeDestinations.core)
 
     implementation(enforcedPlatform(libs.androidx.compose.bom))
     implementation(enforcedPlatform(libs.kotlin.bom))
-    implementation(project(":components"))
-    implementation(project(":coreinfra"))
-    implementation(libs.androidx.glance)
-    implementation(libs.androidx.material3)
     implementation(libs.androidx.runtime)
 
     debugImplementation(libs.ui.tooling)
