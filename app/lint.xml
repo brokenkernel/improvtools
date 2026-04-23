@@ -17,7 +17,6 @@
     <issue id="UnknownNullness" severity="error" />
     <issue id="WrongThreadInterprocedural" severity="error" />
     <!-- maybe -->
-    <issue id="PrivacySandboxBlockedCall" severity="error" />
     <issue id="InvalidPackage" severity="ignore" />
     <!-- Slack Specific Lints -->
     <issue id="RawDispatchersUse" severity="ignore" />
