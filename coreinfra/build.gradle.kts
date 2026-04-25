@@ -8,7 +8,7 @@ plugins {
     alias(libs.plugins.sortDependencies)
     alias(libs.plugins.dependencyAnalysis)
     alias(libs.plugins.ktlint)
-    kotlin("plugin.power-assert") version "2.3.21"
+    kotlin("plugin.power-assert") version libs.versions.kotlin.get()
 }
 
 configure<LibraryExtension> {
