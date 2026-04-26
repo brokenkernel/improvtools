@@ -1,5 +1,9 @@
 package com.brokenkernel.improvtools.timer.model
 
+import androidx.compose.runtime.MutableState
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlin.time.Clock
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.seconds
@@ -13,10 +17,18 @@ public val INITIAL_COUNT_DOWN_TIMER_DURATION: Duration = INITIAL_TIMER_SECONDS.s
 // TODO all sorts of tests.
 // TODO: timezones and friends. Also tests
 // TODO: make things internal/private as needed. Currently public while code is being modularised
+// TODO: now that we have StateFlow we can likely remove Paused vs Unpaused separate impls
+
+public data class TrueCountDownTimerState(
+    val remainingTime: MutableState<Duration>,
+    val isStarted: MutableState<Boolean>,
+    val title: MutableState<String>,
+    val timerId: Int,
+)
 
 public sealed interface TimerState {
     /**
-     * This is the time to show on on the screen.
+     * This is the time to show on the screen.
      */
     public fun showTime(): Duration
     public fun asResetTimer(): TimerState // really irksome there are no true traits.
@@ -48,47 +60,52 @@ public sealed interface CountDownTimerState : TimerState {
 public sealed interface CountUpTimerState : TimerState {
     public companion object
 }
-
-@OptIn(ExperimentalTime::class)
-public class StartedCountUpTimerState(
-    private val priorElapsedTime: Duration,
-    private val startedTime: Instant,
-    override val title: String,
-    override val timerID: Int,
-) : StartedTimerState, CountUpTimerState {
-
-    private fun timeSinceStarted(): Duration {
-        val now = Clock.System.now()
-        return (now - startedTime)
-    }
-
-    private fun totalElapsedTime(): Duration {
-        return priorElapsedTime + timeSinceStarted()
-    }
-
-    override fun asPausedTimer(): PausedTimerState {
-        return PausedCountUpTimerState(totalElapsedTime(), title, timerID)
-    }
-
-    override fun showTime(): Duration {
-        return totalElapsedTime()
-    }
-
-    override fun asResetTimer(): TimerState {
-        return PausedCountUpTimerState(Duration.ZERO, title, timerID)
-    }
-
-    override fun asEdited(
-        title: String,
-    ): TimerState {
-        return StartedCountUpTimerState(
-            priorElapsedTime = this.priorElapsedTime,
-            startedTime = this.startedTime,
-            title = title,
-            timerID = timerID,
-        )
-    }
-}
+//
+//@OptIn(ExperimentalTime::class)
+//public class StartedCountUpTimerState(
+//    private val priorElapsedTime: Duration,
+//    private val startedTime: Instant,
+//    override val title: String,
+//    override val timerID: Int,
+//) : StartedTimerState, CountUpTimerState {
+//
+//    private val _elapsedTimeDuration = MutableStateFlow(totalElapsedTime())
+//    private val elapsedTimeDuration: StateFlow<Duration> = _elapsedTimeDuration.asStateFlow()
+//
+//
+//    private fun timeSinceStarted(): Duration {
+//        val now = Clock.System.now()
+//        return (now - startedTime)
+//    }
+//
+//    private fun totalElapsedTime(): Duration {
+//        return priorElapsedTime + timeSinceStarted()
+//    }
+//
+//    override fun asPausedTimer(): PausedTimerState {
+//        return PausedCountUpTimerState(totalElapsedTime(), title, timerID)
+//    }
+//
+//    override fun showTime(): StateFlow<Duration> {
+//        _elapsedTimeDuration.value = totalElapsedTime()
+//        return elapsedTimeDuration
+//    }
+//
+//    override fun asResetTimer(): TimerState {
+//        return PausedCountUpTimerState(Duration.ZERO, title, timerID)
+//    }
+//
+//    override fun asEdited(
+//        title: String,
+//    ): TimerState {
+//        return StartedCountUpTimerState(
+//            priorElapsedTime = this.priorElapsedTime,
+//            startedTime = this.startedTime,
+//            title = title,
+//            timerID = timerID,
+//        )
+//    }
+//}
 
 @OptIn(ExperimentalTime::class)
 public class StartedCountDownTimerState(
@@ -112,7 +129,7 @@ public class StartedCountDownTimerState(
     }
 
     override fun showTime(): Duration {
-        return totalRemainingTime()
+        return timeRemainingDuration
     }
 
     override fun asResetTimer(): TimerState {
@@ -138,35 +155,39 @@ public class StartedCountDownTimerState(
 
 // TODO: secondary constructor for initial creation ?
 
-@OptIn(ExperimentalTime::class)
-public class PausedCountUpTimerState(
-    private val elapsedTime: Duration,
-    override val title: String,
-    override val timerID: Int,
-) : PausedTimerState, CountUpTimerState {
-    override fun asStartedTimer(): StartedTimerState {
-        val now = Clock.System.now()
-        return StartedCountUpTimerState(elapsedTime, now, title, timerID)
-    }
-
-    override fun showTime(): Duration {
-        return elapsedTime
-    }
-
-    override fun asResetTimer(): TimerState {
-        return PausedCountUpTimerState(Duration.ZERO, title, timerID)
-    }
-
-    override fun asEdited(
-        title: String,
-    ): TimerState {
-        return PausedCountUpTimerState(
-            elapsedTime = this.elapsedTime,
-            title = title,
-            timerID = timerID,
-        )
-    }
-}
+//@OptIn(ExperimentalTime::class)
+//public class PausedCountUpTimerState(
+//    private val elapsedTime: Duration,
+//    override val title: String,
+//    override val timerID: Int,
+//) : PausedTimerState, CountUpTimerState {
+//
+//    private val _elapsedTimeDuration = MutableStateFlow(elapsedTime)
+//    private val elapsedTimeDuration: StateFlow<Duration> = _elapsedTimeDuration.asStateFlow()
+//
+//    override fun asStartedTimer(): StartedTimerState {
+//        val now = Clock.System.now()
+//        return StartedCountUpTimerState(elapsedTime, now, title, timerID)
+//    }
+//
+//    override fun showTime(): StateFlow<Duration> {
+//        return elapsedTimeDuration
+//    }
+//
+//    override fun asResetTimer(): TimerState {
+//        return PausedCountUpTimerState(Duration.ZERO, title, timerID)
+//    }
+//
+//    override fun asEdited(
+//        title: String,
+//    ): TimerState {
+//        return PausedCountUpTimerState(
+//            elapsedTime = this.elapsedTime,
+//            title = title,
+//            timerID = timerID,
+//        )
+//    }
+//}
 
 @OptIn(ExperimentalTime::class)
 public class PausedCountDownTimerState(
@@ -174,13 +195,18 @@ public class PausedCountDownTimerState(
     override val title: String,
     override val timerID: Int,
 ) : PausedTimerState, CountDownTimerState {
+
+    private val _timeRemainingDuration = MutableStateFlow(remainingTime)
+    private val timeRemainingDuration: StateFlow<Duration> = _timeRemainingDuration.asStateFlow()
+
+
     override fun asStartedTimer(): StartedTimerState {
         val now = Clock.System.now()
         return StartedCountDownTimerState(remainingTime, now, title, timerID)
     }
 
-    override fun showTime(): Duration {
-        return remainingTime
+    override fun showTime(): StateFlow<Duration> {
+        return timeRemainingDuration
     }
 
     override fun asResetTimer(): TimerState {

@@ -1,5 +1,6 @@
 package com.brokenkernel.improvtools.timer.presentation.view
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.os.Build
 import android.util.Log
@@ -19,7 +20,10 @@ import androidx.compose.material3.LargeFloatingActionButton
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
@@ -45,9 +49,11 @@ import com.brokenkernel.improvtools.timer.view.TimerBorderOutlineCard
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.MultiplePermissionsState
 import com.google.accompanist.permissions.rememberMultiplePermissionsState
+import kotlinx.coroutines.flow.StateFlow
 import sh.calvin.reorderable.ReorderableCollectionItemScope
 import sh.calvin.reorderable.ReorderableItem
 import sh.calvin.reorderable.rememberReorderableLazyListState
+import kotlin.time.Duration
 
 private const val TAG = "TimerScreen"
 
@@ -66,9 +72,11 @@ private fun CommonTimer(
     scope: ReorderableCollectionItemScope,
     content: @Composable () -> Unit,
 ) {
+    val displayableTime by timerState.showTime().collectAsState()
+    val remainingTime: StateFlow<Duration> = remember({timerState.showTime()})
     SlottedTimerCardContent(
         title = timerState.title,
-        currentTime = timerState::showTime,
+        currentTime = timerState.showTime(),
         actions = content,
         isStarted = timerState.isStarted(),
         onRemoveTimer = onRemoveTimer,
@@ -172,7 +180,7 @@ internal fun TimerTab(viewModel: TimerListViewModel = hiltViewModel()) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             rememberMultiplePermissionsState(
                 listOf(
-                    android.Manifest.permission.POST_NOTIFICATIONS,
+                    Manifest.permission.POST_NOTIFICATIONS,
                 ),
             )
         } else {
@@ -194,7 +202,7 @@ internal fun TimerTab(viewModel: TimerListViewModel = hiltViewModel()) {
                     if (shouldHapticOnRemove.value) {
                         haptic.performHapticFeedback(HapticFeedbackType.ToggleOff)
                     }
-                    viewModel.removeTimer(currentTimer)
+                    viewModel.removeTimer(currentTimer.timerID)
                     Log.w(TAG, "removing timer $timer")
                     Unit
                 }
@@ -232,17 +240,17 @@ internal fun TimerTab(viewModel: TimerListViewModel = hiltViewModel()) {
                                 )
                             }
 
-                            is CountUpTimerState -> {
-                                CountUpTimer(
-                                    onPauseTimer = { viewModel.invertTimerState(timer) },
-                                    onRemoveTimer = onRemove,
-                                    onResetTimer = { viewModel.resetTimer(timer) },
-                                    onTitleChange = { viewModel.replaceTitle(timer, it) },
-                                    timerState = timer,
-                                    onStartTimer = onTimerStart,
-                                    scope = this,
-                                )
-                            }
+//                            is CountUpTimerState -> {
+//                                CountUpTimer(
+//                                    onPauseTimer = { viewModel.invertTimerState(timer) },
+//                                    onRemoveTimer = onRemove,
+//                                    onResetTimer = { viewModel.resetTimer(timer) },
+//                                    onTitleChange = { viewModel.replaceTitle(timer, it) },
+//                                    timerState = timer,
+//                                    onStartTimer = onTimerStart,
+//                                    scope = this,
+//                                )
+//                            }
                         }
                     }
                 }

@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Context
 import androidx.annotation.RequiresPermission
 import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -14,15 +15,15 @@ import com.brokenkernel.improvtools.timer.model.CountDownTimerState
 import com.brokenkernel.improvtools.timer.model.CountUpTimerState
 import com.brokenkernel.improvtools.timer.model.INITIAL_COUNT_DOWN_TIMER_DURATION
 import com.brokenkernel.improvtools.timer.model.PausedCountDownTimerState
-import com.brokenkernel.improvtools.timer.model.PausedCountUpTimerState
+//import com.brokenkernel.improvtools.timer.model.PausedCountUpTimerState
 import com.brokenkernel.improvtools.timer.model.PausedTimerState
 import com.brokenkernel.improvtools.timer.model.StartedTimerState
 import com.brokenkernel.improvtools.timer.model.TimerState
+import com.brokenkernel.improvtools.timer.model.TrueCountDownTimerState
 import com.brokenkernel.improvtools.timer.sidecar.notifications.CountDownNotificationManager
 import com.brokenkernel.improvtools.timer.sidecar.notifications.StopWatchNotificationManager
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
-import kotlin.time.Duration
 import kotlin.time.ExperimentalTime
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -50,22 +51,36 @@ internal class TimerListViewModel @Inject constructor(
     val shouldHaptic = _shouldHaptic.asStateFlow()
 
     // hide the mutable ability from the UI
-    private val _allTimers: SnapshotStateList<TimerState> =
+    private val _allTimers: SnapshotStateList<TrueCountDownTimerState> =
         mutableStateListOf(
-            PausedCountUpTimerState(Duration.ZERO, "Stopwatch One", timerManager.getNextID()),
-            PausedCountUpTimerState(Duration.ZERO, "Stopwatch Two", timerManager.getNextID()),
-            PausedCountDownTimerState(INITIAL_COUNT_DOWN_TIMER_DURATION, "Countdown Three", timerManager.getNextID()),
-            PausedCountDownTimerState(INITIAL_COUNT_DOWN_TIMER_DURATION, "Countdown Four", timerManager.getNextID()),
+            TrueCountDownTimerState(
+                mutableStateOf(INITIAL_COUNT_DOWN_TIMER_DURATION),
+                mutableStateOf(false),
+                mutableStateOf("Countdown Three"),
+                timerManager.getNextID()
+            ),
+            TrueCountDownTimerState(
+                mutableStateOf(INITIAL_COUNT_DOWN_TIMER_DURATION),
+                mutableStateOf(false),
+                mutableStateOf("Countdown Four"),
+                timerManager.getNextID()
+            ),
         )
-    val allTimers: List<TimerState> = _allTimers
 
-    fun removeTimer(timer: TimerState) {
+    //            PausedCountUpTimerState(Duration.ZERO, "Stopwatch One", timerManager.getNextID()),
+//            PausedCountUpTimerState(Duration.ZERO, "Stopwatch Two", timerManager.getNextID()),
+//            mutableStateOf( PausedCountDownTimerState(INITIAL_COUNT_DOWN_TIMER_DURATION, "Countdown Three", timerManager.getNextID())),
+//            mutableStateOf(PausedCountDownTimerState(INITIAL_COUNT_DOWN_TIMER_DURATION, "Countdown Four", timerManager.getNextID())),
+//        )
+    val allTimers = _allTimers
+
+    fun removeTimer(timer: TrueCountDownTimerState) {
         _allTimers.remove(timer)
     }
 
-    private fun startTimer(timer: PausedTimerState) {
-        val index = _allTimers.indexOf(timer)
-        _allTimers[index] = timer.asStartedTimer()
+    private fun startTimer(timer: TrueCountDownTimerState) {
+        val indexToUpdate = _allTimers.indexOf(timer)
+        _allTimers[indexToUpdate].isStarted.value = true
     }
 
     @RequiresPermission(Manifest.permission.POST_NOTIFICATIONS)
@@ -85,43 +100,45 @@ internal class TimerListViewModel @Inject constructor(
         }
     }
 
-    private fun pauseTimer(timer: StartedTimerState) {
+    private fun pauseTimer(timer: TrueCountDownTimerState) {
         val index = _allTimers.indexOf(timer)
-        _allTimers[index] = timer.asPausedTimer()
+        _allTimers[index].isStarted.value = false
     }
 
-    fun invertTimerState(timer: TimerState) {
-        when (timer) {
-            is PausedTimerState -> startTimer(timer)
-            is StartedTimerState -> pauseTimer(timer)
-        }
+    fun invertTimerState(timer: TrueCountDownTimerState) {
+        timer.isStarted.value = !timer.isStarted.value
     }
 
-    fun resetTimer(timer: TimerState) {
+    fun resetTimer(timer: TrueCountDownTimerState) {
         val index = _allTimers.indexOf(timer)
-        _allTimers[index] = timer.asResetTimer()
+        _allTimers[index].remainingTime.value = INITIAL_COUNT_DOWN_TIMER_DURATION
     }
 
-    fun halfTimer(timer: CountDownTimerState) {
+    fun halfTimer(timer: TrueCountDownTimerState) {
         val index = _allTimers.indexOf(timer)
-        _allTimers[index] = timer.asHalfTime()
+        _allTimers[index].remainingTime.value /= 2
     }
 
     fun addCountUpTimer(title: String) {
-        val timer = PausedCountUpTimerState(Duration.ZERO, title, timerManager.getNextID())
-        _allTimers.add(timer)
+//        val timer = PausedCountUpTimerState(Duration.ZERO, title, timerManager.getNextID())
+//        _allTimers.add(timer)
     }
 
     fun addCountDownTimer(title: String) {
-        val timer = PausedCountDownTimerState(INITIAL_COUNT_DOWN_TIMER_DURATION, title, timerManager.getNextID())
+        val timer = TrueCountDownTimerState(
+            mutableStateOf(INITIAL_COUNT_DOWN_TIMER_DURATION),
+            isStarted = mutableStateOf(false),
+            mutableStateOf(title),
+            timerManager.getNextID()
+
+        )
         _allTimers.add(timer)
     }
 
     @OptIn(ExperimentalTime::class)
-    fun replaceTitle(timer: TimerState, newTitle: String) {
+    fun replaceTitle(timer: TrueCountDownTimerState, newTitle: String) {
         val index = _allTimers.indexOf(timer)
-        val priorTimer = _allTimers[index]
-        _allTimers[index] = priorTimer.asEdited(title = newTitle)
+        _allTimers[index].title.value = newTitle
     }
 
     fun swapTimer(from: Int, to: Int) {
