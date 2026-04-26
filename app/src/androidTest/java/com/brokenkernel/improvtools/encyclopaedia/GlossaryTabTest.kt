@@ -2,7 +2,7 @@ package com.brokenkernel.improvtools.encyclopaedia
 
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.AndroidComposeTestRule
-import androidx.compose.ui.test.junit4.createAndroidComposeRule
+import androidx.compose.ui.test.junit4.v2.createAndroidComposeRule
 import androidx.compose.ui.test.onRoot
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import com.brokenkernel.improvtools.encyclopaedia.presentation.view.GlossaryTab

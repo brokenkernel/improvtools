@@ -1,10 +1,8 @@
 package com.brokenkernel.improvtools.legal
 
 import androidx.compose.ui.test.assertIsDisplayed
-import androidx.compose.ui.test.junit4.AndroidComposeTestRule
-import androidx.compose.ui.test.junit4.createAndroidComposeRule
+import androidx.compose.ui.test.junit4.v2.createAndroidComposeRule
 import androidx.compose.ui.test.onRoot
-import androidx.test.ext.junit.rules.ActivityScenarioRule
 import com.brokenkernel.improvtools.application.presentation.view.LibrariesTab
 import com.brokenkernel.improvtools.infrastructure.HiltComponentActitivity
 import dagger.hilt.android.testing.HiltAndroidRule
@@ -20,9 +18,7 @@ class LibrariesTabTest {
     var hiltRule: HiltAndroidRule = HiltAndroidRule(this)
 
     @get:Rule(order = 1)
-    val composeTestRule:
-        AndroidComposeTestRule<ActivityScenarioRule<HiltComponentActitivity>, HiltComponentActitivity> =
-        createAndroidComposeRule<HiltComponentActitivity>()
+    val composeTestRule = createAndroidComposeRule<HiltComponentActitivity>()
 
     @Before
     fun setupAppNavHost() {
