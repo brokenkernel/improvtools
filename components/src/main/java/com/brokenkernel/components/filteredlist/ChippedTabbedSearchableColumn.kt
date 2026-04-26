@@ -123,7 +123,7 @@ public inline fun <reified T : Enum<T>, I, reified X : Enum<X>> ChippedTabbedSea
                                 state.isChipsChecked[it] = !state.isChipsChecked[it]
                             },
                             onClearClick = {
-                                for (i in 0 until state.isChipsChecked.size) {
+                                for (i in state.isChipsChecked.indices) {
                                     state.isChipsChecked[i] = false
                                 }
                             },
