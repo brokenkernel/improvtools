@@ -55,6 +55,7 @@ import com.brokenkernel.improvtools.suggestions.data.storage.IdeaUIState
 import com.ramcosta.composedestinations.generated.destinations.EmotionTabDestination
 import com.ramcosta.composedestinations.generated.destinations.ThesaurusTabSingleWordDestination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
+import kotlin.time.Duration.Companion.milliseconds
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import sh.calvin.reorderable.ReorderableCollectionItemScope
@@ -90,7 +91,7 @@ internal fun SuggestionsTab(
                 isRefreshing = true
                 viewModel.resetAllCategories()
                 // https://issuetracker.google.com/issues/248274004
-                delay(100L)
+                delay(100L.milliseconds)
                 isRefreshing = false
             }
         },
