@@ -15,8 +15,6 @@ import com.brokenkernel.improvtools.timer.model.CountUpTimerState
 import com.brokenkernel.improvtools.timer.model.INITIAL_COUNT_DOWN_TIMER_DURATION
 import com.brokenkernel.improvtools.timer.model.PausedCountDownTimerState
 import com.brokenkernel.improvtools.timer.model.PausedCountUpTimerState
-import com.brokenkernel.improvtools.timer.model.PausedTimerState
-import com.brokenkernel.improvtools.timer.model.StartedTimerState
 import com.brokenkernel.improvtools.timer.model.TimerState
 import com.brokenkernel.improvtools.timer.sidecar.notifications.CountDownNotificationManager
 import com.brokenkernel.improvtools.timer.sidecar.notifications.StopWatchNotificationManager
@@ -63,11 +61,6 @@ internal class TimerListViewModel @Inject constructor(
         _allTimers.remove(timer)
     }
 
-    private fun startTimer(timer: PausedTimerState) {
-        val index = _allTimers.indexOf(timer)
-        _allTimers[index] = timer.asStartedTimer()
-    }
-
     @RequiresPermission(Manifest.permission.POST_NOTIFICATIONS)
     fun tryToSendNotificationForTimer(timer: TimerState, context: Context) {
         when (timer) {
@@ -85,16 +78,9 @@ internal class TimerListViewModel @Inject constructor(
         }
     }
 
-    private fun pauseTimer(timer: StartedTimerState) {
-        val index = _allTimers.indexOf(timer)
-        _allTimers[index] = timer.asPausedTimer()
-    }
-
     fun invertTimerState(timer: TimerState) {
-        when (timer) {
-            is PausedTimerState -> startTimer(timer)
-            is StartedTimerState -> pauseTimer(timer)
-        }
+        val index = _allTimers.indexOf(timer)
+        _allTimers[index].invertTimer()
     }
 
     fun resetTimer(timer: TimerState) {
@@ -102,10 +88,10 @@ internal class TimerListViewModel @Inject constructor(
         _allTimers[index] = timer.asResetTimer()
     }
 
-    fun halfTimer(timer: CountDownTimerState) {
-        val index = _allTimers.indexOf(timer)
-        _allTimers[index] = timer.asHalfTime()
-    }
+//    fun halfTimer(timer: CountDownTimerState) {
+//        val index = _allTimers.indexOf(timer)
+////        _allTimers[index] = timer.asHalfTime()
+//    }
 
     fun addCountUpTimer(title: String) {
         val timer = PausedCountUpTimerState(Duration.ZERO, title, timerManager.getNextID())

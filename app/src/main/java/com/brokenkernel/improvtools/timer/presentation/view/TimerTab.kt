@@ -19,6 +19,7 @@ import androidx.compose.material3.LargeFloatingActionButton
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Modifier
@@ -66,15 +67,16 @@ private fun CommonTimer(
     scope: ReorderableCollectionItemScope,
     content: @Composable () -> Unit,
 ) {
+    val isStartedState = timerState._isStarted().collectAsState()
     SlottedTimerCardContent(
         title = timerState.title,
         currentTime = timerState::showTime,
         actions = content,
-        isStarted = timerState.isStarted(),
+        isStarted = isStartedState.value,
         onRemoveTimer = onRemoveTimer,
         leadingIcon = {
             Icon(
-                if (timerState.isStarted()) {
+                if (isStartedState.value) {
                     iconStarted
                 } else {
                     iconPaused
@@ -223,7 +225,7 @@ internal fun TimerTab(viewModel: TimerListViewModel = hiltViewModel()) {
                                 CountDownTimer(
                                     onPauseTimer = { viewModel.invertTimerState(timer) },
                                     onRemoveTimer = onRemove,
-                                    onHalfTimeTimer = { viewModel.halfTimer(timer) },
+                                    onHalfTimeTimer = { /*viewModel.halfTimer(timer)*/ },
                                     onResetTimer = { viewModel.resetTimer(timer) },
                                     onTitleChange = { viewModel.replaceTitle(timer, it) },
                                     timerState = timer,
