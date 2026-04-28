@@ -2,17 +2,6 @@
 <issues format="6" by="lint 9.2.0" type="baseline" client="gradle" dependencies="true" name="AGP (9.2.0)" variant="all" version="9.2.0">
 
     <issue
-        id="AndroidGradlePluginVersion"
-        message="A newer version of Gradle than 9.5.0-rc-4 is available: 9.6.0-milestone-1"
-        errorLine1="distributionUrl=https\://services.gradle.org/distributions/gradle-9.5.0-rc-4-all.zip"
-        errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="../gradle/wrapper/gradle-wrapper.properties"
-            line="3"
-            column="17"/>
-    </issue>
-
-    <issue
         id="IconLocation"
         message="Found bitmap drawable `res/drawable/general_emotion_wheel.webp` in densityless folder">
         <location
