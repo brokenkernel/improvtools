@@ -99,6 +99,7 @@ private fun SingleTongueTwisterCard(
                         isSpeaking = false
                     }
 
+                    @Deprecated("use onError(String, Int) instead")
                     override fun onError(p0: String?) {
                         isSpeaking = false
                     }
