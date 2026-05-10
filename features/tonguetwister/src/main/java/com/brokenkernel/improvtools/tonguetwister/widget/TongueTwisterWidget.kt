@@ -35,7 +35,6 @@ internal class TongueTwisterWidget : GlanceAppWidget() {
                 }
             }
         }
-
     }
 
     // TODO: https://developer.android.com/develop/ui/compose/glance/pin-in-app

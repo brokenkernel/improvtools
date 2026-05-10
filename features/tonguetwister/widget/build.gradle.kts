@@ -70,6 +70,8 @@ dependencies {
     implementation(enforcedPlatform(libs.androidx.compose.bom))
     implementation(enforcedPlatform(libs.kotlin.bom))
     implementation(libs.androidx.runtime)
+    implementation(libs.androidx.glance.material3)
+    implementation(libs.androidx.glance.preview)
 
     debugImplementation(libs.ui.tooling)
 
