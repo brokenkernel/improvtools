@@ -17,6 +17,7 @@ import androidx.glance.appwidget.components.FilledButton
 import androidx.glance.appwidget.components.Scaffold
 import androidx.glance.appwidget.lazy.LazyColumn
 import androidx.glance.appwidget.provideContent
+import androidx.glance.layout.fillMaxSize
 import androidx.glance.text.Text
 import com.brokenkernel.improvtools.tonguetwister.R
 import com.brokenkernel.improvtools.tonguetwister.data.TongueTwisterDatum
@@ -24,7 +25,7 @@ import com.brokenkernel.improvtools.tonguetwister.data.TongueTwisterDatum
 // TODO: move glance widget to its own module
 // TODO: create base module with theme and base ImprovToolsGlanceThem etc that this depends on
 internal class TongueTwisterWidget : GlanceAppWidget() {
-    override val sizeMode: SizeMode = SizeMode.Exact // maybe 'Responsive' is better, but good enough for now
+    override val sizeMode: SizeMode = SizeMode.Single
 
     override suspend fun provideGlance(context: Context, id: GlanceId) {
         provideContent {
@@ -34,7 +35,14 @@ internal class TongueTwisterWidget : GlanceAppWidget() {
                 }
             }
         }
+
     }
+
+    // TODO: https://developer.android.com/develop/ui/compose/glance/pin-in-app
+    // https://developer.android.com/develop/ui/compose/glance/generated-previews
+//    //    TOOD:     providePreview {}
+//    override suspend fun providePreview() {
+//    }
 }
 
 @Composable
@@ -42,7 +50,7 @@ internal fun RandomTongueTwister(modifier: GlanceModifier = GlanceModifier) {
     val shufData = TongueTwisterDatum.shuffled()
     var whichTT by remember { mutableIntStateOf(0) }
 
-    LazyColumn(modifier = modifier) {
+    LazyColumn(modifier = modifier.fillMaxSize()) {
         item {
             Text(
                 shufData[whichTT].asRawText(),
