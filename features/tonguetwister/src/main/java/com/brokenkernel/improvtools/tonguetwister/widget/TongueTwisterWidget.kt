@@ -12,6 +12,7 @@ import androidx.glance.GlanceModifier
 import androidx.glance.GlanceTheme
 import androidx.glance.LocalContext
 import androidx.glance.appwidget.GlanceAppWidget
+import androidx.glance.appwidget.GlanceAppWidgetManager
 import androidx.glance.appwidget.SizeMode
 import androidx.glance.appwidget.components.FilledButton
 import androidx.glance.appwidget.components.Scaffold
@@ -24,10 +25,23 @@ import com.brokenkernel.improvtools.tonguetwister.data.TongueTwisterDatum
 
 // TODO: move glance widget to its own module
 // TODO: create base module with theme and base ImprovToolsGlanceThem etc that this depends on
+// GlanceAppWidgetManager.setWidgetPreviews()
 internal class TongueTwisterWidget : GlanceAppWidget() {
     override val sizeMode: SizeMode = SizeMode.Single
 
     override suspend fun provideGlance(context: Context, id: GlanceId) {
+
+        provideContent {
+            GlanceTheme {
+                Scaffold {
+                    RandomTongueTwister()
+                }
+            }
+        }
+    }
+
+    override suspend fun providePreview(context: Context, widgetCategory: Int) {
+        GlanceAppWidgetManager.setWidgetPreviews()
         provideContent {
             GlanceTheme {
                 Scaffold {
@@ -46,6 +60,7 @@ internal class TongueTwisterWidget : GlanceAppWidget() {
 
 @Composable
 internal fun RandomTongueTwister(modifier: GlanceModifier = GlanceModifier) {
+//    GlanceAppWidgetManager.setWidgetPreviews()
     val shufData = TongueTwisterDatum.shuffled()
     var whichTT by remember { mutableIntStateOf(0) }
 
