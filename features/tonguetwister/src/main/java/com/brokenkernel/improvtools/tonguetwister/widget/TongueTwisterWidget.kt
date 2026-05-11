@@ -39,7 +39,7 @@ internal class TongueTwisterWidget : GlanceAppWidget() {
 
     // TODO: https://developer.android.com/develop/ui/compose/glance/pin-in-app
     // https://developer.android.com/develop/ui/compose/glance/generated-previews
-//    //    TOOD:     providePreview {}
+//    //    TODO:     providePreview {}
 //    override suspend fun providePreview() {
 //    }
 }
