@@ -66,32 +66,21 @@ kotlin {
 }
 
 dependencies {
-    api(libs.androidx.compose.material.materialIconsExtended)
-    api(libs.androidx.foundation)
-    api(libs.androidx.foundation.layout)
     api(libs.androidx.runtime)
-    api(libs.kotlinx.collections.immutable.jvm)
 
     implementation(enforcedPlatform(libs.androidx.compose.bom))
     implementation(enforcedPlatform(libs.kotlin.bom))
-    implementation(libs.androidx.material.icons.core)
-    implementation(libs.androidx.material3)
-    implementation(libs.androidx.runtime.saveable)
-    implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.text)
     implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.ui.unit)
-    implementation(libs.androidx.ui.util)
     implementation(libs.kotlinx.coroutines.core)
 
     debugRuntimeOnly(libs.androidx.ui.test.manifest)
+
+    androidTestRuntimeOnly(libs.kotlinx.coroutines.test)
 
     testImplementation(libs.junit)
 
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.monitor)
-    androidTestImplementation(libs.androidx.ui.test)
-    androidTestImplementation(libs.androidx.ui.test.junit4)
     androidTestImplementation(libs.junit)
 
     ktlintRuleset(libs.ktlintCompose)

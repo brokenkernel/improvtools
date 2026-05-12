@@ -17,7 +17,7 @@ kotlin {
 }
 
 dependencies {
-    implementation(libs.kotlinx.serialization.core)
+    api(libs.kotlinx.serialization.core)
 }
 
 ksp {

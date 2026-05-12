@@ -73,6 +73,7 @@ dependencies {
     api(libs.androidx.lifecycle.viewmodel.savedstate)
     api(libs.androidx.material.icons.core)
     api(libs.androidx.navigation.common)
+    api(libs.androidx.runtime)
     api(libs.io.github.raamcosta.composeDestinations.core)
 
     implementation(enforcedPlatform(libs.androidx.compose.bom))
@@ -80,11 +81,11 @@ dependencies {
     implementation(project(":components"))
     implementation(libs.androidx.foundation)
     implementation(libs.androidx.foundation.layout)
-
+    implementation(libs.androidx.glance)
     implementation(libs.androidx.material3)
-    implementation(libs.androidx.runtime)
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
+    implementation(libs.androidx.ui.text)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.ui.unit)
     implementation(libs.kotlinx.collections.immutable.jvm)

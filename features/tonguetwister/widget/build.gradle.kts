@@ -66,11 +66,14 @@ kotlin {
 }
 
 dependencies {
+    api(libs.androidx.runtime)
+
     implementation(enforcedPlatform(libs.androidx.compose.bom))
     implementation(enforcedPlatform(libs.kotlin.bom))
+    implementation(libs.androidx.glance)
     implementation(libs.androidx.glance.material3)
     implementation(libs.androidx.glance.preview)
-    implementation(libs.androidx.runtime)
+    implementation(libs.androidx.ui.text)
 
     debugImplementation(libs.ui.tooling)
 

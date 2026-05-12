@@ -69,6 +69,7 @@ kotlin {
 dependencies {
     api(libs.androidx.runtime)
     api(libs.androidx.ui)
+    api(libs.reorderable)
 
     debugApi(libs.reorderable.android.debug)
 
@@ -84,7 +85,6 @@ dependencies {
     implementation(libs.androidx.ui.text)
     implementation(libs.androidx.ui.unit)
     implementation(libs.kotlinx.coroutines.core)
-    implementation(libs.reorderable)
 
     testImplementation(libs.junit)
 

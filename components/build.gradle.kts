@@ -73,6 +73,7 @@ dependencies {
     api(libs.androidx.lifecycle.viewmodel)
     api(libs.androidx.runtime)
     api(libs.kotlinx.collections.immutable.jvm)
+    api(libs.reorderable)
 
     debugApi(libs.reorderable.android.debug)
 
@@ -96,7 +97,6 @@ dependencies {
     implementation(libs.androidx.ui.util)
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.net.engawapg.lib.zoomable)
-    implementation(libs.reorderable)
 
     debugRuntimeOnly(libs.androidx.ui.test.manifest)
 

@@ -72,6 +72,7 @@ dependencies {
     api(project(":features:encyclopaedia:data"))
     api(libs.androidx.foundation.layout)
     api(libs.androidx.runtime)
+    api(libs.androidx.ui)
 
     implementation(enforcedPlatform(libs.androidx.compose.bom))
     implementation(enforcedPlatform(libs.kotlin.bom))
@@ -82,7 +83,6 @@ dependencies {
     implementation(libs.androidx.material.icons.core)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.runtime.saveable)
-    implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.text)
     implementation(libs.androidx.ui.tooling.preview)
