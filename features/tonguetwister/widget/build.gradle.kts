@@ -13,7 +13,7 @@ plugins {
 
 configure<LibraryExtension> {
     namespace = "com.brokenkernel.improvtools.tonguetwister.widget"
-    compileSdk = 36
+    compileSdk = 37
 
     defaultConfig {
         minSdk = 26

@@ -14,7 +14,7 @@ plugins {
 configure<LibraryExtension> {
     namespace = "com.brokenkernel.improvtools.timer"
 
-    compileSdk = 36
+    compileSdk = 37
 
     defaultConfig {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"

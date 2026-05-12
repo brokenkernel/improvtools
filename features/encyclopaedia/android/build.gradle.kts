@@ -14,7 +14,7 @@ plugins {
 configure<LibraryExtension> {
     namespace = "com.brokenkernel.improvtools.encyclopaedia.android"
 
-    compileSdk = 36
+    compileSdk = 37
 
     defaultConfig {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
