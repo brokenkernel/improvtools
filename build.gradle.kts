@@ -56,6 +56,9 @@ dependencyAnalysis {
 //            }
         }
     }
+    reporting {
+        printBuildHealth(true)
+    }
 }
 
 
