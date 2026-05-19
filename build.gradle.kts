@@ -1,4 +1,5 @@
 import nl.littlerobots.vcu.plugin.resolver.VersionSelectors
+import nl.littlerobots.vcu.plugin.versionSelector
 
 plugins {
     alias(libs.plugins.aboutLibraries)
@@ -79,7 +80,13 @@ versionCatalogUpdate {
     keep {
         keepUnusedVersions = true
     }
-    versionSelector(VersionSelectors.PREFER_STABLE)
+    versionSelector { candidate ->
+        if (candidate.candidate.moduleIdentifier.toString() == "com.google.guava:guava") {
+            !candidate.candidate.version.endsWith("jre")
+        } else {
+            VersionSelectors.PREFER_STABLE.select(candidate)
+        }
+    }
 }
 
 doctor {
