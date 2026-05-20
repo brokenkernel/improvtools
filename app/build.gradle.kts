@@ -126,12 +126,12 @@ configure<ApplicationExtension> {
             localDevices {
                 create("Pixel4Managed") {
                     device = "Pixel 4"
-                    apiLevel = 35
+                    sdkVersion = 35
                     systemImageSource = "google-atd"
                 }
                 create("Nexus9Managed") {
                     device = "Nexus9"
-                    apiLevel = 35
+                    sdkVersion = 35
                     systemImageSource = "google-atd"
                 }
             }
