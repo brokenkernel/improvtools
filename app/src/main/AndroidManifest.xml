@@ -130,6 +130,9 @@
             android:value="false" />
         <meta-data android:name="google_analytics_adid_collection_enabled"
             android:value="false" />
+        <meta-data
+            android:name="android.software.leanback.supports_touch"
+            android:value="true" />
     </application>
 
 </manifest>
