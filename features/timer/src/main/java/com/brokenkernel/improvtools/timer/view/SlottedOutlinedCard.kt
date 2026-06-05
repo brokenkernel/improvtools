@@ -46,12 +46,14 @@ private fun CurrentTimerTime(currentTime: () -> Duration, isStarted: Boolean) {
     val style: TextStyle = MaterialTheme.typography.displayLarge
     var showColon by remember { mutableStateOf(true) }
 
-    val currentTimeFlow = flow<_> {
+    // TODO: this should be in the viewModel rather than the view. This forces the current time to be updated.
+    // TODO: bug: this forces recompose every .5 seconds instead of on clock change.
+    val currentTimeFlow = flow {
+        delay(.5.seconds)
         if (isStarted) {
-            delay(.5.seconds)
             showColon = !showColon
-            emit(currentTime())
         }
+        emit(currentTime())
     }
 
     val ctime by currentTimeFlow.collectAsStateWithLifecycle(initialValue = currentTime())
