@@ -299,6 +299,7 @@ dependencies {
     ksp(libs.androidx.lifecycle.compiler)
     ksp(libs.hilt.compiler)
     ksp(libs.io.github.raamcosta.composeDestinations.ksp)
+    ksp(libs.kotlin.metadata.jvm)
 
     ktlintRuleset(libs.ktlintCompose)
 
