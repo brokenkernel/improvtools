@@ -124,21 +124,15 @@ configure<ApplicationExtension> {
     testOptions {
         managedDevices {
             localDevices {
-                create("Pixel4Managed") {
-                    device = "Pixel 4"
-                    sdkVersion = 35
-                    systemImageSource = "google-atd"
-                }
-                create("Nexus9Managed") {
-                    device = "Nexus9"
+                create("PixelManaged") {
+                    device = "Pixel 10"
                     sdkVersion = 35
                     systemImageSource = "google-atd"
                 }
             }
             groups {
                 create("phoneAndTablet") {
-                    targetDevices.add(allDevices["Pixel4Managed"])
-                    targetDevices.add(allDevices["Nexus9Managed"])
+                    targetDevices.add(allDevices["PixelManaged"])
                 }
             }
         }
