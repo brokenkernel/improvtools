@@ -30,6 +30,7 @@ public fun StartPauseButton(
                 onStart()
             }
         },
+        modifier = modifier,
     ) {
         val curButtonText: String =
             if (timerState.isStarted()) {

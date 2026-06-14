@@ -3,7 +3,4 @@
     <file name="src/androidTest/java/com/brokenkernel/improvtools/tonguetwister/widget/ExampleInstrumentedTest.kt">
         <error line="5" column="1" source="standard:no-wildcard-imports" />
     </file>
-    <file name="src/test/java/com/brokenkernel/improvtools/tonguetwister/widget/ExampleUnitTest.kt">
-        <error line="3" column="1" source="standard:no-wildcard-imports" />
-    </file>
 </baseline>

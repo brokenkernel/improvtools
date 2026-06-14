@@ -42,7 +42,11 @@ private fun Long.formatTimeMoment(): String {
 
 @OptIn(ExperimentalTime::class)
 @Composable
-private fun CurrentTimerTime(currentTime: () -> Duration, isStarted: Boolean) {
+private fun CurrentTimerTime(
+    currentTime: () -> Duration,
+    isStarted: Boolean,
+    modifier: Modifier = Modifier
+) {
     val style: TextStyle = MaterialTheme.typography.displayLarge
     var showColon by remember { mutableStateOf(true) }
 
@@ -64,7 +68,7 @@ private fun CurrentTimerTime(currentTime: () -> Duration, isStarted: Boolean) {
     val minutes = (ctime - hours.hours).inWholeMinutes
     val seconds = (ctime - hours.hours - minutes.minutes).inWholeSeconds
 
-    Row {
+    Row(modifier = modifier) {
         Text(hours.formatTimeMoment(), style = style)
         if (showColon) {
             Text(":", style = style)

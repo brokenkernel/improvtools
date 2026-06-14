@@ -17,7 +17,5 @@
     <ID>LibraryEntitiesShouldNotBePublic:TimerState.kt:StartedCountUpTimerState : StartedTimerStateCountUpTimerState</ID>
     <ID>LibraryEntitiesShouldNotBePublic:TimerState.kt:StartedTimerState : TimerState</ID>
     <ID>LibraryEntitiesShouldNotBePublic:TimerState.kt:TimerState</ID>
-    <ID>ModifierMissing:SlottedOutlinedCard.kt:@OptIn(ExperimentalTime::class) @Composable private fun CurrentTimerTime</ID>
-    <ID>UnusedParameter:StartPauseButton.kt:modifier: Modifier = Modifier</ID>
   </CurrentIssues>
 </SmellBaseline>
