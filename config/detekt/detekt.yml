@@ -871,3 +871,17 @@ Compose:
   ViewModelInjection:
     active: true
     # viewModelFactories: hiltViewModel,potatoViewModel
+  StaleRememberUpdatedStateInRemember:
+    active: true
+  MissingReadOnlyComposable:
+    active: true
+  InvalidReadOnlyComposable:
+    active: true
+  UnnecessaryComposable:
+    active: true
+  VarsWithoutStateBacking:
+    active: true
+  ConditionHoist:
+    active: true
+  ComposableNestingDepth:
+    active: false
