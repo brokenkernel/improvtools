@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<SmellBaseline>
+  <ManuallySuppressedIssues/>
+  <CurrentIssues>
+    <ID>LibraryEntitiesShouldNotBePublic:EmotionsTab.kt:@Composable public fun EmotionsTabInternal</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:ExampleUnitTest.kt:ExampleUnitTest</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:SingleWordThesaurusButton.kt:@Composable public fun SingleWordThesaurusButton</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:TipsAndAdviceAsSelectable.kt:@Composable public fun TipsAndAdviceAsSelectable</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:TipsAndAdviceScreenAsList.kt:@Composable public fun TipsAndAdviceScreenAsList</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:TipsAndAdviceViewModeUI.kt:TipsAndAdviceViewModeUI</ID>
+  </CurrentIssues>
+</SmellBaseline>

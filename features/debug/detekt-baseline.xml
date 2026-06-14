@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<SmellBaseline>
+  <ManuallySuppressedIssues/>
+  <CurrentIssues>
+    <ID>LibraryEntitiesShouldNotBePublic:DebugCollector.kt:DebugCollector</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:ExampleUnitTest.kt:ExampleUnitTest</ID>
+  </CurrentIssues>
+</SmellBaseline>
