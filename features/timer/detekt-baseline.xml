@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<SmellBaseline>
+  <ManuallySuppressedIssues/>
+  <CurrentIssues>
+    <ID>ClassOrdering:TimerState.kt:TimerState$public val timerID: Int</ID>
+    <ID>ClassOrdering:TimerState.kt:TimerState$public val title: String</ID>
+    <ID>ModifierMissing:SlottedOutlinedCard.kt:@OptIn(ExperimentalTime::class) @Composable private fun CurrentTimerTime</ID>
+    <ID>UnusedParameter:StartPauseButton.kt:modifier: Modifier = Modifier</ID>
+  </CurrentIssues>
+</SmellBaseline>

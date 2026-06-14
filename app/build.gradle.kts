@@ -28,6 +28,7 @@ plugins {
     alias(libs.plugins.dependencyAnalysis)
     alias(libs.plugins.ktlint)
     id("org.jetbrains.dokka")
+    alias(libs.plugins.detekt)
     kotlin("plugin.power-assert") version libs.versions.kotlin.get()
 }
 
@@ -285,6 +286,8 @@ dependencies {
     androidTestImplementation(libs.kotlinx.coroutines.core)
     androidTestImplementation(libs.navigation.runtime)
     androidTestImplementation(libs.tools.fastlane.screengrab)
+
+    detektPlugins(libs.composeDetektRules)
 
     dokkaPlugin(libs.android.documentation.plugin)
     dokkaPlugin(libs.mathjax.plugin)

@@ -11,6 +11,7 @@ plugins {
     alias(libs.plugins.sortDependencies)
     alias(libs.plugins.dependencyAnalysis)
     alias(libs.plugins.ktlint)
+    alias(libs.plugins.detekt)
     kotlin("plugin.power-assert") version libs.versions.kotlin.get()
 }
 
@@ -107,6 +108,8 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test)
     androidTestImplementation(libs.androidx.ui.test.junit4)
     androidTestImplementation(libs.junit)
+
+    detektPlugins(libs.composeDetektRules)
 
     ktlintRuleset(libs.ktlintCompose)
 

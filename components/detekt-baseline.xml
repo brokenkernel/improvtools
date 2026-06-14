@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<SmellBaseline>
+  <ManuallySuppressedIssues/>
+  <CurrentIssues>
+    <ID>MatchingDeclarationName:TabbedSearchableColumn.kt:TabbedSearchableColumnState&lt;T : Enum&lt;T>></ID>
+    <ID>MultilineRawStringIndentation:HtmlText.kt:""" |&lt;b>Bold Text&lt;/b> |&lt;ol> |&lt;li>One&lt;/li> |&lt;/ol> |&lt;ul> |&lt;li>One&lt;/li> |&lt;/ul> |&lt;a href="https://improvtools.brokenkernel.com">Link&lt;/a> |"""</ID>
+    <ID>OutdatedDocumentation:ChippedTabbedSearchableColumn.kt:@Composable public inline fun &lt;reified T : Enum&lt;T>, I, reified X : Enum&lt;X>> ChippedTabbedSearchableColumn</ID>
+    <ID>OutdatedDocumentation:ChippedTabbedSearchableColumn.kt:ChippedTabbedSearchableColumn&lt;T, X></ID>
+    <ID>OutdatedDocumentation:ItemColumnLazyList.kt:@Composable @JvmSynthetic // hides this from Java code, thus making it private again @PublishedApi internal fun &lt;I> ItemColumnLazyList</ID>
+    <ID>OutdatedDocumentation:SearchableColumn.kt:@Composable public inline fun &lt;I> SearchableColumn</ID>
+    <ID>OutdatedDocumentation:TabbedSearchableColumn.kt:@Composable public inline fun &lt;reified T : Enum&lt;T>, I> TabbedSearchableColumn</ID>
+  </CurrentIssues>
+</SmellBaseline>

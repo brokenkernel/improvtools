@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<SmellBaseline>
+  <ManuallySuppressedIssues/>
+  <CurrentIssues>
+    <ID>MatchingDeclarationName:GlossaryDatum.kt:GlossaryDataItem</ID>
+    <ID>MultilineRawStringIndentation:GamesDatum.kt:""" The players stand in a circle. The first person turns to the next and says &lt;q>three things&lt;/q> and the next person should say three things which match the category. Critically it should be: &lt;ul> &lt;li>As fast as possible (high energy). Avoid filler words like "erm" or "uh" &lt;li>Answers don't need to be 'correct' or 'true' (they automatically are!) &lt;li>Treated as if the questions and answers are the most important ever given. &lt;/ul> &lt;b>Variations:&lt;/b> 15 Things, Category Things (name the category), Word-At-A-Time things, """</ID>
+    <ID>MultilineRawStringIndentation:GamesDatum.kt:"""| |The audience is asked for a source of text. It may be a text message thread for example. |A normal scene ensues. |One actor must read ALL of their lines from the source of text. """</ID>
+    <ID>MultilineRawStringIndentation:GamesDatum.kt:"""| |The audience is asked for line suggestions. A normal scene ensues. |Each actor will occasionally read a line from the suggestions. |It should avoided to reference that this line is a quote (e.g., avoid "as my Mom used to say ...") """</ID>
+    <ID>MultilineRawStringIndentation:GamesDatumTag.kt:GamesDatumTag.MEDIUMFORM$"""A collection of scenes with a semi-coherent theme along a defined form or structure. | Sometimes also called &lt;i>longform&lt;/i> """</ID>
+    <ID>OutdatedDocumentation:GamesDataItem.kt:GamesDataItem</ID>
+    <ID>StringLiteralDuplication:PeopleDatum.kt:"BATS Improv"</ID>
+  </CurrentIssues>
+</SmellBaseline>

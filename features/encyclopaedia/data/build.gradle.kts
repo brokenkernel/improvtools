@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.sortDependencies)
     alias(libs.plugins.dependencyAnalysis)
     alias(libs.plugins.ktlint)
+    alias(libs.plugins.detekt)
     kotlin("plugin.power-assert") version libs.versions.kotlin.get()
 }
 
@@ -26,6 +27,8 @@ dependencies {
     compileOnly(libs.androidx.compose.material.materialIconsExtended)
 
     runtimeOnly(libs.extjwnl.data.wn31)
+
+    detektPlugins(libs.composeDetektRules)
 }
 
 ktlint {

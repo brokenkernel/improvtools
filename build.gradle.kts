@@ -24,9 +24,11 @@ plugins {
     kotlin("plugin.power-assert") version libs.versions.kotlin.get()
     alias(libs.plugins.android.library) apply false
     alias(libs.plugins.jetbrains.kotlin.jvm) apply false
+    alias(libs.plugins.detekt)
 }
 
 dependencies {
+    detektPlugins(libs.composeDetektRules)
     dokka(project(":app:"))
     dokka(project(":components:"))
     dokkaPlugin(libs.android.documentation.plugin)

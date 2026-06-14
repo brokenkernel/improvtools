@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.sortDependencies)
     alias(libs.plugins.dependencyAnalysis)
     alias(libs.plugins.ktlint)
+    alias(libs.plugins.detekt)
     kotlin("plugin.power-assert") version libs.versions.kotlin.get()
 }
 
@@ -18,6 +19,8 @@ kotlin {
 
 dependencies {
     api(libs.kotlinx.serialization.core)
+
+    detektPlugins(libs.composeDetektRules)
 }
 
 ksp {

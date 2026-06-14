@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<SmellBaseline>
+  <ManuallySuppressedIssues/>
+  <CurrentIssues>
+    <ID>EndOfSentenceFormat:LaunchWrapper.kt:* Allows the caller to specify that some specific lambda should occur on each recompose</ID>
+  </CurrentIssues>
+</SmellBaseline>

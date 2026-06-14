@@ -8,6 +8,7 @@ plugins {
     alias(libs.plugins.sortDependencies)
     alias(libs.plugins.dependencyAnalysis)
     alias(libs.plugins.ktlint)
+    alias(libs.plugins.detekt)
     kotlin("plugin.power-assert") version libs.versions.kotlin.get()
 }
 
@@ -99,6 +100,8 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.monitor)
     androidTestImplementation(libs.junit)
+
+    detektPlugins(libs.composeDetektRules)
 
     ksp(libs.io.github.raamcosta.composeDestinations.ksp)
 
