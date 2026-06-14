@@ -10,7 +10,7 @@ import kotlinx.collections.immutable.toImmutableList
 /**
  * This is the portion of the Thesaurus exposed to other components.
  */
-class ThesaurusAPI @Inject internal constructor(thesaurusRepository: ThesaurusRepository) {
+public class ThesaurusAPI @Inject internal constructor(thesaurusRepository: ThesaurusRepository) {
     private val dictionary: DictionaryInfo = thesaurusRepository
         .getDictionaryInfo()
 
@@ -19,13 +19,13 @@ class ThesaurusAPI @Inject internal constructor(thesaurusRepository: ThesaurusRe
      * @param word
      */
     // TODO: check for exact match and/or stemmed match
-    fun hasWordDetails(word: String): Boolean {
+    public fun hasWordDetails(word: String): Boolean {
         val preppedWord = word.trim().lowercase()
         return dictionary
             .hasWordInfo(preppedWord)
     }
 
-    fun getSenseDatum(word: String): Map<String, List<SenseDatumUI>> {
+    public fun getSenseDatum(word: String): Map<String, List<SenseDatumUI>> {
         val preppedWord = word.trim().lowercase()
         val wordInfoMap: Map<String, List<WordInfo>> = dictionary
             .getSynonymsPOSMap(preppedWord)

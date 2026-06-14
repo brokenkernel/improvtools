@@ -29,6 +29,7 @@ plugins {
 
 dependencies {
     detektPlugins(libs.composeDetektRules)
+    detektPlugins(libs.detektRulesLibraries)
     dokka(project(":app:"))
     dokka(project(":components:"))
     dokkaPlugin(libs.android.documentation.plugin)

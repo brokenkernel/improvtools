@@ -177,6 +177,7 @@ com-google-protobuf-protoc = { module = "com.google.protobuf:protoc", version.re
 composeDetektRules = { module = "io.nlopez.compose.rules:detekt", version.ref = "composeDetektRulesVersion" }
 config = { module = "com.typesafe:config", version.ref = "config" }
 dagger-hilt-core = { module = "com.google.dagger:hilt-core", version.ref = "hilt" }
+detektRulesLibraries = { module = "dev.detekt:detekt-rules-libraries", version.ref = "detektVersion" }
 extjwnl = { module = "net.sf.extjwnl:extjwnl", version.ref = "extjwnl" }
 extjwnl-data-wn31 = { module = "net.sf.extjwnl:extjwnl-data-wn31", version.ref = "extjwnlDataWn31" }
 firebase-config = { module = "com.google.firebase:firebase-config", version.ref = "firebaseConfig" }

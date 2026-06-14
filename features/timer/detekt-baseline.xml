@@ -4,6 +4,19 @@
   <CurrentIssues>
     <ID>ClassOrdering:TimerState.kt:TimerState$public val timerID: Int</ID>
     <ID>ClassOrdering:TimerState.kt:TimerState$public val title: String</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:ExampleUnitTest.kt:ExampleUnitTest</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:SlottedOutlinedCard.kt:@Composable public fun SlottedTimerCardContent</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:StartPauseButton.kt:@Composable public fun StartPauseButton</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:TimerBorderOutlineCard.kt:@Composable public fun TimerBorderOutlineCard</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:TimerState.kt:CountDownTimerState : TimerState</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:TimerState.kt:CountUpTimerState : TimerState</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:TimerState.kt:PausedCountDownTimerState : PausedTimerStateCountDownTimerState</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:TimerState.kt:PausedCountUpTimerState : PausedTimerStateCountUpTimerState</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:TimerState.kt:PausedTimerState : TimerState</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:TimerState.kt:StartedCountDownTimerState : StartedTimerStateCountDownTimerState</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:TimerState.kt:StartedCountUpTimerState : StartedTimerStateCountUpTimerState</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:TimerState.kt:StartedTimerState : TimerState</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:TimerState.kt:TimerState</ID>
     <ID>ModifierMissing:SlottedOutlinedCard.kt:@OptIn(ExperimentalTime::class) @Composable private fun CurrentTimerTime</ID>
     <ID>UnusedParameter:StartPauseButton.kt:modifier: Modifier = Modifier</ID>
   </CurrentIssues>

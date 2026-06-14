@@ -10,7 +10,7 @@ import com.brokenkernel.improvtools.encyclopaedia.android.components.SingleWordT
 import com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel.LoadableSingleWordThesaurusButtonViewModel
 
 @Composable
-fun LoadableSingleWordThesaurusButton(
+internal fun LoadableSingleWordThesaurusButton(
     word: String,
     onNavigateToWord: (String) -> Unit,
     modifier: Modifier = Modifier,

@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 @HiltViewModel
-class LoadableSingleWordThesaurusButtonViewModel @Inject constructor(
+internal class LoadableSingleWordThesaurusButtonViewModel @Inject constructor(
     private val thesaurusAPI: ThesaurusAPI, // todo: this should be accessed through a repository
 ) : ViewModel() {
 

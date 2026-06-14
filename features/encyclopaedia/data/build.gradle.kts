@@ -29,6 +29,7 @@ dependencies {
     runtimeOnly(libs.extjwnl.data.wn31)
 
     detektPlugins(libs.composeDetektRules)
+    detektPlugins(libs.detektRulesLibraries)
 }
 
 ktlint {

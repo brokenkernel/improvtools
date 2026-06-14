@@ -2,6 +2,31 @@
 <SmellBaseline>
   <ManuallySuppressedIssues/>
   <CurrentIssues>
+    <ID>ForbiddenPublicDataClass:ChippedTabbedSearchableColumn.kt:ChippedTabbedSearchableColumn&lt;T, X></ID>
+    <ID>ForbiddenPublicDataClass:TabbedSearchableColumn.kt:TabbedSearchableColumnState&lt;T : Enum&lt;T>></ID>
+    <ID>LibraryEntitiesShouldNotBePublic:Blink.kt:@Composable public fun Blink</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:ChipBar.kt:@OptIn(ExperimentalMaterial3Api::class) @Composable public inline fun &lt;reified T : Enum&lt;T>> ChipBar</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:ChippedTabbedSearchableColumn.kt:@Composable public inline fun &lt;reified T : Enum&lt;T>, I, reified X : Enum&lt;X>> ChippedTabbedSearchableColumn</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:ChippedTabbedSearchableColumn.kt:@Composable public inline fun &lt;reified T : Enum&lt;T>, reified X : Enum&lt;X>> rememberChippedTabbedSearchableColumn: ChippedTabbedSearchableColumn&lt;T, X></ID>
+    <ID>LibraryEntitiesShouldNotBePublic:ChippedTabbedSearchableColumn.kt:ChippedTabbedSearchableColumn&lt;T, X></ID>
+    <ID>LibraryEntitiesShouldNotBePublic:DragIconButton.kt:@Composable public fun DragIconButton</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:EnumLinkedMultiChoiceSegmentedButtonRow.kt:@Composable public inline fun &lt;reified T : Enum&lt;T>> EnumLinkedMultiChoiceSegmentedButtonRow</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:EnumerationRadioSelection.kt:@Composable public inline fun &lt;reified T : Enum&lt;T>, reified V : Enum&lt;V>> EnumerationRadioSelection</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:ExpandIcon.kt:@Composable public fun ExpandIcon</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:HtmlText.kt:@Composable public fun HtmlText</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:LoadableScreen.kt:@Composable public fun LoadableScreen</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:LoadableScreenViewModel.kt:LoadableScreenViewModel : ViewModel</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:OneWayDismissableContent.kt:@Composable public fun OneWayDismissableContent</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:PageDots.kt:@Composable public fun PageDots</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:SearchableColumn.kt:@Composable public inline fun &lt;I> SearchableColumn</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:SimpleIconButton.kt:@Composable public fun SimpleIconButton</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:SimpleTooltipWrapper.kt:@OptIn(ExperimentalMaterial3Api::class) @Composable public fun SimpleTooltipWrapper</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:SimpleZoomableImage.kt:@Composable public fun SimpleZoomableImage</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:StringUtilsTest.kt:StringUtilsTest</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:TabbedSearchableColumn.kt:@Composable public inline fun &lt;reified T : Enum&lt;T>, I> TabbedSearchableColumn</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:TabbedSearchableColumn.kt:@Composable public inline fun &lt;reified T : Enum&lt;T>> rememberTabbedSearchableColumnState: TabbedSearchableColumnState&lt;T></ID>
+    <ID>LibraryEntitiesShouldNotBePublic:TabbedSearchableColumn.kt:TabbedSearchableColumnState&lt;T : Enum&lt;T>></ID>
+    <ID>LibraryEntitiesShouldNotBePublic:VerticalColumnScrollbarModifier.kt:@Composable public fun Modifier.verticalColumnScrollbar: Modifier</ID>
     <ID>MatchingDeclarationName:TabbedSearchableColumn.kt:TabbedSearchableColumnState&lt;T : Enum&lt;T>></ID>
     <ID>MultilineRawStringIndentation:HtmlText.kt:""" |&lt;b>Bold Text&lt;/b> |&lt;ol> |&lt;li>One&lt;/li> |&lt;/ol> |&lt;ul> |&lt;li>One&lt;/li> |&lt;/ul> |&lt;a href="https://improvtools.brokenkernel.com">Link&lt;/a> |"""</ID>
     <ID>OutdatedDocumentation:ChippedTabbedSearchableColumn.kt:@Composable public inline fun &lt;reified T : Enum&lt;T>, I, reified X : Enum&lt;X>> ChippedTabbedSearchableColumn</ID>

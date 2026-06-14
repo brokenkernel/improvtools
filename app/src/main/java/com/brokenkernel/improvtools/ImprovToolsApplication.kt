@@ -19,7 +19,7 @@ import com.google.firebase.remoteconfig.remoteConfigSettings
 import dagger.hilt.android.HiltAndroidApp
 import kotlin.time.Duration.Companion.hours
 
-fun configureRemoteConfig() {
+private fun configureRemoteConfig() {
     val remoteConfig: FirebaseRemoteConfig = Firebase.remoteConfig
     val configSettings = remoteConfigSettings {
         minimumFetchIntervalInSeconds = 1.hours.inWholeSeconds
@@ -43,7 +43,7 @@ fun configureRemoteConfig() {
 }
 
 @HiltAndroidApp
-class ImprovToolsApplication : Application() {
+public class ImprovToolsApplication : Application() {
 
     private fun isGooglePlayServicesAvailable(): Boolean {
         val googleApiAvailability = GoogleApiAvailability.getInstance()

@@ -21,7 +21,7 @@ private const val ShowEncyclopaediaIntent: String = "com.brokenkernel.improvtool
 // power dynamics. Competitive, therepative, enabled, scared, love, grudge, trusting suspicion
 
 @AndroidEntryPoint
-class MainActivity : ComponentActivity() {
+public class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

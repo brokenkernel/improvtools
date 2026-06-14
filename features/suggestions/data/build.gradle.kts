@@ -21,6 +21,7 @@ dependencies {
     api(libs.kotlinx.serialization.core)
 
     detektPlugins(libs.composeDetektRules)
+    detektPlugins(libs.detektRulesLibraries)
 }
 
 ksp {
@@ -30,13 +31,6 @@ ksp {
     arg("dagger.experimentalDaggerErrorMessages", "enabled")
     arg("dagger.warnIfInjectionFactoryNotGeneratedUpstream", "enabled")
     arg("dagger.fullBindingGraphValidation", "error")
-}
-
-kotlin {
-    explicitApi()
-    compilerOptions {
-        allWarningsAsErrors = true
-    }
 }
 
 ktlint {

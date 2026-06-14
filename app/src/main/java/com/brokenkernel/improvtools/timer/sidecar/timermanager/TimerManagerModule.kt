@@ -10,10 +10,10 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object TimerManagerModule {
+public object TimerManagerModule {
     @Singleton
     @Provides
-    fun providesTimerManager(): TimerManager {
+    public fun providesTimerManager(): TimerManager {
         return DefaultTimerManager()
     }
 }

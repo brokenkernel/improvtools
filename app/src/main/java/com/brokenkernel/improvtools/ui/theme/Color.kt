@@ -2,12 +2,12 @@ package com.brokenkernel.improvtools.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple80: Color = Color(0xFFD0BCFF)
-val PurpleGrey80: Color = Color(0xFFCCC2DC)
-val Pink80: Color = Color(0xFFEFB8C8)
+internal val Purple80: Color = Color(0xFFD0BCFF)
+internal val PurpleGrey80: Color = Color(0xFFCCC2DC)
+internal val Pink80: Color = Color(0xFFEFB8C8)
 
-val Purple40: Color = Color(0xFF6650a4)
-val PurpleGrey40: Color = Color(0xFF625b71)
-val Pink40: Color = Color(0xFF7D5260)
+internal val Purple40: Color = Color(0xFF6650a4)
+internal val PurpleGrey40: Color = Color(0xFF625b71)
+internal val Pink40: Color = Color(0xFF7D5260)
 
-val VeryWhiteishPurple: Color = Color(0xFFFFFBFE)
+internal val VeryWhiteishPurple: Color = Color(0xFFFFFBFE)

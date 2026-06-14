@@ -6,7 +6,7 @@ import com.google.firebase.analytics.FirebaseAnalytics.ConsentType
 import com.google.firebase.analytics.analytics
 import java.util.EnumMap
 
-object ConsentManagement {
+internal object ConsentManagement {
     fun configureConsentForFirebase(analyticsStorageConsent: Boolean) {
         val consentMap: MutableMap<ConsentType?, ConsentStatus?> =
             EnumMap<ConsentType?, ConsentStatus?>(ConsentType::class.java)

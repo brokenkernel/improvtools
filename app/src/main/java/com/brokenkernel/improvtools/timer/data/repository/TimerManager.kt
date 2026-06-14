@@ -1,5 +1,5 @@
 package com.brokenkernel.improvtools.timer.data.repository
 
-interface TimerManager {
-    fun getNextID(): Int
+public interface TimerManager {
+    public fun getNextID(): Int
 }

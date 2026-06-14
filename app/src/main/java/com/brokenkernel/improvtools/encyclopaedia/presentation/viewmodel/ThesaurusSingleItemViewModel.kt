@@ -9,9 +9,9 @@ import javax.inject.Inject
 @HiltViewModel
 internal class ThesaurusSingleItemViewModel @Inject constructor(
     thesaurusRepository: ThesaurusRepository,
-    val thesaurusAPI: ThesaurusAPI, // todo: this should be accessed through a repository
+    private val thesaurusAPI: ThesaurusAPI, // todo: this should be accessed through a repository
 ) : ViewModel() {
-    val dictionaryInfo = thesaurusRepository.getDictionaryInfo()
+    private val dictionaryInfo = thesaurusRepository.getDictionaryInfo()
 
     fun shouldShowActionSynonyms(word: String): Boolean {
         return dictionaryInfo.synonymsForWord(word).isNotEmpty()

@@ -94,6 +94,7 @@ dependencies {
     androidTestImplementation(libs.junit)
 
     detektPlugins(libs.composeDetektRules)
+    detektPlugins(libs.detektRulesLibraries)
 
     ktlintRuleset(libs.ktlintCompose)
 

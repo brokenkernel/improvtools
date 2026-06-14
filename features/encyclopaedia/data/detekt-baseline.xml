@@ -2,6 +2,29 @@
 <SmellBaseline>
   <ManuallySuppressedIssues/>
   <CurrentIssues>
+    <ID>ForbiddenPublicDataClass:ActionItem.kt:ActionItem</ID>
+    <ID>ForbiddenPublicDataClass:GamesDataItem.kt:GamesDataItem</ID>
+    <ID>ForbiddenPublicDataClass:GlossaryDatum.kt:GlossaryDataItem</ID>
+    <ID>ForbiddenPublicDataClass:PeopleDatum.kt:PeopleDataItem</ID>
+    <ID>ForbiddenPublicDataClass:SenseDatumUI.kt:SenseDatumUI</ID>
+    <ID>ForbiddenPublicDataClass:StandardWordInfo.kt:StandardWordInfo : WordInfo</ID>
+    <ID>ForbiddenPublicDataClass:TipContentUI.kt:TipContentUI</ID>
+    <ID>ForbiddenPublicDataClass:TipsAndAdviceUIState.kt:TipsAndAdviceUIState</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:ActionItem.kt:ActionItem</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:DictionaryInfo.kt:DictionaryInfo</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:GamesDataItem.kt:GamesDataItem</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:GamesDatumTag.kt:GamesDatumTag</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:GamesDatumTopic.kt:GamesDatumTopic</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:GlossaryDatum.kt:GlossaryDataItem</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:MergedDictionaryInfo.kt:public fun createDictionaryInfo: DictionaryInfo</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:PeopleDatum.kt:PeopleDataItem</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:PeopleDatum.kt:PeopleDatumTopic</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:SenseDatumUI.kt:SenseDatumUI</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:StandardWordInfo.kt:StandardWordInfo : WordInfo</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:TipContentUI.kt:TipContentUI</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:TipsAndAdviceUIState.kt:TipsAndAdviceUIState</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:WordInfo.kt:WordInfo</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:WordType.kt:WordType</ID>
     <ID>MatchingDeclarationName:GlossaryDatum.kt:GlossaryDataItem</ID>
     <ID>MultilineRawStringIndentation:GamesDatum.kt:""" The players stand in a circle. The first person turns to the next and says &lt;q>three things&lt;/q> and the next person should say three things which match the category. Critically it should be: &lt;ul> &lt;li>As fast as possible (high energy). Avoid filler words like "erm" or "uh" &lt;li>Answers don't need to be 'correct' or 'true' (they automatically are!) &lt;li>Treated as if the questions and answers are the most important ever given. &lt;/ul> &lt;b>Variations:&lt;/b> 15 Things, Category Things (name the category), Word-At-A-Time things, """</ID>
     <ID>MultilineRawStringIndentation:GamesDatum.kt:"""| |The audience is asked for a source of text. It may be a text message thread for example. |A normal scene ensues. |One actor must read ALL of their lines from the source of text. """</ID>

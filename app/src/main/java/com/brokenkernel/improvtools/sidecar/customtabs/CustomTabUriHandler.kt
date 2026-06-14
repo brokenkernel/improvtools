@@ -8,7 +8,7 @@ import androidx.compose.ui.platform.UriHandler
 import androidx.core.net.toUri
 import com.brokenkernel.improvtools.TAG
 
-class CustomTabUriHandler(val context: Context) : UriHandler {
+internal class CustomTabUriHandler(val context: Context) : UriHandler {
     private val customTabSessionManager = CustomTabSessionManager()
 
     init {

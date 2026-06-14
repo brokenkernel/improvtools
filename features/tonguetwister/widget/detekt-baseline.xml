@@ -2,6 +2,7 @@
 <SmellBaseline>
   <ManuallySuppressedIssues/>
   <CurrentIssues>
+    <ID>LibraryEntitiesShouldNotBePublic:ExampleUnitTest.kt:ExampleUnitTest</ID>
     <ID>WildcardImport:ExampleUnitTest.kt:import org.junit.Assert.*</ID>
   </CurrentIssues>
 </SmellBaseline>

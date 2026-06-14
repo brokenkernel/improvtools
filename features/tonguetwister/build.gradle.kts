@@ -102,6 +102,7 @@ dependencies {
     androidTestImplementation(libs.junit)
 
     detektPlugins(libs.composeDetektRules)
+    detektPlugins(libs.detektRulesLibraries)
 
     ksp(libs.io.github.raamcosta.composeDestinations.ksp)
 

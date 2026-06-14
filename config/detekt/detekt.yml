@@ -821,8 +821,7 @@ Compose:
   ModifierMissing:
     active: true
     checkModifiersForVisibility: all
-    # customModifiers: BananaModifier,PotatoModifier
-    # ignoreAnnotated: ['Potato', 'Banana']
+  #    ignoreAnnotated: [ "ImprovToolsDestination" ]
   ModifierNaming:
     active: true
     # customModifiers: BananaModifier,PotatoModifier
@@ -885,3 +884,11 @@ Compose:
     active: true
   ComposableNestingDepth:
     active: false
+
+libraries:
+  ForbiddenPublicDataClass:
+    active: true
+  LibraryCodeMustSpecifyReturnType:
+    active: true
+  LibraryEntitiesShouldNotBePublic:
+    active: true

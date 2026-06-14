@@ -11,7 +11,7 @@ import com.ramcosta.composedestinations.generated.destinations.TongueTwisterTabD
 @NavHostGraph(
     visibility = CodeGenVisibility.INTERNAL,
 )
-annotation class ImprovToolsNavigationGraph {
+public annotation class ImprovToolsNavigationGraph {
     @ExternalDestination<TongueTwisterTabDestination>(
         // TODO: make sure matches with ImprovToolsDestination
         wrappers = [
@@ -19,5 +19,5 @@ annotation class ImprovToolsNavigationGraph {
             SetScaffoldStateWrapper::class,
         ],
     )
-    companion object Includes
+    public companion object Includes
 }

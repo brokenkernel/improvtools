@@ -288,6 +288,7 @@ dependencies {
     androidTestImplementation(libs.tools.fastlane.screengrab)
 
     detektPlugins(libs.composeDetektRules)
+    detektPlugins(libs.detektRulesLibraries)
 
     dokkaPlugin(libs.android.documentation.plugin)
     dokkaPlugin(libs.mathjax.plugin)
@@ -389,6 +390,14 @@ aboutLibraries {
 //        }
 //    }
 // }
+
+kotlin {
+    compilerOptions {
+        allWarningsAsErrors = true
+    }
+
+    explicitApi()
+}
 
 @OptIn(ExperimentalKotlinGradlePluginApi::class)
 powerAssert {
