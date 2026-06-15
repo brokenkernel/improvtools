@@ -2,23 +2,9 @@ config:
   validation: true
   warningsAsErrors: true
   checkExhaustiveness: true
-  # when writing own rules with new properties, exclude the property path e.g.: ['my_rule_set', '.*>.*>[my_property]']
-  excludes: [ ]
 
 processors:
   active: true
-  exclude:
-  # - 'KtFileCountProcessor'
-  # - 'PackageCountProcessor'
-  # - 'ClassCountProcessor'
-  # - 'FunctionCountProcessor'
-  # - 'PropertyCountProcessor'
-  # - 'ProjectCyclomaticComplexityProcessor'
-  # - 'ProjectCognitiveComplexityProcessor'
-  # - 'ProjectLLOCProcessor'
-  # - 'ProjectCLOCProcessor'
-  # - 'ProjectLOCProcessor'
-  # - 'ProjectSLOCProcessor'
 
 console-reports:
   active: true
@@ -26,9 +12,9 @@ console-reports:
     - 'ProjectStatisticsReport'
     - 'ComplexityReport'
     - 'NotificationReport'
-    - 'IssuesReport'
+#    - 'IssuesReport'
     - 'FileBasedIssuesReport'
-  #  - 'LiteIssuesReport'
+    - 'LiteIssuesReport'
 
 comments:
   active: true
@@ -139,7 +125,6 @@ coroutines:
     active: true
   SuspendFunWithCoroutineScopeReceiver:
     active: true
-    aliases: [ 'SuspendFunctionOnCoroutineScope' ]
   SuspendFunWithFlowReturnType:
     active: true
 
@@ -265,7 +250,6 @@ naming:
     excludeClassPattern: '$^'
   EnumNaming:
     active: true
-    aliases: [ 'EnumEntryName' ]
     enumEntryPattern: '[A-Z][_a-zA-Z0-9]*'
   ForbiddenClassName:
     active: false
@@ -279,7 +263,6 @@ naming:
     active: true
   InvalidPackageDeclaration:
     active: true
-    aliases: [ 'PackageDirectoryMismatch' ]
     rootPackage: ''
     requireRootInDeclaration: false
   LambdaParameterNaming:
@@ -309,7 +292,6 @@ naming:
     allowSingleTypedGenerics: false
   ObjectPropertyNaming:
     active: true
-    aliases: [ 'ObjectPropertyName' ]
     constantPattern: '[A-Za-z][_A-Za-z0-9]*'
     propertyPattern: '[A-Za-z][_A-Za-z0-9]*'
     privatePropertyPattern: '(_)?[A-Za-z][_A-Za-z0-9]*'
@@ -364,12 +346,10 @@ potential-bugs:
     active: true
   Deprecation:
     active: true
-    aliases: [ 'DEPRECATION' ]
   DontDowncastCollectionTypes:
     active: true
   DoubleMutabilityForCollection:
     active: true
-    aliases: [ 'DoubleMutability' ]
     mutableTypes:
       - 'kotlin.collections.MutableList'
       - 'kotlin.collections.MutableMap'
@@ -469,7 +449,6 @@ potential-bugs:
     excludes: [ '**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/androidUnitTest/**', '**/androidInstrumentedTest/**', '**/jsTest/**', '**/iosTest/**' ]
   UnsafeCast:
     active: true
-    aliases: [ 'UNCHECKED_CAST' ]
   UnusedUnaryOperator:
     active: true
   UselessPostfixExpression:
@@ -735,7 +714,7 @@ style:
     allowedNames: 'ignored|expected|serialVersionUID'
   UnusedVariable:
     active: true
-    aliases: [ 'UNUSED_VARIABLE', 'unused' ]
+    aliases: [ 'unused' ]
     allowedNames: 'ignored|_'
   UseAnyOrNoneInsteadOfFind:
     active: true
@@ -773,7 +752,6 @@ style:
     active: true
   VarCouldBeVal:
     active: true
-    aliases: [ 'CanBeVal' ]
     ignoreLateinitVar: false
   WildcardImport:
     active: true
