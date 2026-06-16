@@ -232,6 +232,7 @@ dependencies {
     implementation(libs.io.github.raamcosta.composeDestinations.core)
     implementation(libs.jakarta.inject.api)
     implementation(libs.javax.inject)
+    implementation(libs.jetbrains.annotations)
     implementation(libs.kotlin.stdlib)
     implementation(libs.kotlinx.collections.immutable.jvm)
     implementation(libs.kotlinx.coroutines.core)
@@ -241,8 +242,6 @@ dependencies {
     implementation(libs.navigation.runtime)
     implementation(libs.play.services.oss.licenses)
     implementation(libs.reorderable)
-
-    releaseImplementation(libs.leakcanary.android.release)
 
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.leakcanary.android)
@@ -256,6 +255,7 @@ dependencies {
     runtimeOnly(libs.androidx.work.multiprocess)
     runtimeOnly(libs.slf4j.android)
 
+    releaseRuntimeOnly(libs.leakcanary.android.release)
     releaseRuntimeOnly(libs.leakcanary.object1.watcher.android)
 
     debugRuntimeOnly(libs.androidx.ui.test.manifest)
@@ -299,6 +299,8 @@ dependencies {
     ksp(libs.io.github.raamcosta.composeDestinations.ksp)
     ksp(libs.kotlin.metadata.jvm)
 
+    //    implementation(libs.kotlin.metadata.jvm)
+    //    androidTestImplementation(libs.kotlin.metadata.jvm)
     ktlintRuleset(libs.ktlintCompose)
 
     lintChecks(libs.androidx.lint.gradle)

@@ -45,7 +45,7 @@ private fun Long.formatTimeMoment(): String {
 private fun CurrentTimerTime(
     currentTime: () -> Duration,
     isStarted: Boolean,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     val style: TextStyle = MaterialTheme.typography.displayLarge
     var showColon by remember { mutableStateOf(true) }

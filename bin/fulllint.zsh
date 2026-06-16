@@ -7,3 +7,4 @@
 ./gradlew updateLintBaseline
 ./gradlew detektBaseline
 ./gradlew lint
+./gradlew projectHealth

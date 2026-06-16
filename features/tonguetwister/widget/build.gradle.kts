@@ -74,7 +74,6 @@ dependencies {
     implementation(libs.androidx.glance)
     implementation(libs.androidx.glance.material3)
     implementation(libs.androidx.glance.preview)
-    implementation(libs.androidx.ui.text)
 
     debugImplementation(libs.ui.tooling)
 

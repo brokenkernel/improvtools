@@ -11,6 +11,7 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
@@ -19,11 +20,11 @@ dependencyResolutionManagement {
     }
 }
 
+
 plugins {
 //    id("org.jetbrains.kotlinx.kover.aggregation") version "0.9.7"
     id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
 }
-
 rootProject.name = "ImprovTools"
 
 enableFeaturePreview("STABLE_CONFIGURATION_CACHE")

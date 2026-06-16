@@ -73,6 +73,8 @@ dependencies {
     api(libs.androidx.foundation.layout)
     api(libs.androidx.lifecycle.viewmodel)
     api(libs.androidx.runtime)
+    api(libs.androidx.ui)
+    api(libs.androidx.ui.geometry)
     api(libs.kotlinx.collections.immutable.jvm)
     api(libs.reorderable)
 
@@ -89,13 +91,12 @@ dependencies {
     implementation(libs.androidx.material.icons.core)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.runtime.saveable)
-    implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.geometry)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.text)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.ui.unit)
     implementation(libs.androidx.ui.util)
+    implementation(libs.jetbrains.annotations)
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.net.engawapg.lib.zoomable)
 

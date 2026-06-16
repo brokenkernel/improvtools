@@ -8,6 +8,7 @@ androidXdatastore = "1.2.1"
 androidbrowserhelper = "2.7.1"
 androidxFoundation = "1.11.2"
 annotation = "1.10.0"
+annotations = "26.1.0"
 appcompat = "1.7.1"
 appsearch = "1.1.0"
 appsearchCompiler = "1.1.0"
@@ -194,6 +195,7 @@ io-github-raamcosta-composeDestinations-core = { module = "io.github.raamcosta.c
 io-github-raamcosta-composeDestinations-ksp = { module = "io.github.raamcosta.compose-destinations:ksp", version.ref = "composeDestinations" }
 jakarta-inject-api = { module = "jakarta.inject:jakarta.inject-api", version.ref = "jakartaInjectApi" }
 javax-inject = { module = "javax.inject:javax.inject", version.ref = "javaxInject" }
+jetbrains-annotations = { module = "org.jetbrains:annotations", version.ref = "annotations" }
 junit = { module = "junit:junit", version.ref = "junit" }
 kotlin-as1-java-plugin = { module = "org.jetbrains.dokka:kotlin-as-java-plugin", version.ref = "androidDocumentationPlugin" }
 kotlin-bom = { module = "org.jetbrains.kotlin:kotlin-bom", version.ref = "kotlin" }

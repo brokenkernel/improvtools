@@ -1,6 +1,13 @@
 import nl.littlerobots.vcu.plugin.resolver.VersionSelectors
 import nl.littlerobots.vcu.plugin.versionSelector
 
+buildscript {
+    dependencies {
+        // https://github.com/autonomousapps/dependency-analysis-gradle-plugin/issues/1661
+        classpath(libs.kotlin.metadata.jvm)
+    }
+}
+
 plugins {
     alias(libs.plugins.aboutLibraries)
     alias(libs.plugins.aboutLibrariesAndroid)
