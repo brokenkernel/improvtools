@@ -5,16 +5,37 @@ import android.content.Context
 import android.media.AudioAttributes
 import android.media.MediaPlayer
 import android.net.Uri
+import android.os.Build
 import androidx.annotation.RawRes
 
-internal class SimpleBuzzerMediaPlayer(private val context: Context) {
-    private val mediaPlayer = MediaPlayer().apply {
-        setAudioAttributes(
-            AudioAttributes.Builder()
-                .setUsage(AudioAttributes.USAGE_MEDIA)
-                .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-                .build(),
-        )
+internal class SimpleBuzzerMediaPlayer(context: Context) {
+    private var mediaPlayer: MediaPlayer
+    private var audioContext = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+        context.createAttributionContext("audioPlayback")
+    } else {
+        context
+    }
+
+    init {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            mediaPlayer = MediaPlayer(audioContext).apply {
+                setAudioAttributes(
+                    AudioAttributes.Builder()
+                        .setUsage(AudioAttributes.USAGE_MEDIA)
+                        .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                        .build(),
+                )
+            }
+        } else {
+            mediaPlayer = MediaPlayer().apply {
+                setAudioAttributes(
+                    AudioAttributes.Builder()
+                        .setUsage(AudioAttributes.USAGE_MEDIA)
+                        .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                        .build(),
+                )
+            }
+        }
     }
 
     fun play(
@@ -23,10 +44,10 @@ internal class SimpleBuzzerMediaPlayer(private val context: Context) {
     ) {
         val uri = Uri.Builder()
             .scheme(ContentResolver.SCHEME_ANDROID_RESOURCE)
-            .authority(context.packageName)
+            .authority(audioContext.packageName)
             .path(resourceId.toString())
             .build()
-        mediaPlayer.setDataSource(context, uri)
+        mediaPlayer.setDataSource(audioContext, uri)
         mediaPlayer.setOnPreparedListener { m ->
             onPlayerStateChange(true)
             m.start()

@@ -134,5 +134,6 @@
             android:name="android.software.leanback.supports_touch"
             android:value="true" />
     </application>
-
+    <attribution android:tag="audioPlayback"
+        android:label="@string/attribution_audio_playback" />
 </manifest>
