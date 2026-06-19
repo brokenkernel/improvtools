@@ -1,3 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="tone_gong">Gong</string>
+    <string name="tone_buzz">Buzz</string>
+    <string name="tone_beep">Beep</string>
+    <string name="tone_bell">Bell</string>
 </resources>

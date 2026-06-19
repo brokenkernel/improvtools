@@ -180,12 +180,12 @@ dependencies {
     implementation(enforcedPlatform(libs.kotlin.bom))
     implementation(project(":components"))
     implementation(project(":coreinfra"))
+    implementation(project(":features:buzzer"))
     implementation(project(":features:encyclopaedia:android"))
     implementation(project(":features:encyclopaedia:data"))
     // TODO: remove the `:data` entry of suggestions
     implementation(project(":features:suggestions:data"))
     implementation(project(":features:timer"))
-    implementation(project(":features:buzzer"))
     implementation(project(":features:tonguetwister"))
     implementation(libs.aboutlibraries.compose.m3)
     implementation(libs.aboutlibraries.core)

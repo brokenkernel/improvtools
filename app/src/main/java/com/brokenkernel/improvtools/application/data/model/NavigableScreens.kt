@@ -24,6 +24,7 @@ import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.encyclopaedia.presentation.view.TipsAndAdviceTabMenu
 import com.brokenkernel.improvtools.settings.presentation.view.SuggestionsTabMenu
 import com.ramcosta.composedestinations.generated.destinations.AboutTabDestination
+import com.ramcosta.composedestinations.generated.destinations.BuzzerTabDestination
 import com.ramcosta.composedestinations.generated.destinations.EmotionTabDestination
 import com.ramcosta.composedestinations.generated.destinations.GamesTabDestination
 import com.ramcosta.composedestinations.generated.destinations.GlossaryTabDestination
@@ -37,7 +38,6 @@ import com.ramcosta.composedestinations.generated.destinations.ThesaurusTabSingl
 import com.ramcosta.composedestinations.generated.destinations.TimerTabDestination
 import com.ramcosta.composedestinations.generated.destinations.TipsAndAdviceTabDestination
 import com.ramcosta.composedestinations.generated.destinations.TongueTwisterTabDestination
-import com.ramcosta.composedestinations.generated.destinations.BuzzerTabDestination
 import com.ramcosta.composedestinations.spec.Direction
 import com.ramcosta.composedestinations.spec.DirectionDestinationSpec
 import com.ramcosta.composedestinations.spec.TypedDestinationSpec
@@ -176,7 +176,7 @@ internal enum class NavigableScreens(
         contentDescription = R.string.go_to_buzzer,
         iconVector = Icons.Filled.SurroundSound,
         matchingRoute = BuzzerTabDestination,
-    )
+    ),
     ;
 
     @Composable

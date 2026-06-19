@@ -120,7 +120,6 @@ internal fun ImprovToolsNavigationDrawer(
                         ::closeNavMenu,
                     )
 
-
                     HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
 
                     Text(
