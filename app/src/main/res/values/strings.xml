@@ -100,4 +100,6 @@
   <string name="stop_watch">Stop Watch</string>
     <string name="tongue_twisters">Tongue Twisters</string>
   <string name="go_to_tongue_twisters">Go To Tongue Twisters</string>
+    <string name="navigation_buzzer">Buzzer</string>
+    <string name="go_to_buzzer">Go To Buzzer</string>
 </resources>

@@ -114,6 +114,12 @@ internal fun ImprovToolsNavigationDrawer(
                         NavigableScreens.TimerScreen,
                         ::closeNavMenu,
                     )
+                    NavigableScreenNavigationDrawerItem(
+                        improvToolsAppState,
+                        NavigableScreens.BuzzerScreen,
+                        ::closeNavMenu,
+                    )
+
 
                     HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
 

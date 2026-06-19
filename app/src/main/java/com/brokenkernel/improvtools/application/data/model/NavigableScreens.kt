@@ -7,6 +7,7 @@ import androidx.compose.material.icons.filled.Book
 import androidx.compose.material.icons.filled.Copyright
 import androidx.compose.material.icons.filled.DeviceUnknown
 import androidx.compose.material.icons.filled.PrivacyTip
+import androidx.compose.material.icons.filled.SurroundSound
 import androidx.compose.material.icons.outlined.Book
 import androidx.compose.material.icons.outlined.EmojiEmotions
 import androidx.compose.material.icons.outlined.Games
@@ -36,6 +37,7 @@ import com.ramcosta.composedestinations.generated.destinations.ThesaurusTabSingl
 import com.ramcosta.composedestinations.generated.destinations.TimerTabDestination
 import com.ramcosta.composedestinations.generated.destinations.TipsAndAdviceTabDestination
 import com.ramcosta.composedestinations.generated.destinations.TongueTwisterTabDestination
+import com.ramcosta.composedestinations.generated.destinations.BuzzerTabDestination
 import com.ramcosta.composedestinations.spec.Direction
 import com.ramcosta.composedestinations.spec.DirectionDestinationSpec
 import com.ramcosta.composedestinations.spec.TypedDestinationSpec
@@ -168,6 +170,13 @@ internal enum class NavigableScreens(
         iconDrawable = R.drawable.ent_24px,
         matchingRoute = TongueTwisterTabDestination,
     ),
+
+    BuzzerScreen(
+        titleResource = R.string.navigation_buzzer,
+        contentDescription = R.string.go_to_buzzer,
+        iconVector = Icons.Filled.SurroundSound,
+        matchingRoute = BuzzerTabDestination,
+    )
     ;
 
     @Composable
