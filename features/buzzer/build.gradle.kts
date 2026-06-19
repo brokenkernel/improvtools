@@ -68,19 +68,17 @@ kotlin {
     }
 }
 dependencies {
+    api(libs.androidx.foundation.layout)
     api(libs.androidx.runtime)
     api(libs.androidx.ui)
-    api(libs.reorderable)
 
     debugApi(libs.reorderable.android.debug)
 
     implementation(project(":components"))
-    implementation(libs.androidx.compose.material.materialIconsExtended)
+    implementation(libs.androidx.annotation)
     implementation(libs.androidx.foundation)
-    implementation(libs.androidx.foundation.layout)
     implementation(libs.androidx.lifecycle.common)
     implementation(libs.androidx.lifecycle.runtime.compose)
-    implementation(libs.androidx.material.icons.core)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.text)
