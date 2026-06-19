@@ -1,5 +1,6 @@
 package com.brokenkernel.improvtools
 
+// import android.app.AppOpsManager
 import android.app.Application
 import android.os.Build
 import android.os.StrictMode
@@ -105,5 +106,7 @@ public class ImprovToolsApplication : Application() {
             Firebase.performance.isPerformanceCollectionEnabled = true
             Firebase.crashlytics.isCrashlyticsCollectionEnabled = true
         }
+
+//        AppOpsManager.OnOpNotedCallback
     }
 }

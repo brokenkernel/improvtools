@@ -2,8 +2,8 @@
 <SmellBaseline>
   <ManuallySuppressedIssues/>
   <CurrentIssues>
+    <ID>ComposableParamOrder:BuzzerButton.kt:@Composable internal fun BuzzerButton</ID>
     <ID>LibraryEntitiesShouldNotBePublic:BuzzerTabInternal.kt:@Composable public fun BuzzerTabInternal</ID>
     <ID>LibraryEntitiesShouldNotBePublic:ExampleUnitTest.kt:ExampleUnitTest</ID>
-    <ID>UnusedParameter:BuzzerTabInternal.kt:modifier: Modifier = Modifier</ID>
   </CurrentIssues>
 </SmellBaseline>
