@@ -16,10 +16,6 @@ internal fun LibrariesTab() {
     val libraries by produceLibraries(R.raw.aboutlibraries)
     LibrariesContainer(
         modifier = Modifier.fillMaxSize(),
-        showAuthor = true,
-        showDescription = true,
-        showVersion = true,
-        showLicenseBadges = true,
         libraries = libraries,
     )
 }
