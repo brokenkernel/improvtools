@@ -1,7 +1,5 @@
 package com.brokenkernel.improvtools.suggestionGenerator.presentation.view
 
-import androidx.compose.animation.core.animateDpAsState
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -14,14 +12,10 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.outlined.ListAlt
 import androidx.compose.material.icons.filled.ChangeCircle
-import androidx.compose.material.icons.outlined.PsychologyAlt
-import androidx.compose.material.icons.outlined.TheaterComedy
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Icon
-import androidx.compose.material3.ListItem
 import androidx.compose.material3.Text
 import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
@@ -40,16 +34,12 @@ import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.brokenkernel.components.view.DragIconButton
-import com.brokenkernel.components.view.SimpleIconButton
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.application.navigation.ImprovToolsDestination
 import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
-import com.brokenkernel.improvtools.encyclopaedia.presentation.view.LoadableSingleWordThesaurusButton
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel.SuggestionScreenViewModel
 import com.brokenkernel.improvtools.suggestions.data.storage.IdeaCategoryODS
 import com.brokenkernel.improvtools.suggestions.data.storage.IdeaUIState
@@ -61,7 +51,6 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kotlin.time.Duration.Companion.milliseconds
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import sh.calvin.reorderable.ReorderableCollectionItemScope
 import sh.calvin.reorderable.ReorderableItem
 import sh.calvin.reorderable.rememberReorderableLazyListState
 
@@ -76,11 +65,12 @@ internal fun SuggestionsTab(
     improvToolsAppState: ImprovToolsAppState,
     viewModel: SuggestionScreenViewModel = hiltViewModel(),
 ) {
-    val onNavigateToExplanation: (String, String) -> Unit = { word: String, explanation: String ->
-        improvToolsAppState.setBottomSheetTo {
-            ExplanationBottomSheetTab(word, explanation)
+    val onNavigateToExplanation: (String, String) -> Unit =
+        { word: String, explanation: String ->
+            improvToolsAppState.setBottomSheetTo {
+                ExplanationBottomSheetTab(word, explanation)
+            }
         }
-    }
     val state = rememberPullToRefreshState()
     var isRefreshing by rememberSaveable { mutableStateOf(false) }
     val coroutineScope = rememberCoroutineScope()
@@ -138,81 +128,34 @@ internal fun SuggestionsTab(
                             state = reorderableLazyListState,
                             key = ideaCategory.itemKey(),
                         ) { isDragging ->
-                            val dragScope: ReorderableCollectionItemScope = this
-                            val elevation by animateDpAsState(if (isDragging) 4.dp else 0.dp)
-
                             val itemSuggestionState: State<IdeaUIState> =
                                 viewModel.categoryDatumToSuggestion.getValue(ideaCategory)
                                     .collectAsStateWithLifecycle()
-                            val currentIdea: IdeaUIState = itemSuggestionState.value
-                            ListItem(
-                                shadowElevation = elevation,
-                                overlineContent = { Text(ideaCategory.titleWithCount()) },
-                                headlineContent = { Text(currentIdea.idea) },
-                                modifier = Modifier.clickable(
-                                    onClick = {
-                                        viewModel.updateSuggestionXFor(ideaCategory)
-                                    },
-                                    onClickLabel = stringResource(R.string.update_suggestion),
-                                ),
-                                trailingContent = {
-                                    Row {
-                                        if (ideaCategory.showLinkToEmotion) {
-                                            SimpleIconButton(
-                                                onClick = {
-                                                    navigator.navigate(EmotionTabDestination)
-                                                },
-                                                icon = Icons.Outlined.PsychologyAlt,
-                                                contentDescription = stringResource(
-                                                    R.string.go_to_emotions_reference_screen,
-                                                ),
-                                            )
-                                        }
-                                        val currentExplanation = currentIdea.explanation
-                                        if (currentExplanation != null) {
-                                            SimpleIconButton(
-                                                onClick = {
-                                                    onNavigateToExplanation(
-                                                        currentIdea.idea,
-                                                        currentExplanation,
-                                                    )
-                                                },
-                                                icon = Icons.Outlined.TheaterComedy,
-                                                contentDescription = stringResource(
-                                                    R.string.explain_this_term,
-                                                ),
-                                            )
-                                        }
-                                        // TODO: none of the selected words are remembered across screens
-                                        // TODO: this shouldn't be a viewModel but injected UIState. TBD
 
-                                        // hides itself
-                                        LoadableSingleWordThesaurusButton(
-                                            word = currentIdea.idea,
-                                            onNavigateToWord = {
-                                                navigator.navigate(
-                                                    ThesaurusTabSingleWordDestination(
-                                                        currentIdea.idea,
-                                                        improvToolsAppState.currentTitle.value,
-                                                    ),
-                                                )
-                                            },
-                                            whenDisabledFullyHidden = true,
-                                        )
-                                        SimpleIconButton(
-                                            onClick = {
-                                                improvToolsAppState.setBottomSheetTo {
-                                                    AllWordsBottomSheetTab(ideaCategory.allWordsforCategory())
-                                                }
-                                            },
-                                            icon = Icons.AutoMirrored.Outlined.ListAlt,
-                                            contentDescription = stringResource(
-                                                R.string.suggestions_see_all_category_words,
-                                            ),
-                                        )
-                                        DragIconButton(dragScope)
+                            SuggestionsSingleCategoryRow(
+                                ideaCategory = ideaCategory,
+                                onUpdateCategory = {
+                                    viewModel.updateSuggestionXFor(ideaCategory)
+                                },
+                                onShowSingleWord = {
+                                    navigator.navigate(
+                                        ThesaurusTabSingleWordDestination(
+                                            itemSuggestionState.value.idea,
+                                            improvToolsAppState.currentTitle.value,
+                                        ),
+                                    )
+                                },
+                                onShowAllWordsForCategory = {
+                                    improvToolsAppState.setBottomSheetTo {
+                                        AllWordsBottomSheetTab(ideaCategory.allWordsforCategory())
                                     }
                                 },
+                                onGoToEmotionTab = {
+                                    navigator.navigate(EmotionTabDestination)
+                                },
+                                onNavigateToExplanation = onNavigateToExplanation,
+                                isDragging = isDragging,
+                                currentIdea = itemSuggestionState.value,
                             )
                         }
                     }
