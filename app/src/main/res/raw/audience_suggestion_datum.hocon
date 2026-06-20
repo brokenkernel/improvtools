@@ -302,6 +302,7 @@
         {"idea": "celebrity / sycophant"},
         {"idea": "checkout person / customer"},
         {"idea": "child / babysitter"},
+        {"idea": "child / imaginary friend"},
         {"idea": "city dweller / tourist"},
         {"idea": "coach / athlete"},
         {"idea": "comedian / heckler"},
@@ -442,7 +443,8 @@
         {"idea": "Someone is convinced they are invisible (but are not really)"},
         {"idea": "Someone pretends their friend doesn't speak the native language (but they do)"},
         {"idea": "Someone replicates another figure in the scene with a delay of 5 seconds"},
-        {"idea": "Someone thinks that all the other figures are constantly evaluating and judging him/her"}
+        {"idea": "Someone thinks that all the other figures are constantly evaluating and judging him/her"},
+        {"idea": "Someone fears people standing on their shadow."},
       ]
     },
     {
@@ -543,7 +545,7 @@
         {"idea": "Stanley Kubrick"},
         {"idea": "Wes Anderson"},
         {"idea": "Alfred Hitchcock"},
-        {"idea": "Christopher Nolan"}
+        {"idea": "Christopher Nolan"},
       ]
     },
     {
@@ -553,8 +555,8 @@
         {"idea": "Nowel Coward"},
         {"idea": "Diana Son"},
         {"idea": "Michael Frayn"},
-        {"idea": "Anton Checkov"}
-        {"idea": "Oscar Wilde"}
+        {"idea": "Anton Checkov"},
+        {"idea": "Oscar Wilde"},
       ]
     },
     {
@@ -563,6 +565,9 @@
         {"idea": "Firing Someone"},
         {"idea": "Dying from an illness"}
         {"idea": "Failing a student"}
+        {"idea": "Admitting you're an addict"}
+        {"idea": "Family is going bankrupt"}
+        {"idea": "Parents are divorcing"}
       ]
     },
     {
@@ -571,7 +576,9 @@
         {"idea": "Standard English"},
         {"idea": "Yorkshire"},
         {"idea": "Cork"},
-        {"idea": "North Irish"}
+        {"idea": "North Irish"},
+        {"idea": "Appalachian"},
+        {"idea": "Scottish"},
       ]
     },
     {
@@ -608,7 +615,10 @@
         {"idea": "I'm holding a box about yay big. What's inside it?"},
         {"idea": "If you could invent a new human organ, what would it be?"},
         {"idea": "Something you do as a part of your daily routine"},
-        {"idea": "A Hobby"}
+        {"idea": "A Hobby"},
+        {"idea": "Your first initial"},
+        {"idea": "The first line of the scene"},
+        {"idea": "Theme of your most recent dream"},
       ]
     },
   ]
