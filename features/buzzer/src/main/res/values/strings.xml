@@ -4,4 +4,6 @@
     <string name="tone_buzz">Buzz</string>
     <string name="tone_beep">Beep</string>
     <string name="tone_bell">Bell</string>
+    <string name="tone_rimshot">Rimshot</string>
+    <string name="tone_sadtrombone">Sad Trombone</string>
 </resources>

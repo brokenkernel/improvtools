@@ -27,6 +27,13 @@ internal object BuzzerDatum {
             nameRes = R.string.tone_beep,
             soundId = R.raw.dragon_studio_censor_beep_1_372459,
         ),
-
+        BuzzerType(
+            nameRes = R.string.tone_rimshot,
+            soundId = R.raw.freesound_community_rimshot_joke_funny_80325
+        ),
+        BuzzerType(
+            nameRes = R.string.tone_sadtrombone,
+            soundId = R.raw.freesound_community_wah_wah_sad_trombone_6347
+        ),
     )
 }

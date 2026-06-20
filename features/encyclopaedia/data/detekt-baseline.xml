@@ -12,6 +12,7 @@
     <ID>ForbiddenPublicDataClass:TipsAndAdviceUIState.kt:TipsAndAdviceUIState</ID>
     <ID>LibraryEntitiesShouldNotBePublic:ActionItem.kt:ActionItem</ID>
     <ID>LibraryEntitiesShouldNotBePublic:DictionaryInfo.kt:DictionaryInfo</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:GameDatumTools.kt:GameDatumTools</ID>
     <ID>LibraryEntitiesShouldNotBePublic:GamesDataItem.kt:GamesDataItem</ID>
     <ID>LibraryEntitiesShouldNotBePublic:GamesDatumTag.kt:GamesDatumTag</ID>
     <ID>LibraryEntitiesShouldNotBePublic:GamesDatumTopic.kt:GamesDatumTopic</ID>
