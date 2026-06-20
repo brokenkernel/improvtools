@@ -1,5 +1,6 @@
 package com.brokenkernel.improvtools.encyclopaedia.data.model
 
+import com.brokenkernel.improvtools.encyclopaedia.data.GameDatumTools
 import com.brokenkernel.improvtools.encyclopaedia.data.GamesDatumTag
 import com.brokenkernel.improvtools.encyclopaedia.data.GamesDatumTopic
 
@@ -14,4 +15,5 @@ public data class GamesDataItem(
     val unpublishedMatches: Set<String> = emptySet(),
     val source: String? = null,
     val tags: Set<GamesDatumTag> = setOf(),
+    val tools: Set<GameDatumTools> = setOf(),
 )

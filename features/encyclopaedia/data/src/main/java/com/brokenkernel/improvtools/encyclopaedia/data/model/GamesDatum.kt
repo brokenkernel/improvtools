@@ -1,5 +1,6 @@
 package com.brokenkernel.improvtools.encyclopaedia.data.model
 
+import com.brokenkernel.improvtools.encyclopaedia.data.GameDatumTools
 import com.brokenkernel.improvtools.encyclopaedia.data.GamesDatumTag
 import com.brokenkernel.improvtools.encyclopaedia.data.GamesDatumTopic
 
@@ -83,9 +84,15 @@ public val GamesDatum: Collection<GamesDataItem> = listOf(
         topic = GamesDatumTopic.WARMUP,
     ),
     GamesDataItem(
-        gameName = "Half Time",
+        gameName = "Half Life",
         topic = GamesDatumTopic.GAME,
         tags = setOf(GamesDatumTag.SHORTFORM),
+        detailedInformation = """
+            |A single scene is performed for a fixed amount of time.
+            |At the end of the scene it is repeated in half the amount of time.
+            |Repeat until it is unreasonably fast.
+        """.trimMargin(),
+        tools = setOf(GameDatumTools.TIMER),
     ),
     GamesDataItem(
         gameName = "Word At a time",
@@ -205,5 +212,4 @@ public val GamesDatum: Collection<GamesDataItem> = listOf(
         gameName = "Sit Stand Lie",
         topic = GamesDatumTopic.EXERCISE,
     ),
-
-    )
+)

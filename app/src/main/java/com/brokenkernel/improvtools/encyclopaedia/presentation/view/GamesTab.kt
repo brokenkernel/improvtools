@@ -10,6 +10,7 @@ import androidx.compose.material.icons.filled.Tag
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilledIconToggleButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -27,14 +28,21 @@ import androidx.compose.ui.util.fastAny
 import com.brokenkernel.components.filteredlist.ChippedTabbedSearchableColumn
 import com.brokenkernel.components.view.ExpandIcon
 import com.brokenkernel.components.view.HtmlText
+import com.brokenkernel.components.view.SimpleIconButton
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.navigation.ImprovToolsDestination
 import com.brokenkernel.improvtools.application.presentation.api.LocalBottomSheetContentManager
 import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
+import com.brokenkernel.improvtools.encyclopaedia.data.GameDatumTools
 import com.brokenkernel.improvtools.encyclopaedia.data.GamesDatumTag
 import com.brokenkernel.improvtools.encyclopaedia.data.GamesDatumTopic
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GamesDataItem
 import com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel.GamesTabViewModel
+import androidx.compose.material.icons.outlined.Timer
+import com.brokenkernel.improvtools.application.data.model.NavigableScreens
+import com.brokenkernel.improvtools.application.data.model.rememberImprovToolsAppState
+import com.ramcosta.composedestinations.generated.destinations.TimerTabDestination
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
 private fun transformForSearch(str: String): String {
     return str.filterNot { it.isWhitespace() }
@@ -48,6 +56,7 @@ private fun hasExpandableInformation(gdi: GamesDataItem): Boolean {
 @ImprovToolsDestination<ImprovToolsNavigationGraph>
 @Composable
 internal fun GamesTab(
+    navigator: DestinationsNavigator,
     viewModel: GamesTabViewModel = GamesTabViewModel(),
 ) {
     val textFieldState = rememberTextFieldState()
@@ -56,11 +65,11 @@ internal fun GamesTab(
 
     fun doesMatch(search: String, gameData: GamesDataItem): Boolean {
         return transformForSearch(gameData.gameName).contains(search, ignoreCase = true) or
-            gameData.unpublishedMatches.map { it ->
-                transformForSearch(it)
-            }
-                .fastAny { it -> it.contains(search, ignoreCase = true) } or
-            gameData.tags.intersect(currentTags).isNotEmpty()
+                gameData.unpublishedMatches.map { it ->
+                    transformForSearch(it)
+                }
+                    .fastAny { it -> it.contains(search, ignoreCase = true) } or
+                gameData.tags.intersect(currentTags).isNotEmpty()
     }
 
     LaunchedEffect(textFieldState.text) {
@@ -148,6 +157,19 @@ internal fun GamesTab(
                         }
                         if (it.source != null) {
                             HtmlText("""<i><a href="${it.source}">source</a></i>""")
+                        }
+                        if (it.tools.isNotEmpty()) {
+                            Row {
+                                if (it.tools.contains(GameDatumTools.TIMER)) {
+                                    SimpleIconButton(
+                                        onClick = {
+                                            navigator.navigate(TimerTabDestination)
+                                        },
+                                        icon = NavigableScreens.TimerScreen.icon(),
+                                        contentDescription = stringResource(R.string.go_to_timer_screen),
+                                    )
+                                }
+                            }
                         }
                     }
                     Row {
