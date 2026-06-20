@@ -29,11 +29,11 @@ internal object BuzzerDatum {
         ),
         BuzzerType(
             nameRes = R.string.tone_rimshot,
-            soundId = R.raw.freesound_community_rimshot_joke_funny_80325
+            soundId = R.raw.freesound_community_rimshot_joke_funny_80325,
         ),
         BuzzerType(
             nameRes = R.string.tone_sadtrombone,
-            soundId = R.raw.freesound_community_wah_wah_sad_trombone_6347
+            soundId = R.raw.freesound_community_wah_wah_sad_trombone_6347,
         ),
     )
 }
