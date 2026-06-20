@@ -2,6 +2,7 @@
 <SmellBaseline>
   <ManuallySuppressedIssues/>
   <CurrentIssues>
+    <ID>LibraryEntitiesShouldNotBePublic:AllWordsBottomSheetTab.kt:@Composable public fun AllWordsBottomSheetTab</ID>
     <ID>LibraryEntitiesShouldNotBePublic:ExampleUnitTest.kt:ExampleUnitTest</ID>
     <ID>LibraryEntitiesShouldNotBePublic:ExplanationBottomSheetTab.kt:@Composable public fun ExplanationBottomSheetTab</ID>
   </CurrentIssues>

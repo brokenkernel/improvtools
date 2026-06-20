@@ -1,5 +1,7 @@
 package com.brokenkernel.improvtools.suggestions.data.storage
 
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.toImmutableList
 import kotlinx.serialization.Serializable
 
 // TODO: ODS should be private/internal and only exposed to the rest via UI structures
@@ -25,6 +27,10 @@ public class IdeaCategoryODS(
     public fun titleWithCount(): String {
         return "${this.title} (${ideas.size})"
     }
+
+    public fun allWordsforCategory(): ImmutableList<String> {
+        return this.ideas.map { it.idea }.toImmutableList()
+    }
 }
 
 @Serializable
@@ -32,7 +38,10 @@ public data class AudienceSuggestionDatumODS(
     val categories: List<IdeaCategoryODS>,
 )
 
-public class IdeaUIState private constructor(public val idea: String, public val explanation: String?) {
+public class IdeaUIState private constructor(
+    public val idea: String,
+    public val explanation: String?,
+) {
     public companion object {
         // the modeling and structure is weird and likely needs to be redone. Leave for now.
         public fun fromStoredModel(storedIdea: IdeaItemODS): IdeaUIState {

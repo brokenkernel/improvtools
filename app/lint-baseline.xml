@@ -69,6 +69,39 @@
 
     <issue
         id="CannotEnableHidden"
+        message="Issue `IconExpectedSize` was configured with severity `error` in app, but was not enabled (or was disabled) in library android"
+        errorLine1="    &lt;issue id=&quot;IconExpectedSize&quot; severity=&quot;error&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="lint.xml"
+            line="11"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="CannotEnableHidden"
+        message="Issue `IconExpectedSize` was configured with severity `error` in app, but was not enabled (or was disabled) in library android"
+        errorLine1="    &lt;issue id=&quot;IconExpectedSize&quot; severity=&quot;error&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="lint.xml"
+            line="11"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="CannotEnableHidden"
+        message="Issue `IconExpectedSize` was configured with severity `error` in app, but was not enabled (or was disabled) in library android"
+        errorLine1="    &lt;issue id=&quot;IconExpectedSize&quot; severity=&quot;error&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="lint.xml"
+            line="11"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="CannotEnableHidden"
         message="Issue `IconExpectedSize` was configured with severity `error` in app, but was not enabled (or was disabled) in library buzzer"
         errorLine1="    &lt;issue id=&quot;IconExpectedSize&quot; severity=&quot;error&quot; />"
         errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">

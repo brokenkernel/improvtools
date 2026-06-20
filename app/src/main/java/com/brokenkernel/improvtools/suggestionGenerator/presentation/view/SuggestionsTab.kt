@@ -14,6 +14,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.outlined.ListAlt
 import androidx.compose.material.icons.filled.ChangeCircle
 import androidx.compose.material.icons.outlined.PsychologyAlt
 import androidx.compose.material.icons.outlined.TheaterComedy
@@ -52,6 +53,7 @@ import com.brokenkernel.improvtools.encyclopaedia.presentation.view.LoadableSing
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel.SuggestionScreenViewModel
 import com.brokenkernel.improvtools.suggestions.data.storage.IdeaCategoryODS
 import com.brokenkernel.improvtools.suggestions.data.storage.IdeaUIState
+import com.brokenkernel.improvtools.suggestions.view.AllWordsBottomSheetTab
 import com.brokenkernel.improvtools.suggestions.view.ExplanationBottomSheetTab
 import com.ramcosta.composedestinations.generated.destinations.EmotionTabDestination
 import com.ramcosta.composedestinations.generated.destinations.ThesaurusTabSingleWordDestination
@@ -114,12 +116,13 @@ internal fun SuggestionsTab(
                     viewModel.internalCategoryDatum
                 }
                 val lazyListState = rememberLazyListState()
-                val reorderableLazyListState = rememberReorderableLazyListState(lazyListState) { from, to ->
-                    viewModel.internalCategoryDatum.apply {
-                        add(to.index, removeAt(from.index))
+                val reorderableLazyListState =
+                    rememberReorderableLazyListState(lazyListState) { from, to ->
+                        viewModel.internalCategoryDatum.apply {
+                            add(to.index, removeAt(from.index))
+                        }
+                        haptic.performHapticFeedback(HapticFeedbackType.SegmentFrequentTick)
                     }
-                    haptic.performHapticFeedback(HapticFeedbackType.SegmentFrequentTick)
-                }
 
                 // TODO add sortable?
                 LazyColumn(
@@ -127,7 +130,10 @@ internal fun SuggestionsTab(
                     modifier = Modifier
                         .fillMaxWidth(),
                 ) {
-                    items(reorderedListOfSuggestions, key = IdeaCategoryODS::itemKey) { ideaCategory: IdeaCategoryODS ->
+                    items(
+                        reorderedListOfSuggestions,
+                        key = IdeaCategoryODS::itemKey,
+                    ) { ideaCategory: IdeaCategoryODS ->
                         ReorderableItem(
                             state = reorderableLazyListState,
                             key = ideaCategory.itemKey(),
@@ -136,7 +142,8 @@ internal fun SuggestionsTab(
                             val elevation by animateDpAsState(if (isDragging) 4.dp else 0.dp)
 
                             val itemSuggestionState: State<IdeaUIState> =
-                                viewModel.categoryDatumToSuggestion.getValue(ideaCategory).collectAsStateWithLifecycle()
+                                viewModel.categoryDatumToSuggestion.getValue(ideaCategory)
+                                    .collectAsStateWithLifecycle()
                             val currentIdea: IdeaUIState = itemSuggestionState.value
                             ListItem(
                                 shadowElevation = elevation,
@@ -179,6 +186,7 @@ internal fun SuggestionsTab(
                                         // TODO: none of the selected words are remembered across screens
                                         // TODO: this shouldn't be a viewModel but injected UIState. TBD
 
+                                        // hides itself
                                         LoadableSingleWordThesaurusButton(
                                             word = currentIdea.idea,
                                             onNavigateToWord = {
@@ -190,6 +198,17 @@ internal fun SuggestionsTab(
                                                 )
                                             },
                                             whenDisabledFullyHidden = true,
+                                        )
+                                        SimpleIconButton(
+                                            onClick = {
+                                                improvToolsAppState.setBottomSheetTo {
+                                                    AllWordsBottomSheetTab(ideaCategory.allWordsforCategory())
+                                                }
+                                            },
+                                            icon = Icons.AutoMirrored.Outlined.ListAlt,
+                                            contentDescription = stringResource(
+                                                R.string.suggestions_see_all_category_words,
+                                            ),
                                         )
                                         DragIconButton(dragScope)
                                     }

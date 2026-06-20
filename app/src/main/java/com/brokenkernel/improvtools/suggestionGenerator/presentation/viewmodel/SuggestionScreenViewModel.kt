@@ -46,7 +46,8 @@ internal class SuggestionScreenViewModel @Inject constructor(
             )
         }
 
-        categoryDatumToSuggestion = _categoryDatumToSuggestion.mapValues { x -> x.value.asStateFlow() }
+        categoryDatumToSuggestion =
+            _categoryDatumToSuggestion.mapValues { x -> x.value.asStateFlow() }
     }
 
     internal fun updateSuggestionXFor(ic: IdeaCategoryODS) {
