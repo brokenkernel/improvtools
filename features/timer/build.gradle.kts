@@ -74,7 +74,6 @@ dependencies {
 
     debugApi(libs.reorderable.android.debug)
 
-    implementation(project(":components"))
     implementation(libs.androidx.compose.material.materialIconsExtended)
     implementation(libs.androidx.foundation)
     implementation(libs.androidx.foundation.layout)
@@ -86,6 +85,7 @@ dependencies {
     implementation(libs.androidx.ui.text)
     implementation(libs.androidx.ui.unit)
     implementation(libs.kotlinx.coroutines.core)
+    implementation(projects.components)
 
     testImplementation(libs.junit)
 

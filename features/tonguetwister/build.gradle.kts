@@ -79,7 +79,6 @@ dependencies {
 
     implementation(enforcedPlatform(libs.androidx.compose.bom))
     implementation(enforcedPlatform(libs.kotlin.bom))
-    implementation(project(":components"))
     implementation(libs.androidx.foundation)
     implementation(libs.androidx.foundation.layout)
     implementation(libs.androidx.glance)
@@ -90,6 +89,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.ui.unit)
     implementation(libs.kotlinx.collections.immutable.jvm)
+    implementation(projects.components)
 
     debugImplementation(libs.ui.tooling)
 
