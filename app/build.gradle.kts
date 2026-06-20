@@ -240,6 +240,7 @@ dependencies {
     implementation(projects.features.encyclopaedia.android)
     implementation(projects.features.encyclopaedia.data)
     // TODO: remove the `:data` entry of suggestions
+    implementation(projects.features.suggestions.android)
     implementation(projects.features.suggestions.data)
     implementation(projects.features.timer)
     implementation(projects.features.tonguetwister)

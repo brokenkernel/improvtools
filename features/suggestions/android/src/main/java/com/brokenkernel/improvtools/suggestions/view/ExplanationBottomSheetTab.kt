@@ -1,4 +1,4 @@
-package com.brokenkernel.improvtools.suggestionGenerator.presentation.view
+package com.brokenkernel.improvtools.suggestions.view
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.MaterialTheme
@@ -8,8 +8,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import com.brokenkernel.components.view.HtmlText
 
+// TODO: should be internal
 @Composable
-internal fun ExplanationBottomSheetTab(
+public fun ExplanationBottomSheetTab(
     word: String,
     explanation: String,
     modifier: Modifier = Modifier,

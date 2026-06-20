@@ -3,5 +3,6 @@
   <ManuallySuppressedIssues/>
   <CurrentIssues>
     <ID>LibraryEntitiesShouldNotBePublic:ExampleUnitTest.kt:ExampleUnitTest</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:ExplanationBottomSheetTab.kt:@Composable public fun ExplanationBottomSheetTab</ID>
   </CurrentIssues>
 </SmellBaseline>

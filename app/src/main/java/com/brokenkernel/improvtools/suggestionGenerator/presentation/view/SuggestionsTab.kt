@@ -52,6 +52,7 @@ import com.brokenkernel.improvtools.encyclopaedia.presentation.view.LoadableSing
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel.SuggestionScreenViewModel
 import com.brokenkernel.improvtools.suggestions.data.storage.IdeaCategoryODS
 import com.brokenkernel.improvtools.suggestions.data.storage.IdeaUIState
+import com.brokenkernel.improvtools.suggestions.view.ExplanationBottomSheetTab
 import com.ramcosta.composedestinations.generated.destinations.EmotionTabDestination
 import com.ramcosta.composedestinations.generated.destinations.ThesaurusTabSingleWordDestination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
