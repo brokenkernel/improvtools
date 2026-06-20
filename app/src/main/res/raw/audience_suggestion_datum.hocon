@@ -485,11 +485,14 @@
         {"idea": "Comedy"},
         {"idea": "Contemporary Fantasy"},
         {"idea": "Crime"},
+        {"idea": "Court show"},
         {"idea": "Cyberpunk"},
         {"idea": "Dark Comedy"},
         {"idea": "Dark Fantasy"},
         {"idea": "Disaster (Action)"},
+        {"idea": "Children's series"},
         {"idea": "Docudrama"},
+        {"idea": "Documentary"},
         {"idea": "Empire Western"},
         {"idea": "Epic Western"},
         {"idea": "Espionage"},
@@ -500,6 +503,7 @@
           "explanation": "A person of typical social standing explores a world foreign to them."
         },
         {"idea": "Farce"},
+        {"idea": "Fantastique"},
         {"idea": "Giallo"},
         {"idea": "Heist"},
         {"idea": "Heroic Bloodshed (Action)"},
@@ -507,6 +511,7 @@
         {"idea": "Historical Epic"},
         {"idea": "Historical"},
         {"idea": "Horror"},
+        {"idea": "Lovecraftian horror"},
         {"idea": "Infomercial"},
         {"idea": "Legal Thriller"},
         {"idea": "Live-Action"},
@@ -545,6 +550,7 @@
         {"idea": "Surrealist"},
         {"idea": "Swashbuckler"},
         {"idea": "Sword & Sorcery"},
+        {"idea": "Talk Show"},
         {"idea": "Tech Noir"},
         {"idea": "Telenovela"},
         {"idea": "Televangelist"},
@@ -555,14 +561,21 @@
           "idea": "Western",
           "explanation": "a community exists and cares for each other. An outsider comes in threatening the status quo. The community bands together."
         },
-        {"idea": "Wuxia"}
+        {
+            "idea": "Wuxia",
+            "explanation": "An action show focused on martial arts"
+        }
       ]
     },
     {
       "title": "Actor",
       "ideas": [
+        {"idea": "Anthony Hopkins"},
+        {"idea": "Bette Davis"},
+        {"idea": "Charles Chaplin"},
+        {"idea": "Helena Bonham Carter"},
+        {"idea": "Ian Mckellen"},
         {"idea": "Tatiana Maslany"},
-        {"idea": "Helena Bonham Carter"}
       ]
     },
     {
@@ -621,18 +634,22 @@
         {"idea": "Adrian"},
         {"idea": "Adriana"},
         {"idea": "Aedile"},
+        {"idea": "Anton"},
         {"idea": "Betty"},
         {"idea": "Bob"},
+        {"idea": "Diana"},
+        {"idea": "Everest"},
         {"idea": "Florizel"},
         {"idea": "Jessica"},
-        {"idea": "Olivia"},
+        {"idea": "Julie"},
         {"idea": "Miranda"},
+        {"idea": "Nowel"},
+        {"idea": "Olivia"},
         {"idea": "Peter"},
-        {"idea": "Sara"},
         {"idea": "Ryker"},
-        {"idea": "Everest"},
-        {"idea": "Talia"},
+        {"idea": "Sara"},
         {"idea": "Sophia"},
+        {"idea": "Talia"},
       ]
     },
     {
