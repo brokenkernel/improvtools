@@ -201,4 +201,9 @@ public val GamesDatum: Collection<GamesDataItem> = listOf(
         gameName = "Why are you late? / The boss",
         topic = GamesDatumTopic.EXERCISE,
     ),
-)
+    GamesDataItem(
+        gameName = "Sit Stand Lie",
+        topic = GamesDatumTopic.EXERCISE,
+    ),
+
+    )
