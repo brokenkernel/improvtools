@@ -11,6 +11,8 @@ public enum class GamesDatumTag(public val label: String, public val description
     VOCAL("#vocal"),
     STATUS("#status"),
     SHORTFORM("#shortform", """A singular game performed"""),
+    SONG("#song", "The performers sing"),
+    MUSIC("#music", "Uses musical accompaniment"),
     MEDIUMFORM(
         "#mediumform",
         """A collection of scenes with a semi-coherent theme along a defined form or structure.

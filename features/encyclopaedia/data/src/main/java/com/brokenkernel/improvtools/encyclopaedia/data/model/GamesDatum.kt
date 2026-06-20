@@ -212,4 +212,13 @@ public val GamesDatum: Collection<GamesDataItem> = listOf(
         gameName = "Sit Stand Lie",
         topic = GamesDatumTopic.EXERCISE,
     ),
+    GamesDataItem(
+        gameName = "Oscar Winning Moment / Tony Winning Moment",
+        topic = GamesDatumTopic.GAME,
+        detailedInformation = """
+            |During a normal scene someone calls out "Oscar Winning Moment”. The character who just spoke must turn to the audience, and speak absurdly passionately, and speak a monologue.
+            |A "tony winning moment" is the same except that the character must sing.
+        """.trimMargin(),
+        tags = setOf(GamesDatumTag.SONG),
+    ),
 )
