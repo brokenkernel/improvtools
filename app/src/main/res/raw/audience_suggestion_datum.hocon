@@ -64,6 +64,10 @@
         {"idea": "Embarrassed"},
         {"idea": "Empathy"},
         {"idea": "Empty"},
+        {
+            "idea": "Énouement",
+            "explanation": "the bittersweetness of having arrived here in the future, finally learning the answers to how things turned out but being unable to tell your past self.",
+        },
         {"idea": "Enchanted"},
         {"idea": "Encouraged"},
         {"idea": "Energized"},
@@ -130,6 +134,7 @@
         {"idea": "Numb"},
         {"idea": "On edge"},
         {"idea": "Open"},
+        {"idea": "Opia"},
         {"idea": "Optimistic"},
         {"idea": "Outraged"},
         {"idea": "Overwhelm"},
@@ -176,6 +181,10 @@
         {"idea": "Shut Down"},
         {"idea": "Skeptical"},
         {"idea": "Sorrow"},
+        {
+            "idea": "Sonder",
+            "explanation": "the realization that all other people have lives as real as one's own"
+        },
         {"idea": "Sorry"},
         {"idea": "Stimulated"},
         {"idea": "Stressed"},
