@@ -549,18 +549,20 @@
     {
       "title": "Playwright",
       "ideas": [
-        {"idea": "Shakespeare"},
+        {"idea": "William Shakespeare"},
         {"idea": "Nowel Coward"},
         {"idea": "Diana Son"},
         {"idea": "Michael Frayn"},
         {"idea": "Anton Checkov"}
+        {"idea": "Oscar Wilde"}
       ]
     },
     {
       "title": "Hard Conversation",
       "ideas": [
         {"idea": "Firing Someone"},
-        {"idea": "Having Cancer"}
+        {"idea": "Dying from an illness"}
+        {"idea": "Failing a student"}
       ]
     },
     {
@@ -592,6 +594,10 @@
         {"idea": "Miranda"},
         {"idea": "Peter"},
         {"idea": "Sara"},
+        {"idea": "Ryker"},
+        {"idea": "Everest"},
+        {"idea": "Talia"},
+        {"idea": "Sophia"},
       ]
     },
     {
