@@ -226,6 +226,7 @@
         {"idea": "Apiary"},
         {"idea": "Chicken coop"},
         {"idea": "Crematorium"},
+        {"idea": "Clowncar"},
         {"idea": "Empty Kindergarten Classroom"},
         {"idea": "Farmhouse"},
         {"idea": "Flea market"},
@@ -256,6 +257,7 @@
       "title": "Occupation",
       "ideas": [
         {"idea": "Architect"}
+        {"idea": "Bookseller"}
         {"idea": "Carpenter"},
         {"idea": "Doctor"},
         {"idea": "Gynecologist"},
@@ -263,6 +265,7 @@
         {"idea": "Landscape Architect"},
         {"idea": "Lawyer"},
         {"idea": "Librarian"},
+        {"idea": "Movie Director"},
         {"idea": "Mortition"},
         {"idea": "Pathologist"},
         {"idea": "Seamen"},
@@ -271,6 +274,7 @@
         {"idea": "Utility Meter Reader"},
         {"idea": "Veterinarian"},
         {"idea": "Weather Observer"},
+        {"idea": "Woodworker"},
         {"idea": "Zoologist"}      ]
     },
     {
@@ -329,6 +333,10 @@
         {"idea": "evangelist / atheist"},
         {"idea": "farmer / scarecrow"},
         {"idea": "farmer / cow"},
+        {"idea": "cop / fugitive"},
+        {"idea": "puppeteer / marionette"},
+        {"idea": "giant / dwarf"},
+        {"idea": "jeckyll / hyde"},
         {"idea": "flight attendant / passenger"},
         {"idea": "football player / referee"},
         {"idea": "forum moderator / forum poster"},
@@ -387,7 +395,7 @@
         {"idea": "psychiatrist / patient"},
         {"idea": "psychic / skeptic"},
         {"idea": "psychopath / victim"},
-        {"idea": "ragon / knight"},
+        {"idea": "dragon / knight"},
         {"idea": "rebel / dictator"},
         {"idea": "reporter / celebrity"},
         {"idea": "rockstar / manager"},
@@ -443,8 +451,27 @@
         {"idea": "Someone is convinced they are invisible (but are not really)"},
         {"idea": "Someone pretends their friend doesn't speak the native language (but they do)"},
         {"idea": "Someone replicates another figure in the scene with a delay of 5 seconds"},
-        {"idea": "Someone thinks that all the other figures are constantly evaluating and judging him/her"},
+        {"idea": "Someone thinks that all the other figures are constantly evaluating and judging them"},
         {"idea": "Someone fears people standing on their shadow."},
+        {"idea": "Leads a deadly rescue mission on Mt. Everest."},
+        {"idea": "Battles monsters in a fight for their life."},
+      ]
+    },
+    {
+      "title": "Objective",
+      "ideas": [
+        {"idea": "Escort or deliver something"},
+        {"idea": "Sabotage a project"},
+        {"idea": "Journey through a hazardous territory"},
+        {"idea": "Protect a dangerous secret"},
+        {"idea": "Spy on someone"},
+        {"idea": "Liberate an occupied place"},
+        {"idea": "Befriend or impress someone"},
+        {"idea": "Kidnap someone"},
+        {"idea": "Escape from danger"},
+        {"idea": "Escape from pursuit"},
+        {"idea": "Infiltrate a group, gain trust"},
+        {"idea": "Find something lost or missing"},
       ]
     },
     {
@@ -523,6 +550,7 @@
         {"idea": "Televangelist"},
         {"idea": "Urban fantasy"},
         {"idea": "Weather Report"},
+        {"idea": "Whodunit"},
         {
           "idea": "Western",
           "explanation": "a community exists and cares for each other. An outsider comes in threatening the status quo. The community bands together."

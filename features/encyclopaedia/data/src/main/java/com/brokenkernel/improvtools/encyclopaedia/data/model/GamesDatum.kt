@@ -5,7 +5,7 @@ import com.brokenkernel.improvtools.encyclopaedia.data.GamesDatumTag
 import com.brokenkernel.improvtools.encyclopaedia.data.GamesDatumTopic
 
 // TODO: make things internal once things are modularised
-
+// TODO: add number of players for games
 // TODO: see also?
 
 public val GamesDatum: Collection<GamesDataItem> = listOf(
@@ -220,5 +220,23 @@ public val GamesDatum: Collection<GamesDataItem> = listOf(
             |A "tony winning moment" is the same except that the character must sing.
         """.trimMargin(),
         tags = setOf(GamesDatumTag.SONG),
+    ),
+    GamesDataItem(
+        gameName = "Party Quirks",
+        topic = GamesDatumTopic.GAME,
+    ),
+    GamesDataItem(
+        gameName = "Question Only Scene",
+        topic = GamesDatumTopic.EXERCISE,
+    ),
+    GamesDataItem(
+        gameName = "Alphabet Scene",
+        topic = GamesDatumTopic.GAME,
+        tags = setOf(GamesDatumTag.SHORTFORM),
+    ),
+    GamesDataItem(
+        gameName = "The Expert",
+        topic = GamesDatumTopic.GAME,
+        tags = setOf(GamesDatumTag.SHORTFORM),
     ),
 )
