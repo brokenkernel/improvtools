@@ -80,6 +80,7 @@ reorderable = "3.1.0"
 runner = "1.7.0"
 runtime = "1.11.3"
 screengrab = "2.1.1"
+slackComposeLintChecks = "1.5.2"
 slackLintChecks = "0.11.1"
 slf4jAndroid = "2.0.17-0"
 sortDependencies = "0.19.0"
@@ -224,6 +225,7 @@ play-services-oss-licenses = { module = "com.google.android.gms:play-services-os
 reorderable = { module = "sh.calvin.reorderable:reorderable", version.ref = "reorderable" }
 reorderable-android-debug = { module = "sh.calvin.reorderable:reorderable-android-debug", version.ref = "reorderable" }
 slack-lint-checks = { module = "com.slack.lint:slack-lint-checks", version.ref = "slackLintChecks" }
+slack-lint-checks-compose = { module = "com.slack.lint.compose:compose-lint-checks", version.ref = "slackComposeLintChecks" }
 slf4j-android = { module = "uk.uuid.slf4j:slf4j-android", version.ref = "slf4jAndroid" }
 tools-fastlane-screengrab = { module = "tools.fastlane:screengrab", version.ref = "screengrab" }
 ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "uiTooling" }
