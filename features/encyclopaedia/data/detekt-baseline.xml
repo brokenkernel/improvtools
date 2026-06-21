@@ -9,7 +9,6 @@
     <ID>ForbiddenPublicDataClass:SenseDatumUI.kt:SenseDatumUI</ID>
     <ID>ForbiddenPublicDataClass:StandardWordInfo.kt:StandardWordInfo : WordInfo</ID>
     <ID>ForbiddenPublicDataClass:TipContentUI.kt:TipContentUI</ID>
-    <ID>ForbiddenPublicDataClass:TipsAndAdviceProcessedModel.kt:TipsAndAdviceProcessedModel</ID>
     <ID>ForbiddenPublicDataClass:TipsAndAdviceUIState.kt:TipsAndAdviceUIState</ID>
     <ID>LibraryEntitiesShouldNotBePublic:ActionItem.kt:ActionItem</ID>
     <ID>LibraryEntitiesShouldNotBePublic:DictionaryInfo.kt:DictionaryInfo</ID>
