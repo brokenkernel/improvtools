@@ -20,7 +20,7 @@ public class IdeaCategoryODS(
     public val showLinkToEmotion: Boolean = false,
     public val ideas: Set<IdeaItemODS>,
 ) {
-    public fun itemKey(): String {
+    public fun categoryTitle(): String {
         return this.title
     }
 

@@ -17,9 +17,13 @@ import androidx.compose.ui.unit.dp
 import com.brokenkernel.components.view.DragIconButton
 import com.brokenkernel.components.view.SimpleIconButton
 import com.brokenkernel.improvtools.R
+import com.brokenkernel.improvtools.application.presentation.api.BottomSheetContent
 import com.brokenkernel.improvtools.encyclopaedia.presentation.view.LoadableSingleWordThesaurusButton
 import com.brokenkernel.improvtools.suggestions.data.storage.IdeaCategoryODS
 import com.brokenkernel.improvtools.suggestions.data.storage.IdeaUIState
+import com.brokenkernel.improvtools.suggestions.view.AllWordsBottomSheetTab
+import com.brokenkernel.improvtools.suggestions.view.ExplanationBottomSheetTab
+import kotlinx.collections.immutable.toImmutableList
 import sh.calvin.reorderable.ReorderableCollectionItemScope
 
 // TODO: add ability to enable/disable categories entirely persistently in settings. Maybe GridFlow to click on/off.
@@ -30,9 +34,8 @@ internal fun ReorderableCollectionItemScope.SuggestionsSingleCategoryRow(
     ideaCategory: IdeaCategoryODS,
     onUpdateCategory: () -> Unit,
     onShowSingleWord: (String) -> Unit,
-    onShowAllWordsForCategory: () -> Unit,
     onGoToEmotionTab: () -> Unit,
-    onNavigateToExplanation: (String, String) -> Unit,
+    setBottomSheet: (newContent: BottomSheetContent) -> Unit,
     isDragging: Boolean,
     currentIdea: IdeaUIState,
     modifier: Modifier = Modifier,
@@ -63,10 +66,10 @@ internal fun ReorderableCollectionItemScope.SuggestionsSingleCategoryRow(
                 if (currentExplanation != null) {
                     SimpleIconButton(
                         onClick = {
-                            onNavigateToExplanation(
-                                currentIdea.idea,
-                                currentExplanation,
-                            )
+                            setBottomSheet(
+                                {
+                                    ExplanationBottomSheetTab(currentIdea.idea, currentExplanation)
+                                })
                         },
                         icon = Icons.Outlined.TheaterComedy,
                         contentDescription = stringResource(
@@ -84,7 +87,14 @@ internal fun ReorderableCollectionItemScope.SuggestionsSingleCategoryRow(
                     whenDisabledFullyHidden = true,
                 )
                 SimpleIconButton(
-                    onClick = onShowAllWordsForCategory,
+                    onClick = {
+                        setBottomSheet({
+                            AllWordsBottomSheetTab(
+                                ideaCategory.categoryTitle(),
+                                ideaCategory.ideas.map { it.idea }.toImmutableList()
+                            )
+                        })
+                    },
                     icon = Icons.AutoMirrored.Outlined.ListAlt,
                     contentDescription = stringResource(
                         R.string.suggestions_see_all_category_words,

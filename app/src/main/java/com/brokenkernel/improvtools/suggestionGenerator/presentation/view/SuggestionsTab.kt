@@ -43,8 +43,6 @@ import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNav
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel.SuggestionScreenViewModel
 import com.brokenkernel.improvtools.suggestions.data.storage.IdeaCategoryODS
 import com.brokenkernel.improvtools.suggestions.data.storage.IdeaUIState
-import com.brokenkernel.improvtools.suggestions.view.AllWordsBottomSheetTab
-import com.brokenkernel.improvtools.suggestions.view.ExplanationBottomSheetTab
 import com.ramcosta.composedestinations.generated.destinations.EmotionTabDestination
 import com.ramcosta.composedestinations.generated.destinations.ThesaurusTabSingleWordDestination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
@@ -65,12 +63,6 @@ internal fun SuggestionsTab(
     improvToolsAppState: ImprovToolsAppState,
     viewModel: SuggestionScreenViewModel = hiltViewModel(),
 ) {
-    val onNavigateToExplanation: (String, String) -> Unit =
-        { word: String, explanation: String ->
-            improvToolsAppState.setBottomSheetTo {
-                ExplanationBottomSheetTab(word, explanation)
-            }
-        }
     val state = rememberPullToRefreshState()
     var isRefreshing by rememberSaveable { mutableStateOf(false) }
     val coroutineScope = rememberCoroutineScope()
@@ -122,11 +114,11 @@ internal fun SuggestionsTab(
                 ) {
                     items(
                         reorderedListOfSuggestions,
-                        key = IdeaCategoryODS::itemKey,
+                        key = IdeaCategoryODS::categoryTitle,
                     ) { ideaCategory: IdeaCategoryODS ->
                         ReorderableItem(
                             state = reorderableLazyListState,
-                            key = ideaCategory.itemKey(),
+                            key = ideaCategory.categoryTitle(),
                         ) { isDragging ->
                             val itemSuggestionState: State<IdeaUIState> =
                                 viewModel.categoryDatumToSuggestion.getValue(ideaCategory)
@@ -145,15 +137,14 @@ internal fun SuggestionsTab(
                                         ),
                                     )
                                 },
-                                onShowAllWordsForCategory = {
-                                    improvToolsAppState.setBottomSheetTo {
-                                        AllWordsBottomSheetTab(ideaCategory.allWordsforCategory())
-                                    }
-                                },
                                 onGoToEmotionTab = {
                                     navigator.navigate(EmotionTabDestination)
                                 },
-                                onNavigateToExplanation = onNavigateToExplanation,
+                                setBottomSheet = { sheet ->
+                                    improvToolsAppState.setBottomSheetTo(
+                                        sheet
+                                    )
+                                },
                                 isDragging = isDragging,
                                 currentIdea = itemSuggestionState.value,
                             )
