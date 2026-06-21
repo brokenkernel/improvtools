@@ -1,12 +1,9 @@
 package com.brokenkernel.improvtools.application.presentation.api
 
-import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.material3.SnackbarHostState
-import androidx.compose.runtime.Composable
 import androidx.compose.runtime.ProvidableCompositionLocal
 import androidx.compose.runtime.compositionLocalOf
-
-internal typealias BottomSheetContent = @Composable (ColumnScope.() -> Unit)
+import com.brokenkernel.improvtools.coreinfra.BottomSheetContent
 
 internal val LocalSnackbarHostState: ProvidableCompositionLocal<SnackbarHostState> =
     compositionLocalOf {
@@ -15,5 +12,5 @@ internal val LocalSnackbarHostState: ProvidableCompositionLocal<SnackbarHostStat
 
 internal val LocalBottomSheetContentManager: ProvidableCompositionLocal<(BottomSheetContent) -> Unit> =
     compositionLocalOf {
-        error("No Snackbar Host State")
+        error("No Bottom Sheet Host State")
     }

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="go_to_emotions_reference">Go To Emotions Reference</string>
+    <string name="update_suggestions">Update Suggestion</string>
+    <string name="explain_this_term">explain this term</string>
+    <string name="suggestions_see_all_category_words">See all words for category</string>
+</resources>

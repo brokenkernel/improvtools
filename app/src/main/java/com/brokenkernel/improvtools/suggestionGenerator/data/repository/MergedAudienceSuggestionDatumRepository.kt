@@ -12,8 +12,8 @@ internal class MergedAudienceSuggestionDatumRepository @Inject constructor(
 ) : AudienceSuggestionDatumRepository {
     override fun getIdeaCategories(): List<IdeaCategoryODS> {
         return wordNetSuggestionDatumRepository.getIdeaCategories() +
-                resourcesAudienceSuggestionDatumRepository.getIdeaCategories() +
-                namesAudienceSuggestionDatumRepository.getIdeaCategories() +
-                thesaurusAudienceSuggestionDatumRepository.getIdeaCategories()
+            resourcesAudienceSuggestionDatumRepository.getIdeaCategories() +
+            namesAudienceSuggestionDatumRepository.getIdeaCategories() +
+            thesaurusAudienceSuggestionDatumRepository.getIdeaCategories()
     }
 }

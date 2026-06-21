@@ -94,7 +94,6 @@
   <string name="thesaurus_synonyms">Synonyms: %1$s</string>
     <string name="encyclopaedia_tags_filter_button">Filter Tags</string>
     <string name="explain_this_term">Explain This Term</string>
-    <string name="update_suggestion">Update Suggestion</string>
   <string name="timer_haptics_mode">Timer Haptics Mode</string>
   <string name="timer_settings_header">Timer</string>
   <string name="stop_watch">Stop Watch</string>

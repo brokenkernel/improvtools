@@ -13,9 +13,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import kotlinx.collections.immutable.ImmutableList
 
-// TODO: should be internal
 @Composable
-public fun AllWordsBottomSheetTab(
+internal fun AllWordsBottomSheetTab(
     header: String,
     words: ImmutableList<String>,
     modifier: Modifier = Modifier,

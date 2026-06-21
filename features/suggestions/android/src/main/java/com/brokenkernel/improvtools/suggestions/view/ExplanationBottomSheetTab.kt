@@ -8,9 +8,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import com.brokenkernel.components.view.HtmlText
 
-// TODO: should be internal
 @Composable
-public fun ExplanationBottomSheetTab(
+internal fun ExplanationBottomSheetTab(
     word: String,
     explanation: String,
     modifier: Modifier = Modifier,

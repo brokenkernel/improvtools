@@ -75,6 +75,7 @@ dependencies {
     debugApi(libs.reorderable.android.debug)
 
     implementation(libs.androidx.annotation)
+    implementation(libs.androidx.compose.material.materialIconsExtended)
     implementation(libs.androidx.foundation)
     implementation(libs.androidx.lifecycle.common)
     implementation(libs.androidx.lifecycle.runtime.compose)
@@ -84,6 +85,8 @@ dependencies {
     implementation(libs.androidx.ui.unit)
     implementation(libs.kotlinx.coroutines.core)
     implementation(projects.components)
+    implementation(projects.coreinfra)
+    implementation(projects.features.suggestions.data)
 
     testImplementation(libs.junit)
 

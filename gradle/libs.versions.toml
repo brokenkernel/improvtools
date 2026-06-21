@@ -37,6 +37,7 @@ firebaseCrashlytics = "20.0.6"
 firebaseCrashlyticsPlugin = "3.0.7"
 firebasePerf = "22.0.5"
 firebasePerfPlugin = "2.0.2"
+foundationLayout = "1.11.3"
 fragmentVersion = "1.8.9"
 glance = "1.1.1"
 googleGmsGoogleServices = "4.5.0"
@@ -111,6 +112,7 @@ androidx-appsearch-play-services-storage = { module = "androidx.appsearch:appsea
 androidx-browser = { module = "androidx.browser:browser", version.ref = "browser" }
 androidx-collection-jvm = { module = "androidx.collection:collection-jvm", version.ref = "collectionJvm" }
 androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
+androidx-compose-foundation-layout = { module = "androidx.compose.foundation:foundation-layout", version.ref = "foundationLayout" }
 androidx-compose-material-materialIconsExtended = { module = "androidx.compose.material:material-icons-extended", version.ref = "materialIconsExtended" }
 androidx-core = { module = "androidx.test:core", version.ref = "core" }
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }

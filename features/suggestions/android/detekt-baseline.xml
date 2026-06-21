@@ -2,8 +2,8 @@
 <SmellBaseline>
   <ManuallySuppressedIssues/>
   <CurrentIssues>
-    <ID>LibraryEntitiesShouldNotBePublic:AllWordsBottomSheetTab.kt:@Composable public fun AllWordsBottomSheetTab</ID>
     <ID>LibraryEntitiesShouldNotBePublic:ExampleUnitTest.kt:ExampleUnitTest</ID>
-    <ID>LibraryEntitiesShouldNotBePublic:ExplanationBottomSheetTab.kt:@Composable public fun ExplanationBottomSheetTab</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:SuggestionsSingleCategoryRow.kt:@Composable public fun ReorderableCollectionItemScope.SuggestionsSingleCategoryRow</ID>
+    <ID>UnusedParameter:SuggestionsSingleCategoryRow.kt:onShowSingleWord: (String) -> Unit</ID>
   </CurrentIssues>
 </SmellBaseline>

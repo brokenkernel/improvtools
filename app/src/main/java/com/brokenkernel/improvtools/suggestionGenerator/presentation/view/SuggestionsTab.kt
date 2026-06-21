@@ -40,11 +40,13 @@ import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.application.navigation.ImprovToolsDestination
 import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
+import com.brokenkernel.improvtools.encyclopaedia.EncyclopaediaSectionNavigation
+import com.brokenkernel.improvtools.encyclopaedia.presentation.view.LoadableSingleWordThesaurusButton
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel.SuggestionScreenViewModel
 import com.brokenkernel.improvtools.suggestions.data.storage.IdeaCategoryODS
 import com.brokenkernel.improvtools.suggestions.data.storage.IdeaUIState
+import com.brokenkernel.improvtools.suggestions.view.SuggestionsSingleCategoryRow
 import com.ramcosta.composedestinations.generated.destinations.EmotionTabDestination
-import com.ramcosta.composedestinations.generated.destinations.ThesaurusTabSingleWordDestination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kotlin.time.Duration.Companion.milliseconds
 import kotlinx.coroutines.delay
@@ -130,11 +132,9 @@ internal fun SuggestionsTab(
                                     viewModel.updateSuggestionXFor(ideaCategory)
                                 },
                                 onShowSingleWord = {
-                                    navigator.navigate(
-                                        ThesaurusTabSingleWordDestination(
-                                            itemSuggestionState.value.idea,
-                                            improvToolsAppState.currentTitle.value,
-                                        ),
+                                    EncyclopaediaSectionNavigation.navigateToThesaurusWord(
+                                        improvToolsAppState,
+                                        itemSuggestionState.value.idea,
                                     )
                                 },
                                 onGoToEmotionTab = {
@@ -142,7 +142,19 @@ internal fun SuggestionsTab(
                                 },
                                 setBottomSheet = { sheet ->
                                     improvToolsAppState.setBottomSheetTo(
-                                        sheet
+                                        sheet,
+                                    )
+                                },
+                                temporaryLoadableButton = { word: String ->
+                                    LoadableSingleWordThesaurusButton(
+                                        word = itemSuggestionState.value.idea,
+                                        onNavigateToWord = {
+                                            EncyclopaediaSectionNavigation.navigateToThesaurusWord(
+                                                improvToolsAppState,
+                                                word,
+                                            )
+                                        },
+                                        whenDisabledFullyHidden = true,
                                     )
                                 },
                                 isDragging = isDragging,
