@@ -108,4 +108,5 @@ public val PeopleDatum: Collection<PeopleDataItem> = listOf(
     PeopleDataItem("Augusto Boal", PeopleDatumTopic.PERSON, "Theatre of the Oppressed"),
     PeopleDataItem("Ruth Zaporah", PeopleDatumTopic.PERSON, "Action Theatre"),
     PeopleDataItem("William Hall", PeopleDatumTopic.PERSON, "BATS Improv"),
+    PeopleDataItem("Brave New Workshop", PeopleDatumTopic.TROOP, "Oldest US comedy theater"),
 )
