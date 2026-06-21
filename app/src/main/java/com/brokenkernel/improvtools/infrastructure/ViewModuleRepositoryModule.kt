@@ -3,6 +3,7 @@ package com.brokenkernel.improvtools.infrastructure
 import android.content.Context
 import com.brokenkernel.improvtools.encyclopaedia.data.repository.DefaultTipsAndAdviceRepository
 import com.brokenkernel.improvtools.encyclopaedia.data.repository.TipsAndAdviceRepository
+import com.brokenkernel.improvtools.suggestionGenerator.data.repository.NamesAudienceSuggestionDatumRepository
 import com.brokenkernel.improvtools.suggestionGenerator.data.repository.ResourcesAudienceSuggestionDatumRepository
 import dagger.Module
 import dagger.Provides
@@ -27,5 +28,12 @@ internal class ViewModuleRepositoryModule {
         @ApplicationContext appContext: Context,
     ): ResourcesAudienceSuggestionDatumRepository {
         return ResourcesAudienceSuggestionDatumRepository(appContext.resources)
+    }
+
+    @Provides
+    fun providesNamesSuggestionDatumRepository(
+        @ApplicationContext appContext: Context,
+    ): NamesAudienceSuggestionDatumRepository {
+        return NamesAudienceSuggestionDatumRepository(appContext.resources)
     }
 }

@@ -7,11 +7,13 @@ import javax.inject.Inject
 internal class MergedAudienceSuggestionDatumRepository @Inject constructor(
     private val thesaurusAudienceSuggestionDatumRepository: ThesaurusAudienceSuggestionDatumRepository,
     private val resourcesAudienceSuggestionDatumRepository: ResourcesAudienceSuggestionDatumRepository,
+    private val namesAudienceSuggestionDatumRepository: NamesAudienceSuggestionDatumRepository,
     private val wordNetSuggestionDatumRepository: WordNetSuggestionDatumRepository,
 ) : AudienceSuggestionDatumRepository {
     override fun getIdeaCategories(): List<IdeaCategoryODS> {
         return wordNetSuggestionDatumRepository.getIdeaCategories() +
-            resourcesAudienceSuggestionDatumRepository.getIdeaCategories() +
-            thesaurusAudienceSuggestionDatumRepository.getIdeaCategories()
+                resourcesAudienceSuggestionDatumRepository.getIdeaCategories() +
+                namesAudienceSuggestionDatumRepository.getIdeaCategories() +
+                thesaurusAudienceSuggestionDatumRepository.getIdeaCategories()
     }
 }
