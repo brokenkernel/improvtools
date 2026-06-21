@@ -23,6 +23,8 @@ dependencies {
 
     implementation(libs.androidx.collection.jvm)
     implementation(libs.extjwnl)
+    implementation(libs.kotlinx.serialization.core)
+    implementation(libs.kotlinx.serialization.hocon)
 
     compileOnly(libs.androidx.compose.material.materialIconsExtended)
 

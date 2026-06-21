@@ -9,6 +9,7 @@
     <ID>ForbiddenPublicDataClass:SenseDatumUI.kt:SenseDatumUI</ID>
     <ID>ForbiddenPublicDataClass:StandardWordInfo.kt:StandardWordInfo : WordInfo</ID>
     <ID>ForbiddenPublicDataClass:TipContentUI.kt:TipContentUI</ID>
+    <ID>ForbiddenPublicDataClass:TipsAndAdviceProcessedModel.kt:TipsAndAdviceProcessedModel</ID>
     <ID>ForbiddenPublicDataClass:TipsAndAdviceUIState.kt:TipsAndAdviceUIState</ID>
     <ID>LibraryEntitiesShouldNotBePublic:ActionItem.kt:ActionItem</ID>
     <ID>LibraryEntitiesShouldNotBePublic:DictionaryInfo.kt:DictionaryInfo</ID>
@@ -23,6 +24,7 @@
     <ID>LibraryEntitiesShouldNotBePublic:SenseDatumUI.kt:SenseDatumUI</ID>
     <ID>LibraryEntitiesShouldNotBePublic:StandardWordInfo.kt:StandardWordInfo : WordInfo</ID>
     <ID>LibraryEntitiesShouldNotBePublic:TipContentUI.kt:TipContentUI</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:TipsAndAdviceProcessedModel.kt:TipsAndAdviceProcessedModel</ID>
     <ID>LibraryEntitiesShouldNotBePublic:TipsAndAdviceUIState.kt:TipsAndAdviceUIState</ID>
     <ID>LibraryEntitiesShouldNotBePublic:WordInfo.kt:WordInfo</ID>
     <ID>LibraryEntitiesShouldNotBePublic:WordType.kt:WordType</ID>

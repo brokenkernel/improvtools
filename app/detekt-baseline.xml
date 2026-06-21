@@ -4,7 +4,6 @@
   <CurrentIssues>
     <ID>BracesOnWhenStatements:Theme.kt:when</ID>
     <ID>EndOfSentenceFormat:ThesaurusAPI.kt:ThesaurusAPI$* Checks if a specific word has any information in the extjwnl (or other databases) * @param word</ID>
-    <ID>ForbiddenPublicDataClass:TipsAndAdviceProcessedModel.kt:TipsAndAdviceProcessedModel</ID>
     <ID>LibraryEntitiesShouldNotBePublic:DefaultTimerManager.kt:DefaultTimerManager : TimerManager</ID>
     <ID>LibraryEntitiesShouldNotBePublic:HiltComponentActitivity.kt:HiltComponentActitivity : ComponentActivity</ID>
     <ID>LibraryEntitiesShouldNotBePublic:ImprovToolsApplication.kt:ImprovToolsApplication : Application</ID>
@@ -15,7 +14,6 @@
     <ID>LibraryEntitiesShouldNotBePublic:ThesaurusAPI.kt:ThesaurusAPI</ID>
     <ID>LibraryEntitiesShouldNotBePublic:TimerHapticsModeUI.kt:TimerHapticsModeUI</ID>
     <ID>LibraryEntitiesShouldNotBePublic:TimerManager.kt:TimerManager</ID>
-    <ID>LibraryEntitiesShouldNotBePublic:TipsAndAdviceProcessedModel.kt:TipsAndAdviceProcessedModel</ID>
     <ID>LibraryEntitiesShouldNotBePublic:TipsAndAdviceViewModeUIX.kt:public fun internalEnumValuebyTipsAndAdviceViewModeUI: UserSettings.TipsAndTricksViewMode</ID>
     <ID>LibraryEntitiesShouldNotBePublic:TipsAndAdviceViewModeUIX.kt:public fun tipsAndAdviceViewModeUIbyInternalEnumValue: TipsAndAdviceViewModeUI</ID>
     <ID>ModifierMissing:AboutTab.kt:@ImprovToolsDestination&lt;ImprovToolsNavigationGraph> @Composable internal fun AboutTab</ID>
