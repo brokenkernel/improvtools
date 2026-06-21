@@ -4,6 +4,7 @@ accompanistPermissions = "0.37.3"
 activityCompose = "1.13.0"
 agp = "9.2.1"
 androidDocumentationPlugin = "2.2.0"
+androidSecurirtyLint = "1.0.4"
 androidXdatastore = "1.2.1"
 androidbrowserhelper = "2.7.2"
 androidxFoundation = "1.11.3"
@@ -62,7 +63,6 @@ ktlint = "14.2.0"
 ktlintComposeVersion = "0.6.2"
 leakcanaryAndroid = "2.14"
 lifecycleVersion = "2.11.0"
-androidSecurirtyLint = "1.0.4"
 lintGradle = "1.0.0"
 material3 = "1.4.0"
 material3Adaptive = "1.2.0"
@@ -99,6 +99,7 @@ aboutlibraries-compose-m3 = { module = "com.mikepenz:aboutlibraries-compose-m3",
 aboutlibraries-core = { module = "com.mikepenz:aboutlibraries-core", version.ref = "aboutLibraries" }
 accompanist-permissions = { module = "com.google.accompanist:accompanist-permissions", version.ref = "accompanistPermissions" }
 android-documentation-plugin = { module = "org.jetbrains.dokka:android-documentation-plugin", version.ref = "androidDocumentationPlugin" }
+android-securityLint = { module = "com.android.security.lint:lint", version.ref = "androidSecurirtyLint" }
 androidbrowserhelper = { module = "com.google.androidbrowserhelper:androidbrowserhelper", version.ref = "androidbrowserhelper" }
 androidx-activity = { module = "androidx.activity:activity", version.ref = "activityCompose" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
@@ -218,7 +219,6 @@ leakcanary-android = { module = "com.squareup.leakcanary:leakcanary-android", ve
 leakcanary-android-instrumentation = { module = "com.squareup.leakcanary:leakcanary-android-instrumentation", version.ref = "leakcanaryAndroid" }
 leakcanary-android-release = { module = "com.squareup.leakcanary:leakcanary-android-release", version.ref = "leakcanaryAndroid" }
 leakcanary-object1-watcher-android = { module = "com.squareup.leakcanary:leakcanary-object-watcher-android", version.ref = "leakcanaryAndroid" }
-android-securityLint = { module = "com.android.security.lint:lint", version.ref = "androidSecurirtyLint" }
 mathjax-plugin = { module = "org.jetbrains.dokka:mathjax-plugin", version.ref = "androidDocumentationPlugin" }
 mikepenz-aboutlibraries-compose-core = { module = "com.mikepenz:aboutlibraries-compose-core", version.ref = "aboutLibraries" }
 navigation-runtime = { module = "androidx.navigation:navigation-runtime", version.ref = "navigationRuntimeVersion" }

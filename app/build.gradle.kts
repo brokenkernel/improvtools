@@ -66,7 +66,8 @@ configure<ApplicationExtension> {
         versionCode = 253
         versionName = "0.0.$versionCode"
 
-        testInstrumentationRunner = "com.brokenkernel.improvtools.infrastructure.ImprovToolsTestRunner"
+        testInstrumentationRunner =
+            "com.brokenkernel.improvtools.infrastructure.ImprovToolsTestRunner"
         proguardFiles(
             getDefaultProguardFile("proguard-android-optimize.txt"),
             "proguard-rules.pro",
@@ -305,10 +306,10 @@ dependencies {
     //    androidTestImplementation(libs.kotlin.metadata.jvm)
     ktlintRuleset(libs.ktlintCompose)
 
+    lintChecks(libs.android.securityLint)
     lintChecks(libs.androidx.lint.gradle)
     lintChecks(libs.slack.lint.checks)
     lintChecks(libs.slack.lint.checks.compose)
-    lintChecks(libs.android.securityLint)
 }
 
 configurations {
@@ -418,6 +419,13 @@ powerAssert {
 }
 
 ksp {
+    allWarningsAsErrors = true
     arg("compose-destinations.mermaidGraph", "$rootDir/docs/static/")
     arg("compose-destinations.htmlMermaidGraph", "$rootDir/docs/static/")
+    arg("dagger.useBindingGraphFix", "enabled")
+    arg("dagger.ignoreProvisionKeyWildcards", "enabled")
+    arg("dagger.experimentalDaggerErrorMessages", "enabled")
+    arg("dagger.warnIfInjectionFactoryNotGeneratedUpstream", "enabled")
+    arg("dagger.fullBindingGraphValidation", "error")
+    arg("dagger.mapMultibindingDuplicateDetectionFix", "error")
 }

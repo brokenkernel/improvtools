@@ -122,10 +122,10 @@ dependencies {
 
     ktlintRuleset(libs.ktlintCompose)
 
+    lintChecks(libs.android.securityLint)
     lintChecks(libs.androidx.lint.gradle)
     lintChecks(libs.slack.lint.checks)
     lintChecks(libs.slack.lint.checks.compose)
-    lintChecks(libs.android.securityLint)
 }
 
 @OptIn(ExperimentalKotlinGradlePluginApi::class)
@@ -149,6 +149,7 @@ ksp {
     arg("dagger.experimentalDaggerErrorMessages", "enabled")
     arg("dagger.warnIfInjectionFactoryNotGeneratedUpstream", "enabled")
     arg("dagger.fullBindingGraphValidation", "error")
+    arg("dagger.mapMultibindingDuplicateDetectionFix", "error")
 }
 
 ktlint {
