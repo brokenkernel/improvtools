@@ -103,6 +103,7 @@ dependencies {
     lintChecks(libs.androidx.lint.gradle)
     lintChecks(libs.slack.lint.checks)
     lintChecks(libs.slack.lint.checks.compose)
+    lintChecks(libs.android.securityLint)
 }
 
 @OptIn(ExperimentalKotlinGradlePluginApi::class)
