@@ -11,8 +11,8 @@ import androidx.compose.ui.unit.dp
 @Composable
 internal fun BuzzerButton(
     onClick: () -> Unit,
-    modifier: Modifier = Modifier,
     enabled: Boolean,
+    modifier: Modifier = Modifier,
     content: @Composable RowScope.() -> Unit,
 ) {
     ElevatedButton(

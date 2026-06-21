@@ -1,15 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <issues format="6" by="lint 9.2.1" type="baseline" client="gradle" dependencies="true" name="AGP (9.2.1)" variant="all" version="9.2.1">
 
-    <issue
-        id="ComposeParameterOrder"
-        message="Parameters in a composable function should be ordered following this pattern: params without defaults, modifiers, params with defaults and optionally, a trailing function that might not have a default param.&#xA;Current params are: `[onClick: () -> Unit, modifier: Modifier = Modifier, enabled: Boolean, content: @Composable RowScope.() -> Unit]` but should be `[onClick: () -> Unit, enabled: Boolean, modifier: Modifier = Modifier, content: @Composable RowScope.() -> Unit]`.&#xA;See https://slackhq.github.io/compose-lints/rules/#ordering-composable-parameters-properly for more information."
-        errorLine1="internal fun BuzzerButton("
-        errorLine2="                         ^">
-        <location
-            file="src/main/java/com/brokenkernel/improvtools/buzzer/view/BuzzerButton.kt"
-            line="12"
-            column="26"/>
-    </issue>
-
 </issues>
