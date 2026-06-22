@@ -5,9 +5,12 @@
     <ID>EndOfSentenceFormat:LaunchWrapper.kt:* Allows the caller to specify that some specific lambda should occur on each recompose</ID>
     <ID>LibraryEntitiesShouldNotBePublic:BottomSheet.kt:public typealias BottomSheetContent = @Composable (ColumnScope.() -> Unit)</ID>
     <ID>LibraryEntitiesShouldNotBePublic:ExampleUnitTest.kt:ExampleUnitTest</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:ImprovToolsAllPreviews.kt:FontScalePreviews</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:ImprovToolsAllPreviews.kt:ImprovToolsAllPreviews</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:ImprovToolsAllPreviews.kt:LocalesPreviews</ID>
     <ID>LibraryEntitiesShouldNotBePublic:LaunchWrapper.kt:@Composable public fun LaunchWrapper</ID>
-    <ID>LibraryEntitiesShouldNotBePublic:PreviewsImprovToolsAll.kt:PreviewsFontScale</ID>
-    <ID>LibraryEntitiesShouldNotBePublic:PreviewsImprovToolsAll.kt:PreviewsImprovToolsAll</ID>
-    <ID>LibraryEntitiesShouldNotBePublic:PreviewsImprovToolsAll.kt:PreviewsLocales</ID>
+    <ID>PreviewAnnotationNaming:ImprovToolsAllPreviews.kt:FontScalePreviews</ID>
+    <ID>PreviewAnnotationNaming:ImprovToolsAllPreviews.kt:ImprovToolsAllPreviews</ID>
+    <ID>PreviewAnnotationNaming:ImprovToolsAllPreviews.kt:LocalesPreviews</ID>
   </CurrentIssues>
 </SmellBaseline>

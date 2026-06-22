@@ -18,7 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
     group = "font scales",
     fontScale = 1.5f,
 )
-public annotation class PreviewsFontScale
+public annotation class FontScalePreviews
 
 @MustBeDocumented
 @Preview(
@@ -36,12 +36,12 @@ public annotation class PreviewsFontScale
     group = "locale",
     locale = "de-DE",
 )
-public annotation class PreviewsLocales
+public annotation class LocalesPreviews
 
 @MustBeDocumented
-@PreviewsFontScale
-@PreviewsLocales
+@FontScalePreviews
+@LocalesPreviews
 @Preview(name = "Show Background", showBackground = true)
 // @Preview(name = "Show System UI", showSystemUi = true)
 @Preview
-public annotation class PreviewsImprovToolsAll
+public annotation class ImprovToolsAllPreviews
