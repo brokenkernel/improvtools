@@ -23,6 +23,7 @@ dependencies {
 
     implementation(libs.androidx.collection.jvm)
     implementation(libs.extjwnl)
+    implementation(libs.javax.inject)
     implementation(libs.kotlinx.serialization.core)
     implementation(libs.kotlinx.serialization.hocon)
 
@@ -32,6 +33,8 @@ dependencies {
 
     detektPlugins(libs.composeDetektRules)
     detektPlugins(libs.detektRulesLibraries)
+
+    ktlintRuleset(libs.ktlintCompose)
 }
 
 ktlint {

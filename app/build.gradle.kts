@@ -302,8 +302,6 @@ dependencies {
     ksp(libs.io.github.raamcosta.composeDestinations.ksp)
     ksp(libs.kotlin.metadata.jvm)
 
-    //    implementation(libs.kotlin.metadata.jvm)
-    //    androidTestImplementation(libs.kotlin.metadata.jvm)
     ktlintRuleset(libs.ktlintCompose)
 
     lintChecks(libs.android.securityLint)

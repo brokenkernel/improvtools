@@ -3,7 +3,6 @@
   <ManuallySuppressedIssues/>
   <CurrentIssues>
     <ID>BracesOnWhenStatements:Theme.kt:when</ID>
-    <ID>EndOfSentenceFormat:ThesaurusAPI.kt:ThesaurusAPI$* Checks if a specific word has any information in the extjwnl (or other databases) * @param word</ID>
     <ID>LibraryEntitiesShouldNotBePublic:DefaultTimerManager.kt:DefaultTimerManager : TimerManager</ID>
     <ID>LibraryEntitiesShouldNotBePublic:HiltComponentActitivity.kt:HiltComponentActitivity : ComponentActivity</ID>
     <ID>LibraryEntitiesShouldNotBePublic:ImprovToolsApplication.kt:ImprovToolsApplication : Application</ID>
@@ -11,7 +10,6 @@
     <ID>LibraryEntitiesShouldNotBePublic:MainActivity.kt:MainActivity : ComponentActivity</ID>
     <ID>LibraryEntitiesShouldNotBePublic:MainActivityViewModel.kt:MainActivityViewModel : ViewModel</ID>
     <ID>LibraryEntitiesShouldNotBePublic:SettingsRepository.kt:SettingsRepository</ID>
-    <ID>LibraryEntitiesShouldNotBePublic:ThesaurusAPI.kt:ThesaurusAPI</ID>
     <ID>LibraryEntitiesShouldNotBePublic:TimerHapticsModeUI.kt:TimerHapticsModeUI</ID>
     <ID>LibraryEntitiesShouldNotBePublic:TimerManager.kt:TimerManager</ID>
     <ID>LibraryEntitiesShouldNotBePublic:TipsAndAdviceViewModeUIX.kt:public fun internalEnumValuebyTipsAndAdviceViewModeUI: UserSettings.TipsAndTricksViewMode</ID>
