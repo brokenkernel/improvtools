@@ -26,7 +26,7 @@ public class LoadableScreenViewModel(private val loader: () -> Unit) :
             initialValue = false,
         )
 
-    internal fun doLoad() {
+    private fun doLoad() {
         _isLoading.value = true
         loader()
 
