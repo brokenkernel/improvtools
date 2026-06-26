@@ -153,7 +153,7 @@ ksp {
     arg("dagger.experimentalDaggerErrorMessages", "enabled")
     arg("dagger.warnIfInjectionFactoryNotGeneratedUpstream", "enabled")
     arg("dagger.fullBindingGraphValidation", "error")
-    arg("dagger.mapMultibindingDuplicateDetectionFix", "error")
+    arg("dagger.mapMultibindingDuplicateDetectionFix", "enabled")
 }
 
 ktlint {
