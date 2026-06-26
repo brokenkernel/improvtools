@@ -46,7 +46,7 @@ GEM
     emoji_regex (3.2.3)
     erb (6.0.4)
     excon (0.112.0)
-    faraday (1.10.5)
+    faraday (1.10.6)
       faraday-em_http (~> 1.0)
       faraday-em_synchrony (~> 1.0)
       faraday-excon (~> 1.1)
@@ -185,7 +185,7 @@ GEM
     httpclient (2.9.0)
       mutex_m
     jmespath (1.6.2)
-    json (2.19.9)
+    json (2.20.0)
     jwt (3.2.0)
       base64
     logger (1.7.0)
