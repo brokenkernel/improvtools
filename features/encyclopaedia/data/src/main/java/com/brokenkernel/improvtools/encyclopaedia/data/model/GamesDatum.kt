@@ -239,4 +239,8 @@ public val GamesDatum: Collection<GamesDataItem> = listOf(
         topic = GamesDatumTopic.GAME,
         tags = setOf(GamesDatumTag.SHORTFORM),
     ),
+    GamesDataItem(
+        gameName = "Tap In/Tap Out",
+        topic = GamesDatumTopic.WARMUP,
+    ),
 )
