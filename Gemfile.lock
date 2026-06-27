@@ -36,7 +36,6 @@ GEM
     commander (4.6.0)
       highline (~> 2.0.0)
     csv (3.3.5)
-    date (3.5.1)
     declarative (0.0.20)
     diff-lcs (1.6.2)
     digest-crc (0.7.0)
@@ -201,15 +200,18 @@ GEM
     os (1.1.4)
     ostruct (0.6.3)
     plist (3.7.2)
+    prism (1.9.0)
     pstore (0.2.1)
-    psych (5.4.0)
-      date
-      stringio
     public_suffix (7.0.5)
     rake (13.4.2)
-    rdoc (7.2.0)
+    rbs (4.0.3)
+      logger
+      prism (>= 1.6.0)
+      tsort
+    rdoc (8.0.0)
       erb
-      psych (>= 4.0.0)
+      prism (>= 1.6.0)
+      rbs (>= 4.0.0)
       tsort
     representable (3.2.0)
       declarative (< 0.1.0)
@@ -241,7 +243,6 @@ GEM
     simctl (1.6.10)
       CFPropertyList
       naturally
-    stringio (3.2.0)
     terminal-notifier (2.0.0)
     terminal-table (3.0.2)
       unicode-display_width (>= 1.1.1, < 3)
