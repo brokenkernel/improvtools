@@ -5,6 +5,7 @@ import com.brokenkernel.improvtools.application.navigation.SetScaffoldStateWrapp
 import com.ramcosta.composedestinations.annotation.ExternalDestination
 import com.ramcosta.composedestinations.annotation.NavHostGraph
 import com.ramcosta.composedestinations.annotation.parameters.CodeGenVisibility
+import com.ramcosta.composedestinations.generated.buzzer.destinations.BuzzerTabDestination
 import com.ramcosta.composedestinations.generated.tonguetwister.destinations.TongueTwisterTabDestination
 
 @MustBeDocumented
@@ -13,6 +14,13 @@ import com.ramcosta.composedestinations.generated.tonguetwister.destinations.Ton
 )
 public annotation class ImprovToolsNavigationGraph {
     @ExternalDestination<TongueTwisterTabDestination>(
+        // TODO: make sure matches with ImprovToolsDestination
+        wrappers = [
+            LogFirebaseScreenViewWrapper::class,
+            SetScaffoldStateWrapper::class,
+        ],
+    )
+    @ExternalDestination<BuzzerTabDestination>(
         // TODO: make sure matches with ImprovToolsDestination
         wrappers = [
             LogFirebaseScreenViewWrapper::class,

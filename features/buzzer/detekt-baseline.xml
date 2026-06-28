@@ -2,7 +2,7 @@
 <SmellBaseline>
   <ManuallySuppressedIssues/>
   <CurrentIssues>
-    <ID>LibraryEntitiesShouldNotBePublic:BuzzerTabInternal.kt:@Composable public fun BuzzerTabInternal</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:BuzzerTabInternal.kt:@Destination&lt;ExternalModuleGraph> @Composable public fun BuzzerTab</ID>
     <ID>LibraryEntitiesShouldNotBePublic:ExampleUnitTest.kt:ExampleUnitTest</ID>
   </CurrentIssues>
 </SmellBaseline>

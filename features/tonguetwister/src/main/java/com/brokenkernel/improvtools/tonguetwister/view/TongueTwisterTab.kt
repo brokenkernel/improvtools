@@ -181,7 +181,6 @@ internal fun OuterTongueTwisterOutline(
 }
 
 @Destination<ExternalModuleGraph>(
-    start = true,
     visibility = CodeGenVisibility.PUBLIC,
 )
 @Composable

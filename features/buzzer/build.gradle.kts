@@ -71,6 +71,7 @@ dependencies {
     api(libs.androidx.foundation.layout)
     api(libs.androidx.runtime)
     api(libs.androidx.ui)
+    api(libs.io.github.raamcosta.composeDestinations.core)
 
     debugApi(libs.reorderable.android.debug)
 
@@ -93,6 +94,8 @@ dependencies {
 
     detektPlugins(libs.composeDetektRules)
     detektPlugins(libs.detektRulesLibraries)
+
+    ksp(libs.io.github.raamcosta.composeDestinations.ksp)
 
     ktlintRuleset(libs.ktlintCompose)
 

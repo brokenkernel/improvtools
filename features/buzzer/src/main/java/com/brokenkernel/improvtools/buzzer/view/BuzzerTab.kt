@@ -11,9 +11,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import com.brokenkernel.improvtools.buzzer.model.BuzzerDatum
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.annotation.ExternalModuleGraph
 
+@Destination<ExternalModuleGraph>
 @Composable
-public fun BuzzerTabInternal(modifier: Modifier = Modifier) {
+public fun BuzzerTab(modifier: Modifier = Modifier) {
     val simpleBuzzerMediaPlayer = SimpleBuzzerMediaPlayer(LocalContext.current)
     // consider changing MediaPlayer API usage to allow restarts, but this avoids crashes for now.
     // TODO: consider shortening the media files :)
