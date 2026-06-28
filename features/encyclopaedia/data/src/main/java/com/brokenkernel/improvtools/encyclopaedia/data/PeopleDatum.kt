@@ -76,22 +76,22 @@ public val PeopleDatum: Collection<PeopleDataItem> = listOf(
     PeopleDataItem(
         "Rebecca Stockley",
         PeopleDatumTopic.PERSON,
-        "BATS Improv"
+        "BATS Improv",
     ),
     PeopleDataItem(
         "Stephen Kerrin",
         PeopleDatumTopic.PERSON,
-        "BATS Improv"
+        "BATS Improv",
     ),
     PeopleDataItem(
         "Tim Orr",
         PeopleDatumTopic.PERSON,
-        "BATS Improv"
+        "BATS Improv",
     ),
     PeopleDataItem(
         "Gary Austin",
         PeopleDatumTopic.PERSON,
-        "BATS Improv"
+        "BATS Improv",
     ),
     PeopleDataItem(
         "Konstantin Stanislavski",
@@ -145,7 +145,7 @@ public val PeopleDatum: Collection<PeopleDataItem> = listOf(
     PeopleDataItem(
         "David Shepherd",
         PeopleDatumTopic.PERSON,
-        "The Compass Players"
+        "The Compass Players",
     ),
     PeopleDataItem(
         "Elaine May",
