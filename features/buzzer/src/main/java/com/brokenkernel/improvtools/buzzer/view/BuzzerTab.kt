@@ -16,7 +16,7 @@ import com.ramcosta.composedestinations.annotation.ExternalModuleGraph
 
 @Destination<ExternalModuleGraph>
 @Composable
-public fun BuzzerTab(modifier: Modifier = Modifier) {
+internal fun BuzzerTab(modifier: Modifier = Modifier) {
     val simpleBuzzerMediaPlayer = SimpleBuzzerMediaPlayer(LocalContext.current)
     // consider changing MediaPlayer API usage to allow restarts, but this avoids crashes for now.
     // TODO: consider shortening the media files :)
