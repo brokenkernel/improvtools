@@ -21,7 +21,6 @@
     <ID>ModifierMissing:ImprovToolsNavigation.kt:@Composable private fun NavigableScreenNavigationDrawerItem</ID>
     <ID>ModifierMissing:ImprovToolsScaffold.kt:@OptIn(ExperimentalMaterial3Api::class) @Composable internal fun ImprovToolsScaffold</ID>
     <ID>ModifierMissing:LibrariesTab.kt:@ImprovToolsDestination&lt;ImprovToolsNavigationGraph> @Composable internal fun LibrariesTab</ID>
-    <ID>ModifierMissing:PeopleTab.kt:@ImprovToolsDestination&lt;ImprovToolsNavigationGraph> @Composable internal fun PeopleTab</ID>
     <ID>ModifierMissing:PrivacyTab.kt:@ImprovToolsDestination&lt;ImprovToolsNavigationGraph> @Composable internal fun PrivacyTab</ID>
     <ID>ModifierMissing:SettingsTab.kt:@ImprovToolsDestination&lt;ImprovToolsNavigationGraph> @Composable internal fun SettingsTab</ID>
     <ID>ModifierMissing:SingleTagBottomTab.kt:@Composable internal fun SingleTagBottomTab</ID>

@@ -28,7 +28,6 @@ import com.ramcosta.composedestinations.generated.app.destinations.EmotionTabDes
 import com.ramcosta.composedestinations.generated.app.destinations.GamesTabDestination
 import com.ramcosta.composedestinations.generated.app.destinations.GlossaryTabDestination
 import com.ramcosta.composedestinations.generated.app.destinations.LibrariesTabDestination
-import com.ramcosta.composedestinations.generated.app.destinations.PeopleTabDestination
 import com.ramcosta.composedestinations.generated.app.destinations.PrivacyTabDestination
 import com.ramcosta.composedestinations.generated.app.destinations.SettingsTabDestination
 import com.ramcosta.composedestinations.generated.app.destinations.SuggestionsTabDestination
@@ -37,6 +36,7 @@ import com.ramcosta.composedestinations.generated.app.destinations.ThesaurusTabS
 import com.ramcosta.composedestinations.generated.app.destinations.TimerTabDestination
 import com.ramcosta.composedestinations.generated.app.destinations.TipsAndAdviceTabDestination
 import com.ramcosta.composedestinations.generated.buzzer.destinations.BuzzerTabDestination
+import com.ramcosta.composedestinations.generated.encyclopaedia.destinations.PeopleTabDestination
 import com.ramcosta.composedestinations.generated.tonguetwister.destinations.TongueTwisterTabDestination
 import com.ramcosta.composedestinations.spec.Direction
 import com.ramcosta.composedestinations.spec.DirectionDestinationSpec

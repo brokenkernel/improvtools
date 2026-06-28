@@ -7,9 +7,6 @@
         <error line="8" column="120" source="standard:max-line-length" />
         <error line="15" column="120" source="standard:max-line-length" />
     </file>
-    <file name="src/main/java/com/brokenkernel/improvtools/encyclopaedia/presentation/view/PeopleTab.kt">
-        <error line="3" column="1" source="standard:import-ordering" />
-    </file>
     <file name="src/main/java/com/brokenkernel/improvtools/sidecar/notifications/ImprovToolsNotificationManager.kt">
         <error line="43" column="120" source="standard:max-line-length" />
     </file>

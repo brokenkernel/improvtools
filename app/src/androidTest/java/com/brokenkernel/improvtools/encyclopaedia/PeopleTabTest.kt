@@ -5,7 +5,7 @@ import androidx.compose.ui.test.junit4.AndroidComposeTestRule
 import androidx.compose.ui.test.junit4.v2.createAndroidComposeRule
 import androidx.compose.ui.test.onRoot
 import androidx.test.ext.junit.rules.ActivityScenarioRule
-import com.brokenkernel.improvtools.encyclopaedia.presentation.view.PeopleTab
+import com.brokenkernel.improvtools.encyclopaedia.android.people.PeopleTab
 import com.brokenkernel.improvtools.infrastructure.HiltComponentActitivity
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest

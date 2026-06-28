@@ -86,6 +86,7 @@ slackLintChecks = "0.11.1"
 slf4jAndroid = "2.0.17-0"
 sortDependencies = "0.19.0"
 startupRuntime = "1.2.0"
+uiTestJunit4Accessibility = "1.11.3"
 uiTooling = "1.11.3"
 uiToolingPreview = "1.11.3"
 versionCatalogUpdate = "1.1.0"
@@ -117,6 +118,7 @@ androidx-collection-jvm = { module = "androidx.collection:collection-jvm", versi
 androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
 androidx-compose-foundation-layout = { module = "androidx.compose.foundation:foundation-layout", version.ref = "foundationLayout" }
 androidx-compose-material-materialIconsExtended = { module = "androidx.compose.material:material-icons-extended", version.ref = "materialIconsExtended" }
+androidx-compose-ui-test-junit4-accessibility = { module = "androidx.compose.ui:ui-test-junit4-accessibility", version.ref = "uiTestJunit4Accessibility" }
 androidx-core = { module = "androidx.test:core", version.ref = "core" }
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
 androidx-datastore = { module = "androidx.datastore:datastore", version.ref = "androidXdatastore" }

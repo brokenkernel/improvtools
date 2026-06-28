@@ -18,7 +18,8 @@ configure<LibraryExtension> {
     compileSdk = 37
 
     defaultConfig {
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner =
+            "com.brokenkernel.improvtools.infrastructure.ImprovToolsTestRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
 
@@ -71,6 +72,8 @@ kotlin {
 
 dependencies {
     api(libs.androidx.foundation.layout)
+    api(libs.androidx.lifecycle.viewmodel.savedstate)
+    api(libs.androidx.navigation.common)
     api(libs.androidx.runtime)
     api(libs.androidx.ui)
     api(libs.io.github.raamcosta.composeDestinations.core)
@@ -88,13 +91,23 @@ dependencies {
     implementation(libs.androidx.ui.text)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.ui.unit)
+    implementation(libs.kotlinx.collections.immutable.jvm)
     implementation(projects.components)
+    implementation(projects.coreinfra)
+
+    debugRuntimeOnly(libs.androidx.ui.test.manifest)
+
+    androidTestRuntimeOnly(libs.androidx.core)
+    androidTestRuntimeOnly(libs.androidx.runner)
+    androidTestRuntimeOnly(libs.kotlinx.coroutines.test)
 
     testImplementation(libs.junit)
 
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.monitor)
+    androidTestImplementation(libs.androidx.runtime)
     androidTestImplementation(libs.junit)
+    androidTestImplementation(projects.coreinfra)
 
     detektPlugins(libs.composeDetektRules)
     detektPlugins(libs.detektRulesLibraries)
@@ -122,7 +135,7 @@ powerAssert {
 }
 
 ksp {
-    arg("compose-destinations.moduleName", project.name)
+    arg("compose-destinations.moduleName", "encyclopaedia")
     arg("compose-destinations.mermaidGraph", "$rootDir/docs/static/")
     arg("compose-destinations.htmlMermaidGraph", "$rootDir/docs/static/")
     allWarningsAsErrors = true

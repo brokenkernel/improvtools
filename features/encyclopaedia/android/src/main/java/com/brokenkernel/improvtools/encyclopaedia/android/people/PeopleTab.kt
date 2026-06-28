@@ -1,4 +1,4 @@
-package com.brokenkernel.improvtools.encyclopaedia.presentation.view
+package com.brokenkernel.improvtools.encyclopaedia.android.people
 
 import android.icu.text.Collator
 import android.icu.text.SearchIterator.DONE
@@ -26,13 +26,13 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.intl.Locale
 import com.brokenkernel.components.filteredlist.TabbedSearchableColumn
 import com.brokenkernel.components.view.ExpandIcon
-import com.brokenkernel.improvtools.application.navigation.ImprovToolsDestination
-import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
-// TODO: move into proper module
-import com.brokenkernel.improvtools.encyclopaedia.android.R as encyclopaediaR
+import com.brokenkernel.improvtools.encyclopaedia.android.R
 import com.brokenkernel.improvtools.encyclopaedia.data.PeopleDataItem
 import com.brokenkernel.improvtools.encyclopaedia.data.PeopleDatum
 import com.brokenkernel.improvtools.encyclopaedia.data.PeopleDatumTopic
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.annotation.ExternalModuleGraph
+import com.ramcosta.composedestinations.annotation.parameters.CodeGenVisibility
 import java.text.StringCharacterIterator
 import kotlinx.collections.immutable.toImmutableMap
 
@@ -59,9 +59,12 @@ private fun hasExpandableInformation(pdi: PeopleDataItem): Boolean {
     return pdi.detailedInformation != null
 }
 
-@ImprovToolsDestination<ImprovToolsNavigationGraph>
+// todo: internal
+@Destination<ExternalModuleGraph>(
+    visibility = CodeGenVisibility.PUBLIC,
+)
 @Composable
-internal fun PeopleTab() {
+public fun PeopleTab(modifier: Modifier = Modifier) {
     val languageTag = Locale.current.toLanguageTag()
     val fullCollationTag = "$languageTag@collation=phonebook"
     val ulocale = ULocale(fullCollationTag)
@@ -85,6 +88,7 @@ internal fun PeopleTab() {
         transformForSearch = ::transformForSearch,
         itemToTopic = { it -> it.topic },
         itemToKey = { it -> it.personName },
+        modifier = modifier,
     ) { it ->
         var isListItemInformationExpanded: Boolean by remember {
             mutableStateOf(
@@ -124,15 +128,15 @@ internal fun PeopleTab() {
                         ) {
                             if (it.isWikipedia) {
                                 Icon(
-                                    painterResource(encyclopaediaR.drawable.logo_wikipedia),
+                                    painterResource(R.drawable.logo_wikipedia),
                                     contentDescription = stringResource(
-                                        encyclopaediaR.string.wikipedia,
+                                        R.string.wikipedia,
                                     ),
                                 )
                             } else {
                                 Icon(
                                     Icons.Default.Web,
-                                    contentDescription = stringResource(encyclopaediaR.string.open_website),
+                                    contentDescription = stringResource(R.string.open_website),
                                 )
                             }
                         }
