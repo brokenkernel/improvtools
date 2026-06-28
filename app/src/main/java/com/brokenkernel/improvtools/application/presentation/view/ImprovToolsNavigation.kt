@@ -25,7 +25,7 @@ import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import com.brokenkernel.improvtools.application.data.model.rememberImprovToolsAppState
 import com.ramcosta.composedestinations.DestinationsNavHost
-import com.ramcosta.composedestinations.generated.navgraphs.ImprovToolsNavigationNavGraph
+import com.ramcosta.composedestinations.generated.app.navgraphs.ImprovToolsNavigationNavGraph
 import com.ramcosta.composedestinations.navigation.dependency
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch

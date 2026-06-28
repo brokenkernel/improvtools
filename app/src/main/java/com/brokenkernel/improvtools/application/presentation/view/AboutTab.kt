@@ -57,7 +57,7 @@ import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.navigation.ImprovToolsDestination
 import com.brokenkernel.improvtools.application.presentation.api.LocalSnackbarHostState
 import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
-import com.ramcosta.composedestinations.generated.destinations.PrivacyTabDestination
+import com.ramcosta.composedestinations.generated.app.destinations.PrivacyTabDestination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kotlinx.coroutines.launch
 

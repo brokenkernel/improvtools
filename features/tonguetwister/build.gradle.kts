@@ -127,6 +127,7 @@ powerAssert {
 }
 
 ksp {
+    arg("compose-destinations.moduleName", project.name)
     arg("compose-destinations.mermaidGraph", "$rootDir/docs/static/")
     arg("compose-destinations.htmlMermaidGraph", "$rootDir/docs/static/")
     allWarningsAsErrors = true

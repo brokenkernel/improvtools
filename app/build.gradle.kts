@@ -418,6 +418,7 @@ powerAssert {
 
 ksp {
     allWarningsAsErrors = true
+    arg("compose-destinations.moduleName", project.name)
     arg("compose-destinations.mermaidGraph", "$rootDir/docs/static/")
     arg("compose-destinations.htmlMermaidGraph", "$rootDir/docs/static/")
     arg("dagger.useBindingGraphFix", "enabled")

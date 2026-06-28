@@ -5,7 +5,7 @@ import com.brokenkernel.improvtools.application.navigation.SetScaffoldStateWrapp
 import com.ramcosta.composedestinations.annotation.ExternalDestination
 import com.ramcosta.composedestinations.annotation.NavHostGraph
 import com.ramcosta.composedestinations.annotation.parameters.CodeGenVisibility
-import com.ramcosta.composedestinations.generated.destinations.TongueTwisterTabDestination
+import com.ramcosta.composedestinations.generated.tonguetwister.destinations.TongueTwisterTabDestination
 
 @MustBeDocumented
 @NavHostGraph(

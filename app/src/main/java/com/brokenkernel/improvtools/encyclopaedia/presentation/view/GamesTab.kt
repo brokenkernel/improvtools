@@ -38,7 +38,7 @@ import com.brokenkernel.improvtools.encyclopaedia.data.GamesDatumTag
 import com.brokenkernel.improvtools.encyclopaedia.data.GamesDatumTopic
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GamesDataItem
 import com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel.GamesTabViewModel
-import com.ramcosta.composedestinations.generated.destinations.TimerTabDestination
+import com.ramcosta.composedestinations.generated.app.destinations.TimerTabDestination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
 private fun transformForSearch(str: String): String {
