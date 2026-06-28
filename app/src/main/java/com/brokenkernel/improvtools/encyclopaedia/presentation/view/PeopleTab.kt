@@ -26,9 +26,10 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.intl.Locale
 import com.brokenkernel.components.filteredlist.TabbedSearchableColumn
 import com.brokenkernel.components.view.ExpandIcon
-import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.navigation.ImprovToolsDestination
 import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
+// TODO: move into proper module
+import com.brokenkernel.improvtools.encyclopaedia.android.R as encyclopaediaR
 import com.brokenkernel.improvtools.encyclopaedia.data.PeopleDataItem
 import com.brokenkernel.improvtools.encyclopaedia.data.PeopleDatum
 import com.brokenkernel.improvtools.encyclopaedia.data.PeopleDatumTopic
@@ -123,15 +124,15 @@ internal fun PeopleTab() {
                         ) {
                             if (it.isWikipedia) {
                                 Icon(
-                                    painterResource(R.drawable.logo_wikipedia),
+                                    painterResource(encyclopaediaR.drawable.logo_wikipedia),
                                     contentDescription = stringResource(
-                                        R.string.wikipedia,
+                                        encyclopaediaR.string.wikipedia,
                                     ),
                                 )
                             } else {
                                 Icon(
                                     Icons.Default.Web,
-                                    contentDescription = stringResource(R.string.open_website),
+                                    contentDescription = stringResource(encyclopaediaR.string.open_website),
                                 )
                             }
                         }

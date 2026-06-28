@@ -59,7 +59,6 @@
     <string name="go_to_emotions_reference_screen">Go to Emotions screen</string>
     <string name="navigation_thesaurus">Thesaurus</string>
     <string name="go_to_thesaurus_screen">Go to Thesaurus screen</string>
-    <string name="wikipedia">Wikipedia</string>
     <string name="count_down_timer">Count Down Timer</string>
     <string name="privacy_notification_use">Notifications are used for timers and countdowns</string>
     <string name="navigation_privacy_information">Privacy Information</string>
@@ -84,7 +83,6 @@
   <string name="go_to_glossary">Go To Glossary</string>
     <string name="new_stopwatch_timer">New StopWatch Timer</string>
   <string name="new_countdown_timer">New CountDown Timer</string>
-  <string name="open_website">Open Website</string>
   <string name="suggestions_verb">Verb</string>
   <string name="suggestions_noun">Noun</string>
   <string name="suggestions_adjective">Adjective</string>
