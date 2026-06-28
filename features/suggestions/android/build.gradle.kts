@@ -71,23 +71,24 @@ dependencies {
     api(libs.androidx.foundation.layout)
     api(libs.androidx.runtime)
     api(libs.androidx.ui)
+    api(projects.features.suggestions.data)
+
+    releaseApi(libs.reorderable)
 
     debugApi(libs.reorderable.android.debug)
 
-    implementation(libs.androidx.annotation)
+    implementation(enforcedPlatform(libs.androidx.compose.bom))
+    implementation(enforcedPlatform(libs.kotlin.bom))
+    implementation(libs.androidx.animation.core)
     implementation(libs.androidx.compose.material.materialIconsExtended)
     implementation(libs.androidx.foundation)
-    implementation(libs.androidx.lifecycle.common)
-    implementation(libs.androidx.lifecycle.runtime.compose)
+    implementation(libs.androidx.material.icons.core)
     implementation(libs.androidx.material3)
-    implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.text)
     implementation(libs.androidx.ui.unit)
-    implementation(libs.javax.inject)
-    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.collections.immutable.jvm)
     implementation(projects.components)
     implementation(projects.coreinfra)
-    implementation(projects.features.suggestions.data)
 
     testImplementation(libs.junit)
 

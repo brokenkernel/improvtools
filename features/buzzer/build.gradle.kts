@@ -69,6 +69,8 @@ kotlin {
 }
 dependencies {
     api(libs.androidx.foundation.layout)
+    api(libs.androidx.lifecycle.viewmodel.savedstate)
+    api(libs.androidx.navigation.common)
     api(libs.androidx.runtime)
     api(libs.androidx.ui)
     api(libs.io.github.raamcosta.composeDestinations.core)
@@ -77,13 +79,10 @@ dependencies {
 
     implementation(libs.androidx.annotation)
     implementation(libs.androidx.foundation)
-    implementation(libs.androidx.lifecycle.common)
-    implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.text)
     implementation(libs.androidx.ui.unit)
-    implementation(libs.kotlinx.coroutines.core)
     implementation(projects.components)
 
     testImplementation(libs.junit)

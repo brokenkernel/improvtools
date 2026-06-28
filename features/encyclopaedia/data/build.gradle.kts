@@ -20,11 +20,11 @@ kotlin {
 
 dependencies {
     api(libs.kotlinx.collections.immutable.jvm)
+    api(libs.kotlinx.serialization.core)
 
     implementation(libs.androidx.collection.jvm)
     implementation(libs.extjwnl)
     implementation(libs.javax.inject)
-    implementation(libs.kotlinx.serialization.core)
     implementation(libs.kotlinx.serialization.hocon)
 
     compileOnly(libs.androidx.compose.material.materialIconsExtended)
