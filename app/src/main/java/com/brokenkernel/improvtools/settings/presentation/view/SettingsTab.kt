@@ -7,6 +7,7 @@ import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -23,10 +24,13 @@ import com.brokenkernel.improvtools.timer.data.model.TimerHapticsModeUI
 
 @ImprovToolsDestination<ImprovToolsNavigationGraph>
 @Composable
-internal fun SettingsTab(viewModel: SettingsScreenViewModel = hiltViewModel()) {
+internal fun SettingsTab(
+    modifier: Modifier = Modifier,
+    viewModel: SettingsScreenViewModel = hiltViewModel(),
+) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-    Column {
+    Column(modifier = modifier) {
         Text(
             stringResource(R.string.suggestions_activity_title),
             style = MaterialTheme.typography.titleLarge,

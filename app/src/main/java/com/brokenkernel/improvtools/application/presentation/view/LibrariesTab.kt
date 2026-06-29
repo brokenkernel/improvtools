@@ -13,10 +13,10 @@ import com.mikepenz.aboutlibraries.ui.compose.variant.LibraryBadges
 
 @ImprovToolsDestination<ImprovToolsNavigationGraph>
 @Composable
-internal fun LibrariesTab() {
+internal fun LibrariesTab(modifier: Modifier = Modifier) {
     val libraries by produceLibraries(R.raw.aboutlibraries)
     LibrariesContainer(
-        modifier = Modifier.fillMaxSize(),
+        modifier = modifier.fillMaxSize(),
         badges = LibraryBadges(
             version = true,
             author = true,

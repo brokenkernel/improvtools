@@ -63,6 +63,7 @@ import sh.calvin.reorderable.rememberReorderableLazyListState
 internal fun SuggestionsTab(
     navigator: DestinationsNavigator,
     improvToolsAppState: ImprovToolsAppState,
+    modifier: Modifier = Modifier,
     viewModel: SuggestionScreenViewModel = hiltViewModel(),
 ) {
     val state = rememberPullToRefreshState()
@@ -82,7 +83,7 @@ internal fun SuggestionsTab(
                 isRefreshing = false
             }
         },
-        modifier = Modifier.testTag("OutermostContentForSuggestionsScreen"),
+        modifier = modifier.testTag("OutermostContentForSuggestionsScreen"),
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,

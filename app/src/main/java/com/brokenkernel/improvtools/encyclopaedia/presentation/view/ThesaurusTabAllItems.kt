@@ -33,6 +33,7 @@ import kotlinx.coroutines.launch
 @Composable
 internal fun ThesaurusTabAllItems(
     improvToolsAppState: ImprovToolsAppState,
+    modifier: Modifier = Modifier,
     viewModel: ThesaurusTabAllItemsViewModel = hiltViewModel(),
 ) {
     val resources = LocalResources.current
@@ -43,6 +44,7 @@ internal fun ThesaurusTabAllItems(
         itemList = viewModel.groupedWords(),
         transformForSearch = { s -> s },
         itemToKey = { it -> it },
+        modifier = modifier,
     ) { word ->
         ListItem(
             headlineContent = { Text(word) },

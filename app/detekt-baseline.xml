@@ -3,7 +3,6 @@
   <ManuallySuppressedIssues/>
   <CurrentIssues>
     <ID>BracesOnWhenStatements:Theme.kt:when</ID>
-    <ID>LibraryEntitiesShouldNotBePublic:DefaultTimerManager.kt:DefaultTimerManager : TimerManager</ID>
     <ID>LibraryEntitiesShouldNotBePublic:HiltComponentActitivity.kt:HiltComponentActitivity : ComponentActivity</ID>
     <ID>LibraryEntitiesShouldNotBePublic:ImprovToolsApplication.kt:ImprovToolsApplication : Application</ID>
     <ID>LibraryEntitiesShouldNotBePublic:ImprovToolsNavigationGraph.kt:ImprovToolsNavigationGraph</ID>
@@ -14,23 +13,6 @@
     <ID>LibraryEntitiesShouldNotBePublic:TimerManager.kt:TimerManager</ID>
     <ID>LibraryEntitiesShouldNotBePublic:TipsAndAdviceViewModeUIX.kt:public fun internalEnumValuebyTipsAndAdviceViewModeUI: UserSettings.TipsAndTricksViewMode</ID>
     <ID>LibraryEntitiesShouldNotBePublic:TipsAndAdviceViewModeUIX.kt:public fun tipsAndAdviceViewModeUIbyInternalEnumValue: TipsAndAdviceViewModeUI</ID>
-    <ID>ModifierMissing:AboutTab.kt:@ImprovToolsDestination&lt;ImprovToolsNavigationGraph> @Composable internal fun AboutTab</ID>
-    <ID>ModifierMissing:GamesTab.kt:@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class) @ImprovToolsDestination&lt;ImprovToolsNavigationGraph> @Composable internal fun GamesTab</ID>
-    <ID>ModifierMissing:GlossaryTab.kt:@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class) @ImprovToolsDestination&lt;ImprovToolsNavigationGraph> @Composable internal fun GlossaryTab</ID>
-    <ID>ModifierMissing:ImprovToolsNavigation.kt:@Composable internal fun ImprovToolsNavigationDrawer</ID>
-    <ID>ModifierMissing:ImprovToolsNavigation.kt:@Composable private fun NavigableScreenNavigationDrawerItem</ID>
-    <ID>ModifierMissing:ImprovToolsScaffold.kt:@OptIn(ExperimentalMaterial3Api::class) @Composable internal fun ImprovToolsScaffold</ID>
-    <ID>ModifierMissing:LibrariesTab.kt:@ImprovToolsDestination&lt;ImprovToolsNavigationGraph> @Composable internal fun LibrariesTab</ID>
-    <ID>ModifierMissing:PrivacyTab.kt:@ImprovToolsDestination&lt;ImprovToolsNavigationGraph> @Composable internal fun PrivacyTab</ID>
-    <ID>ModifierMissing:SettingsTab.kt:@ImprovToolsDestination&lt;ImprovToolsNavigationGraph> @Composable internal fun SettingsTab</ID>
-    <ID>ModifierMissing:SingleTagBottomTab.kt:@Composable internal fun SingleTagBottomTab</ID>
-    <ID>ModifierMissing:SuggestionsTab.kt:@OptIn(ExperimentalMaterial3Api::class) @ImprovToolsDestination&lt;ImprovToolsNavigationGraph>(start = true) @Composable internal fun SuggestionsTab</ID>
-    <ID>ModifierMissing:ThesaurusTabAllItems.kt:@ImprovToolsDestination&lt;ImprovToolsNavigationGraph> @Composable internal fun ThesaurusTabAllItems</ID>
-    <ID>ModifierMissing:ThesaurusTabSingleWord.kt:@ImprovToolsDestination&lt;ImprovToolsNavigationGraph> @Composable internal fun ThesaurusTabSingleWord</ID>
-    <ID>ModifierMissing:TimerTab.kt:@Composable private fun CommonTimer</ID>
-    <ID>ModifierMissing:TimerTab.kt:@Composable private fun CountDownTimer</ID>
-    <ID>ModifierMissing:TimerTab.kt:@Composable private fun CountUpTimer</ID>
-    <ID>ModifierMissing:TimerTab.kt:@SuppressLint("MissingPermission") @OptIn(ExperimentalPermissionsApi::class) @ImprovToolsDestination&lt;ImprovToolsNavigationGraph> @Composable internal fun TimerTab</ID>
     <ID>MultilineRawStringIndentation:AboutTab.kt:""" |&lt;big>${resources.getString(R.string.about_contact_info)}&lt;/big> |🌐 &lt;u>&lt;a href="https://github.com/brokenkernel/improvtools">${ resources.getString( R.string.about_contact_code_repo, ) }&lt;/a>&lt;/u> """</ID>
     <ID>MultilineRawStringIndentation:AboutTab.kt:""" |&lt;big>${resources.getString(R.string.about_version_information)}&lt;/big> |${ resources.getString( R.string.about_buildconfig_version_code, BuildConfig.VERSION_CODE, ) } |${resources.getString(R.string.about_long_version_code, longVersionCode)} |${resources.getString(R.string.about_package_name, packageName)} |${resources.getString(R.string.about_buildconfig_version, BuildConfig.VERSION_NAME)} |${resources.getString(R.string.about_version, versionName ?: "(null)")} |${resources.getString(R.string.about_buildconfig_buildtype, BuildConfig.BUILD_TYPE)} |&lt;big>${resources.getString(R.string.about_debug_information)}&lt;/big> |${ resources.getString( R.string.about_buildconfig_enable_strict_death, BuildConfig.ENABLE_STRICT_MODE_DEATH, ) } |${ resources.getString( R.string.about_buildconfig_enable_crashylitics, BuildConfig.ENABLE_CRASHLYTICS, ) } |${resources.getString(R.string.about_is_safe_mode, packageManager.isSafeMode)} | |&lt;big>Build Constants&lt;/big> |&lt;b>BOARD=&lt;/b>${Build.BOARD} |&lt;b>BOOTLOADER=&lt;/b>${Build.BOOTLOADER} |&lt;b>BRAND=&lt;/b>${Build.BRAND} |&lt;b>DEVICE=&lt;/b>${Build.DEVICE} |&lt;b>DISPLAY=&lt;/b>${Build.DISPLAY} |&lt;b>FINGERPRINT=&lt;/b>${Build.FINGERPRINT} |&lt;b>HARDWARE=&lt;/b>${Build.HARDWARE} |&lt;b>HOST=&lt;/b>${Build.HOST} |&lt;b>ID=&lt;/b>${Build.ID} |&lt;b>MANUFACTURER=&lt;/b>${Build.MANUFACTURER} |&lt;b>MODEL=&lt;/b>${Build.MODEL} |&lt;b>PRODUCT=&lt;/b>${Build.PRODUCT} |SUPPORTED_&lt;b>ABIS=&lt;/b>${Build.SUPPORTED_ABIS.contentToString()} |&lt;b>TAGS=&lt;/b>${Build.TAGS} |&lt;b>TIME=&lt;/b>${Build.TIME} |&lt;b>TYPE=&lt;/b>${Build.TYPE} |&lt;b>USER=&lt;/b>${Build.USER} | |&lt;big>LocalConfig&lt;/big> |&lt;b>Locales=&lt;/b>${localConfig.locales} |&lt;b>NavigationType=&lt;/b>${localConfig.navigation} |&lt;b>ColorMode=&lt;/b>${localConfig.colorMode} |&lt;b>DensityDPI=&lt;/b>${localConfig.densityDpi} |&lt;b>NavigationHidden=&lt;/b>${localConfig.navigationHidden} |&lt;b>Orientation=&lt;/b>${localConfig.orientation} |&lt;b>ScreenLayout=&lt;/b>${localConfig.screenLayout} |&lt;b>ScreenHDR=&lt;/b>${localConfig.isScreenHdr} |&lt;b>WideColorGamut=&lt;/b>${localConfig.isScreenWideColorGamut} |&lt;b>ScreenRound=&lt;/b>${localConfig.isScreenRound} |&lt;b>uiMode=&lt;/b>${localConfig.uiMode} |&lt;b>Touchscreen=&lt;/b>${localConfig.touchscreen} |&lt;b>smallestScreenWidthDp=&lt;/b>${localConfig.smallestScreenWidthDp} |&lt;b>layoutDirection=&lt;/b>${localConfig.layoutDirection} |&lt;b>layoutDirection=&lt;/b>${localConfig.layoutDirection} |&lt;br> """</ID>
     <ID>MultilineRawStringIndentation:AboutTab.kt:"""|&lt;br>&lt;big>API 36 Notification&lt;/big>&lt;br> |&lt;b>Bubbles Allowed:&lt;/b> ${notificationManager.canPostPromotedNotifications()} """</ID>

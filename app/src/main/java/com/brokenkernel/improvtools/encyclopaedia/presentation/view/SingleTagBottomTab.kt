@@ -10,8 +10,8 @@ import com.brokenkernel.components.view.HtmlText
 import com.brokenkernel.improvtools.encyclopaedia.data.GamesDatumTag
 
 @Composable
-internal fun SingleTagBottomTab(tag: GamesDatumTag) {
-    Column(modifier = Modifier.fillMaxSize()) {
+internal fun SingleTagBottomTab(tag: GamesDatumTag, modifier: Modifier = Modifier) {
+    Column(modifier = modifier.fillMaxSize()) {
         Text(
             tag.label,
             style = MaterialTheme.typography.headlineLarge,

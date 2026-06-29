@@ -38,7 +38,7 @@ private fun doesMatch(search: String, item: GlossaryDataItem): Boolean {
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @ImprovToolsDestination<ImprovToolsNavigationGraph>
 @Composable
-internal fun GlossaryTab() {
+internal fun GlossaryTab(modifier: Modifier = Modifier) {
     // TODO: move into viewModel (or at least the repository)
     val sortedGlossaryItems: ImmutableMap<String, List<GlossaryDataItem>> = remember {
         GlossaryDatum.sortedBy { it.term }.groupBy { it.term[0].uppercase() }.toImmutableMap()
@@ -49,6 +49,7 @@ internal fun GlossaryTab() {
         itemList = sortedGlossaryItems,
         transformForSearch = ::transformForSearch,
         itemToKey = { it -> it.term },
+        modifier = modifier,
     ) { it: GlossaryDataItem ->
         var isListItemInformationExpanded: Boolean by remember {
             mutableStateOf(

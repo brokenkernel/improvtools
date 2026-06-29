@@ -4,7 +4,6 @@
   <CurrentIssues>
     <ID>DataClassContainsFunctions:TongueTwisterDatum.kt:TongueTwisterItem$fun asHtmlText: String</ID>
     <ID>DataClassContainsFunctions:TongueTwisterDatum.kt:TongueTwisterItem$fun asRawText: String</ID>
-    <ID>LibraryEntitiesShouldNotBePublic:ExampleUnitTest.kt:ExampleUnitTest</ID>
     <ID>LibraryEntitiesShouldNotBePublic:TongueTwisterWidgetReceiver.kt:TongueTwisterWidgetReceiver : GlanceAppWidgetReceiver</ID>
     <ID>MatchingDeclarationName:TongueTwisterDatum.kt:TongueTwisterItem</ID>
     <ID>MultilineRawStringIndentation:TongueTwisterDatum.kt:"""As one black bug, bled blue, black blood. The other black bug bled blue."""</ID>

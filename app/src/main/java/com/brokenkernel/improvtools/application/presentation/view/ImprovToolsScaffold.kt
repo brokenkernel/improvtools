@@ -43,6 +43,7 @@ import com.brokenkernel.improvtools.sidecar.customtabs.CustomTabUriHandler
 internal fun ImprovToolsScaffold(
     improvToolsAppState: ImprovToolsAppState,
     navMenuButtonPressedCallback: () -> Unit,
+    modifier: Modifier = Modifier,
     content: @Composable (() -> Unit),
 ) {
     val snackbarHostState = remember { SnackbarHostState() }
@@ -112,6 +113,7 @@ internal fun ImprovToolsScaffold(
             snackbarHost = {
                 SnackbarHost(hostState = LocalSnackbarHostState.current)
             },
+            modifier = modifier,
         ) { innerPadding ->
             Surface(
                 modifier = Modifier

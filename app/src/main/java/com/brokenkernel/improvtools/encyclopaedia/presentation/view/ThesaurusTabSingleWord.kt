@@ -34,11 +34,12 @@ internal fun ThesaurusTabSingleWord(
     word: String,
     navigator: DestinationsNavigator,
     @StringRes priorTitleResource: Int,
+    modifier: Modifier = Modifier,
     viewModel: ThesaurusSingleItemViewModel = hiltViewModel(),
 ) {
     val scrollState: ScrollState = rememberScrollState()
 
-    SelectionContainer {
+    SelectionContainer(modifier) {
         Column(
             modifier = Modifier
                 .verticalColumnScrollbar(scrollState)

@@ -2,7 +2,6 @@
 <SmellBaseline>
   <ManuallySuppressedIssues/>
   <CurrentIssues>
-    <ID>LibraryEntitiesShouldNotBePublic:ExampleUnitTest.kt:ExampleUnitTest</ID>
     <ID>LibraryEntitiesShouldNotBePublic:SuggestionsSingleCategoryRow.kt:@Composable public fun ReorderableCollectionItemScope.SuggestionsSingleCategoryRow</ID>
     <ID>UnusedParameter:SuggestionsSingleCategoryRow.kt:onShowSingleWord: (String) -> Unit</ID>
   </CurrentIssues>

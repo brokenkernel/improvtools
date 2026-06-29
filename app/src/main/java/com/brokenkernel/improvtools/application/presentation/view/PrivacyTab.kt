@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.core.net.toUri
@@ -14,10 +15,10 @@ import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNav
 
 @ImprovToolsDestination<ImprovToolsNavigationGraph>
 @Composable
-internal fun PrivacyTab() {
+internal fun PrivacyTab(modifier: Modifier = Modifier) {
     val currentContext = LocalContext.current
 
-    Column {
+    Column(modifier = modifier) {
         Text(stringResource(R.string.privacy_notification_use))
         TextButton(
             onClick = {

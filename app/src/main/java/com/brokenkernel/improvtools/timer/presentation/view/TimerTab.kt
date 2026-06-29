@@ -64,6 +64,7 @@ private fun CommonTimer(
     iconPaused: ImageVector,
     iconDescription: String,
     scope: ReorderableCollectionItemScope,
+    modifier: Modifier = Modifier,
     content: @Composable () -> Unit,
 ) {
     SlottedTimerCardContent(
@@ -84,6 +85,7 @@ private fun CommonTimer(
         },
         onTitleChange = onTitleChange,
         scope = scope,
+        modifier = modifier,
     )
 }
 
@@ -97,6 +99,7 @@ private fun CountDownTimer(
     onResetTimer: () -> Unit,
     onTitleChange: (String) -> Unit,
     scope: ReorderableCollectionItemScope,
+    modifier: Modifier = Modifier,
 ) {
     CommonTimer(
         timerState = timerState,
@@ -123,6 +126,7 @@ private fun CountDownTimer(
         iconDescription = stringResource(R.string.count_down_timer),
         onTitleChange = onTitleChange,
         scope = scope,
+        modifier = modifier,
     )
 }
 
@@ -135,6 +139,7 @@ private fun CountUpTimer(
     onResetTimer: () -> Unit,
     onTitleChange: (String) -> Unit,
     scope: ReorderableCollectionItemScope,
+    modifier: Modifier = Modifier,
 ) {
     CommonTimer(
         timerState = timerState,
@@ -156,6 +161,7 @@ private fun CountUpTimer(
         onRemoveTimer = onRemoveTimer,
         onTitleChange = onTitleChange,
         scope = scope,
+        modifier = modifier,
     )
 }
 
@@ -163,7 +169,10 @@ private fun CountUpTimer(
 @OptIn(ExperimentalPermissionsApi::class)
 @ImprovToolsDestination<ImprovToolsNavigationGraph>
 @Composable
-internal fun TimerTab(viewModel: TimerListViewModel = hiltViewModel()) {
+internal fun TimerTab(
+    modifier: Modifier = Modifier,
+    viewModel: TimerListViewModel = hiltViewModel(),
+) {
     val haptic = LocalHapticFeedback.current
     val shouldHapticOnRemove = viewModel.shouldHaptic.collectAsStateWithLifecycle()
     val allTimers = viewModel.allTimers
@@ -185,7 +194,7 @@ internal fun TimerTab(viewModel: TimerListViewModel = hiltViewModel()) {
         haptic.performHapticFeedback(HapticFeedbackType.SegmentFrequentTick)
     }
 
-    LazyColumn(state = lazyListState) {
+    LazyColumn(modifier = modifier, state = lazyListState) {
         items(allTimers, key = { t -> t.timerID }) { timer: TimerState ->
             ReorderableItem(state = reorderableLazyListState, key = timer.timerID) { isDragging ->
                 val elevation by animateDpAsState(if (isDragging) 8.dp else 0.dp)

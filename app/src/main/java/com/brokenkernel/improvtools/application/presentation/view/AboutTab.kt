@@ -65,6 +65,7 @@ import kotlinx.coroutines.launch
 @Composable
 internal fun AboutTab(
     navigator: DestinationsNavigator,
+    modifier: Modifier = Modifier,
 ) {
     // move snackbar host state into app state. And then inject it?
     // also include more injected stuff (settings for ex) into debug datum
@@ -230,7 +231,7 @@ internal fun AboutTab(
         }
     }
 
-    Column(modifier = Modifier.fillMaxSize()) {
+    Column(modifier = modifier.fillMaxSize()) {
         Row(
             modifier = Modifier
                 .verticalScroll(rememberScrollState())

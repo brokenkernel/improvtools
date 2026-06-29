@@ -54,6 +54,7 @@ private fun hasExpandableInformation(gdi: GamesDataItem): Boolean {
 @Composable
 internal fun GamesTab(
     navigator: DestinationsNavigator,
+    modifier: Modifier = Modifier,
     viewModel: GamesTabViewModel = GamesTabViewModel(),
 ) {
     val textFieldState = rememberTextFieldState()
@@ -117,6 +118,7 @@ internal fun GamesTab(
                 )
             }
         },
+        modifier = modifier,
     ) { it: GamesDataItem ->
         var isListItemInformationExpanded: Boolean by remember {
             mutableStateOf(

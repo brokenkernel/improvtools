@@ -35,6 +35,7 @@ private fun NavigableScreenNavigationDrawerItem(
     improvToolsAppState: ImprovToolsAppState,
     screen: NavigableScreens,
     closeNavMenuCallback: () -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     val currentDestinationAsState = improvToolsAppState.currentDestinationAsState()
 
@@ -54,12 +55,14 @@ private fun NavigableScreenNavigationDrawerItem(
             }
         },
         selected = currentDestinationAsState.value == screen.matchingRoute,
+        modifier = modifier,
     )
 }
 
 @Composable
 internal fun ImprovToolsNavigationDrawer(
     initialScreen: NavigableScreens,
+    modifier: Modifier = Modifier,
 ) {
     val scope: CoroutineScope = rememberCoroutineScope()
 
@@ -199,6 +202,7 @@ internal fun ImprovToolsNavigationDrawer(
                 }
             }
         },
+        modifier = modifier,
     ) {
         ImprovToolsScaffold(
             improvToolsAppState,
