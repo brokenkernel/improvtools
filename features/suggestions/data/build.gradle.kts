@@ -21,6 +21,8 @@ dependencies {
     api(libs.kotlinx.collections.immutable.jvm)
     api(libs.kotlinx.serialization.core)
 
+    implementation(enforcedPlatform(libs.kotlin.bom))
+
     detektPlugins(libs.composeDetektRules)
     detektPlugins(libs.detektRulesLibraries)
 }

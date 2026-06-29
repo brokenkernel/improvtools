@@ -74,6 +74,8 @@ dependencies {
 
     debugApi(libs.reorderable.android.debug)
 
+    implementation(enforcedPlatform(libs.androidx.compose.bom))
+    implementation(enforcedPlatform(libs.kotlin.bom))
     implementation(libs.androidx.compose.material.materialIconsExtended)
     implementation(libs.androidx.foundation)
     implementation(libs.androidx.foundation.layout)

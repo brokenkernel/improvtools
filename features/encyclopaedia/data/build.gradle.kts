@@ -22,6 +22,7 @@ dependencies {
     api(libs.kotlinx.collections.immutable.jvm)
     api(libs.kotlinx.serialization.core)
 
+    implementation(enforcedPlatform(libs.kotlin.bom))
     implementation(libs.androidx.collection.jvm)
     implementation(libs.extjwnl)
     implementation(libs.javax.inject)
