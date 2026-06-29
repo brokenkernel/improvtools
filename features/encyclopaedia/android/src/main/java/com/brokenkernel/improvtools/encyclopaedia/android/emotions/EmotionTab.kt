@@ -20,10 +20,18 @@ import androidx.compose.ui.unit.dp
 import com.brokenkernel.components.view.HtmlText
 import com.brokenkernel.components.view.SimpleZoomableImage
 import com.brokenkernel.components.view.verticalColumnScrollbar
+import com.brokenkernel.improvtools.coreinfra.preview.ImprovToolsAllPreviews
 import com.brokenkernel.improvtools.encyclopaedia.android.R
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.annotation.ExternalModuleGraph
+import com.ramcosta.composedestinations.annotation.parameters.CodeGenVisibility
 
+// TODO: make internal
+@Destination<ExternalModuleGraph>(
+    visibility = CodeGenVisibility.PUBLIC,
+)
 @Composable
-public fun EmotionsTabInternal(
+public fun EmotionTab(
     modifier: Modifier = Modifier,
 ) {
     val columnScrollState = rememberScrollState()
@@ -111,4 +119,10 @@ public fun EmotionsTabInternal(
             )
         }
     }
+}
+
+@ImprovToolsAllPreviews
+@Composable
+internal fun EmotionTabPreview() {
+    EmotionTab()
 }

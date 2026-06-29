@@ -2,7 +2,7 @@
 <SmellBaseline>
   <ManuallySuppressedIssues/>
   <CurrentIssues>
-    <ID>LibraryEntitiesShouldNotBePublic:EmotionsTab.kt:@Composable public fun EmotionsTabInternal</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:EmotionTab.kt:@Destination&lt;ExternalModuleGraph>( visibility = CodeGenVisibility.PUBLIC, ) @Composable public fun EmotionTab</ID>
     <ID>LibraryEntitiesShouldNotBePublic:PeopleTab.kt:@Destination&lt;ExternalModuleGraph>( visibility = CodeGenVisibility.PUBLIC, ) @Composable public fun PeopleTab</ID>
     <ID>LibraryEntitiesShouldNotBePublic:SingleWordThesaurusButton.kt:@Composable public fun SingleWordThesaurusButton</ID>
     <ID>LibraryEntitiesShouldNotBePublic:TipsAndAdviceAsSelectable.kt:@Composable public fun TipsAndAdviceAsSelectable</ID>

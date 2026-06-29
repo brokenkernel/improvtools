@@ -46,7 +46,7 @@ import com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel.S
 import com.brokenkernel.improvtools.suggestions.data.storage.IdeaCategoryODS
 import com.brokenkernel.improvtools.suggestions.data.storage.IdeaUIState
 import com.brokenkernel.improvtools.suggestions.view.SuggestionsSingleCategoryRow
-import com.ramcosta.composedestinations.generated.app.destinations.EmotionTabDestination
+import com.ramcosta.composedestinations.generated.encyclopaedia.destinations.EmotionTabDestination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kotlin.time.Duration.Companion.milliseconds
 import kotlinx.coroutines.delay
