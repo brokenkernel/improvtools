@@ -26,12 +26,11 @@ import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.ExternalModuleGraph
 import com.ramcosta.composedestinations.annotation.parameters.CodeGenVisibility
 
-// TODO: make internal
 @Destination<ExternalModuleGraph>(
     visibility = CodeGenVisibility.PUBLIC,
 )
 @Composable
-public fun EmotionTab(
+internal fun EmotionTab(
     modifier: Modifier = Modifier,
 ) {
     val columnScrollState = rememberScrollState()

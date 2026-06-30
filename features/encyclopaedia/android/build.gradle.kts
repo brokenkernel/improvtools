@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.dagger.hilt.android)
     alias(libs.plugins.sortDependencies)
     alias(libs.plugins.dependencyAnalysis)
     alias(libs.plugins.ktlint)
@@ -19,7 +20,7 @@ configure<LibraryExtension> {
 
     defaultConfig {
         testInstrumentationRunner =
-            "com.brokenkernel.improvtools.infrastructure.ImprovToolsTestRunner"
+            "com.brokenkernel.improvtools.encyclopaedia.android.XImprovToolsTestRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
 
@@ -91,6 +92,8 @@ dependencies {
     implementation(libs.androidx.ui.text)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.ui.unit)
+    implementation(libs.dagger.hilt.core)
+    implementation(libs.hilt.android)
     implementation(libs.kotlinx.collections.immutable.jvm)
     implementation(projects.components)
     implementation(projects.coreinfra)
@@ -103,16 +106,30 @@ dependencies {
 
     testImplementation(libs.junit)
 
+    androidTestImplementation(libs.androidx.core)
+    androidTestImplementation(libs.androidx.datastore)
+    androidTestImplementation(libs.androidx.espresso.device)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.monitor)
+    androidTestImplementation(libs.androidx.navigation.common)
+    androidTestImplementation(libs.androidx.runner)
     androidTestImplementation(libs.androidx.runtime)
+    androidTestImplementation(libs.androidx.ui.test)
+    androidTestImplementation(libs.androidx.ui.test.junit4)
+    //    androidTestImplementation(libs.hamcrest)
+    androidTestImplementation(libs.hilt.android.testing)
     androidTestImplementation(libs.junit)
+    androidTestImplementation(libs.kotlinx.coroutines.core)
+    androidTestImplementation(libs.navigation.runtime)
     androidTestImplementation(projects.coreinfra)
 
     detektPlugins(libs.composeDetektRules)
     detektPlugins(libs.detektRulesLibraries)
 
+    // kspTest(?)
+    ksp(libs.hilt.compiler)
     ksp(libs.io.github.raamcosta.composeDestinations.ksp)
+    ksp(libs.kotlin.metadata.jvm)
 
     ktlintRuleset(libs.ktlintCompose)
 
@@ -150,4 +167,8 @@ ktlint {
     android.set(true)
     coloredOutput.set(true)
     version.set("1.8.0")
+}
+
+hilt {
+    enableAggregatingTask = true
 }

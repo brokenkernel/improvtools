@@ -36,13 +36,12 @@ private fun doesMatch(search: String, item: GlossaryDataItem): Boolean {
     return transformForSearch(item.term).contains(search, ignoreCase = true)
 }
 
-// tood: make internal
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Destination<ExternalModuleGraph>(
     visibility = CodeGenVisibility.PUBLIC,
 )
 @Composable
-public fun GlossaryTab(modifier: Modifier = Modifier) {
+internal fun GlossaryTab(modifier: Modifier = Modifier) {
     // TODO: move into viewModel (or at least the repository)
     val sortedGlossaryItems: ImmutableMap<String, List<GlossaryDataItem>> = remember {
         GlossaryDatum.sortedBy { it.term }.groupBy { it.term[0].uppercase() }.toImmutableMap()
