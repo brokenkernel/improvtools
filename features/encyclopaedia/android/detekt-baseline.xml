@@ -3,6 +3,7 @@
   <ManuallySuppressedIssues/>
   <CurrentIssues>
     <ID>LibraryEntitiesShouldNotBePublic:EmotionTab.kt:@Destination&lt;ExternalModuleGraph>( visibility = CodeGenVisibility.PUBLIC, ) @Composable public fun EmotionTab</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:GlossaryTab.kt:@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class) @Destination&lt;ExternalModuleGraph>( visibility = CodeGenVisibility.PUBLIC, ) @Composable public fun GlossaryTab</ID>
     <ID>LibraryEntitiesShouldNotBePublic:PeopleTab.kt:@Destination&lt;ExternalModuleGraph>( visibility = CodeGenVisibility.PUBLIC, ) @Composable public fun PeopleTab</ID>
     <ID>LibraryEntitiesShouldNotBePublic:SingleWordThesaurusButton.kt:@Composable public fun SingleWordThesaurusButton</ID>
     <ID>LibraryEntitiesShouldNotBePublic:TipsAndAdviceAsSelectable.kt:@Composable public fun TipsAndAdviceAsSelectable</ID>

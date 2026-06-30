@@ -7,4 +7,5 @@
   <string name="emotion_words">Emotion Words</string>
   <string name="open_website">Open Website</string>
   <string name="wikipedia">Wikipedia</string>
+    <string name="glossary_term">Glossary Term</string>
 </resources>

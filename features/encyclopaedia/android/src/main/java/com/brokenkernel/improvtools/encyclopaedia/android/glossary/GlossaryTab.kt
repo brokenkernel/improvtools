@@ -1,4 +1,4 @@
-package com.brokenkernel.improvtools.encyclopaedia.presentation.view
+package com.brokenkernel.improvtools.encyclopaedia.android.glossary
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
@@ -19,11 +19,12 @@ import androidx.compose.ui.semantics.Role
 import com.brokenkernel.components.filteredlist.SearchableColumn
 import com.brokenkernel.components.view.ExpandIcon
 import com.brokenkernel.components.view.HtmlText
-import com.brokenkernel.improvtools.R
-import com.brokenkernel.improvtools.application.navigation.ImprovToolsDestination
-import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
+import com.brokenkernel.improvtools.encyclopaedia.android.R
 import com.brokenkernel.improvtools.encyclopaedia.data.GlossaryDataItem
 import com.brokenkernel.improvtools.encyclopaedia.data.GlossaryDatum
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.annotation.ExternalModuleGraph
+import com.ramcosta.composedestinations.annotation.parameters.CodeGenVisibility
 import kotlinx.collections.immutable.ImmutableMap
 import kotlinx.collections.immutable.toImmutableMap
 
@@ -35,10 +36,13 @@ private fun doesMatch(search: String, item: GlossaryDataItem): Boolean {
     return transformForSearch(item.term).contains(search, ignoreCase = true)
 }
 
+// tood: make internal
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
-@ImprovToolsDestination<ImprovToolsNavigationGraph>
+@Destination<ExternalModuleGraph>(
+    visibility = CodeGenVisibility.PUBLIC,
+)
 @Composable
-internal fun GlossaryTab(modifier: Modifier = Modifier) {
+public fun GlossaryTab(modifier: Modifier = Modifier) {
     // TODO: move into viewModel (or at least the repository)
     val sortedGlossaryItems: ImmutableMap<String, List<GlossaryDataItem>> = remember {
         GlossaryDatum.sortedBy { it.term }.groupBy { it.term[0].uppercase() }.toImmutableMap()

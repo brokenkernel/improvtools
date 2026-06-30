@@ -25,7 +25,6 @@ import com.brokenkernel.improvtools.encyclopaedia.presentation.view.TipsAndAdvic
 import com.brokenkernel.improvtools.settings.presentation.view.SuggestionsTabMenu
 import com.ramcosta.composedestinations.generated.app.destinations.AboutTabDestination
 import com.ramcosta.composedestinations.generated.app.destinations.GamesTabDestination
-import com.ramcosta.composedestinations.generated.app.destinations.GlossaryTabDestination
 import com.ramcosta.composedestinations.generated.app.destinations.LibrariesTabDestination
 import com.ramcosta.composedestinations.generated.app.destinations.PrivacyTabDestination
 import com.ramcosta.composedestinations.generated.app.destinations.SettingsTabDestination
@@ -36,6 +35,7 @@ import com.ramcosta.composedestinations.generated.app.destinations.TimerTabDesti
 import com.ramcosta.composedestinations.generated.app.destinations.TipsAndAdviceTabDestination
 import com.ramcosta.composedestinations.generated.buzzer.destinations.BuzzerTabDestination
 import com.ramcosta.composedestinations.generated.encyclopaedia.destinations.EmotionTabDestination
+import com.ramcosta.composedestinations.generated.encyclopaedia.destinations.GlossaryTabDestination
 import com.ramcosta.composedestinations.generated.encyclopaedia.destinations.PeopleTabDestination
 import com.ramcosta.composedestinations.generated.tonguetwister.destinations.TongueTwisterTabDestination
 import com.ramcosta.composedestinations.spec.Direction
