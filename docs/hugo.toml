@@ -1,5 +1,5 @@
 baseURL = 'https://improvtools.brokenkernel.com/'
-languageCode = 'en-us'
+locale = 'en-us'
 
 contentDir = "content/en"
 defaultContentLanguage = "en"
@@ -9,7 +9,7 @@ enableGitInfo = true
 
 [languages]
 [languages.en]
-languageName = "English"
+label = "English"
 # Weight used for sorting.
 weight = 1
 [languages.en.params]
@@ -36,13 +36,13 @@ url = "https://github.com/brokenkernel/improvtools"
 type = "blog"
 toc_root = true
 
-[cascade._target]
+[cascade.target]
 path = "/news/**"
 
 [[cascade]]
 type = "docs"
 
-[cascade._target]
+[cascade.target]
 path = "/**"
 
 [[params.versions]]
