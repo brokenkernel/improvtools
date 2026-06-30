@@ -20,7 +20,7 @@ configure<LibraryExtension> {
 
     defaultConfig {
         testInstrumentationRunner =
-            "com.brokenkernel.improvtools.encyclopaedia.android.XImprovToolsTestRunner"
+            "com.brokenkernel.improvtools.coreinfra.ImprovToolsTestRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
 
@@ -98,6 +98,7 @@ dependencies {
 
     debugRuntimeOnly(libs.androidx.ui.test.manifest)
 
+    androidTestRuntimeOnly(testFixtures(projects.coreinfra))
     androidTestRuntimeOnly(libs.androidx.core)
     androidTestRuntimeOnly(libs.androidx.runner)
     androidTestRuntimeOnly(libs.kotlinx.coroutines.test)
@@ -107,6 +108,7 @@ dependencies {
     androidTestImplementation(libs.androidx.activity)
     androidTestImplementation(libs.androidx.annotation)
     androidTestImplementation(libs.androidx.core)
+    androidTestImplementation(libs.androidx.datastore)
     androidTestImplementation(libs.androidx.espresso.device)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.lifecycle.viewmodel)
@@ -124,6 +126,8 @@ dependencies {
     //    androidTestImplementation(libs.hamcrest)
     androidTestImplementation(libs.hilt.android.testing)
     androidTestImplementation(libs.junit)
+    androidTestImplementation(libs.kotlinx.coroutines.core)
+    androidTestImplementation(libs.navigation.runtime)
     androidTestImplementation(projects.coreinfra)
 
     detektPlugins(libs.composeDetektRules)
