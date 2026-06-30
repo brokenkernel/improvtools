@@ -67,7 +67,7 @@ configure<ApplicationExtension> {
         versionName = "0.0.$versionCode"
 
         testInstrumentationRunner =
-            "com.brokenkernel.improvtools.infrastructure.ImprovToolsTestRunner"
+            "com.brokenkernel.improvtools.coreinfra.ImprovToolsTestRunner"
         proguardFiles(
             getDefaultProguardFile("proguard-android-optimize.txt"),
             "proguard-rules.pro",
@@ -244,8 +244,6 @@ dependencies {
     implementation(projects.features.tonguetwister)
 
     debugImplementation(libs.androidx.ui.tooling)
-    debugImplementation(libs.leakcanary.android)
-    debugImplementation(libs.reorderable.android.debug)
 
     runtimeOnly(libs.androidx.appsearch)
     runtimeOnly(libs.androidx.lifecycle.process)
@@ -259,10 +257,14 @@ dependencies {
     releaseRuntimeOnly(libs.leakcanary.object1.watcher.android)
 
     debugRuntimeOnly(libs.androidx.ui.test.manifest)
+    debugRuntimeOnly(libs.leakcanary.android)
     // TODO: add profilable build
     // TODO: https://square.github.io/leakcanary/ui-tests/
     debugRuntimeOnly(libs.leakcanary.android)
+    debugRuntimeOnly(libs.reorderable.android.debug)
 
+    androidTestRuntimeOnly(testFixtures(projects.coreinfra))
+    androidTestRuntimeOnly(libs.androidx.runner)
     androidTestRuntimeOnly(libs.leakcanary.android.instrumentation)
 
     androidTestImplementation(libs.androidx.core)
@@ -271,11 +273,10 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.monitor)
     androidTestImplementation(libs.androidx.navigation.common)
-    androidTestImplementation(libs.androidx.runner)
     androidTestImplementation(libs.androidx.runtime)
     androidTestImplementation(libs.androidx.ui.test)
     androidTestImplementation(libs.androidx.ui.test.junit4)
-    androidTestImplementation(libs.hamcrest)
+//    androidTestImplementation(libs.hamcrest)
     androidTestImplementation(libs.hilt.android.testing)
     androidTestImplementation(libs.junit)
     androidTestImplementation(libs.kotlinx.coroutines.core)

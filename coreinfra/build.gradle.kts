@@ -79,6 +79,13 @@ dependencies {
 
     androidTestRuntimeOnly(libs.kotlinx.coroutines.test)
 
+    testFixturesApi(libs.androidx.core)
+    testFixturesApi(libs.androidx.runner)
+    testFixturesApi(libs.androidx.runtime)
+    testFixturesApi(libs.androidx.ui.test)
+    testFixturesApi(libs.hilt.android.testing)
+    testFixturesApi(libs.kotlinx.coroutines.core)
+
     testImplementation(libs.junit)
 
     androidTestImplementation(libs.androidx.junit)
@@ -131,6 +138,13 @@ dependencies {
 //        }
 //    }
 // }
+
+android {
+    testFixtures {
+        enable = true
+        androidResources = true
+    }
+}
 
 @OptIn(ExperimentalKotlinGradlePluginApi::class)
 powerAssert {

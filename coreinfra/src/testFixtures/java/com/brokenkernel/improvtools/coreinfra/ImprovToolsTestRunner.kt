@@ -1,4 +1,4 @@
-package com.brokenkernel.improvtools.infrastructure
+package com.brokenkernel.improvtools.coreinfra
 
 import android.app.Application
 import android.content.Context
