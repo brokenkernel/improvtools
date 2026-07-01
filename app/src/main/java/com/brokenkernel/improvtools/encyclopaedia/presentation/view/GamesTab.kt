@@ -38,7 +38,7 @@ import com.brokenkernel.improvtools.encyclopaedia.data.GameDatumTools
 import com.brokenkernel.improvtools.encyclopaedia.data.GamesDatumTag
 import com.brokenkernel.improvtools.encyclopaedia.data.GamesDatumTopic
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GamesDataItem
-import com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel.GamesTabViewModel
+import com.brokenkernel.improvtools.encyclopaedia.android.games.viewmodel.GamesTabViewModel
 import com.ramcosta.composedestinations.generated.app.destinations.TimerTabDestination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
