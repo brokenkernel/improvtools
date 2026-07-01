@@ -77,16 +77,18 @@ dependencies {
 
     debugRuntimeOnly(libs.androidx.ui.test.manifest)
 
+    androidTestRuntimeOnly(libs.androidx.runner)
     androidTestRuntimeOnly(libs.kotlinx.coroutines.test)
 
-    testFixturesApi(libs.androidx.core)
     testFixturesApi(libs.androidx.runner)
     testFixturesApi(libs.androidx.runtime)
-    testFixturesApi(libs.androidx.ui.test)
-    testFixturesApi(libs.hilt.android.testing)
     testFixturesApi(libs.kotlinx.coroutines.core)
 
+    testFixturesImplementation(libs.hilt.android.testing)
+
     testImplementation(libs.junit)
+
+    testRuntimeOnly(libs.androidx.runner)
 
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.monitor)
