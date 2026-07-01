@@ -16,10 +16,6 @@
     <issue id="TypographyQuotes" severity="error" />
     <issue id="UnknownNullness" severity="error" />
     <issue id="WrongThreadInterprocedural" severity="error" />
-    <!-- whitelist allowed locals -->
-    <issue id="ComposeCompositionLocalUsage" severity="error">
-        <option name="allowed-composition-locals" value="LocalSnackbarHostState,LocalBottomSheetContentManager" />
-    </issue>
     <!-- maybe -->
     <issue id="InvalidPackage" severity="ignore" />
     <!-- Slack Specific Lints -->

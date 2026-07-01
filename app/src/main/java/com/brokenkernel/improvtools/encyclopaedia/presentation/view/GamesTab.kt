@@ -31,8 +31,8 @@ import com.brokenkernel.components.view.SimpleIconButton
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import com.brokenkernel.improvtools.application.navigation.ImprovToolsDestination
-import com.brokenkernel.improvtools.application.presentation.api.LocalBottomSheetContentManager
 import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
+import com.brokenkernel.improvtools.coreinfra.LocalBottomSheetContentManager
 import com.brokenkernel.improvtools.encyclopaedia.android.components.SingleTagBottomTab
 import com.brokenkernel.improvtools.encyclopaedia.data.GameDatumTools
 import com.brokenkernel.improvtools.encyclopaedia.data.GamesDatumTag

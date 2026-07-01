@@ -72,6 +72,7 @@ dependencies {
     implementation(enforcedPlatform(libs.androidx.compose.bom))
     implementation(enforcedPlatform(libs.kotlin.bom))
     implementation(libs.androidx.compose.foundation.layout)
+    implementation(libs.androidx.material3)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.kotlinx.coroutines.core)
 
