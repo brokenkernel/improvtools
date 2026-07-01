@@ -1,4 +1,4 @@
-package com.brokenkernel.improvtools.encyclopaedia.presentation.view
+package com.brokenkernel.improvtools.encyclopaedia.android.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -9,8 +9,9 @@ import androidx.compose.ui.Modifier
 import com.brokenkernel.components.view.HtmlText
 import com.brokenkernel.improvtools.encyclopaedia.data.GamesDatumTag
 
+// TODO: make internal
 @Composable
-internal fun SingleTagBottomTab(tag: GamesDatumTag, modifier: Modifier = Modifier) {
+public fun SingleTagBottomTab(tag: GamesDatumTag, modifier: Modifier = Modifier) {
     Column(modifier = modifier.fillMaxSize()) {
         Text(
             tag.label,
