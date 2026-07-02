@@ -139,7 +139,7 @@ ktlint {
 }
 
 dokka {
-    moduleName = project.name
+    moduleName = project.path
     dokkaSourceSets {
         configureEach {
             enableAndroidDocumentationLink = true
