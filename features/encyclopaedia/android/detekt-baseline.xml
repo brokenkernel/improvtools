@@ -2,6 +2,7 @@
 <SmellBaseline>
   <ManuallySuppressedIssues/>
   <CurrentIssues>
+    <ID>LibraryEntitiesShouldNotBePublic:GamesTabViewModel.kt:GamesTabViewModel : ViewModel</ID>
     <ID>LibraryEntitiesShouldNotBePublic:SingleTagBottomTab.kt:@Composable public fun SingleTagBottomTab</ID>
     <ID>LibraryEntitiesShouldNotBePublic:SingleWordThesaurusButton.kt:@Composable public fun SingleWordThesaurusButton</ID>
     <ID>LibraryEntitiesShouldNotBePublic:TipsAndAdviceAsSelectable.kt:@Composable public fun TipsAndAdviceAsSelectable</ID>

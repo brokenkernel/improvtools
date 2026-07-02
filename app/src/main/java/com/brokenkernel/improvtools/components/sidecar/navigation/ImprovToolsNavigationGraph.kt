@@ -7,6 +7,7 @@ import com.ramcosta.composedestinations.annotation.NavHostGraph
 import com.ramcosta.composedestinations.annotation.parameters.CodeGenVisibility
 import com.ramcosta.composedestinations.generated.buzzer.destinations.BuzzerTabDestination
 import com.ramcosta.composedestinations.generated.encyclopaedia.destinations.EmotionTabDestination
+import com.ramcosta.composedestinations.generated.encyclopaedia.destinations.GlossaryTabDestination
 import com.ramcosta.composedestinations.generated.encyclopaedia.destinations.PeopleTabDestination
 import com.ramcosta.composedestinations.generated.tonguetwister.destinations.TongueTwisterTabDestination
 
@@ -38,6 +39,13 @@ public annotation class ImprovToolsNavigationGraph {
         ],
     )
     @ExternalDestination<EmotionTabDestination>(
+        // TODO: make sure matches with ImprovToolsDestination
+        wrappers = [
+            LogFirebaseScreenViewWrapper::class,
+            SetScaffoldStateWrapper::class,
+        ],
+    )
+    @ExternalDestination<GlossaryTabDestination>(
         // TODO: make sure matches with ImprovToolsDestination
         wrappers = [
             LogFirebaseScreenViewWrapper::class,
