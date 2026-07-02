@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.dependencyAnalysis)
     alias(libs.plugins.ktlint)
     alias(libs.plugins.detekt)
+    alias(libs.plugins.dokka)
     kotlin("plugin.power-assert") version libs.versions.kotlin.get()
 }
 
