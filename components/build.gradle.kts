@@ -2,6 +2,7 @@
 
 import com.android.build.api.dsl.LibraryExtension
 import com.google.devtools.ksp.KspExperimental
+import org.jetbrains.dokka.gradle.engine.parameters.VisibilityModifier
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 
 plugins {
@@ -34,7 +35,10 @@ configure<LibraryExtension> {
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
 
@@ -122,41 +126,43 @@ dependencies {
     lintChecks(libs.slack.lint.checks.compose)
 }
 
-// dokka {
-//    moduleName = "components"
-//    dokkaSourceSets {
-//        main {
-//            enableAndroidDocumentationLink = true
-//            enableJdkDocumentationLink = true
-//            enableKotlinStdLibDocumentationLink = true
-//            documentedVisibilities =
-//                setOf(
-//                    VisibilityModifier.Public,
-//                    VisibilityModifier.Internal,
-//                    VisibilityModifier.Package,
-//                    VisibilityModifier.Protected,
-//                )
-//            sourceLink {
-//                localDirectory = (file("src/main/java"))
-//                remoteUrl("https://github.com/brokenkernel/improvtools")
-//                remoteLineSuffix = ("#L")
-//            }
-//        }
-//    }
-//    dokkaPublications {
-//        html {
-//            enabled = true
-// //            failOnWarning = true
-//        }
-//    }
-//    pluginsConfiguration {
-//        html {
-//            homepageLink = "https://improvtools.brokenkernel.com"
-//        }
-//        versioning {
-//        }
-//    }
-// }
+dokka {
+    moduleName = project.name
+    dokkaSourceSets {
+        configureEach {
+            enableAndroidDocumentationLink = true
+            enableJdkDocumentationLink = true
+            enableKotlinStdLibDocumentationLink = true
+            documentedVisibilities =
+                setOf(
+                    VisibilityModifier.Public,
+                    VisibilityModifier.Internal,
+                    VisibilityModifier.Package,
+                    VisibilityModifier.Protected,
+                )
+            sourceLink {
+                localDirectory = (file("src/main/java"))
+                remoteUrl("https://github.com/brokenkernel/improvtools")
+                remoteLineSuffix = ("#L")
+            }
+
+        }
+    }
+
+    dokkaPublications {
+        html {
+            enabled = true
+            failOnWarning = true
+        }
+    }
+    pluginsConfiguration {
+        html {
+            homepageLink = "https://improvtools.brokenkernel.com"
+        }
+        versioning {
+        }
+    }
+}
 
 @OptIn(ExperimentalKotlinGradlePluginApi::class)
 powerAssert {
@@ -187,4 +193,42 @@ ktlint {
     android.set(true)
     coloredOutput.set(true)
     version.set("1.8.0")
+}
+
+dokka {
+    moduleName = project.name
+    dokkaSourceSets {
+        configureEach {
+            enableAndroidDocumentationLink = true
+            enableJdkDocumentationLink = true
+            enableKotlinStdLibDocumentationLink = true
+            documentedVisibilities =
+                setOf(
+                    VisibilityModifier.Public,
+                    VisibilityModifier.Internal,
+                    VisibilityModifier.Package,
+                    VisibilityModifier.Protected,
+                )
+            sourceLink {
+                localDirectory = (file("src/main/java"))
+                remoteUrl("https://github.com/brokenkernel/improvtools")
+                remoteLineSuffix = ("#L")
+            }
+
+        }
+    }
+
+    dokkaPublications {
+        html {
+            enabled = true
+            failOnWarning = true
+        }
+    }
+    pluginsConfiguration {
+        html {
+            homepageLink = "https://improvtools.brokenkernel.com"
+        }
+        versioning {
+        }
+    }
 }

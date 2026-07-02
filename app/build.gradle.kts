@@ -10,6 +10,7 @@ import com.mikepenz.aboutlibraries.plugin.StrictMode
 import java.io.IOException
 import java.util.Properties
 import org.gradle.kotlin.dsl.implementation
+import org.jetbrains.dokka.gradle.engine.parameters.VisibilityModifier
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 
 plugins {
@@ -421,4 +422,42 @@ ksp {
     arg("dagger.warnIfInjectionFactoryNotGeneratedUpstream", "enabled")
     arg("dagger.fullBindingGraphValidation", "error")
     arg("dagger.mapMultibindingDuplicateDetectionFix", "enabled")
+}
+
+dokka {
+    moduleName = project.name
+    dokkaSourceSets {
+        configureEach {
+            enableAndroidDocumentationLink = true
+            enableJdkDocumentationLink = true
+            enableKotlinStdLibDocumentationLink = true
+            documentedVisibilities =
+                setOf(
+                    VisibilityModifier.Public,
+                    VisibilityModifier.Internal,
+                    VisibilityModifier.Package,
+                    VisibilityModifier.Protected,
+                )
+            sourceLink {
+                localDirectory = (file("src/main/java"))
+                remoteUrl("https://github.com/brokenkernel/improvtools")
+                remoteLineSuffix = ("#L")
+            }
+
+        }
+    }
+
+    dokkaPublications {
+        html {
+            enabled = true
+            failOnWarning = true
+        }
+    }
+    pluginsConfiguration {
+        html {
+            homepageLink = "https://improvtools.brokenkernel.com"
+        }
+        versioning {
+        }
+    }
 }

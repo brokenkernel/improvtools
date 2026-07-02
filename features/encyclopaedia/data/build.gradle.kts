@@ -1,3 +1,5 @@
+import org.jetbrains.dokka.gradle.engine.parameters.VisibilityModifier
+
 plugins {
     id("java-library")
     alias(libs.plugins.jetbrains.kotlin.jvm)
@@ -43,4 +45,42 @@ ktlint {
     android.set(true)
     coloredOutput.set(true)
     version.set("1.8.0")
+}
+
+dokka {
+    moduleName = project.name
+    dokkaSourceSets {
+        configureEach {
+            enableAndroidDocumentationLink = true
+            enableJdkDocumentationLink = true
+            enableKotlinStdLibDocumentationLink = true
+            documentedVisibilities =
+                setOf(
+                    VisibilityModifier.Public,
+                    VisibilityModifier.Internal,
+                    VisibilityModifier.Package,
+                    VisibilityModifier.Protected,
+                )
+            sourceLink {
+                localDirectory = (file("src/main/java"))
+                remoteUrl("https://github.com/brokenkernel/improvtools")
+                remoteLineSuffix = ("#L")
+            }
+
+        }
+    }
+
+    dokkaPublications {
+        html {
+            enabled = true
+            failOnWarning = true
+        }
+    }
+    pluginsConfiguration {
+        html {
+            homepageLink = "https://improvtools.brokenkernel.com"
+        }
+        versioning {
+        }
+    }
 }
