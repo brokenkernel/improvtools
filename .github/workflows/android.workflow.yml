@@ -31,7 +31,7 @@ jobs:
       - name: Setup Java
         uses: actions/setup-java@v5
         with:
-          distribution: 'adopt'
+          distribution: 'temurin'
           java-version: '${{ steps.env.outputs.JVM_VERSION }}'
           cache: gradle
 
