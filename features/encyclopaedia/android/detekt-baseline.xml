@@ -3,10 +3,14 @@
   <ManuallySuppressedIssues/>
   <CurrentIssues>
     <ID>LibraryEntitiesShouldNotBePublic:GamesTabViewModel.kt:GamesTabViewModel : ViewModel</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:LoadableSingleWordThesaurusButtonViewModel.kt:LoadableSingleWordThesaurusButtonViewModel : ViewModel</ID>
     <ID>LibraryEntitiesShouldNotBePublic:SingleTagBottomTab.kt:@Composable public fun SingleTagBottomTab</ID>
     <ID>LibraryEntitiesShouldNotBePublic:SingleWordThesaurusButton.kt:@Composable public fun SingleWordThesaurusButton</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:ThesaurusSingleItemViewModel.kt:ThesaurusSingleItemViewModel : ViewModel</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:ThesaurusTabAllItemsViewModel.kt:ThesaurusTabAllItemsViewModel : ViewModel</ID>
     <ID>LibraryEntitiesShouldNotBePublic:TipsAndAdviceAsSelectable.kt:@Composable public fun TipsAndAdviceAsSelectable</ID>
     <ID>LibraryEntitiesShouldNotBePublic:TipsAndAdviceScreenAsList.kt:@Composable public fun TipsAndAdviceScreenAsList</ID>
     <ID>LibraryEntitiesShouldNotBePublic:TipsAndAdviceViewModeUI.kt:TipsAndAdviceViewModeUI</ID>
+    <ID>StringLiteralDuplication:ThesaurusSingleItemViewModel.kt:ThesaurusSingleItemViewModel$"&lt;/ul>"</ID>
   </CurrentIssues>
 </SmellBaseline>

@@ -6,7 +6,7 @@ import androidx.browser.customtabs.CustomTabsClient
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.compose.ui.platform.UriHandler
 import androidx.core.net.toUri
-import com.brokenkernel.improvtools.TAG
+import com.brokenkernel.improvtools.coreinfra.TAG
 
 internal class CustomTabUriHandler(val context: Context) : UriHandler {
     private val customTabSessionManager = CustomTabSessionManager()

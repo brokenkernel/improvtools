@@ -26,7 +26,7 @@ import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.application.navigation.ImprovToolsDestination
 import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
 import com.brokenkernel.improvtools.encyclopaedia.EncyclopaediaSectionNavigation
-import com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel.ThesaurusTabAllItemsViewModel
+import com.brokenkernel.improvtools.encyclopaedia.android.thesaurus.viewmodel.ThesaurusTabAllItemsViewModel
 import kotlinx.coroutines.launch
 
 @ImprovToolsDestination<ImprovToolsNavigationGraph>

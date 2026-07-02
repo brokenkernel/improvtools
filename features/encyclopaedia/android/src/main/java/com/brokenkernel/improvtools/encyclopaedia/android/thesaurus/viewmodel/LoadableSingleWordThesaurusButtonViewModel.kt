@@ -1,9 +1,9 @@
-package com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel
+package com.brokenkernel.improvtools.encyclopaedia.android.thesaurus.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.brokenkernel.improvtools.TAG
+import com.brokenkernel.improvtools.coreinfra.TAG
 import com.brokenkernel.improvtools.encyclopaedia.api.ThesaurusAPI
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -13,8 +13,9 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
+// TODO: internal
 @HiltViewModel
-internal class LoadableSingleWordThesaurusButtonViewModel @Inject constructor(
+public class LoadableSingleWordThesaurusButtonViewModel @Inject constructor(
     private val thesaurusAPI: ThesaurusAPI, // todo: this should be accessed through a repository
 ) : ViewModel() {
 
@@ -23,7 +24,8 @@ internal class LoadableSingleWordThesaurusButtonViewModel @Inject constructor(
     private val doesHaveDictionaryDetails: MutableMap<String, MutableStateFlow<Boolean>> = mutableMapOf()
     private val doesHaveDictionaryDetailsStateFlow: MutableMap<String, StateFlow<Boolean>> = mutableMapOf()
 
-    fun doesHaveDictionaryDetails(word: String): StateFlow<Boolean> {
+    // TODO: internal
+    public fun doesHaveDictionaryDetails(word: String): StateFlow<Boolean> {
         val msf = doesHaveDictionaryDetails.computeIfAbsent(word, { MutableStateFlow<Boolean>(false) })
         val sf = doesHaveDictionaryDetailsStateFlow.computeIfAbsent(word, { _ -> msf.asStateFlow() })
         val result = sf
@@ -31,6 +33,7 @@ internal class LoadableSingleWordThesaurusButtonViewModel @Inject constructor(
         return result
     }
 
+    // TODO: internal
     private fun asyncInitWord(word: String) {
         viewModelScope.launch(Dispatchers.IO) {
             val result = thesaurusAPI.hasWordDetails(word)
