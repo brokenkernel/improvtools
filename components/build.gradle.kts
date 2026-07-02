@@ -37,7 +37,7 @@ configure<LibraryExtension> {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
@@ -145,7 +145,6 @@ dokka {
                 remoteUrl("https://github.com/brokenkernel/improvtools")
                 remoteLineSuffix = ("#L")
             }
-
         }
     }
 
@@ -214,7 +213,6 @@ dokka {
                 remoteUrl("https://github.com/brokenkernel/improvtools")
                 remoteLineSuffix = ("#L")
             }
-
         }
     }
 

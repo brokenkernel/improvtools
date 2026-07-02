@@ -158,7 +158,6 @@ dokka {
                 remoteUrl("https://github.com/brokenkernel/improvtools")
                 remoteLineSuffix = ("#L")
             }
-
         }
     }
 
