@@ -1,4 +1,4 @@
-package com.brokenkernel.improvtools.encyclopaedia.android.thesaurus.viewmodel
+package com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import com.brokenkernel.improvtools.encyclopaedia.api.ThesaurusAPI
@@ -6,16 +6,14 @@ import com.brokenkernel.improvtools.encyclopaedia.data.repository.ThesaurusRepos
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
-// TODO: internal
 @HiltViewModel
-public class ThesaurusSingleItemViewModel @Inject constructor(
+internal class ThesaurusSingleItemViewModel @Inject constructor(
     thesaurusRepository: ThesaurusRepository,
     private val thesaurusAPI: ThesaurusAPI, // todo: this should be accessed through a repository
 ) : ViewModel() {
     private val dictionaryInfo = thesaurusRepository.getDictionaryInfo()
 
-    // TODO: internal
-    public fun shouldShowActionSynonyms(word: String): Boolean {
+    fun shouldShowActionSynonyms(word: String): Boolean {
         return dictionaryInfo.synonymsForWord(word).isNotEmpty()
     }
 
@@ -24,8 +22,7 @@ public class ThesaurusSingleItemViewModel @Inject constructor(
     }
 
     // TODO: consider using Room in general for caching?
-    // TODO: internal
-    public fun renderedActionSynonyms(word: String): String {
+    fun renderedActionSynonyms(word: String): String {
         return buildString {
             append("<ul>")
             synonyms(word).forEach { synonym ->
@@ -35,8 +32,7 @@ public class ThesaurusSingleItemViewModel @Inject constructor(
         }
     }
 
-    // TODO: internal
-    public fun renderedWordSenses(word: String): String {
+    fun renderedWordSenses(word: String): String {
         val allSenseDatum = thesaurusAPI.getSenseDatum(word)
 
         val senseString: String = buildString {

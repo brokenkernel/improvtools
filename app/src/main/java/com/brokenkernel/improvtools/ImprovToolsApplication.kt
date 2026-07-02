@@ -5,7 +5,6 @@ import android.os.Build
 import android.os.StrictMode
 import android.util.Log
 import android.util.Log.DEBUG
-import com.brokenkernel.improvtools.coreinfra.TAG
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
 import com.google.firebase.Firebase

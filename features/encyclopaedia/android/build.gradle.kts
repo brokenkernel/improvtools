@@ -85,7 +85,6 @@ dependencies {
     implementation(libs.androidx.animation)
     implementation(libs.androidx.compose.material.materialIconsExtended)
     implementation(libs.androidx.foundation)
-    implementation(libs.androidx.hilt.lifecycle.viewmodel.compose)
     implementation(libs.androidx.material.icons.core)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.runtime.saveable)

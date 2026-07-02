@@ -7,7 +7,7 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.brokenkernel.improvtools.coreinfra.preview.ImprovToolsAllPreviews
 import com.brokenkernel.improvtools.encyclopaedia.android.components.SingleWordThesaurusButton
-import com.brokenkernel.improvtools.encyclopaedia.android.thesaurus.viewmodel.LoadableSingleWordThesaurusButtonViewModel
+import com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel.LoadableSingleWordThesaurusButtonViewModel
 
 @Composable
 internal fun LoadableSingleWordThesaurusButton(

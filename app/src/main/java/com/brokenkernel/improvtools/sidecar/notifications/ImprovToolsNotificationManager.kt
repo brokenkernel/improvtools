@@ -8,7 +8,7 @@ import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresPermission
 import com.brokenkernel.improvtools.R
-import com.brokenkernel.improvtools.coreinfra.TAG
+import com.brokenkernel.improvtools.TAG
 import com.brokenkernel.improvtools.timer.model.TimerState
 import kotlin.time.Clock
 import kotlin.time.ExperimentalTime
