@@ -257,7 +257,6 @@ dependencies {
     releaseRuntimeOnly(libs.leakcanary.object1.watcher.android)
 
     debugRuntimeOnly(libs.androidx.ui.test.manifest)
-    debugRuntimeOnly(libs.leakcanary.android)
     // TODO: add profilable build
     // TODO: https://square.github.io/leakcanary/ui-tests/
     debugRuntimeOnly(libs.leakcanary.android)
