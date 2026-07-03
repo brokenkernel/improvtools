@@ -1,14 +1,14 @@
 package com.brokenkernel.components.filteredlist
 
 import androidx.compose.foundation.layout.FlowRow
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.util.fastAny
 import com.brokenkernel.components.R
 import com.brokenkernel.components.view.SimpleIconButton
@@ -40,7 +40,7 @@ public inline fun <reified T : Enum<T>> ChipBar(
         SimpleTooltipWrapper(tooltip = stringResource(R.string.clear_all)) {
             SimpleIconButton(
                 onClick = onClearClick,
-                icon = Icons.Default.Clear,
+                icon = ImageVector.vectorResource(R.drawable.clear_all_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
                 contentDescription = stringResource(R.string.clear_all),
                 enabled = isChipsChecked.fastAny { it },
             )
