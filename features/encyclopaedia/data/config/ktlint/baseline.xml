@@ -1,3 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <baseline version="1.0">
+    <file name="src/main/java/com/brokenkernel/improvtools/encyclopaedia/data/icons/fireplace.kt">
+        <error line="1" column="1" source="standard:filename" />
+        <error line="101" column="13" source="standard:backing-property-naming" />
+    </file>
+    <file name="src/main/java/com/brokenkernel/improvtools/encyclopaedia/data/icons/format_quote.kt">
+        <error line="1" column="1" source="standard:filename" />
+        <error line="94" column="13" source="standard:backing-property-naming" />
+        <error line="94" column="13" source="standard:backing-property-naming" />
+    </file>
+    <file name="src/main/java/com/brokenkernel/improvtools/encyclopaedia/data/icons/self_improvement.kt">
+        <error line="1" column="1" source="standard:filename" />
+        <error line="99" column="13" source="standard:backing-property-naming" />
+        <error line="99" column="13" source="standard:backing-property-naming" />
+    </file>
+    <file name="src/main/java/com/brokenkernel/improvtools/encyclopaedia/data/icons/toys_and_games.kt">
+        <error line="1" column="1" source="standard:filename" />
+        <error line="144" column="13" source="standard:backing-property-naming" />
+        <error line="144" column="13" source="standard:backing-property-naming" />
+    </file>
 </baseline>

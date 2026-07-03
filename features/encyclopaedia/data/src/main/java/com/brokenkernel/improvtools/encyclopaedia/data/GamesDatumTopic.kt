@@ -1,17 +1,15 @@
 package com.brokenkernel.improvtools.encyclopaedia.data
 
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Fireplace
-import androidx.compose.material.icons.outlined.FormatQuote
-import androidx.compose.material.icons.outlined.Games
-import androidx.compose.material.icons.outlined.SelfImprovement
 import androidx.compose.ui.graphics.vector.ImageVector
+import com.brokenkernel.improvtools.encyclopaedia.data.icons.fireplace
+import com.brokenkernel.improvtools.encyclopaedia.data.icons.format_quote
+import com.brokenkernel.improvtools.encyclopaedia.data.icons.self_improvement
+import com.brokenkernel.improvtools.encyclopaedia.data.icons.toys_and_games
 
 // TODO: This should be internal
-// TODO: figure out how to handle / drawable
 public enum class GamesDatumTopic(public val icon: ImageVector) {
-    GAME(icon = Icons.Outlined.Games),
-    WARMUP(icon = Icons.Outlined.Fireplace),
-    EXERCISE(icon = Icons.Outlined.FormatQuote),
-    FORMAT(icon = Icons.Outlined.SelfImprovement),
+    GAME(icon = toys_and_games),
+    WARMUP(icon = fireplace),
+    EXERCISE(icon = format_quote),
+    FORMAT(icon = self_improvement),
 }

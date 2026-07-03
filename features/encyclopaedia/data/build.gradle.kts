@@ -28,8 +28,6 @@ dependencies {
     implementation(enforcedPlatform(libs.androidx.compose.bom))
     implementation(enforcedPlatform(libs.kotlin.bom))
     implementation(libs.androidx.collection.jvm)
-    implementation(libs.androidx.compose.material.materialIconsExtended)
-    implementation(libs.androidx.material.icons.core)
     implementation(libs.androidx.ui)
     implementation(libs.extjwnl)
     implementation(libs.javax.inject)
