@@ -7,7 +7,8 @@ import androidx.compose.material.icons.outlined.Games
 import androidx.compose.material.icons.outlined.SelfImprovement
 import androidx.compose.ui.graphics.vector.ImageVector
 
-// This should be internal
+// TODO: This should be internal
+// TODO: figure out how to handle / drawable
 public enum class GamesDatumTopic(public val icon: ImageVector) {
     GAME(icon = Icons.Outlined.Games),
     WARMUP(icon = Icons.Outlined.Fireplace),
