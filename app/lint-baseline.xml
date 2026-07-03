@@ -46,6 +46,24 @@
     </issue>
 
     <issue
+        id="PrivateResource"
+        message="Overriding `@drawable/toys_and_games_24dp_1f1f1f_fill0_wght400_grad0_opsz24` which is marked as private in ImprovTools.features.encyclopaedia:android:unspecified. If deliberate, use tools:override=&quot;true&quot;, otherwise pick a different name.">
+        <location
+            file="src/main/res/drawable/toys_and_games_24dp_1f1f1f_fill0_wght400_grad0_opsz24.xml"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.attribution_24dp_1f1f1f_fill0_wght400_grad0_opsz24` appears to be unused"
+        errorLine1="&lt;vector xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;"
+        errorLine2="^">
+        <location
+            file="src/main/res/drawable/attribution_24dp_1f1f1f_fill0_wght400_grad0_opsz24.xml"
+            line="1"
+            column="1"/>
+    </issue>
+
+    <issue
         id="UnusedResources"
         message="The resource `R.drawable.fireplace_24dp_1f1f1f_fill0_wght400_grad0_opsz24` appears to be unused"
         errorLine1="&lt;vector xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;"
@@ -69,17 +87,6 @@
 
     <issue
         id="UnusedResources"
-        message="The resource `R.drawable.lightbulb_24dp_1f1f1f_fill0_wght400_grad0_opsz24` appears to be unused"
-        errorLine1="&lt;vector xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;"
-        errorLine2="^">
-        <location
-            file="src/main/res/drawable/lightbulb_24dp_1f1f1f_fill0_wght400_grad0_opsz24.xml"
-            line="1"
-            column="1"/>
-    </issue>
-
-    <issue
-        id="UnusedResources"
         message="The resource `R.drawable.menu_open_24dp_1f1f1f_fill0_wght400_grad0_opsz24` appears to be unused"
         errorLine1="&lt;vector xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;"
         errorLine2="^">
@@ -96,17 +103,6 @@
         errorLine2="^">
         <location
             file="../features/encyclopaedia/android/src/main/res/drawable/self_improvement_24dp_1f1f1f_fill0_wght400_grad0_opsz24.xml"
-            line="1"
-            column="1"/>
-    </issue>
-
-    <issue
-        id="UnusedResources"
-        message="The resource `R.drawable.toys_and_games_24dp_1f1f1f_fill0_wght400_grad0_opsz24` appears to be unused"
-        errorLine1="&lt;vector xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;"
-        errorLine2="^">
-        <location
-            file="../features/encyclopaedia/android/src/main/res/drawable/toys_and_games_24dp_1f1f1f_fill0_wght400_grad0_opsz24.xml"
             line="1"
             column="1"/>
     </issue>
