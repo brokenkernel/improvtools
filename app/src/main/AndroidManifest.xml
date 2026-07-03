@@ -5,12 +5,6 @@
     android:targetSandboxVersion="2"
     android:installLocation="auto">
 
-    <dist:module dist:instant="true">
-        <dist:delivery>
-            <dist:install-time />
-        </dist:delivery>
-    </dist:module>
-
     <uses-feature
         android:name="android.hardware.faketouch"
         android:required="false" />
