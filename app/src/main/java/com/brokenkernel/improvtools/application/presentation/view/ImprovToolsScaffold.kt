@@ -5,9 +5,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -24,10 +21,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.vectorResource
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.brokenkernel.components.view.SimpleIconButton
 import com.brokenkernel.improvtools.R
@@ -89,7 +88,8 @@ internal fun ImprovToolsScaffold(
                     navigationIcon = {
                         SimpleIconButton(
                             onClick = navMenuButtonPressedCallback,
-                            icon = Icons.Default.Menu,
+                            // TODO: switch to MenuOpen when required
+                            icon = ImageVector.vectorResource(R.drawable.menu_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
                             contentDescription = stringResource(R.string.navigation_app_menu),
                         )
                     },
@@ -100,7 +100,9 @@ internal fun ImprovToolsScaffold(
                                     improvToolsAppState.extraMenuExpandedState =
                                         !improvToolsAppState.extraMenuExpandedState
                                 },
-                                icon = Icons.Filled.MoreVert,
+                                icon = ImageVector.vectorResource(
+                                    R.drawable.more_vert_24dp_1f1f1f_fill0_wght400_grad0_opsz24,
+                                ),
                                 contentDescription = stringResource(
                                     R.string.navigation_open_screen_specific_menu,
                                 ),

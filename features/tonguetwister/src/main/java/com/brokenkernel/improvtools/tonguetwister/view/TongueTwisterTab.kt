@@ -15,9 +15,6 @@ import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.PauseCircle
-import androidx.compose.material.icons.filled.PlayCircle
 import androidx.compose.material3.Card
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
@@ -30,9 +27,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLocale
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.brokenkernel.components.view.HtmlText
@@ -128,9 +127,9 @@ private fun SingleTongueTwisterCard(
                 ) {
                     Icon(
                         imageVector = if (isSpeaking) {
-                            Icons.Default.PauseCircle
+                            ImageVector.vectorResource(R.drawable.pause_circle_24dp_1f1f1f_fill0_wght400_grad0_opsz24)
                         } else {
-                            Icons.Default.PlayCircle
+                            ImageVector.vectorResource(R.drawable.play_circle_24dp_1f1f1f_fill0_wght400_grad0_opsz24)
                         },
                         contentDescription = if (isSpeaking) {
                             stringResource(R.string.tts_pause)
