@@ -6,8 +6,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -17,7 +15,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
@@ -144,7 +144,7 @@ public fun SlottedTimerCardContent(
             Spacer(Modifier.weight(1f))
             SimpleIconButton(
                 onClick = onRemoveTimer,
-                icon = Icons.Default.Delete,
+                icon = ImageVector.vectorResource(R.drawable.delete_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
                 contentDescription = stringResource(R.string.remove_timer),
             )
             DragIconButton(scope)

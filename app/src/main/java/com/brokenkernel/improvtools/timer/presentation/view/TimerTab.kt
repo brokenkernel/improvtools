@@ -8,12 +8,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AlarmAdd
-import androidx.compose.material.icons.filled.AlarmOff
-import androidx.compose.material.icons.filled.AlarmOn
-import androidx.compose.material.icons.filled.Timer
-import androidx.compose.material.icons.filled.TimerOff
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LargeFloatingActionButton
 import androidx.compose.material3.OutlinedButton
@@ -28,6 +22,7 @@ import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -121,8 +116,8 @@ private fun CountDownTimer(
             }
         },
         onRemoveTimer = onRemoveTimer,
-        iconPaused = Icons.Default.AlarmOff,
-        iconStarted = Icons.Default.AlarmOn,
+        iconPaused = ImageVector.vectorResource(R.drawable.alarm_off_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
+        iconStarted = ImageVector.vectorResource(R.drawable.alarm_on_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
         iconDescription = stringResource(R.string.count_down_timer),
         onTitleChange = onTitleChange,
         scope = scope,
@@ -155,8 +150,8 @@ private fun CountUpTimer(
                 Text(stringResource(R.string.timer_reset))
             }
         },
-        iconPaused = Icons.Default.TimerOff,
-        iconStarted = Icons.Default.Timer,
+        iconPaused = ImageVector.vectorResource(R.drawable.timer_off_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
+        iconStarted = ImageVector.vectorResource(R.drawable.timer_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
         iconDescription = stringResource(R.string.stop_watch),
         onRemoveTimer = onRemoveTimer,
         onTitleChange = onTitleChange,
@@ -266,14 +261,20 @@ internal fun TimerTab(
                         viewModel.addCountUpTimer(newStopwatchString)
                     },
                 ) {
-                    Icon(Icons.Filled.Timer, newStopwatchString)
+                    Icon(
+                        ImageVector.vectorResource(R.drawable.timer_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
+                        newStopwatchString,
+                    )
                 }
                 LargeFloatingActionButton(
                     onClick = {
                         viewModel.addCountDownTimer(newStopwatchString)
                     },
                 ) {
-                    Icon(Icons.Filled.AlarmAdd, newCountdownString)
+                    Icon(
+                        ImageVector.vectorResource(R.drawable.alarm_add_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
+                        newCountdownString,
+                    )
                 }
             }
         }

@@ -78,12 +78,10 @@ dependencies {
 
     implementation(enforcedPlatform(libs.androidx.compose.bom))
     implementation(enforcedPlatform(libs.kotlin.bom))
-    implementation(libs.androidx.compose.material.materialIconsExtended)
     implementation(libs.androidx.foundation)
     implementation(libs.androidx.foundation.layout)
     implementation(libs.androidx.lifecycle.common)
     implementation(libs.androidx.lifecycle.runtime.compose)
-    implementation(libs.androidx.material.icons.core)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.text)

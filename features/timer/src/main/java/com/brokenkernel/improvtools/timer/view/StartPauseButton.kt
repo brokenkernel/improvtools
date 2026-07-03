@@ -1,8 +1,5 @@
 package com.brokenkernel.improvtools.timer.view
 
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Pause
-import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -10,6 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.vectorResource
 import com.brokenkernel.improvtools.timer.R
 import com.brokenkernel.improvtools.timer.model.TimerState
 
@@ -40,9 +38,9 @@ public fun StartPauseButton(
             }
         val curButtonIcon: ImageVector =
             if (timerState.isStarted()) {
-                Icons.Default.Pause
+                ImageVector.vectorResource(R.drawable.pause_24dp_1f1f1f_fill0_wght400_grad0_opsz24)
             } else {
-                Icons.Default.PlayArrow
+                ImageVector.vectorResource(R.drawable.play_arrow_24dp_1f1f1f_fill0_wght400_grad0_opsz24)
             }
         Icon(
             curButtonIcon,
