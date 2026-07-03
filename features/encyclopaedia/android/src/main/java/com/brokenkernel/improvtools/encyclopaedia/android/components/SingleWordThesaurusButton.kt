@@ -1,14 +1,14 @@
 package com.brokenkernel.improvtools.encyclopaedia.android.components
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ReadMore
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.brokenkernel.components.view.SimpleIconButton
 import com.brokenkernel.improvtools.encyclopaedia.android.R
@@ -24,7 +24,7 @@ public fun SingleWordThesaurusButton(
         onClick = {
             onNavigateToWord(word)
         },
-        icon = Icons.AutoMirrored.Default.ReadMore,
+        icon = ImageVector.vectorResource(R.drawable.read_more_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
         contentDescription = stringResource(
             R.string.see_word_details_for,
             word,

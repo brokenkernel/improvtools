@@ -3,16 +3,14 @@ package com.brokenkernel.improvtools.suggestions.view
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.outlined.ListAlt
-import androidx.compose.material.icons.outlined.PsychologyAlt
-import androidx.compose.material.icons.outlined.TheaterComedy
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import com.brokenkernel.components.view.DragIconButton
 import com.brokenkernel.components.view.SimpleIconButton
@@ -55,7 +53,9 @@ public fun ReorderableCollectionItemScope.SuggestionsSingleCategoryRow(
                 if (ideaCategory.showLinkToEmotion) {
                     SimpleIconButton(
                         onClick = onGoToEmotionTab,
-                        icon = Icons.Outlined.PsychologyAlt,
+                        icon = ImageVector.vectorResource(
+                            R.drawable.psychology_alt_24dp_1f1f1f_fill0_wght400_grad0_opsz24,
+                        ),
                         contentDescription = stringResource(
                             R.string.go_to_emotions_reference,
                         ),
@@ -69,7 +69,9 @@ public fun ReorderableCollectionItemScope.SuggestionsSingleCategoryRow(
                                 ExplanationBottomSheetTab(currentIdea.idea, currentExplanation)
                             })
                         },
-                        icon = Icons.Outlined.TheaterComedy,
+                        icon = ImageVector.vectorResource(
+                            R.drawable.theater_comedy_24dp_1f1f1f_fill0_wght400_grad0_opsz24,
+                        ),
                         contentDescription = stringResource(R.string.explain_this_term),
                     )
                 }
@@ -88,7 +90,7 @@ public fun ReorderableCollectionItemScope.SuggestionsSingleCategoryRow(
                             )
                         })
                     },
-                    icon = Icons.AutoMirrored.Outlined.ListAlt,
+                    icon = ImageVector.vectorResource(R.drawable.list_alt_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
                     contentDescription = stringResource(R.string.suggestions_see_all_category_words),
                 )
                 DragIconButton(dragScope)

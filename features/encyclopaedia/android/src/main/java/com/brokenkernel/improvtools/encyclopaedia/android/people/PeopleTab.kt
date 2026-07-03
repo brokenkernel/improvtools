@@ -6,9 +6,6 @@ import android.icu.text.StringSearch
 import android.icu.util.ULocale
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Web
-import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.OutlinedIconButton
@@ -19,9 +16,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.intl.Locale
 import com.brokenkernel.components.filteredlist.TabbedSearchableColumn
@@ -111,7 +110,7 @@ internal fun PeopleTab(modifier: Modifier = Modifier) {
             headlineContent = { Text(it.personName) },
             leadingContent = {
                 Icon(
-                    Icons.Outlined.Person,
+                    ImageVector.vectorResource(R.drawable.person_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
                     contentDescription = "Person",
                 )
             },
@@ -134,7 +133,7 @@ internal fun PeopleTab(modifier: Modifier = Modifier) {
                                 )
                             } else {
                                 Icon(
-                                    Icons.Default.Web,
+                                    ImageVector.vectorResource(R.drawable.web_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
                                     contentDescription = stringResource(R.string.open_website),
                                 )
                             }
