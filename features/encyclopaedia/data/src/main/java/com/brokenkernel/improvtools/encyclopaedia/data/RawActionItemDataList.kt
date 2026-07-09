@@ -637,7 +637,6 @@ internal object RawActionItemDataList {
         ActionItem("enrage"),
         ActionItem("enrapture"),
         ActionItem("enrich"),
-        ActionItem("enrol"),
         ActionItem("enroll"),
         ActionItem("enshrine"),
         ActionItem("enslave"),
