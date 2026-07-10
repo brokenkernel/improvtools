@@ -38,5 +38,6 @@
     <ID>MultilineRawStringIndentation:GamesDatumTag.kt:GamesDatumTag.MEDIUMFORM$"""A collection of scenes with a semi-coherent theme along a defined form or structure. | Sometimes also called &lt;i>longform&lt;/i> """</ID>
     <ID>OutdatedDocumentation:GamesDataItem.kt:GamesDataItem</ID>
     <ID>StringLiteralDuplication:PeopleDatum.kt:"BATS Improv"</ID>
+    <ID>StringLiteralDuplication:RawActionItemDataList.kt:RawActionItemDataList$"confuse"</ID>
   </CurrentIssues>
 </SmellBaseline>
