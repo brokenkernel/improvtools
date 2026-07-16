@@ -180,6 +180,16 @@ dependencies {
     implementation(enforcedPlatform(libs.androidx.compose.bom))
     implementation(enforcedPlatform(libs.com.google.firebase.firebaseBom))
     implementation(enforcedPlatform(libs.kotlin.bom))
+    implementation(projects.components)
+    implementation(projects.coreinfra)
+    implementation(projects.features.buzzer)
+    implementation(projects.features.encyclopaedia.android)
+    implementation(projects.features.encyclopaedia.data)
+    // TODO: remove the `:data` entry of suggestions
+    implementation(projects.features.suggestions.android)
+    implementation(projects.features.suggestions.data)
+    implementation(projects.features.timer)
+    implementation(projects.features.tonguetwister)
     implementation(libs.aboutlibraries.compose.m3)
     implementation(libs.aboutlibraries.core)
     implementation(libs.accompanist.permissions)
@@ -232,16 +242,6 @@ dependencies {
     implementation(libs.navigation.runtime)
     implementation(libs.play.services.oss.licenses)
     implementation(libs.reorderable)
-    implementation(projects.components)
-    implementation(projects.coreinfra)
-    implementation(projects.features.buzzer)
-    implementation(projects.features.encyclopaedia.android)
-    implementation(projects.features.encyclopaedia.data)
-    // TODO: remove the `:data` entry of suggestions
-    implementation(projects.features.suggestions.android)
-    implementation(projects.features.suggestions.data)
-    implementation(projects.features.timer)
-    implementation(projects.features.tonguetwister)
 
     debugImplementation(libs.androidx.ui.tooling)
 

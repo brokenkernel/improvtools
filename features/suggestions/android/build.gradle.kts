@@ -70,10 +70,10 @@ kotlin {
 }
 
 dependencies {
+    api(projects.features.suggestions.data)
     api(libs.androidx.foundation.layout)
     api(libs.androidx.runtime)
     api(libs.androidx.ui)
-    api(projects.features.suggestions.data)
 
     releaseApi(libs.reorderable)
 
@@ -81,14 +81,14 @@ dependencies {
 
     implementation(enforcedPlatform(libs.androidx.compose.bom))
     implementation(enforcedPlatform(libs.kotlin.bom))
+    implementation(projects.components)
+    implementation(projects.coreinfra)
     implementation(libs.androidx.animation.core)
     implementation(libs.androidx.foundation)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.ui.text)
     implementation(libs.androidx.ui.unit)
     implementation(libs.kotlinx.collections.immutable.jvm)
-    implementation(projects.components)
-    implementation(projects.coreinfra)
 
     testImplementation(libs.junit)
 

@@ -74,16 +74,18 @@ kotlin {
 }
 
 dependencies {
+    api(projects.features.encyclopaedia.data)
     api(libs.androidx.foundation.layout)
     api(libs.androidx.lifecycle.viewmodel.savedstate)
     api(libs.androidx.navigation.common)
     api(libs.androidx.runtime)
     api(libs.androidx.ui)
     api(libs.io.github.raamcosta.composeDestinations.core)
-    api(projects.features.encyclopaedia.data)
 
     implementation(enforcedPlatform(libs.androidx.compose.bom))
     implementation(enforcedPlatform(libs.kotlin.bom))
+    implementation(projects.components)
+    implementation(projects.coreinfra)
     implementation(libs.androidx.animation)
     implementation(libs.androidx.foundation)
     implementation(libs.androidx.material3)
@@ -93,8 +95,6 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.ui.unit)
     implementation(libs.kotlinx.collections.immutable.jvm)
-    implementation(projects.components)
-    implementation(projects.coreinfra)
 
     debugRuntimeOnly(libs.androidx.ui.test.manifest)
 
@@ -105,6 +105,7 @@ dependencies {
 
     testImplementation(libs.junit)
 
+    androidTestImplementation(projects.coreinfra)
     androidTestImplementation(libs.androidx.activity)
     androidTestImplementation(libs.androidx.annotation)
     androidTestImplementation(libs.androidx.core)
@@ -124,7 +125,6 @@ dependencies {
     androidTestImplementation(libs.hilt.android.testing)
     androidTestImplementation(libs.junit)
     androidTestImplementation(libs.navigation.runtime)
-    androidTestImplementation(projects.coreinfra)
 
     detektPlugins(libs.composeDetektRules)
     detektPlugins(libs.detektRulesLibraries)

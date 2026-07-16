@@ -3,44 +3,12 @@ package com.brokenkernel.improvtools
 import android.app.Application
 import android.os.Build
 import android.os.StrictMode
-import android.util.Log
-import android.util.Log.DEBUG
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
 import com.google.firebase.Firebase
 import com.google.firebase.crashlytics.crashlytics
 import com.google.firebase.perf.performance
-import com.google.firebase.remoteconfig.ConfigUpdate
-import com.google.firebase.remoteconfig.ConfigUpdateListener
-import com.google.firebase.remoteconfig.FirebaseRemoteConfig
-import com.google.firebase.remoteconfig.FirebaseRemoteConfigException
-import com.google.firebase.remoteconfig.remoteConfig
-import com.google.firebase.remoteconfig.remoteConfigSettings
 import dagger.hilt.android.HiltAndroidApp
-import kotlin.time.Duration.Companion.hours
-
-private fun configureRemoteConfig() {
-    val remoteConfig: FirebaseRemoteConfig = Firebase.remoteConfig
-    val configSettings = remoteConfigSettings {
-        minimumFetchIntervalInSeconds = 1.hours.inWholeSeconds
-    }
-    remoteConfig.setDefaultsAsync(R.xml.remote_config_defaults)
-    remoteConfig.setConfigSettingsAsync(configSettings)
-
-    remoteConfig.addOnConfigUpdateListener(
-        object : ConfigUpdateListener {
-            override fun onUpdate(configUpdate: ConfigUpdate) {
-                if (Log.isLoggable(TAG, DEBUG)) {
-                    Log.d(TAG, "Updated keys: " + configUpdate.updatedKeys)
-                }
-            }
-
-            override fun onError(error: FirebaseRemoteConfigException) {
-                Log.w(TAG, "Config update error with code: " + error.code, error)
-            }
-        },
-    )
-}
 
 @HiltAndroidApp
 public class ImprovToolsApplication : Application() {
@@ -97,7 +65,6 @@ public class ImprovToolsApplication : Application() {
         StrictMode.setVmPolicy(strictModeVMPolicy.build())
         StrictMode.setThreadPolicy(strictModeThreadPolicy.build())
 
-        configureRemoteConfig()
         Firebase.crashlytics.setCustomKey("buildconfig_build_type", BuildConfig.BUILD_TYPE)
 
         Firebase.performance.isPerformanceCollectionEnabled = true

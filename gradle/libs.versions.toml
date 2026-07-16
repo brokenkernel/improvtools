@@ -33,7 +33,6 @@ extjwnl = "2.0.5"
 extjwnlDataWn31 = "1.2"
 firebaseAnalytics = "23.2.0"
 firebaseBom = "34.16.0"
-firebaseConfig = "23.1.0"
 firebaseCrashlytics = "20.1.0"
 firebaseCrashlyticsPlugin = "3.0.7"
 firebasePerf = "22.0.6"
@@ -185,7 +184,6 @@ dagger-hilt-core = { module = "com.google.dagger:hilt-core", version.ref = "hilt
 detektRulesLibraries = { module = "dev.detekt:detekt-rules-libraries", version.ref = "detektVersion" }
 extjwnl = { module = "net.sf.extjwnl:extjwnl", version.ref = "extjwnl" }
 extjwnl-data-wn31 = { module = "net.sf.extjwnl:extjwnl-data-wn31", version.ref = "extjwnlDataWn31" }
-firebase-config = { module = "com.google.firebase:firebase-config", version.ref = "firebaseConfig" }
 fragment = { module = "androidx.fragment:fragment", version.ref = "fragmentVersion" }
 google-dagger = { module = "com.google.dagger:dagger", version.ref = "daggerVersion" }
 guava = { module = "com.google.guava:guava", version.ref = "guava" }
@@ -238,7 +236,6 @@ firebase = [
     "com-google-firebase-analytics",
     "com-google-firebase-crashlytics",
     "com-google-firebase-firebasePerf",
-    "firebase-config",
 ]
 
 [plugins]
