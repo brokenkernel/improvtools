@@ -108,7 +108,6 @@ versionCatalogUpdate {
 }
 
 doctor {
-    disallowMultipleDaemons = true
     javaHome {
         ensureJavaHomeMatches = false
     }
