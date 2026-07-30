@@ -7,6 +7,7 @@ import com.brokenkernel.improvtools.encyclopaedia.data.GamesDatumTopic
 // TODO: make things internal once things are modularised
 // TODO: add number of players for games
 // TODO: see also?
+// TODO: i18n
 
 public val GamesDatum: Collection<GamesDataItem> = listOf(
     GamesDataItem(
@@ -57,6 +58,10 @@ public val GamesDatum: Collection<GamesDataItem> = listOf(
     ),
     GamesDataItem(
         gameName = "Conducted Story",
+        topic = GamesDatumTopic.GAME,
+    ),
+    GamesDataItem(
+        gameName = "Word At A Time Story",
         topic = GamesDatumTopic.GAME,
     ),
     GamesDataItem(
@@ -243,4 +248,42 @@ public val GamesDatum: Collection<GamesDataItem> = listOf(
         gameName = "Tap In/Tap Out",
         topic = GamesDatumTopic.WARMUP,
     ),
+    GamesDataItem(
+        gameName = "Pass The Clap",
+        topic = GamesDatumTopic.WARMUP,
+        detailedInformation = """
+            |Someone starts the clap and players take turns clapping.
+            |You must clap at the same time as the perosn you're getting the clap from — and the group should keep the same rhythm.
+        """.trimMargin(),
+    ),
+    GamesDataItem(
+        gameName = "Pass The Dance",
+        topic = GamesDatumTopic.WARMUP,
+    ),
+    GamesDataItem(
+        gameName = "Freeze and Justify",
+        topic = GamesDatumTopic.EXERCISE,
+    ),
+    GamesDataItem(
+        gameName = "What Are You Doing?",
+        topic = GamesDatumTopic.EXERCISE,
+    ),
+    GamesDataItem(
+        gameName = "Park Bench/Bus Stop!",
+        topic = GamesDatumTopic.EXERCISE,
+    ),
+    GamesDataItem(
+        gameName = "Try Not To Laugh",
+        topic = GamesDatumTopic.EXERCISE,
+    ),
+    GamesDataItem(
+        gameName = "Yes, No, Maybe, Banana.",
+        topic = GamesDatumTopic.EXERCISE,
+        detailedInformation = """
+            |Perform a scene. The only words you're allowed to say
+            | are 'Yes', 'No', 'Maybe', and 'Banana'. The Scene may not include monkeys,
+            |  apes, or any similar animals.
+        """.trimMargin(),
+    ),
+
 )

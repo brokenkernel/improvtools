@@ -8,7 +8,7 @@ public data class ActionItem(
     val synonyms: ImmutableSet<String> = persistentSetOf(),
 
     /**
-     * The word is best used when played to a group of people
+     * The word is best used when played to a group of people.
      */
-    val plural: Boolean = false
+    val plural: Boolean = false,
 )
