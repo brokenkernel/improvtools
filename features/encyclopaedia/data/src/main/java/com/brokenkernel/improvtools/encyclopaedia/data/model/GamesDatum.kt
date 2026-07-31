@@ -253,7 +253,7 @@ public val GamesDatum: Collection<GamesDataItem> = listOf(
         topic = GamesDatumTopic.WARMUP,
         detailedInformation = """
             |Someone starts the clap and players take turns clapping.
-            |You must clap at the same time as the perosn you're getting the clap from — and the group should keep the same rhythm.
+            |You must clap at the same time as the person you're getting the clap from — and the group should keep the same rhythm.
         """.trimMargin(),
     ),
     GamesDataItem(
