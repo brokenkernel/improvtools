@@ -56,6 +56,7 @@ kotlinxCollectionsImmutableJvm = "0.5.1"
 kotlinxCoroutinesCore = "1.11.0"
 kotlinxCoroutinesTest = "1.11.0"
 kotlinxSerialization = "1.11.0"
+kotlinparcelize = "2.4.20-Beta2"
 kover = "0.9.9"
 ksp = "2.3.10"
 ktlint = "14.2.0"
@@ -254,6 +255,7 @@ firebasePerfPlugin = { id = "com.google.firebase.firebase-perf", version.ref = "
 google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }
 jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlinparcelize" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }

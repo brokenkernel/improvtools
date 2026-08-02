@@ -27,7 +27,7 @@ import com.ramcosta.composedestinations.spec.DirectionDestinationSpec
 import com.ramcosta.composedestinations.spec.TypedDestinationSpec
 
 /**
- * A [[DirectionDestinationSpec]] is a destination that can be navigated to. It should display anique inner content.
+ * A [[DirectionDestinationSpec]] is a destination that can be navigated to. It should display unique inner content.
  * If somewhere else can display a button to click to get there, it needs a route.
  */
 internal enum class NavigableScreens(
