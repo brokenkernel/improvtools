@@ -24,9 +24,8 @@ import com.brokenkernel.components.view.HtmlText
 import com.brokenkernel.improvtools.encyclopaedia.data.tipsandadvice.TipContentUI
 import com.brokenkernel.improvtools.encyclopaedia.data.tipsandadvice.TipsAndAdviceUIState
 
-// TODO: make internal
 @Composable
-public fun TipsAndAdviceScreenAsList(
+public fun TipsAndAdviceScreen(
     uiState: TipsAndAdviceUIState,
     modifier: Modifier = Modifier,
 ) {

@@ -16,9 +16,6 @@ import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.navigation.ImprovToolsDestination
 import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
 import com.brokenkernel.improvtools.datastore.UserSettings.TimerHapticsMode
-import com.brokenkernel.improvtools.datastore.UserSettings.TipsAndTricksViewMode
-import com.brokenkernel.improvtools.encyclopaedia.android.tipsandadvice.model.TipsAndAdviceViewModeUI
-import com.brokenkernel.improvtools.encyclopaedia.data.model.internalEnumValuebyTipsAndAdviceViewModeUI
 import com.brokenkernel.improvtools.settings.presentation.viewmodel.SettingsScreenViewModel
 import com.brokenkernel.improvtools.timer.data.model.TimerHapticsModeUI
 
@@ -58,22 +55,6 @@ internal fun SettingsTab(
                     onCheckedChange = {
                         viewModel.onClickUpdateAllowAnalyticsCookieStorage(it)
                     },
-                )
-            },
-        )
-        Text(
-            stringResource(R.string.navigation_tips_and_advice),
-            style = MaterialTheme.typography.titleLarge,
-        )
-        ListItem(
-            headlineContent = { Text(stringResource(R.string.settings_tips_and_tricks_view_mode)) },
-            trailingContent = {
-                EnumerationRadioSelection<TipsAndAdviceViewModeUI, TipsAndTricksViewMode>(
-                    onEnumerationSelection = { opt ->
-                        viewModel.onClickUpdateTipsAndTricksViewMode(opt)
-                    },
-                    currentlySelected = uiState.tipsAndTricksViewMode,
-                    uiToInternalMapping = { opt -> internalEnumValuebyTipsAndAdviceViewModeUI(opt) },
                 )
             },
         )

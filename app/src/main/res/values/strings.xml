@@ -43,7 +43,6 @@
     <string name="shortcut_timer_disabled_label">Timer (disabled)</string>
     <string name="settings_allow_analytics_cookie_storage">Allow Analytics Cookie Storage</string>
     <string name="navigation_encyclopaedia_category">Encyclopaedia</string>
-    <string name="settings_tips_and_tricks_view_mode">Tips And Tricks View Mode</string>
     <string name="timer_half_time">Half Time</string>
     <string name="timer_reset">Reset</string>
     <string name="about_contact_info">Contact Information</string>

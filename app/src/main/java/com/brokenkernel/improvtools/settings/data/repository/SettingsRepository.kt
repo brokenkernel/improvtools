@@ -8,9 +8,6 @@ public interface SettingsRepository {
 
     public suspend fun updateAllowSuggestionsReuse(allowSuggestionReUse: Boolean)
     public suspend fun updateAllowAnalyticsCookieStorage(allowAnalyticsCookieStorage: Boolean)
-    public suspend fun updateTipsAndTricksViewMode(
-        tipsAndTricksViewMode: UserSettings.TipsAndTricksViewMode,
-    )
 
     public suspend fun updateTimerHapticsMode(timerHapticsMode: UserSettings.TimerHapticsMode)
 }

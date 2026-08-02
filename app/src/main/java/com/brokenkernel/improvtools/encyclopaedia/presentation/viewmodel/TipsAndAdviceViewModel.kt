@@ -1,12 +1,8 @@
 package com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.brokenkernel.improvtools.R
-import com.brokenkernel.improvtools.datastore.UserSettings
-import com.brokenkernel.improvtools.encyclopaedia.android.tipsandadvice.model.TipsAndAdviceViewModeUI
 import com.brokenkernel.improvtools.encyclopaedia.data.model.TipsAndAdviceProcessedModel
-import com.brokenkernel.improvtools.encyclopaedia.data.model.tipsAndAdviceViewModeUIbyInternalEnumValue
 import com.brokenkernel.improvtools.encyclopaedia.data.repository.TipsAndAdviceRepository
 import com.brokenkernel.improvtools.encyclopaedia.data.tipsandadvice.TipContentUI
 import com.brokenkernel.improvtools.encyclopaedia.data.tipsandadvice.TipsAndAdviceUIState
@@ -19,8 +15,6 @@ import java.io.InputStreamReader
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.hocon.Hocon
 import kotlinx.serialization.hocon.decodeFromConfig
@@ -37,14 +31,6 @@ internal class TipsAndAdviceViewModel @Inject constructor(
     private val _uiState: MutableStateFlow<TipsAndAdviceUIState>
     val uiState: StateFlow<TipsAndAdviceUIState>
 
-    private val _taaViewMode: MutableStateFlow<TipsAndAdviceViewModeUI> = MutableStateFlow(
-
-        tipsAndAdviceViewModeUIbyInternalEnumValue(
-            UserSettings.TipsAndTricksViewMode.VIEW_MODE_DEFAULT,
-        ),
-    )
-    val taaViewMode: StateFlow<TipsAndAdviceViewModeUI> = _taaViewMode.asStateFlow()
-
     private val tipsAndAdviceProcessed: List<TipContentUI>
 
     init {
@@ -57,13 +43,9 @@ internal class TipsAndAdviceViewModel @Inject constructor(
             Hocon.decodeFromConfig<TipsAndAdviceProcessedModel>(conf)
 
         val rawDictTipsAndAdvice = tipsAndAdviceDatum
-        tipsAndAdviceProcessed = rawDictTipsAndAdvice.advice.toList().map { (x, y) -> TipContentUI(x, y) }
+        tipsAndAdviceProcessed =
+            rawDictTipsAndAdvice.advice.toList().map { (x, y) -> TipContentUI(x, y) }
         _uiState = MutableStateFlow(TipsAndAdviceUIState(tipsAndAdviceProcessed))
         uiState = _uiState.asStateFlow()
-        viewModelScope.launch {
-            settingsRepository.userSettingsFlow.collectLatest { it ->
-                _taaViewMode.value = tipsAndAdviceViewModeUIbyInternalEnumValue(it.tipsAndTricksViewMode)
-            }
-        }
     }
 }

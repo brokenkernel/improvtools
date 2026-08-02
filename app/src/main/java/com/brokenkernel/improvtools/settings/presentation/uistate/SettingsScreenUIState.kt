@@ -5,7 +5,6 @@ import com.brokenkernel.improvtools.datastore.UserSettings
 internal data class SettingsScreenUIState(
     val shouldReuseSuggestions: Boolean,
     val allowAnalyticsCookieStorage: Boolean,
-    val tipsAndTricksViewMode: UserSettings.TipsAndTricksViewMode,
     val timerHapticsMode: UserSettings.TimerHapticsMode,
 ) {
     companion object {
@@ -13,7 +12,6 @@ internal data class SettingsScreenUIState(
             return SettingsScreenUIState(
                 shouldReuseSuggestions = false,
                 allowAnalyticsCookieStorage = true,
-                tipsAndTricksViewMode = UserSettings.TipsAndTricksViewMode.VIEW_MODE_DEFAULT,
                 timerHapticsMode = UserSettings.TimerHapticsMode.TIMER_HAPTICS_MODE_DEFAULT,
             )
         }

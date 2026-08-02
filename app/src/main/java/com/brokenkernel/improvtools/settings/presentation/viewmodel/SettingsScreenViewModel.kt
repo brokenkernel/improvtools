@@ -2,9 +2,6 @@ package com.brokenkernel.improvtools.settings.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.brokenkernel.improvtools.datastore.UserSettings
-import com.brokenkernel.improvtools.encyclopaedia.android.tipsandadvice.model.TipsAndAdviceViewModeUI
-import com.brokenkernel.improvtools.encyclopaedia.data.model.internalEnumValuebyTipsAndAdviceViewModeUI
 import com.brokenkernel.improvtools.infrastructure.ConsentManagement
 import com.brokenkernel.improvtools.settings.data.repository.SettingsRepository
 import com.brokenkernel.improvtools.settings.presentation.uistate.SettingsScreenUIState
@@ -33,7 +30,6 @@ internal class SettingsScreenViewModel @Inject constructor(
                 _uiState.value = SettingsScreenUIState(
                     shouldReuseSuggestions = it.allowSuggestionsReuse,
                     allowAnalyticsCookieStorage = it.allowAnalyticsCookieStorage,
-                    tipsAndTricksViewMode = it.tipsAndTricksViewMode,
                     timerHapticsMode = it.hapticFeedbackTimerMode,
                 )
             }
@@ -45,14 +41,6 @@ internal class SettingsScreenViewModel @Inject constructor(
             settingsRepository.updateAllowSuggestionsReuse(newState)
         }
         _uiState.value = _uiState.value.copy(shouldReuseSuggestions = newState)
-    }
-
-    fun onClickUpdateTipsAndTricksViewMode(newState: TipsAndAdviceViewModeUI) {
-        val internalNewState: UserSettings.TipsAndTricksViewMode = internalEnumValuebyTipsAndAdviceViewModeUI(newState)
-        viewModelScope.launch {
-            settingsRepository.updateTipsAndTricksViewMode(internalNewState)
-        }
-        _uiState.value = _uiState.value.copy(tipsAndTricksViewMode = internalNewState)
     }
 
     fun onClickUpdateAllowAnalyticsCookieStorage(newState: Boolean) {

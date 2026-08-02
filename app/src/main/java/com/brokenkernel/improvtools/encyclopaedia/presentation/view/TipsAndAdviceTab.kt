@@ -6,7 +6,7 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.brokenkernel.improvtools.application.navigation.ImprovToolsDestination
 import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
-import com.brokenkernel.improvtools.encyclopaedia.android.tipsandadvice.view.TipsAndAdviceAsSelectable
+import com.brokenkernel.improvtools.encyclopaedia.android.tipsandadvice.view.TipsAndAdviceScreen
 import com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel.TipsAndAdviceViewModel
 
 @ImprovToolsDestination<ImprovToolsNavigationGraph>
@@ -16,6 +16,5 @@ internal fun TipsAndAdviceTab(
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-    val taaViewMode by viewModel.taaViewMode.collectAsStateWithLifecycle()
-    TipsAndAdviceAsSelectable(taaViewMode, uiState)
+    TipsAndAdviceScreen(uiState)
 }

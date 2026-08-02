@@ -6,7 +6,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import com.brokenkernel.improvtools.R
-import com.brokenkernel.improvtools.encyclopaedia.presentation.view.TipsAndAdviceTabMenu
 import com.brokenkernel.improvtools.settings.presentation.view.SuggestionsTabMenu
 import com.ramcosta.composedestinations.generated.app.destinations.AboutTabDestination
 import com.ramcosta.composedestinations.generated.app.destinations.GamesTabDestination
@@ -83,14 +82,6 @@ internal enum class NavigableScreens(
         contentDescription = R.string.go_to_tips_and_advice_screen,
         iconDrawable = R.drawable.cognition_24dp_1f1f1f_fill0_wght400_grad0_opsz24,
         matchingRoute = TipsAndAdviceTabDestination,
-        extraMenu = { improvToolsAppState ->
-            TipsAndAdviceTabMenu(
-                expanded = improvToolsAppState.extraMenuExpandedState,
-                onDismiss = {
-                    improvToolsAppState.extraMenuExpandedState = !improvToolsAppState.extraMenuExpandedState
-                },
-            )
-        },
     ),
 
     GamesPageScreen(
