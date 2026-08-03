@@ -14,6 +14,6 @@ jobs:
       - name: 'Checkout Repository'
         uses: actions/checkout@v7
       - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v6
+        uses: gradle/actions/setup-gradle@v6.2.0
       - name: 'Dependency Review'
         uses: actions/dependency-review-action@v5
