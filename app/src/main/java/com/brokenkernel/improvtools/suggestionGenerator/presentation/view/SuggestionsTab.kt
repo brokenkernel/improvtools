@@ -134,8 +134,9 @@ internal fun SuggestionsTab(
                                 },
                                 onShowSingleWord = {
                                     EncyclopaediaSectionNavigation.navigateToThesaurusWord(
-                                        improvToolsAppState,
+                                        improvToolsAppState.navigator,
                                         itemSuggestionState.value.idea,
+                                        improvToolsAppState.currentTitle.value,
                                     )
                                 },
                                 onGoToEmotionTab = {
@@ -151,8 +152,9 @@ internal fun SuggestionsTab(
                                         word = itemSuggestionState.value.idea,
                                         onNavigateToWord = {
                                             EncyclopaediaSectionNavigation.navigateToThesaurusWord(
-                                                improvToolsAppState,
+                                                improvToolsAppState.navigator,
                                                 word,
+                                                improvToolsAppState.currentTitle.value,
                                             )
                                         },
                                         whenDisabledFullyHidden = true,

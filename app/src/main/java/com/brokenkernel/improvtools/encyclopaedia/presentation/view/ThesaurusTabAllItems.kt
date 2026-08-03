@@ -58,8 +58,9 @@ internal fun ThesaurusTabAllItems(
                                 modifier = Modifier.clickable(
                                     onClick = {
                                         EncyclopaediaSectionNavigation.navigateToThesaurusWord(
-                                            improvToolsAppState,
+                                            improvToolsAppState.navigator,
                                             synonym,
+                                            improvToolsAppState.currentTitle.value,
                                         )
                                     },
                                     onClickLabel = stringResource(
@@ -85,8 +86,9 @@ internal fun ThesaurusTabAllItems(
                     word = word,
                     onNavigateToWord = {
                         EncyclopaediaSectionNavigation.navigateToThesaurusWord(
-                            improvToolsAppState,
+                            improvToolsAppState.navigator,
                             word,
+                            improvToolsAppState.currentTitle.value,
                         )
                     },
                 )

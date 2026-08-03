@@ -1,12 +1,17 @@
 package com.brokenkernel.improvtools.encyclopaedia
 
-import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
+import androidx.annotation.StringRes
 import com.ramcosta.composedestinations.generated.app.destinations.ThesaurusTabSingleWordDestination
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
 internal object EncyclopaediaSectionNavigation {
-    fun navigateToThesaurusWord(improvToolsAppState: ImprovToolsAppState, word: String) {
-        improvToolsAppState.navigator.navigate(
-            ThesaurusTabSingleWordDestination(word, improvToolsAppState.currentTitle.value),
+    fun navigateToThesaurusWord(
+        navigator: DestinationsNavigator,
+        word: String,
+        @StringRes priorTitleRes: Int,
+    ) {
+        navigator.navigate(
+            ThesaurusTabSingleWordDestination(word, priorTitleRes),
         )
     }
 }
