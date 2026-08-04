@@ -29,21 +29,6 @@ internal fun SettingsTab(
 
     Column(modifier = modifier) {
         Text(
-            stringResource(R.string.suggestions_activity_title),
-            style = MaterialTheme.typography.titleLarge,
-        )
-        ListItem(
-            headlineContent = { Text(stringResource(R.string.settings_allow_reuse)) },
-            trailingContent = {
-                Switch(
-                    checked = uiState.shouldReuseSuggestions,
-                    onCheckedChange = {
-                        viewModel.onClickUpdateShouldReuseSuggestions(it)
-                    },
-                )
-            },
-        )
-        Text(
             stringResource(R.string.privacy_settings_category),
             style = MaterialTheme.typography.titleLarge,
         )

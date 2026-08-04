@@ -28,19 +28,11 @@ internal class SettingsScreenViewModel @Inject constructor(
         viewModelScope.launch {
             settingsRepository.userSettingsFlow.collectLatest { it ->
                 _uiState.value = SettingsScreenUIState(
-                    shouldReuseSuggestions = it.allowSuggestionsReuse,
                     allowAnalyticsCookieStorage = it.allowAnalyticsCookieStorage,
                     timerHapticsMode = it.hapticFeedbackTimerMode,
                 )
             }
         }
-    }
-
-    fun onClickUpdateShouldReuseSuggestions(newState: Boolean) {
-        viewModelScope.launch {
-            settingsRepository.updateAllowSuggestionsReuse(newState)
-        }
-        _uiState.value = _uiState.value.copy(shouldReuseSuggestions = newState)
     }
 
     fun onClickUpdateAllowAnalyticsCookieStorage(newState: Boolean) {

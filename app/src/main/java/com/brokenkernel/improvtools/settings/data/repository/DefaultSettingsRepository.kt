@@ -11,14 +11,6 @@ internal class DefaultSettingsRepository(
     override val userSettingsFlow: Flow<UserSettings> =
         userPreferenceDataStore.data
 
-    override suspend fun updateAllowSuggestionsReuse(allowSuggestionReUse: Boolean) {
-        userPreferenceDataStore.updateData { preferences ->
-            preferences.toBuilder()
-                .setAllowSuggestionsReuse(allowSuggestionReUse)
-                .build()
-        }
-    }
-
     override suspend fun updateAllowAnalyticsCookieStorage(allowAnalyticsCookieStorage: Boolean) {
         userPreferenceDataStore.updateData { preferences ->
             preferences.toBuilder()

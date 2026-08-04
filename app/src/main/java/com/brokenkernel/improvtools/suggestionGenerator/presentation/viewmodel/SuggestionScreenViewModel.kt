@@ -3,7 +3,6 @@ package com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.runtime.toMutableStateList
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.brokenkernel.improvtools.settings.data.repository.SettingsRepository
 import com.brokenkernel.improvtools.suggestionGenerator.data.repository.MergedAudienceSuggestionDatumRepository
 import com.brokenkernel.improvtools.suggestions.data.storage.IdeaCategoryODS
@@ -14,8 +13,6 @@ import jakarta.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 
 @HiltViewModel
 internal class SuggestionScreenViewModel @Inject constructor(
@@ -23,7 +20,6 @@ internal class SuggestionScreenViewModel @Inject constructor(
     private val settingsRepository: SettingsRepository,
 ) :
     ViewModel() {
-    private var shouldReuseSuggestions = MutableStateFlow(false)
 
     // TODO: don't expose ODS to UI ...
     val internalCategoryDatum: SnapshotStateList<IdeaCategoryODS> =
@@ -34,11 +30,6 @@ internal class SuggestionScreenViewModel @Inject constructor(
     val categoryDatumToSuggestion: Map<IdeaCategoryODS, StateFlow<IdeaUIState>>
 
     init {
-        viewModelScope.launch {
-            settingsRepository.userSettingsFlow.collectLatest { it ->
-                shouldReuseSuggestions.value = it.allowSuggestionsReuse
-            }
-        }
         internalCategoryDatum.forEach { item ->
             val newIdea = item.ideas.random()
             _categoryDatumToSuggestion[item] = MutableStateFlow(
@@ -51,9 +42,7 @@ internal class SuggestionScreenViewModel @Inject constructor(
     }
 
     internal fun updateSuggestionXFor(ic: IdeaCategoryODS) {
-        val legalNewWords: Set<IdeaItemODS> = if (shouldReuseSuggestions.value) {
-            ic.ideas
-        } else {
+        val legalNewWords: Set<IdeaItemODS> = run {
             val ui: IdeaUIState = _categoryDatumToSuggestion.getValue(ic).value
             ic.ideas - IdeaItemODS(ui.idea, ui.explanation)
         }

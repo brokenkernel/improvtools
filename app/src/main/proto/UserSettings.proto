@@ -12,7 +12,7 @@ message UserSettings {
     TIMER_HAPTICS_MODE_NONE = 2;
   }
 
-  bool allow_suggestions_reuse = 1;
+  // deprecated #1
   // https://analytics.google.com/analytics/web/#/a351396891p484696506/admin/consentmanagement
   bool allow_analytics_cookie_storage = 2;
   // deprecated #3
