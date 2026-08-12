@@ -75,9 +75,9 @@ dependencies {
     api(libs.androidx.runtime)
     api(libs.androidx.ui)
 
-    releaseApi(libs.reorderable)
-
     debugApi(libs.reorderable.android.debug)
+
+    releaseApi(libs.reorderable)
 
     implementation(enforcedPlatform(libs.androidx.compose.bom))
     implementation(enforcedPlatform(libs.kotlin.bom))

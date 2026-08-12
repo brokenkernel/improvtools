@@ -254,18 +254,14 @@ dependencies {
     runtimeOnly(libs.androidx.work.multiprocess)
     runtimeOnly(libs.slf4j.android)
 
-    releaseRuntimeOnly(libs.leakcanary.android.release)
-    releaseRuntimeOnly(libs.leakcanary.object1.watcher.android)
-
     debugRuntimeOnly(libs.androidx.ui.test.manifest)
     // TODO: add profilable build
     // TODO: https://square.github.io/leakcanary/ui-tests/
     debugRuntimeOnly(libs.leakcanary.android)
     debugRuntimeOnly(libs.reorderable.android.debug)
 
-    androidTestRuntimeOnly(testFixtures(projects.coreinfra))
-    androidTestRuntimeOnly(libs.androidx.runner)
-    androidTestRuntimeOnly(libs.leakcanary.android.instrumentation)
+    releaseRuntimeOnly(libs.leakcanary.android.release)
+    releaseRuntimeOnly(libs.leakcanary.object1.watcher.android)
 
     androidTestImplementation(libs.androidx.core)
     androidTestImplementation(libs.androidx.datastore)
@@ -282,6 +278,10 @@ dependencies {
     androidTestImplementation(libs.kotlinx.coroutines.core)
     androidTestImplementation(libs.navigation.runtime)
     androidTestImplementation(libs.tools.fastlane.screengrab)
+
+    androidTestRuntimeOnly(testFixtures(projects.coreinfra))
+    androidTestRuntimeOnly(libs.androidx.runner)
+    androidTestRuntimeOnly(libs.leakcanary.android.instrumentation)
 
     detektPlugins(libs.composeDetektRules)
     detektPlugins(libs.detektRulesLibraries)

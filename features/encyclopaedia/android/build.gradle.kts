@@ -98,11 +98,6 @@ dependencies {
 
     debugRuntimeOnly(libs.androidx.ui.test.manifest)
 
-    androidTestRuntimeOnly(testFixtures(projects.coreinfra))
-    androidTestRuntimeOnly(libs.androidx.core)
-    androidTestRuntimeOnly(libs.androidx.runner)
-    androidTestRuntimeOnly(libs.kotlinx.coroutines.test)
-
     testImplementation(libs.junit)
 
     androidTestImplementation(projects.coreinfra)
@@ -125,6 +120,11 @@ dependencies {
     androidTestImplementation(libs.hilt.android.testing)
     androidTestImplementation(libs.junit)
     androidTestImplementation(libs.navigation.runtime)
+
+    androidTestRuntimeOnly(testFixtures(projects.coreinfra))
+    androidTestRuntimeOnly(libs.androidx.core)
+    androidTestRuntimeOnly(libs.androidx.runner)
+    androidTestRuntimeOnly(libs.kotlinx.coroutines.test)
 
     detektPlugins(libs.composeDetektRules)
     detektPlugins(libs.detektRulesLibraries)
