@@ -1,6 +1,5 @@
 import com.android.build.api.dsl.LibraryExtension
 import org.jetbrains.dokka.gradle.engine.parameters.VisibilityModifier
-import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 
 plugins {
     alias(libs.plugins.android.library)
@@ -149,18 +148,6 @@ android {
         enable = true
         androidResources = true
     }
-}
-
-@OptIn(ExperimentalKotlinGradlePluginApi::class)
-powerAssert {
-    // have to list them all, since "detect all" doesn't work with android
-    includedSourceSets = listOf(
-        "debug",
-        "debugAndroidTest",
-        "debugUnitTest",
-        "release",
-        "releaseUnitTest",
-    )
 }
 
 ksp {

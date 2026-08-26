@@ -1,4 +1,6 @@
 import org.jetbrains.dokka.gradle.engine.parameters.VisibilityModifier
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+import org.jetbrains.kotlin.powerassert.gradle.PowerAssertCompilationFilter
 
 plugins {
     id("java-library")
@@ -43,6 +45,11 @@ ktlint {
     android.set(true)
     coloredOutput.set(true)
     version.set("1.8.0")
+}
+
+@OptIn(ExperimentalKotlinGradlePluginApi::class)
+powerAssert {
+    compilationFilter = PowerAssertCompilationFilter.ALL
 }
 
 dokka {
