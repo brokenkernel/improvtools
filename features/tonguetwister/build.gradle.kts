@@ -1,7 +1,6 @@
 import com.android.build.api.dsl.LibraryExtension
 import org.jetbrains.dokka.gradle.engine.parameters.VisibilityModifier
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
-import org.jetbrains.kotlin.powerassert.gradle.PowerAssertCompilationFilter
 
 plugins {
     alias(libs.plugins.android.library)
@@ -117,7 +116,14 @@ dependencies {
 
 @OptIn(ExperimentalKotlinGradlePluginApi::class)
 powerAssert {
-    compilationFilter = PowerAssertCompilationFilter.ALL
+    // have to list them all, since "detect all" doesn't work with android
+    includedSourceSets = listOf(
+        "debug",
+        "debugAndroidTest",
+        "debugUnitTest",
+        "release",
+        "releaseUnitTest",
+    )
 }
 
 ksp {

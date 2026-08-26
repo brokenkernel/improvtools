@@ -1,7 +1,5 @@
 import nl.littlerobots.vcu.plugin.resolver.VersionSelectors
 import nl.littlerobots.vcu.plugin.versionSelector
-import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
-import org.jetbrains.kotlin.powerassert.gradle.PowerAssertCompilationFilter
 
 buildscript {
     dependencies {
@@ -92,11 +90,6 @@ dokka {
             includes.from(project.layout.projectDirectory.file("README.md"))
         }
     }
-}
-
-@OptIn(ExperimentalKotlinGradlePluginApi::class)
-powerAssert {
-    compilationFilter = PowerAssertCompilationFilter.ALL
 }
 
 versionCatalogUpdate {
