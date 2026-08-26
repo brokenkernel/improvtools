@@ -277,6 +277,13 @@ public val GamesDatum: Collection<GamesDataItem> = listOf(
         topic = GamesDatumTopic.EXERCISE,
     ),
     GamesDataItem(
+        gameName = "Duck Duck Animal",
+        topic = GamesDatumTopic.EXERCISE,
+        detailedInformation = """
+            |Like the schoolyard game, except: you can pick any animal and the person must act like the chosen animal
+        """.trimMargin()
+    ),
+    GamesDataItem(
         gameName = "Yes, No, Maybe, Banana.",
         topic = GamesDatumTopic.EXERCISE,
         detailedInformation = """
