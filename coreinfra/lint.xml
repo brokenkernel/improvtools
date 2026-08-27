@@ -16,6 +16,7 @@
     <issue id="TypographyQuotes" severity="error" />
     <issue id="UnknownNullness" severity="error" />
     <issue id="WrongThreadInterprocedural" severity="error" />
+    <issue id="ComposeNonRestartableComposable" severity="error" />
     <!-- whitelist allowed locals -->
     <issue id="ComposeCompositionLocalUsage" severity="error">
         <option name="allowed-composition-locals" value="LocalSnackbarHostState,LocalBottomSheetContentManager" />

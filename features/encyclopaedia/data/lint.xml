@@ -9,6 +9,7 @@
     <issue id="NoHardKeywords" severity="error" />
     <issue id="TypographyQuotes" severity="error" />
     <issue id="UnknownNullness" severity="error" />
+    <issue id="ComposeNonRestartableComposable" severity="error" />
     <!-- maybe -->
     <issue id="InvalidPackage" severity="ignore" />
     <!-- Slack Specific Lints -->

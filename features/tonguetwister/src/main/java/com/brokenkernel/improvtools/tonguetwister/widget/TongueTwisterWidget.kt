@@ -2,6 +2,7 @@ package com.brokenkernel.improvtools.tonguetwister.widget
 
 import android.content.Context
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.NonRestartableComposable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
@@ -65,6 +66,7 @@ internal fun RandomTongueTwister(modifier: GlanceModifier = GlanceModifier) {
 }
 
 @Preview
+@NonRestartableComposable
 @Composable
 internal fun RandomTongueTwisterPreview() {
     RandomTongueTwister()

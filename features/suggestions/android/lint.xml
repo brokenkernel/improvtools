@@ -13,6 +13,7 @@
     <issue id="UnknownNullness" severity="error" />
     <issue id="WrongThreadInterprocedural" severity="error" />
     <issue id="InvalidPackage" severity="ignore" />
+    <issue id="ComposeNonRestartableComposable" severity="error" />
     <!-- Incorrect links -->
     <issue id="DeprecatedCall" severity="ignore" />
 </lint>
