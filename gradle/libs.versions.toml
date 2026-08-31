@@ -74,8 +74,7 @@ navigationTesting = "2.10.0"
 playServicesOssLicenses = "17.5.1"
 profileinstaller = "1.4.1"
 protobuf = "0.10.0"
-protobufJavalite = "4.36.0"
-protoc = "4.36.0"
+protoc = "4.36.1"
 reorderable = "3.1.0"
 runner = "1.7.0"
 runtime = "1.12.0"
@@ -177,7 +176,7 @@ com-google-firebase-analytics = { module = "com.google.firebase:firebase-analyti
 com-google-firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics", version.ref = "firebaseCrashlytics" }
 com-google-firebase-firebaseBom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
 com-google-firebase-firebasePerf = { module = "com.google.firebase:firebase-perf", version.ref = "firebasePerf" }
-com-google-protobuf-protobufJavalite = { module = "com.google.protobuf:protobuf-javalite", version.ref = "protobufJavalite" }
+com-google-protobuf-protobufJavalite = { module = "com.google.protobuf:protobuf-javalite", version.ref = "protoc" }
 com-google-protobuf-protoc = { module = "com.google.protobuf:protoc", version.ref = "protoc" }
 composeDetektRules = { module = "io.nlopez.compose.rules:detekt", version.ref = "composeDetektRulesVersion" }
 config = { module = "com.typesafe:config", version.ref = "config" }
