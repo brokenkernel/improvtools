@@ -132,15 +132,4 @@
             file="src/main/res/drawable/plutchik_wheel.webp"/>
     </issue>
 
-    <issue
-        id="ComposeReadOnlyComposable"
-        message="All composable functions and properties used by this declaration are marked @ReadOnlyComposable, so this declaration can be marked @ReadOnlyComposable too.&#xA;&#xA;See https://slackhq.github.io/compose-lints/rules/#remove-unnecessary-composable-annotations for more information."
-        errorLine1="@Composable"
-        errorLine2="~~~~~~~~~~~">
-        <location
-            file="src/main/java/com/brokenkernel/components/view/VerticalColumnScrollbarModifier.kt"
-            line="16"
-            column="1"/>
-    </issue>
-
 </issues>
