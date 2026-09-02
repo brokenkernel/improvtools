@@ -91,6 +91,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.ui.unit)
     implementation(libs.kotlinx.collections.immutable.jvm)
+    implementation(libs.play.services.oss.licenses)
 
     debugImplementation(libs.ui.tooling)
 

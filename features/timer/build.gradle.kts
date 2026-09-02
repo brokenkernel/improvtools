@@ -89,6 +89,7 @@ dependencies {
     implementation(libs.androidx.ui.text)
     implementation(libs.androidx.ui.unit)
     implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.play.services.oss.licenses)
 
     testImplementation(libs.junit)
 

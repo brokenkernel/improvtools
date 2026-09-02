@@ -111,6 +111,7 @@ dependencies {
 
     implementation(enforcedPlatform(libs.androidx.compose.bom))
     implementation(enforcedPlatform(libs.kotlin.bom))
+    implementation(libs.play.services.oss.licenses)
 
     debugRuntimeOnly(libs.androidx.ui.test.manifest)
 

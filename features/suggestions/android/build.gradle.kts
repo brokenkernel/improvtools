@@ -90,6 +90,7 @@ dependencies {
     implementation(libs.androidx.ui.text)
     implementation(libs.androidx.ui.unit)
     implementation(libs.kotlinx.collections.immutable.jvm)
+    implementation(libs.play.services.oss.licenses)
 
     testImplementation(libs.junit)
 

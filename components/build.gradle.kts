@@ -103,6 +103,7 @@ dependencies {
     implementation(libs.jetbrains.annotations)
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.net.engawapg.lib.zoomable)
+    implementation(libs.play.services.oss.licenses)
 
     debugRuntimeOnly(libs.androidx.ui.test.manifest)
 

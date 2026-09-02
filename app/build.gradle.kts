@@ -31,6 +31,7 @@ plugins {
     alias(libs.plugins.dependencyAnalysis)
     alias(libs.plugins.ktlint)
     id("org.jetbrains.dokka")
+    alias(libs.plugins.ossLicensesPlugin)
     alias(libs.plugins.detekt)
     kotlin("plugin.power-assert") version libs.versions.kotlin.get()
 }

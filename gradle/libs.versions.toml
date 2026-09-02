@@ -71,6 +71,7 @@ navigationCommon = "2.10.0"
 navigationCompose = "2.10.0"
 navigationRuntimeVersion = "2.10.0"
 navigationTesting = "2.10.0"
+ossLicensesPlugin = "0.13.0"
 playServicesOssLicenses = "17.5.1"
 profileinstaller = "1.4.1"
 protobuf = "0.10.0"
@@ -259,6 +260,7 @@ kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", versi
 kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }
+ossLicensesPlugin = { id = "com.google.android.gms.oss-licenses-plugin", version.ref = "ossLicensesPlugin" }
 protobuf = { id = "com.google.protobuf", version.ref = "protobuf" }
 sortDependencies = { id = "com.squareup.sort-dependencies", version.ref = "sortDependencies" }
 versionCatalogUpdate = { id = "nl.littlerobots.version-catalog-update", version.ref = "versionCatalogUpdate" }
