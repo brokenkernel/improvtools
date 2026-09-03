@@ -16,5 +16,6 @@
     <ID>LibraryEntitiesShouldNotBePublic:TimerState.kt:StartedCountUpTimerState : StartedTimerStateCountUpTimerState</ID>
     <ID>LibraryEntitiesShouldNotBePublic:TimerState.kt:StartedTimerState : TimerState</ID>
     <ID>LibraryEntitiesShouldNotBePublic:TimerState.kt:TimerState</ID>
+    <ID>MatchingDeclarationName:NavigationKey.kt:TimerNavigationKey : ImprovToolsNavigationKey</ID>
   </CurrentIssues>
 </SmellBaseline>

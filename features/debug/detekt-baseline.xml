@@ -3,5 +3,6 @@
   <ManuallySuppressedIssues/>
   <CurrentIssues>
     <ID>LibraryEntitiesShouldNotBePublic:DebugCollector.kt:DebugCollector</ID>
+    <ID>MatchingDeclarationName:NavigationKey.kt:DebugCollectorNavigationKey : ImprovToolsNavigationKey</ID>
   </CurrentIssues>
 </SmellBaseline>

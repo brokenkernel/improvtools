@@ -7,7 +7,7 @@
     <ID>LibraryEntitiesShouldNotBePublic:ImprovToolsAllPreviews.kt:FontScalePreviews</ID>
     <ID>LibraryEntitiesShouldNotBePublic:ImprovToolsAllPreviews.kt:ImprovToolsAllPreviews</ID>
     <ID>LibraryEntitiesShouldNotBePublic:ImprovToolsAllPreviews.kt:LocalesPreviews</ID>
-    <ID>LibraryEntitiesShouldNotBePublic:ImprovToolsRoute.kt:ImprovToolsRoute : Parcelable</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:ImprovToolsNavigationKey.kt:ImprovToolsNavigationKey : Parcelable</ID>
     <ID>LibraryEntitiesShouldNotBePublic:LaunchWrapper.kt:@Composable public fun LaunchWrapper</ID>
     <ID>PreviewAnnotationNaming:ImprovToolsAllPreviews.kt:FontScalePreviews</ID>
     <ID>PreviewAnnotationNaming:ImprovToolsAllPreviews.kt:ImprovToolsAllPreviews</ID>

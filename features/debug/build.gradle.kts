@@ -12,6 +12,7 @@ plugins {
     alias(libs.plugins.ktlint)
     alias(libs.plugins.detekt)
     alias(libs.plugins.dokka)
+    alias(libs.plugins.kotlin.parcelize)
     kotlin("plugin.power-assert") version libs.versions.kotlin.get()
 }
 
@@ -111,6 +112,7 @@ dependencies {
 
     implementation(enforcedPlatform(libs.androidx.compose.bom))
     implementation(enforcedPlatform(libs.kotlin.bom))
+    implementation(projects.coreinfra)
     implementation(libs.play.services.oss.licenses)
 
     debugRuntimeOnly(libs.androidx.ui.test.manifest)

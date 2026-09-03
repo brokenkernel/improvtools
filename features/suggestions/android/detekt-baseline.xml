@@ -3,6 +3,7 @@
   <ManuallySuppressedIssues/>
   <CurrentIssues>
     <ID>LibraryEntitiesShouldNotBePublic:SuggestionsSingleCategoryRow.kt:@Composable public fun ReorderableCollectionItemScope.SuggestionsSingleCategoryRow</ID>
+    <ID>MatchingDeclarationName:NavigationKey.kt:SuggestionsScreenNavigationKey : ImprovToolsNavigationKey</ID>
     <ID>UnusedParameter:SuggestionsSingleCategoryRow.kt:onShowSingleWord: (String) -> Unit</ID>
   </CurrentIssues>
 </SmellBaseline>

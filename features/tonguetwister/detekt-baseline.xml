@@ -5,6 +5,7 @@
     <ID>DataClassContainsFunctions:TongueTwisterDatum.kt:TongueTwisterItem$fun asHtmlText: String</ID>
     <ID>DataClassContainsFunctions:TongueTwisterDatum.kt:TongueTwisterItem$fun asRawText: String</ID>
     <ID>LibraryEntitiesShouldNotBePublic:TongueTwisterWidgetReceiver.kt:TongueTwisterWidgetReceiver : GlanceAppWidgetReceiver</ID>
+    <ID>MatchingDeclarationName:NavigationKey.kt:TongueTwisterNavigationKey : ImprovToolsNavigationKey</ID>
     <ID>MatchingDeclarationName:TongueTwisterDatum.kt:TongueTwisterItem</ID>
     <ID>MultilineRawStringIndentation:TongueTwisterDatum.kt:"""As one black bug, bled blue, black blood. The other black bug bled blue."""</ID>
     <ID>MultilineRawStringIndentation:TongueTwisterDatum.kt:"""Betty bought a bit of butter. But the bit of butter Betty bought was bitter. If I put it in my batter, it will make my batter bitter But a bit of better butter will make my batter better So, Betty bought a better bit of butter. """</ID>
