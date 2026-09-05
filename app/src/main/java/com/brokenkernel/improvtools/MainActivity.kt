@@ -14,6 +14,7 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import com.brokenkernel.improvtools.application.presentation.view.OuterContentForMasterScreen
 import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigationKey
+import com.brokenkernel.improvtools.coreinfra.rememberParcelableBackStack
 import com.brokenkernel.improvtools.suggestions.api.SuggestionsScreenNavigationKey
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -26,12 +27,6 @@ private const val ShowEncyclopaediaIntent: String = "com.brokenkernel.improvtool
 
 // TODO features of relationships
 // power dynamics. Competitive, therepative, enabled, scared, love, grudge, trusting suspicion
-
-@Composable
-private fun <T : Parcelable> rememberParcelableBackStack(vararg elements: T): SnapshotStateList<T> =
-    rememberSaveable {
-        mutableStateListOf(*elements)
-    }
 
 @AndroidEntryPoint
 public class MainActivity : ComponentActivity() {
@@ -71,11 +66,6 @@ public class MainActivity : ComponentActivity() {
             } else {
                 NavigableScreens.SuggestionGeneratorScreen
             }
-
-            val backStack =
-                rememberParcelableBackStack<ImprovToolsNavigationKey>(
-                    SuggestionsScreenNavigationKey,
-                )
 
             // maybe ImprovToolsState, or at least a subset should be passed via LocalContent so it doesn't need to be threaded all over the place
             OuterContentForMasterScreen(

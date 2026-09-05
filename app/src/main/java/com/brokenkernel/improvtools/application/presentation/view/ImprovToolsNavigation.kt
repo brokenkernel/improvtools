@@ -1,5 +1,6 @@
 package com.brokenkernel.improvtools.application.presentation.view
 
+import androidx.compose.animation.SharedTransitionLayout
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -20,10 +21,16 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation3.runtime.entryProvider
+import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
+import androidx.navigation3.ui.NavDisplay
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import com.brokenkernel.improvtools.application.data.model.rememberImprovToolsAppState
+import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigationKey
+import com.brokenkernel.improvtools.coreinfra.rememberParcelableBackStack
+import com.brokenkernel.improvtools.suggestions.api.SuggestionsScreenNavigationKey
 import com.ramcosta.composedestinations.DestinationsNavHost
 import com.ramcosta.composedestinations.generated.app.navgraphs.ImprovToolsNavigationNavGraph
 import com.ramcosta.composedestinations.navigation.dependency
@@ -210,6 +217,26 @@ internal fun ImprovToolsNavigationDrawer(
                 invertNavMenuState()
             },
         ) {
+            val backStack =
+                rememberParcelableBackStack<ImprovToolsNavigationKey>(
+                    SuggestionsScreenNavigationKey,
+                )
+            SharedTransitionLayout {
+                NavDisplay(
+                    backStack = backStack,
+                    onBack = { backStack.removeLastOrNull() },
+                    entryDecorators =
+                        listOf(
+                            rememberSaveableStateHolderNavEntryDecorator(),
+//                            rememberViewModelStoreNavEntryDecorator(),
+                        ),
+                    entryProvider =
+                        entryProvider { },
+                    sharedTransitionScope = this,
+//                modifier = Modifier.padding(innerPadding),
+                )
+            }
+
             DestinationsNavHost(
                 navGraph = ImprovToolsNavigationNavGraph,
                 navController = improvToolsAppState.navController,
