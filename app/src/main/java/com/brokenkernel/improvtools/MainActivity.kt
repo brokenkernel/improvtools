@@ -2,20 +2,12 @@ package com.brokenkernel.improvtools
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Parcelable
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import com.brokenkernel.improvtools.application.presentation.view.OuterContentForMasterScreen
-import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigationKey
-import com.brokenkernel.improvtools.coreinfra.rememberParcelableBackStack
-import com.brokenkernel.improvtools.suggestions.api.SuggestionsScreenNavigationKey
 import dagger.hilt.android.AndroidEntryPoint
 
 private const val ShowSuggestionsIntent: String = "com.brokenkernel.improvtools.intents.ShowSuggestions"

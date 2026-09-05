@@ -3,7 +3,20 @@ package com.brokenkernel.improvtools.encyclopaedia.android.api
 import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigationKey
 import kotlinx.parcelize.Parcelize
 
-// TODO:  will be broken up
+@Parcelize
+public object TipsAndAdviceNavigationKey : ImprovToolsNavigationKey
 
 @Parcelize
-public object EncyclopaediaNavigationKey : ImprovToolsNavigationKey
+public object GamesPageNavigationKey : ImprovToolsNavigationKey
+
+@Parcelize
+public object PeoplePageNavigationKey : ImprovToolsNavigationKey
+
+@Parcelize
+public object GlossaryPageNavigationKey : ImprovToolsNavigationKey
+
+@Parcelize
+public object EmotionsPageNavigationKey : ImprovToolsNavigationKey
+
+@Parcelize
+public object ThesaurusPageNavigationKey : ImprovToolsNavigationKey

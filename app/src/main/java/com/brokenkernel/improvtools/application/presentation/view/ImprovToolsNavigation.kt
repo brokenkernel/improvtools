@@ -21,9 +21,6 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.navigation3.runtime.entryProvider
-import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
-import androidx.navigation3.ui.NavDisplay
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
@@ -221,33 +218,46 @@ internal fun ImprovToolsNavigationDrawer(
                 rememberParcelableBackStack<ImprovToolsNavigationKey>(
                     SuggestionsScreenNavigationKey,
                 )
-            SharedTransitionLayout {
-                NavDisplay(
-                    backStack = backStack,
-                    onBack = { backStack.removeLastOrNull() },
-                    entryDecorators =
-                        listOf(
-                            rememberSaveableStateHolderNavEntryDecorator(),
-//                            rememberViewModelStoreNavEntryDecorator(),
-                        ),
-                    entryProvider =
-                        entryProvider { },
-                    sharedTransitionScope = this,
-//                modifier = Modifier.padding(innerPadding),
+            // eventually need to remove column; using this so I can have two 'scaffolds'
+            Column {
+                SharedTransitionLayout {
+//                    NavDisplay(
+//                        backStack = backStack,
+//                        onBack = { backStack.removeLastOrNull() },
+//                        entryDecorators =
+//                            listOf(
+//                                rememberSaveableStateHolderNavEntryDecorator(),
+//                                rememberViewModelStoreNavEntryDecorator(),
+//                            ),
+//                        entryProvider =
+//                            entryProvider {
+//                                suggestionsScreenEntryBuilder(
+//                                    navigator = improvToolsAppState.navigator,
+//                                    improvToolsAppState = improvToolsAppState,
+// //                                    modifier = TODO(),
+//                                )
+//                                encyclopaediaScreensEntryBuilder(
+//                                    navigator = improvToolsAppState.navigator,
+//                                    improvToolsAppState = improvToolsAppState,
+//                                )
+//                            },
+//                        sharedTransitionScope = this,
+// //                modifier = Modifier.padding(innerPadding),
+//                    )
+                }
+
+                DestinationsNavHost(
+                    navGraph = ImprovToolsNavigationNavGraph,
+                    navController = improvToolsAppState.navController,
+                    dependenciesContainerBuilder = {
+                        // TODO: replace with per-module navigation functions
+                        // https://composedestinations.rafaelcosta.xyz/v2/multi-module-setup#receive-navhost-parameters
+                        // TODO: pull encyclopedia out to different module
+                        dependency(improvToolsAppState)
+                    },
+                    start = initialScreen.matchingRoute,
                 )
             }
-
-            DestinationsNavHost(
-                navGraph = ImprovToolsNavigationNavGraph,
-                navController = improvToolsAppState.navController,
-                dependenciesContainerBuilder = {
-                    // TODO: replace with per-module navigation functions
-                    // https://composedestinations.rafaelcosta.xyz/v2/multi-module-setup#receive-navhost-parameters
-                    // TODO: pull encyclopedia out to different module
-                    dependency(improvToolsAppState)
-                },
-                start = initialScreen.matchingRoute,
-            )
         }
     }
 }

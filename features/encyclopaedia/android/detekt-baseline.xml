@@ -7,6 +7,5 @@
     <ID>LibraryEntitiesShouldNotBePublic:SingleWordThesaurusButton.kt:@Composable public fun SingleWordThesaurusButton</ID>
     <ID>LibraryEntitiesShouldNotBePublic:TipsAndAdviceScreen.kt:@Composable public fun TipsAndAdviceScreen</ID>
     <ID>LibraryEntitiesShouldNotBePublic:TipsAndAdviceViewModeUI.kt:TipsAndAdviceViewModeUI</ID>
-    <ID>MatchingDeclarationName:NavigationKey.kt:EncyclopaediaNavigationKey : ImprovToolsNavigationKey</ID>
   </CurrentIssues>
 </SmellBaseline>

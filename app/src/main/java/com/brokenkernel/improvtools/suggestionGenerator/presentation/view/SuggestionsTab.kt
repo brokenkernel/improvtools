@@ -36,13 +36,16 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation3.runtime.EntryProviderScope
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.application.navigation.ImprovToolsDestination
 import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
+import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigationKey
 import com.brokenkernel.improvtools.encyclopaedia.EncyclopaediaSectionNavigation
 import com.brokenkernel.improvtools.encyclopaedia.presentation.view.LoadableSingleWordThesaurusButton
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel.SuggestionScreenViewModel
+import com.brokenkernel.improvtools.suggestions.api.SuggestionsScreenNavigationKey
 import com.brokenkernel.improvtools.suggestions.data.storage.IdeaCategoryODS
 import com.brokenkernel.improvtools.suggestions.data.storage.IdeaUIState
 import com.brokenkernel.improvtools.suggestions.view.SuggestionsSingleCategoryRow
@@ -192,5 +195,19 @@ internal fun SuggestionsTab(
                 }
             }
         }
+    }
+}
+
+internal fun EntryProviderScope<ImprovToolsNavigationKey>.suggestionsScreenEntryBuilder(
+    navigator: DestinationsNavigator,
+    improvToolsAppState: ImprovToolsAppState,
+) {
+    entry<SuggestionsScreenNavigationKey> {
+        SuggestionsTab(
+            navigator = navigator,
+            improvToolsAppState = improvToolsAppState,
+//            modifier = TODO(),
+//            viewModel = TODO()
+        )
     }
 }
