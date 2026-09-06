@@ -255,7 +255,9 @@ internal fun ImprovToolsNavigationDrawer(
                                 tonguetwisterScreenEntryBuilder(
                                     navigator = improvToolsAppState.navigator,
                                 )
-                                applicationScreensEntryBuilder()
+                                applicationScreensEntryBuilder(
+                                    navigator = improvToolsAppState.navigator,
+                                )
                             },
                             sharedTransitionScope = this,
                         )
