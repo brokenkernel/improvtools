@@ -2,7 +2,9 @@
 <SmellBaseline>
   <ManuallySuppressedIssues/>
   <CurrentIssues>
+    <ID>ForbiddenPublicDataClass:NavigationKey.kt:ThesaurusSingleWordPageNavigationKey : ImprovToolsNavigationKey</ID>
     <ID>LibraryEntitiesShouldNotBePublic:GamesTabViewModel.kt:GamesTabViewModel : ViewModel</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:NavigationKey.kt:ThesaurusSingleWordPageNavigationKey : ImprovToolsNavigationKey</ID>
     <ID>LibraryEntitiesShouldNotBePublic:SingleTagBottomTab.kt:@Composable public fun SingleTagBottomTab</ID>
     <ID>LibraryEntitiesShouldNotBePublic:SingleWordThesaurusButton.kt:@Composable public fun SingleWordThesaurusButton</ID>
     <ID>LibraryEntitiesShouldNotBePublic:TipsAndAdviceScreen.kt:@Composable public fun TipsAndAdviceScreen</ID>

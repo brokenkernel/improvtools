@@ -19,7 +19,6 @@
     <ID>TopLevelPropertyNaming:MainActivity.kt:private const val ShowEncyclopaediaIntent: String = "com.brokenkernel.improvtools.intents.ShowEncyclopaedia"</ID>
     <ID>TopLevelPropertyNaming:MainActivity.kt:private const val ShowSuggestionsIntent: String = "com.brokenkernel.improvtools.intents.ShowSuggestions"</ID>
     <ID>TopLevelPropertyNaming:MainActivity.kt:private const val ShowTimerIntent: String = "com.brokenkernel.improvtools.intents.ShowTimer"</ID>
-    <ID>UnusedParameter:EncyclopaediaSectionNavigation.kt:navigator: DestinationsNavigator</ID>
     <ID>UseIfInsteadOfWhen:NavigableScreens.kt:NavigableScreens.Companion$when (route) { ThesaurusTabSingleWordDestination -> ThesaurusPageScreen else -> NavigableScreens.entries.find { it.matchingRoute == route } ?: SuggestionGeneratorScreen }</ID>
   </CurrentIssues>
 </SmellBaseline>

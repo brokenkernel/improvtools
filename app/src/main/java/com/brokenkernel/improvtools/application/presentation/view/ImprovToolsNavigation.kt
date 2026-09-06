@@ -236,27 +236,27 @@ internal fun ImprovToolsNavigationDrawer(
                             backStack = backStack,
                             onBack = { backStack.removeLastOrNull() },
                             entryDecorators =
-                                listOf(
-                                    rememberSaveableStateHolderNavEntryDecorator(),
-                                    rememberViewModelStoreNavEntryDecorator(),
-                                ),
+                            listOf(
+                                rememberSaveableStateHolderNavEntryDecorator(),
+                                rememberViewModelStoreNavEntryDecorator(),
+                            ),
                             entryProvider =
-                                entryProvider {
-                                    suggestionsScreenEntryBuilder(
-                                        navigator = improvToolsAppState.navigator,
-                                        improvToolsAppState = improvToolsAppState,
-                                    )
-                                    encyclopaediaScreensEntryBuilder(
-                                        navigator = improvToolsAppState.navigator,
-                                        improvToolsAppState = improvToolsAppState,
-                                    )
-                                    buzzerScreenEntryBuilder()
-                                    timerScreenEntryBuilder()
-                                    tonguetwisterScreenEntryBuilder(
-                                        navigator = improvToolsAppState.navigator,
-                                    )
-                                    applicationScreensEntryBuilder()
-                                },
+                            entryProvider {
+                                suggestionsScreenEntryBuilder(
+                                    navigator = improvToolsAppState.navigator,
+                                    improvToolsAppState = improvToolsAppState,
+                                )
+                                encyclopaediaScreensEntryBuilder(
+                                    navigator = improvToolsAppState.navigator,
+                                    improvToolsAppState = improvToolsAppState,
+                                )
+                                buzzerScreenEntryBuilder()
+                                timerScreenEntryBuilder()
+                                tonguetwisterScreenEntryBuilder(
+                                    navigator = improvToolsAppState.navigator,
+                                )
+                                applicationScreensEntryBuilder()
+                            },
                             sharedTransitionScope = this,
                         )
                     }

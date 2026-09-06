@@ -1,5 +1,7 @@
 package com.brokenkernel.improvtools.encyclopaedia.android.api
 
+import androidx.annotation.StringRes
+import androidx.navigation3.runtime.NavMetadataKey
 import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigationKey
 import kotlinx.parcelize.Parcelize
 
@@ -22,4 +24,7 @@ public object EmotionsPageNavigationKey : ImprovToolsNavigationKey
 public object ThesaurusAllItemsPageNavigationKey : ImprovToolsNavigationKey
 
 @Parcelize
-public object ThesaurusSingleWordPageNavigationKey : ImprovToolsNavigationKey
+public data class ThesaurusSingleWordPageNavigationKey(
+    val word: String,
+    @StringRes val priorTitleResource: Int,
+) : ImprovToolsNavigationKey
