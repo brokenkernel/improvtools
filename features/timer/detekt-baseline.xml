@@ -4,6 +4,7 @@
   <CurrentIssues>
     <ID>ClassOrdering:TimerState.kt:TimerState$public val timerID: Int</ID>
     <ID>ClassOrdering:TimerState.kt:TimerState$public val title: String</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:NavigationImplementations.kt:public fun EntryProviderScope&lt;ImprovToolsNavigationKey>.timerScreenEntryBuilder</ID>
     <ID>LibraryEntitiesShouldNotBePublic:SlottedOutlinedCard.kt:@Composable public fun SlottedTimerCardContent</ID>
     <ID>LibraryEntitiesShouldNotBePublic:StartPauseButton.kt:@Composable public fun StartPauseButton</ID>
     <ID>LibraryEntitiesShouldNotBePublic:TimerBorderOutlineCard.kt:@Composable public fun TimerBorderOutlineCard</ID>

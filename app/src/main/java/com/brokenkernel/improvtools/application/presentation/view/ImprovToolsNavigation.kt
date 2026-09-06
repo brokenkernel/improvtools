@@ -21,13 +21,23 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.navigation3.rememberViewModelStoreNavEntryDecorator
+import androidx.navigation3.runtime.entryProvider
+import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
+import androidx.navigation3.ui.NavDisplay
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import com.brokenkernel.improvtools.application.data.model.rememberImprovToolsAppState
+import com.brokenkernel.improvtools.application.navigation.applicationScreensEntryBuilder
+import com.brokenkernel.improvtools.buzzer.impl.buzzerScreenEntryBuilder
 import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigationKey
 import com.brokenkernel.improvtools.coreinfra.rememberParcelableBackStack
+import com.brokenkernel.improvtools.encyclopaedia.encyclopaediaScreensEntryBuilder
+import com.brokenkernel.improvtools.suggestionGenerator.presentation.view.suggestionsScreenEntryBuilder
 import com.brokenkernel.improvtools.suggestions.api.SuggestionsScreenNavigationKey
+import com.brokenkernel.improvtools.timer.impl.timerScreenEntryBuilder
+import com.brokenkernel.improvtools.tonguetwister.impl.tonguetwisterScreenEntryBuilder
 import com.ramcosta.composedestinations.DestinationsNavHost
 import com.ramcosta.composedestinations.generated.app.navgraphs.ImprovToolsNavigationNavGraph
 import com.ramcosta.composedestinations.navigation.dependency
@@ -220,30 +230,36 @@ internal fun ImprovToolsNavigationDrawer(
                 )
             // eventually need to remove column; using this so I can have two 'scaffolds'
             Column {
-                SharedTransitionLayout {
-//                    NavDisplay(
-//                        backStack = backStack,
-//                        onBack = { backStack.removeLastOrNull() },
-//                        entryDecorators =
-//                            listOf(
-//                                rememberSaveableStateHolderNavEntryDecorator(),
-//                                rememberViewModelStoreNavEntryDecorator(),
-//                            ),
-//                        entryProvider =
-//                            entryProvider {
-//                                suggestionsScreenEntryBuilder(
-//                                    navigator = improvToolsAppState.navigator,
-//                                    improvToolsAppState = improvToolsAppState,
-// //                                    modifier = TODO(),
-//                                )
-//                                encyclopaediaScreensEntryBuilder(
-//                                    navigator = improvToolsAppState.navigator,
-//                                    improvToolsAppState = improvToolsAppState,
-//                                )
-//                            },
-//                        sharedTransitionScope = this,
-// //                modifier = Modifier.padding(innerPadding),
-//                    )
+                if (false) {
+                    SharedTransitionLayout {
+                        NavDisplay(
+                            backStack = backStack,
+                            onBack = { backStack.removeLastOrNull() },
+                            entryDecorators =
+                                listOf(
+                                    rememberSaveableStateHolderNavEntryDecorator(),
+                                    rememberViewModelStoreNavEntryDecorator(),
+                                ),
+                            entryProvider =
+                                entryProvider {
+                                    suggestionsScreenEntryBuilder(
+                                        navigator = improvToolsAppState.navigator,
+                                        improvToolsAppState = improvToolsAppState,
+                                    )
+                                    encyclopaediaScreensEntryBuilder(
+                                        navigator = improvToolsAppState.navigator,
+                                        improvToolsAppState = improvToolsAppState,
+                                    )
+                                    buzzerScreenEntryBuilder()
+                                    timerScreenEntryBuilder()
+                                    tonguetwisterScreenEntryBuilder(
+                                        navigator = improvToolsAppState.navigator,
+                                    )
+                                    applicationScreensEntryBuilder()
+                                },
+                            sharedTransitionScope = this,
+                        )
+                    }
                 }
 
                 DestinationsNavHost(

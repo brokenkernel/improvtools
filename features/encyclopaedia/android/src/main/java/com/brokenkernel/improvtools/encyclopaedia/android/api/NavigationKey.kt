@@ -19,4 +19,7 @@ public object GlossaryPageNavigationKey : ImprovToolsNavigationKey
 public object EmotionsPageNavigationKey : ImprovToolsNavigationKey
 
 @Parcelize
-public object ThesaurusPageNavigationKey : ImprovToolsNavigationKey
+public object ThesaurusAllItemsPageNavigationKey : ImprovToolsNavigationKey
+
+@Parcelize
+public object ThesaurusSingleWordPageNavigationKey : ImprovToolsNavigationKey

@@ -3,6 +3,7 @@
   <ManuallySuppressedIssues/>
   <CurrentIssues>
     <ID>LibraryEntitiesShouldNotBePublic:DebugCollector.kt:DebugCollector</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:NavigationImplementations.kt:public fun EntryProviderScope&lt;ImprovToolsNavigationKey>.buzzerScreenEntryBuilder</ID>
     <ID>MatchingDeclarationName:NavigationKey.kt:DebugCollectorNavigationKey : ImprovToolsNavigationKey</ID>
   </CurrentIssues>
 </SmellBaseline>

@@ -8,7 +8,8 @@ import com.brokenkernel.improvtools.encyclopaedia.android.api.EmotionsPageNaviga
 import com.brokenkernel.improvtools.encyclopaedia.android.api.GamesPageNavigationKey
 import com.brokenkernel.improvtools.encyclopaedia.android.api.GlossaryPageNavigationKey
 import com.brokenkernel.improvtools.encyclopaedia.android.api.PeoplePageNavigationKey
-import com.brokenkernel.improvtools.encyclopaedia.android.api.ThesaurusPageNavigationKey
+import com.brokenkernel.improvtools.encyclopaedia.android.api.ThesaurusAllItemsPageNavigationKey
+import com.brokenkernel.improvtools.encyclopaedia.android.api.ThesaurusSingleWordPageNavigationKey
 import com.brokenkernel.improvtools.encyclopaedia.android.api.TipsAndAdviceNavigationKey
 import com.brokenkernel.improvtools.encyclopaedia.presentation.view.ThesaurusTabAllItems
 import com.ramcosta.composedestinations.generated.app.destinations.ThesaurusTabSingleWordDestination
@@ -28,22 +29,29 @@ internal object EncyclopaediaSectionNavigation {
 
 internal fun EntryProviderScope<ImprovToolsNavigationKey>.encyclopaediaScreensEntryBuilder(
     navigator: DestinationsNavigator,
-    improvToolsAppState: ImprovToolsAppState
+    improvToolsAppState: ImprovToolsAppState,
 ) {
     entry<TipsAndAdviceNavigationKey> {
+        // TODO
     }
     entry<GamesPageNavigationKey> {
+        // TODO
     }
     entry<PeoplePageNavigationKey> {
-
+        // TODO
     }
     entry<GlossaryPageNavigationKey> {
+        // TODO
     }
     entry<EmotionsPageNavigationKey> {
+        // TODO
     }
-    entry<ThesaurusPageNavigationKey> {
+    entry<ThesaurusAllItemsPageNavigationKey> {
         ThesaurusTabAllItems(
             improvToolsAppState = improvToolsAppState,
         )
+    }
+    entry<ThesaurusSingleWordPageNavigationKey> {
+        // TODO
     }
 }

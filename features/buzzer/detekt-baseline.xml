@@ -2,6 +2,7 @@
 <SmellBaseline>
   <ManuallySuppressedIssues/>
   <CurrentIssues>
+    <ID>LibraryEntitiesShouldNotBePublic:NavigationImplementations.kt:public fun EntryProviderScope&lt;ImprovToolsNavigationKey>.buzzerScreenEntryBuilder</ID>
     <ID>MatchingDeclarationName:NavigationKey.kt:BuzzerNavigationKey : ImprovToolsNavigationKey</ID>
   </CurrentIssues>
 </SmellBaseline>
