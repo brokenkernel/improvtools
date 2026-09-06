@@ -10,14 +10,15 @@ import com.brokenkernel.improvtools.application.presentation.view.LibrariesTab
 import com.brokenkernel.improvtools.application.presentation.view.PrivacyTab
 import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigationKey
 import com.brokenkernel.improvtools.settings.presentation.view.SettingsTab
+import com.ramcosta.composedestinations.generated.app.destinations.PrivacyTabDestination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
 internal fun EntryProviderScope<ImprovToolsNavigationKey>.applicationScreensEntryBuilder(
-    navigator: DestinationsNavigator
+    navigator: DestinationsNavigator,
 ) {
     entry<AboutNavigationKey> {
         AboutTab(
-            navigator = navigator,
+            onGoToPrivacyTab = { navigator.navigate(PrivacyTabDestination) },
         )
     }
     entry<LibrariesNavigationKey> {

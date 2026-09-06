@@ -57,14 +57,12 @@ import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.navigation.ImprovToolsDestination
 import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
 import com.brokenkernel.improvtools.coreinfra.LocalSnackbarHostState
-import com.ramcosta.composedestinations.generated.app.destinations.PrivacyTabDestination
-import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kotlinx.coroutines.launch
 
 @ImprovToolsDestination<ImprovToolsNavigationGraph>
 @Composable
 internal fun AboutTab(
-    navigator: DestinationsNavigator,
+    onGoToPrivacyTab: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     // move snackbar host state into app state. And then inject it?
@@ -276,7 +274,7 @@ internal fun AboutTab(
                     }
                     TextButton(
                         onClick = {
-                            navigator.navigate(PrivacyTabDestination)
+                            onGoToPrivacyTab()
                         },
                     ) {
                         Text(stringResource(R.string.about_show_privacy_screen))
