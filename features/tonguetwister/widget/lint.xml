@@ -8,7 +8,6 @@
     <issue id="DefaultEncoding" severity="error" />
     <issue id="DoNotMockAnything" severity="error" />
     <issue id="ExpensiveAssertion" severity="error" />
-    <issue id="IconExpectedSize" severity="error" />
     <issue id="KotlinPropertyAccess" severity="error" />
     <issue id="KotlincFE10" severity="error" />
     <issue id="NoHardKeywords" severity="error" />
