@@ -2,39 +2,6 @@
 <issues format="6" by="lint 9.4.0" type="baseline" client="gradle" dependencies="true" name="AGP (9.4.0)" variant="all" version="9.4.0">
 
     <issue
-        id="CannotEnableHidden"
-        message="Issue `IconExpectedSize` was configured with severity `error` in app, but was not enabled (or was disabled) in library android"
-        errorLine1="    &lt;issue id=&quot;IconExpectedSize&quot; severity=&quot;error&quot; />"
-        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="lint.xml"
-            line="11"
-            column="5"/>
-    </issue>
-
-    <issue
-        id="CannotEnableHidden"
-        message="Issue `IconExpectedSize` was configured with severity `error` in app, but was not enabled (or was disabled) in library android"
-        errorLine1="    &lt;issue id=&quot;IconExpectedSize&quot; severity=&quot;error&quot; />"
-        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="lint.xml"
-            line="11"
-            column="5"/>
-    </issue>
-
-    <issue
-        id="CannotEnableHidden"
-        message="Issue `IconExpectedSize` was configured with severity `error` in app, but was not enabled (or was disabled) in library android"
-        errorLine1="    &lt;issue id=&quot;IconExpectedSize&quot; severity=&quot;error&quot; />"
-        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="lint.xml"
-            line="11"
-            column="5"/>
-    </issue>
-
-    <issue
         id="MissingClass"
         message="Class referenced in the manifest, `com.brokenkernel.improvtools.encyclopaedia.android.XHiltComponentActivity`, was not found in the project or the libraries"
         errorLine1="        &lt;activity android:name=&quot;.XHiltComponentActivity&quot; />"
