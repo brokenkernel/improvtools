@@ -49,7 +49,7 @@ path = "/**"
 version = "master"
 
 [outputs]
-section = ["HTML", "RSS"]
+section = ["html", "rss"]
 
 [module.hugoVersion]
 extended = true
