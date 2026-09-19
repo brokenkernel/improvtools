@@ -144,7 +144,7 @@ dependencies {
 //    }
 // }
 
-android {
+configure<LibraryExtension> {
     testFixtures {
         enable = true
         androidResources = true
