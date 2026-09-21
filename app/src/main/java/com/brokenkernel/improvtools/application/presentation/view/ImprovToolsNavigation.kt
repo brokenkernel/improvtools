@@ -236,45 +236,45 @@ internal fun ImprovToolsNavigationDrawer(
                             backStack = backStack,
                             onBack = { backStack.removeLastOrNull() },
                             entryDecorators =
-                            listOf(
-                                rememberSaveableStateHolderNavEntryDecorator(),
-                                rememberViewModelStoreNavEntryDecorator(),
-                            ),
+                                listOf(
+                                    rememberSaveableStateHolderNavEntryDecorator(),
+                                    rememberViewModelStoreNavEntryDecorator(),
+                                ),
                             entryProvider =
-                            entryProvider {
-                                suggestionsScreenEntryBuilder(
-                                    navigator = improvToolsAppState.navigator,
-                                    improvToolsAppState = improvToolsAppState,
-                                )
-                                encyclopaediaScreensEntryBuilder(
-                                    navigator = improvToolsAppState.navigator,
-                                    improvToolsAppState = improvToolsAppState,
-                                )
-                                buzzerScreenEntryBuilder()
-                                timerScreenEntryBuilder()
-                                tonguetwisterScreenEntryBuilder(
-                                    navigator = improvToolsAppState.navigator,
-                                )
-                                applicationScreensEntryBuilder(
-                                    navigator = improvToolsAppState.navigator,
-                                )
-                            },
+                                entryProvider {
+                                    suggestionsScreenEntryBuilder(
+                                        navigator = improvToolsAppState.navigator,
+                                        improvToolsAppState = improvToolsAppState,
+                                    )
+                                    encyclopaediaScreensEntryBuilder(
+                                        navigator = improvToolsAppState.navigator,
+                                        improvToolsAppState = improvToolsAppState,
+                                    )
+                                    buzzerScreenEntryBuilder()
+                                    timerScreenEntryBuilder()
+                                    tonguetwisterScreenEntryBuilder(
+                                        navigator = improvToolsAppState.navigator,
+                                    )
+                                    applicationScreensEntryBuilder(
+                                        navigator = improvToolsAppState.navigator,
+                                    )
+                                },
                             sharedTransitionScope = this,
                         )
                     }
+                } else {
+                    DestinationsNavHost(
+                        navGraph = ImprovToolsNavigationNavGraph,
+                        navController = improvToolsAppState.navController,
+                        dependenciesContainerBuilder = {
+                            // TODO: replace with per-module navigation functions
+                            // https://composedestinations.rafaelcosta.xyz/v2/multi-module-setup#receive-navhost-parameters
+                            // TODO: pull encyclopedia out to different module
+                            dependency(improvToolsAppState)
+                        },
+                        start = initialScreen.matchingRoute,
+                    )
                 }
-
-                DestinationsNavHost(
-                    navGraph = ImprovToolsNavigationNavGraph,
-                    navController = improvToolsAppState.navController,
-                    dependenciesContainerBuilder = {
-                        // TODO: replace with per-module navigation functions
-                        // https://composedestinations.rafaelcosta.xyz/v2/multi-module-setup#receive-navhost-parameters
-                        // TODO: pull encyclopedia out to different module
-                        dependency(improvToolsAppState)
-                    },
-                    start = initialScreen.matchingRoute,
-                )
             }
         }
     }
