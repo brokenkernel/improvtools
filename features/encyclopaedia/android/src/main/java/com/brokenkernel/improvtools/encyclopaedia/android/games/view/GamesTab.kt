@@ -1,11 +1,9 @@
-package com.brokenkernel.improvtools.encyclopaedia.presentation.view
+package com.brokenkernel.improvtools.encyclopaedia.android.games.view
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.text.input.rememberTextFieldState
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilledIconToggleButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItem
@@ -28,10 +26,9 @@ import com.brokenkernel.components.filteredlist.ChippedTabbedSearchableColumn
 import com.brokenkernel.components.view.ExpandIcon
 import com.brokenkernel.components.view.HtmlText
 import com.brokenkernel.components.view.SimpleIconButton
-import com.brokenkernel.improvtools.R
-import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import com.brokenkernel.improvtools.coreinfra.BackStack
 import com.brokenkernel.improvtools.coreinfra.LocalBottomSheetContentManager
+import com.brokenkernel.improvtools.encyclopaedia.android.R
 import com.brokenkernel.improvtools.encyclopaedia.android.components.SingleTagBottomTab
 import com.brokenkernel.improvtools.encyclopaedia.android.games.viewmodel.GamesTabViewModel
 import com.brokenkernel.improvtools.encyclopaedia.data.GameDatumTools
@@ -51,7 +48,6 @@ private fun hasExpandableInformation(gdi: GamesDataItem): Boolean {
     return gdi.detailedInformation != null || gdi.source != null
 }
 
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 internal fun GamesTab(
     backstack: BackStack,
@@ -165,7 +161,10 @@ internal fun GamesTab(
                                         onClick = {
                                             backstack.add(TimerNavigationKey)
                                         },
-                                        icon = NavigableScreens.TimerScreen.icon(),
+                                        // TODO: get this from common locations
+                                        icon = ImageVector.vectorResource(
+                                            id = R.drawable.timer_24dp_1f1f1f_fill0_wght400_grad0_opsz24,
+                                        ),
                                         contentDescription = stringResource(R.string.go_to_timer_screen),
                                     )
                                 }

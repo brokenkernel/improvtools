@@ -1,4 +1,4 @@
-package com.brokenkernel.improvtools.encyclopaedia.android.glossary
+package com.brokenkernel.improvtools.encyclopaedia.android.glossary.view
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable

@@ -8,10 +8,9 @@ import kotlinx.collections.immutable.ImmutableMap
 import kotlinx.collections.immutable.toImmutableList
 import kotlinx.collections.immutable.toImmutableMap
 
-// TODO: make internal
-public class GamesTabViewModel : ViewModel() {
+internal class GamesTabViewModel : ViewModel() {
     private val sortedGames: ImmutableList<GamesDataItem> =
         GamesDatum.sortedBy { it.gameName }.toImmutableList()
-    public val groupedGames: ImmutableMap<String, List<GamesDataItem>> =
+    val groupedGames: ImmutableMap<String, List<GamesDataItem>> =
         sortedGames.groupBy { game -> game.gameName[0].uppercase() }.toImmutableMap()
 }

@@ -24,7 +24,7 @@ import com.brokenkernel.components.view.HtmlText
 import com.brokenkernel.components.view.verticalColumnScrollbar
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.coreinfra.BackStack
-import com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel.ThesaurusSingleItemViewModel
+import com.brokenkernel.improvtools.encyclopaedia.android.thesaurus.viewmodel.ThesaurusSingleItemViewModel
 
 @Composable
 internal fun ThesaurusTabSingleWord(

@@ -38,6 +38,7 @@ import com.brokenkernel.improvtools.buzzer.impl.buzzerScreenEntryBuilder
 import com.brokenkernel.improvtools.coreinfra.BackStack
 import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigationKey
 import com.brokenkernel.improvtools.coreinfra.rememberParcelableBackStack
+import com.brokenkernel.improvtools.encyclopaedia.android.api.encyclopaediaScreensEntryBuilderPart2
 import com.brokenkernel.improvtools.encyclopaedia.encyclopaediaScreensEntryBuilder
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.view.suggestionsScreenEntryBuilder
 import com.brokenkernel.improvtools.suggestions.api.SuggestionsScreenNavigationKey
@@ -291,13 +292,15 @@ internal fun ImprovToolsNavigationDrawer(
                         entryProvider =
                         entryProvider {
                             suggestionsScreenEntryBuilder(
-//                                    navigator = improvToolsAppState.navigator,
                                 improvToolsAppState = improvToolsAppState,
                                 backstack = backstack, // TODO
                             )
                             encyclopaediaScreensEntryBuilder(
                                 backstack = backstack,
                                 improvToolsAppState = improvToolsAppState,
+                            )
+                            encyclopaediaScreensEntryBuilderPart2(
+                                backstack = backstack,
                             )
                             buzzerScreenEntryBuilder()
                             timerScreenEntryBuilder()
