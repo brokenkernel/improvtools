@@ -2,7 +2,6 @@ package com.brokenkernel.improvtools.encyclopaedia
 
 import androidx.annotation.StringRes
 import androidx.navigation3.runtime.EntryProviderScope
-import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.coreinfra.BackStack
 import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigationKey
 import com.brokenkernel.improvtools.encyclopaedia.android.api.EmotionsPageNavigationKey
@@ -30,7 +29,6 @@ internal object EncyclopaediaSectionNavigation {
 
 internal fun EntryProviderScope<ImprovToolsNavigationKey>.encyclopaediaScreensEntryBuilder(
     backstack: BackStack,
-    improvToolsAppState: ImprovToolsAppState,
 ) {
     entry<TipsAndAdviceNavigationKey> {
         TipsAndAdviceTab()
@@ -47,7 +45,6 @@ internal fun EntryProviderScope<ImprovToolsNavigationKey>.encyclopaediaScreensEn
     entry<ThesaurusAllItemsPageNavigationKey> {
         ThesaurusTabAllItems(
             backstack = backstack,
-            improvToolsAppState = improvToolsAppState,
         )
     }
     entry<ThesaurusSingleWordPageNavigationKey> { route ->

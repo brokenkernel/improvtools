@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -59,8 +58,6 @@ import sh.calvin.reorderable.rememberReorderableLazyListState
 
 // TODO: add ability to enable/disable categories entirely persistently in settings. Maybe GridFlow to click on/off.
 // TODO: maybe add single suggestion screen
-
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun SuggestionsTab(
     improvToolsAppState: ImprovToolsAppState,
