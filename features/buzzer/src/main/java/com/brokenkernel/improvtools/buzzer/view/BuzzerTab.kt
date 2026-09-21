@@ -11,10 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import com.brokenkernel.improvtools.buzzer.model.BuzzerDatum
-import com.ramcosta.composedestinations.annotation.Destination
-import com.ramcosta.composedestinations.annotation.ExternalModuleGraph
 
-@Destination<ExternalModuleGraph>
 @Composable
 internal fun BuzzerTab(modifier: Modifier = Modifier) {
     val simpleBuzzerMediaPlayer = SimpleBuzzerMediaPlayer(LocalContext.current)

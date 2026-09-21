@@ -8,6 +8,8 @@ import androidx.compose.runtime.snapshots.SnapshotStateList
 
 public interface ImprovToolsNavigationKey : Parcelable
 
+public typealias BackStack = SnapshotStateList<ImprovToolsNavigationKey> // TODO
+
 @Composable
 public fun <T : Parcelable> rememberParcelableBackStack(vararg elements: T): SnapshotStateList<T> =
     rememberSaveable {

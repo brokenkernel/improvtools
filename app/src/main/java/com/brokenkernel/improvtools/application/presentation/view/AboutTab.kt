@@ -54,12 +54,9 @@ import com.brokenkernel.components.view.ExpandIcon
 import com.brokenkernel.components.view.HtmlText
 import com.brokenkernel.improvtools.BuildConfig
 import com.brokenkernel.improvtools.R
-import com.brokenkernel.improvtools.application.navigation.ImprovToolsDestination
-import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
 import com.brokenkernel.improvtools.coreinfra.LocalSnackbarHostState
 import kotlinx.coroutines.launch
 
-@ImprovToolsDestination<ImprovToolsNavigationGraph>
 @Composable
 internal fun AboutTab(
     onGoToPrivacyTab: () -> Unit,

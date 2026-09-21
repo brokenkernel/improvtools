@@ -24,6 +24,7 @@ kotlin {
 }
 
 dependencies {
+    api(libs.androidx.navigation3.runtime)
     api(libs.kotlinx.collections.immutable.jvm)
     api(libs.kotlinx.serialization.core)
 
@@ -33,6 +34,7 @@ dependencies {
     implementation(libs.androidx.ui)
     implementation(libs.extjwnl)
     implementation(libs.javax.inject)
+    implementation(libs.kotlin.parcelize.runtime)
     implementation(libs.kotlinx.serialization.hocon)
 
     runtimeOnly(libs.extjwnl.data.wn31)

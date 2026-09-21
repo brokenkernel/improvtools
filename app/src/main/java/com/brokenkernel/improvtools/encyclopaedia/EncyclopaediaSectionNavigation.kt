@@ -3,6 +3,7 @@ package com.brokenkernel.improvtools.encyclopaedia
 import androidx.annotation.StringRes
 import androidx.navigation3.runtime.EntryProviderScope
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
+import com.brokenkernel.improvtools.coreinfra.BackStack
 import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigationKey
 import com.brokenkernel.improvtools.encyclopaedia.android.api.EmotionsPageNavigationKey
 import com.brokenkernel.improvtools.encyclopaedia.android.api.GamesPageNavigationKey
@@ -11,27 +12,26 @@ import com.brokenkernel.improvtools.encyclopaedia.android.api.PeoplePageNavigati
 import com.brokenkernel.improvtools.encyclopaedia.android.api.ThesaurusAllItemsPageNavigationKey
 import com.brokenkernel.improvtools.encyclopaedia.android.api.ThesaurusSingleWordPageNavigationKey
 import com.brokenkernel.improvtools.encyclopaedia.android.api.TipsAndAdviceNavigationKey
+import com.brokenkernel.improvtools.encyclopaedia.android.emotions.EmotionsTab
+import com.brokenkernel.improvtools.encyclopaedia.android.glossary.GlossaryTab
+import com.brokenkernel.improvtools.encyclopaedia.android.people.PeopleTab
 import com.brokenkernel.improvtools.encyclopaedia.presentation.view.GamesTab
 import com.brokenkernel.improvtools.encyclopaedia.presentation.view.ThesaurusTabAllItems
 import com.brokenkernel.improvtools.encyclopaedia.presentation.view.ThesaurusTabSingleWord
 import com.brokenkernel.improvtools.encyclopaedia.presentation.view.TipsAndAdviceTab
-import com.ramcosta.composedestinations.generated.app.destinations.ThesaurusTabSingleWordDestination
-import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
 internal object EncyclopaediaSectionNavigation {
     fun navigateToThesaurusWord(
-        navigator: DestinationsNavigator,
+        backstack: BackStack,
         word: String,
         @StringRes priorTitleRes: Int,
     ) {
-        navigator.navigate(
-            ThesaurusTabSingleWordDestination(word, priorTitleRes),
-        )
+        backstack.add(ThesaurusSingleWordPageNavigationKey(word, priorTitleRes))
     }
 }
 
 internal fun EntryProviderScope<ImprovToolsNavigationKey>.encyclopaediaScreensEntryBuilder(
-    navigator: DestinationsNavigator,
+    backstack: BackStack,
     improvToolsAppState: ImprovToolsAppState,
 ) {
     entry<TipsAndAdviceNavigationKey> {
@@ -39,27 +39,28 @@ internal fun EntryProviderScope<ImprovToolsNavigationKey>.encyclopaediaScreensEn
     }
     entry<GamesPageNavigationKey> {
         GamesTab(
-            navigator = navigator,
+//            navigator = navigator,
         )
     }
     entry<PeoplePageNavigationKey> {
-//        PeopleTab()
+        PeopleTab()
     }
     entry<GlossaryPageNavigationKey> {
-//        GlossaryTab()
+        GlossaryTab()
     }
     entry<EmotionsPageNavigationKey> {
-//        EmotionsTab()
+        EmotionsTab()
     }
     entry<ThesaurusAllItemsPageNavigationKey> {
         ThesaurusTabAllItems(
+            backstack = backstack,
             improvToolsAppState = improvToolsAppState,
         )
     }
     entry<ThesaurusSingleWordPageNavigationKey> { route ->
         ThesaurusTabSingleWord(
+            backstack = backstack,
             word = route.word,
-            navigator = navigator,
             priorTitleResource = route.priorTitleResource,
         )
     }

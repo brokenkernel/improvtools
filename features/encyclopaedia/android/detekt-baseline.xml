@@ -3,8 +3,11 @@
   <ManuallySuppressedIssues/>
   <CurrentIssues>
     <ID>ForbiddenPublicDataClass:NavigationKey.kt:ThesaurusSingleWordPageNavigationKey : ImprovToolsNavigationKey</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:EmotionsTab.kt:@Composable public fun EmotionsTab</ID>
     <ID>LibraryEntitiesShouldNotBePublic:GamesTabViewModel.kt:GamesTabViewModel : ViewModel</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:GlossaryTab.kt:@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class) @Composable public fun GlossaryTab</ID>
     <ID>LibraryEntitiesShouldNotBePublic:NavigationKey.kt:ThesaurusSingleWordPageNavigationKey : ImprovToolsNavigationKey</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:PeopleTab.kt:@Composable public fun PeopleTab</ID>
     <ID>LibraryEntitiesShouldNotBePublic:SingleTagBottomTab.kt:@Composable public fun SingleTagBottomTab</ID>
     <ID>LibraryEntitiesShouldNotBePublic:SingleWordThesaurusButton.kt:@Composable public fun SingleWordThesaurusButton</ID>
     <ID>LibraryEntitiesShouldNotBePublic:TipsAndAdviceScreen.kt:@Composable public fun TipsAndAdviceScreen</ID>

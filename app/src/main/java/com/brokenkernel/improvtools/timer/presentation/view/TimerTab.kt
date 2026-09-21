@@ -26,10 +26,11 @@ import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation3.runtime.EntryProviderScope
 import com.brokenkernel.components.view.OneWayDismissableContent
 import com.brokenkernel.improvtools.R
-import com.brokenkernel.improvtools.application.navigation.ImprovToolsDestination
-import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
+import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigationKey
+import com.brokenkernel.improvtools.timer.api.TimerNavigationKey
 import com.brokenkernel.improvtools.timer.model.CountDownTimerState
 import com.brokenkernel.improvtools.timer.model.CountUpTimerState
 import com.brokenkernel.improvtools.timer.model.TimerState
@@ -162,7 +163,6 @@ private fun CountUpTimer(
 
 @SuppressLint("MissingPermission")
 @OptIn(ExperimentalPermissionsApi::class)
-@ImprovToolsDestination<ImprovToolsNavigationGraph>
 @Composable
 internal fun TimerTab(
     modifier: Modifier = Modifier,
@@ -278,5 +278,11 @@ internal fun TimerTab(
                 }
             }
         }
+    }
+}
+
+public fun EntryProviderScope<ImprovToolsNavigationKey>.timerScreenEntryBuilder() {
+    entry<TimerNavigationKey> {
+        TimerTab()
     }
 }

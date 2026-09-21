@@ -69,12 +69,13 @@ kotlin {
 }
 
 dependencies {
+    api(libs.androidx.compose.foundation.layout)
+    api(libs.androidx.material3)
     api(libs.androidx.runtime)
 
     implementation(enforcedPlatform(libs.androidx.compose.bom))
     implementation(enforcedPlatform(libs.kotlin.bom))
-    implementation(libs.androidx.compose.foundation.layout)
-    implementation(libs.androidx.material3)
+    implementation(libs.androidx.runtime.saveable)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.kotlinx.coroutines.core)
 

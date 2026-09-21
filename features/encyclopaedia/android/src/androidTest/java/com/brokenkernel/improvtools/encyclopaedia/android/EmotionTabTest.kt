@@ -5,7 +5,7 @@ import androidx.compose.ui.test.junit4.AndroidComposeTestRule
 import androidx.compose.ui.test.junit4.v2.createAndroidComposeRule
 import androidx.compose.ui.test.onRoot
 import androidx.test.ext.junit.rules.ActivityScenarioRule
-import com.brokenkernel.improvtools.encyclopaedia.android.emotions.EmotionTab
+import com.brokenkernel.improvtools.encyclopaedia.android.emotions.EmotionsTab
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Before
@@ -27,7 +27,7 @@ internal class EmotionTabTest {
     fun setupAppNavHost() {
         hiltRule.inject()
         composeTestRule.setContent {
-            EmotionTab()
+            EmotionsTab()
         }
     }
 

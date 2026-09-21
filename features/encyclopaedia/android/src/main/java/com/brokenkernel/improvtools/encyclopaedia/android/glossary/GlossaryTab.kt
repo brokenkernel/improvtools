@@ -22,9 +22,6 @@ import com.brokenkernel.components.view.HtmlText
 import com.brokenkernel.improvtools.encyclopaedia.android.R
 import com.brokenkernel.improvtools.encyclopaedia.data.GlossaryDataItem
 import com.brokenkernel.improvtools.encyclopaedia.data.GlossaryDatum
-import com.ramcosta.composedestinations.annotation.Destination
-import com.ramcosta.composedestinations.annotation.ExternalModuleGraph
-import com.ramcosta.composedestinations.annotation.parameters.CodeGenVisibility
 import kotlinx.collections.immutable.ImmutableMap
 import kotlinx.collections.immutable.toImmutableMap
 
@@ -37,11 +34,8 @@ private fun doesMatch(search: String, item: GlossaryDataItem): Boolean {
 }
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
-@Destination<ExternalModuleGraph>(
-    visibility = CodeGenVisibility.PUBLIC,
-)
 @Composable
-internal fun GlossaryTab(modifier: Modifier = Modifier) {
+public fun GlossaryTab(modifier: Modifier = Modifier) {
     // TODO: move into viewModel (or at least the repository)
     val sortedGlossaryItems: ImmutableMap<String, List<GlossaryDataItem>> = remember {
         GlossaryDatum.sortedBy { it.term }.groupBy { it.term[0].uppercase() }.toImmutableMap()

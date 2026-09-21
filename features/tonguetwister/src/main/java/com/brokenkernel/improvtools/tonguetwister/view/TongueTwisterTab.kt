@@ -39,9 +39,6 @@ import com.brokenkernel.components.view.PageDots
 import com.brokenkernel.improvtools.tonguetwister.R
 import com.brokenkernel.improvtools.tonguetwister.data.TongueTwisterDatum
 import com.brokenkernel.improvtools.tonguetwister.data.TongueTwisterItem
-import com.ramcosta.composedestinations.annotation.Destination
-import com.ramcosta.composedestinations.annotation.ExternalModuleGraph
-import com.ramcosta.composedestinations.annotation.parameters.CodeGenVisibility
 import java.util.Locale
 import kotlinx.collections.immutable.ImmutableList
 
@@ -179,9 +176,6 @@ internal fun OuterTongueTwisterOutline(
     }
 }
 
-@Destination<ExternalModuleGraph>(
-    visibility = CodeGenVisibility.PUBLIC,
-)
 @Composable
 internal fun TongueTwisterTab() {
     // consider some way to save state for which item we're up to.

@@ -29,9 +29,6 @@ import com.brokenkernel.improvtools.encyclopaedia.android.R
 import com.brokenkernel.improvtools.encyclopaedia.data.PeopleDataItem
 import com.brokenkernel.improvtools.encyclopaedia.data.PeopleDatum
 import com.brokenkernel.improvtools.encyclopaedia.data.PeopleDatumTopic
-import com.ramcosta.composedestinations.annotation.Destination
-import com.ramcosta.composedestinations.annotation.ExternalModuleGraph
-import com.ramcosta.composedestinations.annotation.parameters.CodeGenVisibility
 import java.text.StringCharacterIterator
 import kotlinx.collections.immutable.toImmutableMap
 
@@ -58,11 +55,8 @@ private fun hasExpandableInformation(pdi: PeopleDataItem): Boolean {
     return pdi.detailedInformation != null
 }
 
-@Destination<ExternalModuleGraph>(
-    visibility = CodeGenVisibility.PUBLIC,
-)
 @Composable
-internal fun PeopleTab(modifier: Modifier = Modifier) {
+public fun PeopleTab(modifier: Modifier = Modifier) {
     val languageTag = Locale.current.toLanguageTag()
     val fullCollationTag = "$languageTag@collation=phonebook"
     val ulocale = ULocale(fullCollationTag)

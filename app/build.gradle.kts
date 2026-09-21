@@ -236,10 +236,10 @@ dependencies {
     implementation(libs.google.dagger)
     implementation(libs.guava)
     implementation(libs.hilt.android)
-    implementation(libs.io.github.raamcosta.composeDestinations.core)
     implementation(libs.jakarta.inject.api)
     implementation(libs.javax.inject)
     implementation(libs.jetbrains.annotations)
+    implementation(libs.kotlin.parcelize.runtime)
     implementation(libs.kotlin.stdlib)
     implementation(libs.kotlinx.collections.immutable.jvm)
     implementation(libs.kotlinx.coroutines.core)
@@ -269,7 +269,6 @@ dependencies {
     releaseRuntimeOnly(libs.leakcanary.android.release)
     releaseRuntimeOnly(libs.leakcanary.object1.watcher.android)
 
-    androidTestImplementation(libs.androidx.core)
     androidTestImplementation(libs.androidx.datastore)
     androidTestImplementation(libs.androidx.espresso.device)
     androidTestImplementation(libs.androidx.junit)
@@ -278,6 +277,8 @@ dependencies {
     androidTestImplementation(libs.androidx.runtime)
     androidTestImplementation(libs.androidx.ui.test)
     androidTestImplementation(libs.androidx.ui.test.junit4)
+    androidTestImplementation(libs.hamcrest.core)
+    androidTestImplementation(libs.hamcrest.library)
     //    androidTestImplementation(libs.hamcrest)
     androidTestImplementation(libs.hilt.android.testing)
     androidTestImplementation(libs.junit)
@@ -286,6 +287,7 @@ dependencies {
     androidTestImplementation(libs.tools.fastlane.screengrab)
 
     androidTestRuntimeOnly(testFixtures(projects.coreinfra))
+    androidTestRuntimeOnly(libs.androidx.core)
     androidTestRuntimeOnly(libs.androidx.runner)
     androidTestRuntimeOnly(libs.leakcanary.android.instrumentation)
 
@@ -298,7 +300,6 @@ dependencies {
     ksp(libs.androidx.appsearch.compiler)
     ksp(libs.androidx.lifecycle.compiler)
     ksp(libs.hilt.compiler)
-    ksp(libs.io.github.raamcosta.composeDestinations.ksp)
     ksp(libs.kotlin.metadata.jvm)
 
     ktlintRuleset(libs.ktlintCompose)
@@ -410,9 +411,6 @@ powerAssert {
 
 ksp {
     allWarningsAsErrors = true
-    arg("compose-destinations.moduleName", project.name)
-    arg("compose-destinations.mermaidGraph", "$rootDir/docs/static/")
-    arg("compose-destinations.htmlMermaidGraph", "$rootDir/docs/static/")
     arg("dagger.useBindingGraphFix", "enabled")
     arg("dagger.ignoreProvisionKeyWildcards", "enabled")
     arg("dagger.experimentalDaggerErrorMessages", "enabled")

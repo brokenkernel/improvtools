@@ -3,4 +3,7 @@
     <file name="src/main/java/com/brokenkernel/improvtools/timer/api/NavigationKey.kt">
         <error line="1" column="1" source="standard:filename" />
     </file>
+    <file name="src/main/java/com/brokenkernel/improvtools/timer/impl/NavigationImplementations.kt">
+        <error line="1" column="1" source="standard:no-empty-file" />
+    </file>
 </baseline>

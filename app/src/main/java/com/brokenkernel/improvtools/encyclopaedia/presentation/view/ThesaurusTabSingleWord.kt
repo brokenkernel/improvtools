@@ -23,16 +23,15 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.brokenkernel.components.view.HtmlText
 import com.brokenkernel.components.view.verticalColumnScrollbar
 import com.brokenkernel.improvtools.R
-import com.brokenkernel.improvtools.application.navigation.ImprovToolsDestination
-import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
+import com.brokenkernel.improvtools.coreinfra.BackStack
 import com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel.ThesaurusSingleItemViewModel
-import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
-@ImprovToolsDestination<ImprovToolsNavigationGraph>
+// import com.ramcosta.composedestinations.navigation.DestinationsNavigator
+
 @Composable
 internal fun ThesaurusTabSingleWord(
     word: String,
-    navigator: DestinationsNavigator,
+    backstack: BackStack, // TODO
     @StringRes priorTitleResource: Int,
     modifier: Modifier = Modifier,
     viewModel: ThesaurusSingleItemViewModel = hiltViewModel(),
@@ -63,10 +62,15 @@ internal fun ThesaurusTabSingleWord(
             HtmlText(stringResource(R.string.encyclopaedia_word_senses))
             HtmlText(wordSenseRenderedString)
             ExtendedFloatingActionButton(
-                onClick = navigator::popBackStack,
+                onClick = {
+                    backstack.removeLastOrNull()
+                },
             ) {
                 val backtoText =
-                    stringResource(R.string.navigation_back_to_thesaurus, stringResource(priorTitleResource))
+                    stringResource(
+                        R.string.navigation_back_to_thesaurus,
+                        stringResource(priorTitleResource),
+                    )
                 Icon(
                     ImageVector.vectorResource(R.drawable.arrow_back_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
                     contentDescription = backtoText,

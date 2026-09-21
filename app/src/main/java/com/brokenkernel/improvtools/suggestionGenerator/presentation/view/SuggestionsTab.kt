@@ -25,6 +25,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -39,33 +40,33 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation3.runtime.EntryProviderScope
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
-import com.brokenkernel.improvtools.application.navigation.ImprovToolsDestination
-import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
+import com.brokenkernel.improvtools.application.data.model.NavigableScreens
+import com.brokenkernel.improvtools.coreinfra.BackStack
 import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigationKey
 import com.brokenkernel.improvtools.encyclopaedia.EncyclopaediaSectionNavigation
+import com.brokenkernel.improvtools.encyclopaedia.android.api.EncyclopaediaNavigator
 import com.brokenkernel.improvtools.encyclopaedia.presentation.view.LoadableSingleWordThesaurusButton
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel.SuggestionScreenViewModel
 import com.brokenkernel.improvtools.suggestions.api.SuggestionsScreenNavigationKey
 import com.brokenkernel.improvtools.suggestions.data.storage.IdeaCategoryODS
 import com.brokenkernel.improvtools.suggestions.data.storage.IdeaUIState
 import com.brokenkernel.improvtools.suggestions.view.SuggestionsSingleCategoryRow
-import com.ramcosta.composedestinations.generated.encyclopaedia.destinations.EmotionTabDestination
-import com.ramcosta.composedestinations.navigation.DestinationsNavigator
-import kotlin.time.Duration.Companion.milliseconds
+// import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import sh.calvin.reorderable.ReorderableItem
 import sh.calvin.reorderable.rememberReorderableLazyListState
+import kotlin.time.Duration.Companion.milliseconds
 
 // TODO: add ability to enable/disable categories entirely persistently in settings. Maybe GridFlow to click on/off.
 // TODO: maybe add single suggestion screen
 
 @OptIn(ExperimentalMaterial3Api::class)
-@ImprovToolsDestination<ImprovToolsNavigationGraph>(start = true)
 @Composable
 internal fun SuggestionsTab(
-    navigator: DestinationsNavigator,
+//    navigator: DestinationsNavigator,
     improvToolsAppState: ImprovToolsAppState,
+    backstack: SnapshotStateList<ImprovToolsNavigationKey>, // TODO
     modifier: Modifier = Modifier,
     viewModel: SuggestionScreenViewModel = hiltViewModel(),
 ) {
@@ -137,13 +138,13 @@ internal fun SuggestionsTab(
                                 },
                                 onShowSingleWord = {
                                     EncyclopaediaSectionNavigation.navigateToThesaurusWord(
-                                        improvToolsAppState.navigator,
+                                        backstack = backstack,
                                         itemSuggestionState.value.idea,
-                                        improvToolsAppState.currentTitle.value,
+                                        NavigableScreens.byRoute(backstack.last()).titleResource,
                                     )
                                 },
                                 onGoToEmotionTab = {
-                                    navigator.navigate(EmotionTabDestination)
+                                    EncyclopaediaNavigator.goToEmotionTab(backstack)
                                 },
                                 setBottomSheet = { sheet ->
                                     improvToolsAppState.setBottomSheetTo(
@@ -155,9 +156,9 @@ internal fun SuggestionsTab(
                                         word = itemSuggestionState.value.idea,
                                         onNavigateToWord = {
                                             EncyclopaediaSectionNavigation.navigateToThesaurusWord(
-                                                improvToolsAppState.navigator,
+                                                backstack,
                                                 word,
-                                                improvToolsAppState.currentTitle.value,
+                                                NavigableScreens.byRoute(backstack.last()).titleResource,
                                             )
                                         },
                                         whenDisabledFullyHidden = true,
@@ -199,15 +200,14 @@ internal fun SuggestionsTab(
 }
 
 internal fun EntryProviderScope<ImprovToolsNavigationKey>.suggestionsScreenEntryBuilder(
-    navigator: DestinationsNavigator,
+//    navigator: DestinationsNavigator,
     improvToolsAppState: ImprovToolsAppState,
+    backstack: BackStack, // TODO
 ) {
     entry<SuggestionsScreenNavigationKey> {
         SuggestionsTab(
-            navigator = navigator,
             improvToolsAppState = improvToolsAppState,
-//            modifier = TODO(),
-//            viewModel = TODO()
+            backstack = backstack,
         )
     }
 }

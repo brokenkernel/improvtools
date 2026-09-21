@@ -18,6 +18,5 @@
     <ID>MultilineRawStringIndentation:TongueTwisterDatum.kt:"""The rain in Spain stays mainly in the plain. In Hertford, Hereford, and Hampshire, hurricanes hardly ever happen. """</ID>
     <ID>MultilineRawStringIndentation:TongueTwisterDatum.kt:"""To sit in solemn silence in a dull, dark dock, In a pestilential prison, with a life-long lock, Awaiting the sensation of a short, sharp shock, From a cheap and chippy chopper on a big black block! """</ID>
     <ID>MultilineRawStringIndentation:TongueTwisterDatum.kt:"""Which wristwatch is a Swiss wristwatch? Which wristwatch is an Irish wristwatch?"""</ID>
-    <ID>UnusedParameter:NavigationImplementations.kt:navigator: DestinationsNavigator</ID>
   </CurrentIssues>
 </SmellBaseline>

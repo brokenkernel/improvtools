@@ -10,10 +10,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.core.net.toUri
 import com.brokenkernel.improvtools.R
-import com.brokenkernel.improvtools.application.navigation.ImprovToolsDestination
-import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
 
-@ImprovToolsDestination<ImprovToolsNavigationGraph>
 @Composable
 internal fun PrivacyTab(modifier: Modifier = Modifier) {
     val currentContext = LocalContext.current

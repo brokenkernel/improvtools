@@ -82,7 +82,6 @@ dependencies {
     api(libs.androidx.navigation.common)
     api(libs.androidx.runtime)
     api(libs.androidx.ui)
-    api(libs.io.github.raamcosta.composeDestinations.core)
 
     implementation(enforcedPlatform(libs.androidx.compose.bom))
     implementation(enforcedPlatform(libs.kotlin.bom))
@@ -134,7 +133,6 @@ dependencies {
 
     // kspTest(?)
     ksp(libs.hilt.compiler)
-    ksp(libs.io.github.raamcosta.composeDestinations.ksp)
     ksp(libs.kotlin.metadata.jvm)
 
     ktlintRuleset(libs.ktlintCompose)
@@ -151,9 +149,6 @@ powerAssert {
 }
 
 ksp {
-    arg("compose-destinations.moduleName", "encyclopaedia")
-    arg("compose-destinations.mermaidGraph", "$rootDir/docs/static/")
-    arg("compose-destinations.htmlMermaidGraph", "$rootDir/docs/static/")
     allWarningsAsErrors = true
     arg("dagger.useBindingGraphFix", "enabled")
     arg("dagger.ignoreProvisionKeyWildcards", "enabled")

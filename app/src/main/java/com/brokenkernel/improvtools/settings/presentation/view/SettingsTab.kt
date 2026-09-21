@@ -13,13 +13,10 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.brokenkernel.components.view.EnumerationRadioSelection
 import com.brokenkernel.improvtools.R
-import com.brokenkernel.improvtools.application.navigation.ImprovToolsDestination
-import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
 import com.brokenkernel.improvtools.datastore.UserSettings.TimerHapticsMode
 import com.brokenkernel.improvtools.settings.presentation.viewmodel.SettingsScreenViewModel
 import com.brokenkernel.improvtools.timer.data.model.TimerHapticsModeUI
 
-@ImprovToolsDestination<ImprovToolsNavigationGraph>
 @Composable
 internal fun SettingsTab(
     modifier: Modifier = Modifier,

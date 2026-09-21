@@ -92,8 +92,6 @@ dependencies {
     detektPlugins(libs.composeDetektRules)
     detektPlugins(libs.detektRulesLibraries)
 
-    ksp(libs.io.github.raamcosta.composeDestinations.ksp)
-
     ktlintRuleset(libs.ktlintCompose)
 
     lintChecks(libs.android.securityLint)
@@ -108,9 +106,6 @@ powerAssert {
 }
 
 ksp {
-    arg("compose-destinations.moduleName", project.name)
-    arg("compose-destinations.mermaidGraph", "$rootDir/docs/static/")
-    arg("compose-destinations.htmlMermaidGraph", "$rootDir/docs/static/")
     allWarningsAsErrors = true
     arg("dagger.useBindingGraphFix", "enabled")
     arg("dagger.ignoreProvisionKeyWildcards", "enabled")

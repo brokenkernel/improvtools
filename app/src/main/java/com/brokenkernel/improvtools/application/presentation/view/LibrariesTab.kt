@@ -5,13 +5,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import com.brokenkernel.improvtools.R
-import com.brokenkernel.improvtools.application.navigation.ImprovToolsDestination
-import com.brokenkernel.improvtools.components.sidecar.navigation.ImprovToolsNavigationGraph
 import com.mikepenz.aboutlibraries.ui.compose.android.produceLibraries
 import com.mikepenz.aboutlibraries.ui.compose.m3.LibrariesContainer
 import com.mikepenz.aboutlibraries.ui.compose.variant.LibraryBadges
 
-@ImprovToolsDestination<ImprovToolsNavigationGraph>
 @Composable
 internal fun LibrariesTab(modifier: Modifier = Modifier) {
     val libraries by produceLibraries(R.raw.aboutlibraries)

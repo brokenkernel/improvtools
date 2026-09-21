@@ -9,6 +9,7 @@
     <ID>LibraryEntitiesShouldNotBePublic:ImprovToolsAllPreviews.kt:LocalesPreviews</ID>
     <ID>LibraryEntitiesShouldNotBePublic:ImprovToolsNavigationKey.kt:@Composable public fun &lt;T : Parcelable> rememberParcelableBackStack: SnapshotStateList&lt;T></ID>
     <ID>LibraryEntitiesShouldNotBePublic:ImprovToolsNavigationKey.kt:ImprovToolsNavigationKey : Parcelable</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:ImprovToolsNavigationKey.kt:public typealias BackStack = SnapshotStateList&lt;ImprovToolsNavigationKey> // TODO</ID>
     <ID>LibraryEntitiesShouldNotBePublic:LaunchWrapper.kt:@Composable public fun LaunchWrapper</ID>
     <ID>PreviewAnnotationNaming:ImprovToolsAllPreviews.kt:FontScalePreviews</ID>
     <ID>PreviewAnnotationNaming:ImprovToolsAllPreviews.kt:ImprovToolsAllPreviews</ID>
