@@ -41,7 +41,6 @@ import com.brokenkernel.improvtools.coreinfra.rememberParcelableBackStack
 import com.brokenkernel.improvtools.encyclopaedia.android.api.encyclopaediaScreensEntryBuilderPart2
 import com.brokenkernel.improvtools.encyclopaedia.encyclopaediaScreensEntryBuilder
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.view.suggestionsScreenEntryBuilder
-import com.brokenkernel.improvtools.suggestions.api.SuggestionsScreenNavigationKey
 import com.brokenkernel.improvtools.timer.presentation.view.timerScreenEntryBuilder
 import com.brokenkernel.improvtools.tonguetwister.impl.tonguetwisterScreenEntryBuilder
 import kotlinx.coroutines.CoroutineScope
@@ -79,7 +78,7 @@ internal fun ImprovToolsNavigationDrawer(
 ) {
     val backstack: SnapshotStateList<ImprovToolsNavigationKey> =
         rememberParcelableBackStack<ImprovToolsNavigationKey>(
-            SuggestionsScreenNavigationKey,
+            initialScreen.matchingRoute,
         )
 
     LaunchedEffect(backstack.toList()) {
@@ -90,9 +89,7 @@ internal fun ImprovToolsNavigationDrawer(
 
     val scope: CoroutineScope = rememberCoroutineScope()
 
-    val improvToolsAppState: ImprovToolsAppState = rememberImprovToolsAppState(
-        initialTitle = initialScreen.titleResource,
-    )
+    val improvToolsAppState: ImprovToolsAppState = rememberImprovToolsAppState()
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
 
     fun closeNavMenu() {
@@ -297,7 +294,6 @@ internal fun ImprovToolsNavigationDrawer(
                             )
                             encyclopaediaScreensEntryBuilder(
                                 backstack = backstack,
-                                improvToolsAppState = improvToolsAppState,
                             )
                             encyclopaediaScreensEntryBuilderPart2(
                                 backstack = backstack,

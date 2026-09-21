@@ -22,7 +22,6 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.brokenkernel.components.filteredlist.SearchableColumn
 import com.brokenkernel.improvtools.R
-import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import com.brokenkernel.improvtools.coreinfra.BackStack
 import com.brokenkernel.improvtools.encyclopaedia.EncyclopaediaSectionNavigation
@@ -31,7 +30,6 @@ import kotlinx.coroutines.launch
 
 @Composable
 internal fun ThesaurusTabAllItems(
-    improvToolsAppState: ImprovToolsAppState,
     backstack: BackStack,
     modifier: Modifier = Modifier,
     viewModel: ThesaurusTabAllItemsViewModel = hiltViewModel(),

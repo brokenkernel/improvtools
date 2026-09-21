@@ -1,23 +1,17 @@
 package com.brokenkernel.improvtools.application.data.model
 
-import androidx.annotation.StringRes
 import androidx.annotation.UiThread
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import com.brokenkernel.improvtools.coreinfra.BottomSheetContent
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
-internal class ImprovToolsAppState(
-    @param:StringRes private val initialTitle: Int,
-    val navController: NavHostController,
-) {
+internal class ImprovToolsAppState {
 
     private val _extraMenu: MutableStateFlow<@Composable ((ImprovToolsAppState) -> Unit)?> =
         MutableStateFlow(null)
@@ -38,9 +32,6 @@ internal class ImprovToolsAppState(
 }
 
 @Composable
-internal fun rememberImprovToolsAppState(
-    @StringRes initialTitle: Int,
-    navController: NavHostController = rememberNavController(),
-): ImprovToolsAppState = remember(navController, initialTitle) {
-    ImprovToolsAppState(initialTitle, navController)
+internal fun rememberImprovToolsAppState(): ImprovToolsAppState = remember {
+    ImprovToolsAppState()
 }
