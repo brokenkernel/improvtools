@@ -14,6 +14,35 @@
 
     <issue
         id="PrivateResource"
+        message="Overriding `@string/go_to_timer_screen` which is marked as private in ImprovTools.features.encyclopaedia:android:unspecified. If deliberate, use tools:override=&quot;true&quot;, otherwise pick a different name."
+        errorLine1="    &lt;string name=&quot;go_to_timer_screen&quot;>Go to Timer screen&lt;/string>"
+        errorLine2="                  ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="16"
+            column="19"/>
+    </issue>
+
+    <issue
+        id="PrivateResource"
+        message="Overriding `@string/go_to_timer_screen` which is marked as private in ImprovTools.features.encyclopaedia:android:unspecified. If deliberate, use tools:override=&quot;true&quot;, otherwise pick a different name."
+        errorLine1="  &lt;string name=&quot;go_to_timer_screen&quot;>Gehen Sie zum Timer-Bildschirm&lt;/string>"
+        errorLine2="                ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values-de/strings.xml"
+            line="31"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="PrivateResource"
+        message="Overriding `@drawable/timer_24dp_1f1f1f_fill0_wght400_grad0_opsz24` which is marked as private in ImprovTools.features.encyclopaedia:android:unspecified. If deliberate, use tools:override=&quot;true&quot;, otherwise pick a different name.">
+        <location
+            file="src/main/res/drawable/timer_24dp_1f1f1f_fill0_wght400_grad0_opsz24.xml"/>
+    </issue>
+
+    <issue
+        id="PrivateResource"
         message="Overriding `@drawable/toys_and_games_24dp_1f1f1f_fill0_wght400_grad0_opsz24` which is marked as private in ImprovTools.features.encyclopaedia:android:unspecified. If deliberate, use tools:override=&quot;true&quot;, otherwise pick a different name.">
         <location
             file="src/main/res/drawable/toys_and_games_24dp_1f1f1f_fill0_wght400_grad0_opsz24.xml"/>

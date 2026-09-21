@@ -6,16 +6,14 @@ import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.coreinfra.BackStack
 import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigationKey
 import com.brokenkernel.improvtools.encyclopaedia.android.api.EmotionsPageNavigationKey
-import com.brokenkernel.improvtools.encyclopaedia.android.api.GamesPageNavigationKey
 import com.brokenkernel.improvtools.encyclopaedia.android.api.GlossaryPageNavigationKey
 import com.brokenkernel.improvtools.encyclopaedia.android.api.PeoplePageNavigationKey
 import com.brokenkernel.improvtools.encyclopaedia.android.api.ThesaurusAllItemsPageNavigationKey
 import com.brokenkernel.improvtools.encyclopaedia.android.api.ThesaurusSingleWordPageNavigationKey
 import com.brokenkernel.improvtools.encyclopaedia.android.api.TipsAndAdviceNavigationKey
 import com.brokenkernel.improvtools.encyclopaedia.android.emotions.EmotionsTab
-import com.brokenkernel.improvtools.encyclopaedia.android.glossary.GlossaryTab
+import com.brokenkernel.improvtools.encyclopaedia.android.glossary.view.GlossaryTab
 import com.brokenkernel.improvtools.encyclopaedia.android.people.PeopleTab
-import com.brokenkernel.improvtools.encyclopaedia.presentation.view.GamesTab
 import com.brokenkernel.improvtools.encyclopaedia.presentation.view.ThesaurusTabAllItems
 import com.brokenkernel.improvtools.encyclopaedia.presentation.view.ThesaurusTabSingleWord
 import com.brokenkernel.improvtools.encyclopaedia.presentation.view.TipsAndAdviceTab
@@ -36,11 +34,6 @@ internal fun EntryProviderScope<ImprovToolsNavigationKey>.encyclopaediaScreensEn
 ) {
     entry<TipsAndAdviceNavigationKey> {
         TipsAndAdviceTab()
-    }
-    entry<GamesPageNavigationKey> {
-        GamesTab(
-            backstack = backstack,
-        )
     }
     entry<PeoplePageNavigationKey> {
         PeopleTab()

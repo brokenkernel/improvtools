@@ -4,13 +4,16 @@
   <CurrentIssues>
     <ID>ForbiddenPublicDataClass:NavigationKey.kt:ThesaurusSingleWordPageNavigationKey : ImprovToolsNavigationKey</ID>
     <ID>LibraryEntitiesShouldNotBePublic:EmotionsTab.kt:@Composable public fun EmotionsTab</ID>
-    <ID>LibraryEntitiesShouldNotBePublic:GamesTabViewModel.kt:GamesTabViewModel : ViewModel</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:EncyclopaediaNavigator.kt:public fun EntryProviderScope&lt;ImprovToolsNavigationKey>.encyclopaediaScreensEntryBuilderPart2</ID>
     <ID>LibraryEntitiesShouldNotBePublic:GlossaryTab.kt:@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class) @Composable public fun GlossaryTab</ID>
     <ID>LibraryEntitiesShouldNotBePublic:NavigationKey.kt:ThesaurusSingleWordPageNavigationKey : ImprovToolsNavigationKey</ID>
     <ID>LibraryEntitiesShouldNotBePublic:PeopleTab.kt:@Composable public fun PeopleTab</ID>
     <ID>LibraryEntitiesShouldNotBePublic:SingleTagBottomTab.kt:@Composable public fun SingleTagBottomTab</ID>
     <ID>LibraryEntitiesShouldNotBePublic:SingleWordThesaurusButton.kt:@Composable public fun SingleWordThesaurusButton</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:ThesaurusSingleItemViewModel.kt:ThesaurusSingleItemViewModel : ViewModel</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:ThesaurusTabAllItemsViewModel.kt:ThesaurusTabAllItemsViewModel : ViewModel</ID>
     <ID>LibraryEntitiesShouldNotBePublic:TipsAndAdviceScreen.kt:@Composable public fun TipsAndAdviceScreen</ID>
     <ID>LibraryEntitiesShouldNotBePublic:TipsAndAdviceViewModeUI.kt:TipsAndAdviceViewModeUI</ID>
+    <ID>StringLiteralDuplication:ThesaurusSingleItemViewModel.kt:ThesaurusSingleItemViewModel$"&lt;/ul>"</ID>
   </CurrentIssues>
 </SmellBaseline>

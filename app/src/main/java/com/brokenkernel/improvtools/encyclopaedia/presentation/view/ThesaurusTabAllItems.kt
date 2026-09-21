@@ -26,7 +26,7 @@ import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import com.brokenkernel.improvtools.coreinfra.BackStack
 import com.brokenkernel.improvtools.encyclopaedia.EncyclopaediaSectionNavigation
-import com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel.ThesaurusTabAllItemsViewModel
+import com.brokenkernel.improvtools.encyclopaedia.android.thesaurus.viewmodel.ThesaurusTabAllItemsViewModel
 import kotlinx.coroutines.launch
 
 @Composable
