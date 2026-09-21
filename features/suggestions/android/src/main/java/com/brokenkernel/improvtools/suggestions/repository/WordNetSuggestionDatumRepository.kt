@@ -1,7 +1,7 @@
-package com.brokenkernel.improvtools.suggestionGenerator.data.repository
+package com.brokenkernel.improvtools.suggestions.repository
 
 import android.content.Context
-import com.brokenkernel.improvtools.R
+import com.brokenkernel.improvtools.android.R
 import com.brokenkernel.improvtools.encyclopaedia.data.WordType
 import com.brokenkernel.improvtools.encyclopaedia.data.repository.ThesaurusRepository
 import com.brokenkernel.improvtools.suggestions.data.storage.IdeaCategoryODS

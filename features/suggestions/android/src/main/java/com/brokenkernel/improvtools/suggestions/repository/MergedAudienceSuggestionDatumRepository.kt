@@ -1,4 +1,4 @@
-package com.brokenkernel.improvtools.suggestionGenerator.data.repository
+package com.brokenkernel.improvtools.suggestions.repository
 
 import com.brokenkernel.improvtools.suggestions.data.storage.IdeaCategoryODS
 import javax.inject.Inject

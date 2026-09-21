@@ -2,7 +2,14 @@
 <SmellBaseline>
   <ManuallySuppressedIssues/>
   <CurrentIssues>
+    <ID>LibraryEntitiesShouldNotBePublic:AudienceSuggestionDatumRepository.kt:AudienceSuggestionDatumRepository</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:MergedAudienceSuggestionDatumRepository.kt:MergedAudienceSuggestionDatumRepository : AudienceSuggestionDatumRepository</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:NamesAudienceSuggestionDatumRepository.kt:NamesAudienceSuggestionDatumRepository : AudienceSuggestionDatumRepository</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:ResourcesAudienceSuggestionDatumRepository.kt:ResourcesAudienceSuggestionDatumRepository : AudienceSuggestionDatumRepository</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:SuggestionScreenViewModel.kt:SuggestionScreenViewModel : ViewModel</ID>
     <ID>LibraryEntitiesShouldNotBePublic:SuggestionsSingleCategoryRow.kt:@Composable public fun ReorderableCollectionItemScope.SuggestionsSingleCategoryRow</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:ThesaurusAudienceSuggestionDatumRepository.kt:ThesaurusAudienceSuggestionDatumRepository : AudienceSuggestionDatumRepository</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:WordNetSuggestionDatumRepository.kt:WordNetSuggestionDatumRepository : AudienceSuggestionDatumRepository</ID>
     <ID>MatchingDeclarationName:NavigationKey.kt:SuggestionsScreenNavigationKey : ImprovToolsNavigationKey</ID>
     <ID>UnusedParameter:SuggestionsSingleCategoryRow.kt:onShowSingleWord: (String) -> Unit</ID>
   </CurrentIssues>

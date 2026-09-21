@@ -73,17 +73,13 @@
     <string name="notification_countdown">Count Down</string>
     <string name="go_to_single_word_thesaurus_view">See word details for ‘%1$s’</string>
   <string name="navigation_back_to_thesaurus">Back to %1$s</string>
-    <string name="action_word">Action Word</string>
+
   <string name="thesaurus_word_and_synonyms">word and synonyms</string>
   <string name="about_debugging_data">Debugging Data</string>
   <string name="navigation_glossary">Glossary</string>
   <string name="go_to_glossary">Go To Glossary</string>
     <string name="new_stopwatch_timer">New StopWatch Timer</string>
   <string name="new_countdown_timer">New CountDown Timer</string>
-  <string name="suggestions_verb">Verb</string>
-  <string name="suggestions_noun">Noun</string>
-  <string name="suggestions_adjective">Adjective</string>
-  <string name="suggestions_adverb">Adverb</string>
     <string name="encyclopaedia_word_senses"><![CDATA[<h1>Word Senses</h1>]]></string>
     <string name="encyclopaedia_action_synonyms"><![CDATA[<h1>Action Synonyms</h1>]]></string>
   <string name="thesaurus_synonyms">Synonyms: %1$s</string>

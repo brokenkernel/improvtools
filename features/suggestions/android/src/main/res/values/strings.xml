@@ -4,4 +4,9 @@
     <string name="update_suggestions">Update Suggestion</string>
     <string name="explain_this_term">explain this term</string>
     <string name="suggestions_see_all_category_words">See all words for category</string>
+    <string name="suggestions_verb">Verb</string>
+    <string name="suggestions_noun">Noun</string>
+    <string name="suggestions_adjective">Adjective</string>
+    <string name="suggestions_adverb">Adverb</string>
+    <string name="action_word">Action Word</string>
 </resources>

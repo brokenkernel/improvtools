@@ -1,13 +1,12 @@
-package com.brokenkernel.improvtools.suggestionGenerator.presentation.viewmodel
+package com.brokenkernel.improvtools.suggestions.viewmodel
 
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.runtime.toMutableStateList
 import androidx.lifecycle.ViewModel
-import com.brokenkernel.improvtools.settings.data.repository.SettingsRepository
-import com.brokenkernel.improvtools.suggestionGenerator.data.repository.MergedAudienceSuggestionDatumRepository
 import com.brokenkernel.improvtools.suggestions.data.storage.IdeaCategoryODS
 import com.brokenkernel.improvtools.suggestions.data.storage.IdeaItemODS
 import com.brokenkernel.improvtools.suggestions.data.storage.IdeaUIState
+import com.brokenkernel.improvtools.suggestions.repository.MergedAudienceSuggestionDatumRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jakarta.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -18,7 +17,6 @@ import kotlinx.coroutines.flow.asStateFlow
 // TODO: internal
 public class SuggestionScreenViewModel @Inject constructor(
     suggestionDatumRepository: MergedAudienceSuggestionDatumRepository,
-    private val settingsRepository: SettingsRepository,
 ) :
     ViewModel() {
 
@@ -45,7 +43,8 @@ public class SuggestionScreenViewModel @Inject constructor(
             _categoryDatumToSuggestion.mapValues { x -> x.value.asStateFlow() }
     }
 
-    internal fun updateSuggestionXFor(ic: IdeaCategoryODS) {
+    // TODO: internal
+    public fun updateSuggestionXFor(ic: IdeaCategoryODS) {
         val legalNewWords: Set<IdeaItemODS> = run {
             val ui: IdeaUIState = _categoryDatumToSuggestion.getValue(ic).value
             ic.ideas - IdeaItemODS(ui.idea, ui.explanation)
@@ -54,7 +53,8 @@ public class SuggestionScreenViewModel @Inject constructor(
         _categoryDatumToSuggestion[ic]?.value = IdeaUIState.fromStoredModel(legalNewWords.random())
     }
 
-    internal fun resetAllCategories() {
+    // TODO: internal
+    public fun resetAllCategories() {
         _categoryDatumToSuggestion.keys.forEach { k ->
             this.updateSuggestionXFor(k)
         }

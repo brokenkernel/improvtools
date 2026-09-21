@@ -85,12 +85,17 @@ dependencies {
     implementation(enforcedPlatform(libs.kotlin.bom))
     implementation(projects.components)
     implementation(projects.coreinfra)
+    implementation(projects.features.encyclopaedia.android) // TODO: .impl
     implementation(libs.androidx.animation.core)
     implementation(libs.androidx.foundation)
+    implementation(libs.androidx.hilt.lifecycle.viewmodel.compose)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.ui.text)
     implementation(libs.androidx.ui.unit)
+    implementation(libs.config)
+    implementation(libs.jakarta.inject.api)
     implementation(libs.kotlinx.collections.immutable.jvm)
+    implementation(libs.kotlinx.serialization.hocon)
     implementation(libs.play.services.oss.licenses)
 
     testImplementation(libs.junit)

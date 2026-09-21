@@ -1,7 +1,7 @@
-package com.brokenkernel.improvtools.suggestionGenerator.data.repository
+package com.brokenkernel.improvtools.suggestions.repository
 
 import android.content.res.Resources
-import com.brokenkernel.improvtools.R
+import com.brokenkernel.improvtools.android.R
 import com.brokenkernel.improvtools.suggestions.data.storage.AudienceSuggestionDatumODS
 import com.brokenkernel.improvtools.suggestions.data.storage.IdeaCategoryODS
 import com.typesafe.config.Config
@@ -14,14 +14,14 @@ import kotlinx.serialization.hocon.decodeFromConfig
 
 @OptIn(ExperimentalSerializationApi::class)
 // TODO: internal
-public class ResourcesAudienceSuggestionDatumRepository(
+public class NamesAudienceSuggestionDatumRepository(
     resources: Resources,
 ) : AudienceSuggestionDatumRepository {
     private val audienceDatumParsed: AudienceSuggestionDatumODS?
 
     init {
         val unprocessedAudienceDatum: InputStream = resources.openRawResource(
-            R.raw.audience_suggestion_datum,
+            R.raw.names_suggestion_datum,
         )
         val irs = InputStreamReader(unprocessedAudienceDatum)
         val conf: Config = ConfigFactory.parseReader(irs)
