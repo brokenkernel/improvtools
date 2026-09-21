@@ -29,7 +29,6 @@ import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
 import com.brokenkernel.improvtools.R
-import com.brokenkernel.improvtools.TAG
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import com.brokenkernel.improvtools.application.data.model.rememberImprovToolsAppState
@@ -37,6 +36,7 @@ import com.brokenkernel.improvtools.application.navigation.applicationScreensEnt
 import com.brokenkernel.improvtools.buzzer.impl.buzzerScreenEntryBuilder
 import com.brokenkernel.improvtools.coreinfra.BackStack
 import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigationKey
+import com.brokenkernel.improvtools.coreinfra.TAG
 import com.brokenkernel.improvtools.coreinfra.rememberParcelableBackStack
 import com.brokenkernel.improvtools.encyclopaedia.android.api.encyclopaediaScreensEntryBuilderPart2
 import com.brokenkernel.improvtools.encyclopaedia.encyclopaediaScreensEntryBuilder
