@@ -9,7 +9,8 @@ import com.brokenkernel.improvtools.suggestions.data.storage.IdeaItemODS
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
-internal class ThesaurusAudienceSuggestionDatumRepository @Inject constructor(
+// TODO: internal
+public class ThesaurusAudienceSuggestionDatumRepository @Inject constructor(
     @param:ApplicationContext private val context: Context,
     private val dictionaryInfo: DictionaryInfo,
 ) : AudienceSuggestionDatumRepository {

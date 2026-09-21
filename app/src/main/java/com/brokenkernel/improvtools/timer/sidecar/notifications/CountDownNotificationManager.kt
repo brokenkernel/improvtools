@@ -12,13 +12,15 @@ import com.brokenkernel.improvtools.sidecar.notifications.ImprovToolsNotificatio
 import com.brokenkernel.improvtools.timer.model.TimerState
 import javax.inject.Inject
 
-internal class CountDownhNotification(
+// TODO: internal
+public class CountDownhNotification(
     override val id: Int,
     override val underlying: Notification,
 ) :
     ImprovToolsNotification
 
-internal class CountDownNotificationManager @Inject constructor(
+// TODO: internal
+public class CountDownNotificationManager @Inject constructor(
     notificationManager: NotificationManager,
     resources: Resources,
 ) : ImprovToolsNotificationManager<CountDownhNotification>(notificationManager) {

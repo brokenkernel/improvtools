@@ -15,19 +15,23 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 @HiltViewModel
-internal class SuggestionScreenViewModel @Inject constructor(
+// TODO: internal
+public class SuggestionScreenViewModel @Inject constructor(
     suggestionDatumRepository: MergedAudienceSuggestionDatumRepository,
     private val settingsRepository: SettingsRepository,
 ) :
     ViewModel() {
 
     // TODO: don't expose ODS to UI ...
-    val internalCategoryDatum: SnapshotStateList<IdeaCategoryODS> =
+    // TODO: internal
+    public val internalCategoryDatum: SnapshotStateList<IdeaCategoryODS> =
         suggestionDatumRepository.getIdeaCategories().toMutableStateList()
 
     private val _categoryDatumToSuggestion: MutableMap<IdeaCategoryODS, MutableStateFlow<IdeaUIState>> =
         HashMap()
-    val categoryDatumToSuggestion: Map<IdeaCategoryODS, StateFlow<IdeaUIState>>
+
+    // TODO: internal
+    public val categoryDatumToSuggestion: Map<IdeaCategoryODS, StateFlow<IdeaUIState>>
 
     init {
         internalCategoryDatum.forEach { item ->

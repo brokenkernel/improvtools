@@ -25,13 +25,15 @@ import javax.inject.Inject
 import kotlin.time.Duration
 import kotlin.time.ExperimentalTime
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalTime::class)
 @HiltViewModel
-internal class TimerListViewModel @Inject constructor(
+// TODO: internal
+public class TimerListViewModel @Inject constructor(
     private val settingsRepository: SettingsRepository,
     private val timerManager: TimerManager,
     private val stopWatchNotificationManager: StopWatchNotificationManager,
@@ -47,7 +49,9 @@ internal class TimerListViewModel @Inject constructor(
     }
 
     private val _shouldHaptic = MutableStateFlow(true)
-    val shouldHaptic = _shouldHaptic.asStateFlow()
+
+    // TODO: internal
+    public val shouldHaptic: StateFlow<Boolean> = _shouldHaptic.asStateFlow()
 
     // hide the mutable ability from the UI
     private val _allTimers: SnapshotStateList<TimerState> =
@@ -57,9 +61,12 @@ internal class TimerListViewModel @Inject constructor(
             PausedCountDownTimerState(INITIAL_COUNT_DOWN_TIMER_DURATION, "Countdown Three", timerManager.getNextID()),
             PausedCountDownTimerState(INITIAL_COUNT_DOWN_TIMER_DURATION, "Countdown Four", timerManager.getNextID()),
         )
-    val allTimers: List<TimerState> = _allTimers
 
-    fun removeTimer(timer: TimerState) {
+    // TODO: internal
+    public val allTimers: List<TimerState> = _allTimers
+
+    // TODO: internal
+    public fun removeTimer(timer: TimerState) {
         _allTimers.remove(timer)
     }
 
@@ -69,7 +76,8 @@ internal class TimerListViewModel @Inject constructor(
     }
 
     @RequiresPermission(Manifest.permission.POST_NOTIFICATIONS)
-    fun tryToSendNotificationForTimer(timer: TimerState, context: Context) {
+    // TODO: internal
+    public fun tryToSendNotificationForTimer(timer: TimerState, context: Context) {
         when (timer) {
             is CountUpTimerState -> {
                 val notification =
@@ -90,41 +98,48 @@ internal class TimerListViewModel @Inject constructor(
         _allTimers[index] = timer.asPausedTimer()
     }
 
-    fun invertTimerState(timer: TimerState) {
+    // TODO: internal
+    public fun invertTimerState(timer: TimerState) {
         when (timer) {
             is PausedTimerState -> startTimer(timer)
             is StartedTimerState -> pauseTimer(timer)
         }
     }
 
-    fun resetTimer(timer: TimerState) {
+    // TODO: internal
+    public fun resetTimer(timer: TimerState) {
         val index = _allTimers.indexOf(timer)
         _allTimers[index] = timer.asResetTimer()
     }
 
-    fun halfTimer(timer: CountDownTimerState) {
+    // TODO: internal
+    public fun halfTimer(timer: CountDownTimerState) {
         val index = _allTimers.indexOf(timer)
         _allTimers[index] = timer.asHalfTime()
     }
 
-    fun addCountUpTimer(title: String) {
+    // TODO: internal
+    public fun addCountUpTimer(title: String) {
         val timer = PausedCountUpTimerState(Duration.ZERO, title, timerManager.getNextID())
         _allTimers.add(timer)
     }
 
-    fun addCountDownTimer(title: String) {
+    // TODO: internal
+    public fun addCountDownTimer(title: String) {
         val timer = PausedCountDownTimerState(INITIAL_COUNT_DOWN_TIMER_DURATION, title, timerManager.getNextID())
         _allTimers.add(timer)
     }
 
     @OptIn(ExperimentalTime::class)
-    fun replaceTitle(timer: TimerState, newTitle: String) {
+    // TODO: internal
+    public fun replaceTitle(timer: TimerState, newTitle: String) {
         val index = _allTimers.indexOf(timer)
         val priorTimer = _allTimers[index]
         _allTimers[index] = priorTimer.asEdited(title = newTitle)
     }
 
-    fun swapTimer(from: Int, to: Int) {
+    // TODO: internal
+    public fun swapTimer(from: Int, to: Int) {
         _allTimers.apply {
             add(to, removeAt(from))
         }

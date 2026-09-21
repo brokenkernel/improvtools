@@ -14,13 +14,18 @@ import kotlin.time.Clock
 import kotlin.time.ExperimentalTime
 import kotlin.time.Instant
 
-internal interface ImprovToolsNotification {
-    val id: Int
-    val underlying: Notification
+// TODO: internal
+public interface ImprovToolsNotification {
+    // TODO: internal
+    public val id: Int
+
+    // TODO: internal
+    public val underlying: Notification
 }
 
 @OptIn(ExperimentalTime::class)
-internal abstract class ImprovToolsNotificationManager<T>(
+// TODO: internal
+public abstract class ImprovToolsNotificationManager<T>(
     private val notificationManager: NotificationManager,
 )
     where T : ImprovToolsNotification {
@@ -32,7 +37,8 @@ internal abstract class ImprovToolsNotificationManager<T>(
     }
 
     @RequiresPermission(Manifest.permission.POST_NOTIFICATIONS)
-    fun send(notification: T) {
+    // TODO: internal
+    public fun send(notification: T) {
         Log.w(TAG, "trueSendStopwatchNotification: Enabled:" + notificationManager.areNotificationsEnabled())
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             Log.w(TAG, "trueSendStopwatchNotification: Paused:" + notificationManager.areNotificationsPaused())

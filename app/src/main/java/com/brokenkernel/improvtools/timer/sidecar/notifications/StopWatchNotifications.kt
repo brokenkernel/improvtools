@@ -13,11 +13,13 @@ import com.brokenkernel.improvtools.timer.model.TimerState
 import javax.inject.Inject
 import kotlin.time.ExperimentalTime
 
-internal data class StopWatchNotification(override val id: Int, override val underlying: Notification) :
+// TODO: internal
+public data class StopWatchNotification(override val id: Int, override val underlying: Notification) :
     ImprovToolsNotification
 
 @OptIn(ExperimentalTime::class)
-internal class StopWatchNotificationManager @Inject constructor(
+// TODO: internal
+public class StopWatchNotificationManager @Inject constructor(
     notificationManager: NotificationManager,
     resources: Resources,
 ) : ImprovToolsNotificationManager<StopWatchNotification>(notificationManager) {

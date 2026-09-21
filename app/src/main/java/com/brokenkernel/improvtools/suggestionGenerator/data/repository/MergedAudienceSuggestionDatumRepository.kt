@@ -4,7 +4,9 @@ import com.brokenkernel.improvtools.suggestions.data.storage.IdeaCategoryODS
 import javax.inject.Inject
 
 // TODO: settings, enable/disable specific sources
-internal class MergedAudienceSuggestionDatumRepository @Inject constructor(
+// TODO: internal
+// TODO: internal
+public class MergedAudienceSuggestionDatumRepository @Inject constructor(
     private val thesaurusAudienceSuggestionDatumRepository: ThesaurusAudienceSuggestionDatumRepository,
     private val resourcesAudienceSuggestionDatumRepository: ResourcesAudienceSuggestionDatumRepository,
     private val namesAudienceSuggestionDatumRepository: NamesAudienceSuggestionDatumRepository,

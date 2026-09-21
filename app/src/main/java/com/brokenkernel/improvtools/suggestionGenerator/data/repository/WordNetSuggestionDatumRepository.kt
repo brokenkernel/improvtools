@@ -10,7 +10,8 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import kotlinx.collections.immutable.ImmutableSet
 
-internal class WordNetSuggestionDatumRepository @Inject constructor(
+// TODO: internal
+public class WordNetSuggestionDatumRepository @Inject constructor(
     @param:ApplicationContext private val context: Context,
     private val thesaurusRepository: ThesaurusRepository,
 ) : AudienceSuggestionDatumRepository {

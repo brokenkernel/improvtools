@@ -1,4 +1,4 @@
-package com.brokenkernel.improvtools.components.sidecar.navigation
+package com.brokenkernel.improvtools.application
 
 // TODO: handle extraMenu
 // TODO: handle LogFirebaseScreenViewWrapper

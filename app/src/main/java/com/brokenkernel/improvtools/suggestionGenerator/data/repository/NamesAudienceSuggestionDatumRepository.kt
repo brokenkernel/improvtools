@@ -13,7 +13,8 @@ import kotlinx.serialization.hocon.Hocon
 import kotlinx.serialization.hocon.decodeFromConfig
 
 @OptIn(ExperimentalSerializationApi::class)
-internal class NamesAudienceSuggestionDatumRepository(
+// TODO: internal
+public class NamesAudienceSuggestionDatumRepository(
     resources: Resources,
 ) : AudienceSuggestionDatumRepository {
     private val audienceDatumParsed: AudienceSuggestionDatumODS?
