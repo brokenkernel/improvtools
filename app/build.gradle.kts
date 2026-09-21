@@ -67,7 +67,7 @@ configure<ApplicationExtension> {
         applicationId = "com.brokenkernel.improvtools"
         minSdk = 26
         targetSdk = 37
-        versionCode = 265
+        versionCode = 266
         versionName = "0.0.$versionCode"
 
         testInstrumentationRunner =
