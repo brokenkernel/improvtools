@@ -21,6 +21,7 @@ plugins {
 composeCompiler {
     includeSourceInformation = true
     includeTraceMarkers = true
+    includeComposeMappingFile = true
     featureFlags = setOf()
 }
 
