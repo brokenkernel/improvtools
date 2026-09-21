@@ -34,6 +34,7 @@ import kotlinx.coroutines.launch
 @HiltViewModel
 // TODO: internal
 public class TimerListViewModel @Inject constructor(
+    // TODO — pull settings impl seperate from SettingsRepository
     private val settingsRepository: SettingsRepository,
     private val timerManager: TimerManager,
     private val stopWatchNotificationManager: StopWatchNotificationManager,
