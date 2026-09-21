@@ -33,7 +33,7 @@ public fun TipsAndAdviceScreen(
         modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
-        items(uiState.tipsAndAdvice) { it: TipContentUI ->
+        items(uiState.tipsAndAdvice, key = { it.title }) { it: TipContentUI ->
             var isExpanded by rememberSaveable {
                 mutableStateOf(
                     false,

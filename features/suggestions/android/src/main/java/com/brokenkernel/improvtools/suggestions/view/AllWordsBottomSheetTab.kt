@@ -27,7 +27,7 @@ internal fun AllWordsBottomSheetTab(
             Text(header, style = MaterialTheme.typography.titleMedium)
         }
         LazyColumn {
-            items(words) { word ->
+            items(words, key = { it }) { word ->
                 ListItem(
                     headlineContent = {
                         Text(word) // TODO: maybe add explanation
