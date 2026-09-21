@@ -51,12 +51,11 @@ import com.brokenkernel.improvtools.suggestions.api.SuggestionsScreenNavigationK
 import com.brokenkernel.improvtools.suggestions.data.storage.IdeaCategoryODS
 import com.brokenkernel.improvtools.suggestions.data.storage.IdeaUIState
 import com.brokenkernel.improvtools.suggestions.view.SuggestionsSingleCategoryRow
-// import com.ramcosta.composedestinations.navigation.DestinationsNavigator
+import kotlin.time.Duration.Companion.milliseconds
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import sh.calvin.reorderable.ReorderableItem
 import sh.calvin.reorderable.rememberReorderableLazyListState
-import kotlin.time.Duration.Companion.milliseconds
 
 // TODO: add ability to enable/disable categories entirely persistently in settings. Maybe GridFlow to click on/off.
 // TODO: maybe add single suggestion screen
@@ -64,7 +63,6 @@ import kotlin.time.Duration.Companion.milliseconds
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun SuggestionsTab(
-//    navigator: DestinationsNavigator,
     improvToolsAppState: ImprovToolsAppState,
     backstack: SnapshotStateList<ImprovToolsNavigationKey>, // TODO
     modifier: Modifier = Modifier,
@@ -200,7 +198,6 @@ internal fun SuggestionsTab(
 }
 
 internal fun EntryProviderScope<ImprovToolsNavigationKey>.suggestionsScreenEntryBuilder(
-//    navigator: DestinationsNavigator,
     improvToolsAppState: ImprovToolsAppState,
     backstack: BackStack, // TODO
 ) {

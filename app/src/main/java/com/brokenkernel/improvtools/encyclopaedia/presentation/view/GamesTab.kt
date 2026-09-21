@@ -30,6 +30,7 @@ import com.brokenkernel.components.view.HtmlText
 import com.brokenkernel.components.view.SimpleIconButton
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
+import com.brokenkernel.improvtools.coreinfra.BackStack
 import com.brokenkernel.improvtools.coreinfra.LocalBottomSheetContentManager
 import com.brokenkernel.improvtools.encyclopaedia.android.components.SingleTagBottomTab
 import com.brokenkernel.improvtools.encyclopaedia.android.games.viewmodel.GamesTabViewModel
@@ -37,6 +38,8 @@ import com.brokenkernel.improvtools.encyclopaedia.data.GameDatumTools
 import com.brokenkernel.improvtools.encyclopaedia.data.GamesDatumTag
 import com.brokenkernel.improvtools.encyclopaedia.data.GamesDatumTopic
 import com.brokenkernel.improvtools.encyclopaedia.data.model.GamesDataItem
+import com.brokenkernel.improvtools.timer.api.TimerNavigationKey
+
 // import com.ramcosta.composedestinations.generated.app.destinations.TimerTabDestination
 // import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
@@ -51,7 +54,7 @@ private fun hasExpandableInformation(gdi: GamesDataItem): Boolean {
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 internal fun GamesTab(
-//    navigator: DestinationsNavigator,
+    backstack: BackStack,
     modifier: Modifier = Modifier,
     viewModel: GamesTabViewModel = GamesTabViewModel(),
 ) {
@@ -160,7 +163,7 @@ internal fun GamesTab(
                                 if (it.tools.contains(GameDatumTools.TIMER)) {
                                     SimpleIconButton(
                                         onClick = {
-//                                            navigator.navigate(TimerTabDestination)
+                                            backstack.add(TimerNavigationKey)
                                         },
                                         icon = NavigableScreens.TimerScreen.icon(),
                                         contentDescription = stringResource(R.string.go_to_timer_screen),

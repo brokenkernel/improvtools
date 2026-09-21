@@ -39,7 +39,7 @@ internal fun EntryProviderScope<ImprovToolsNavigationKey>.encyclopaediaScreensEn
     }
     entry<GamesPageNavigationKey> {
         GamesTab(
-//            navigator = navigator,
+            backstack = backstack,
         )
     }
     entry<PeoplePageNavigationKey> {

@@ -26,8 +26,6 @@ import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.coreinfra.BackStack
 import com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel.ThesaurusSingleItemViewModel
 
-// import com.ramcosta.composedestinations.navigation.DestinationsNavigator
-
 @Composable
 internal fun ThesaurusTabSingleWord(
     word: String,
