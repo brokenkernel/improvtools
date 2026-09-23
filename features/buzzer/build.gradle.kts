@@ -73,8 +73,7 @@ kotlin {
 }
 dependencies {
     api(libs.androidx.foundation.layout)
-    api(libs.androidx.lifecycle.viewmodel.savedstate)
-    api(libs.androidx.navigation.common)
+    api(libs.androidx.navigation3.runtime)
     api(libs.androidx.runtime)
     api(libs.androidx.ui)
 
@@ -90,6 +89,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.text)
     implementation(libs.androidx.ui.unit)
+    implementation(libs.kotlin.parcelize.runtime)
     implementation(libs.play.services.oss.licenses)
 
     testImplementation(libs.junit)

@@ -81,7 +81,6 @@ dependencies {
     api(libs.androidx.foundation.layout)
     api(libs.androidx.lifecycle.viewmodel)
     api(libs.androidx.lifecycle.viewmodel.savedstate)
-    api(libs.androidx.navigation.common)
     api(libs.androidx.runtime)
     api(libs.androidx.ui)
 
@@ -90,20 +89,16 @@ dependencies {
     implementation(projects.components)
     implementation(projects.coreinfra)
     // TODO: timer api only
-
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.animation)
     implementation(libs.androidx.annotation)
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.datastore)
     implementation(libs.androidx.datastore.core)
     implementation(libs.androidx.foundation)
     implementation(libs.androidx.foundation.layout)
     implementation(libs.androidx.hilt.lifecycle.viewmodel.compose)
     implementation(libs.androidx.lifecycle.common)
+    implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.androidx.lifecycle.viewModel.compose)
     implementation(libs.androidx.material3)
-    implementation(libs.androidx.material3.adaptive.navigation3)
     implementation(libs.androidx.navigation3.runtime)
     implementation(libs.androidx.runtime)
     implementation(libs.androidx.runtime.saveable)
@@ -118,13 +113,13 @@ dependencies {
     implementation(libs.hilt.android)
     implementation(libs.jakarta.inject.api)
     implementation(libs.javax.inject)
-    implementation(libs.jetbrains.annotations)
     implementation(libs.kotlin.parcelize.runtime)
     implementation(libs.kotlin.stdlib)
     implementation(libs.kotlinx.collections.immutable.jvm)
     implementation(libs.kotlinx.coroutines.core)
-    implementation(libs.navigation.runtime)
     implementation(libs.reorderable)
+
+    compileOnly(libs.jetbrains.annotations)
 
     debugRuntimeOnly(libs.androidx.ui.test.manifest)
 
@@ -147,7 +142,6 @@ dependencies {
     //    androidTestImplementation(libs.hamcrest)
     androidTestImplementation(libs.hilt.android.testing)
     androidTestImplementation(libs.junit)
-    androidTestImplementation(libs.navigation.runtime)
 
     androidTestRuntimeOnly(testFixtures(projects.coreinfra))
     androidTestRuntimeOnly(libs.androidx.core)

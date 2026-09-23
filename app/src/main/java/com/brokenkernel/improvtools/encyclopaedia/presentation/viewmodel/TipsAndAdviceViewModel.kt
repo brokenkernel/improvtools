@@ -2,8 +2,8 @@ package com.brokenkernel.improvtools.encyclopaedia.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import com.brokenkernel.improvtools.R
-import com.brokenkernel.improvtools.encyclopaedia.data.model.TipsAndAdviceProcessedModel
 import com.brokenkernel.improvtools.encyclopaedia.android.tipsandadvice.repository.TipsAndAdviceRepository
+import com.brokenkernel.improvtools.encyclopaedia.data.model.TipsAndAdviceProcessedModel
 import com.brokenkernel.improvtools.encyclopaedia.data.tipsandadvice.TipContentUI
 import com.brokenkernel.improvtools.encyclopaedia.data.tipsandadvice.TipsAndAdviceUIState
 import com.brokenkernel.improvtools.settings.data.repository.SettingsRepository

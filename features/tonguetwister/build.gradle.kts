@@ -74,8 +74,7 @@ kotlin {
 
 dependencies {
     api(libs.androidx.glance.appwidget)
-    api(libs.androidx.lifecycle.viewmodel.savedstate)
-    api(libs.androidx.navigation.common)
+    api(libs.androidx.navigation3.runtime)
     api(libs.androidx.runtime)
 
     implementation(enforcedPlatform(libs.androidx.compose.bom))
@@ -91,8 +90,8 @@ dependencies {
     implementation(libs.androidx.ui.text)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.ui.unit)
+    implementation(libs.kotlin.parcelize.runtime)
     implementation(libs.kotlinx.collections.immutable.jvm)
-    implementation(libs.play.services.oss.licenses)
 
     debugImplementation(libs.ui.tooling)
 

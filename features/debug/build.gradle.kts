@@ -108,11 +108,13 @@ kotlin {
 // }
 
 dependencies {
+    api(libs.androidx.navigation3.runtime)
     api(libs.androidx.runtime)
 
     implementation(enforcedPlatform(libs.androidx.compose.bom))
     implementation(enforcedPlatform(libs.kotlin.bom))
     implementation(projects.coreinfra)
+    implementation(libs.kotlin.parcelize.runtime)
     implementation(libs.play.services.oss.licenses)
 
     debugRuntimeOnly(libs.androidx.ui.test.manifest)

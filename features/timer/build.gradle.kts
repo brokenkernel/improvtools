@@ -90,6 +90,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.text)
     implementation(libs.androidx.ui.unit)
+    implementation(libs.kotlin.parcelize.runtime)
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.play.services.oss.licenses)
 

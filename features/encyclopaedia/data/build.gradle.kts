@@ -24,18 +24,18 @@ kotlin {
 }
 
 dependencies {
-    api(libs.androidx.navigation3.runtime)
     api(libs.kotlinx.collections.immutable.jvm)
     api(libs.kotlinx.serialization.core)
 
     implementation(enforcedPlatform(libs.androidx.compose.bom))
     implementation(enforcedPlatform(libs.kotlin.bom))
     implementation(libs.androidx.collection.jvm)
+    // TODO: shouldn't have android deps
     implementation(libs.androidx.ui)
+    implementation(libs.androidx.ui.graphics)
     implementation(libs.extjwnl)
     implementation(libs.javax.inject)
     implementation(libs.kotlin.parcelize.runtime)
-    implementation(libs.kotlinx.serialization.hocon)
 
     runtimeOnly(libs.extjwnl.data.wn31)
 
