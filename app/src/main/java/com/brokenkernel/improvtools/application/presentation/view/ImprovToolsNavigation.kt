@@ -27,6 +27,8 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.navigation3.rememberViewModelStoreNavEntryDecorator
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
+import androidx.navigation3.runtime.result.rememberResultEventBus
+import androidx.navigation3.runtime.result.rememberResultEventBusNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
@@ -278,6 +280,7 @@ internal fun ImprovToolsNavigationDrawer(
             // eventually need to remove column; using this so I can have two 'scaffolds'
             Column {
                 SharedTransitionLayout {
+                    val resultEventBus = rememberResultEventBus()
                     NavDisplay(
                         backStack = backstack,
                         onBack = { backstack.removeLastOrNull() },
@@ -285,6 +288,7 @@ internal fun ImprovToolsNavigationDrawer(
                         listOf(
                             rememberSaveableStateHolderNavEntryDecorator(),
                             rememberViewModelStoreNavEntryDecorator(),
+                            rememberResultEventBusNavEntryDecorator(resultEventBus = resultEventBus),
                         ),
                         entryProvider =
                         entryProvider {
