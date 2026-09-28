@@ -4,6 +4,6 @@ import android.content.res.Resources
 
 // TODO: internal
 public interface TipsAndAdviceRepository {
-    // TOOD: internal
+    // TODO: internal
     public val resources: Resources
 }
