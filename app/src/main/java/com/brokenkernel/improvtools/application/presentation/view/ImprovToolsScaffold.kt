@@ -35,6 +35,7 @@ import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import com.brokenkernel.improvtools.coreinfra.BackStack
 import com.brokenkernel.improvtools.coreinfra.BottomSheetContent
+import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigationKey
 import com.brokenkernel.improvtools.coreinfra.LocalBottomSheetContentManager
 import com.brokenkernel.improvtools.coreinfra.LocalSnackbarHostState
 import com.brokenkernel.improvtools.sidecar.customtabs.CustomTabUriHandler
@@ -43,7 +44,7 @@ import com.brokenkernel.improvtools.sidecar.customtabs.CustomTabUriHandler
 @Composable
 internal fun ImprovToolsScaffold(
     improvToolsAppState: ImprovToolsAppState,
-    backstack: BackStack,
+    currentRoute: ImprovToolsNavigationKey,
     navMenuButtonPressedCallback: () -> Unit,
     modifier: Modifier = Modifier,
     content: @Composable (() -> Unit),
@@ -69,7 +70,7 @@ internal fun ImprovToolsScaffold(
         // TODO: this should be navigation based, but meh, future work
         val bottomSheetContent = improvToolsAppState.bottomSheetContent.collectAsStateWithLifecycle()
         val extraMenu = improvToolsAppState.extraMenu.collectAsStateWithLifecycle()
-        val currentTitle = NavigableScreens.byRoute(backstack.last())
+        val currentTitle = NavigableScreens.byRoute(currentRoute)
         // TODO: replace with [[NavigationSuiteScaffold]]
         Scaffold(
             topBar = {

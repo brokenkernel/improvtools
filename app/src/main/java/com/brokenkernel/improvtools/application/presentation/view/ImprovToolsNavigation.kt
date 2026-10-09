@@ -243,7 +243,7 @@ internal fun ImprovToolsNavigationDrawer(
     ) {
         ImprovToolsScaffold(
             improvToolsAppState,
-            backstack, // TODO
+            backstack.last(), // TODO
             navMenuButtonPressedCallback = {
                 invertNavMenuState()
             },
