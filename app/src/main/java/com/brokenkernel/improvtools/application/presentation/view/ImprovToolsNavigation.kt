@@ -277,20 +277,18 @@ internal fun ImprovToolsNavigationDrawer(
              *     )
              * }
              */
-            // eventually need to remove column; using this so I can have two 'scaffolds'
-            Column {
-                SharedTransitionLayout {
-                    val resultEventBus = rememberResultEventBus()
-                    NavDisplay(
-                        backStack = backstack,
-                        onBack = { backstack.removeLastOrNull() },
-                        entryDecorators =
+            SharedTransitionLayout {
+                val resultEventBus = rememberResultEventBus()
+                NavDisplay(
+                    backStack = backstack,
+                    onBack = { backstack.removeLastOrNull() },
+                    entryDecorators =
                         listOf(
                             rememberSaveableStateHolderNavEntryDecorator(),
                             rememberViewModelStoreNavEntryDecorator(),
                             rememberResultEventBusNavEntryDecorator(resultEventBus = resultEventBus),
                         ),
-                        entryProvider =
+                    entryProvider =
                         entryProvider {
                             suggestionsScreenEntryBuilder(
                                 improvToolsAppState = improvToolsAppState,
@@ -309,9 +307,8 @@ internal fun ImprovToolsNavigationDrawer(
                                 backstack = backstack,
                             )
                         },
-                        sharedTransitionScope = this,
-                    )
-                }
+                    sharedTransitionScope = this,
+                )
             }
         }
     }
