@@ -248,35 +248,6 @@ internal fun ImprovToolsNavigationDrawer(
                 invertNavMenuState()
             },
         ) {
-            /*
-             * @Composable
-             * fun NavigationWithBackHandler() {
-             *     val backStack = rememberNavBackStack<NavKey>(HomeScreen)
-             *     val context = LocalContext.current
-             *
-             *     BackHandler(enabled = backStack.size > 1) {
-             *         backStack.removeLastOrNull()
-             *     }
-             *
-             *     // If back stack is empty, finish activity
-             *     LaunchedEffect(backStack.size) {
-             *         if (backStack.isEmpty()) {
-             *             (context as? Activity)?.finish()
-             *         }
-             *     }
-             *
-             *     NavDisplay(
-             *         backStack = backStack,
-             *         onBack = {
-             *             if (backStack.size > 1) {
-             *                 backStack.removeLastOrNull()
-             *             } else {
-             *                 (context as? Activity)?.finish()
-             *             }
-             *         }
-             *     )
-             * }
-             */
             SharedTransitionLayout {
                 val resultEventBus = rememberResultEventBus()
                 NavDisplay(
