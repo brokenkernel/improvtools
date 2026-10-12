@@ -14,6 +14,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 // https://developer.android.com/guide/navigation/navigation-3/recipes/passingarguments
+// TODO: https://developer.android.com/guide/navigation/navigation-3/recipes/modular-hilt
 @HiltViewModel
 // TODO: internal
 public class SuggestionScreenViewModel @Inject constructor(
