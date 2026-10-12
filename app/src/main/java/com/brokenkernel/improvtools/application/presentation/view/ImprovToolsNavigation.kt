@@ -254,30 +254,30 @@ internal fun ImprovToolsNavigationDrawer(
                     backStack = backstack,
                     onBack = { backstack.removeLastOrNull() },
                     entryDecorators =
-                        listOf(
-                            rememberSaveableStateHolderNavEntryDecorator(),
-                            rememberViewModelStoreNavEntryDecorator(),
-                            rememberResultEventBusNavEntryDecorator(resultEventBus = resultEventBus),
-                        ),
+                    listOf(
+                        rememberSaveableStateHolderNavEntryDecorator(),
+                        rememberViewModelStoreNavEntryDecorator(),
+                        rememberResultEventBusNavEntryDecorator(resultEventBus = resultEventBus),
+                    ),
                     entryProvider =
-                        entryProvider {
-                            suggestionsScreenEntryBuilder(
-                                improvToolsAppState = improvToolsAppState,
-                                backstack = backstack, // TODO
-                            )
-                            encyclopaediaScreensEntryBuilder(
-                                backstack = backstack,
-                            )
-                            encyclopaediaScreensEntryBuilderPart2(
-                                backstack = backstack,
-                            )
-                            buzzerScreenEntryBuilder()
-                            timerScreenEntryBuilder()
-                            tonguetwisterScreenEntryBuilder()
-                            applicationScreensEntryBuilder(
-                                backstack = backstack,
-                            )
-                        },
+                    entryProvider {
+                        suggestionsScreenEntryBuilder(
+                            improvToolsAppState = improvToolsAppState,
+                            backstack = backstack, // TODO
+                        )
+                        encyclopaediaScreensEntryBuilder(
+                            backstack = backstack,
+                        )
+                        encyclopaediaScreensEntryBuilderPart2(
+                            backstack = backstack,
+                        )
+                        buzzerScreenEntryBuilder()
+                        timerScreenEntryBuilder()
+                        tonguetwisterScreenEntryBuilder()
+                        applicationScreensEntryBuilder(
+                            backstack = backstack,
+                        )
+                    },
                     sharedTransitionScope = this,
                 )
             }

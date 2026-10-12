@@ -115,6 +115,9 @@ dependencies {
     detektPlugins(libs.composeDetektRules)
     detektPlugins(libs.detektRulesLibraries)
 
+    ksp(libs.hilt.compiler)
+    ksp(libs.kotlin.metadata.jvm)
+
     ktlintRuleset(libs.ktlintCompose)
 
     lintChecks(libs.androidx.lint.gradle)

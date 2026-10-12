@@ -33,7 +33,6 @@ import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.ApplicationConstants.APPLICATION_TITLE
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
-import com.brokenkernel.improvtools.coreinfra.BackStack
 import com.brokenkernel.improvtools.coreinfra.BottomSheetContent
 import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigationKey
 import com.brokenkernel.improvtools.coreinfra.LocalBottomSheetContentManager
