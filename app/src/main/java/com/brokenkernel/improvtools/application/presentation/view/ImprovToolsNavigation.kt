@@ -262,7 +262,7 @@ internal fun ImprovToolsNavigationDrawer(
                     entryProvider =
                     entryProvider {
                         suggestionsScreenEntryBuilder(
-                            improvToolsAppState = improvToolsAppState,
+                            setBottomSheet = improvToolsAppState::setBottomSheetTo,
                             backstack = backstack, // TODO
                         )
                         encyclopaediaScreensEntryBuilder(

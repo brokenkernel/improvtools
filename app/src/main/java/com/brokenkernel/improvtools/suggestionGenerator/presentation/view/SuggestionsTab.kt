@@ -38,9 +38,9 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation3.runtime.EntryProviderScope
 import com.brokenkernel.improvtools.R
-import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import com.brokenkernel.improvtools.coreinfra.BackStack
+import com.brokenkernel.improvtools.coreinfra.BottomSheetContent
 import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigationKey
 import com.brokenkernel.improvtools.encyclopaedia.EncyclopaediaSectionNavigation
 import com.brokenkernel.improvtools.encyclopaedia.android.api.EncyclopaediaNavigator
@@ -60,7 +60,7 @@ import sh.calvin.reorderable.rememberReorderableLazyListState
 // TODO: maybe add single suggestion screen
 @Composable
 internal fun SuggestionsTab(
-    improvToolsAppState: ImprovToolsAppState,
+    setBottomSheet: (BottomSheetContent) -> Unit,
     backstack: SnapshotStateList<ImprovToolsNavigationKey>, // TODO
     modifier: Modifier = Modifier,
     viewModel: SuggestionScreenViewModel = hiltViewModel(),
@@ -141,11 +141,7 @@ internal fun SuggestionsTab(
                                 onGoToEmotionTab = {
                                     EncyclopaediaNavigator.goToEmotionTab(backstack)
                                 },
-                                setBottomSheet = { sheet ->
-                                    improvToolsAppState.setBottomSheetTo(
-                                        sheet,
-                                    )
-                                },
+                                setBottomSheet = setBottomSheet,
                                 temporaryLoadableButton = { word: String ->
                                     LoadableSingleWordThesaurusButton(
                                         word = itemSuggestionState.value.idea,
@@ -195,12 +191,12 @@ internal fun SuggestionsTab(
 }
 
 internal fun EntryProviderScope<ImprovToolsNavigationKey>.suggestionsScreenEntryBuilder(
-    improvToolsAppState: ImprovToolsAppState,
+    setBottomSheet: (BottomSheetContent) -> Unit,
     backstack: BackStack, // TODO
 ) {
     entry<SuggestionsScreenNavigationKey> {
         SuggestionsTab(
-            improvToolsAppState = improvToolsAppState,
+            setBottomSheet = setBottomSheet,
             backstack = backstack,
         )
     }
