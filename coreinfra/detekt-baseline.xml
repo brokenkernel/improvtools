@@ -10,6 +10,8 @@
     <ID>LibraryEntitiesShouldNotBePublic:ImprovToolsNavigationKey.kt:@Composable public fun &lt;T : Parcelable> rememberParcelableBackStack: SnapshotStateList&lt;T></ID>
     <ID>LibraryEntitiesShouldNotBePublic:ImprovToolsNavigationKey.kt:ImprovToolsNavigationKey : Parcelable</ID>
     <ID>LibraryEntitiesShouldNotBePublic:ImprovToolsNavigationKey.kt:public typealias BackStack = SnapshotStateList&lt;ImprovToolsNavigationKey> // TODO</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:ImprovToolsNavigator.kt:ImprovToolsNavigator</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:ImprovToolsNavigator.kt:public typealias EntryProviderInstaller = EntryProviderScope&lt;ImprovToolsNavigationKey>.() -> Unit</ID>
     <ID>LibraryEntitiesShouldNotBePublic:LaunchWrapper.kt:@Composable public fun LaunchWrapper</ID>
     <ID>PreviewAnnotationNaming:ImprovToolsAllPreviews.kt:FontScalePreviews</ID>
     <ID>PreviewAnnotationNaming:ImprovToolsAllPreviews.kt:ImprovToolsAllPreviews</ID>

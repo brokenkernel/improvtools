@@ -27,6 +27,7 @@ import com.brokenkernel.components.view.ExpandIcon
 import com.brokenkernel.components.view.HtmlText
 import com.brokenkernel.components.view.SimpleIconButton
 import com.brokenkernel.improvtools.coreinfra.BackStack
+import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigationKey
 import com.brokenkernel.improvtools.coreinfra.LocalBottomSheetContentManager
 import com.brokenkernel.improvtools.encyclopaedia.android.R
 import com.brokenkernel.improvtools.encyclopaedia.android.components.SingleTagBottomTab
@@ -50,7 +51,7 @@ private fun hasExpandableInformation(gdi: GamesDataItem): Boolean {
 
 @Composable
 internal fun GamesTab(
-    backstack: BackStack,
+    goTo: (ImprovToolsNavigationKey) -> Unit,
     modifier: Modifier = Modifier,
     viewModel: GamesTabViewModel = GamesTabViewModel(),
 ) {
@@ -159,7 +160,7 @@ internal fun GamesTab(
                                 if (it.tools.contains(GameDatumTools.TIMER)) {
                                     SimpleIconButton(
                                         onClick = {
-                                            backstack.add(TimerNavigationKey)
+                                            goTo(TimerNavigationKey)
                                         },
                                         // TODO: get this from common locations
                                         icon = ImageVector.vectorResource(

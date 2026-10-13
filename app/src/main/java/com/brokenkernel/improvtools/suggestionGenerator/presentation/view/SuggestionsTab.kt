@@ -24,7 +24,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -39,11 +38,11 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation3.runtime.EntryProviderScope
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
-import com.brokenkernel.improvtools.coreinfra.BackStack
 import com.brokenkernel.improvtools.coreinfra.BottomSheetContent
 import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigationKey
+import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigator
 import com.brokenkernel.improvtools.encyclopaedia.EncyclopaediaSectionNavigation
-import com.brokenkernel.improvtools.encyclopaedia.android.api.EncyclopaediaNavigator
+import com.brokenkernel.improvtools.encyclopaedia.android.api.EmotionsPageNavigationKey
 import com.brokenkernel.improvtools.encyclopaedia.android.thesaurus.view.LoadableSingleWordThesaurusButton
 import com.brokenkernel.improvtools.suggestions.api.SuggestionsScreenNavigationKey
 import com.brokenkernel.improvtools.suggestions.data.storage.IdeaCategoryODS
@@ -61,7 +60,8 @@ import sh.calvin.reorderable.rememberReorderableLazyListState
 @Composable
 internal fun SuggestionsTab(
     setBottomSheet: (BottomSheetContent) -> Unit,
-    backstack: SnapshotStateList<ImprovToolsNavigationKey>, // TODO
+    goTo: (ImprovToolsNavigationKey) -> Unit,
+    improvToolsNavigator: ImprovToolsNavigator,
     modifier: Modifier = Modifier,
     viewModel: SuggestionScreenViewModel = hiltViewModel(),
 ) {
@@ -133,13 +133,13 @@ internal fun SuggestionsTab(
                                 },
                                 onShowSingleWord = {
                                     EncyclopaediaSectionNavigation.navigateToThesaurusWord(
-                                        backstack = backstack,
+                                        backstack = improvToolsNavigator.backstack,
                                         itemSuggestionState.value.idea,
-                                        NavigableScreens.byRoute(backstack.last()).titleResource,
+                                        NavigableScreens.byRoute(improvToolsNavigator.current()).titleResource,
                                     )
                                 },
                                 onGoToEmotionTab = {
-                                    EncyclopaediaNavigator.goToEmotionTab(backstack)
+                                    goTo(EmotionsPageNavigationKey)
                                 },
                                 setBottomSheet = setBottomSheet,
                                 temporaryLoadableButton = { word: String ->
@@ -147,9 +147,9 @@ internal fun SuggestionsTab(
                                         word = itemSuggestionState.value.idea,
                                         onNavigateToWord = {
                                             EncyclopaediaSectionNavigation.navigateToThesaurusWord(
-                                                backstack,
+                                                improvToolsNavigator.backstack,
                                                 word,
-                                                NavigableScreens.byRoute(backstack.last()).titleResource,
+                                                NavigableScreens.byRoute(improvToolsNavigator.current()).titleResource,
                                             )
                                         },
                                         whenDisabledFullyHidden = true,
@@ -192,12 +192,13 @@ internal fun SuggestionsTab(
 
 internal fun EntryProviderScope<ImprovToolsNavigationKey>.suggestionsScreenEntryBuilder(
     setBottomSheet: (BottomSheetContent) -> Unit,
-    backstack: BackStack, // TODO
+    improvToolsNavigator: ImprovToolsNavigator,
 ) {
     entry<SuggestionsScreenNavigationKey> {
         SuggestionsTab(
             setBottomSheet = setBottomSheet,
-            backstack = backstack,
+            goTo = improvToolsNavigator::goTo,
+            improvToolsNavigator,
         )
     }
 }

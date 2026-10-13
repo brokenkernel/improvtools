@@ -1,6 +1,5 @@
 package com.brokenkernel.improvtools.application.navigation
 
-import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.navigation3.runtime.EntryProviderScope
 import com.brokenkernel.improvtools.application.api.AboutNavigationKey
 import com.brokenkernel.improvtools.application.api.LibrariesNavigationKey
@@ -13,12 +12,12 @@ import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigationKey
 import com.brokenkernel.improvtools.settings.presentation.view.SettingsTab
 
 internal fun EntryProviderScope<ImprovToolsNavigationKey>.applicationScreensEntryBuilder(
-    backstack: SnapshotStateList<ImprovToolsNavigationKey>,
+    goTo: (ImprovToolsNavigationKey) -> Unit,
 ) {
     entry<AboutNavigationKey> {
         AboutTab(
             onGoToPrivacyTab = {
-                backstack.add(PrivacyNavigationKey)
+                goTo(PrivacyNavigationKey)
             },
         )
     }

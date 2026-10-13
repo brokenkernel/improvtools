@@ -11,6 +11,7 @@ plugins {
     alias(libs.plugins.detekt)
     alias(libs.plugins.dokka)
     alias(libs.plugins.kotlin.parcelize)
+    alias(libs.plugins.dagger.hilt.android)
     kotlin("plugin.power-assert") version libs.versions.kotlin.get()
 }
 
@@ -75,8 +76,12 @@ dependencies {
 
     implementation(enforcedPlatform(libs.androidx.compose.bom))
     implementation(enforcedPlatform(libs.kotlin.bom))
+    implementation(libs.androidx.navigation3.runtime)
     implementation(libs.androidx.runtime.saveable)
     implementation(libs.androidx.ui.tooling.preview)
+    implementation(libs.dagger.hilt.core)
+    implementation(libs.google.dagger)
+    implementation(libs.hilt.android)
     implementation(libs.kotlinx.coroutines.core)
 
     debugRuntimeOnly(libs.androidx.ui.test.manifest)
@@ -100,6 +105,11 @@ dependencies {
 
     detektPlugins(libs.composeDetektRules)
     detektPlugins(libs.detektRulesLibraries)
+
+    ksp(libs.androidx.appsearch.compiler)
+    ksp(libs.androidx.lifecycle.compiler)
+    ksp(libs.hilt.compiler)
+    ksp(libs.kotlin.metadata.jvm)
 
     ktlintRuleset(libs.ktlintCompose)
 
@@ -153,9 +163,6 @@ configure<LibraryExtension> {
 }
 
 ksp {
-    arg("compose-destinations.moduleName", project.name)
-    arg("compose-destinations.mermaidGraph", "$rootDir/docs/static/")
-    arg("compose-destinations.htmlMermaidGraph", "$rootDir/docs/static/")
     allWarningsAsErrors = true
     arg("dagger.useBindingGraphFix", "enabled")
     arg("dagger.ignoreProvisionKeyWildcards", "enabled")

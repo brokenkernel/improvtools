@@ -1,6 +1,5 @@
 package com.brokenkernel.improvtools.application.presentation.view
 
-import android.util.Log
 import androidx.compose.animation.SharedTransitionLayout
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -18,9 +17,7 @@ import androidx.compose.material3.NavigationDrawerItem
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -36,10 +33,8 @@ import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import com.brokenkernel.improvtools.application.data.model.rememberImprovToolsAppState
 import com.brokenkernel.improvtools.application.navigation.applicationScreensEntryBuilder
 import com.brokenkernel.improvtools.buzzer.impl.buzzerScreenEntryBuilder
-import com.brokenkernel.improvtools.coreinfra.BackStack
 import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigationKey
-import com.brokenkernel.improvtools.coreinfra.TAG
-import com.brokenkernel.improvtools.coreinfra.rememberParcelableBackStack
+import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigator
 import com.brokenkernel.improvtools.encyclopaedia.android.api.encyclopaediaScreensEntryBuilderPart2
 import com.brokenkernel.improvtools.encyclopaedia.encyclopaediaScreensEntryBuilder
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.view.suggestionsScreenEntryBuilder
@@ -51,7 +46,7 @@ import kotlinx.coroutines.launch
 @Composable
 private fun NavigableScreenNavigationDrawerItem(
     improvToolsAppState: ImprovToolsAppState,
-    backStack: BackStack,
+    goTo: (ImprovToolsNavigationKey) -> Unit,
     screen: NavigableScreens,
     closeNavMenuCallback: () -> Unit,
     modifier: Modifier = Modifier,
@@ -66,7 +61,7 @@ private fun NavigableScreenNavigationDrawerItem(
         },
         onClick = {
             closeNavMenuCallback()
-            backStack.add(screen.matchingRoute)
+            goTo(screen.matchingRoute)
         },
         selected = false,
         modifier = modifier,
@@ -78,16 +73,7 @@ internal fun ImprovToolsNavigationDrawer(
     initialScreen: NavigableScreens,
     modifier: Modifier = Modifier,
 ) {
-    val backstack: SnapshotStateList<ImprovToolsNavigationKey> =
-        rememberParcelableBackStack<ImprovToolsNavigationKey>(
-            initialScreen.matchingRoute,
-        )
-
-    LaunchedEffect(backstack.toList()) {
-        if (Log.isLoggable(TAG, Log.DEBUG)) {
-            Log.d(TAG, """Back stack: ${backstack.joinToString(" -> ")}""")
-        }
-    }
+    val improvToolsNavigator = ImprovToolsNavigator.Factory.create(initialScreen.matchingRoute)
 
     val scope: CoroutineScope = rememberCoroutineScope()
 
@@ -132,19 +118,19 @@ internal fun ImprovToolsNavigationDrawer(
                     )
                     NavigableScreenNavigationDrawerItem(
                         improvToolsAppState,
-                        backstack,
+                        improvToolsNavigator::goTo,
                         NavigableScreens.SuggestionGeneratorScreen,
                         ::closeNavMenu,
                     )
                     NavigableScreenNavigationDrawerItem(
                         improvToolsAppState,
-                        backstack,
+                        improvToolsNavigator::goTo,
                         NavigableScreens.TimerScreen,
                         ::closeNavMenu,
                     )
                     NavigableScreenNavigationDrawerItem(
                         improvToolsAppState,
-                        backstack,
+                        improvToolsNavigator::goTo,
                         NavigableScreens.BuzzerScreen,
                         ::closeNavMenu,
                     )
@@ -158,43 +144,43 @@ internal fun ImprovToolsNavigationDrawer(
                     )
                     NavigableScreenNavigationDrawerItem(
                         improvToolsAppState,
-                        backstack,
+                        improvToolsNavigator::goTo,
                         NavigableScreens.GamesPageScreen,
                         ::closeNavMenu,
                     )
                     NavigableScreenNavigationDrawerItem(
                         improvToolsAppState,
-                        backstack,
+                        improvToolsNavigator::goTo,
                         NavigableScreens.PeoplePageScreen,
                         ::closeNavMenu,
                     )
                     NavigableScreenNavigationDrawerItem(
                         improvToolsAppState,
-                        backstack,
+                        improvToolsNavigator::goTo,
                         NavigableScreens.EmotionsPageScreen,
                         ::closeNavMenu,
                     )
                     NavigableScreenNavigationDrawerItem(
                         improvToolsAppState,
-                        backstack,
+                        improvToolsNavigator::goTo,
                         NavigableScreens.GlossaryPageScreen,
                         ::closeNavMenu,
                     )
                     NavigableScreenNavigationDrawerItem(
                         improvToolsAppState,
-                        backstack,
+                        improvToolsNavigator::goTo,
                         NavigableScreens.ThesaurusPageScreen,
                         ::closeNavMenu,
                     )
                     NavigableScreenNavigationDrawerItem(
                         improvToolsAppState,
-                        backstack,
+                        improvToolsNavigator::goTo,
                         NavigableScreens.TipsAndAdviceScreen,
                         ::closeNavMenu,
                     )
                     NavigableScreenNavigationDrawerItem(
                         improvToolsAppState,
-                        backstack,
+                        improvToolsNavigator::goTo,
                         NavigableScreens.TongueTwisterScreen,
                         ::closeNavMenu,
                     )
@@ -207,13 +193,13 @@ internal fun ImprovToolsNavigationDrawer(
                     )
                     NavigableScreenNavigationDrawerItem(
                         improvToolsAppState,
-                        backstack,
+                        improvToolsNavigator::goTo,
                         NavigableScreens.SettingsScreen,
                         ::closeNavMenu,
                     )
                     NavigableScreenNavigationDrawerItem(
                         improvToolsAppState,
-                        backstack,
+                        improvToolsNavigator::goTo,
                         NavigableScreens.AboutScreen,
                         ::closeNavMenu,
                     )
@@ -226,13 +212,13 @@ internal fun ImprovToolsNavigationDrawer(
                     )
                     NavigableScreenNavigationDrawerItem(
                         improvToolsAppState,
-                        backstack,
+                        improvToolsNavigator::goTo,
                         NavigableScreens.PrivacyScreen,
                         ::closeNavMenu,
                     )
                     NavigableScreenNavigationDrawerItem(
                         improvToolsAppState,
-                        backstack,
+                        improvToolsNavigator::goTo,
                         NavigableScreens.LibrariesScreen,
                         ::closeNavMenu,
                     )
@@ -243,7 +229,7 @@ internal fun ImprovToolsNavigationDrawer(
     ) {
         ImprovToolsScaffold(
             improvToolsAppState,
-            backstack.last(), // TODO
+            improvToolsNavigator.current(), // TODO
             navMenuButtonPressedCallback = {
                 invertNavMenuState()
             },
@@ -251,8 +237,8 @@ internal fun ImprovToolsNavigationDrawer(
             SharedTransitionLayout {
                 val resultEventBus = rememberResultEventBus()
                 NavDisplay(
-                    backStack = backstack,
-                    onBack = { backstack.removeLastOrNull() },
+                    backStack = improvToolsNavigator.backstack,
+                    onBack = { improvToolsNavigator.goBack() },
                     entryDecorators =
                     listOf(
                         rememberSaveableStateHolderNavEntryDecorator(),
@@ -263,19 +249,19 @@ internal fun ImprovToolsNavigationDrawer(
                     entryProvider {
                         suggestionsScreenEntryBuilder(
                             setBottomSheet = improvToolsAppState::setBottomSheetTo,
-                            backstack = backstack, // TODO
+                            improvToolsNavigator = improvToolsNavigator, // TODO
                         )
                         encyclopaediaScreensEntryBuilder(
-                            backstack = backstack,
+                            backstack = improvToolsNavigator.backstack, // TODO
                         )
                         encyclopaediaScreensEntryBuilderPart2(
-                            backstack = backstack,
+                            improvToolsNavigator::goTo,
                         )
                         buzzerScreenEntryBuilder()
                         timerScreenEntryBuilder()
                         tonguetwisterScreenEntryBuilder()
                         applicationScreensEntryBuilder(
-                            backstack = backstack,
+                            improvToolsNavigator::goTo,
                         )
                     },
                     sharedTransitionScope = this,
