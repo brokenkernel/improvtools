@@ -296,6 +296,11 @@ dependencies {
     ksp(libs.hilt.compiler)
     ksp(libs.kotlin.metadata.jvm)
 
+    kspAndroidTest(libs.androidx.appsearch.compiler)
+    kspAndroidTest(libs.androidx.lifecycle.compiler)
+    kspAndroidTest(libs.hilt.compiler)
+    kspAndroidTest(libs.kotlin.metadata.jvm)
+
     ktlintRuleset(libs.ktlintCompose)
 
     lintChecks(libs.android.securityLint)
