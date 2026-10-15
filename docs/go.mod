@@ -3,6 +3,6 @@ module github.com/brokenkernel/ImprovTools
 go 1.24.1
 
 require (
-	github.com/google/docsy v0.17.0 // indirect
+	github.com/google/docsy v0.18.0 // indirect
 	github.com/google/docsy/theme v0.17.0 // indirect
 )
