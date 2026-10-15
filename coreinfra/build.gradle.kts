@@ -77,6 +77,7 @@ dependencies {
     implementation(enforcedPlatform(libs.androidx.compose.bom))
     implementation(enforcedPlatform(libs.kotlin.bom))
     implementation(libs.androidx.navigation3.runtime)
+    implementation(libs.androidx.navigation3.ui)
     implementation(libs.androidx.runtime.saveable)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.dagger.hilt.core)

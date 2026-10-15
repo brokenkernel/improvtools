@@ -19,6 +19,7 @@ import com.brokenkernel.improvtools.encyclopaedia.android.api.PeoplePageNavigati
 import com.brokenkernel.improvtools.encyclopaedia.android.api.ThesaurusAllItemsPageNavigationKey
 import com.brokenkernel.improvtools.encyclopaedia.android.api.ThesaurusSingleWordPageNavigationKey
 import com.brokenkernel.improvtools.encyclopaedia.android.api.TipsAndAdviceNavigationKey
+import com.brokenkernel.improvtools.suggestions.api.SuggestionsAllWordsForNavigationKey
 import com.brokenkernel.improvtools.suggestions.api.SuggestionsScreenNavigationKey
 import com.brokenkernel.improvtools.timer.api.TimerNavigationKey
 import com.brokenkernel.improvtools.tonguetwister.api.TongueTwisterNavigationKey

@@ -10,8 +10,6 @@ import com.google.firebase.Firebase
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.analytics
 import dagger.hilt.android.scopes.ActivityRetainedScoped
-import kotlinx.coroutines.flow.asFlow
-import kotlinx.coroutines.flow.onEach
 
 public typealias EntryProviderInstaller = EntryProviderScope<ImprovToolsNavigationKey>.() -> Unit
 
@@ -43,13 +41,15 @@ public class ImprovToolsNavigator internal constructor(
                 )
 
             LaunchedEffect(backstack.last()) {
-                val entry: ImprovToolsNavigationKey = backstack.last()
+                val screenClass = backstack.last().javaClass.name
+                val screenName = backstack.last().javaClass.simpleName
                 val params = Bundle()
                 params.putString(
                     FirebaseAnalytics.Param.SCREEN_NAME,
-                    entry.toString(),
+                    screenName,
                 )
-                params.putString(FirebaseAnalytics.Param.SCREEN_CLASS, entry.toString())
+                params.putString(FirebaseAnalytics.Param.SCREEN_CLASS, screenClass)
+                params.putString(FirebaseAnalytics.Param.SCREEN_NAME, screenName)
                 Firebase.analytics.logEvent(
                     FirebaseAnalytics.Event.SCREEN_VIEW,
                     params,

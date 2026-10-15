@@ -16,6 +16,9 @@ import com.brokenkernel.components.view.DragIconButton
 import com.brokenkernel.components.view.SimpleIconButton
 import com.brokenkernel.improvtools.android.R
 import com.brokenkernel.improvtools.coreinfra.BottomSheetContent
+import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigationKey
+import com.brokenkernel.improvtools.suggestions.api.SuggestionsAllWordsForNavigationKey
+import com.brokenkernel.improvtools.suggestions.api.SuggestionsExplanationNavigationKey
 import com.brokenkernel.improvtools.suggestions.data.storage.IdeaCategoryODS
 import com.brokenkernel.improvtools.suggestions.data.storage.IdeaUIState
 import kotlinx.collections.immutable.toImmutableList
@@ -30,6 +33,7 @@ public fun ReorderableCollectionItemScope.SuggestionsSingleCategoryRow(
     onUpdateCategory: () -> Unit,
     onShowSingleWord: (String) -> Unit,
     onGoToEmotionTab: () -> Unit,
+    goTo: (ImprovToolsNavigationKey) -> Unit,
     setBottomSheet: (newContent: BottomSheetContent) -> Unit,
     // TODO: this shouldn't be injected, but that requires fixing thesaurus
     temporaryLoadableButton: @Composable ((String) -> Unit),
@@ -65,9 +69,11 @@ public fun ReorderableCollectionItemScope.SuggestionsSingleCategoryRow(
                 if (currentExplanation != null) {
                     SimpleIconButton(
                         onClick = {
-                            setBottomSheet({
-                                ExplanationBottomSheetTab(currentIdea.idea, currentExplanation)
-                            })
+                            goTo(
+                                SuggestionsExplanationNavigationKey(
+                                    currentIdea.idea, currentExplanation
+                                )
+                            )
                         },
                         icon = ImageVector.vectorResource(
                             R.drawable.theater_comedy_24dp_1f1f1f_fill0_wght400_grad0_opsz24,

@@ -93,4 +93,6 @@
     <string name="go_to_buzzer">Go To Buzzer</string>
     <string name="attribution_audio_playback">audio playback</string>
     <string name="suggestions_see_all_category_words">See all words for category</string>
+    <string name="all_suggestions">All Suggestions</string>
+    <string name="go_to_all_suggestions">Go To All Suggestions</string>
 </resources>

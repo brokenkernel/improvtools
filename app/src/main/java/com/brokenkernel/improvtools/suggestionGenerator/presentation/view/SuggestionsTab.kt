@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -39,21 +40,23 @@ import androidx.navigation3.runtime.EntryProviderScope
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import com.brokenkernel.improvtools.coreinfra.BottomSheetContent
+import com.brokenkernel.improvtools.coreinfra.BottomSheetSceneStrategy
 import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigationKey
 import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigator
 import com.brokenkernel.improvtools.encyclopaedia.EncyclopaediaSectionNavigation
 import com.brokenkernel.improvtools.encyclopaedia.android.api.EmotionsPageNavigationKey
 import com.brokenkernel.improvtools.encyclopaedia.android.thesaurus.view.LoadableSingleWordThesaurusButton
+import com.brokenkernel.improvtools.suggestions.api.SuggestionsAllWordsForNavigationKey
 import com.brokenkernel.improvtools.suggestions.api.SuggestionsScreenNavigationKey
 import com.brokenkernel.improvtools.suggestions.data.storage.IdeaCategoryODS
 import com.brokenkernel.improvtools.suggestions.data.storage.IdeaUIState
 import com.brokenkernel.improvtools.suggestions.view.SuggestionsSingleCategoryRow
 import com.brokenkernel.improvtools.suggestions.viewmodel.SuggestionScreenViewModel
-import kotlin.time.Duration.Companion.milliseconds
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import sh.calvin.reorderable.ReorderableItem
 import sh.calvin.reorderable.rememberReorderableLazyListState
+import kotlin.time.Duration.Companion.milliseconds
 
 // TODO: add ability to enable/disable categories entirely persistently in settings. Maybe GridFlow to click on/off.
 // TODO: maybe add single suggestion screen
@@ -142,6 +145,7 @@ internal fun SuggestionsTab(
                                     goTo(EmotionsPageNavigationKey)
                                 },
                                 setBottomSheet = setBottomSheet,
+                                goTo = goTo,
                                 temporaryLoadableButton = { word: String ->
                                     LoadableSingleWordThesaurusButton(
                                         word = itemSuggestionState.value.idea,
@@ -190,6 +194,7 @@ internal fun SuggestionsTab(
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 internal fun EntryProviderScope<ImprovToolsNavigationKey>.suggestionsScreenEntryBuilder(
     setBottomSheet: (BottomSheetContent) -> Unit,
     improvToolsNavigator: ImprovToolsNavigator,
@@ -201,4 +206,13 @@ internal fun EntryProviderScope<ImprovToolsNavigationKey>.suggestionsScreenEntry
             improvToolsNavigator,
         )
     }
+    entry<SuggestionsAllWordsForNavigationKey>(
+        metadata = BottomSheetSceneStrategy.bottomSheet(),
+    ) { route ->
+        SuggestionsAllWordsForNavigationKey(
+            header = route.header,
+            words = route.words
+        )
+    }
+
 }

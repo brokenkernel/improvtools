@@ -5,6 +5,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.navigation3.rememberViewModelStoreNavEntryDecorator
@@ -18,10 +19,13 @@ import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import com.brokenkernel.improvtools.application.data.model.rememberImprovToolsAppState
 import com.brokenkernel.improvtools.application.navigation.applicationScreensEntryBuilder
 import com.brokenkernel.improvtools.buzzer.impl.buzzerScreenEntryBuilder
+import com.brokenkernel.improvtools.coreinfra.BottomSheetSceneStrategy
+import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigationKey
 import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigator
 import com.brokenkernel.improvtools.encyclopaedia.android.api.encyclopaediaScreensEntryBuilderPart2
 import com.brokenkernel.improvtools.encyclopaedia.encyclopaediaScreensEntryBuilder
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.view.suggestionsScreenEntryBuilder
+import com.brokenkernel.improvtools.suggestions.api.suggestionsScreenEntryBuilderPart2
 import com.brokenkernel.improvtools.timer.presentation.view.timerScreenEntryBuilder
 import com.brokenkernel.improvtools.tonguetwister.impl.tonguetwisterScreenEntryBuilder
 
@@ -66,6 +70,7 @@ internal fun ImprovToolsNavigationDrawer(
         ) {
             SharedTransitionLayout {
                 val resultEventBus = rememberResultEventBus()
+                val bottomSheetStrategy = remember { BottomSheetSceneStrategy<ImprovToolsNavigationKey>() }
                 NavDisplay(
                     backStack = improvToolsNavigator.backstack,
                     onBack = { improvToolsNavigator.goBack() },
@@ -75,12 +80,14 @@ internal fun ImprovToolsNavigationDrawer(
                             rememberViewModelStoreNavEntryDecorator(),
                             rememberResultEventBusNavEntryDecorator(resultEventBus = resultEventBus),
                         ),
+                    sceneStrategies = listOf(bottomSheetStrategy),
                     entryProvider =
                         entryProvider {
                             suggestionsScreenEntryBuilder(
                                 setBottomSheet = improvToolsAppState::setBottomSheetTo,
                                 improvToolsNavigator = improvToolsNavigator, // TODO
                             )
+                            suggestionsScreenEntryBuilderPart2()
                             encyclopaediaScreensEntryBuilder(
                                 backstack = improvToolsNavigator.backstack, // TODO
                             )
