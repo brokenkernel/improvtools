@@ -83,6 +83,7 @@ dependencies {
     implementation(libs.google.dagger)
     implementation(libs.hilt.android)
     implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.play.services.measurement.api)
 
     debugRuntimeOnly(libs.androidx.ui.test.manifest)
 

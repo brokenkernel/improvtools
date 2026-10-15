@@ -70,6 +70,7 @@ material3AdaptiveNavigationSuite = "1.4.0"
 monitor = "1.8.0"
 nav3Core = "1.2.0"
 ossLicensesPlugin = "0.13.0"
+playServicesMeasurementApi = "24.0.0"
 playServicesOssLicenses = "17.5.2"
 profileinstaller = "1.4.1"
 protobuf = "0.10.0"
@@ -201,6 +202,7 @@ kotlin-as1-java-plugin = { module = "org.jetbrains.dokka:kotlin-as-java-plugin",
 kotlin-bom = { module = "org.jetbrains.kotlin:kotlin-bom", version.ref = "kotlin" }
 kotlin-metadata-jvm = { module = "org.jetbrains.kotlin:kotlin-metadata-jvm", version.ref = "kotlin" }
 kotlin-parcelize-runtime = { module = "org.jetbrains.kotlin:kotlin-parcelize-runtime", version.ref = "kotlinParcelizeRuntime" }
+kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 kotlinx-collections-immutable-jvm = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable-jvm", version.ref = "kotlinxCollectionsImmutableJvm" }
@@ -218,6 +220,7 @@ leakcanary-object1-watcher-android = { module = "com.squareup.leakcanary:leakcan
 mathjax-plugin = { module = "org.jetbrains.dokka:mathjax-plugin", version.ref = "androidDocumentationPlugin" }
 mikepenz-aboutlibraries-compose-core = { module = "com.mikepenz:aboutlibraries-compose-core", version.ref = "aboutLibraries" }
 net-engawapg-lib-zoomable = { module = "net.engawapg.lib:zoomable", version.ref = "zoomable" }
+play-services-measurement-api = { module = "com.google.android.gms:play-services-measurement-api", version.ref = "playServicesMeasurementApi" }
 play-services-oss-licenses = { module = "com.google.android.gms:play-services-oss-licenses", version.ref = "playServicesOssLicenses" }
 reorderable = { module = "sh.calvin.reorderable:reorderable", version.ref = "reorderable" }
 reorderable-android-debug = { module = "sh.calvin.reorderable:reorderable-android-debug", version.ref = "reorderable" }

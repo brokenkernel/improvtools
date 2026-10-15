@@ -255,6 +255,7 @@ dependencies {
     runtimeOnly(libs.androidx.runtime.tracing)
     runtimeOnly(libs.androidx.startup.runtime)
     runtimeOnly(libs.androidx.work.multiprocess)
+    runtimeOnly(libs.kotlin.reflect)
     runtimeOnly(libs.slf4j.android)
 
     debugRuntimeOnly(libs.androidx.ui.test.manifest)
