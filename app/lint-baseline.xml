@@ -83,6 +83,17 @@
 
     <issue
         id="UnusedResources"
+        message="The resource `R.drawable.menu_24dp_1f1f1f_fill0_wght400_grad0_opsz24` appears to be unused"
+        errorLine1="&lt;vector xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;"
+        errorLine2="^">
+        <location
+            file="src/main/res/drawable/menu_24dp_1f1f1f_fill0_wght400_grad0_opsz24.xml"
+            line="1"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
         message="The resource `R.drawable.menu_open_24dp_1f1f1f_fill0_wght400_grad0_opsz24` appears to be unused"
         errorLine1="&lt;vector xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;"
         errorLine2="^">
@@ -112,6 +123,50 @@
             file="../features/encyclopaedia/android/src/main/res/drawable/self_improvement_24dp_1f1f1f_fill0_wght400_grad0_opsz24.xml"
             line="1"
             column="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.navigation_settings_category` appears to be unused"
+        errorLine1="    &lt;string name=&quot;navigation_settings_category&quot;>Settings&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="9"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.navigation_useful_tools_category` appears to be unused"
+        errorLine1="    &lt;string name=&quot;navigation_useful_tools_category&quot;>Useful Tools&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="11"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.navigation_encyclopaedia_category` appears to be unused"
+        errorLine1="    &lt;string name=&quot;navigation_encyclopaedia_category&quot;>Encyclopaedia&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="44"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.navigation_legal_category` appears to be unused"
+        errorLine1="    &lt;string name=&quot;navigation_legal_category&quot;>Legal&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="67"
+            column="13"/>
     </issue>
 
     <issue

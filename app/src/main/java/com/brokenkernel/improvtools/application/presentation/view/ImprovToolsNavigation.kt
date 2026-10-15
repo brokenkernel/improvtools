@@ -1,33 +1,22 @@
 package com.brokenkernel.improvtools.application.presentation.view
 
 import androidx.compose.animation.SharedTransitionLayout
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.DrawerValue
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.ModalDrawerSheet
-import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.NavigationDrawerItem
 import androidx.compose.material3.Text
+import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffold
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.navigation3.rememberViewModelStoreNavEntryDecorator
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.runtime.result.rememberResultEventBus
 import androidx.navigation3.runtime.result.rememberResultEventBusNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
-import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import com.brokenkernel.improvtools.application.data.model.rememberImprovToolsAppState
@@ -40,6 +29,7 @@ import com.brokenkernel.improvtools.encyclopaedia.encyclopaediaScreensEntryBuild
 import com.brokenkernel.improvtools.suggestionGenerator.presentation.view.suggestionsScreenEntryBuilder
 import com.brokenkernel.improvtools.timer.presentation.view.timerScreenEntryBuilder
 import com.brokenkernel.improvtools.tonguetwister.impl.tonguetwisterScreenEntryBuilder
+import kotlinx.collections.immutable.persistentListOf
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -96,143 +86,45 @@ internal fun ImprovToolsNavigationDrawer(
         }
     }
 
-    ModalNavigationDrawer(
-        drawerState = drawerState,
-        drawerContent = {
-            ModalDrawerSheet {
-                Column(
-                    modifier = Modifier
-                        .padding(horizontal = 16.dp)
-                        .verticalScroll(rememberScrollState()),
-                ) {
-                    Text(
-                        stringResource(R.string.app_name),
-                        modifier = Modifier.padding(16.dp),
-                        style = MaterialTheme.typography.titleLarge,
-                    )
-                    HorizontalDivider()
-                    Text(
-                        stringResource(R.string.navigation_useful_tools_category),
-                        modifier = Modifier.padding(16.dp),
-                        style = MaterialTheme.typography.titleMedium,
-                    )
-                    NavigableScreenNavigationDrawerItem(
-                        improvToolsAppState,
-                        improvToolsNavigator::goTo,
-                        NavigableScreens.SuggestionGeneratorScreen,
-                        ::closeNavMenu,
-                    )
-                    NavigableScreenNavigationDrawerItem(
-                        improvToolsAppState,
-                        improvToolsNavigator::goTo,
-                        NavigableScreens.TimerScreen,
-                        ::closeNavMenu,
-                    )
-                    NavigableScreenNavigationDrawerItem(
-                        improvToolsAppState,
-                        improvToolsNavigator::goTo,
-                        NavigableScreens.BuzzerScreen,
-                        ::closeNavMenu,
-                    )
+    val allDestinations = persistentListOf(
+        NavigableScreens.SuggestionGeneratorScreen,
+        NavigableScreens.TimerScreen,
+        NavigableScreens.BuzzerScreen,
+        NavigableScreens.GamesPageScreen,
+        NavigableScreens.PeoplePageScreen,
+        NavigableScreens.EmotionsPageScreen,
+        NavigableScreens.GlossaryPageScreen,
+        NavigableScreens.ThesaurusPageScreen,
+        NavigableScreens.TipsAndAdviceScreen,
+        NavigableScreens.TongueTwisterScreen,
+        NavigableScreens.AboutScreen,
+        NavigableScreens.PrivacyScreen,
+        NavigableScreens.LibrariesScreen,
+    )
 
-                    HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
-
-                    Text(
-                        stringResource(R.string.navigation_encyclopaedia_category),
-                        modifier = Modifier.padding(16.dp),
-                        style = MaterialTheme.typography.titleMedium,
-                    )
-                    NavigableScreenNavigationDrawerItem(
-                        improvToolsAppState,
-                        improvToolsNavigator::goTo,
-                        NavigableScreens.GamesPageScreen,
-                        ::closeNavMenu,
-                    )
-                    NavigableScreenNavigationDrawerItem(
-                        improvToolsAppState,
-                        improvToolsNavigator::goTo,
-                        NavigableScreens.PeoplePageScreen,
-                        ::closeNavMenu,
-                    )
-                    NavigableScreenNavigationDrawerItem(
-                        improvToolsAppState,
-                        improvToolsNavigator::goTo,
-                        NavigableScreens.EmotionsPageScreen,
-                        ::closeNavMenu,
-                    )
-                    NavigableScreenNavigationDrawerItem(
-                        improvToolsAppState,
-                        improvToolsNavigator::goTo,
-                        NavigableScreens.GlossaryPageScreen,
-                        ::closeNavMenu,
-                    )
-                    NavigableScreenNavigationDrawerItem(
-                        improvToolsAppState,
-                        improvToolsNavigator::goTo,
-                        NavigableScreens.ThesaurusPageScreen,
-                        ::closeNavMenu,
-                    )
-                    NavigableScreenNavigationDrawerItem(
-                        improvToolsAppState,
-                        improvToolsNavigator::goTo,
-                        NavigableScreens.TipsAndAdviceScreen,
-                        ::closeNavMenu,
-                    )
-                    NavigableScreenNavigationDrawerItem(
-                        improvToolsAppState,
-                        improvToolsNavigator::goTo,
-                        NavigableScreens.TongueTwisterScreen,
-                        ::closeNavMenu,
-                    )
-
-                    HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
-                    Text(
-                        stringResource(R.string.navigation_settings_category),
-                        modifier = Modifier.padding(16.dp),
-                        style = MaterialTheme.typography.titleMedium,
-                    )
-                    NavigableScreenNavigationDrawerItem(
-                        improvToolsAppState,
-                        improvToolsNavigator::goTo,
-                        NavigableScreens.SettingsScreen,
-                        ::closeNavMenu,
-                    )
-                    NavigableScreenNavigationDrawerItem(
-                        improvToolsAppState,
-                        improvToolsNavigator::goTo,
-                        NavigableScreens.AboutScreen,
-                        ::closeNavMenu,
-                    )
-                    Spacer(Modifier.height(12.dp))
-                    HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
-                    Text(
-                        stringResource(R.string.navigation_legal_category),
-                        modifier = Modifier.padding(16.dp),
-                        style = MaterialTheme.typography.titleMedium,
-                    )
-                    NavigableScreenNavigationDrawerItem(
-                        improvToolsAppState,
-                        improvToolsNavigator::goTo,
-                        NavigableScreens.PrivacyScreen,
-                        ::closeNavMenu,
-                    )
-                    NavigableScreenNavigationDrawerItem(
-                        improvToolsAppState,
-                        improvToolsNavigator::goTo,
-                        NavigableScreens.LibrariesScreen,
-                        ::closeNavMenu,
-                    )
-                }
+    NavigationSuiteScaffold(
+        navigationSuiteItems = {
+            allDestinations.forEach {
+                item(
+                    selected = it.matchingRoute == improvToolsNavigator.current(),
+                    onClick = {
+                        improvToolsNavigator.goTo(it.matchingRoute)
+                    },
+                    icon = {
+                        Icon(
+                            imageVector = it.icon(),
+                            contentDescription = stringResource(it.contentDescription),
+                        )
+                    },
+                    label = { Text(stringResource(it.titleResource)) },
+                )
             }
         },
-        modifier = modifier,
     ) {
         ImprovToolsScaffold(
-            improvToolsAppState,
-            improvToolsNavigator.current(), // TODO
-            navMenuButtonPressedCallback = {
-                invertNavMenuState()
-            },
+            improvToolsAppState = improvToolsAppState,
+            currentRoute = improvToolsNavigator.current(),
+            navMenuButtonPressedCallback = {},
         ) {
             SharedTransitionLayout {
                 val resultEventBus = rememberResultEventBus()
@@ -270,3 +162,110 @@ internal fun ImprovToolsNavigationDrawer(
         }
     }
 }
+
+//    ModalNavigationDrawer(
+//        drawerState = drawerState,
+//        drawerContent = {
+//            ModalDrawerSheet {
+//                Column(
+//                    modifier = Modifier
+//                        .padding(horizontal = 16.dp)
+//                        .verticalScroll(rememberScrollState()),
+//                ) {
+//                    Text(
+//                        stringResource(R.string.app_name),
+//                        modifier = Modifier.padding(16.dp),
+//                        style = MaterialTheme.typography.titleLarge,
+//                    )
+//                    HorizontalDivider()
+//                    Text(
+//                        stringResource(R.string.navigation_useful_tools_category),
+//                        modifier = Modifier.padding(16.dp),
+//                        style = MaterialTheme.typography.titleMedium,
+//                    )
+
+//
+//                    HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
+//
+//                    Text(
+//                        stringResource(R.string.navigation_encyclopaedia_category),
+//                        modifier = Modifier.padding(16.dp),
+//                        style = MaterialTheme.typography.titleMedium,
+//                    )
+//                    NavigableScreenNavigationDrawerItem(
+//                        improvToolsAppState,
+//                        improvToolsNavigator::goTo,
+//
+//                        ::closeNavMenu,
+//                    )
+//                    NavigableScreenNavigationDrawerItem(
+//                        improvToolsAppState,
+//                        improvToolsNavigator::goTo,
+//                        ::closeNavMenu,
+//                    )
+//                    NavigableScreenNavigationDrawerItem(
+//                        improvToolsAppState,
+//                        improvToolsNavigator::goTo,
+//                        ::closeNavMenu,
+//                    )
+//                    NavigableScreenNavigationDrawerItem(
+//                        improvToolsAppState,
+//                        improvToolsNavigator::goTo,
+
+//                        ::closeNavMenu,
+//                    )
+//                    NavigableScreenNavigationDrawerItem(
+//                        improvToolsAppState,
+//                        improvToolsNavigator::goTo,
+
+//                    HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
+//                    Text(
+//                        stringResource(R.string.navigation_settings_category),
+//                        modifier = Modifier.padding(16.dp),
+//                        style = MaterialTheme.typography.titleMedium,
+//                    )
+//                    NavigableScreenNavigationDrawerItem(
+//                        improvToolsAppState,
+//                        improvToolsNavigator::goTo,
+//                        NavigableScreens.SettingsScreen,
+//                        ::closeNavMenu,
+//                    )
+//                    NavigableScreenNavigationDrawerItem(
+//                        improvToolsAppState,
+//                        improvToolsNavigator::goTo,
+//
+//                        ::closeNavMenu,
+//                    )
+//                    Spacer(Modifier.height(12.dp))
+//                    HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
+//                    Text(
+//                        stringResource(R.string.navigation_legal_category),
+//                        modifier = Modifier.padding(16.dp),
+//                        style = MaterialTheme.typography.titleMedium,
+//                    )
+//                    NavigableScreenNavigationDrawerItem(
+//                        improvToolsAppState,
+//                        improvToolsNavigator::goTo,
+//
+//                        ::closeNavMenu,
+//                    )
+//                    NavigableScreenNavigationDrawerItem(
+//                        improvToolsAppState,
+//                        improvToolsNavigator::goTo,
+//
+//                        ::closeNavMenu,
+//                    )
+//                }
+//            }
+//        },
+//        modifier = modifier,
+//    ) {
+//        ImprovToolsScaffold(
+//            improvToolsAppState,
+//            improvToolsNavigator.current(), // TODO
+//            navMenuButtonPressedCallback = {
+//                invertNavMenuState()
+//            },
+//        ) {
+
+//    }

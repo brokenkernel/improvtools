@@ -88,14 +88,14 @@ internal fun ImprovToolsScaffold(
                         .exitUntilCollapsedScrollBehavior(
                             rememberTopAppBarState(),
                         ),
-                    navigationIcon = {
-                        SimpleIconButton(
-                            onClick = navMenuButtonPressedCallback,
-                            // TODO: switch to MenuOpen when required
-                            icon = ImageVector.vectorResource(R.drawable.menu_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
-                            contentDescription = stringResource(R.string.navigation_app_menu),
-                        )
-                    },
+//                    navigationIcon = {
+//                        SimpleIconButton(
+//                            onClick = navMenuButtonPressedCallback,
+//                            // TODO: switch to MenuOpen when required
+//                            icon = ImageVector.vectorResource(R.drawable.menu_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
+//                            contentDescription = stringResource(R.string.navigation_app_menu),
+//                        )
+//                    },
                     actions = {
                         if (extraMenu.value != null) {
                             SimpleIconButton(
