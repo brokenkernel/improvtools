@@ -18,7 +18,6 @@ import androidx.navigation3.scene.SceneStrategyScope
 
 public typealias BottomSheetContent = @Composable (ColumnScope.() -> Unit)
 
-
 @OptIn(ExperimentalMaterial3Api::class)
 internal data class BottomSheetScene<T : Any>(
     override val key: T,
@@ -35,7 +34,7 @@ internal data class BottomSheetScene<T : Any>(
 
     override val content: @Composable (() -> Unit) = {
         sheetState = rememberModalBottomSheetState(
-            skipPartiallyExpanded = false
+            skipPartiallyExpanded = false,
         )
         ModalBottomSheet(
             onDismissRequest = onBack,
@@ -65,18 +64,19 @@ public class BottomSheetSceneStrategy<T : Any> : SceneStrategy<T> {
                 overlaidEntries = entries.dropLast(1),
                 entry = lastEntry,
                 modalBottomSheetProperties = properties,
-                onBack = onBack
+                onBack = onBack,
             )
         }
     }
 
     public companion object {
-        public fun bottomSheet(modalBottomSheetProperties: ModalBottomSheetProperties = ModalBottomSheetProperties()): Map<String, Any> =
+        public fun bottomSheet(
+            modalBottomSheetProperties: ModalBottomSheetProperties = ModalBottomSheetProperties(),
+        ): Map<String, Any> =
             metadata {
                 put(BottomSheetKey, modalBottomSheetProperties)
             }
 
         public object BottomSheetKey : NavMetadataKey<ModalBottomSheetProperties>
     }
-
 }

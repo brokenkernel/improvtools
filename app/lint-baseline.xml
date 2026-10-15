@@ -105,6 +105,17 @@
 
     <issue
         id="UnusedResources"
+        message="The resource `R.drawable.more_vert_24dp_1f1f1f_fill0_wght400_grad0_opsz24` appears to be unused"
+        errorLine1="&lt;vector xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;"
+        errorLine2="^">
+        <location
+            file="src/main/res/drawable/more_vert_24dp_1f1f1f_fill0_wght400_grad0_opsz24.xml"
+            line="1"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
         message="The resource `R.xml.remote_config_defaults` appears to be unused"
         errorLine1="&lt;defaultsMap>"
         errorLine2="^">
@@ -149,6 +160,17 @@
 
     <issue
         id="UnusedResources"
+        message="The resource `R.string.navigation_open_screen_specific_menu` appears to be unused"
+        errorLine1="    &lt;string name=&quot;navigation_open_screen_specific_menu&quot;>Open Menu&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="33"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
         message="The resource `R.string.navigation_encyclopaedia_category` appears to be unused"
         errorLine1="    &lt;string name=&quot;navigation_encyclopaedia_category&quot;>Encyclopaedia&lt;/string>"
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
@@ -166,6 +188,28 @@
         <location
             file="src/main/res/values/strings.xml"
             line="67"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.all_suggestions` appears to be unused"
+        errorLine1="    &lt;string name=&quot;all_suggestions&quot;>All Suggestions&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="96"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.go_to_all_suggestions` appears to be unused"
+        errorLine1="    &lt;string name=&quot;go_to_all_suggestions&quot;>Go To All Suggestions&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="97"
             column="13"/>
     </issue>
 

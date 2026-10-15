@@ -17,6 +17,7 @@ import com.brokenkernel.components.view.SimpleIconButton
 import com.brokenkernel.improvtools.android.R
 import com.brokenkernel.improvtools.coreinfra.BottomSheetContent
 import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigationKey
+import com.brokenkernel.improvtools.encyclopaedia.android.api.EmotionsPageNavigationKey
 import com.brokenkernel.improvtools.suggestions.api.SuggestionsAllWordsForNavigationKey
 import com.brokenkernel.improvtools.suggestions.api.SuggestionsExplanationNavigationKey
 import com.brokenkernel.improvtools.suggestions.data.storage.IdeaCategoryODS
@@ -31,8 +32,6 @@ import sh.calvin.reorderable.ReorderableCollectionItemScope
 public fun ReorderableCollectionItemScope.SuggestionsSingleCategoryRow(
     ideaCategory: IdeaCategoryODS,
     onUpdateCategory: () -> Unit,
-    onShowSingleWord: (String) -> Unit,
-    onGoToEmotionTab: () -> Unit,
     goTo: (ImprovToolsNavigationKey) -> Unit,
     setBottomSheet: (newContent: BottomSheetContent) -> Unit,
     // TODO: this shouldn't be injected, but that requires fixing thesaurus
@@ -56,7 +55,7 @@ public fun ReorderableCollectionItemScope.SuggestionsSingleCategoryRow(
             Row {
                 if (ideaCategory.showLinkToEmotion) {
                     SimpleIconButton(
-                        onClick = onGoToEmotionTab,
+                        onClick = { goTo(EmotionsPageNavigationKey) },
                         icon = ImageVector.vectorResource(
                             R.drawable.psychology_alt_24dp_1f1f1f_fill0_wght400_grad0_opsz24,
                         ),
@@ -71,8 +70,9 @@ public fun ReorderableCollectionItemScope.SuggestionsSingleCategoryRow(
                         onClick = {
                             goTo(
                                 SuggestionsExplanationNavigationKey(
-                                    currentIdea.idea, currentExplanation
-                                )
+                                    currentIdea.idea,
+                                    currentExplanation,
+                                ),
                             )
                         },
                         icon = ImageVector.vectorResource(

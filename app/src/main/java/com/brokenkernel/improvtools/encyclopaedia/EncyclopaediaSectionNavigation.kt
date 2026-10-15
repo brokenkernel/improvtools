@@ -1,9 +1,8 @@
 package com.brokenkernel.improvtools.encyclopaedia
 
-import androidx.annotation.StringRes
 import androidx.navigation3.runtime.EntryProviderScope
-import com.brokenkernel.improvtools.coreinfra.BackStack
 import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigationKey
+import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigator
 import com.brokenkernel.improvtools.encyclopaedia.android.api.EmotionsPageNavigationKey
 import com.brokenkernel.improvtools.encyclopaedia.android.api.GlossaryPageNavigationKey
 import com.brokenkernel.improvtools.encyclopaedia.android.api.PeoplePageNavigationKey
@@ -17,18 +16,8 @@ import com.brokenkernel.improvtools.encyclopaedia.presentation.view.ThesaurusTab
 import com.brokenkernel.improvtools.encyclopaedia.presentation.view.ThesaurusTabSingleWord
 import com.brokenkernel.improvtools.encyclopaedia.presentation.view.TipsAndAdviceTab
 
-internal object EncyclopaediaSectionNavigation {
-    fun navigateToThesaurusWord(
-        backstack: BackStack,
-        word: String,
-        @StringRes priorTitleRes: Int,
-    ) {
-        backstack.add(ThesaurusSingleWordPageNavigationKey(word, priorTitleRes))
-    }
-}
-
 internal fun EntryProviderScope<ImprovToolsNavigationKey>.encyclopaediaScreensEntryBuilder(
-    backstack: BackStack,
+    improvToolsNavigator: ImprovToolsNavigator,
 ) {
     entry<TipsAndAdviceNavigationKey> {
         TipsAndAdviceTab()
@@ -44,12 +33,12 @@ internal fun EntryProviderScope<ImprovToolsNavigationKey>.encyclopaediaScreensEn
     }
     entry<ThesaurusAllItemsPageNavigationKey> {
         ThesaurusTabAllItems(
-            backstack = backstack,
+            improvToolsNavigator = improvToolsNavigator,
         )
     }
     entry<ThesaurusSingleWordPageNavigationKey> { route ->
         ThesaurusTabSingleWord(
-            backstack = backstack,
+            goBack = improvToolsNavigator::goBack,
             word = route.word,
             priorTitleResource = route.priorTitleResource,
         )

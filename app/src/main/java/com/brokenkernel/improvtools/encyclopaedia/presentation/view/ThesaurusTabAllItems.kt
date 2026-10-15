@@ -23,15 +23,15 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.brokenkernel.components.filteredlist.SearchableColumn
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
-import com.brokenkernel.improvtools.coreinfra.BackStack
-import com.brokenkernel.improvtools.encyclopaedia.EncyclopaediaSectionNavigation
+import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigator
+import com.brokenkernel.improvtools.encyclopaedia.android.api.ThesaurusSingleWordPageNavigationKey
 import com.brokenkernel.improvtools.encyclopaedia.android.thesaurus.view.LoadableSingleWordThesaurusButton
 import com.brokenkernel.improvtools.encyclopaedia.android.thesaurus.viewmodel.ThesaurusTabAllItemsViewModel
 import kotlinx.coroutines.launch
 
 @Composable
 internal fun ThesaurusTabAllItems(
-    backstack: BackStack,
+    improvToolsNavigator: ImprovToolsNavigator,
     modifier: Modifier = Modifier,
     viewModel: ThesaurusTabAllItemsViewModel = hiltViewModel(),
 ) {
@@ -56,10 +56,11 @@ internal fun ThesaurusTabAllItems(
                                 synonym,
                                 modifier = Modifier.clickable(
                                     onClick = {
-                                        EncyclopaediaSectionNavigation.navigateToThesaurusWord(
-                                            backstack = backstack,
-                                            synonym,
-                                            NavigableScreens.byRoute(backstack.last()).titleResource,
+                                        improvToolsNavigator.goTo(
+                                            ThesaurusSingleWordPageNavigationKey(
+                                                synonym,
+                                                NavigableScreens.byRoute(improvToolsNavigator.current()).titleResource,
+                                            ),
                                         )
                                     },
                                     onClickLabel = stringResource(
@@ -84,10 +85,11 @@ internal fun ThesaurusTabAllItems(
                 LoadableSingleWordThesaurusButton(
                     word = word,
                     onNavigateToWord = {
-                        EncyclopaediaSectionNavigation.navigateToThesaurusWord(
-                            backstack = backstack,
-                            word,
-                            NavigableScreens.byRoute(backstack.last()).titleResource,
+                        improvToolsNavigator.goTo(
+                            ThesaurusSingleWordPageNavigationKey(
+                                word,
+                                NavigableScreens.byRoute(improvToolsNavigator.current()).titleResource,
+                            ),
                         )
                     },
                 )

@@ -16,6 +16,4 @@ public fun EntryProviderScope<ImprovToolsNavigationKey>.suggestionsScreenEntryBu
             explanation = route.explanation,
         )
     }
-
-
 }

@@ -43,8 +43,7 @@ import com.brokenkernel.improvtools.coreinfra.BottomSheetContent
 import com.brokenkernel.improvtools.coreinfra.BottomSheetSceneStrategy
 import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigationKey
 import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigator
-import com.brokenkernel.improvtools.encyclopaedia.EncyclopaediaSectionNavigation
-import com.brokenkernel.improvtools.encyclopaedia.android.api.EmotionsPageNavigationKey
+import com.brokenkernel.improvtools.encyclopaedia.android.api.ThesaurusSingleWordPageNavigationKey
 import com.brokenkernel.improvtools.encyclopaedia.android.thesaurus.view.LoadableSingleWordThesaurusButton
 import com.brokenkernel.improvtools.suggestions.api.SuggestionsAllWordsForNavigationKey
 import com.brokenkernel.improvtools.suggestions.api.SuggestionsScreenNavigationKey
@@ -52,11 +51,11 @@ import com.brokenkernel.improvtools.suggestions.data.storage.IdeaCategoryODS
 import com.brokenkernel.improvtools.suggestions.data.storage.IdeaUIState
 import com.brokenkernel.improvtools.suggestions.view.SuggestionsSingleCategoryRow
 import com.brokenkernel.improvtools.suggestions.viewmodel.SuggestionScreenViewModel
+import kotlin.time.Duration.Companion.milliseconds
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import sh.calvin.reorderable.ReorderableItem
 import sh.calvin.reorderable.rememberReorderableLazyListState
-import kotlin.time.Duration.Companion.milliseconds
 
 // TODO: add ability to enable/disable categories entirely persistently in settings. Maybe GridFlow to click on/off.
 // TODO: maybe add single suggestion screen
@@ -134,26 +133,19 @@ internal fun SuggestionsTab(
                                 onUpdateCategory = {
                                     viewModel.updateSuggestionXFor(ideaCategory)
                                 },
-                                onShowSingleWord = {
-                                    EncyclopaediaSectionNavigation.navigateToThesaurusWord(
-                                        backstack = improvToolsNavigator.backstack,
-                                        itemSuggestionState.value.idea,
-                                        NavigableScreens.byRoute(improvToolsNavigator.current()).titleResource,
-                                    )
-                                },
-                                onGoToEmotionTab = {
-                                    goTo(EmotionsPageNavigationKey)
-                                },
                                 setBottomSheet = setBottomSheet,
                                 goTo = goTo,
                                 temporaryLoadableButton = { word: String ->
                                     LoadableSingleWordThesaurusButton(
                                         word = itemSuggestionState.value.idea,
                                         onNavigateToWord = {
-                                            EncyclopaediaSectionNavigation.navigateToThesaurusWord(
-                                                improvToolsNavigator.backstack,
-                                                word,
-                                                NavigableScreens.byRoute(improvToolsNavigator.current()).titleResource,
+                                            goTo(
+                                                ThesaurusSingleWordPageNavigationKey(
+                                                    word,
+                                                    NavigableScreens.byRoute(
+                                                        improvToolsNavigator.current(),
+                                                    ).titleResource,
+                                                ),
                                             )
                                         },
                                         whenDisabledFullyHidden = true,
@@ -211,8 +203,7 @@ internal fun EntryProviderScope<ImprovToolsNavigationKey>.suggestionsScreenEntry
     ) { route ->
         SuggestionsAllWordsForNavigationKey(
             header = route.header,
-            words = route.words
+            words = route.words,
         )
     }
-
 }

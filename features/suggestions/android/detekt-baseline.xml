@@ -2,15 +2,18 @@
 <SmellBaseline>
   <ManuallySuppressedIssues/>
   <CurrentIssues>
+    <ID>ForbiddenPublicDataClass:NavigationKey.kt:SuggestionsAllWordsForNavigationKey : ImprovToolsNavigationKey</ID>
+    <ID>ForbiddenPublicDataClass:NavigationKey.kt:SuggestionsExplanationNavigationKey : ImprovToolsNavigationKey</ID>
     <ID>LibraryEntitiesShouldNotBePublic:AudienceSuggestionDatumRepository.kt:AudienceSuggestionDatumRepository</ID>
     <ID>LibraryEntitiesShouldNotBePublic:MergedAudienceSuggestionDatumRepository.kt:MergedAudienceSuggestionDatumRepository : AudienceSuggestionDatumRepository</ID>
     <ID>LibraryEntitiesShouldNotBePublic:NamesAudienceSuggestionDatumRepository.kt:NamesAudienceSuggestionDatumRepository : AudienceSuggestionDatumRepository</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:NavigationKey.kt:SuggestionsAllWordsForNavigationKey : ImprovToolsNavigationKey</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:NavigationKey.kt:SuggestionsExplanationNavigationKey : ImprovToolsNavigationKey</ID>
     <ID>LibraryEntitiesShouldNotBePublic:ResourcesAudienceSuggestionDatumRepository.kt:ResourcesAudienceSuggestionDatumRepository : AudienceSuggestionDatumRepository</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:SuggestionNavigation.kt:@OptIn(ExperimentalMaterial3Api::class) public fun EntryProviderScope&lt;ImprovToolsNavigationKey>.suggestionsScreenEntryBuilderPart2</ID>
     <ID>LibraryEntitiesShouldNotBePublic:SuggestionScreenViewModel.kt:SuggestionScreenViewModel : ViewModel</ID>
     <ID>LibraryEntitiesShouldNotBePublic:SuggestionsSingleCategoryRow.kt:@Composable public fun ReorderableCollectionItemScope.SuggestionsSingleCategoryRow</ID>
     <ID>LibraryEntitiesShouldNotBePublic:ThesaurusAudienceSuggestionDatumRepository.kt:ThesaurusAudienceSuggestionDatumRepository : AudienceSuggestionDatumRepository</ID>
     <ID>LibraryEntitiesShouldNotBePublic:WordNetSuggestionDatumRepository.kt:WordNetSuggestionDatumRepository : AudienceSuggestionDatumRepository</ID>
-    <ID>MatchingDeclarationName:NavigationKey.kt:SuggestionsScreenNavigationKey : ImprovToolsNavigationKey</ID>
-    <ID>UnusedParameter:SuggestionsSingleCategoryRow.kt:onShowSingleWord: (String) -> Unit</ID>
   </CurrentIssues>
 </SmellBaseline>

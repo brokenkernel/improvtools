@@ -15,6 +15,7 @@ public data class SuggestionsAllWordsForNavigationKey(
     val header: String,
     val words: ImmutableList<String>,
 ) : ImprovToolsNavigationKey
+
 @Parcelize
 public data class SuggestionsExplanationNavigationKey(
     val word: String,
