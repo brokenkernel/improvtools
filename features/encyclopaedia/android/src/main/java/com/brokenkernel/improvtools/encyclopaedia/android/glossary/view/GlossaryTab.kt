@@ -1,8 +1,6 @@
 package com.brokenkernel.improvtools.encyclopaedia.android.glossary.view
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.Text
@@ -33,7 +31,6 @@ private fun doesMatch(search: String, item: GlossaryDataItem): Boolean {
     return transformForSearch(item.term).contains(search, ignoreCase = true)
 }
 
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 public fun GlossaryTab(modifier: Modifier = Modifier) {
     // TODO: move into viewModel (or at least the repository)

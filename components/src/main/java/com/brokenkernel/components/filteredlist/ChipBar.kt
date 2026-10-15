@@ -1,7 +1,6 @@
 package com.brokenkernel.components.filteredlist
 
 import androidx.compose.foundation.layout.FlowRow
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -16,7 +15,6 @@ import com.brokenkernel.components.view.SimpleTooltipWrapper
 import kotlin.enums.enumEntries
 import kotlinx.collections.immutable.ImmutableList
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 public inline fun <reified T : Enum<T>> ChipBar(
     isChipsChecked: ImmutableList<Boolean>,

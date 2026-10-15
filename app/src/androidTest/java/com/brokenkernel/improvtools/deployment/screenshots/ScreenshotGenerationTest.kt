@@ -65,21 +65,6 @@ sealed class BaseScreenshotGenerationTest {
     }
 }
 
-//@HiltAndroidTest
-//internal class ScreenshotGenerationTest : BaseScreenshotGenerationTest() {
-//    @Test
-//    fun testMenuOnTopOfStartPageScreen() {
-//        composeTestRule.onNode(
-//            hasContentDescription(
-//                getInstrumentation().targetContext.getString(R.string.navigation_app_menu),
-//            ),
-//        ).performClick()
-//        composeTestRule.waitForIdle()
-//
-//        Screengrab.screenshot("menu_on_top_of_start_page")
-//    }
-//}
-
 @HiltAndroidTest
 @RunWith(Parameterized::class)
 internal class ScreenshotGeneralPerNavigableScreenTest(

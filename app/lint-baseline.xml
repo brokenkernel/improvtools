@@ -138,6 +138,17 @@
 
     <issue
         id="UnusedResources"
+        message="The resource `R.string.navigation_app_menu` appears to be unused"
+        errorLine1="    &lt;string name=&quot;navigation_app_menu&quot;>Menu&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="8"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
         message="The resource `R.string.navigation_settings_category` appears to be unused"
         errorLine1="    &lt;string name=&quot;navigation_settings_category&quot;>Settings&lt;/string>"
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">

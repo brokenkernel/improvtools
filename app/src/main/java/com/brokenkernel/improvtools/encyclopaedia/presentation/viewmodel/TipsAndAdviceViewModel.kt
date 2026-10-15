@@ -6,7 +6,6 @@ import com.brokenkernel.improvtools.encyclopaedia.android.tipsandadvice.reposito
 import com.brokenkernel.improvtools.encyclopaedia.data.model.TipsAndAdviceProcessedModel
 import com.brokenkernel.improvtools.encyclopaedia.data.tipsandadvice.TipContentUI
 import com.brokenkernel.improvtools.encyclopaedia.data.tipsandadvice.TipsAndAdviceUIState
-import com.brokenkernel.improvtools.settings.data.repository.SettingsRepository
 import com.typesafe.config.ConfigFactory
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jakarta.inject.Inject
@@ -23,7 +22,6 @@ import kotlinx.serialization.hocon.decodeFromConfig
 @HiltViewModel
 internal class TipsAndAdviceViewModel @Inject constructor(
     tipsAndAdviceRepository: TipsAndAdviceRepository,
-    settingsRepository: SettingsRepository,
 ) :
     ViewModel() {
 

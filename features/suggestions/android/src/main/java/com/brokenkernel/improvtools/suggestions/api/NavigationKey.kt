@@ -1,7 +1,5 @@
 package com.brokenkernel.improvtools.suggestions.api
 
-import androidx.annotation.StringRes
-import androidx.navigation3.runtime.EntryProviderScope
 import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigationKey
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.parcelize.Parcelize

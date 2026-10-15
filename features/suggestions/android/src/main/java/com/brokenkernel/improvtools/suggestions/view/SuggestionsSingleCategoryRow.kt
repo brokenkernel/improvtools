@@ -18,7 +18,6 @@ import com.brokenkernel.improvtools.android.R
 import com.brokenkernel.improvtools.coreinfra.BottomSheetContent
 import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigationKey
 import com.brokenkernel.improvtools.encyclopaedia.android.api.EmotionsPageNavigationKey
-import com.brokenkernel.improvtools.suggestions.api.SuggestionsAllWordsForNavigationKey
 import com.brokenkernel.improvtools.suggestions.api.SuggestionsExplanationNavigationKey
 import com.brokenkernel.improvtools.suggestions.data.storage.IdeaCategoryODS
 import com.brokenkernel.improvtools.suggestions.data.storage.IdeaUIState

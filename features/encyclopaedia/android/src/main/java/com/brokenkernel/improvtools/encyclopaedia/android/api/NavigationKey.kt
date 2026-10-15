@@ -1,7 +1,6 @@
 package com.brokenkernel.improvtools.encyclopaedia.android.api
 
 import androidx.annotation.StringRes
-import androidx.navigation3.runtime.NavMetadataKey
 import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigationKey
 import kotlinx.parcelize.Parcelize
 

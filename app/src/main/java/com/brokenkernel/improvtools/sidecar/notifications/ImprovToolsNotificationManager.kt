@@ -11,7 +11,6 @@ import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.coreinfra.TAG
 import com.brokenkernel.improvtools.timer.model.TimerState
 import kotlin.time.Clock
-import kotlin.time.ExperimentalTime
 import kotlin.time.Instant
 
 // TODO: internal
@@ -23,7 +22,6 @@ public interface ImprovToolsNotification {
     public val underlying: Notification
 }
 
-@OptIn(ExperimentalTime::class)
 // TODO: internal
 public abstract class ImprovToolsNotificationManager<T>(
     private val notificationManager: NotificationManager,

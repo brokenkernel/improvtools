@@ -3,7 +3,6 @@ package com.brokenkernel.improvtools.timer.model
 import kotlin.time.Clock
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.seconds
-import kotlin.time.ExperimentalTime
 import kotlin.time.Instant
 
 private const val INITIAL_TIMER_SECONDS: Long = 60L // as seconds
@@ -49,7 +48,6 @@ public sealed interface CountUpTimerState : TimerState {
     public companion object
 }
 
-@OptIn(ExperimentalTime::class)
 public class StartedCountUpTimerState(
     private val priorElapsedTime: Duration,
     private val startedTime: Instant,
@@ -90,7 +88,6 @@ public class StartedCountUpTimerState(
     }
 }
 
-@OptIn(ExperimentalTime::class)
 public class StartedCountDownTimerState(
     private val priorRemainingTime: Duration,
     private val startedTime: Instant,
@@ -138,7 +135,6 @@ public class StartedCountDownTimerState(
 
 // TODO: secondary constructor for initial creation ?
 
-@OptIn(ExperimentalTime::class)
 public class PausedCountUpTimerState(
     private val elapsedTime: Duration,
     override val title: String,
@@ -168,7 +164,6 @@ public class PausedCountUpTimerState(
     }
 }
 
-@OptIn(ExperimentalTime::class)
 public class PausedCountDownTimerState(
     private val remainingTime: Duration,
     override val title: String,

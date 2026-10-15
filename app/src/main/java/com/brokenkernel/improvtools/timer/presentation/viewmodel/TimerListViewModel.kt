@@ -23,14 +23,12 @@ import com.brokenkernel.improvtools.timer.sidecar.notifications.StopWatchNotific
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlin.time.Duration
-import kotlin.time.ExperimentalTime
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalTime::class)
 @HiltViewModel
 // TODO: internal
 public class TimerListViewModel @Inject constructor(
@@ -131,7 +129,6 @@ public class TimerListViewModel @Inject constructor(
         _allTimers.add(timer)
     }
 
-    @OptIn(ExperimentalTime::class)
     // TODO: internal
     public fun replaceTitle(timer: TimerState, newTitle: String) {
         val index = _allTimers.indexOf(timer)

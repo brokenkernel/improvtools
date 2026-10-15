@@ -5,7 +5,7 @@
     <ID>ForbiddenPublicDataClass:ChippedTabbedSearchableColumn.kt:ChippedTabbedSearchableColumn&lt;T, X></ID>
     <ID>ForbiddenPublicDataClass:TabbedSearchableColumn.kt:TabbedSearchableColumnState&lt;T : Enum&lt;T>></ID>
     <ID>LibraryEntitiesShouldNotBePublic:Blink.kt:@Composable public fun Blink</ID>
-    <ID>LibraryEntitiesShouldNotBePublic:ChipBar.kt:@OptIn(ExperimentalMaterial3Api::class) @Composable public inline fun &lt;reified T : Enum&lt;T>> ChipBar</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:ChipBar.kt:@Composable public inline fun &lt;reified T : Enum&lt;T>> ChipBar</ID>
     <ID>LibraryEntitiesShouldNotBePublic:ChippedTabbedSearchableColumn.kt:@Composable public inline fun &lt;reified T : Enum&lt;T>, I, reified X : Enum&lt;X>> ChippedTabbedSearchableColumn</ID>
     <ID>LibraryEntitiesShouldNotBePublic:ChippedTabbedSearchableColumn.kt:@Composable public inline fun &lt;reified T : Enum&lt;T>, reified X : Enum&lt;X>> rememberChippedTabbedSearchableColumn: ChippedTabbedSearchableColumn&lt;T, X></ID>
     <ID>LibraryEntitiesShouldNotBePublic:ChippedTabbedSearchableColumn.kt:ChippedTabbedSearchableColumn&lt;T, X></ID>

@@ -31,7 +31,6 @@ import kotlin.time.Duration
 import kotlin.time.Duration.Companion.hours
 import kotlin.time.Duration.Companion.minutes
 import kotlin.time.Duration.Companion.seconds
-import kotlin.time.ExperimentalTime
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.flow
 import sh.calvin.reorderable.ReorderableCollectionItemScope
@@ -40,7 +39,6 @@ private fun Long.formatTimeMoment(): String {
     return String.format(Locale.current.platformLocale, "%02d", this)
 }
 
-@OptIn(ExperimentalTime::class)
 @Composable
 private fun CurrentTimerTime(
     currentTime: () -> Duration,

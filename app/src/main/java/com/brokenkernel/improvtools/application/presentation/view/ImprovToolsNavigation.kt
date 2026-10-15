@@ -62,11 +62,11 @@ internal fun ImprovToolsNavigationDrawer(
                 )
             }
         },
+        modifier = modifier,
     ) {
         ImprovToolsScaffold(
             improvToolsAppState = improvToolsAppState,
             currentRoute = improvToolsNavigator.current(),
-            navMenuButtonPressedCallback = {},
         ) {
             SharedTransitionLayout {
                 val resultEventBus = rememberResultEventBus()

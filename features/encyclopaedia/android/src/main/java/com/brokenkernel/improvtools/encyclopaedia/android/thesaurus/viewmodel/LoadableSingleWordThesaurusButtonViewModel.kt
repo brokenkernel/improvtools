@@ -26,7 +26,7 @@ public class LoadableSingleWordThesaurusButtonViewModel @Inject constructor(
 
     // TODO: internal
     public fun doesHaveDictionaryDetails(word: String): StateFlow<Boolean> {
-        val msf = doesHaveDictionaryDetails.computeIfAbsent(word, { MutableStateFlow<Boolean>(false) })
+        val msf = doesHaveDictionaryDetails.computeIfAbsent(word, { MutableStateFlow(false) })
         val sf = doesHaveDictionaryDetailsStateFlow.computeIfAbsent(word, { _ -> msf.asStateFlow() })
         val result = sf
         asyncInitWord(word)

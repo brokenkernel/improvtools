@@ -26,7 +26,6 @@ import com.brokenkernel.components.filteredlist.ChippedTabbedSearchableColumn
 import com.brokenkernel.components.view.ExpandIcon
 import com.brokenkernel.components.view.HtmlText
 import com.brokenkernel.components.view.SimpleIconButton
-import com.brokenkernel.improvtools.coreinfra.BackStack
 import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigationKey
 import com.brokenkernel.improvtools.coreinfra.LocalBottomSheetContentManager
 import com.brokenkernel.improvtools.encyclopaedia.android.R

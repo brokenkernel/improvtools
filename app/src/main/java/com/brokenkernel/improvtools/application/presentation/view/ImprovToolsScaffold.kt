@@ -32,7 +32,6 @@ import com.brokenkernel.improvtools.sidecar.customtabs.CustomTabUriHandler
 internal fun ImprovToolsScaffold(
     improvToolsAppState: ImprovToolsAppState,
     currentRoute: ImprovToolsNavigationKey,
-    navMenuButtonPressedCallback: () -> Unit,
     modifier: Modifier = Modifier,
     content: @Composable (() -> Unit),
 ) {

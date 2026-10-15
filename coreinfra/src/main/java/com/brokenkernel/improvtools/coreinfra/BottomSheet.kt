@@ -30,7 +30,7 @@ internal data class BottomSheetScene<T : Any>(
 
     override val entries: List<NavEntry<T>> = listOf(entry)
 
-    lateinit var sheetState: SheetState
+    private lateinit var sheetState: SheetState
 
     override val content: @Composable (() -> Unit) = {
         sheetState = rememberModalBottomSheetState(
