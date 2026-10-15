@@ -76,11 +76,14 @@ dependencies {
     api(projects.features.suggestions.data)
     api(libs.androidx.foundation.layout)
     api(libs.androidx.lifecycle.viewmodel)
+    api(libs.androidx.navigation3.runtime)
     api(libs.androidx.runtime)
     api(libs.androidx.ui)
+    api(libs.google.dagger)
     api(libs.hilt.android)
     api(libs.jakarta.inject.api)
     api(libs.javax.inject)
+    api(libs.kotlinx.collections.immutable.jvm)
 
     debugApi(libs.reorderable.android.debug)
 
@@ -93,15 +96,15 @@ dependencies {
     implementation(projects.features.encyclopaedia.android)
     // TODO: .impl
     implementation(libs.androidx.animation.core)
+    implementation(libs.androidx.annotation)
     implementation(libs.androidx.foundation)
     implementation(libs.androidx.hilt.lifecycle.viewmodel.compose)
     implementation(libs.androidx.material3)
-    implementation(libs.androidx.navigation3.runtime)
     implementation(libs.androidx.ui.text)
     implementation(libs.androidx.ui.unit)
     implementation(libs.config)
+    implementation(libs.dagger.hilt.core)
     implementation(libs.kotlin.parcelize.runtime)
-    implementation(libs.kotlinx.collections.immutable.jvm)
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.serialization.core)
     implementation(libs.kotlinx.serialization.hocon)
@@ -120,6 +123,7 @@ dependencies {
 
     ktlintRuleset(libs.ktlintCompose)
 
+    lintChecks(libs.android.securityLint)
     lintChecks(libs.androidx.lint.gradle)
     lintChecks(libs.slack.lint.checks)
     lintChecks(libs.slack.lint.checks.compose)

@@ -1,8 +1,5 @@
-@file:OptIn(KspExperimental::class)
-
 import com.android.build.api.dsl.ApplicationExtension
 import com.android.build.api.dsl.VariantDimension
-import com.google.devtools.ksp.KspExperimental
 import com.google.firebase.crashlytics.buildtools.gradle.CrashlyticsExtension
 import com.mikepenz.aboutlibraries.plugin.DuplicateMode
 import com.mikepenz.aboutlibraries.plugin.DuplicateRule
@@ -229,9 +226,9 @@ dependencies {
     implementation(libs.bundles.firebase)
     implementation(libs.com.google.protobuf.protobufJavalite)
     implementation(libs.config)
-    implementation(libs.dagger.hilt.core)
+//    implementation(libs.dagger.hilt.core)
     implementation(libs.fragment)
-    implementation(libs.google.dagger)
+//    implementation(libs.google.dagger)
     implementation(libs.guava)
     implementation(libs.hilt.android)
     implementation(libs.jakarta.inject.api)
@@ -255,6 +252,7 @@ dependencies {
     runtimeOnly(libs.androidx.runtime.tracing)
     runtimeOnly(libs.androidx.startup.runtime)
     runtimeOnly(libs.androidx.work.multiprocess)
+//    runtimeOnly(libs.hilt.compiler)
     runtimeOnly(libs.kotlin.reflect)
     runtimeOnly(libs.slf4j.android)
 
@@ -274,9 +272,9 @@ dependencies {
     androidTestImplementation(libs.androidx.runtime)
     androidTestImplementation(libs.androidx.ui.test)
     androidTestImplementation(libs.androidx.ui.test.junit4)
+    androidTestImplementation(libs.hamcrest)
     androidTestImplementation(libs.hamcrest.core)
     androidTestImplementation(libs.hamcrest.library)
-    //    androidTestImplementation(libs.hamcrest)
     androidTestImplementation(libs.hilt.android.testing)
     androidTestImplementation(libs.junit)
     androidTestImplementation(libs.kotlinx.coroutines.core)
@@ -348,6 +346,7 @@ aboutLibraries {
         allowedLicenses.addAll("EPL-1.0")
         allowedLicenses.addAll("Eclipse Public License v. 2.0")
         allowedLicenses.addAll("GNU General Public License, version 2 with the GNU Classpath Exception")
+        allowedLicenses.addAll("GNU General Public License, version 2 (GPL2), with the classpath exception")
         allowedLicenses.addAll("MIT")
     }
     library {

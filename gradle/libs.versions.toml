@@ -193,7 +193,7 @@ hamcrest-core = { module = "org.hamcrest:hamcrest-core", version.ref = "hamcrest
 hamcrest-library = { module = "org.hamcrest:hamcrest-library", version.ref = "hamcrest" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt-android-testing = { module = "com.google.dagger:hilt-android-testing", version.ref = "hilt" }
-hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
+hilt-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
 jakarta-inject-api = { module = "jakarta.inject:jakarta.inject-api", version.ref = "jakartaInjectApi" }
 javax-inject = { module = "javax.inject:javax.inject", version.ref = "javaxInject" }
 jetbrains-annotations = { module = "org.jetbrains:annotations", version.ref = "annotations" }

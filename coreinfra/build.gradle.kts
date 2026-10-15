@@ -72,13 +72,15 @@ kotlin {
 dependencies {
     api(libs.androidx.compose.foundation.layout)
     api(libs.androidx.material3)
+    api(libs.androidx.navigation3.runtime)
+    api(libs.androidx.navigation3.ui)
     api(libs.androidx.runtime)
 
     implementation(enforcedPlatform(libs.androidx.compose.bom))
     implementation(enforcedPlatform(libs.kotlin.bom))
-    implementation(libs.androidx.navigation3.runtime)
-    implementation(libs.androidx.navigation3.ui)
     implementation(libs.androidx.runtime.saveable)
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.dagger.hilt.core)
     implementation(libs.google.dagger)
