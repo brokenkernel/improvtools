@@ -34,7 +34,11 @@ internal fun ImprovToolsNavigationDrawer(
 
     val improvToolsAppState: ImprovToolsAppState = rememberImprovToolsAppState()
 
-    val allDestinations = NavigableScreens.entries.filter { it.showOnMainNavigationScreen }
+    val allDestinations: List<NavigableScreens> =
+        NavigableScreens
+            .entries
+            .filter { it.navigationBarNavigationWeight != null }
+            .sortedBy { it.navigationBarNavigationWeight }
 
     NavigationSuiteScaffold(
         navigationSuiteItems = {
@@ -66,30 +70,30 @@ internal fun ImprovToolsNavigationDrawer(
                     backStack = improvToolsNavigator.backstack,
                     onBack = { improvToolsNavigator.goBack() },
                     entryDecorators =
-                    listOf(
-                        rememberSaveableStateHolderNavEntryDecorator(),
-                        rememberViewModelStoreNavEntryDecorator(),
-                        rememberResultEventBusNavEntryDecorator(resultEventBus = resultEventBus),
-                    ),
+                        listOf(
+                            rememberSaveableStateHolderNavEntryDecorator(),
+                            rememberViewModelStoreNavEntryDecorator(),
+                            rememberResultEventBusNavEntryDecorator(resultEventBus = resultEventBus),
+                        ),
                     entryProvider =
-                    entryProvider {
-                        suggestionsScreenEntryBuilder(
-                            setBottomSheet = improvToolsAppState::setBottomSheetTo,
-                            improvToolsNavigator = improvToolsNavigator, // TODO
-                        )
-                        encyclopaediaScreensEntryBuilder(
-                            backstack = improvToolsNavigator.backstack, // TODO
-                        )
-                        encyclopaediaScreensEntryBuilderPart2(
-                            improvToolsNavigator::goTo,
-                        )
-                        buzzerScreenEntryBuilder()
-                        timerScreenEntryBuilder()
-                        tonguetwisterScreenEntryBuilder()
-                        applicationScreensEntryBuilder(
-                            improvToolsNavigator::goTo,
-                        )
-                    },
+                        entryProvider {
+                            suggestionsScreenEntryBuilder(
+                                setBottomSheet = improvToolsAppState::setBottomSheetTo,
+                                improvToolsNavigator = improvToolsNavigator, // TODO
+                            )
+                            encyclopaediaScreensEntryBuilder(
+                                backstack = improvToolsNavigator.backstack, // TODO
+                            )
+                            encyclopaediaScreensEntryBuilderPart2(
+                                improvToolsNavigator::goTo,
+                            )
+                            buzzerScreenEntryBuilder()
+                            timerScreenEntryBuilder()
+                            tonguetwisterScreenEntryBuilder()
+                            applicationScreensEntryBuilder(
+                                improvToolsNavigator::goTo,
+                            )
+                        },
                     sharedTransitionScope = this,
                 )
             }
