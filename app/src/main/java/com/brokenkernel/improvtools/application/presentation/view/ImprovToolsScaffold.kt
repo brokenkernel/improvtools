@@ -72,49 +72,49 @@ internal fun ImprovToolsScaffold(
         val currentTitle = NavigableScreens.byRoute(currentRoute)
         // TODO: replace with [[NavigationSuiteScaffold]]
         Scaffold(
-            topBar = {
-                CenterAlignedTopAppBar(
-                    colors = TopAppBarDefaults.topAppBarColors(
-                        containerColor = MaterialTheme.colorScheme.primaryContainer,
-                        titleContentColor = MaterialTheme.colorScheme.primary,
-                    ),
-                    title = {
-                        Text(
-                            stringResource(currentTitle.titleResource),
-                            modifier = Modifier.testTag(APPLICATION_TITLE),
-                        )
-                    },
-                    scrollBehavior = TopAppBarDefaults
-                        .exitUntilCollapsedScrollBehavior(
-                            rememberTopAppBarState(),
-                        ),
-//                    navigationIcon = {
-//                        SimpleIconButton(
-//                            onClick = navMenuButtonPressedCallback,
-//                            // TODO: switch to MenuOpen when required
-//                            icon = ImageVector.vectorResource(R.drawable.menu_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
-//                            contentDescription = stringResource(R.string.navigation_app_menu),
+//            topBar = {
+//                CenterAlignedTopAppBar(
+//                    colors = TopAppBarDefaults.topAppBarColors(
+//                        containerColor = MaterialTheme.colorScheme.primaryContainer,
+//                        titleContentColor = MaterialTheme.colorScheme.primary,
+//                    ),
+//                    title = {
+//                        Text(
+//                            stringResource(currentTitle.titleResource),
+//                            modifier = Modifier.testTag(APPLICATION_TITLE),
 //                        )
 //                    },
-                    actions = {
-                        if (extraMenu.value != null) {
-                            SimpleIconButton(
-                                onClick = {
-                                    improvToolsAppState.extraMenuExpandedState =
-                                        !improvToolsAppState.extraMenuExpandedState
-                                },
-                                icon = ImageVector.vectorResource(
-                                    R.drawable.more_vert_24dp_1f1f1f_fill0_wght400_grad0_opsz24,
-                                ),
-                                contentDescription = stringResource(
-                                    R.string.navigation_open_screen_specific_menu,
-                                ),
-                            )
-                        }
-                        extraMenu.value?.invoke(improvToolsAppState)
-                    },
-                )
-            },
+//                    scrollBehavior = TopAppBarDefaults
+//                        .exitUntilCollapsedScrollBehavior(
+//                            rememberTopAppBarState(),
+//                        ),
+////                    navigationIcon = {
+////                        SimpleIconButton(
+////                            onClick = navMenuButtonPressedCallback,
+////                            // TODO: switch to MenuOpen when required
+////                            icon = ImageVector.vectorResource(R.drawable.menu_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
+////                            contentDescription = stringResource(R.string.navigation_app_menu),
+////                        )
+////                    },
+//                    actions = {
+//                        if (extraMenu.value != null) {
+//                            SimpleIconButton(
+//                                onClick = {
+//                                    improvToolsAppState.extraMenuExpandedState =
+//                                        !improvToolsAppState.extraMenuExpandedState
+//                                },
+//                                icon = ImageVector.vectorResource(
+//                                    R.drawable.more_vert_24dp_1f1f1f_fill0_wght400_grad0_opsz24,
+//                                ),
+//                                contentDescription = stringResource(
+//                                    R.string.navigation_open_screen_specific_menu,
+//                                ),
+//                            )
+//                        }
+//                        extraMenu.value?.invoke(improvToolsAppState)
+//                    },
+//                )
+//            },
             snackbarHost = {
                 SnackbarHost(hostState = LocalSnackbarHostState.current)
             },
