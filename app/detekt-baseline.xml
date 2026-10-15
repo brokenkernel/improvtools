@@ -4,6 +4,7 @@
   <CurrentIssues>
     <ID>BracesOnWhenStatements:Theme.kt:when</ID>
     <ID>ForbiddenPublicDataClass:StopWatchNotifications.kt:StopWatchNotification : ImprovToolsNotification</ID>
+    <ID>LambdaParameterEventTrailing:AboutTab.kt:onGoToLibrariesTab: () -> Unit</ID>
     <ID>LibraryEntitiesShouldNotBePublic:CountDownNotificationManager.kt:CountDownNotificationManager : ImprovToolsNotificationManager</ID>
     <ID>LibraryEntitiesShouldNotBePublic:CountDownNotificationManager.kt:CountDownhNotification : ImprovToolsNotification</ID>
     <ID>LibraryEntitiesShouldNotBePublic:HiltComponentActitivity.kt:HiltComponentActitivity : ComponentActivity</ID>
@@ -26,7 +27,6 @@
     <ID>TopLevelPropertyNaming:MainActivity.kt:private const val ShowEncyclopaediaIntent: String = "com.brokenkernel.improvtools.intents.ShowEncyclopaedia"</ID>
     <ID>TopLevelPropertyNaming:MainActivity.kt:private const val ShowSuggestionsIntent: String = "com.brokenkernel.improvtools.intents.ShowSuggestions"</ID>
     <ID>TopLevelPropertyNaming:MainActivity.kt:private const val ShowTimerIntent: String = "com.brokenkernel.improvtools.intents.ShowTimer"</ID>
-    <ID>UnusedParameter:ImprovToolsNavigation.kt:improvToolsAppState: ImprovToolsAppState</ID>
     <ID>UnusedParameter:ImprovToolsNavigation.kt:modifier: Modifier = Modifier</ID>
     <ID>UnusedParameter:ImprovToolsScaffold.kt:navMenuButtonPressedCallback: () -> Unit</ID>
     <ID>UseIfInsteadOfWhen:NavigableScreens.kt:NavigableScreens.Companion$when (route) { is ThesaurusSingleWordPageNavigationKey -> ThesaurusPageScreen else -> NavigableScreens.entries.find { it.matchingRoute == route } ?: SuggestionGeneratorScreen }</ID>

@@ -61,6 +61,7 @@ import kotlinx.coroutines.launch
 internal fun AboutTab(
     onGoToPrivacyTab: () -> Unit,
     modifier: Modifier = Modifier,
+    onGoToLibrariesTab: () -> Unit,
 ) {
     // move snackbar host state into app state. And then inject it?
     // also include more injected stuff (settings for ex) into debug datum
@@ -275,6 +276,13 @@ internal fun AboutTab(
                         },
                     ) {
                         Text(stringResource(R.string.about_show_privacy_screen))
+                    }
+                    TextButton(
+                        onClick = {
+                            onGoToLibrariesTab()
+                        },
+                    ) {
+                        Text("Show Libraries Screen")
                     }
                 }
             }

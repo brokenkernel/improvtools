@@ -16,7 +16,7 @@
 
   <string name="navigation_settings_category">Einstellungen</string>
 
-  <string name="navigation_help_and_feedback">Hilfe und Feedback</string>
+  <string name="navigation_about">Hilfe und Feedback</string>
 
   <string name="navigation_useful_tools_category">Nützliche Tools</string>
 
@@ -30,7 +30,7 @@
 
   <string name="go_to_timer_screen">Gehen Sie zum Timer-Bildschirm</string>
 
-  <string name="go_to_help_and_feedback_screen">Gehen Sie zum Bildschirm „Hilfe und Feedback“</string>
+  <string name="go_to_about_screen">Gehen Sie zum Bildschirm „Hilfe und Feedback“</string>
 
   <string name="about_version_information">Versionsinformationen</string>
 

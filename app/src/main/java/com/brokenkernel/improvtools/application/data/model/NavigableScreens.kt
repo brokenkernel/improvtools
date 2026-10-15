@@ -31,13 +31,16 @@ internal enum class NavigableScreens(
     @param:StringRes @field:StringRes internal val titleResource: Int,
     @param:StringRes @field:StringRes internal val contentDescription: Int,
     @param:DrawableRes @field:DrawableRes private val iconDrawable: Int,
+    val showOnMainNavigationScreen: Boolean,
     internal val matchingRoute: ImprovToolsNavigationKey,
     val extraMenu: @Composable ((ImprovToolsAppState) -> Unit)? = null,
+
 ) {
     SuggestionGeneratorScreen(
         titleResource = R.string.suggestions_activity_title,
         contentDescription = R.string.go_to_suggestion_generator,
         iconDrawable = R.drawable.lightbulb_24dp_1f1f1f_fill0_wght400_grad0_opsz24,
+        showOnMainNavigationScreen = true,
         matchingRoute = SuggestionsScreenNavigationKey,
     ),
 
@@ -45,6 +48,7 @@ internal enum class NavigableScreens(
         titleResource = R.string.settings_activity_title,
         contentDescription = R.string.go_to_settings_screen,
         iconDrawable = R.drawable.settings_24dp_1f1f1f_fill0_wght400_grad0_opsz24,
+        showOnMainNavigationScreen = true,
         matchingRoute = SettingsNavigationKey,
 
     ),
@@ -53,14 +57,16 @@ internal enum class NavigableScreens(
         titleResource = R.string.timer_activity_title,
         contentDescription = R.string.go_to_timer_screen,
         iconDrawable = R.drawable.timer_24dp_1f1f1f_fill0_wght400_grad0_opsz24,
+        showOnMainNavigationScreen = true,
         matchingRoute = TimerNavigationKey,
 
     ),
 
     AboutScreen(
-        titleResource = R.string.navigation_help_and_feedback,
-        contentDescription = R.string.go_to_help_and_feedback_screen,
+        titleResource = R.string.navigation_about,
+        contentDescription = R.string.go_to_about_screen,
         iconDrawable = R.drawable.info_24dp_1f1f1f_fill0_wght400_grad0_opsz24,
+        showOnMainNavigationScreen = true,
         matchingRoute = AboutNavigationKey,
     ),
 
@@ -68,6 +74,7 @@ internal enum class NavigableScreens(
         titleResource = R.string.navigation_tips_and_advice,
         contentDescription = R.string.go_to_tips_and_advice_screen,
         iconDrawable = R.drawable.cognition_24dp_1f1f1f_fill0_wght400_grad0_opsz24,
+        showOnMainNavigationScreen = true,
         matchingRoute = TipsAndAdviceNavigationKey,
     ),
 
@@ -75,6 +82,7 @@ internal enum class NavigableScreens(
         titleResource = R.string.navigation_games,
         contentDescription = R.string.go_to_games_screen,
         iconDrawable = R.drawable.toys_and_games_24dp_1f1f1f_fill0_wght400_grad0_opsz24,
+        showOnMainNavigationScreen = true,
         matchingRoute = GamesPageNavigationKey,
 
     ),
@@ -83,6 +91,7 @@ internal enum class NavigableScreens(
         titleResource = R.string.navigation_people,
         contentDescription = R.string.go_to_navigation_people_screen,
         iconDrawable = R.drawable.emoji_people_24dp_1f1f1f_fill0_wght400_grad0_opsz24,
+        showOnMainNavigationScreen = true,
         matchingRoute = PeoplePageNavigationKey,
 
     ),
@@ -92,6 +101,7 @@ internal enum class NavigableScreens(
         contentDescription = R.string.go_to_glossary,
         // TODO: figure out better icon (esp since both Glossary and Thesaurus. Consider supporting Drawable)
         iconDrawable = R.drawable.book_2_24dp_1f1f1f_fill0_wght400_grad0_opsz24,
+        showOnMainNavigationScreen = true,
         matchingRoute = GlossaryPageNavigationKey,
 
     ),
@@ -100,6 +110,7 @@ internal enum class NavigableScreens(
         titleResource = R.string.navigation_emotions_reference,
         contentDescription = R.string.go_to_emotions_reference_screen,
         iconDrawable = R.drawable.face_2_24dp_1f1f1f_fill0_wght400_grad0_opsz24,
+        showOnMainNavigationScreen = true,
         matchingRoute = EmotionsPageNavigationKey,
 
     ),
@@ -108,6 +119,7 @@ internal enum class NavigableScreens(
         titleResource = R.string.navigation_thesaurus,
         contentDescription = R.string.go_to_thesaurus_screen,
         iconDrawable = R.drawable.dictionary_24dp_1f1f1f_fill0_wght400_grad0_opsz24,
+        showOnMainNavigationScreen = true,
         matchingRoute = ThesaurusAllItemsPageNavigationKey,
     ),
 
@@ -115,6 +127,7 @@ internal enum class NavigableScreens(
         titleResource = R.string.navigation_privacy_information,
         contentDescription = R.string.go_to_privacy_information,
         iconDrawable = R.drawable.privacy_tip_24dp_1f1f1f_fill0_wght400_grad0_opsz24,
+        showOnMainNavigationScreen = false,
         matchingRoute = PrivacyNavigationKey,
     ),
 
@@ -122,6 +135,7 @@ internal enum class NavigableScreens(
         titleResource = R.string.navigation_libraries_information,
         contentDescription = R.string.go_to_libraries_information,
         iconDrawable = R.drawable.copyright_24dp_1f1f1f_fill0_wght400_grad0_opsz24,
+        showOnMainNavigationScreen = false,
         matchingRoute = LibrariesNavigationKey,
     ),
 
@@ -129,6 +143,7 @@ internal enum class NavigableScreens(
         titleResource = R.string.tongue_twisters,
         contentDescription = R.string.go_to_tongue_twisters,
         iconDrawable = R.drawable.ent_24px,
+        showOnMainNavigationScreen = true,
         matchingRoute = TongueTwisterNavigationKey,
     ),
 
@@ -136,6 +151,7 @@ internal enum class NavigableScreens(
         titleResource = R.string.navigation_buzzer,
         contentDescription = R.string.go_to_buzzer,
         iconDrawable = R.drawable.surround_sound_24dp_1f1f1f_fill0_wght400_grad0_opsz24,
+        showOnMainNavigationScreen = true,
         matchingRoute = BuzzerNavigationKey,
     ),
     ;

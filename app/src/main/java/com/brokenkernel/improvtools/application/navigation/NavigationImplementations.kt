@@ -19,6 +19,9 @@ internal fun EntryProviderScope<ImprovToolsNavigationKey>.applicationScreensEntr
             onGoToPrivacyTab = {
                 goTo(PrivacyNavigationKey)
             },
+            onGoToLibrariesTab = {
+                goTo(LibrariesNavigationKey)
+            },
         )
     }
     entry<LibrariesNavigationKey> {
