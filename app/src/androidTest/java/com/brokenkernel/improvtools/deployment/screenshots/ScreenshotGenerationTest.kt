@@ -1,13 +1,11 @@
 package com.brokenkernel.improvtools.deployment.screenshots
 
 import androidx.annotation.StringRes
-import androidx.compose.ui.test.hasContentDescription
 import androidx.compose.ui.test.junit4.ComposeContentTestRule
 import androidx.compose.ui.test.junit4.v2.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.performClick
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
-import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
 import com.brokenkernel.improvtools.application.presentation.view.OuterContentForMasterScreen
 import com.brokenkernel.improvtools.infrastructure.HiltComponentActitivity
@@ -105,11 +103,6 @@ internal class ScreenshotGeneralPerNavigableScreenTest(
 
     @Test
     fun takeScreenshotOfNavigableScreen() {
-//        composeTestRule.onNode(
-//            hasContentDescription(getString(R.string.navigation_app_menu)),
-//        )
-//            .performClick()
-//        composeTestRule.waitForIdle()
         composeTestRule.onNodeWithContentDescription(
             getString(navigableScreen.contentDescription),
             useUnmergedTree = true,
