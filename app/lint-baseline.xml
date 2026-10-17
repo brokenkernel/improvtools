@@ -105,17 +105,6 @@
 
     <issue
         id="UnusedResources"
-        message="The resource `R.drawable.more_vert_24dp_1f1f1f_fill0_wght400_grad0_opsz24` appears to be unused"
-        errorLine1="&lt;vector xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;"
-        errorLine2="^">
-        <location
-            file="src/main/res/drawable/more_vert_24dp_1f1f1f_fill0_wght400_grad0_opsz24.xml"
-            line="1"
-            column="1"/>
-    </issue>
-
-    <issue
-        id="UnusedResources"
         message="The resource `R.xml.remote_config_defaults` appears to be unused"
         errorLine1="&lt;defaultsMap>"
         errorLine2="^">
@@ -166,17 +155,6 @@
         <location
             file="src/main/res/values/strings.xml"
             line="11"
-            column="13"/>
-    </issue>
-
-    <issue
-        id="UnusedResources"
-        message="The resource `R.string.navigation_open_screen_specific_menu` appears to be unused"
-        errorLine1="    &lt;string name=&quot;navigation_open_screen_specific_menu&quot;>Open Menu&lt;/string>"
-        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/values/strings.xml"
-            line="33"
             column="13"/>
     </issue>
 

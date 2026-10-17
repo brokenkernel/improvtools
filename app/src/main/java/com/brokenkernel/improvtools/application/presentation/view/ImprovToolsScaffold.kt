@@ -56,7 +56,6 @@ internal fun ImprovToolsScaffold(
         // TODO: this should be navigation based, but meh, future work
         val bottomSheetContent = improvToolsAppState.bottomSheetContent.collectAsStateWithLifecycle()
         val currentTitle = NavigableScreens.byRoute(currentRoute)
-        // TODO: replace with [[NavigationSuiteScaffold]]
         Scaffold(
 //            topBar = {
 //                CenterAlignedTopAppBar(

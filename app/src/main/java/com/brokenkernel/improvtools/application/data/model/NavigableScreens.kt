@@ -35,6 +35,7 @@ internal enum class NavigableScreens(
      * Low is first. High is last. null isn't shown.
      */
     val navigationBarNavigationWeight: Int?,
+    val additionalMenuNavigationWeight: Int? = null,
     internal val matchingRoute: ImprovToolsNavigationKey,
 
 ) {
@@ -50,7 +51,8 @@ internal enum class NavigableScreens(
         titleResource = R.string.settings_activity_title,
         contentDescription = R.string.go_to_settings_screen,
         iconDrawable = R.drawable.settings_24dp_1f1f1f_fill0_wght400_grad0_opsz24,
-        navigationBarNavigationWeight = 100,
+        navigationBarNavigationWeight = null,
+        additionalMenuNavigationWeight = 1,
         matchingRoute = SettingsNavigationKey,
 
     ),
@@ -68,7 +70,8 @@ internal enum class NavigableScreens(
         titleResource = R.string.navigation_about,
         contentDescription = R.string.go_to_about_screen,
         iconDrawable = R.drawable.info_24dp_1f1f1f_fill0_wght400_grad0_opsz24,
-        navigationBarNavigationWeight = 110,
+        navigationBarNavigationWeight = null,
+        additionalMenuNavigationWeight = 2,
         matchingRoute = AboutNavigationKey,
     ),
 
