@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.navigation3.runtime.EntryProviderScope
 import com.google.firebase.Firebase
@@ -40,7 +41,7 @@ public class ImprovToolsNavigator internal constructor(
                     initialRoute,
                 )
 
-            LaunchedEffect(backstack.last()) {
+            SideEffect(backstack.last()) {
                 val screenClass = backstack.last().javaClass.name
                 val screenName = backstack.last().javaClass.simpleName
                 val params = Bundle()
