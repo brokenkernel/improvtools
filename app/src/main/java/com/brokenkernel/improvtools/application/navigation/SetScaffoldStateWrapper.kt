@@ -12,7 +12,6 @@ package com.brokenkernel.improvtools.application.navigation
 //            onLaunchCallback = {
 //                improvToolsAppState.setScaffoldData(
 //                    navigableScreen.titleResource,
-//                    navigableScreen.extraMenu,
 //                )
 //            },
 //        ) {

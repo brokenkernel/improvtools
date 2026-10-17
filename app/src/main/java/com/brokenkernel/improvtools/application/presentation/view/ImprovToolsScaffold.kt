@@ -55,7 +55,6 @@ internal fun ImprovToolsScaffold(
     ) {
         // TODO: this should be navigation based, but meh, future work
         val bottomSheetContent = improvToolsAppState.bottomSheetContent.collectAsStateWithLifecycle()
-        val extraMenu = improvToolsAppState.extraMenu.collectAsStateWithLifecycle()
         val currentTitle = NavigableScreens.byRoute(currentRoute)
         // TODO: replace with [[NavigationSuiteScaffold]]
         Scaffold(
@@ -84,21 +83,6 @@ internal fun ImprovToolsScaffold(
 // //                        )
 // //                    },
 //                    actions = {
-//                        if (extraMenu.value != null) {
-//                            SimpleIconButton(
-//                                onClick = {
-//                                    improvToolsAppState.extraMenuExpandedState =
-//                                        !improvToolsAppState.extraMenuExpandedState
-//                                },
-//                                icon = ImageVector.vectorResource(
-//                                    R.drawable.more_vert_24dp_1f1f1f_fill0_wght400_grad0_opsz24,
-//                                ),
-//                                contentDescription = stringResource(
-//                                    R.string.navigation_open_screen_specific_menu,
-//                                ),
-//                            )
-//                        }
-//                        extraMenu.value?.invoke(improvToolsAppState)
 //                    },
 //                )
 //            },

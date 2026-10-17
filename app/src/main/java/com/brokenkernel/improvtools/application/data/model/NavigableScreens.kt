@@ -36,7 +36,6 @@ internal enum class NavigableScreens(
      */
     val navigationBarNavigationWeight: Int?,
     internal val matchingRoute: ImprovToolsNavigationKey,
-    val extraMenu: @Composable ((ImprovToolsAppState) -> Unit)? = null,
 
 ) {
     SuggestionGeneratorScreen(
