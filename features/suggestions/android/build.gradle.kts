@@ -83,7 +83,6 @@ dependencies {
     api(libs.hilt.android)
     api(libs.jakarta.inject.api)
     api(libs.javax.inject)
-    api(libs.kotlinx.collections.immutable.jvm)
 
     debugApi(libs.reorderable.android.debug)
 
@@ -99,12 +98,14 @@ dependencies {
     implementation(libs.androidx.annotation)
     implementation(libs.androidx.foundation)
     implementation(libs.androidx.hilt.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.lifecycle.viewModel.compose)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.ui.text)
     implementation(libs.androidx.ui.unit)
     implementation(libs.config)
     implementation(libs.dagger.hilt.core)
     implementation(libs.kotlin.parcelize.runtime)
+    implementation(libs.kotlinx.collections.immutable.jvm)
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.serialization.core)
     implementation(libs.kotlinx.serialization.hocon)

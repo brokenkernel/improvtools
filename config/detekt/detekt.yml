@@ -765,7 +765,7 @@ Compose:
     active: true
   CompositionLocalAllowlist:
     active: true
-    allowedCompositionLocals: [ "LocalSnackbarHostState", "LocalBottomSheetContentManager" ]
+    allowedCompositionLocals: [ "LocalSnackbarHostState", ]
   CompositionLocalNaming:
     active: true
   ContentEmitterReturningValues:

@@ -2,6 +2,7 @@
 <SmellBaseline>
   <ManuallySuppressedIssues/>
   <CurrentIssues>
+    <ID>CascadingCallWrapping:SuggestionsScreenAllWordsViewModel.kt:SuggestionsScreenAllWordsViewModel$associate { it.categoryTitle() to it.allWordsforCategory() }</ID>
     <ID>ForbiddenPublicDataClass:NavigationKey.kt:SuggestionsAllWordsForNavigationKey : ImprovToolsNavigationKey</ID>
     <ID>ForbiddenPublicDataClass:NavigationKey.kt:SuggestionsExplanationNavigationKey : ImprovToolsNavigationKey</ID>
     <ID>LibraryEntitiesShouldNotBePublic:AudienceSuggestionDatumRepository.kt:AudienceSuggestionDatumRepository</ID>

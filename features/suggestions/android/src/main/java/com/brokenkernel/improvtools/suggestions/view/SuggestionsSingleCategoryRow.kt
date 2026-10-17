@@ -18,6 +18,7 @@ import com.brokenkernel.improvtools.android.R
 import com.brokenkernel.improvtools.coreinfra.BottomSheetContent
 import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigationKey
 import com.brokenkernel.improvtools.encyclopaedia.android.api.EmotionsPageNavigationKey
+import com.brokenkernel.improvtools.suggestions.api.SuggestionsAllWordsForNavigationKey
 import com.brokenkernel.improvtools.suggestions.api.SuggestionsExplanationNavigationKey
 import com.brokenkernel.improvtools.suggestions.data.storage.IdeaCategoryODS
 import com.brokenkernel.improvtools.suggestions.data.storage.IdeaUIState
@@ -32,7 +33,6 @@ public fun ReorderableCollectionItemScope.SuggestionsSingleCategoryRow(
     ideaCategory: IdeaCategoryODS,
     onUpdateCategory: () -> Unit,
     goTo: (ImprovToolsNavigationKey) -> Unit,
-    setBottomSheet: (newContent: BottomSheetContent) -> Unit,
     // TODO: this shouldn't be injected, but that requires fixing thesaurus
     temporaryLoadableButton: @Composable ((String) -> Unit),
     isDragging: Boolean,
@@ -88,12 +88,7 @@ public fun ReorderableCollectionItemScope.SuggestionsSingleCategoryRow(
                 temporaryLoadableButton(currentIdea.idea)
                 SimpleIconButton(
                     onClick = {
-                        setBottomSheet({
-                            AllWordsBottomSheetTab(
-                                ideaCategory.categoryTitle(),
-                                ideaCategory.ideas.map { it.idea }.toImmutableList(),
-                            )
-                        })
+                        goTo(SuggestionsAllWordsForNavigationKey(ideaCategory.categoryTitle()))
                     },
                     icon = ImageVector.vectorResource(R.drawable.list_alt_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
                     contentDescription = stringResource(R.string.suggestions_see_all_category_words),

@@ -8,8 +8,3 @@ public val LocalSnackbarHostState: ProvidableCompositionLocal<SnackbarHostState>
     compositionLocalOf {
         error("No Snackbar Host State")
     }
-
-public val LocalBottomSheetContentManager: ProvidableCompositionLocal<(BottomSheetContent) -> Unit> =
-    compositionLocalOf {
-        error("No Bottom Sheet Host State")
-    }

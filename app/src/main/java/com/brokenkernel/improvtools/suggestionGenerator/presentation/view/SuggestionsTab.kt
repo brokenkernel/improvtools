@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -39,13 +38,10 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation3.runtime.EntryProviderScope
 import com.brokenkernel.improvtools.R
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
-import com.brokenkernel.improvtools.coreinfra.BottomSheetContent
-import com.brokenkernel.improvtools.coreinfra.BottomSheetSceneStrategy
 import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigationKey
 import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigator
 import com.brokenkernel.improvtools.encyclopaedia.android.api.ThesaurusSingleWordPageNavigationKey
 import com.brokenkernel.improvtools.encyclopaedia.android.thesaurus.view.LoadableSingleWordThesaurusButton
-import com.brokenkernel.improvtools.suggestions.api.SuggestionsAllWordsForNavigationKey
 import com.brokenkernel.improvtools.suggestions.api.SuggestionsScreenNavigationKey
 import com.brokenkernel.improvtools.suggestions.data.storage.IdeaCategoryODS
 import com.brokenkernel.improvtools.suggestions.data.storage.IdeaUIState
@@ -61,7 +57,6 @@ import sh.calvin.reorderable.rememberReorderableLazyListState
 // TODO: maybe add single suggestion screen
 @Composable
 internal fun SuggestionsTab(
-    setBottomSheet: (BottomSheetContent) -> Unit,
     goTo: (ImprovToolsNavigationKey) -> Unit,
     improvToolsNavigator: ImprovToolsNavigator,
     modifier: Modifier = Modifier,
@@ -133,7 +128,6 @@ internal fun SuggestionsTab(
                                 onUpdateCategory = {
                                     viewModel.updateSuggestionXFor(ideaCategory)
                                 },
-                                setBottomSheet = setBottomSheet,
                                 goTo = goTo,
                                 temporaryLoadableButton = { word: String ->
                                     LoadableSingleWordThesaurusButton(
@@ -186,24 +180,13 @@ internal fun SuggestionsTab(
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 internal fun EntryProviderScope<ImprovToolsNavigationKey>.suggestionsScreenEntryBuilder(
-    setBottomSheet: (BottomSheetContent) -> Unit,
     improvToolsNavigator: ImprovToolsNavigator,
 ) {
     entry<SuggestionsScreenNavigationKey> {
         SuggestionsTab(
-            setBottomSheet = setBottomSheet,
             goTo = improvToolsNavigator::goTo,
             improvToolsNavigator,
-        )
-    }
-    entry<SuggestionsAllWordsForNavigationKey>(
-        metadata = BottomSheetSceneStrategy.bottomSheet(),
-    ) { route ->
-        SuggestionsAllWordsForNavigationKey(
-            header = route.header,
-            words = route.words,
         )
     }
 }

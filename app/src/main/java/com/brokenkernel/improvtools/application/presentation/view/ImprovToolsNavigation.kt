@@ -5,10 +5,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.navigation3.rememberViewModelStoreNavEntryDecorator
@@ -17,9 +14,7 @@ import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.runtime.result.rememberResultEventBus
 import androidx.navigation3.runtime.result.rememberResultEventBusNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
-import com.brokenkernel.improvtools.application.data.model.ImprovToolsAppState
 import com.brokenkernel.improvtools.application.data.model.NavigableScreens
-import com.brokenkernel.improvtools.application.data.model.rememberImprovToolsAppState
 import com.brokenkernel.improvtools.application.navigation.applicationScreensEntryBuilder
 import com.brokenkernel.improvtools.buzzer.impl.buzzerScreenEntryBuilder
 import com.brokenkernel.improvtools.coreinfra.BottomSheetSceneStrategy
@@ -39,15 +34,11 @@ internal fun ImprovToolsNavigationDrawer(
 ) {
     val improvToolsNavigator = ImprovToolsNavigator.Factory.create(initialScreen.matchingRoute)
 
-    val improvToolsAppState: ImprovToolsAppState = rememberImprovToolsAppState()
-
     val allDestinations: List<NavigableScreens> =
         NavigableScreens
             .entries
             .filter { it.navigationBarNavigationWeight != null }
             .sortedBy { it.navigationBarNavigationWeight }
-
-    var isDropdownMenuExpanded: Boolean by remember { mutableStateOf(false) }
 
     NavigationSuiteScaffold(
         navigationSuiteItems = {
@@ -70,7 +61,6 @@ internal fun ImprovToolsNavigationDrawer(
         modifier = modifier,
     ) {
         ImprovToolsScaffold(
-            improvToolsAppState = improvToolsAppState,
             improvToolsNavigator = improvToolsNavigator,
             currentRoute = improvToolsNavigator.current(),
         ) {
@@ -91,7 +81,6 @@ internal fun ImprovToolsNavigationDrawer(
                     entryProvider =
                     entryProvider {
                         suggestionsScreenEntryBuilder(
-                            setBottomSheet = improvToolsAppState::setBottomSheetTo,
                             improvToolsNavigator = improvToolsNavigator, // TODO
                         )
                         suggestionsScreenEntryBuilderPart2()

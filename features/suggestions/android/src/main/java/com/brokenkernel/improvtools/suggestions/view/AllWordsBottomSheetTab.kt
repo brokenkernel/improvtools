@@ -11,22 +11,24 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import kotlinx.collections.immutable.ImmutableList
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import com.brokenkernel.improvtools.suggestions.viewmodel.SuggestionsScreenAllWordsViewModel
 
 @Composable
 internal fun AllWordsBottomSheetTab(
-    header: String,
-    words: ImmutableList<String>,
+    category: String,
     modifier: Modifier = Modifier,
+    viewModel: SuggestionsScreenAllWordsViewModel = hiltViewModel(),
 ) {
     Column(modifier) {
         Box(
             modifier = Modifier.fillMaxWidth(),
             contentAlignment = Alignment.Center,
         ) {
-            Text(header, style = MaterialTheme.typography.titleMedium)
+            Text(category, style = MaterialTheme.typography.titleMedium)
         }
         LazyColumn {
+            val words = viewModel.getIdeaForCategory(category)
             items(words, key = { it }) { word ->
                 ListItem(
                     headlineContent = {

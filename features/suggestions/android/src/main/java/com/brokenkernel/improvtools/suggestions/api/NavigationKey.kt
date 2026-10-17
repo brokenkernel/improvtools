@@ -10,8 +10,7 @@ public object SuggestionsScreenNavigationKey : ImprovToolsNavigationKey
 // All Words is too big. Figure out better way to deal with this.
 @Parcelize
 public data class SuggestionsAllWordsForNavigationKey(
-    val header: String,
-    val words: ImmutableList<String>,
+    val category: String,
 ) : ImprovToolsNavigationKey
 
 @Parcelize

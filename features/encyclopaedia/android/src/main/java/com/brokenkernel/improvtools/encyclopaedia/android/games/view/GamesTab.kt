@@ -27,9 +27,8 @@ import com.brokenkernel.components.view.ExpandIcon
 import com.brokenkernel.components.view.HtmlText
 import com.brokenkernel.components.view.SimpleIconButton
 import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigationKey
-import com.brokenkernel.improvtools.coreinfra.LocalBottomSheetContentManager
 import com.brokenkernel.improvtools.encyclopaedia.android.R
-import com.brokenkernel.improvtools.encyclopaedia.android.components.SingleTagBottomTab
+import com.brokenkernel.improvtools.encyclopaedia.android.api.SingleTagBottomTabNavigationKey
 import com.brokenkernel.improvtools.encyclopaedia.android.games.viewmodel.GamesTabViewModel
 import com.brokenkernel.improvtools.encyclopaedia.data.GameDatumTools
 import com.brokenkernel.improvtools.encyclopaedia.data.GamesDatumTag
@@ -78,14 +77,6 @@ internal fun GamesTab(
         }
         currentTags.clear()
         currentTags.addAll(onlyTagsToTypedTags)
-    }
-
-    val bottomSheetManager = LocalBottomSheetContentManager.current
-
-    // TODO: this should really be passed in as a navigable function
-    fun onNavigateToBottomTag(tag: GamesDatumTag) {
-        // TODO: this should really be a destination, but deal with it later
-        bottomSheetManager({ SingleTagBottomTab(tag) })
     }
 
     // TODO: drop down to sub portion of TabbedSearchableColumn
@@ -175,7 +166,7 @@ internal fun GamesTab(
                         it.tags.forEach { tag: GamesDatumTag ->
                             TextButton(
                                 onClick = {
-                                    onNavigateToBottomTag(tag)
+                                    goTo(SingleTagBottomTabNavigationKey(tag))
                                 },
                                 enabled = tag.description != null,
                             ) {

@@ -18,7 +18,7 @@
     <issue id="ComposeNonRestartableComposable" severity="error" />
     <!-- whitelist allowed locals -->
     <issue id="ComposeCompositionLocalUsage" severity="error">
-        <option name="allowed-composition-locals" value="LocalSnackbarHostState,LocalBottomSheetContentManager" />
+        <option name="allowed-composition-locals" value="LocalSnackbarHostState" />
     </issue>
     <!-- maybe -->
     <issue id="InvalidPackage" severity="ignore" />
