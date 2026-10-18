@@ -56,7 +56,7 @@ private fun hasExpandableInformation(pdi: PeopleDataItem): Boolean {
 }
 
 @Composable
-public fun PeopleTab(modifier: Modifier = Modifier) {
+internal fun PeopleTab(modifier: Modifier = Modifier) {
     val languageTag = Locale.current.toLanguageTag()
     val fullCollationTag = "$languageTag@collation=phonebook"
     val ulocale = ULocale(fullCollationTag)

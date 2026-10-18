@@ -25,7 +25,7 @@ import com.brokenkernel.improvtools.coreinfra.preview.ImprovToolsAllPreviews
 import com.brokenkernel.improvtools.encyclopaedia.android.R
 
 @Composable
-public fun EmotionsTab(
+internal fun EmotionsTab(
     modifier: Modifier = Modifier,
 ) {
     val columnScrollState = rememberScrollState()
