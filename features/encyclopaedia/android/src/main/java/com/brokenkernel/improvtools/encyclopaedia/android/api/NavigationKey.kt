@@ -1,6 +1,5 @@
 package com.brokenkernel.improvtools.encyclopaedia.android.api
 
-import androidx.annotation.StringRes
 import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigationKey
 import com.brokenkernel.improvtools.encyclopaedia.data.GamesDatumTag
 import kotlinx.parcelize.Parcelize
@@ -29,5 +28,5 @@ public object ThesaurusAllItemsPageNavigationKey : ImprovToolsNavigationKey
 @Parcelize
 public data class ThesaurusSingleWordPageNavigationKey(
     val word: String,
-    @StringRes val priorTitleResource: Int,
+    val priorTitle: String,
 ) : ImprovToolsNavigationKey

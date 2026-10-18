@@ -29,6 +29,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
+import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
@@ -130,15 +131,18 @@ internal fun SuggestionsTab(
                                 },
                                 goTo = goTo,
                                 temporaryLoadableButton = { word: String ->
+                                    val resources = LocalResources.current
                                     LoadableSingleWordThesaurusButton(
                                         word = itemSuggestionState.value.idea,
                                         onNavigateToWord = {
                                             goTo(
                                                 ThesaurusSingleWordPageNavigationKey(
                                                     word,
-                                                    NavigableScreens.byRoute(
-                                                        improvToolsNavigator.current(),
-                                                    ).titleResource,
+                                                    resources.getString(
+                                                        NavigableScreens.byRoute(
+                                                            improvToolsNavigator.current(),
+                                                        ).titleResource,
+                                                    ),
                                                 ),
                                             )
                                         },
@@ -180,7 +184,7 @@ internal fun SuggestionsTab(
     }
 }
 
-internal fun EntryProviderScope<ImprovToolsNavigationKey>.suggestionsScreenEntryBuilder(
+internal fun EntryProviderScope<ImprovToolsNavigationKey>.suggestionsScreenEntryBuilderWrongModule(
     improvToolsNavigator: ImprovToolsNavigator,
 ) {
     entry<SuggestionsScreenNavigationKey> {

@@ -9,4 +9,7 @@
   <string name="wikipedia">Wikipedia</string>
   <string name="glossary_term">Glossary Term</string>
   <string name="go_to_timer_screen">Go to Timer screen</string>
+  <string name="encyclopaedia_word_senses"><![CDATA[<h1>Word Senses</h1>]]></string>
+  <string name="navigation_back_to_thesaurus">Back to %1$s</string>
+  <string name="encyclopaedia_action_synonyms"><![CDATA[<h1>Action Synonyms</h1>]]></string>
 </resources>

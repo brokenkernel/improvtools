@@ -11,7 +11,7 @@
     <ID>LibraryEntitiesShouldNotBePublic:NavigationKey.kt:SuggestionsAllWordsForNavigationKey : ImprovToolsNavigationKey</ID>
     <ID>LibraryEntitiesShouldNotBePublic:NavigationKey.kt:SuggestionsExplanationNavigationKey : ImprovToolsNavigationKey</ID>
     <ID>LibraryEntitiesShouldNotBePublic:ResourcesAudienceSuggestionDatumRepository.kt:ResourcesAudienceSuggestionDatumRepository : AudienceSuggestionDatumRepository</ID>
-    <ID>LibraryEntitiesShouldNotBePublic:SuggestionNavigation.kt:@OptIn(ExperimentalMaterial3Api::class) public fun EntryProviderScope&lt;ImprovToolsNavigationKey>.suggestionsScreenEntryBuilderPart2</ID>
+    <ID>LibraryEntitiesShouldNotBePublic:SuggestionNavigation.kt:@OptIn(ExperimentalMaterial3Api::class) public fun EntryProviderScope&lt;ImprovToolsNavigationKey>.suggestionsScreenEntryBuilder</ID>
     <ID>LibraryEntitiesShouldNotBePublic:SuggestionScreenViewModel.kt:SuggestionScreenViewModel : ViewModel</ID>
     <ID>LibraryEntitiesShouldNotBePublic:SuggestionsSingleCategoryRow.kt:@Composable public fun ReorderableCollectionItemScope.SuggestionsSingleCategoryRow</ID>
     <ID>LibraryEntitiesShouldNotBePublic:ThesaurusAudienceSuggestionDatumRepository.kt:ThesaurusAudienceSuggestionDatumRepository : AudienceSuggestionDatumRepository</ID>

@@ -20,10 +20,10 @@ import com.brokenkernel.improvtools.buzzer.impl.buzzerScreenEntryBuilder
 import com.brokenkernel.improvtools.coreinfra.BottomSheetSceneStrategy
 import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigationKey
 import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigator
-import com.brokenkernel.improvtools.encyclopaedia.android.api.encyclopaediaScreensEntryBuilderPart2
-import com.brokenkernel.improvtools.encyclopaedia.encyclopaediaScreensEntryBuilder
-import com.brokenkernel.improvtools.suggestionGenerator.presentation.view.suggestionsScreenEntryBuilder
-import com.brokenkernel.improvtools.suggestions.api.suggestionsScreenEntryBuilderPart2
+import com.brokenkernel.improvtools.encyclopaedia.android.api.encyclopaediaScreensEntryBuilder
+import com.brokenkernel.improvtools.encyclopaedia.encyclopaediaScreensEntryBuilderWrongModule
+import com.brokenkernel.improvtools.suggestionGenerator.presentation.view.suggestionsScreenEntryBuilderWrongModule
+import com.brokenkernel.improvtools.suggestions.api.suggestionsScreenEntryBuilder
 import com.brokenkernel.improvtools.timer.presentation.view.timerScreenEntryBuilder
 import com.brokenkernel.improvtools.tonguetwister.impl.tonguetwisterScreenEntryBuilder
 
@@ -80,15 +80,15 @@ internal fun ImprovToolsNavigationDrawer(
                     sceneStrategies = listOf(bottomSheetStrategy),
                     entryProvider =
                     entryProvider {
-                        suggestionsScreenEntryBuilder(
-                            improvToolsNavigator = improvToolsNavigator, // TODO
-                        )
-                        suggestionsScreenEntryBuilderPart2()
-                        encyclopaediaScreensEntryBuilder(
+                        suggestionsScreenEntryBuilderWrongModule(
                             improvToolsNavigator = improvToolsNavigator,
                         )
-                        encyclopaediaScreensEntryBuilderPart2(
-                            improvToolsNavigator::goTo,
+                        suggestionsScreenEntryBuilder()
+                        encyclopaediaScreensEntryBuilderWrongModule(
+                            improvToolsNavigator = improvToolsNavigator,
+                        )
+                        encyclopaediaScreensEntryBuilder(
+                            improvToolsNavigator = improvToolsNavigator,
                         )
                         buzzerScreenEntryBuilder()
                         timerScreenEntryBuilder()

@@ -14,6 +14,13 @@
 
     <issue
         id="PrivateResource"
+        message="Overriding `@drawable/arrow_back_24dp_1f1f1f_fill0_wght400_grad0_opsz24` which is marked as private in ImprovTools.features.encyclopaedia:android:unspecified. If deliberate, use tools:override=&quot;true&quot;, otherwise pick a different name.">
+        <location
+            file="src/main/res/drawable/arrow_back_24dp_1f1f1f_fill0_wght400_grad0_opsz24.xml"/>
+    </issue>
+
+    <issue
+        id="PrivateResource"
         message="Overriding `@string/go_to_timer_screen` which is marked as private in ImprovTools.features.encyclopaedia:android:unspecified. If deliberate, use tools:override=&quot;true&quot;, otherwise pick a different name."
         errorLine1="    &lt;string name=&quot;go_to_timer_screen&quot;>Go to Timer screen&lt;/string>"
         errorLine2="                  ~~~~~~~~~~~~~~~~~~">
@@ -32,6 +39,28 @@
             file="src/main/res/values-de/strings.xml"
             line="31"
             column="17"/>
+    </issue>
+
+    <issue
+        id="PrivateResource"
+        message="Overriding `@string/navigation_back_to_thesaurus` which is marked as private in ImprovTools.features.encyclopaedia:android:unspecified. If deliberate, use tools:override=&quot;true&quot;, otherwise pick a different name."
+        errorLine1="  &lt;string name=&quot;navigation_back_to_thesaurus&quot;>Back to %1$s&lt;/string>"
+        errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="75"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="PrivateResource"
+        message="Overriding `@string/encyclopaedia_action_synonyms` which is marked as private in ImprovTools.features.encyclopaedia:android:unspecified. If deliberate, use tools:override=&quot;true&quot;, otherwise pick a different name."
+        errorLine1="    &lt;string name=&quot;encyclopaedia_action_synonyms&quot;>&lt;![CDATA[&lt;h1>Action Synonyms&lt;/h1>]]&gt;&lt;/string>"
+        errorLine2="                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="83"
+            column="19"/>
     </issue>
 
     <issue
@@ -187,7 +216,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/res/values/strings.xml"
-            line="96"
+            line="95"
             column="13"/>
     </issue>
 
@@ -198,7 +227,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/res/values/strings.xml"
-            line="97"
+            line="96"
             column="13"/>
     </issue>
 

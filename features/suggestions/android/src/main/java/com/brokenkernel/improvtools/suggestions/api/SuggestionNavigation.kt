@@ -8,7 +8,7 @@ import com.brokenkernel.improvtools.suggestions.view.AllWordsBottomSheetTab
 import com.brokenkernel.improvtools.suggestions.view.ExplanationBottomSheetTab
 
 @OptIn(ExperimentalMaterial3Api::class)
-public fun EntryProviderScope<ImprovToolsNavigationKey>.suggestionsScreenEntryBuilderPart2() {
+public fun EntryProviderScope<ImprovToolsNavigationKey>.suggestionsScreenEntryBuilder() {
     entry<SuggestionsExplanationNavigationKey>(
         metadata = BottomSheetSceneStrategy.bottomSheet(),
     ) { route ->

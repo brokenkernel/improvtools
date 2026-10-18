@@ -1,6 +1,5 @@
-package com.brokenkernel.improvtools.encyclopaedia.presentation.view
+package com.brokenkernel.improvtools.encyclopaedia.android.thesaurus.view
 
-import androidx.annotation.StringRes
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -22,14 +21,14 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.brokenkernel.components.view.HtmlText
 import com.brokenkernel.components.view.verticalColumnScrollbar
-import com.brokenkernel.improvtools.R
+import com.brokenkernel.improvtools.encyclopaedia.android.R
 import com.brokenkernel.improvtools.encyclopaedia.android.thesaurus.viewmodel.ThesaurusSingleItemViewModel
 
 @Composable
 internal fun ThesaurusTabSingleWord(
     word: String,
     goBack: () -> Unit,
-    @StringRes priorTitleResource: Int,
+    priorTitle: String,
     modifier: Modifier = Modifier,
     viewModel: ThesaurusSingleItemViewModel = hiltViewModel(),
 
@@ -64,16 +63,16 @@ internal fun ThesaurusTabSingleWord(
                     goBack()
                 },
             ) {
-                val backtoText =
+                val backToText =
                     stringResource(
                         R.string.navigation_back_to_thesaurus,
-                        stringResource(priorTitleResource),
+                        priorTitle,
                     )
                 Icon(
                     ImageVector.vectorResource(R.drawable.arrow_back_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
-                    contentDescription = backtoText,
+                    contentDescription = backToText,
                 )
-                Text(backtoText)
+                Text(backToText)
             }
         }
     }

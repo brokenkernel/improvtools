@@ -80,7 +80,6 @@
   <string name="go_to_glossary">Go To Glossary</string>
     <string name="new_stopwatch_timer">New StopWatch Timer</string>
   <string name="new_countdown_timer">New CountDown Timer</string>
-    <string name="encyclopaedia_word_senses"><![CDATA[<h1>Word Senses</h1>]]></string>
     <string name="encyclopaedia_action_synonyms"><![CDATA[<h1>Action Synonyms</h1>]]></string>
   <string name="thesaurus_synonyms">Synonyms: %1$s</string>
     <string name="explain_this_term">Explain This Term</string>

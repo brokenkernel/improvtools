@@ -52,6 +52,7 @@ internal fun ThesaurusTabAllItems(
                 Column {
                     viewModel.synonymsForWord(word).forEach { synonym ->
                         if (viewModel.hasUniqueSynonymsFrom(word, synonym)) {
+                            val resources = LocalResources.current
                             Text(
                                 synonym,
                                 modifier = Modifier.clickable(
@@ -59,7 +60,11 @@ internal fun ThesaurusTabAllItems(
                                         improvToolsNavigator.goTo(
                                             ThesaurusSingleWordPageNavigationKey(
                                                 synonym,
-                                                NavigableScreens.byRoute(improvToolsNavigator.current()).titleResource,
+                                                resources.getString(
+                                                    NavigableScreens.byRoute(
+                                                        improvToolsNavigator.current(),
+                                                    ).titleResource,
+                                                ),
                                             ),
                                         )
                                     },
@@ -88,7 +93,9 @@ internal fun ThesaurusTabAllItems(
                         improvToolsNavigator.goTo(
                             ThesaurusSingleWordPageNavigationKey(
                                 word,
-                                NavigableScreens.byRoute(improvToolsNavigator.current()).titleResource,
+                                resources.getString(
+                                    NavigableScreens.byRoute(improvToolsNavigator.current()).titleResource,
+                                ),
                             ),
                         )
                     },
