@@ -3,6 +3,17 @@
 
     <issue
         id="MissingClass"
+        message="Class referenced in the manifest, `com.brokenkernel.improvtools.android.XHiltComponentActivity`, was not found in the project or the libraries"
+        errorLine1="        &lt;activity android:name=&quot;.XHiltComponentActivity&quot; />"
+        errorLine2="                                ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/debug/AndroidManifest.xml"
+            line="22"
+            column="33"/>
+    </issue>
+
+    <issue
+        id="MissingClass"
         message="Class referenced in the manifest, `com.brokenkernel.improvtools.encyclopaedia.android.XHiltComponentActivity`, was not found in the project or the libraries"
         errorLine1="        &lt;activity android:name=&quot;.XHiltComponentActivity&quot; />"
         errorLine2="                                ~~~~~~~~~~~~~~~~~~~~~~~">

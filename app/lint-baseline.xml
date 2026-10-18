@@ -3,6 +3,17 @@
 
     <issue
         id="MissingClass"
+        message="Class referenced in the manifest, `com.brokenkernel.improvtools.android.XHiltComponentActivity`, was not found in the project or the libraries"
+        errorLine1="        &lt;activity android:name=&quot;.XHiltComponentActivity&quot; />"
+        errorLine2="                                ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/debug/AndroidManifest.xml"
+            line="22"
+            column="33"/>
+    </issue>
+
+    <issue
+        id="MissingClass"
         message="Class referenced in the manifest, `com.brokenkernel.improvtools.encyclopaedia.android.XHiltComponentActivity`, was not found in the project or the libraries"
         errorLine1="        &lt;activity android:name=&quot;.XHiltComponentActivity&quot; />"
         errorLine2="                                ~~~~~~~~~~~~~~~~~~~~~~~">
@@ -26,7 +37,7 @@
         errorLine2="                  ~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/res/values/strings.xml"
-            line="16"
+            line="13"
             column="19"/>
     </issue>
 
@@ -48,7 +59,7 @@
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/res/values/strings.xml"
-            line="75"
+            line="72"
             column="17"/>
     </issue>
 
@@ -59,7 +70,7 @@
         errorLine2="                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/res/values/strings.xml"
-            line="83"
+            line="80"
             column="19"/>
     </issue>
 
@@ -75,6 +86,17 @@
         message="Overriding `@drawable/toys_and_games_24dp_1f1f1f_fill0_wght400_grad0_opsz24` which is marked as private in ImprovTools.features.encyclopaedia:android:unspecified. If deliberate, use tools:override=&quot;true&quot;, otherwise pick a different name.">
         <location
             file="src/main/res/drawable/toys_and_games_24dp_1f1f1f_fill0_wght400_grad0_opsz24.xml"/>
+    </issue>
+
+    <issue
+        id="ExtraTranslation"
+        message="&quot;suggestions_reset_all&quot; is translated here but not found in default locale"
+        errorLine1="  &lt;string name=&quot;suggestions_reset_all&quot;>Alles zurücksetzen&lt;/string>"
+        errorLine2="          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values-de/strings.xml"
+            line="13"
+            column="11"/>
     </issue>
 
     <issue
@@ -161,7 +183,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/res/values/strings.xml"
-            line="8"
+            line="5"
             column="13"/>
     </issue>
 
@@ -172,7 +194,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/res/values/strings.xml"
-            line="9"
+            line="6"
             column="13"/>
     </issue>
 
@@ -183,7 +205,29 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/res/values/strings.xml"
-            line="11"
+            line="8"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.all_suggestions` appears to be unused"
+        errorLine1="    &lt;string name=&quot;all_suggestions&quot;>All Suggestions&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="../features/suggestions/android/src/main/res/values/strings.xml"
+            line="14"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.go_to_all_suggestions` appears to be unused"
+        errorLine1="    &lt;string name=&quot;go_to_all_suggestions&quot;>Go To All Suggestions&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="../features/suggestions/android/src/main/res/values/strings.xml"
+            line="15"
             column="13"/>
     </issue>
 
@@ -194,7 +238,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/res/values/strings.xml"
-            line="44"
+            line="41"
             column="13"/>
     </issue>
 
@@ -205,29 +249,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/res/values/strings.xml"
-            line="67"
-            column="13"/>
-    </issue>
-
-    <issue
-        id="UnusedResources"
-        message="The resource `R.string.all_suggestions` appears to be unused"
-        errorLine1="    &lt;string name=&quot;all_suggestions&quot;>All Suggestions&lt;/string>"
-        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/values/strings.xml"
-            line="95"
-            column="13"/>
-    </issue>
-
-    <issue
-        id="UnusedResources"
-        message="The resource `R.string.go_to_all_suggestions` appears to be unused"
-        errorLine1="    &lt;string name=&quot;go_to_all_suggestions&quot;>Go To All Suggestions&lt;/string>"
-        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/values/strings.xml"
-            line="96"
+            line="64"
             column="13"/>
     </issue>
 

@@ -1,4 +1,4 @@
-package com.brokenkernel.improvtools.suggestionGenerator
+package com.brokenkernel.improvtools.android
 
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.AndroidComposeTestRule
@@ -9,9 +9,6 @@ import androidx.test.espresso.device.EspressoDevice
 import androidx.test.espresso.device.action.ScreenOrientation
 import androidx.test.espresso.device.rules.ScreenOrientationRule
 import androidx.test.ext.junit.rules.ActivityScenarioRule
-import com.brokenkernel.improvtools.MainActivity
-import com.brokenkernel.improvtools.R
-import com.brokenkernel.improvtools.infrastructure.onNodeWithStringId
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Before
@@ -25,8 +22,10 @@ class SuggestionsRotationTest {
     var hiltRule: HiltAndroidRule = HiltAndroidRule(this)
 
     @get:Rule(order = 1)
-    val composeTestRule: AndroidComposeTestRule<ActivityScenarioRule<MainActivity>, MainActivity> =
-        createAndroidComposeRule<MainActivity>()
+    val composeTestRule:
+            AndroidComposeTestRule<ActivityScenarioRule<XHiltComponentActivity>, XHiltComponentActivity> =
+        createAndroidComposeRule<XHiltComponentActivity>()
+
 
     @get:Rule(order = 2)
     val screenOrientationRule: ScreenOrientationRule =

@@ -5,6 +5,7 @@ import org.jetbrains.kotlin.powerassert.gradle.PowerAssertCompilationFilter
 
 plugins {
     alias(libs.plugins.android.library)
+    alias(libs.plugins.dagger.hilt.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
     alias(libs.plugins.sortDependencies)
@@ -112,15 +113,35 @@ dependencies {
 
     testImplementation(libs.junit)
 
+    androidTestImplementation(libs.androidx.datastore)
+    androidTestImplementation(libs.androidx.espresso.device)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.monitor)
+    androidTestImplementation(libs.androidx.runtime)
+    androidTestImplementation(libs.androidx.ui.test)
+    androidTestImplementation(libs.androidx.ui.test.junit4)
+    androidTestImplementation(libs.hamcrest)
+    androidTestImplementation(libs.hamcrest.core)
+    androidTestImplementation(libs.hamcrest.library)
+    androidTestImplementation(libs.hilt.android.testing)
     androidTestImplementation(libs.junit)
+    androidTestImplementation(libs.kotlinx.coroutines.core)
+    androidTestImplementation(libs.tools.fastlane.screengrab)
+
+    androidTestRuntimeOnly(testFixtures(projects.coreinfra))
+    androidTestRuntimeOnly(libs.androidx.core)
+    androidTestRuntimeOnly(libs.androidx.runner)
+    androidTestRuntimeOnly(libs.leakcanary.android.instrumentation)
 
     detektPlugins(libs.composeDetektRules)
     detektPlugins(libs.detektRulesLibraries)
 
     ksp(libs.hilt.compiler)
     ksp(libs.kotlin.metadata.jvm)
+
+    kspAndroidTest(libs.hilt.compiler)
+
+    kspTest(libs.hilt.compiler)
 
     ktlintRuleset(libs.ktlintCompose)
 
