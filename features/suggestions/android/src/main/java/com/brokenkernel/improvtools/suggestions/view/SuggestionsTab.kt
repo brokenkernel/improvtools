@@ -1,4 +1,4 @@
-package com.brokenkernel.improvtools.suggestionGenerator.presentation.view
+package com.brokenkernel.improvtools.suggestions.view
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -36,30 +36,24 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.navigation3.runtime.EntryProviderScope
-import com.brokenkernel.improvtools.R
-import com.brokenkernel.improvtools.application.data.model.NavigableScreens
+import com.brokenkernel.improvtools.android.R
 import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigationKey
-import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigator
 import com.brokenkernel.improvtools.encyclopaedia.android.api.ThesaurusSingleWordPageNavigationKey
 import com.brokenkernel.improvtools.encyclopaedia.android.thesaurus.view.LoadableSingleWordThesaurusButton
-import com.brokenkernel.improvtools.suggestions.api.SuggestionsScreenNavigationKey
 import com.brokenkernel.improvtools.suggestions.data.storage.IdeaCategoryODS
 import com.brokenkernel.improvtools.suggestions.data.storage.IdeaUIState
-import com.brokenkernel.improvtools.suggestions.view.SuggestionsSingleCategoryRow
 import com.brokenkernel.improvtools.suggestions.viewmodel.SuggestionScreenViewModel
-import kotlin.time.Duration.Companion.milliseconds
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import sh.calvin.reorderable.ReorderableItem
 import sh.calvin.reorderable.rememberReorderableLazyListState
+import kotlin.time.Duration.Companion.milliseconds
 
 // TODO: add ability to enable/disable categories entirely persistently in settings. Maybe GridFlow to click on/off.
 // TODO: maybe add single suggestion screen
 @Composable
 internal fun SuggestionsTab(
     goTo: (ImprovToolsNavigationKey) -> Unit,
-    improvToolsNavigator: ImprovToolsNavigator,
     modifier: Modifier = Modifier,
     viewModel: SuggestionScreenViewModel = hiltViewModel(),
 ) {
@@ -138,11 +132,7 @@ internal fun SuggestionsTab(
                                             goTo(
                                                 ThesaurusSingleWordPageNavigationKey(
                                                     word,
-                                                    resources.getString(
-                                                        NavigableScreens.byRoute(
-                                                            improvToolsNavigator.current(),
-                                                        ).titleResource,
-                                                    ),
+                                                    resources.getString(R.string.suggestions_activity_title_internal),
                                                 ),
                                             )
                                         },
@@ -181,16 +171,5 @@ internal fun SuggestionsTab(
                 }
             }
         }
-    }
-}
-
-internal fun EntryProviderScope<ImprovToolsNavigationKey>.suggestionsScreenEntryBuilderWrongModule(
-    improvToolsNavigator: ImprovToolsNavigator,
-) {
-    entry<SuggestionsScreenNavigationKey> {
-        SuggestionsTab(
-            goTo = improvToolsNavigator::goTo,
-            improvToolsNavigator,
-        )
     }
 }

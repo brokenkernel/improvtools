@@ -22,7 +22,6 @@ import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigationKey
 import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigator
 import com.brokenkernel.improvtools.encyclopaedia.android.api.encyclopaediaScreensEntryBuilder
 import com.brokenkernel.improvtools.encyclopaedia.encyclopaediaScreensEntryBuilderWrongModule
-import com.brokenkernel.improvtools.suggestionGenerator.presentation.view.suggestionsScreenEntryBuilderWrongModule
 import com.brokenkernel.improvtools.suggestions.api.suggestionsScreenEntryBuilder
 import com.brokenkernel.improvtools.timer.presentation.view.timerScreenEntryBuilder
 import com.brokenkernel.improvtools.tonguetwister.impl.tonguetwisterScreenEntryBuilder
@@ -80,10 +79,9 @@ internal fun ImprovToolsNavigationDrawer(
                     sceneStrategies = listOf(bottomSheetStrategy),
                     entryProvider =
                     entryProvider {
-                        suggestionsScreenEntryBuilderWrongModule(
+                        suggestionsScreenEntryBuilder(
                             improvToolsNavigator = improvToolsNavigator,
                         )
-                        suggestionsScreenEntryBuilder()
                         encyclopaediaScreensEntryBuilderWrongModule(
                             improvToolsNavigator = improvToolsNavigator,
                         )

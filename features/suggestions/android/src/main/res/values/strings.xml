@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="suggestions_activity_title_internal">Suggestion Generator</string>
     <string name="go_to_emotions_reference">Go To Emotions Reference</string>
     <string name="update_suggestions">Update Suggestion</string>
     <string name="explain_this_term">explain this term</string>
@@ -9,4 +10,8 @@
     <string name="suggestions_adjective">Adjective</string>
     <string name="suggestions_adverb">Adverb</string>
     <string name="action_word">Action Word</string>
+    <string name="suggestions_reset_all">Change All</string>
+    <string name="all_suggestions">All Suggestions</string>
+    <string name="go_to_all_suggestions">Go To All Suggestions</string>
+
 </resources>

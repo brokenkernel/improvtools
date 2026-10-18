@@ -3,6 +3,7 @@
   <ManuallySuppressedIssues/>
   <CurrentIssues>
     <ID>CascadingCallWrapping:SuggestionsScreenAllWordsViewModel.kt:SuggestionsScreenAllWordsViewModel$associate { it.categoryTitle() to it.allWordsforCategory() }</ID>
+    <ID>EmptyFunctionBlock:SuggestionsTab.kt:{ }</ID>
     <ID>ForbiddenPublicDataClass:NavigationKey.kt:SuggestionsAllWordsForNavigationKey : ImprovToolsNavigationKey</ID>
     <ID>ForbiddenPublicDataClass:NavigationKey.kt:SuggestionsExplanationNavigationKey : ImprovToolsNavigationKey</ID>
     <ID>LibraryEntitiesShouldNotBePublic:AudienceSuggestionDatumRepository.kt:AudienceSuggestionDatumRepository</ID>
@@ -12,9 +13,9 @@
     <ID>LibraryEntitiesShouldNotBePublic:NavigationKey.kt:SuggestionsExplanationNavigationKey : ImprovToolsNavigationKey</ID>
     <ID>LibraryEntitiesShouldNotBePublic:ResourcesAudienceSuggestionDatumRepository.kt:ResourcesAudienceSuggestionDatumRepository : AudienceSuggestionDatumRepository</ID>
     <ID>LibraryEntitiesShouldNotBePublic:SuggestionNavigation.kt:@OptIn(ExperimentalMaterial3Api::class) public fun EntryProviderScope&lt;ImprovToolsNavigationKey>.suggestionsScreenEntryBuilder</ID>
-    <ID>LibraryEntitiesShouldNotBePublic:SuggestionScreenViewModel.kt:SuggestionScreenViewModel : ViewModel</ID>
     <ID>LibraryEntitiesShouldNotBePublic:SuggestionsSingleCategoryRow.kt:@Composable public fun ReorderableCollectionItemScope.SuggestionsSingleCategoryRow</ID>
     <ID>LibraryEntitiesShouldNotBePublic:ThesaurusAudienceSuggestionDatumRepository.kt:ThesaurusAudienceSuggestionDatumRepository : AudienceSuggestionDatumRepository</ID>
     <ID>LibraryEntitiesShouldNotBePublic:WordNetSuggestionDatumRepository.kt:WordNetSuggestionDatumRepository : AudienceSuggestionDatumRepository</ID>
+    <ID>UnusedParameter:SuggestionsTab.kt:improvToolsNavigator: ImprovToolsNavigator</ID>
   </CurrentIssues>
 </SmellBaseline>

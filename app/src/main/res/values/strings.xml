@@ -2,9 +2,6 @@
     <string name="app_name">Improv Tools</string>
     <string name="app_description">Improv Tools</string>
     <string name="suggestions_activity_title">Suggestion Generator</string>
-<!--    <string name="suggestions_title_category">Category</string>-->
-<!--    <string name="suggestions_audience_idea">Audience Idea</string>-->
-    <string name="suggestions_reset_all">Change All</string>
     <string name="navigation_app_menu">Menu</string>
     <string name="navigation_settings_category">Settings</string>
     <string name="navigation_about">About</string>
@@ -91,7 +88,4 @@
     <string name="navigation_buzzer">Buzzer</string>
     <string name="go_to_buzzer">Go To Buzzer</string>
     <string name="attribution_audio_playback">audio playback</string>
-    <string name="suggestions_see_all_category_words">See all words for category</string>
-    <string name="all_suggestions">All Suggestions</string>
-    <string name="go_to_all_suggestions">Go To All Suggestions</string>
 </resources>

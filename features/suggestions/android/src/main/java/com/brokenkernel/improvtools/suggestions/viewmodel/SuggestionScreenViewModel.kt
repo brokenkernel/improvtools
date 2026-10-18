@@ -16,22 +16,19 @@ import kotlinx.coroutines.flow.asStateFlow
 // https://developer.android.com/guide/navigation/navigation-3/recipes/passingarguments
 // TODO: https://developer.android.com/guide/navigation/navigation-3/recipes/modular-hilt
 @HiltViewModel
-// TODO: internal
-public class SuggestionScreenViewModel @Inject constructor(
+internal class SuggestionScreenViewModel @Inject constructor(
     suggestionDatumRepository: MergedAudienceSuggestionDatumRepository,
 ) :
     ViewModel() {
 
     // TODO: don't expose ODS to UI ...
-    // TODO: internal
-    public val internalCategoryDatum: SnapshotStateList<IdeaCategoryODS> =
+    val internalCategoryDatum: SnapshotStateList<IdeaCategoryODS> =
         suggestionDatumRepository.getIdeaCategories().toMutableStateList()
 
     private val _categoryDatumToSuggestion: MutableMap<IdeaCategoryODS, MutableStateFlow<IdeaUIState>> =
         HashMap()
 
-    // TODO: internal
-    public val categoryDatumToSuggestion: Map<IdeaCategoryODS, StateFlow<IdeaUIState>>
+    val categoryDatumToSuggestion: Map<IdeaCategoryODS, StateFlow<IdeaUIState>>
 
     init {
         internalCategoryDatum.forEach { item ->
@@ -45,8 +42,7 @@ public class SuggestionScreenViewModel @Inject constructor(
             _categoryDatumToSuggestion.mapValues { x -> x.value.asStateFlow() }
     }
 
-    // TODO: internal
-    public fun updateSuggestionXFor(ic: IdeaCategoryODS) {
+    fun updateSuggestionXFor(ic: IdeaCategoryODS) {
         val legalNewWords: Set<IdeaItemODS> = run {
             val ui: IdeaUIState = _categoryDatumToSuggestion.getValue(ic).value
             ic.ideas - IdeaItemODS(ui.idea, ui.explanation)
@@ -55,8 +51,7 @@ public class SuggestionScreenViewModel @Inject constructor(
         _categoryDatumToSuggestion[ic]?.value = IdeaUIState.fromStoredModel(legalNewWords.random())
     }
 
-    // TODO: internal
-    public fun resetAllCategories() {
+    fun resetAllCategories() {
         _categoryDatumToSuggestion.keys.forEach { k ->
             this.updateSuggestionXFor(k)
         }
