@@ -227,10 +227,8 @@ dependencies {
     implementation(libs.com.google.protobuf.protobufJavalite)
     implementation(libs.config)
     implementation(libs.dagger.hilt.core)
-    //    implementation(libs.dagger.hilt.core)
     implementation(libs.fragment)
     implementation(libs.google.dagger)
-    //    implementation(libs.google.dagger)
     implementation(libs.guava)
     implementation(libs.hilt.android)
     implementation(libs.jakarta.inject.api)
@@ -254,7 +252,6 @@ dependencies {
     runtimeOnly(libs.androidx.runtime.tracing)
     runtimeOnly(libs.androidx.startup.runtime)
     runtimeOnly(libs.androidx.work.multiprocess)
-    //    runtimeOnly(libs.hilt.compiler)
     runtimeOnly(libs.kotlin.reflect)
     runtimeOnly(libs.slf4j.android)
 
@@ -279,7 +276,6 @@ dependencies {
     androidTestImplementation(libs.hamcrest.library)
     androidTestImplementation(libs.hilt.android.testing)
     androidTestImplementation(libs.junit)
-    androidTestImplementation(libs.kotlinx.coroutines.core)
     androidTestImplementation(libs.tools.fastlane.screengrab)
 
     androidTestRuntimeOnly(testFixtures(projects.coreinfra))
@@ -321,10 +317,6 @@ configurations {
     implementation {
         exclude(module = "protolite-well-known-types")
     }
-}
-
-hilt {
-    enableAggregatingTask = true
 }
 
 protobuf {

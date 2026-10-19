@@ -6,8 +6,8 @@ import org.jetbrains.kotlin.powerassert.gradle.PowerAssertCompilationFilter
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.compose)
-    alias(libs.plugins.ksp)
     alias(libs.plugins.dagger.hilt.android)
+    alias(libs.plugins.ksp)
     alias(libs.plugins.sortDependencies)
     alias(libs.plugins.dependencyAnalysis)
     alias(libs.plugins.ktlint)
@@ -156,9 +156,13 @@ dependencies {
     detektPlugins(libs.composeDetektRules)
     detektPlugins(libs.detektRulesLibraries)
 
-    // kspTest(?)
+    ksp(libs.androidx.lifecycle.compiler)
     ksp(libs.hilt.compiler)
     ksp(libs.kotlin.metadata.jvm)
+
+    kspAndroidTest(libs.androidx.lifecycle.compiler)
+    kspAndroidTest(libs.hilt.compiler)
+    kspAndroidTest(libs.kotlin.metadata.jvm)
 
     ktlintRuleset(libs.ktlintCompose)
 
@@ -180,16 +184,13 @@ ksp {
     arg("dagger.experimentalDaggerErrorMessages", "enabled")
     arg("dagger.warnIfInjectionFactoryNotGeneratedUpstream", "enabled")
     arg("dagger.fullBindingGraphValidation", "error")
+    arg("dagger.mapMultibindingDuplicateDetectionFix", "enabled")
 }
 
 ktlint {
     android.set(true)
     coloredOutput.set(true)
     version.set("1.8.0")
-}
-
-hilt {
-    enableAggregatingTask = true
 }
 
 dokka {
