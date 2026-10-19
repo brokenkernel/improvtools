@@ -23,9 +23,8 @@ class SuggestionsRotationTest {
 
     @get:Rule(order = 1)
     val composeTestRule:
-            AndroidComposeTestRule<ActivityScenarioRule<XHiltComponentActivity>, XHiltComponentActivity> =
+        AndroidComposeTestRule<ActivityScenarioRule<XHiltComponentActivity>, XHiltComponentActivity> =
         createAndroidComposeRule<XHiltComponentActivity>()
-
 
     @get:Rule(order = 2)
     val screenOrientationRule: ScreenOrientationRule =
