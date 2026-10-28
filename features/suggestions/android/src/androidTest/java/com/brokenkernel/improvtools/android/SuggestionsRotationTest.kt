@@ -15,9 +15,8 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
-
 // TODO: re-enable this test
-//@HiltAndroidTest
+// @HiltAndroidTest
 class SuggestionsRotationTest {
 
     @get:Rule(order = 0)

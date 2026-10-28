@@ -13,7 +13,7 @@ import org.junit.Test
 
 // TODO: deal with injecting fake ThesaurusRepository ... right now all suggestions tests are broken
 // TODO: re-enable when unbroken
-//@HiltAndroidTest
+// @HiltAndroidTest
 class SuggestionsScreenTest {
 
     @get:Rule(order = 0)
@@ -33,6 +33,7 @@ class SuggestionsScreenTest {
             )
         }
     }
+
 // TODO: re-enable when unbroken
 //    @Test
     fun testResetButtonShownOnSuggestionsScreen() {
