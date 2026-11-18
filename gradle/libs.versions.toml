@@ -83,6 +83,7 @@ slackComposeLintChecks = "1.6.1"
 slackLintChecks = "0.11.1"
 slf4jAndroid = "2.0.20-0"
 sortDependencies = "0.21.0"
+stabilityAnalyzer = "0.15.0"
 startupRuntime = "1.2.0"
 uiTestJunit4Accessibility = "1.12.1"
 uiTooling = "1.12.1"
@@ -263,4 +264,5 @@ ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }
 ossLicensesPlugin = { id = "com.google.android.gms.oss-licenses-plugin", version.ref = "ossLicensesPlugin" }
 protobuf = { id = "com.google.protobuf", version.ref = "protobuf" }
 sortDependencies = { id = "com.squareup.sort-dependencies", version.ref = "sortDependencies" }
+stability-analyzer = { id = "com.github.skydoves.compose.stability.analyzer", version.ref = "stabilityAnalyzer" }
 versionCatalogUpdate = { id = "nl.littlerobots.version-catalog-update", version.ref = "versionCatalogUpdate" }

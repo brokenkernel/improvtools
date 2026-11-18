@@ -13,6 +13,7 @@ plugins {
     alias(libs.plugins.detekt)
     alias(libs.plugins.dokka)
     alias(libs.plugins.kotlin.parcelize)
+    alias(libs.plugins.stability.analyzer)
     kotlin("plugin.power-assert") version libs.versions.kotlin.get()
 }
 

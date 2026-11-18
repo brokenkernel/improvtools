@@ -12,6 +12,7 @@ plugins {
     alias(libs.plugins.dokka)
     alias(libs.plugins.kotlin.parcelize)
     alias(libs.plugins.dagger.hilt.android)
+    alias(libs.plugins.stability.analyzer)
     kotlin("plugin.power-assert") version libs.versions.kotlin.get()
 }
 
