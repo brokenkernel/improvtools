@@ -21,7 +21,7 @@ internal fun ApplicationDropdownMenu(
 ) {
     DropdownMenu(
         expanded = expanded,
-        onDismissRequest = {},
+        onDismissRequest = onDismissRequest,
         modifier = modifier,
     ) {
         val allDestinations: List<NavigableScreens> =
