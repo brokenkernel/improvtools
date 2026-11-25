@@ -38,6 +38,10 @@ public class TimerListViewModel @Inject constructor(
     private val stopWatchNotificationManager: StopWatchNotificationManager,
     private val countDownNotificationManager: CountDownNotificationManager,
 ) : ViewModel() {
+
+    private val _shouldHaptic = MutableStateFlow(true)
+    internal val shouldHaptic: StateFlow<Boolean> = _shouldHaptic.asStateFlow()
+
     init {
         viewModelScope.launch {
             settingsRepository.userSettingsFlow.collectLatest { it ->
@@ -47,18 +51,21 @@ public class TimerListViewModel @Inject constructor(
         }
     }
 
-    private val _shouldHaptic = MutableStateFlow(true)
-
-    // TODO: internal
-    public val shouldHaptic: StateFlow<Boolean> = _shouldHaptic.asStateFlow()
-
     // hide the mutable ability from the UI
     private val _allTimers: SnapshotStateList<TimerState> =
         mutableStateListOf(
             PausedCountUpTimerState(Duration.ZERO, "Stopwatch One", timerManager.getNextID()),
             PausedCountUpTimerState(Duration.ZERO, "Stopwatch Two", timerManager.getNextID()),
-            PausedCountDownTimerState(INITIAL_COUNT_DOWN_TIMER_DURATION, "Countdown Three", timerManager.getNextID()),
-            PausedCountDownTimerState(INITIAL_COUNT_DOWN_TIMER_DURATION, "Countdown Four", timerManager.getNextID()),
+            PausedCountDownTimerState(
+                INITIAL_COUNT_DOWN_TIMER_DURATION,
+                "Countdown Three",
+                timerManager.getNextID()
+            ),
+            PausedCountDownTimerState(
+                INITIAL_COUNT_DOWN_TIMER_DURATION,
+                "Countdown Four",
+                timerManager.getNextID()
+            ),
         )
 
     // TODO: internal
@@ -125,7 +132,11 @@ public class TimerListViewModel @Inject constructor(
 
     // TODO: internal
     public fun addCountDownTimer(title: String) {
-        val timer = PausedCountDownTimerState(INITIAL_COUNT_DOWN_TIMER_DURATION, title, timerManager.getNextID())
+        val timer = PausedCountDownTimerState(
+            INITIAL_COUNT_DOWN_TIMER_DURATION,
+            title,
+            timerManager.getNextID()
+        )
         _allTimers.add(timer)
     }
 
