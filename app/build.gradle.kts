@@ -30,7 +30,7 @@ plugins {
     id("org.jetbrains.dokka")
     alias(libs.plugins.ossLicensesPlugin)
     alias(libs.plugins.detekt)
-    alias(libs.plugins.stability.analyzer)
+//    alias(libs.plugins.stability.analyzer)
     kotlin("plugin.power-assert") version libs.versions.kotlin.get()
 }
 
