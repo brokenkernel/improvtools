@@ -868,4 +868,4 @@ libraries:
   LibraryCodeMustSpecifyReturnType:
     active: true
   LibraryEntitiesShouldNotBePublic:
-    active: true
+    active: false

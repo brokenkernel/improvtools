@@ -5,17 +5,6 @@
     <ID>DataClassShouldBeImmutable:BottomSheet.kt:BottomSheetScene$private lateinit var sheetState: SheetState</ID>
     <ID>EndOfSentenceFormat:LaunchWrapper.kt:* Allows the caller to specify that some specific lambda should occur on each recompose</ID>
     <ID>LateinitUsage:BottomSheet.kt:BottomSheetScene$private lateinit var sheetState: SheetState</ID>
-    <ID>LibraryEntitiesShouldNotBePublic:BottomSheet.kt:BottomSheetSceneStrategy&lt;T : Any> : SceneStrategy</ID>
-    <ID>LibraryEntitiesShouldNotBePublic:BottomSheet.kt:public typealias BottomSheetContent = @Composable (ColumnScope.() -> Unit)</ID>
-    <ID>LibraryEntitiesShouldNotBePublic:ImprovToolsAllPreviews.kt:FontScalePreviews</ID>
-    <ID>LibraryEntitiesShouldNotBePublic:ImprovToolsAllPreviews.kt:ImprovToolsAllPreviews</ID>
-    <ID>LibraryEntitiesShouldNotBePublic:ImprovToolsAllPreviews.kt:LocalesPreviews</ID>
-    <ID>LibraryEntitiesShouldNotBePublic:ImprovToolsNavigationKey.kt:@Composable public fun &lt;T : Parcelable> rememberParcelableBackStack: SnapshotStateList&lt;T></ID>
-    <ID>LibraryEntitiesShouldNotBePublic:ImprovToolsNavigationKey.kt:ImprovToolsNavigationKey : Parcelable</ID>
-    <ID>LibraryEntitiesShouldNotBePublic:ImprovToolsNavigationKey.kt:public typealias BackStack = SnapshotStateList&lt;ImprovToolsNavigationKey> // TODO</ID>
-    <ID>LibraryEntitiesShouldNotBePublic:ImprovToolsNavigator.kt:ImprovToolsNavigator</ID>
-    <ID>LibraryEntitiesShouldNotBePublic:ImprovToolsNavigator.kt:public typealias EntryProviderInstaller = EntryProviderScope&lt;ImprovToolsNavigationKey>.() -> Unit</ID>
-    <ID>LibraryEntitiesShouldNotBePublic:LaunchWrapper.kt:@Composable public fun LaunchWrapper</ID>
     <ID>PreviewAnnotationNaming:ImprovToolsAllPreviews.kt:FontScalePreviews</ID>
     <ID>PreviewAnnotationNaming:ImprovToolsAllPreviews.kt:ImprovToolsAllPreviews</ID>
     <ID>PreviewAnnotationNaming:ImprovToolsAllPreviews.kt:LocalesPreviews</ID>

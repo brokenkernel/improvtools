@@ -4,18 +4,6 @@
   <CurrentIssues>
     <ID>ForbiddenPublicDataClass:NavigationKey.kt:SingleTagBottomTabNavigationKey : ImprovToolsNavigationKey</ID>
     <ID>ForbiddenPublicDataClass:NavigationKey.kt:ThesaurusSingleWordPageNavigationKey : ImprovToolsNavigationKey</ID>
-    <ID>LibraryEntitiesShouldNotBePublic:DefaultTipsAndAdviceRepository.kt:DefaultTipsAndAdviceRepository : TipsAndAdviceRepository</ID>
-    <ID>LibraryEntitiesShouldNotBePublic:EncyclopaediaNavigator.kt:@OptIn(ExperimentalMaterial3Api::class) public fun EntryProviderScope&lt;ImprovToolsNavigationKey>.encyclopaediaScreensEntryBuilder</ID>
-    <ID>LibraryEntitiesShouldNotBePublic:LoadableSingleWordThesaurusButton.kt:@Composable // TODO: internal(?) public fun LoadableSingleWordThesaurusButton</ID>
-    <ID>LibraryEntitiesShouldNotBePublic:LoadableSingleWordThesaurusButtonViewModel.kt:LoadableSingleWordThesaurusButtonViewModel : ViewModel</ID>
-    <ID>LibraryEntitiesShouldNotBePublic:NavigationKey.kt:SingleTagBottomTabNavigationKey : ImprovToolsNavigationKey</ID>
-    <ID>LibraryEntitiesShouldNotBePublic:NavigationKey.kt:ThesaurusSingleWordPageNavigationKey : ImprovToolsNavigationKey</ID>
-    <ID>LibraryEntitiesShouldNotBePublic:SingleWordThesaurusButton.kt:@Composable public fun SingleWordThesaurusButton</ID>
-    <ID>LibraryEntitiesShouldNotBePublic:ThesaurusSingleItemViewModel.kt:ThesaurusSingleItemViewModel : ViewModel</ID>
-    <ID>LibraryEntitiesShouldNotBePublic:ThesaurusTabAllItemsViewModel.kt:ThesaurusTabAllItemsViewModel : ViewModel</ID>
-    <ID>LibraryEntitiesShouldNotBePublic:TipsAndAdviceRepository.kt:TipsAndAdviceRepository</ID>
-    <ID>LibraryEntitiesShouldNotBePublic:TipsAndAdviceScreen.kt:@Composable public fun TipsAndAdviceScreen</ID>
-    <ID>LibraryEntitiesShouldNotBePublic:TipsAndAdviceViewModeUI.kt:TipsAndAdviceViewModeUI</ID>
     <ID>SpacingAfterPackageAndImports:SingleTagBottomTab.kt: </ID>
     <ID>StringLiteralDuplication:ThesaurusSingleItemViewModel.kt:ThesaurusSingleItemViewModel$"&lt;/ul>"</ID>
   </CurrentIssues>

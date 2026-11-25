@@ -3,9 +3,5 @@
   <ManuallySuppressedIssues/>
   <CurrentIssues>
     <ID>ForbiddenPublicDataClass:StoredSuggestionsModel.kt:AudienceSuggestionDatumODS</ID>
-    <ID>LibraryEntitiesShouldNotBePublic:StoredSuggestionsModel.kt:AudienceSuggestionDatumODS</ID>
-    <ID>LibraryEntitiesShouldNotBePublic:StoredSuggestionsModel.kt:IdeaCategoryODS</ID>
-    <ID>LibraryEntitiesShouldNotBePublic:StoredSuggestionsModel.kt:IdeaItemODS</ID>
-    <ID>LibraryEntitiesShouldNotBePublic:StoredSuggestionsModel.kt:IdeaUIState</ID>
   </CurrentIssues>
 </SmellBaseline>
