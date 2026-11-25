@@ -102,7 +102,6 @@ internal fun PeopleTab(modifier: Modifier = Modifier) {
         }
 
         ListItem(
-            headlineContent = { Text(it.personName) },
             leadingContent = {
                 Icon(
                     ImageVector.vectorResource(R.drawable.person_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
@@ -148,6 +147,8 @@ internal fun PeopleTab(modifier: Modifier = Modifier) {
                 }
             },
             modifier = pdiModifier,
-        )
+        ) {
+            Text(it.personName)
+        }
     }
 }

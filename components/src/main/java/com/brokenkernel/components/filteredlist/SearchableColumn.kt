@@ -33,24 +33,22 @@ public inline fun <I> SearchableColumn(
                 .semantics { isTraversalGroup = true },
         ) {
             SimpleSearchBar(
-                text = textFieldState.text.toString(),
-                onQueryChange = {
-                    textFieldState.edit { replace(0, length, it) }
-                },
+                textFieldState = textFieldState,
                 trailingIcon = trailingIcon,
-            ) {
-                ItemColumnLazyList<I>(
-                    itemList,
-                    itemToKey,
-                    { it ->
-                        itemDoesMatch(
-                            transformForSearch(textFieldState.text.toString()),
-                            it,
-                        )
-                    },
-                    itemToListItem = itemToListItem,
-                )
-            }
+                content = {
+                    ItemColumnLazyList<I>(
+                        itemList,
+                        itemToKey,
+                        { it ->
+                            itemDoesMatch(
+                                transformForSearch(textFieldState.text.toString()),
+                                it,
+                            )
+                        },
+                        itemToListItem = itemToListItem,
+                    )
+                },
+            )
         }
     }
 }

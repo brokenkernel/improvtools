@@ -5,8 +5,11 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.foundation.text.input.rememberTextFieldState
+import androidx.compose.material3.SearchBarValue
+import androidx.compose.material3.rememberSearchBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Modifier
@@ -18,6 +21,7 @@ import com.brokenkernel.components.view.SimpleSearchBar
 import kotlin.enums.enumEntries
 import kotlinx.collections.immutable.ImmutableMap
 import kotlinx.collections.immutable.toImmutableList
+import kotlinx.coroutines.launch
 
 public data class TabbedSearchableColumnState<T : Enum<T>>(
     val isSegmentedButtonChecked: SnapshotStateList<Boolean>,
@@ -50,11 +54,17 @@ public inline fun <reified T : Enum<T>, I> TabbedSearchableColumn(
     noinline trailingIcon: @Composable (() -> Unit)? = null,
     noinline itemToListItem: @Composable (I) -> (Unit), // must be last one for nice UX
 ) {
+    val scope = rememberCoroutineScope()
+    val searchBarState = rememberSearchBarState(
+        initialValue = SearchBarValue.Expanded,
+    )
+
     Column(modifier = modifier) {
         EnumLinkedMultiChoiceSegmentedButtonRow<T>(
             isSegmentedButtonChecked = state.isSegmentedButtonChecked.toImmutableList(),
             onSegmentClick = {
                 state.isSegmentedButtonChecked[it] = !state.isSegmentedButtonChecked[it]
+                scope.launch { searchBarState.animateToExpanded() }
             },
             enumToName = { it -> it.name },
         )
@@ -64,29 +74,28 @@ public inline fun <reified T : Enum<T>, I> TabbedSearchableColumn(
                 .semantics { isTraversalGroup = true },
         ) {
             SimpleSearchBar(
-                text = textFieldState.text.toString(),
-                onQueryChange = {
-                    textFieldState.edit { replace(0, length, it) }
-                },
+                textFieldState = textFieldState,
+                searchBarState = searchBarState,
                 trailingIcon = trailingIcon,
-            ) {
-                val locale = LocalLocale.current
-                ItemColumnLazyList<I>(
-                    itemList,
-                    itemToKey,
-                    { it ->
-                        (
-                            state.isSegmentedButtonChecked[itemToTopic(it).ordinal] &&
-                                itemDoesMatch(
-                                    locale,
-                                    transformForSearch(textFieldState.text.toString()),
-                                    it,
+                content = {
+                    val locale = LocalLocale.current
+                    ItemColumnLazyList<I>(
+                        itemList,
+                        itemToKey,
+                        { it ->
+                            (
+                                state.isSegmentedButtonChecked[itemToTopic(it).ordinal] &&
+                                    itemDoesMatch(
+                                        locale,
+                                        transformForSearch(textFieldState.text.toString()),
+                                        it,
+                                    )
                                 )
-                            )
-                    },
-                    itemToListItem = itemToListItem,
-                )
-            }
+                        },
+                        itemToListItem = itemToListItem,
+                    )
+                },
+            )
         }
     }
 }

@@ -1,67 +1,79 @@
 package com.brokenkernel.components.view
 
 import androidx.compose.foundation.layout.BoxScope
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.text.input.TextFieldState
+import androidx.compose.material3.ExpandedDockedSearchBar
 import androidx.compose.material3.Icon
 import androidx.compose.material3.SearchBar
 import androidx.compose.material3.SearchBarDefaults
+import androidx.compose.material3.SearchBarState
+import androidx.compose.material3.SearchBarValue
 import androidx.compose.material3.Text
+import androidx.compose.material3.rememberSearchBarState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.traversalIndex
-import androidx.compose.ui.unit.dp
 import com.brokenkernel.components.R
+import kotlinx.coroutines.launch
 
 @JvmSynthetic
 @PublishedApi
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun BoxScope.SimpleSearchBar(
-    text: String,
-    onQueryChange: (String) -> Unit,
+    textFieldState: TextFieldState,
     modifier: Modifier = Modifier,
     trailingIcon: @Composable (() -> Unit)? = null,
+    searchBarState: SearchBarState = rememberSearchBarState(
+        initialValue = SearchBarValue.Expanded,
+    ),
     content: @Composable () -> Unit,
 ) {
-    var searchBarExpandedState by rememberSaveable { mutableStateOf(false) }
+    val scope = rememberCoroutineScope()
 
-    SearchBar(
-        inputField = {
-            SearchBarDefaults.InputField(
-                query = text,
-                onQueryChange = onQueryChange,
-                onSearch = {
-                    searchBarExpandedState = false
-                },
-                expanded = searchBarExpandedState,
-                onExpandedChange = { searchBarExpandedState = it },
-                placeholder = { Text(stringResource(R.string.search_placeholder)) },
-                leadingIcon = {
-                    Icon(
-                        ImageVector.vectorResource(R.drawable.search_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
-                        contentDescription = stringResource(R.string.simple_search_bar_search),
-                    )
-                },
-                trailingIcon = trailingIcon,
-            )
-        },
-        expanded = true,
-        onExpandedChange = { it -> searchBarExpandedState = it },
-        modifier = modifier
-            .align(Alignment.TopCenter)
-            .semantics { traversalIndex = 0f },
-        windowInsets = WindowInsets(top = 0.dp),
-    ) {
-        content()
+    val inputField = @Composable {
+        SearchBarDefaults.InputField(
+            textFieldState = textFieldState,
+            searchBarState = searchBarState,
+            onSearch = {
+                scope.launch {
+                    searchBarState.animateToExpanded()
+                }
+            },
+            placeholder = {
+                Text(
+                    modifier = Modifier.clearAndSetSemantics {},
+                    text = stringResource(R.string.search_placeholder),
+                )
+            },
+            leadingIcon = {
+                Icon(
+                    ImageVector.vectorResource(R.drawable.search_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
+                    contentDescription = stringResource(R.string.simple_search_bar_search),
+                )
+            },
+            trailingIcon = trailingIcon,
+        )
+    }
+    Column(modifier = modifier) {
+        SearchBar(
+            state = searchBarState,
+            inputField = inputField,
+            modifier = Modifier
+                .semantics { traversalIndex = 0f },
+        )
+
+        ExpandedDockedSearchBar(
+            state = searchBarState,
+            inputField = inputField,
+        ) {
+            content()
+        }
     }
 }

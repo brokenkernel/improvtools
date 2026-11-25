@@ -24,28 +24,6 @@
     </issue>
 
     <issue
-        id="GradleDependency"
-        message="A newer version of androidx.compose.material3:material3 than 1.4.0 is available: 1.5.0"
-        errorLine1="material3 = &quot;1.4.0&quot;"
-        errorLine2="            ~~~~~~~">
-        <location
-            file="../gradle/libs.versions.toml"
-            line="65"
-            column="13"/>
-    </issue>
-
-    <issue
-        id="GradleDependency"
-        message="A newer version of androidx.compose.material3:material3-adaptive-navigation-suite than 1.4.0 is available: 1.5.0"
-        errorLine1="material3AdaptiveNavigationSuite = &quot;1.4.0&quot;"
-        errorLine2="                                   ~~~~~~~">
-        <location
-            file="../gradle/libs.versions.toml"
-            line="68"
-            column="36"/>
-    </issue>
-
-    <issue
         id="PrivateResource"
         message="Overriding `@drawable/arrow_back_24dp_1f1f1f_fill0_wght400_grad0_opsz24` which is marked as private in ImprovTools.features.encyclopaedia:android:unspecified. If deliberate, use tools:override=&quot;true&quot;, otherwise pick a different name.">
         <location

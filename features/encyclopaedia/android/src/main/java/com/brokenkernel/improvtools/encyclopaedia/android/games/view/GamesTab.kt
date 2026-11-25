@@ -126,7 +126,6 @@ internal fun GamesTab(
                 Modifier
             }
         ListItem(
-            headlineContent = { Text(it.gameName) },
             leadingContent = {
                 Icon(
                     it.topic.icon,
@@ -182,6 +181,8 @@ internal fun GamesTab(
                 }
             },
             modifier = gdiModifier,
-        )
+        ) {
+            Text(it.gameName)
+        }
     }
 }

@@ -7,8 +7,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.SearchBarValue
+import androidx.compose.material3.rememberSearchBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Modifier
@@ -25,6 +28,7 @@ import com.brokenkernel.components.view.drawNeonStroke
 import kotlin.enums.enumEntries
 import kotlinx.collections.immutable.ImmutableMap
 import kotlinx.collections.immutable.toImmutableList
+import kotlinx.coroutines.launch
 
 /**
  * @param T tab enumeration
@@ -67,16 +71,21 @@ public inline fun <reified T : Enum<T>, I, reified X : Enum<X>> ChippedTabbedSea
     noinline itemMatchesTag: (I, X) -> Boolean,
     isChipBarVisible: Boolean,
     modifier: Modifier = Modifier,
-    state: ChippedTabbedSearchableColumn<T, X> = rememberChippedTabbedSearchableColumn<T, X>(),
     noinline trailingIcon: @Composable (() -> Unit)? = null,
     textFieldState: TextFieldState = rememberTextFieldState(),
     noinline itemToListItem: @Composable (I) -> (Unit), // must be last one for nice UX
 ) {
+    val state = rememberChippedTabbedSearchableColumn<T, X>()
+    val scope = rememberCoroutineScope()
+    val searchBarState = rememberSearchBarState(
+        initialValue = SearchBarValue.Expanded,
+    )
     Column(modifier = modifier) {
         EnumLinkedMultiChoiceSegmentedButtonRow<T>(
             isSegmentedButtonChecked = state.isSegmentedButtonChecked.toImmutableList(),
             onSegmentClick = {
                 state.isSegmentedButtonChecked[it] = !state.isSegmentedButtonChecked[it]
+                scope.launch { searchBarState.animateToExpanded() }
             },
             enumToName = { it -> it.name },
         )
@@ -98,7 +107,7 @@ public inline fun <reified T : Enum<T>, I, reified X : Enum<X>> ChippedTabbedSea
             }
 
             SimpleSearchBar(
-                text = textFieldState.text.toString(),
+                textFieldState = textFieldState,
                 trailingIcon = {
                     val selectedCount = state.isChipsChecked.count { it }
                     SimpleTooltipWrapper(
@@ -111,9 +120,7 @@ public inline fun <reified T : Enum<T>, I, reified X : Enum<X>> ChippedTabbedSea
                         }
                     }
                 },
-                onQueryChange = { it ->
-                    textFieldState.edit { replace(0, length, it) }
-                },
+                searchBarState = searchBarState,
             ) {
                 Column {
                     AnimatedVisibility(isChipBarVisible) {
@@ -121,11 +128,13 @@ public inline fun <reified T : Enum<T>, I, reified X : Enum<X>> ChippedTabbedSea
                             isChipsChecked = state.isChipsChecked.toImmutableList(),
                             onChipClick = {
                                 state.isChipsChecked[it] = !state.isChipsChecked[it]
+                                scope.launch { searchBarState.animateToExpanded() }
                             },
                             onClearClick = {
                                 for (i in state.isChipsChecked.indices) {
                                     state.isChipsChecked[i] = false
                                 }
+                                scope.launch { searchBarState.animateToExpanded() }
                             },
                         )
                     }
