@@ -1,5 +1,6 @@
 #!/usr/bin/env zsh
 
+bundle update --bundler
 bundle update --all
 bundle install
 bundle exec gem install fastlane
