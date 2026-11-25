@@ -4,6 +4,7 @@ import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material3.ListItem
+import androidx.compose.material3.ListItemDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -15,14 +16,12 @@ import androidx.compose.ui.unit.dp
 import com.brokenkernel.components.view.DragIconButton
 import com.brokenkernel.components.view.SimpleIconButton
 import com.brokenkernel.improvtools.android.R
-import com.brokenkernel.improvtools.coreinfra.BottomSheetContent
 import com.brokenkernel.improvtools.coreinfra.ImprovToolsNavigationKey
 import com.brokenkernel.improvtools.encyclopaedia.android.api.EmotionsPageNavigationKey
 import com.brokenkernel.improvtools.suggestions.api.SuggestionsAllWordsForNavigationKey
 import com.brokenkernel.improvtools.suggestions.api.SuggestionsExplanationNavigationKey
 import com.brokenkernel.improvtools.suggestions.data.storage.IdeaCategoryODS
 import com.brokenkernel.improvtools.suggestions.data.storage.IdeaUIState
-import kotlinx.collections.immutable.toImmutableList
 import sh.calvin.reorderable.ReorderableCollectionItemScope
 
 // TODO: add ability to enable/disable categories entirely persistently in settings. Maybe GridFlow to click on/off.
@@ -43,9 +42,8 @@ public fun ReorderableCollectionItemScope.SuggestionsSingleCategoryRow(
     val elevation by animateDpAsState(if (isDragging) 4.dp else 0.dp)
 
     ListItem(
-        shadowElevation = elevation,
+        elevation = ListItemDefaults.elevation(elevation),
         overlineContent = { Text(ideaCategory.titleWithCount()) },
-        headlineContent = { Text(currentIdea.idea) },
         modifier = modifier.clickable(
             onClick = onUpdateCategory,
             onClickLabel = stringResource(R.string.update_suggestions),
@@ -96,5 +94,7 @@ public fun ReorderableCollectionItemScope.SuggestionsSingleCategoryRow(
                 DragIconButton(dragScope)
             }
         },
-    )
+    ) {
+        Text(currentIdea.idea)
+    }
 }

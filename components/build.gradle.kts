@@ -26,7 +26,11 @@ composeCompiler {
 configure<LibraryExtension> {
     namespace = "com.brokenkernel.components"
 
-    compileSdk = 37
+    compileSdk {
+        version = release(37) {
+            minorApiLevel = 2
+        }
+    }
 
     defaultConfig {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"

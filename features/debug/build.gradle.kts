@@ -20,7 +20,11 @@ plugins {
 configure<LibraryExtension> {
     namespace = "com.brokenkernel.improvtools.features.debug"
 
-    compileSdk = 37
+    compileSdk {
+        version = release(37) {
+            minorApiLevel = 2
+        }
+    }
 
     defaultConfig {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"

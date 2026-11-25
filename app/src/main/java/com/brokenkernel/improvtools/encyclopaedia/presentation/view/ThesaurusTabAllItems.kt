@@ -46,7 +46,6 @@ internal fun ThesaurusTabAllItems(
         modifier = modifier,
     ) { word ->
         ListItem(
-            headlineContent = { Text(word) },
             supportingContent = {
                 // TODO: make a table component?? antonyms?
                 Column {
@@ -123,7 +122,9 @@ internal fun ThesaurusTabAllItems(
                         }
                     },
                 ),
-        )
+        ) {
+            Text(word)
+        }
     }
     // todo: consider other types of words?
     // todo: consider "action buttons". For example, "intensify" or "weaken". Also may require custom ListItem type

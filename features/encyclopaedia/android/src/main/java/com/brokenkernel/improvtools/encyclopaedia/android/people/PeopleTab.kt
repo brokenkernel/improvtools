@@ -17,6 +17,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalLocale
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -36,14 +37,14 @@ private fun transformForSearch(str: String): String {
     return str.lowercase().filterNot { it.isWhitespace() }
 }
 
-private fun doesMatch(searchString: String, personData: PeopleDataItem): Boolean {
+private fun doesMatch(locale: Locale, searchString: String, personData: PeopleDataItem): Boolean {
     if (searchString.isNotEmpty()) {
         // there is probably a better way to handle transformForSearch
         // by directly asking ICU to convert to lowercase and so on, but keep for now while I figure this out.
         val search = StringSearch(
             transformForSearch(searchString),
             StringCharacterIterator(transformForSearch(personData.personName)),
-            Locale.current.platformLocale,
+            locale.platformLocale,
         )
         return search.first() != DONE
     } else {
@@ -57,7 +58,7 @@ private fun hasExpandableInformation(pdi: PeopleDataItem): Boolean {
 
 @Composable
 internal fun PeopleTab(modifier: Modifier = Modifier) {
-    val languageTag = Locale.current.toLanguageTag()
+    val languageTag = LocalLocale.current.toLanguageTag()
     val fullCollationTag = "$languageTag@collation=phonebook"
     val ulocale = ULocale(fullCollationTag)
     val collator = Collator.getInstance(ulocale)

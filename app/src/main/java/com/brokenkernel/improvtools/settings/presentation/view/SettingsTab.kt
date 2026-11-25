@@ -30,7 +30,6 @@ internal fun SettingsTab(
             style = MaterialTheme.typography.titleLarge,
         )
         ListItem(
-            headlineContent = { Text(stringResource(R.string.settings_allow_analytics_cookie_storage)) },
             trailingContent = {
                 Switch(
                     checked = uiState.allowAnalyticsCookieStorage,
@@ -39,13 +38,14 @@ internal fun SettingsTab(
                     },
                 )
             },
-        )
+        ) {
+            Text(stringResource(R.string.settings_allow_analytics_cookie_storage))
+        }
         Text(
             stringResource(R.string.timer_settings_header),
             style = MaterialTheme.typography.titleLarge,
         )
         ListItem(
-            headlineContent = { Text(stringResource(R.string.timer_haptics_mode)) },
             trailingContent = {
                 EnumerationRadioSelection<TimerHapticsModeUI, TimerHapticsMode>(
                     onEnumerationSelection = { opt ->
@@ -55,6 +55,8 @@ internal fun SettingsTab(
                     currentlySelected = uiState.timerHapticsMode,
                 )
             },
-        )
+        ) {
+            Text(stringResource(R.string.timer_haptics_mode))
+        }
     }
 }

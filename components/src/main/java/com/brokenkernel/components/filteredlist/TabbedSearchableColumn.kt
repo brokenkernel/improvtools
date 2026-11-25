@@ -10,8 +10,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalLocale
 import androidx.compose.ui.semantics.isTraversalGroup
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.intl.Locale
 import com.brokenkernel.components.view.SimpleSearchBar
 import kotlin.enums.enumEntries
 import kotlinx.collections.immutable.ImmutableMap
@@ -37,7 +39,7 @@ public inline fun <reified T : Enum<T>> rememberTabbedSearchableColumnState(): T
  */
 @Composable
 public inline fun <reified T : Enum<T>, I> TabbedSearchableColumn(
-    crossinline itemDoesMatch: (String, I) -> Boolean,
+    crossinline itemDoesMatch: (Locale, String, I) -> Boolean,
     itemList: ImmutableMap<String, List<I>>,
     crossinline transformForSearch: (String) -> String,
     noinline itemToTopic: (I) -> T,
@@ -68,6 +70,7 @@ public inline fun <reified T : Enum<T>, I> TabbedSearchableColumn(
                 },
                 trailingIcon = trailingIcon,
             ) {
+                val locale = LocalLocale.current
                 ItemColumnLazyList<I>(
                     itemList,
                     itemToKey,
@@ -75,6 +78,7 @@ public inline fun <reified T : Enum<T>, I> TabbedSearchableColumn(
                         (
                             state.isSegmentedButtonChecked[itemToTopic(it).ordinal] &&
                                 itemDoesMatch(
+                                    locale,
                                     transformForSearch(textFieldState.text.toString()),
                                     it,
                                 )

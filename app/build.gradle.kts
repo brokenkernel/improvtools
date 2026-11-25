@@ -59,7 +59,11 @@ private inline fun <reified ValueT> VariantDimension.buildConfigField(name: Stri
 
 configure<ApplicationExtension> {
     namespace = "com.brokenkernel.improvtools"
-    compileSdk = 37
+    compileSdk {
+        version = release(37) {
+            minorApiLevel = 2
+        }
+    }
 
     defaultConfig {
         applicationId = "com.brokenkernel.improvtools"

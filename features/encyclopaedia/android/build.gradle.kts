@@ -21,7 +21,11 @@ plugins {
 configure<LibraryExtension> {
     namespace = "com.brokenkernel.improvtools.encyclopaedia.android"
 
-    compileSdk = 37
+    compileSdk {
+        version = release(37) {
+            minorApiLevel = 2
+        }
+    }
 
     defaultConfig {
         testInstrumentationRunner =

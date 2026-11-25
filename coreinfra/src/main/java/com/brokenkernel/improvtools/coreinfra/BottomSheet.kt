@@ -5,7 +5,8 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.ModalBottomSheetProperties
 import androidx.compose.material3.SheetState
-import androidx.compose.material3.rememberModalBottomSheetState
+import androidx.compose.material3.SheetValue
+import androidx.compose.material3.rememberBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.navigation3.runtime.NavEntry
 import androidx.navigation3.runtime.NavMetadataKey
@@ -33,8 +34,8 @@ internal data class BottomSheetScene<T : Any>(
     private lateinit var sheetState: SheetState
 
     override val content: @Composable (() -> Unit) = {
-        sheetState = rememberModalBottomSheetState(
-            skipPartiallyExpanded = false,
+        sheetState = rememberBottomSheetState(
+            initialValue = SheetValue.Hidden,
         )
         ModalBottomSheet(
             onDismissRequest = onBack,

@@ -20,7 +20,11 @@ plugins {
 
 configure<LibraryExtension> {
     namespace = "com.brokenkernel.improvtools.tonguetwister"
-    compileSdk = 37
+    compileSdk {
+        version = release(37) {
+            minorApiLevel = 2
+        }
+    }
 
     defaultConfig {
         minSdk = 26

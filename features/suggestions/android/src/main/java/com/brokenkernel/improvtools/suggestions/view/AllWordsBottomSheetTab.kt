@@ -30,11 +30,9 @@ internal fun AllWordsBottomSheetTab(
         LazyColumn {
             val words = viewModel.getIdeaForCategory(category)
             items(words, key = { it }) { word ->
-                ListItem(
-                    headlineContent = {
-                        Text(word) // TODO: maybe add explanation
-                    },
-                )
+                ListItem {
+                    Text(word) // TODO: maybe add explanation
+                }
             }
         }
     }

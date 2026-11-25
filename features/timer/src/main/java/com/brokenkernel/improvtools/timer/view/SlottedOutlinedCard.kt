@@ -16,6 +16,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalLocale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.TextStyle
@@ -35,8 +36,8 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.flow
 import sh.calvin.reorderable.ReorderableCollectionItemScope
 
-private fun Long.formatTimeMoment(): String {
-    return String.format(Locale.current.platformLocale, "%02d", this)
+private fun Long.formatTimeMoment(locale: Locale): String {
+    return String.format(locale.platformLocale, "%02d", this)
 }
 
 @Composable
@@ -67,19 +68,19 @@ private fun CurrentTimerTime(
     val seconds = (ctime - hours.hours - minutes.minutes).inWholeSeconds
 
     Row(modifier = modifier) {
-        Text(hours.formatTimeMoment(), style = style)
+        Text(hours.formatTimeMoment(LocalLocale.current), style = style)
         if (showColon) {
             Text(":", style = style)
         } else {
             Text(" ", style = style)
         }
-        Text(minutes.formatTimeMoment(), style = style)
+        Text(minutes.formatTimeMoment(LocalLocale.current), style = style)
         if (showColon) {
             Text(":", style = style)
         } else {
             Text(" ", style = style)
         }
-        Text(seconds.formatTimeMoment(), style = style)
+        Text(seconds.formatTimeMoment(LocalLocale.current), style = style)
     }
 }
 
