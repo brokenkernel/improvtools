@@ -49,11 +49,6 @@ public fun TipsAndAdviceScreen(
                 },
             ) {
                 ListItem(
-                    headlineContent = {
-                        Text(
-                            text = it.title,
-                        )
-                    },
                     supportingContent = {
                         AnimatedVisibility(isExpanded) {
                             SelectionContainer {
@@ -65,7 +60,11 @@ public fun TipsAndAdviceScreen(
                     colors = ListItemDefaults.colors(
                         containerColor = MaterialTheme.colorScheme.surfaceVariant,
                     ),
-                )
+                ) {
+                    Text(
+                        text = it.title,
+                    )
+                }
             }
         }
     }
