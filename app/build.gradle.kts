@@ -283,8 +283,8 @@ dependencies {
     androidTestImplementation(libs.tools.fastlane.screengrab)
 
     androidTestRuntimeOnly(testFixtures(projects.coreinfra))
-    androidTestRuntimeOnly(libs.androidx.test.core)
     androidTestRuntimeOnly(libs.androidx.runner)
+    androidTestRuntimeOnly(libs.androidx.test.core)
     androidTestRuntimeOnly(libs.leakcanary.android.instrumentation)
 
     detektPlugins(libs.composeDetektRules)

@@ -115,7 +115,6 @@ androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = 
 androidx-compose-foundation-layout = { module = "androidx.compose.foundation:foundation-layout", version.ref = "foundationLayout" }
 androidx-compose-material3-adaptive-navigation-suite = { module = "androidx.compose.material3:material3-adaptive-navigation-suite", version.ref = "material3AdaptiveNavigationSuite" }
 androidx-compose-ui-test-junit4-accessibility = { module = "androidx.compose.ui:ui-test-junit4-accessibility", version.ref = "uiTestJunit4Accessibility" }
-androidx-test-core = { module = "androidx.test:core", version.ref = "coreTest" }
 androidx-datastore = { module = "androidx.datastore:datastore", version.ref = "androidXdatastore" }
 androidx-datastore-core = { module = "androidx.datastore:datastore-core", version.ref = "androidXdatastore" }
 androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espressoCore" }
@@ -154,6 +153,7 @@ androidx-runtime = { module = "androidx.compose.runtime:runtime", version.ref = 
 androidx-runtime-saveable = { module = "androidx.compose.runtime:runtime-saveable", version.ref = "runtime" }
 androidx-runtime-tracing = { module = "androidx.compose.runtime:runtime-tracing" }
 androidx-startup-runtime = { module = "androidx.startup:startup-runtime", version.ref = "startupRuntime" }
+androidx-test-core = { module = "androidx.test:core", version.ref = "coreTest" }
 androidx-ui = { module = "androidx.compose.ui:ui" }
 androidx-ui-geometry = { module = "androidx.compose.ui:ui-geometry", version.ref = "composeUI" }
 androidx-ui-graphics = { module = "androidx.compose.ui:ui-graphics" }

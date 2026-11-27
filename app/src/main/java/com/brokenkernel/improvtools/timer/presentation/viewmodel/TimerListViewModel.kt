@@ -59,12 +59,12 @@ public class TimerListViewModel @Inject constructor(
             PausedCountDownTimerState(
                 INITIAL_COUNT_DOWN_TIMER_DURATION,
                 "Countdown Three",
-                timerManager.getNextID()
+                timerManager.getNextID(),
             ),
             PausedCountDownTimerState(
                 INITIAL_COUNT_DOWN_TIMER_DURATION,
                 "Countdown Four",
-                timerManager.getNextID()
+                timerManager.getNextID(),
             ),
         )
 
@@ -135,7 +135,7 @@ public class TimerListViewModel @Inject constructor(
         val timer = PausedCountDownTimerState(
             INITIAL_COUNT_DOWN_TIMER_DURATION,
             title,
-            timerManager.getNextID()
+            timerManager.getNextID(),
         )
         _allTimers.add(timer)
     }

@@ -154,8 +154,8 @@ dependencies {
     androidTestImplementation(libs.junit)
 
     androidTestRuntimeOnly(testFixtures(projects.coreinfra))
-    androidTestRuntimeOnly(libs.androidx.test.core)
     androidTestRuntimeOnly(libs.androidx.runner)
+    androidTestRuntimeOnly(libs.androidx.test.core)
     androidTestRuntimeOnly(libs.kotlinx.coroutines.test)
 
     detektPlugins(libs.composeDetektRules)
