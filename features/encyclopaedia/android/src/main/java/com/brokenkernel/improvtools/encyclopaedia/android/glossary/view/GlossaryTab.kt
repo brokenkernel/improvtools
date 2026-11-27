@@ -51,7 +51,6 @@ internal fun GlossaryTab(modifier: Modifier = Modifier) {
             )
         }
         ListItem(
-            headlineContent = { Text(it.term) },
             leadingContent = {
                 Icon(
                     ImageVector.vectorResource(R.drawable.backpack_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
@@ -73,6 +72,8 @@ internal fun GlossaryTab(modifier: Modifier = Modifier) {
                     isListItemInformationExpanded = !isListItemInformationExpanded
                 },
             ),
-        )
+        ) {
+            Text(it.term)
+        }
     }
 }
