@@ -18,8 +18,7 @@ composeBom = "2026.11.01"
 composeDetektRulesVersion = "0.6.8"
 composeUI = "1.13.0"
 config = "1.4.10"
-core = "1.7.0"
-coreKtx = "1.19.1"
+coreTest = "1.7.0"
 daggerVersion = "2.60.1"
 dependencyAnalysis = "3.20.4"
 detektVersion = "2.0.0-alpha.6"
@@ -89,7 +88,7 @@ uiTooling = "1.13.0"
 versionCatalogUpdate = "1.1.2"
 viewModelCompose = "2.11.1"
 window = "1.5.1"
-workRuntimeKtx = "2.12.0"
+workRuntime = "2.12.0"
 zoomable = "2.16.0"
 
 [libraries]
@@ -116,8 +115,7 @@ androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = 
 androidx-compose-foundation-layout = { module = "androidx.compose.foundation:foundation-layout", version.ref = "foundationLayout" }
 androidx-compose-material3-adaptive-navigation-suite = { module = "androidx.compose.material3:material3-adaptive-navigation-suite", version.ref = "material3AdaptiveNavigationSuite" }
 androidx-compose-ui-test-junit4-accessibility = { module = "androidx.compose.ui:ui-test-junit4-accessibility", version.ref = "uiTestJunit4Accessibility" }
-androidx-core = { module = "androidx.test:core", version.ref = "core" }
-androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
+androidx-test-core = { module = "androidx.test:core", version.ref = "coreTest" }
 androidx-datastore = { module = "androidx.datastore:datastore", version.ref = "androidXdatastore" }
 androidx-datastore-core = { module = "androidx.datastore:datastore-core", version.ref = "androidXdatastore" }
 androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espressoCore" }
@@ -135,12 +133,10 @@ androidx-lifecycle-common = { module = "androidx.lifecycle:lifecycle-common", ve
 androidx-lifecycle-compiler = { module = "androidx.lifecycle:lifecycle-compiler", version.ref = "lifecycleVersion" }
 androidx-lifecycle-process = { module = "androidx.lifecycle:lifecycle-process", version.ref = "lifecycleVersion" }
 androidx-lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "viewModelCompose" }
-androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycleVersion" }
 androidx-lifecycle-runtime-testing = { module = "androidx.lifecycle:lifecycle-runtime-testing", version.ref = "lifecycleVersion" }
 androidx-lifecycle-service = { module = "androidx.lifecycle:lifecycle-service", version.ref = "lifecycleVersion" }
 androidx-lifecycle-viewModel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "viewModelCompose" }
 androidx-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel", version.ref = "lifecycleVersion" }
-androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleVersion" }
 androidx-lifecycle-viewmodel-navigation3 = { module = "androidx.lifecycle:lifecycle-viewmodel-navigation3", version.ref = "lifecycleVersion" }
 androidx-lifecycle-viewmodel-savedstate = { module = "androidx.lifecycle:lifecycle-viewmodel-savedstate", version.ref = "lifecycleVersion" }
 androidx-lint-gradle = { module = "androidx.lint:lint-gradle", version.ref = "lintGradle" }
@@ -170,9 +166,8 @@ androidx-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview
 androidx-ui-unit = { module = "androidx.compose.ui:ui-unit", version.ref = "composeUI" }
 androidx-ui-util = { module = "androidx.compose.ui:ui-util", version.ref = "composeUI" }
 androidx-window = { module = "androidx.window:window", version.ref = "window" }
-androidx-work-multiprocess = { module = "androidx.work:work-multiprocess", version.ref = "workRuntimeKtx" }
-androidx-work-runtime-ktx = { module = "androidx.work:work-runtime-ktx", version.ref = "workRuntimeKtx" }
-androidx-work-testing = { module = "androidx.work:work-testing", version.ref = "workRuntimeKtx" }
+androidx-work-multiprocess = { module = "androidx.work:work-multiprocess", version.ref = "workRuntime" }
+androidx-work-testing = { module = "androidx.work:work-testing", version.ref = "workRuntime" }
 com-google-firebase-analytics = { module = "com.google.firebase:firebase-analytics", version.ref = "firebaseAnalytics" }
 com-google-firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics", version.ref = "firebaseCrashlytics" }
 com-google-firebase-firebaseBom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }

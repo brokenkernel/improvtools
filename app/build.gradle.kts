@@ -206,7 +206,6 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.browser)
     implementation(libs.androidx.compose.material3.adaptive.navigation.suite)
-    implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.datastore)
     implementation(libs.androidx.datastore.core)
     implementation(libs.androidx.foundation)
@@ -284,7 +283,7 @@ dependencies {
     androidTestImplementation(libs.tools.fastlane.screengrab)
 
     androidTestRuntimeOnly(testFixtures(projects.coreinfra))
-    androidTestRuntimeOnly(libs.androidx.core)
+    androidTestRuntimeOnly(libs.androidx.test.core)
     androidTestRuntimeOnly(libs.androidx.runner)
     androidTestRuntimeOnly(libs.leakcanary.android.instrumentation)
 
